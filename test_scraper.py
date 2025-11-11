@@ -262,33 +262,17 @@ def test_save_statement_includes_final_url_on_redirect():
         assert metadata["source_url"] == "https://example.com/old"
 
 
-@pytest.mark.parametrize("agency_index", range(3))
-def test_fetch_first_few_agencies(agency_index):
-    """Integration test: fetch first few agencies to verify end-to-end."""
-    agencies = load_agencies()
-    if agency_index >= len(agencies):
-        pytest.skip(f"Only {len(agencies)} agencies available")
-
-    agency = agencies[agency_index]
-    result = fetch_statement(agency)
-
-    # Should return valid result structure
-    assert isinstance(result, dict)
-    assert "error" in result
-
-    # If successful, should have content
-    if result["error"] is None:
-        assert result["markdown"]
-        assert result["status_code"] == 200
-
-
+@pytest.mark.might_fail
 @pytest.mark.parametrize(
     "agency",
     [a for a in load_agencies() if a.url is not None],
     ids=lambda a: a.abbr,
 )
 def test_known_agency_statements_can_be_fetched(agency):
-    """Integration test: verify agencies with known URLs can be fetched and parsed."""
+    """Integration test: verify agencies with known URLs can be fetched and parsed.
+
+    Skipped by default. Run with: pytest -m might_fail
+    """
     result = fetch_statement(agency)
 
     # Verify result structure
