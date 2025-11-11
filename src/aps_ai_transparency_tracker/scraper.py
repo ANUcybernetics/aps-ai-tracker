@@ -28,6 +28,7 @@ class Agency:
     abbr: str
     url: str | None
     manual: bool = False
+    selector: str | None = None
 
 
 class StatementResult(TypedDict):
@@ -61,6 +62,7 @@ def load_agencies() -> list[Agency]:
             abbr=d["abbr"],
             url=d["url"] if d["url"] else None,
             manual=d.get("manual", False),
+            selector=d.get("selector"),
         )
         for d in data["agencies"]
     ]
@@ -109,22 +111,22 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         link.replace_with(link.get_text())
 
 
-def extract_main_content(soup: BeautifulSoup) -> str:
-    """Extract the main content from the page, removing navigation and footers."""
-    # Try specific content selectors first (more specific to less specific)
-    for selector in [
-        "#main-content",  # Common main content ID
-        "main",  # HTML5 main element
-        ".block-field-blocknodearticlebody",  # Drupal/GovCMS article body
-        ".region-content",  # Drupal content region
-        ".main-content",
-        "#content",
-        ".content",
-        "article",  # Generic article (might catch navigation on some sites)
-    ]:
+def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> str:
+    """Extract the main content from the page, removing navigation and footers.
+
+    Args:
+        soup: BeautifulSoup object of the page
+        selector: Optional CSS selector to use instead of default list
+    """
+    if selector:
         if main_content := soup.select_one(selector):
             remove_boilerplate(main_content)
             return str(main_content)
+    else:
+        for selector in ["main", "article", ".content", "#content", ".main-content"]:
+            if main_content := soup.select_one(selector):
+                remove_boilerplate(main_content)
+                return str(main_content)
 
     if body := soup.find("body"):
         remove_boilerplate(body)
@@ -238,7 +240,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             if not title and soup.find("h1"):
                 title = soup.find("h1").get_text(strip=True)
             markdown = clean_html_to_markdown(
-                extract_main_content(soup), agency.url or ""
+                extract_main_content(soup, agency.selector), agency.url or ""
             )
 
             return {
