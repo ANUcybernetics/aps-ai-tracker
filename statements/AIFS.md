@@ -86,7 +86,7 @@ The AI transparency statement was first published to our website on 2 December 2
 
 ## AI contact
 
-For questions about this statement or for further information on the Institute’s usage of AI, please contact [[email protected]](https://aifs.gov.au/cdn-cgi/l/email-protection#a2c3cbe2c3cbc4d18cc5cdd48cc3d7).
+For questions about this statement or for further information on the Institute’s usage of AI, please contact [[email protected]](https://aifs.gov.au/cdn-cgi/l/email-protection#22434b62434b44510c454d540c4357).
 
 Change history
 
@@ -103,4 +103,4 @@ Share
 
 [ ](https://www.linkedin.com/sharing/share-offsite/?url=https://aifs.gov.au/main/policies/ai-transparency-statement "Share to Linkedin")
 
-[ ](https://aifs.gov.au/cdn-cgi/l/email-protection#231c505641494640571e626a0611135751424d50534251464d405a06111350574257464e464d5705414c475a1e4b57575350190c0c424a45500d444c550d42560c4e424a4d0c534c4f4a404a46500c424a0e5751424d50534251464d405a0e50574257464e464d57 "Share to E-mail")
+[ ](https://aifs.gov.au/cdn-cgi/l/email-protection#4f703c3a2d252a2c3b720e066a7d7f3b3d2e213c3f2e3d2a212c366a7d7f3c3b2e3b2a222a213b692d202b3672273b3b3f3c7560602e26293c61282039612e3a60222e2621603f2023262c262a3c602e26623b3d2e213c3f2e3d2a212c36623c3b2e3b2a222a213b "Share to E-mail")

@@ -1,7 +1,6 @@
 ---
 abbr: DVA
 agency: Department of Veterans' Affairs
-final_url: https://www.dva.gov.au/about-us/corporate-governance/artificial-intelligence-ai-transparency-statement
 source_url: https://www.dva.gov.au/about/accessing-information/what-can-i-access/corporate-information-access/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Veterans'
   Affairs
