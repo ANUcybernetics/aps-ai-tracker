@@ -103,6 +103,11 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         for tag in element.select(selector):
             tag.decompose()
 
+    # Remove email protection links (hashes change on every visit)
+    # Replace with just the link text
+    for link in element.find_all("a", href=re.compile(r"cdn-cgi/l/email-protection")):
+        link.replace_with(link.get_text())
+
 
 def extract_main_content(soup: BeautifulSoup) -> str:
     """Extract the main content from the page, removing navigation and footers."""
