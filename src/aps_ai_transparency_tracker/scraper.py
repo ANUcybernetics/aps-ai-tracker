@@ -106,7 +106,17 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
 
 def extract_main_content(soup: BeautifulSoup) -> str:
     """Extract the main content from the page, removing navigation and footers."""
-    for selector in ["main", "article", ".content", "#content", ".main-content"]:
+    # Try specific content selectors first (more specific to less specific)
+    for selector in [
+        "#main-content",  # Common main content ID
+        "main",  # HTML5 main element
+        ".block-field-blocknodearticlebody",  # Drupal/GovCMS article body
+        ".region-content",  # Drupal content region
+        ".main-content",
+        "#content",
+        ".content",
+        "article",  # Generic article (might catch navigation on some sites)
+    ]:
         if main_content := soup.select_one(selector):
             remove_boilerplate(main_content)
             return str(main_content)
