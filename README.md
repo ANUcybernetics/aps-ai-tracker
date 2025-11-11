@@ -25,7 +25,7 @@ cross-referenced from
 Run the scraper:
 
 ```bash
-uv run scrape-ai-statements
+uv run scrape
 ```
 
 The script will fetch all configured AI Transparency Statements and save them to

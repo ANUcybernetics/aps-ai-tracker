@@ -20,7 +20,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-scrape-ai-statements = "aps_ai_transparency_tracker.__main__:main"
+scrape = "aps_ai_transparency_tracker.__main__:main"
 
 [dependency-groups]
 dev = [
