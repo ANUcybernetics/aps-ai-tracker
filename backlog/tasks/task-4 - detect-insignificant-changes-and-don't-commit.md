@@ -1,7 +1,7 @@
 ---
 id: task-4
 title: detect insignificant changes and don't commit
-status: To Do
+status: Done
 assignee: []
 created_date: "2025-11-11 09:52"
 labels: []
