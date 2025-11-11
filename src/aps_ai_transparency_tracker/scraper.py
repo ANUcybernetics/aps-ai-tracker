@@ -333,11 +333,16 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Use fallback title if none extracted
+    title = (
+        data["title"] if data["title"] else f"{agency.abbr} AI Transparency Statement"
+    )
+
     frontmatter = {
         "agency": agency.name,
         "abbr": agency.abbr,
         "source_url": agency.url,
-        "title": data["title"],
+        "title": title,
     }
 
     if data["final_url"] != agency.url:
