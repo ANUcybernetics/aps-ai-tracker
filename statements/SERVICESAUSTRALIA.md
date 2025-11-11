@@ -1,7 +1,6 @@
 ---
 abbr: SERVICESAUSTRALIA
 agency: Services Australia
-final_url: https://www.servicesaustralia.gov.au/automation-and-artificial-intelligence-transparency-statement?context=22
 source_url: https://www.servicesaustralia.gov.au/automation-and-artificial-intelligence-transparency-statement
 title: Automation and Artificial Intelligence Transparency Statement - About us -
   Services Australia
