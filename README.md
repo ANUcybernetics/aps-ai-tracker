@@ -39,7 +39,6 @@ Each statement is saved as a markdown file with YAML frontmatter containing:
 - `agency_abbr`: Agency abbreviation
 - `source_url`: Original URL of the statement
 - `final_url`: Final URL after redirects
-- `fetched_at`: ISO 8601 timestamp of fetch
 - `title`: Page title (extracted from HTML if available)
 - `status_code`: HTTP status code
 - `error`: Error message (if fetch failed, otherwise null)
