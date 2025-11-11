@@ -15,7 +15,7 @@ import pytest
 import yaml
 from bs4 import BeautifulSoup
 
-from ausgov_ai_transparency_statements import (
+from aps_ai_transparency_tracker import (
     Agency,
     clean_html_to_markdown,
     extract_main_content,
