@@ -512,7 +512,8 @@ name = "National Film and Sound Archive of Australia"
 abbr = "NFSA"
 size = "medium"
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
-manual = true
+selector = ".block-field-blocknodearticlebody"
+# manual = true
 
 [[agencies]]
 name = "National Health Funding Body"
