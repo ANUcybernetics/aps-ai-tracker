@@ -64,7 +64,7 @@ Screen Australia is continually reviewing opportunities to assist stakeholders t
 
 This Transparency Statement was last updated on 24 February 2025. It will be updated as Screen Australia’s approach to AI changes, and at least every 12 months.
 
-For enquiries about Screen Australia’s adoption of AI, please contact [[email protected]](https://www.screenaustralia.gov.au/cdn-cgi/l/email-protection#4625292b2b33282f2527322f292835063525342323282733353234272a2f2768212930682733)
+For enquiries about Screen Australia’s adoption of AI, please contact [email protected]
 
 ## The Screen Guide
 
