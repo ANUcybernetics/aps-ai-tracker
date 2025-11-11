@@ -373,6 +373,7 @@ name = "Department of the Prime Minister and Cabinet"
 abbr = "PMC"
 size = "medium"
 url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement"
+manual = true
 
 [[agencies]]
 name = "Domestic, Family and Sexual Violence Commission"
@@ -511,6 +512,7 @@ name = "National Film and Sound Archive of Australia"
 abbr = "NFSA"
 size = "medium"
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
+manual = true
 
 [[agencies]]
 name = "National Health Funding Body"

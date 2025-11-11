@@ -8,6 +8,7 @@ Usage:
     uv run pytest test_scraper.py -v
 """
 
+import asyncio
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -21,12 +22,30 @@ from aps_ai_transparency_tracker import (
     StatementResult,
     clean_html_to_markdown,
     extract_main_content,
-    fetch_statement,
+    fetch_all_raw,
     load_agencies,
     process_raw,
     save_raw,
     save_statement,
 )
+
+
+def fetch_statement(agency: Agency) -> StatementResult:
+    """Helper function for tests: fetch and process a single agency statement."""
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        raw_results = asyncio.run(fetch_all_raw([agency]))
+        if raw_results:
+            _, raw_data = raw_results[0]
+            save_raw(agency, raw_data, raw_dir)
+            return process_raw(agency, raw_dir)
+        return {
+            "title": None,
+            "markdown": None,
+            "status_code": None,
+            "final_url": agency.url,
+            "error": "Fetch failed",
+        }
 
 
 def test_agencies_list_structure():

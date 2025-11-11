@@ -5,7 +5,6 @@ import logging
 import re
 import tomllib
 from dataclasses import dataclass
-from io import BytesIO
 from pathlib import Path
 from typing import TypedDict
 
@@ -28,6 +27,7 @@ class Agency:
     name: str
     abbr: str
     url: str | None
+    manual: bool = False
 
 
 class StatementResult(TypedDict):
@@ -56,7 +56,12 @@ def load_agencies() -> list[Agency]:
     with open(toml_path, "rb") as f:
         data = tomllib.load(f)
     return [
-        Agency(name=d["name"], abbr=d["abbr"], url=d["url"] if d["url"] else None)
+        Agency(
+            name=d["name"],
+            abbr=d["abbr"],
+            url=d["url"] if d["url"] else None,
+            manual=d.get("manual", False),
+        )
         for d in data["agencies"]
     ]
 
@@ -247,84 +252,6 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
         }
 
 
-async def fetch_statement_async(
-    agency: Agency, client: httpx.AsyncClient
-) -> StatementResult:
-    """Fetch and parse an AI transparency statement (async version)."""
-    logger.info(f"Fetching {agency.name}...")
-
-    if agency.url is None:
-        return {
-            "title": None,
-            "markdown": None,
-            "status_code": None,
-            "final_url": None,
-            "error": "No URL provided",
-        }
-
-    try:
-        response = await client.get(
-            agency.url,
-            follow_redirects=True,
-            timeout=30.0,
-        )
-        response.raise_for_status()
-
-        is_pdf = "application/pdf" in response.headers.get("content-type", "").lower()
-
-        if is_pdf:
-            pdf_reader = PdfReader(BytesIO(response.content))
-            title = pdf_reader.metadata.title if pdf_reader.metadata else None
-            markdown = "\n\n".join(page.extract_text() for page in pdf_reader.pages)
-        else:
-            soup = BeautifulSoup(response.text, "lxml")
-            title = (
-                soup.title.string.strip() if soup.title and soup.title.string else None
-            )
-            if not title and soup.find("h1"):
-                title = soup.find("h1").get_text(strip=True)
-            markdown = clean_html_to_markdown(extract_main_content(soup), agency.url)
-
-        return {
-            "title": title,
-            "markdown": markdown.strip() if markdown else None,
-            "status_code": response.status_code,
-            "final_url": str(response.url),
-            "error": None,
-        }
-
-    except httpx.HTTPStatusError as e:
-        logger.error(f"HTTP error fetching {agency.name}: {e}")
-        return {
-            "title": None,
-            "markdown": None,
-            "status_code": e.response.status_code,
-            "final_url": agency.url,
-            "error": str(e),
-        }
-    except Exception as e:
-        logger.error(f"Error fetching {agency.name}: {e}")
-        return {
-            "title": None,
-            "markdown": None,
-            "status_code": None,
-            "final_url": agency.url,
-            "error": str(e),
-        }
-
-
-def fetch_statement(agency: Agency) -> StatementResult:
-    """Synchronous wrapper for fetch_statement_async (for backwards compatibility)."""
-
-    async def _fetch() -> StatementResult:
-        async with httpx.AsyncClient(
-            headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
-        ) as client:
-            return await fetch_statement_async(agency, client)
-
-    return asyncio.run(_fetch())
-
-
 def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> bool:
     """Save statement as markdown file with YAML frontmatter."""
     if data["error"] or not data["markdown"]:
@@ -358,26 +285,6 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     filepath.write_text(content, encoding="utf-8")
     logger.info(f"Saved {agency.abbr}.md")
     return True
-
-
-async def fetch_all_statements(
-    agencies: list[Agency],
-) -> list[tuple[Agency, StatementResult]]:
-    """Fetch all agency statements in parallel."""
-    async with httpx.AsyncClient(
-        headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
-        limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
-    ) as client:
-        agencies_with_urls = [a for a in agencies if a.url is not None]
-
-        async with asyncio.TaskGroup() as tg:  # type: ignore[possibly-missing-attribute]
-            tasks = [
-                tg.create_task(fetch_statement_async(agency, client))
-                for agency in agencies_with_urls
-            ]
-
-        results = [task.result() for task in tasks]
-        return list(zip(agencies_with_urls, results))
 
 
 async def fetch_all_raw(
