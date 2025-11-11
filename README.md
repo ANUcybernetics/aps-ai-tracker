@@ -72,9 +72,13 @@ That's it---dependencies are automatically installed by uv from
 
 (c) Ben Swift
 
-TODO add a note about the actual statements being under their own individual
-licenses.
-
 ## License
 
-MIT
+This scraper code is licensed under the MIT License.
+
+The scraped AI transparency statements themselves are copyright of their
+respective Australian Government agencies. Most agency content is licensed under
+[CC BY 4.0 Australia](https://creativecommons.org/licenses/by/4.0/) or
+[CC BY 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/), though
+individual agencies may use different licenses. Check each agency's website for
+their specific copyright and licensing terms.
