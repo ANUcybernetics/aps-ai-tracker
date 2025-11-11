@@ -1,7 +1,6 @@
 ---
 abbr: APSC
 agency: Australian Public Service Commission
-fetched_at: '2025-11-11T06:10:51.692145+00:00'
 source_url: https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission
 title: Transparent Use of AI at the Commission | Australian Public Service Commission
 ---

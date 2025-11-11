@@ -1,7 +1,6 @@
 ---
 abbr: DAFF
 agency: Department of Agriculture, Fisheries and Forestry
-fetched_at: '2025-11-11T06:10:29.776149+00:00'
 source_url: https://www.agriculture.gov.au/about/reporting/obligations/AI-transparency-statement
 title: Artificial Intelligence transparency statement - DAFF
 ---

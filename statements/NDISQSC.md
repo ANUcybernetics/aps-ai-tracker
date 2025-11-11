@@ -1,7 +1,6 @@
 ---
 abbr: NDISQSC
 agency: NDIS Quality and Safeguards Commission
-fetched_at: '2025-11-11T06:10:59.729111+00:00'
 source_url: https://www.ndiscommission.gov.au/about-us/corporate-reports/ai-statement
 title: Artificial intelligence (AI) transparency statement | NDIS Quality and Safeguards
   Commission

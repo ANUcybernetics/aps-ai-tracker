@@ -1,7 +1,6 @@
 ---
 abbr: ART
 agency: Administrative Review Tribunal
-fetched_at: '2025-11-11T06:10:36.178596+00:00'
 source_url: https://www.art.gov.au/ai-transparency-statement
 title: AI transparency statement | Administrative Review Tribunal
 ---

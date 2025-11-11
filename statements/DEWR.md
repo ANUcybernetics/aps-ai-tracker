@@ -1,7 +1,6 @@
 ---
 abbr: DEWR
 agency: Department of Employment and Workplace Relations
-fetched_at: '2025-11-11T06:10:55.434653+00:00'
 final_url: https://www.dewr.gov.au/artificial-intelligence-dewr/dewr-ai-transparency-statement
 source_url: https://www.dewr.gov.au/about-department/corporate-reporting/dewr-ai-transparency-statement
 title: DEWR AI Transparency Statement - Department of Employment and Workplace Relations,

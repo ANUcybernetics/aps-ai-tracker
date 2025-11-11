@@ -1,7 +1,6 @@
 ---
 abbr: DFAT
 agency: Department of Foreign Affairs and Trade
-fetched_at: '2025-11-11T06:10:56.919071+00:00'
 source_url: https://www.dfat.gov.au/about-us/corporate/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | Australian Government
   Department of Foreign Affairs and Trade

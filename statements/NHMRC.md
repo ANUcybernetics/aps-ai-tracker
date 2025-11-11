@@ -1,7 +1,6 @@
 ---
 abbr: NHMRC
 agency: National Health and Medical Research Council
-fetched_at: '2025-11-11T06:11:00.355512+00:00'
 source_url: https://www.nhmrc.gov.au/about-us/accountability-and-reporting/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | NHMRC
 ---

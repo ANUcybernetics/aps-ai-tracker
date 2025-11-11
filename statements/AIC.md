@@ -1,7 +1,6 @@
 ---
 abbr: AIC
 agency: Australian Institute of Criminology
-fetched_at: '2025-11-11T06:10:30.556818+00:00'
 source_url: https://www.aic.gov.au/about-us/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Australian Institute
   of Criminology

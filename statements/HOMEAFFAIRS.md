@@ -1,7 +1,6 @@
 ---
 abbr: HOMEAFFAIRS
 agency: Department of Home Affairs
-fetched_at: '2025-11-11T06:10:36.081616+00:00'
 source_url: https://www.homeaffairs.gov.au/commitments/files/ai-transparency-statement.pdf
 title: !!python/object/new:pypdf.generic._base.TextStringObject
   args:

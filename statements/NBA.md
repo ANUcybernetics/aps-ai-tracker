@@ -1,7 +1,6 @@
 ---
 abbr: NBA
 agency: National Blood Authority
-fetched_at: '2025-11-11T06:10:59.925457+00:00'
 source_url: https://www.blood.gov.au/nbas-ai-transparency-statement
 title: NBA’s AI Transparency Statement | National Blood Authority
 ---

@@ -1,7 +1,6 @@
 ---
 abbr: AOFM
 agency: Australian Office of Financial Management
-fetched_at: '2025-11-11T06:10:51.587314+00:00'
 source_url: https://www.aofm.gov.au/about/compliance-reporting/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | AOFM
 ---

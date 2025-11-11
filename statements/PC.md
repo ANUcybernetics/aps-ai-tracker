@@ -1,7 +1,6 @@
 ---
 abbr: PC
 agency: Productivity Commission
-fetched_at: '2025-11-11T06:11:15.196019+00:00'
 final_url: https://www.pc.gov.au/ai-transparency/
 source_url: https://www.pc.gov.au/ai-transparency
 title: Artificial Intellligence (AI) transparency statement | Productivity Commission

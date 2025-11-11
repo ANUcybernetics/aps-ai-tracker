@@ -1,7 +1,6 @@
 ---
 abbr: ATO
 agency: Australian Taxation Office
-fetched_at: '2025-11-11T06:10:51.933310+00:00'
 source_url: https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/ato-ai-transparency-statement
 title: ATO AI transparency statement | Australian Taxation Office
 ---

@@ -1,7 +1,6 @@
 ---
 abbr: ABS
 agency: Australian Bureau of Statistics
-fetched_at: '2025-11-11T06:10:49.450519+00:00'
 source_url: https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement
 title: AI transparency statement | Australian Bureau of Statistics
 ---

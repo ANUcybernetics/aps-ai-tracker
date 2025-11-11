@@ -1,7 +1,6 @@
 ---
 abbr: SWA
 agency: Safe Work Australia
-fetched_at: '2025-11-11T06:11:16.170271+00:00'
 source_url: https://www.safeworkaustralia.gov.au/about-us/corporate-publications-and-resources/ai-transparency-statement
 title: AI Transparency statement | Safe Work Australia
 ---

@@ -1,7 +1,6 @@
 ---
 abbr: AIFS
 agency: Australian Institute of Family Studies
-fetched_at: '2025-11-11T06:10:51.450809+00:00'
 source_url: https://aifs.gov.au/main/policies/ai-transparency-statement
 title: AI transparency statement | Australian Institute of Family Studies
 ---
@@ -87,7 +86,7 @@ The AI transparency statement was first published to our website on 2 December 2
 
 ## AI contact
 
-For questions about this statement or for further information on the Institute’s usage of AI, please contact [[email protected]](https://aifs.gov.au/cdn-cgi/l/email-protection#c0a1a980a1a9a6b3eea7afb6eea1b5).
+For questions about this statement or for further information on the Institute’s usage of AI, please contact [[email protected]](https://aifs.gov.au/cdn-cgi/l/email-protection#abcac2ebcac2cdd885ccc4dd85cade).
 
 Change history
 
@@ -104,4 +103,4 @@ Share
 
 [ ](https://www.linkedin.com/sharing/share-offsite/?url=https://aifs.gov.au/main/policies/ai-transparency-statement "Share to Linkedin")
 
-[ ](https://aifs.gov.au/cdn-cgi/l/email-protection#85baf6f0e7efe0e6f1b8c4cca0b7b5f1f7e4ebf6f5e4f7e0ebe6fca0b7b5f6f1e4f1e0e8e0ebf1a3e7eae1fcb8edf1f1f5f6bfaaaae4ece3f6abe2eaf3abe4f0aae8e4ecebaaf5eae9ece6ece0f6aae4eca8f1f7e4ebf6f5e4f7e0ebe6fca8f6f1e4f1e0e8e0ebf1 "Share to E-mail")
+[ ](https://aifs.gov.au/cdn-cgi/l/email-protection#221d515740484741561f636b0710125650434c51524350474c415b07101251564356474f474c5604404d465b1f4a56565251180d0d434b44510c454d540c43570d4f434b4c0d524d4e4b414b47510d434b0f5650434c51524350474c415b0f51564356474f474c56 "Share to E-mail")

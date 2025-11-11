@@ -1,7 +1,6 @@
 ---
 abbr: NFSA
 agency: National Film and Sound Archive of Australia
-fetched_at: '2025-11-11T06:11:00.102177+00:00'
 source_url: https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai
 title: NFSA Principles for ML and AI | National Film and Sound Archive of Australia
 ---
