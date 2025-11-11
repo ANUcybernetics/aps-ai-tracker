@@ -2,6 +2,7 @@
 
 from .scraper import (
     Agency,
+    StatementResult,
     clean_html_to_markdown,
     extract_main_content,
     fetch_statement,
@@ -11,6 +12,7 @@ from .scraper import (
 
 __all__ = [
     "Agency",
+    "StatementResult",
     "clean_html_to_markdown",
     "extract_main_content",
     "fetch_statement",

@@ -4,9 +4,10 @@ import asyncio
 import logging
 import re
 import tomllib
+from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
-from typing import NamedTuple
+from typing import TypedDict
 
 import html2text
 import httpx
@@ -20,12 +21,23 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class Agency(NamedTuple):
+@dataclass(frozen=True, slots=True)
+class Agency:
     """Represents an Australian Government agency with its AI transparency statement."""
 
     name: str
     abbr: str
     url: str | None
+
+
+class StatementResult(TypedDict):
+    """Result of fetching an AI transparency statement."""
+
+    title: str | None
+    markdown: str | None
+    status_code: int | None
+    final_url: str | None
+    error: str | None
 
 
 def load_agencies() -> list[Agency]:
@@ -64,7 +76,7 @@ def extract_main_content(soup: BeautifulSoup) -> str:
 
 async def fetch_statement_async(
     agency: Agency, client: httpx.AsyncClient
-) -> dict[str, str | int | None]:
+) -> StatementResult:
     """Fetch and parse an AI transparency statement (async version)."""
     logger.info(f"Fetching {agency.name}...")
 
@@ -98,7 +110,6 @@ async def fetch_statement_async(
             )
             if not title and soup.find("h1"):
                 title = soup.find("h1").get_text(strip=True)
-            assert agency.url is not None
             markdown = clean_html_to_markdown(extract_main_content(soup), agency.url)
 
         return {
@@ -129,10 +140,10 @@ async def fetch_statement_async(
         }
 
 
-def fetch_statement(agency: Agency) -> dict[str, str | int | None]:
+def fetch_statement(agency: Agency) -> StatementResult:
     """Synchronous wrapper for fetch_statement_async (for backwards compatibility)."""
 
-    async def _fetch() -> dict[str, str | int | None]:
+    async def _fetch() -> StatementResult:
         async with httpx.AsyncClient(
             headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
         ) as client:
@@ -142,7 +153,7 @@ def fetch_statement(agency: Agency) -> dict[str, str | int | None]:
 
 
 def save_statement(
-    agency: Agency, data: dict[str, str | int | None], output_dir: Path
+    agency: Agency, data: StatementResult, output_dir: Path
 ) -> bool:
     """Save statement as markdown file with YAML frontmatter."""
     if data["error"] or not data["markdown"]:
@@ -161,10 +172,10 @@ def save_statement(
     if data["final_url"] != agency.url:
         frontmatter["final_url"] = data["final_url"]
 
-    yaml_str: str = yaml.dump(
+    yaml_str = yaml.dump(
         frontmatter, default_flow_style=False, allow_unicode=True
     ).strip()
-    markdown_str: str = str(data["markdown"])
+    markdown_str = str(data["markdown"])
     content = "\n".join(["---", yaml_str, "---", "", markdown_str])
 
     filepath = output_dir / f"{agency.abbr}.md"
@@ -175,18 +186,19 @@ def save_statement(
 
 async def fetch_all_statements(
     agencies: list[Agency],
-) -> list[tuple[Agency, dict[str, str | int | None]]]:
+) -> list[tuple[Agency, StatementResult]]:
     """Fetch all agency statements in parallel."""
     async with httpx.AsyncClient(
         headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
         limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
     ) as client:
-        async with asyncio.TaskGroup() as tg:  # type: ignore[attr-defined]
+        agencies_with_urls = [a for a in agencies if a.url is not None]
+
+        async with asyncio.TaskGroup() as tg:  # type: ignore[possibly-missing-attribute]
             tasks = [
                 tg.create_task(fetch_statement_async(agency, client))
-                for agency in agencies
-                if agency.url is not None
+                for agency in agencies_with_urls
             ]
 
         results = [task.result() for task in tasks]
-        return list(zip([a for a in agencies if a.url is not None], results))
+        return list(zip(agencies_with_urls, results))
