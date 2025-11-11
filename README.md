@@ -25,13 +25,7 @@ cross-referenced from
 Run the scraper:
 
 ```bash
-uv run --module ausgov_ai_transparency_statements
-```
-
-Or use the installed command (after `uv sync`):
-
-```bash
-scrape-ai-statements
+uv run scrape-ai-statements
 ```
 
 The script will fetch all configured AI Transparency Statements and save them to
