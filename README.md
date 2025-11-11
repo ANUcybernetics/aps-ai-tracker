@@ -72,6 +72,13 @@ That's it---dependencies are automatically installed by uv from
 
 (c) Ben Swift
 
+## Contributing
+
+If one of the URLs is wrong (or if you've got a URL for one of the
+[missing agencies](./agencies.toml)) then I'd love to hear about it---either
+submit a pull request or email me at
+[ben.swift@anu.edu.au](mailto:ben.swift@anu.edu.au).
+
 ## License
 
 This scraper code is licensed under the MIT License.
