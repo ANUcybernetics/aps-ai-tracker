@@ -10,7 +10,6 @@ Usage:
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import cast
 
 import pytest
 import yaml
@@ -18,11 +17,14 @@ from bs4 import BeautifulSoup
 
 from aps_ai_transparency_tracker import (
     Agency,
+    RawFetchResult,
     StatementResult,
     clean_html_to_markdown,
     extract_main_content,
     fetch_statement,
     load_agencies,
+    process_raw,
+    save_raw,
     save_statement,
 )
 
@@ -262,6 +264,133 @@ def test_save_statement_includes_final_url_on_redirect():
         # final_url should be present when it differs from source_url
         assert metadata["final_url"] == "https://example.com/new"
         assert metadata["source_url"] == "https://example.com/old"
+
+
+def test_save_raw_html():
+    """Test save_raw saves HTML content correctly."""
+    agency = Agency(name="Test Agency", abbr="TEST-HTML", url="https://example.com")
+
+    html_content = b"<html><body><h1>Test</h1></body></html>"
+    data: RawFetchResult = {
+        "content": html_content,
+        "content_type": "text/html; charset=utf-8",
+        "status_code": 200,
+        "final_url": "https://example.com",
+        "error": None,
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        result = save_raw(agency, data, raw_dir)
+
+        assert result is True
+        filepath = raw_dir / "TEST-HTML.html"
+        assert filepath.exists()
+        assert filepath.read_bytes() == html_content
+
+
+def test_save_raw_pdf():
+    """Test save_raw saves PDF content correctly."""
+    agency = Agency(name="Test Agency", abbr="TEST-PDF", url="https://example.com")
+
+    pdf_content = b"%PDF-1.4 fake pdf content"
+    data: RawFetchResult = {
+        "content": pdf_content,
+        "content_type": "application/pdf",
+        "status_code": 200,
+        "final_url": "https://example.com",
+        "error": None,
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        result = save_raw(agency, data, raw_dir)
+
+        assert result is True
+        filepath = raw_dir / "TEST-PDF.pdf"
+        assert filepath.exists()
+        assert filepath.read_bytes() == pdf_content
+
+
+def test_save_raw_handles_error():
+    """Test save_raw skips saving when there's an error."""
+    agency = Agency(name="Test Agency", abbr="TEST-ERROR", url="https://example.com")
+
+    data: RawFetchResult = {
+        "content": None,
+        "content_type": None,
+        "status_code": 404,
+        "final_url": "https://example.com",
+        "error": "Not found",
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        result = save_raw(agency, data, raw_dir)
+
+        assert result is False
+        assert not (raw_dir / "TEST-ERROR.html").exists()
+        assert not (raw_dir / "TEST-ERROR.pdf").exists()
+
+
+def test_process_raw_html():
+    """Test process_raw converts HTML to markdown."""
+    agency = Agency(name="Test Agency", abbr="TEST-PROC", url="https://example.com")
+
+    html_content = """
+    <html>
+        <head><title>Test Title</title></head>
+        <body>
+            <main>
+                <h1>Test Heading</h1>
+                <p>Test paragraph content.</p>
+            </main>
+        </body>
+    </html>
+    """
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        (raw_dir / "TEST-PROC.html").write_text(html_content, encoding="utf-8")
+
+        result = process_raw(agency, raw_dir)
+
+        assert result["error"] is None
+        assert result["status_code"] == 200
+        assert result["title"] == "Test Title"
+        assert result["markdown"] is not None
+        markdown_content = result["markdown"]
+        assert isinstance(markdown_content, str)
+        assert "Test Heading" in markdown_content
+        assert "Test paragraph content" in markdown_content
+
+
+def test_process_raw_missing_file():
+    """Test process_raw handles missing raw file."""
+    agency = Agency(name="Test Agency", abbr="MISSING", url="https://example.com")
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        result = process_raw(agency, raw_dir)
+
+        assert result["error"] == "No raw file found for MISSING"
+        assert result["markdown"] is None
+        assert result["status_code"] is None
+
+
+def test_process_raw_invalid_html():
+    """Test process_raw handles invalid HTML gracefully."""
+    agency = Agency(name="Test Agency", abbr="BAD-HTML", url="https://example.com")
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        (raw_dir / "BAD-HTML.html").write_bytes(b"\x00\x01\x02invalid")
+
+        result = process_raw(agency, raw_dir)
+
+        # Should handle gracefully, though result may vary
+        assert isinstance(result, dict)
+        assert "error" in result
 
 
 @pytest.mark.might_fail
