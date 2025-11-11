@@ -40,6 +40,16 @@ class StatementResult(TypedDict):
     error: str | None
 
 
+class RawFetchResult(TypedDict):
+    """Result of fetching raw content."""
+
+    content: bytes | None
+    content_type: str | None
+    status_code: int | None
+    final_url: str | None
+    error: str | None
+
+
 def load_agencies() -> list[Agency]:
     """Load agency data from agencies.toml file."""
     toml_path = Path(__file__).parent.parent.parent / "agencies.toml"
@@ -72,6 +82,140 @@ def extract_main_content(soup: BeautifulSoup) -> str:
         return str(body)
 
     return str(soup)
+
+
+async def fetch_raw_async(agency: Agency, client: httpx.AsyncClient) -> RawFetchResult:
+    """Fetch raw content (HTML or PDF) without processing."""
+    logger.info(f"Fetching raw content for {agency.name}...")
+
+    if agency.url is None:
+        return {
+            "content": None,
+            "content_type": None,
+            "status_code": None,
+            "final_url": None,
+            "error": "No URL provided",
+        }
+
+    try:
+        response = await client.get(
+            agency.url,
+            follow_redirects=True,
+            timeout=30.0,
+        )
+        response.raise_for_status()
+
+        return {
+            "content": response.content,
+            "content_type": response.headers.get("content-type", "").lower(),
+            "status_code": response.status_code,
+            "final_url": str(response.url),
+            "error": None,
+        }
+
+    except httpx.HTTPStatusError as e:
+        logger.error(f"HTTP error fetching {agency.name}: {e}")
+        return {
+            "content": None,
+            "content_type": None,
+            "status_code": e.response.status_code,
+            "final_url": agency.url,
+            "error": str(e),
+        }
+    except Exception as e:
+        logger.error(f"Error fetching {agency.name}: {e}")
+        return {
+            "content": None,
+            "content_type": None,
+            "status_code": None,
+            "final_url": agency.url,
+            "error": str(e),
+        }
+
+
+def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
+    """Save raw content to file."""
+    if data["error"] or not data["content"]:
+        logger.warning(f"Skipping {agency.abbr} due to fetch error")
+        return False
+
+    raw_dir.mkdir(parents=True, exist_ok=True)
+
+    is_pdf = "application/pdf" in (data["content_type"] or "")
+    extension = "pdf" if is_pdf else "html"
+    filepath = raw_dir / f"{agency.abbr}.{extension}"
+
+    filepath.write_bytes(data["content"])
+    logger.info(f"Saved raw content to {agency.abbr}.{extension}")
+    return True
+
+
+def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
+    """Process raw content from file into markdown."""
+    logger.info(f"Processing raw content for {agency.name}...")
+
+    pdf_path = raw_dir / f"{agency.abbr}.pdf"
+    html_path = raw_dir / f"{agency.abbr}.html"
+
+    if pdf_path.exists():
+        try:
+            pdf_reader = PdfReader(pdf_path)
+            title = pdf_reader.metadata.title if pdf_reader.metadata else None
+            markdown = "\n\n".join(page.extract_text() for page in pdf_reader.pages)
+
+            return {
+                "title": title,
+                "markdown": markdown.strip() if markdown else None,
+                "status_code": 200,
+                "final_url": agency.url,
+                "error": None,
+            }
+        except Exception as e:
+            logger.error(f"Error processing PDF for {agency.name}: {e}")
+            return {
+                "title": None,
+                "markdown": None,
+                "status_code": None,
+                "final_url": agency.url,
+                "error": str(e),
+            }
+    elif html_path.exists():
+        try:
+            html_content = html_path.read_text(encoding="utf-8")
+            soup = BeautifulSoup(html_content, "lxml")
+            title = (
+                soup.title.string.strip() if soup.title and soup.title.string else None
+            )
+            if not title and soup.find("h1"):
+                title = soup.find("h1").get_text(strip=True)
+            markdown = clean_html_to_markdown(
+                extract_main_content(soup), agency.url or ""
+            )
+
+            return {
+                "title": title,
+                "markdown": markdown.strip() if markdown else None,
+                "status_code": 200,
+                "final_url": agency.url,
+                "error": None,
+            }
+        except Exception as e:
+            logger.error(f"Error processing HTML for {agency.name}: {e}")
+            return {
+                "title": None,
+                "markdown": None,
+                "status_code": None,
+                "final_url": agency.url,
+                "error": str(e),
+            }
+    else:
+        return {
+            "title": None,
+            "markdown": None,
+            "status_code": None,
+            "final_url": agency.url,
+            "error": f"No raw file found for {agency.abbr}",
+        }
 
 
 async def fetch_statement_async(
@@ -152,9 +296,7 @@ def fetch_statement(agency: Agency) -> StatementResult:
     return asyncio.run(_fetch())
 
 
-def save_statement(
-    agency: Agency, data: StatementResult, output_dir: Path
-) -> bool:
+def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> bool:
     """Save statement as markdown file with YAML frontmatter."""
     if data["error"] or not data["markdown"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
@@ -197,6 +339,26 @@ async def fetch_all_statements(
         async with asyncio.TaskGroup() as tg:  # type: ignore[possibly-missing-attribute]
             tasks = [
                 tg.create_task(fetch_statement_async(agency, client))
+                for agency in agencies_with_urls
+            ]
+
+        results = [task.result() for task in tasks]
+        return list(zip(agencies_with_urls, results))
+
+
+async def fetch_all_raw(
+    agencies: list[Agency],
+) -> list[tuple[Agency, RawFetchResult]]:
+    """Fetch all raw content in parallel."""
+    async with httpx.AsyncClient(
+        headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
+        limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
+    ) as client:
+        agencies_with_urls = [a for a in agencies if a.url is not None]
+
+        async with asyncio.TaskGroup() as tg:  # type: ignore[possibly-missing-attribute]
+            tasks = [
+                tg.create_task(fetch_raw_async(agency, client))
                 for agency in agencies_with_urls
             ]
 
