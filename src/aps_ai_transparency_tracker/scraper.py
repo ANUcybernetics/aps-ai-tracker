@@ -1,5 +1,6 @@
 """Core scraping functionality for AI transparency statements."""
 
+import asyncio
 import logging
 import re
 import tomllib
@@ -61,16 +62,17 @@ def extract_main_content(soup: BeautifulSoup) -> str:
     return str(soup)
 
 
-def fetch_statement(agency: Agency) -> dict[str, str | int | None]:
-    """Fetch and parse an AI transparency statement."""
+async def fetch_statement_async(
+    agency: Agency, client: httpx.AsyncClient
+) -> dict[str, str | int | None]:
+    """Fetch and parse an AI transparency statement (async version)."""
     logger.info(f"Fetching {agency.name}...")
 
     try:
-        response = httpx.get(
+        response = await client.get(
             agency.url,
             follow_redirects=True,
             timeout=30.0,
-            headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
         )
         response.raise_for_status()
 
@@ -117,6 +119,18 @@ def fetch_statement(agency: Agency) -> dict[str, str | int | None]:
         }
 
 
+def fetch_statement(agency: Agency) -> dict[str, str | int | None]:
+    """Synchronous wrapper for fetch_statement_async (for backwards compatibility)."""
+
+    async def _fetch() -> dict[str, str | int | None]:
+        async with httpx.AsyncClient(
+            headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
+        ) as client:
+            return await fetch_statement_async(agency, client)
+
+    return asyncio.run(_fetch())
+
+
 def save_statement(
     agency: Agency, data: dict[str, str | int | None], output_dir: Path
 ) -> bool:
@@ -147,3 +161,22 @@ def save_statement(
     filepath.write_text(content, encoding="utf-8")
     logger.info(f"Saved {agency.abbr}.md")
     return True
+
+
+async def fetch_all_statements(
+    agencies: list[Agency],
+) -> list[tuple[Agency, dict[str, str | int | None]]]:
+    """Fetch all agency statements in parallel."""
+    async with httpx.AsyncClient(
+        headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
+        limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
+    ) as client:
+        async with asyncio.TaskGroup() as tg:
+            tasks = [
+                tg.create_task(fetch_statement_async(agency, client))
+                for agency in agencies
+                if agency.url is not None
+            ]
+
+        results = [task.result() for task in tasks]
+        return list(zip([a for a in agencies if a.url is not None], results))
