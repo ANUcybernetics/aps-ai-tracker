@@ -132,7 +132,7 @@ url = "https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/
 name = "Australian Electoral Commission"
 abbr = "AEC"
 size = "medium"
-url = "https://www.aec.gov.au/Elections/electoral-advertising/ai-and-elections.htm"
+url = "https://www.aec.gov.au/About_AEC/Publications/files/AEC-AI-Transparency-Statement.pdf"
 
 [[agencies]]
 name = "Australian Financial Security Authority"
@@ -246,7 +246,7 @@ url = "https://www.austrade.gov.au/en/site-information/ai-transparency"
 name = "Australian Transaction Reports and Analysis Centre"
 abbr = "AUSTRAC"
 size = "medium"
-url = "https://www.austrac.gov.au/about-us/corporate-information-and-governance"
+url = "https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement"
 
 [[agencies]]
 name = "Australian Transport Safety Bureau"
