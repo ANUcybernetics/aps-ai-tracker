@@ -10,6 +10,7 @@ Usage:
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from typing import cast
 
 import pytest
 import yaml
@@ -17,6 +18,7 @@ from bs4 import BeautifulSoup
 
 from aps_ai_transparency_tracker import (
     Agency,
+    StatementResult,
     clean_html_to_markdown,
     extract_main_content,
     fetch_statement,
@@ -143,7 +145,7 @@ def test_save_statement_creates_valid_file():
     """Test save_statement creates properly formatted file."""
     dept = Agency(name="Test Agency", abbr="TEST", url="https://example.com/test")
 
-    data = {
+    data: StatementResult = {
         "title": "Test Statement",
         "markdown": "# Test Content\n\nSome text here.",
         "status_code": 200,
@@ -191,7 +193,7 @@ def test_save_statement_handles_error_case():
     """Test save_statement skips file creation when there's an error."""
     dept = Agency(name="Test Agency", abbr="TEST-ERROR", url="https://example.com/test")
 
-    data = {
+    data: StatementResult = {
         "title": None,
         "markdown": None,
         "status_code": 404,
@@ -213,7 +215,7 @@ def test_save_statement_handles_no_content():
     """Test save_statement skips file creation when there's no markdown."""
     dept = Agency(name="Test Agency", abbr="TEST-EMPTY", url="https://example.com/test")
 
-    data = {
+    data: StatementResult = {
         "title": None,
         "markdown": None,
         "status_code": 200,
@@ -237,7 +239,7 @@ def test_save_statement_includes_final_url_on_redirect():
         name="Test Agency", abbr="TEST-REDIRECT", url="https://example.com/old"
     )
 
-    data = {
+    data: StatementResult = {
         "title": "Test Statement",
         "markdown": "# Test Content",
         "status_code": 200,
