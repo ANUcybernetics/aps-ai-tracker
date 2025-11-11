@@ -16,7 +16,7 @@ The [script](./src/aps_ai_transparency_tracker/scraper.py):
 - saves it to the [`statements/` directory](./statements)
 
 This process is run in a [GitHub action](.github/workflows/scrape.yml) every
-night, and any changes to an agency's statement are updated in the repository.
+week, and any changes to an agency's statement are updated in the repository.
 
 ## Background
 
