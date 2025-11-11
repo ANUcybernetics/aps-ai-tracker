@@ -70,15 +70,44 @@ def clean_html_to_markdown(html_content: str, base_url: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", markdown).strip()
 
 
+def remove_boilerplate(element: BeautifulSoup) -> None:
+    """Remove common boilerplate elements from HTML."""
+    boilerplate_selectors = [
+        "nav",
+        "header",
+        "footer",
+        "[role='navigation']",
+        "[role='banner']",
+        "[role='contentinfo']",
+        "[role='complementary']",
+        ".breadcrumb",
+        ".breadcrumbs",
+        ".navigation",
+        ".nav",
+        ".sidebar",
+        ".site-header",
+        ".site-footer",
+        ".page-header",
+        ".page-footer",
+        "#header",
+        "#footer",
+        "#sidebar",
+    ]
+
+    for selector in boilerplate_selectors:
+        for tag in element.select(selector):
+            tag.decompose()
+
+
 def extract_main_content(soup: BeautifulSoup) -> str:
     """Extract the main content from the page, removing navigation and footers."""
     for selector in ["main", "article", ".content", "#content", ".main-content"]:
         if main_content := soup.select_one(selector):
+            remove_boilerplate(main_content)
             return str(main_content)
 
     if body := soup.find("body"):
-        for tag in body.find_all(["nav", "header", "footer"]):
-            tag.decompose()
+        remove_boilerplate(body)
         return str(body)
 
     return str(soup)
