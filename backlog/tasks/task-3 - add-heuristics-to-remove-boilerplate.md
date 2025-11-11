@@ -1,9 +1,10 @@
 ---
 id: task-3
 title: add heuristics to remove boilerplate
-status: To Do
+status: Done
 assignee: []
-created_date: "2025-11-11 09:51"
+created_date: '2025-11-11 09:51'
+updated_date: '2025-11-11 22:10'
 labels: []
 dependencies: []
 ---

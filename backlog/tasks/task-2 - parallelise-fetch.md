@@ -1,9 +1,10 @@
 ---
 id: task-2
 title: parallelise fetch
-status: To Do
+status: Done
 assignee: []
-created_date: "2025-11-11 06:47"
+created_date: '2025-11-11 06:47'
+updated_date: '2025-11-11 22:10'
 labels: []
 dependencies: []
 ---
