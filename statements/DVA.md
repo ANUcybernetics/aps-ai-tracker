@@ -7,13 +7,6 @@ title: Artificial Intelligence (AI) Transparency Statement | Department of Veter
   Affairs
 ---
 
-## Breadcrumb
-
-  1. [Home](https://www.dva.gov.au/)
-  2. [About Us](https://www.dva.gov.au/about-us)
-  3. [Corporate Governance](https://www.dva.gov.au/about-us/corporate-governance)
-  4. Artificial Intelligence (AI) Transparency Statement 
-
 # Artificial Intelligence (AI) Transparency Statement
 
 Last updated

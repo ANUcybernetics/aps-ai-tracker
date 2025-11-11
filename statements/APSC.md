@@ -5,12 +5,6 @@ source_url: https://www.apsc.gov.au/about-us/accountability-and-reporting/transp
 title: Transparent Use of AI at the Commission | Australian Public Service Commission
 ---
 
-## You are here
-
-  1. [Home](https://www.apsc.gov.au/)
-  2. [About us](https://www.apsc.gov.au/about-us)
-  3. [Accountability and reporting](https://www.apsc.gov.au/about-us/accountability-and-reporting)
-
 # Transparent Use of AI at the Commission
 
 Published
@@ -25,32 +19,6 @@ Share
   * [Email](mailto:?subject=Interesting page Transparent Use of AI at the Commission&body=Check out this site I came across https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission "Share via email")
 
 [Print](javascript:if\(window.print\)window.print\(\))
-
-In this section 
-
-##  [About us](https://www.apsc.gov.au/about-us)
-
-  * [What we do](https://www.apsc.gov.au/about-us/what-we-do)
-  * [Who we are](https://www.apsc.gov.au/about-us/who-we-are)
-  * [What we offer](https://www.apsc.gov.au/about-us/working-commission/what-we-offer)
-  * [Working at the Commission](https://www.apsc.gov.au/about-us/working-commission)
-  * [Accountability and reporting](https://www.apsc.gov.au/about-us/accountability-and-reporting "A central location for the Commission's key areas of accountability and reporting")
-    * [Annual reports](https://www.apsc.gov.au/accountability-reporting/annual-reports)
-    * [Audit and Risk Management Committee Charter](https://www.apsc.gov.au/about-us/accountability-and-reporting/audit-and-risk-management-committee-charter)
-    * [Child Protection – Annual child safety statement of compliance](https://www.apsc.gov.au/about-us/accountability-and-reporting/child-safety-statement)
-    * [Corporate plan](https://www.apsc.gov.au/publication/corporate-plan-2024-28 "The Australian Public Service Commission's corporate plan for 2023-27")
-    * [Emissions reduction plan](https://www.apsc.gov.au/about-us/accountability-and-reporting/emissions-reduction-plan)
-    * [Fraud control plan](https://www.apsc.gov.au/about-us/accountability-and-reporting/fraud-control-plan)
-    * [Freedom of Information](https://www.apsc.gov.au/about-us/accountability-and-reporting/freedom-information)
-    * [Gifts and hospitality](https://www.apsc.gov.au/accountability-reporting/gifts-hospitality)
-    * [Information Publication Scheme (IPS)](https://www.apsc.gov.au/about-us/accountability-and-reporting/information-publication-scheme-ips)
-    * [Parliamentary reporting](https://www.apsc.gov.au/accountability-reporting/parliamentary-reporting)
-    * [Portfolio Budget Statements](https://www.apsc.gov.au/accountability-reporting/portfolio-budget-statements)
-    * [Procedures for determining breaches of the Code of Conduct, suspensions and the imposition of sanctions](https://www.apsc.gov.au/about-us/accountability-and-reporting/procedure-breaches-code-conduct)
-    * [Public Interest Disclosure Scheme](https://www.apsc.gov.au/public-interest-disclosure-scheme)
-    * Transparent Use of AI at the Commission
-    * [Vulnerability Disclosure Policy](https://www.apsc.gov.au/about-us/accountability-and-reporting/vulnerability-disclosure-policy)
-    * [Workplace Gender Equality Agency (WGEA) Employer Statement](https://www.apsc.gov.au/about-us/accountability-and-reporting/workplace-gender-equality-agency-wgea-employer-statement)
 
 ## AI Transparency Statement
 

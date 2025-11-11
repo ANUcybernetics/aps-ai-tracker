@@ -6,8 +6,6 @@ title: Artificial intelligence (AI) transparency statement | Australian Governme
   Department of Health, Disability and Ageing
 ---
 
-On this page
-
 The Department of Health, Disability and Ageing’s commitment to the safe and responsible use of AI supports our vision to deliver better health and wellbeing for all Australians, now and for future generations. 
 
 The Digital Transformation Agency’s (DTA) [Policy for the responsible use of Artificial Intelligence (AI) in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets a framework for the Australian Government’s safe, responsible, adoption and use of AI. Along with the [Standard for AI transparency statements](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) and [Interim guidance on government use of public generative AI tools](https://architecture.digital.gov.au/guidance-generative-ai). 

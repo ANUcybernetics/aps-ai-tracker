@@ -5,41 +5,6 @@ source_url: https://www.cdpp.gov.au/about-us/ai-transparency-statement
 title: AI Transparency Statement | Commonwealth Director of Public Prosecutions
 ---
 
-## Breadcrumb
-
-  1. [Home](https://www.cdpp.gov.au/)
-  2. [About Us](https://www.cdpp.gov.au/about-us)
-  3. AI Transparency Statement 
-
-##### Secondary Menu
-
-  * [About Us](https://www.cdpp.gov.au/about-us)
-    * [Director](https://www.cdpp.gov.au/director)
-    * [Our National Practice](https://www.cdpp.gov.au/our-national-practice)
-    * [Organisation Chart](https://www.cdpp.gov.au/about-us/organisation-chart)
-    * [Corporate Plan](https://www.cdpp.gov.au/corporate-plan)
-    * [International Work](https://www.cdpp.gov.au/about-us/international-work)
-    * [Law Reform](https://www.cdpp.gov.au/law-reform)
-    * [Accountability and Reporting](https://www.cdpp.gov.au/about-us/accountability-and-reporting)
-    * [Annual Report](https://www.cdpp.gov.au/publications?field_publication_type_target_id=21&field_date_value%5Bmin%5D=-10%20years&field_date_value%5Bmax%5D=%2B1%20years)
-    * [Diversity and Inclusion](https://www.cdpp.gov.au/about-us/diversity-and-inclusion)
-    * [Media](https://www.cdpp.gov.au/about-us/media)
-    * [AI Transparency Statement](https://www.cdpp.gov.au/about-us/ai-transparency-statement)
-  * [Careers](https://www.cdpp.gov.au/careers)
-  * [Partner Agencies](https://www.cdpp.gov.au/partner-agencies)
-  * [Newsroom](https://www.cdpp.gov.au/newsroom)
-  * [Publications](https://www.cdpp.gov.au/publications)
-  * [Contact Us](https://www.cdpp.gov.au/contact-us)
-
-##### Sidebar menu
-
-  * [Prosecution Process](https://www.cdpp.gov.au/prosecution-process)
-  * [Crimes We Prosecute](https://www.cdpp.gov.au/crimes-we-prosecute)
-  * [Case Reports](https://www.cdpp.gov.au/case-reports)
-  * [Prosecution Statistics](https://www.cdpp.gov.au/statistics)
-  * [Victims and Witnesses](https://victimsandwitnesses.cdpp.gov.au)
-  * [Counsel](https://www.cdpp.gov.au/counsel)
-
 # AI Transparency Statement
 
 The Office of the Director of Public Prosecutions (Cth) follows the Digital Transformation Agency’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which sets out a whole of Australian Government Approach to use AI safely and responsibly while embracing the opportunities AI provides. 

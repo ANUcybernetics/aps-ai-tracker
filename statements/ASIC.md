@@ -5,8 +5,6 @@ source_url: https://www.asic.gov.au/about-asic/what-we-do/how-we-operate/account
 title: Artificial intelligence transparency statement | ASIC
 ---
 
-#  Artificial intelligence transparency statement 
-
 ASIC’s Artificial intelligence (AI) transparency statement is issued further to the Australian Government’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy "Australian Government's Policy for the responsible use of AI in government") (the policy). The policy provides mandatory requirements for [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials "Accountable officials") of government departments and agencies, and their [](https://www.digital.gov.au/policy/ai/accountable-officials)[transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements "Transparency statements"). This page provides details of ASIC’s implementation of those requirements.
 
 ASIC is Australia’s integrated corporate, financial services, consumer credit and markets regulator. ASIC’s work helps maintain the integrity of Australia’s financial system and protects consumers from harm. We do this by undertaking a range of regulatory activities that will be improved by developing and deploying AI systems.

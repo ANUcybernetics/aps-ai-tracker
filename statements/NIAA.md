@@ -9,11 +9,6 @@ title: Artificial Intelligence (AI) Transparency Statement | NIAA
 
 [__**Back to** Home](https://www.niaa.gov.au/)
 
-  * [ Home ](https://www.niaa.gov.au/) __
-  * Current:  Artificial Intelligence (AI) Transparency Statement 
-
-On this page
-
 [ Listen ](https://app-as.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
 
 ## Purpose

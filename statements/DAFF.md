@@ -5,23 +5,6 @@ source_url: https://www.agriculture.gov.au/about/reporting/obligations/AI-transp
 title: Artificial Intelligence transparency statement - DAFF
 ---
 
-## Sidebar first - About
-
-  * [Reporting obligations](https://www.agriculture.gov.au/about/reporting/obligations)
-    * [Report on agency appointments](https://www.agriculture.gov.au/about/reporting/obligations/agency-appointments)
-    * [Senate Order for Entity contracts listing](https://www.agriculture.gov.au/about/reporting/obligations/contracts)
-    * [Documents tabled in Parliament](https://www.agriculture.gov.au/about/reporting/obligations/documents-tabled)
-    * [Australian public service employee census](https://www.agriculture.gov.au/about/reporting/obligations/employee-census)
-    * [Emissions Reduction Plan](https://www.agriculture.gov.au/about/reporting/obligations/operations-emissions-reduction)
-    * [Executive and highly-paid staff remuneration](https://www.agriculture.gov.au/about/reporting/obligations/executive-remuneration)
-    * [Gifts and benefits](https://www.agriculture.gov.au/about/reporting/obligations/gifts-benefits)
-    * [Government responses](https://www.agriculture.gov.au/about/reporting/obligations/government-responses)
-    * [Grants reporting](https://www.agriculture.gov.au/about/reporting/obligations/grants)
-    * [Indexed list of files](https://www.agriculture.gov.au/about/reporting/obligations/indexed-files)
-    * [Legal expenditure](https://www.agriculture.gov.au/about/reporting/obligations/legal-expenditure)
-    * [AI transparency statement](https://www.agriculture.gov.au/about/reporting/obligations/AI-transparency-statement)
-    * [Campaign certification statements](https://www.agriculture.gov.au/about/reporting/obligations/campaign-certification)
-
 # Artificial Intelligence transparency statement
 
 The [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) (the policy) provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials), and [transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). The policy sets out the Australian Government’s approach to Artificial Intelligence (AI). This page provides details of the Department of Agriculture, Fisheries and Forestry’s (DAFF’s) implementation of these policy requirements to ensure our use of AI is safe, responsible, ethical and legal.

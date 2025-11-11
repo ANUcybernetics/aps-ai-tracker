@@ -6,9 +6,6 @@ source_url: https://www.pc.gov.au/ai-transparency
 title: Artificial Intellligence (AI) transparency statement | Productivity Commission
 ---
 
-1. [Home](https://www.pc.gov.au/) __
-  2. Artificial Intelligence (AI) transparency statement
-
 # Artificial Intelligence (AI) transparency statement
 
 Released 24 / 02 / 2025

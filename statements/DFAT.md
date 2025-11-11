@@ -6,43 +6,6 @@ title: Artificial Intelligence (AI) transparency statement | Australian Governme
   Department of Foreign Affairs and Trade
 ---
 
-In this section 
-
-##  [About us](https://www.dfat.gov.au/about-us)
-
-  * [About the department](https://www.dfat.gov.au/about-us/department/about-the-department)
-  * [Grant outcomes](https://www.dfat.gov.au/about-us/grant-opportunities/Pages/grant-outcomes)
-  * [DFAT grants framework](https://www.dfat.gov.au/about-us/grant-opportunities/Pages/dfat-grants-framework)
-  * [Our locations](https://www.dfat.gov.au/about-us/our-locations/Pages/our-locations)
-  * [Our people](https://www.dfat.gov.au/about-us/our-people)
-  * [Our services](https://www.dfat.gov.au/about-us/our-services)
-  * [Publications](https://www.dfat.gov.au/about-us/publications)
-  * [Corporate information and resources](https://www.dfat.gov.au/about-us/corporate/corporate-information-and-resources)
-    * [Logos and style guides](https://www.dfat.gov.au/about-us/corporate/logos-and-style-guides)
-    * [Public Interest Certificate](https://www.dfat.gov.au/about-us/corporate/public-interest-certificate)
-    * [Certifications](https://www.dfat.gov.au/about-us/corporate/certifications)
-    * [Freedom of information](https://www.dfat.gov.au/about-us/corporate/freedom-of-information)
-    * [Privacy](https://www.dfat.gov.au/about-us/corporate/privacy)
-    * [Transparency](https://www.dfat.gov.au/about-us/corporate/transparency)
-    * [New departmental files](https://www.dfat.gov.au/about-us/corporate/new-departmental-files)
-    * [Portfolio budget statements](https://www.dfat.gov.au/about-us/corporate/portfolio-budget-statements)
-    * [Fraud and Corruption Control in DFAT](https://www.dfat.gov.au/about-us/corporate/fraud-corruption-control)
-    * [Regulatory functions](https://www.dfat.gov.au/about-us/corporate/regulatory-functions)
-    * [Audit and Risk Committee](https://www.dfat.gov.au/about-us/corporate/corporate-information-and-resources/audit-and-risk-committee)
-    * [Legal Services Expenditure](https://www.dfat.gov.au/about-us/corporate/legal-services-expenditure)
-    * [Subpoenas](https://www.dfat.gov.au/about-us/corporate/Pages/subpoenas)
-    * [Protocol Privacy Collection Statement](https://www.dfat.gov.au/about-us/corporate/protocol-privacy-collection-statement)
-    * [Senate Order on entity contracts](https://www.dfat.gov.au/about-us/corporate/senate-order-on-entity-contracts)
-    * [Executive Remuneration Reporting](https://www.dfat.gov.au/about-us/corporate/Pages/executive-remuneration-reporting)
-    * Artificial Intelligence (AI) transparency statement
-    * [Consular Privacy Collection Statement](https://www.dfat.gov.au/about-us/corporate/consular-privacy-collection-statement)
-    * [DFAT Employee Census](https://www.dfat.gov.au/about-us/corporate/dfat-employee-census)
-    * [Data Sharing Applications](https://www.dfat.gov.au/about-us/corporate/corporate-information-and-resources/data-sharing-applications)
-  * [Business opportunities](https://www.dfat.gov.au/about-us/business-opportunities)
-  * [Foreign representatives in Australia](https://www.dfat.gov.au/about-us/foreign-embassies/foreign-embassies-and-consulates-in-australia)
-  * [History of Australian diplomacy](https://www.dfat.gov.au/about-us/history-of-australian-diplomacy/history-of-australian-diplomacy)
-  * [About this website](https://www.dfat.gov.au/about-us/about-this-website/Pages/about-this-website)
-
 #  Artificial Intelligence (AI) transparency statement
 
 DFAT is investigating how AI can be used to enhance secure business outcomes. Embracing opportunities, while acknowledging the uncertainties and risks of new technologies, DFAT has adopted the Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).

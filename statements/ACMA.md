@@ -11,13 +11,6 @@ We set strategic plans and priorities to guide our work and the benefits we aim 
 
 On this page
 
-  * Corporate plan
-  * Compliance priorities
-  * Data strategy
-  * Statement of intent
-  * Review of the ACMA
-  * ACMA AI transparency statement
-
 ##  Corporate plan 
 
 Our [corporate plan](https://www.acma.gov.au/publications/2025-08/plan/corporate-plan-2025-26 "Corporate plan 2025–26") is prepared annually and is our primary strategic planning document.

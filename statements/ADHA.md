@@ -5,57 +5,7 @@ source_url: https://www.digitalhealth.gov.au/about-us/policies-privacy-and-repor
 title: Artificial Intelligence Transparency Statement
 ---
 
-## Breadcrumb
-
-  * [Home](https://www.digitalhealth.gov.au/)
-  * [About us](https://www.digitalhealth.gov.au/about-us)
-  * [Policies, privacy and reporting](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting)
-  * Artificial Intelligence Transparency Statement 
-
 # Artificial Intelligence Transparency Statement
-
-### [About us](https://www.digitalhealth.gov.au/about-us)
-
-  * Open/Close Menu[Strategies and plans](https://www.digitalhealth.gov.au/about-us/strategies-and-plans)
-    * [Corporate plans](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/corporate-plans)
-    * [Reconciliation Action Plans](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/reconciliation-action-plans)
-    * [Leadership Strategy](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/leadership-strategy)
-    * [Workforce Strategy](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/workforce-strategy)
-    * [Assessment framework for mHealth apps](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/assessment-framework-for-mhealth-apps)
-    * [Cyber Security Strategy](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/cyber-security-strategy)
-    * [Clinical Governance Framework](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/clinical-governance-framework)
-    * [Conformance Framework](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/conformance-framework)
-    * [National Digital Health Capability Action Plan](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/national-digital-health-capability-action-plan)
-    * [Clinical Governance Performance Report](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/clinical-governance-performance-report)
-    * [Health Connect Australia Strategy, Architecture and Roadmap](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/health-connect-australia-strategy-architecture-and-roadmap)
-    * [National Healthcare Interoperability Plan](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/national-healthcare-interoperability-plan)
-    * [National Healthcare Identifiers Roadmap](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/national-healthcare-identifiers-roadmap)
-  * Open/Close Menu[Policies, privacy and reporting](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting)
-    * [Procurement, tenders and contracts](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/procurement-tenders-and-contracts)
-    * Open/Close Menu[Freedom of Information (FOI)](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/freedom-of-information-foi)
-      * [Freedom of Information (FOI) disclosure log](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/freedom-of-information-foi/foi-disclosure-log)
-      * [Information publication scheme (IPS)](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/freedom-of-information-foi/information-publication-scheme-ips)
-      * [Information Publication Scheme (IPS) Agency Plan](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/freedom-of-information-foi/information-publication-scheme-agency-plan)
-    * [Public Interest Disclosure](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/public-interest-disclosure)
-    * [APS employee census results](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/aps-employee-census-results)
-    * [Registers](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/registers)
-    * [Senate Order Reporting](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/senate-order-reporting)
-    * [Privacy policy](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/privacy-policy)
-    * [Terms of Use ](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/terms-of-use)
-    * [My Health Record legislation and governance](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/my-health-record-legislation-and-governance)
-    * [Agency Enterprise Agreement](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/agency-enterprise-agreement)
-    * [Code of Conduct (Principles and Procedures)](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/code-of-conduct-principles-and-procedures)
-    * [Artificial Intelligence Transparency Statement](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/artificial-intelligence-transparency-statement)
-    * [Workplace Health and Safety](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/workplace-health-and-safety)
-    * [Service of legal documents](https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/service-of-legal-documents)
-  * Open/Close Menu[Organisational structure](https://www.digitalhealth.gov.au/about-us/organisational-structure)
-    * [Board Advisory Committees](https://www.digitalhealth.gov.au/about-us/organisational-structure/board-advisory-committees)
-    * [Executive remuneration information](https://www.digitalhealth.gov.au/about-us/organisational-structure/executive-remuneration-information)
-  * [Annual reports](https://www.digitalhealth.gov.au/about-us/annual-reports)
-  * [Our websites](https://www.digitalhealth.gov.au/about-us/our-websites)
-  * [Accessibility](https://www.digitalhealth.gov.au/about-us/accessibility)
-  * Open/Close Menu[Careers](https://www.digitalhealth.gov.au/about-us/careers)
-    * [Graduate program - Australian Digital Health Agency](https://www.digitalhealth.gov.au/about-us/careers/graduate-program)
 
 The Australian Digital Health Agency (the Agency) is committed to supporting a healthier future for Australians through connected healthcare. We recognise that, into the future, this vision will be supported by adoption and use of digital solutions such as Artificial Intelligence (AI) and other emerging technologies. We may use these innovative solutions to increase staff efficiency, improve service delivery and support Australians in managing their health and care journey. 
 

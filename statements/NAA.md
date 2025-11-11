@@ -7,14 +7,6 @@ title: Artificial Intelligence (AI) transparency statement | naa.gov.au
 
 ![Arrivals and departures board, Brisbane airport, 1954](https://www.naa.gov.au/sites/default/files/styles/banner_image_general/public/2020-03/accountability-reporting-banner-std-7534887.jpg?itok=slC9n1a1)
 
-## Breadcrumb
-
-  1. [Home](https://www.naa.gov.au/)
-  2. [About us](https://www.naa.gov.au/about-us)
-  3. [Who we are ](https://www.naa.gov.au/about-us/who-we-are)
-  4. [Accountability and reporting](https://www.naa.gov.au/about-us/who-we-are/accountability-and-reporting)
-  5. Artificial Intelligence (AI) transparency statement 
-
 #  Artificial Intelligence (AI) transparency statement 
 
 The Digital Transformation Agency's [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI. Transparency is critical to building public trust and is an important aim of the policy and broader APS Reform agenda.

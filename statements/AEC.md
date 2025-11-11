@@ -187,33 +187,4 @@ The AEC’s Stop and Consider campaign, and supporting digital literacy material
   * Regulation & safeguards
   * AEC environmental assessment (January 2025)
 
-##### Connect with us
-
-[__Facebook](https://www.facebook.com/AusElectoralCom) [__Twitter](https://twitter.com/AusElectoralCom) [__Instagram](https://www.instagram.com/AusElectoralCom) [__Threads](https://www.threads.net/AusElectoralCom) [__ YouTube](https://www.youtube.com/AECTV) [ __Flickr](https://www.flickr.com/photos/auselectoralcom/albums)[ __LinkedIn](https://www.linkedin.com/company/australian-electoral-commission/)[ __TikTok](https://www.tiktok.com/@auselectoralcom)
-
-##### Services
-
-  * [Work with us](https://www.aec.gov.au/employment/)
-  * [Fraud](https://www.aec.gov.au/footer/fraud.htm)
-  * [FAQs](https://www.aec.gov.au/faqs/)
-  * [Glossary](https://www.aec.gov.au/footer/Glossary.htm)
-
-##### About
-
-  * [Contact us](https://www.aec.gov.au/About_AEC/Contact_the_AEC/index.htm)
-  * [Accessibility](https://www.aec.gov.au/footer/accessibility.htm)
-  * [Privacy](https://www.aec.gov.au/privacy/)
-  * [Security](https://www.aec.gov.au/footer/security.htm)
-  * [Copyright](https://www.aec.gov.au/footer/Copyright.htm)
-  * [Disclaimer](https://www.aec.gov.au/footer/Disclaimer.htm)
-  * [Access to information](https://www.aec.gov.au/information-access/)
-
-![AEC logo](https://www.aec.gov.au/_template/css/img/logo-aec-white-42px.png)
-
-The AEC acknowledges the Traditional Owners of country throughout Australia and recognises their continuing connection to land, waters, culture and community. We pay our respects to Elders past, present and emerging.
-
-© Australian Electoral Commission 2025
-
-Authorised by the Electoral Commissioner, Canberra
-
 Back to top

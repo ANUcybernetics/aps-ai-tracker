@@ -7,34 +7,7 @@ title: AI transparency statement | Australian Bureau of Statistics
 
 Search ABS
 
-## Breadcrumb
-
-  1. [Home](https://www.abs.gov.au/)
-  2. [About](https://www.abs.gov.au/about)
-  3. [Legislation and policy](https://www.abs.gov.au/about/legislation-and-policy)
-  4. AI transparency statement
-
 [Print](https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement "Print this page.")
-
-## [Legislation and policy](https://www.abs.gov.au/about/legislation-and-policy "Our privacy policy, Freedom of Information \(FOI\) disclosures and legislative framework.")
-
-  * [Privacy](https://www.abs.gov.au/about/legislation-and-policy/privacy "Our privacy policy and privacy impact statements.")
-  * [Legislative framework](https://www.abs.gov.au/about/legislation-and-policy/legislative-framework "The principal legislation that we work under.")
-  * [Pre-release access policy](https://www.abs.gov.au/about/legislation-and-policy/policy-pre-release-access-abs-statistics "How we ensure equity of access to all for our statistics and publications.")
-  * [Documents tabled in Parliament](https://www.abs.gov.au/about/legislation-and-policy/documents-tabled-parliament-abs "Our Senate Order lists and Survey documents tabled in parliament.")
-  * [Procurement, contracts and registers](https://www.abs.gov.au/about/legislation-and-policy/procurement-contracts-and-registers "How we obtain services and a list of all gifts we have received.")
-  * [Australian Statistics Advisory Council (ASAC)](https://www.abs.gov.au/about/legislation-and-policy/australian-statistics-advisory-council "The key advisory body to the Minister and the ABS on statistical services.")
-  * [AI transparency statement](https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement "How we develop, deploy and manage artificial intelligence.")
-  * [Commonwealth Child Safe Framework Statement of Compliance](https://www.abs.gov.au/about/legislation-and-policy/2025-commonwealth-child-safe-framework-statement-compliance)
-  * [Security vulnerability disclosure](https://www.abs.gov.au/about/legislation-and-policy/security-vulnerability-disclosure "This policy gives a person a point of contact to directly submit their findings if they believe they have found a potential security vulnerability within ICT systems operated by the Australian Bureau of Statistics.")
-  * [Freedom of Information](https://www.abs.gov.au/about/legislation-and-policy/freedom-information "Make an FOI request and browse the documents we have releases in response to FOI requests.")
-  * [Public Interest Disclosure](https://www.abs.gov.au/about/legislation-and-policy/public-interest-disclosure "Public officials can use the public interest disclosure to report suspected wrongdoing in the Australian public sector.")
-  * [Audit and Risk Committee](https://www.abs.gov.au/about/legislation-and-policy/audit-and-risk-committee "The Audit and Risk Committee's Charter.")
-  * [ABS Institutional Environment](https://www.abs.gov.au/about/legislation-and-policy/abs-institutional-environment "How we keep impartial and independent.")
-
-## On this page
-
-  *   *   *   * 
 
 #  AI transparency statement
 

@@ -32,5 +32,3 @@ This AI transparency statement was first published in March 2025. This statement
 Quick Links
 
 [Policy for responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf)
-
-## On this page

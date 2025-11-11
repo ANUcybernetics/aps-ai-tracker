@@ -6,27 +6,6 @@ title: Artificial Intelligence (AI) transparency statement | Tertiary Education 
   and Standards Agency
 ---
 
-## Breadcrumb
-
-  1. [ ![Home icon link](https://www.teqsa.gov.au/themes/custom/custom/teqsa_bootstrap/images/icons/Home.png) ](https://www.teqsa.gov.au/)
-  2. ![Home icon link](https://www.teqsa.gov.au/themes/custom/custom/teqsa_bootstrap/images/icons/Search-button.png) [About us](https://www.teqsa.gov.au/about-us)
-  3. ![Home icon link](https://www.teqsa.gov.au/themes/custom/custom/teqsa_bootstrap/images/icons/Search-button.png) [Reporting and accountabil...](https://www.teqsa.gov.au/about-us/reporting-and-accountability)
-  4. ![Home icon link](https://www.teqsa.gov.au/themes/custom/custom/teqsa_bootstrap/images/icons/Search-button.png) Artificial Intelligence (AI) transparency statement 
-
-##### Reporting and accountability
-
-__
-
-  * [Annual report](https://www.teqsa.gov.au/about-us/reporting-and-accountability/annual-report)
-  * [Corporate plan](https://www.teqsa.gov.au/about-us/reporting-and-accountability/corporate-plan)
-  * [Freedom of information and disclosure log](https://www.teqsa.gov.au/about-us/reporting-and-accountability/freedom-information-and-disclosure-log)
-  * [Gifts and benefits](https://www.teqsa.gov.au/about-us/reporting-and-accountability/gifts-and-benefits)
-  * [Privacy](https://www.teqsa.gov.au/about-us/reporting-and-accountability/privacy)
-  * [Financial reporting](https://www.teqsa.gov.au/about-us/reporting-and-accountability/financial-reporting)
-  * [Information publication scheme agency plan](https://www.teqsa.gov.au/about-us/reporting-and-accountability/information-publication-scheme-agency-plan)
-  * [Public interest disclosures](https://www.teqsa.gov.au/about-us/reporting-and-accountability/public-interest-disclosures)
-  * ![](https://www.teqsa.gov.au/themes/custom/custom/teqsa_bootstrap/images/icons/Search-button.png) [AI transparency statement](https://www.teqsa.gov.au/about-us/reporting-and-accountability/ai-transparency-statement)
-
 #  Artificial Intelligence (AI) transparency statement 
 
 TEQSA acknowledges the Digital Transformation Agency’s [_Policy for the responsible use of Artificial Intelligence (AI) in government_](https://www.digital.gov.au/policy/ai/policy) that sets the approach for the use of AI by government.

@@ -6,14 +6,6 @@ title: Artificial Intelligence (AI) transparency statement | Professional Servic
   Review (PSR)
 ---
 
-## Breadcrumb
-
-  1. [Home](https://www.psr.gov.au/)
-  2. [Publications and resources](https://www.psr.gov.au/publications-and-resources)
-  3. [Publications](https://www.psr.gov.au/publications-and-resources/publications)
-  4. [Corporate documents](https://www.psr.gov.au/publications-and-resources/publications/corporate-documents)
-  5. Artificial Intelligence (AI) transparency statement 
-
 # Artificial Intelligence (AI) transparency statement
 
 Published date

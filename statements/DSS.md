@@ -64,22 +64,6 @@ Your feedback has been successfully submitted.
 
 Thank you for providing feedback. Help us improve by [telling us what you think](https://www.dss.gov.au/contact-us/enquiries-and-feedback). 
 
-##  [ Doing business with us ](https://www.dss.gov.au/doing-business-us)
-
-Skip to main content 
-
-  * [ Corporate policies ](https://www.dss.gov.au/doing-business-us/corporate-policies)
-
-    * [ Data integration ](https://www.dss.gov.au/doing-business-us/corporate-policies/data-integration)
-    * [ Emissions Reduction Plan ](https://www.dss.gov.au/doing-business-us/corporate-policies/emissions-reduction-plan)
-    * [ Metadata for research datasets ](https://www.dss.gov.au/doing-business-us/corporate-policies/metadata-research-datasets)
-    * [ Vulnerability disclosure ](https://www.dss.gov.au/doing-business-us/corporate-policies/vulnerability-disclosure-policy)
-    * [ AI transparency statement ](https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement)
-
-  * [ Protection from scams ](https://www.dss.gov.au/doing-business-us/protection-scams)
-  * [ Purchasing ](https://www.dss.gov.au/doing-business-us/purchasing)
-  * [ Sponsorship ](https://www.dss.gov.au/doing-business-us/sponsorship)
-
 DSS3370 | Permalink: www.dss.gov.au/node/3370
 
 Last modified 28 August 2025.

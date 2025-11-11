@@ -6,29 +6,7 @@ title: Artificial Intelligence (AI) Transparency Statement | Australian Skills Q
   Authority (ASQA)
 ---
 
-[Reporting and accountability](https://www.asqa.gov.au/about-us/reporting-and-accountability "Reporting and accountability")
-
-  * [Regulation reporting](https://www.asqa.gov.au/about-us/reporting-and-accountability/regulation-reporting "Regulation reporting")
-  * [Annual reports](https://www.asqa.gov.au/about-us/reporting-and-accountability/annual-reports "Annual reports")
-  * [Corporate Plan](https://www.asqa.gov.au/about-us/reporting-and-accountability/corporate-plan "Corporate Plan")
-  * [Gifts and benefits register](https://www.asqa.gov.au/about-us/reporting-and-accountability/gifts-and-benefits-register "Gifts and benefits register")
-  * [Consultation](https://www.asqa.gov.au/how-we-regulate/how-we-engage-and-educate/consultation "Consultation")
-  * [Service Charter and service standards](https://www.asqa.gov.au/about/reporting-and-accountability/service-charter-service-standards "Service Charter and service standards")
-  * [Surveys](https://www.asqa.gov.au/about-us/reporting-and-accountability/surveys "Surveys")
-    * [2023 ASQA Provider and Course Owner Survey Results](https://www.asqa.gov.au/about-us/reporting-and-accountability/surveys/2023-asqa-provider-and-course-owner-survey-results "2023 ASQA Provider and Course Owner Survey Results")
-  * [Corporate publications](https://www.asqa.gov.au/about/reporting-and-accountability/corporate-publications "Corporate publications")
-  * [Privacy policy](https://www.asqa.gov.au/about/reporting-and-accountability/privacy-policy "Privacy policy")
-  * [APS employee census results](https://www.asqa.gov.au/about-us/reporting-and-accountability/aps-employee-census-results "APS employee census results")
-  * [Financial reporting](https://www.asqa.gov.au/about/reporting-and-accountability/financial-reporting "Financial reporting")
-  * [Freedom of information](https://www.asqa.gov.au/about/reporting-and-accountability/freedom-information "Freedom of information")
-  * [Vulnerability Disclosure Statement](https://www.asqa.gov.au/about-us/reporting-and-accountability/vulnerability-disclosure-statement "Vulnerability Disclosure Statement")
-  * [Harradine report](https://www.asqa.gov.au/about-us/reporting-and-accountability/harradine-report "Harradine report")
-  * [Information publication scheme](https://www.asqa.gov.au/about/reporting-and-accountability/information-publication-scheme "Information publication scheme")
-  * [Child Safety Policy](https://www.asqa.gov.au/about-us/reporting-and-accountability/child-safety-policy "Child Safety Policy")
-  * [ASQA Emissions Reduction Plan](https://www.asqa.gov.au/about-us/reporting-and-accountability/asqa-emissions-reduction-plan "ASQA Emissions Reduction Plan")
-  * [Artificial Intelligence (AI) Transparency Statement](https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement "Artificial Intelligence \(AI\) Transparency Statement")
-
-  * [Home](https://www.asqa.gov.au/)
+* [Home](https://www.asqa.gov.au/)
   * [About us](https://www.asqa.gov.au/about-us)
   * [Reporting and accountability](https://www.asqa.gov.au/about-us/reporting-and-accountability)
   * Artificial Intelligence (AI) Transparency Statement

@@ -5,9 +5,6 @@ source_url: https://www2.gbrmpa.gov.au/artificial-intelligence-ai-transparency-s
 title: Artificial Intelligence (AI) Transparency Statement | Reef Authority
 ---
 
-1. [Home](https://www2.gbrmpa.gov.au/)
-  2. Artificial Intelligence (AI) Transparency Statement 
-
 ## AI transparency statement
 
 In accordance with the Digital Transformation Agency’s (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf), this page provides the Reef Authority’s statement on Artificial Intelligence (AI) transparency. The Reef Authority is a non-corporate, statutory authority within the portfolio of the Department of Climate Change, Energy, the Environment and Water (DCCEEW), and the Reef Authority’s AI Transparency Statement has been adapted from that of DCCEEW to ensure alignment in the responsible use and governance of AI.  

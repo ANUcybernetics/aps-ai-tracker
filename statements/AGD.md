@@ -8,79 +8,7 @@ title: Attorney-General’s Department Artificial Intelligence Transparency Stat
 
 # Attorney-General’s Department Artificial Intelligence Transparency Statement
 
-You are here
-
-  1. [Home](https://www.ag.gov.au/)
-  2. [About us](https://www.ag.gov.au/about-us)
-  3. [Accountability and reporting](https://www.ag.gov.au/about-us/accountability-and-reporting)
-  4. Attorney-General’s Department Artificial Intelligence Transparency Statement 
-
 Print
-
-In this section 
-
-##  [About us](https://www.ag.gov.au/about-us)
-
-  * [What we do](https://www.ag.gov.au/about-us/what-we-do)
-    * [Australian Government Solicitor](https://www.ag.gov.au/about-us/what-we-do/australian-government-solicitor)
-    * [Rule of law](https://www.ag.gov.au/about-us/what-we-do/rule-law)
-    * [Commissions and inquiries](https://www.ag.gov.au/about-us/what-we-do/commissions-and-inquiries)
-  * [Who we are](https://www.ag.gov.au/about-us/who-we-are)
-    * [Our executive](https://www.ag.gov.au/about-us/who-we-are/our-executive)
-      * [Biographical details—Katherine Jones PSM](https://www.ag.gov.au/about-us/who-we-are/our-executive/biographical-details-katherine-jones-psm)
-      * [Biographical details—Tamsyn Harvey](https://www.ag.gov.au/about-us/who-we-are/our-executive/biographical-details-tamsyn-harvey)
-      * [Biographical details—Sarah Chidgey](https://www.ag.gov.au/about-us/who-we-are/our-executive/biographical-details-sarah-chidgey-psm)
-      * [Biographical details—Matthew Blunn](https://www.ag.gov.au/about-us/who-we-are/our-executive/biographical-details-matthew-blunn)
-      * [Biographical details—Cameron Gifford](https://www.ag.gov.au/about-us/who-we-are/our-executive/biographical-details-cameron-gifford)
-    * [Solicitor-General](https://www.ag.gov.au/about-us/who-we-are/solicitor-general)
-    * [Portfolio agencies](https://www.ag.gov.au/about-us/who-we-are/portfolio-agencies)
-    * [Committees and councils](https://www.ag.gov.au/about-us/who-we-are/committees-and-councils)
-      * [Audit and Risk Committee](https://www.ag.gov.au/about-us/who-we-are/committees-and-councils/audit-and-risk-committee)
-      * [Standing Council of Attorneys-General](https://www.ag.gov.au/about-us/who-we-are/committees-and-councils/standing-council-attorneys-general)
-  * [Careers](https://www.ag.gov.au/about-us/careers)
-    * [Work with us](https://www.ag.gov.au/about-us/careers/work-us)
-    * [Our culture](https://www.ag.gov.au/about-us/careers/our-culture)
-      * [Pay and Gender at AGD](https://www.ag.gov.au/about-us/careers/our-culture/pay-and-gender-agd)
-    * [What we expect](https://www.ag.gov.au/about-us/careers/what-we-expect)
-    * [Apply to work with us](https://www.ag.gov.au/about-us/careers/apply-work-us)
-      * [Apply now](https://agcareers.nga.net.au/?AudienceTypeCode=EXT)
-    * [Employment Programs](https://www.ag.gov.au/about-us/careers/employment-programs)
-      * [AGD Graduate Program](https://www.ag.gov.au/about-us/careers/employment-programs/attorney-generals-department-graduate-program)
-        * [Graduate stories](https://www.ag.gov.au/about-us/careers/employment-programs/attorney-generals-department-graduate-program/graduate-stories)
-    * [Statutory appointments](https://www.ag.gov.au/about-us/careers/statutory-appointments)
-      * [National Native Title Tribunal Full-time Member](https://www.ag.gov.au/about-us/careers/statutory-appointments/national-native-title-tribunal-full-time-member)
-      * [Appointments to the Administrative Review Tribunal](https://www.ag.gov.au/about-us/careers/statutory-appointments/appointments-administrative-review-tribunal)
-        * [List of persons on assessment panel](https://www.ag.gov.au/about-us/careers/statutory-appointments/appointments-administrative-review-tribunal/list-persons-assessment-panel)
-    * [First Nations Employment Hub](https://www.ag.gov.au/about-us/careers/first-nations-employment-hub)
-  * [Accountability and reporting](https://www.ag.gov.au/about-us/accountability-and-reporting)
-    * [Agency Head gifts and benefits register](https://www.ag.gov.au/about-us/accountability-and-reporting/agency-head-gifts-and-benefits-register)
-    * Attorney-General’s Department Artificial Intelligence Transparency Statement
-    * [Regulatory Reform](https://www.ag.gov.au/about-us/accountability-and-reporting/regulatory-reform)
-    * [Annual reports](https://www.ag.gov.au/about-us/accountability-and-reporting/annual-reports)
-    * [Corporate plan](https://www.ag.gov.au/about-us/accountability-and-reporting/corporate-plan)
-    * [Budgets](https://www.ag.gov.au/about-us/accountability-and-reporting/budgets)
-    * [Tenders and contracts](https://www.ag.gov.au/about-us/accountability-and-reporting/tenders-and-contracts)
-      * [Senate Order Contracts](https://www.ag.gov.au/about-us/accountability-and-reporting/tenders-and-contracts/senate-order-contracts)
-    * [Grants](https://www.ag.gov.au/about-us/accountability-and-reporting/grants)
-    * [Gifts and benefits register](https://www.ag.gov.au/about-us/accountability-and-reporting/agd-employee-gifts-and-benefits-register)
-    * [Solicitor-General gifts and benefits register](https://www.ag.gov.au/about-us/accountability-and-reporting/solicitor-general-gifts-and-benefits-register)
-    * [Public Interest Certificates](https://www.ag.gov.au/about-us/accountability-and-reporting/public-interest-certificates)
-    * [Public interest disclosure](https://www.ag.gov.au/about-us/accountability-and-reporting/public-interest-disclosure)
-    * [Report fraud against the department](https://www.ag.gov.au/about-us/accountability-and-reporting/report-fraud-against-department)
-    * [Commonwealth legal services expenditure](https://www.ag.gov.au/about-us/accountability-and-reporting/commonwealth-legal-services-expenditure)
-    * [Privacy policy](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy)
-      * [The personal information we hold and how you can access and correct it](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy/personal-information-we-hold-and-how-you-can-access-and-correct-it)
-      * [Privacy Impact Assessment Register](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy/privacy-impact-assessment-register)
-      * [Visiting our websites](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy/visiting-our-websites)
-    * [Campaign certification statements](https://www.ag.gov.au/about-us/accountability-and-reporting/campaign-certification-statements)
-  * [Connect with us](https://www.ag.gov.au/about-us/connect-us)
-    * [Scheme for Compensation for Detriment caused by Defective Administration](https://www.ag.gov.au/about-us/connect-us/scheme-compensation-detriment-caused-defective-administration)
-    * [Contact us](https://www.ag.gov.au/about-us/connect-us/contact-us)
-    * [Media](https://www.ag.gov.au/about-us/connect-us/media)
-    * [Social media](https://www.ag.gov.au/about-us/connect-us/social-media)
-    * [Client Service Charter](https://www.ag.gov.au/about-us/connect-us/client-service-charter)
-  * [Publications](https://www.ag.gov.au/about-us/publications)
-  * [Consultations](https://www.ag.gov.au/about-us/consultations)
 
 ## Introduction
 

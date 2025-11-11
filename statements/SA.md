@@ -5,31 +5,6 @@ source_url: https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/p
 title: AI Transparency Statement - Corporate documents - About us - Screen Australia
 ---
 
-1. [Screen Australia](https://www.screenaustralia.gov.au/ "Screen Australia")
-  2. [About us](https://www.screenaustralia.gov.au/about-us "About us")
-  3. [Corporate documents](https://www.screenaustralia.gov.au/about-us/corporate-documents "Corporate documents")
-  4. [Our Approach to AI](https://www.screenaustralia.gov.au/about-us/corporate-documents/policies-1 "Our Approach to AI")
-  5. AI Transparency Statement
-
-  * [About us](https://www.screenaustralia.gov.au/sa/about-us)
-    * [Who we are](https://www.screenaustralia.gov.au/about-us/who-we-are "Who we are")
-    * [What we do](https://www.screenaustralia.gov.au/about-us/what-we-do "What we do")
-    * [Corporate documents](https://www.screenaustralia.gov.au/about-us/corporate-documents "Corporate documents")
-      * [Annual reports](https://www.screenaustralia.gov.au/about-us/corporate-documents/annual-reports "Annual reports")
-      * [Corporate plan](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/corporate-plan "Corporate plan")
-      * [Reconciliation Action Plan](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/rap "Reconciliation Action Plan")
-      * [Our Approach to AI](https://www.screenaustralia.gov.au/about-us/corporate-documents/policies-1 "Our Approach to AI")
-        * [AI Transparency Statement](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/policies-\(1\)/ai-transparency-statement "AI Transparency Statement")
-        * [AI Guiding Principles](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/policies-\(1\)/ai-guiding-principles "AI Guiding Principles")
-      * [Disclosures](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/disclosures "Disclosures")
-      * [Policies](https://www.screenaustralia.gov.au/about-us/corporate-documents/policies "Policies")
-      * [Files created](https://www.screenaustralia.gov.au/about-us/corporate-documents/files-created "Files created")
-      * [Statement of Expectations](https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/statement-of-expectations "Statement of Expectations")
-    * [Doing business with us](https://www.screenaustralia.gov.au/about-us/doing-business-with-us "Doing business with us")
-    * [Jobs with Screen Australia](https://www.screenaustralia.gov.au/about-us/who-we-are/jobs-with-screen-australia "Jobs with Screen Australia")
-    * [Subscribe to the newsletter](https://www.screenaustralia.gov.au/subscribe "Subscribe to the newsletter")
-    * [Contact us](https://www.screenaustralia.gov.au/about-us/contact-us "Contact us")
-
 # **AI Transparency Statement**
 
 Screen Australia is committed to safe, responsible, ethical and transparent use of Artificial Intelligence (AI) technologies in accordance with the principles outlined by the Digital Transformation Agency’s (DTA) [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy) (“the Policy”).
@@ -89,7 +64,7 @@ Screen Australia is continually reviewing opportunities to assist stakeholders t
 
 This Transparency Statement was last updated on 24 February 2025. It will be updated as Screen Australia’s approach to AI changes, and at least every 12 months.
 
-For enquiries about Screen Australia’s adoption of AI, please contact [[email protected]](https://www.screenaustralia.gov.au/cdn-cgi/l/email-protection#791a1614140c17101a180d1016170a390a1a0b1c1c17180c0a0d0b18151018571e160f57180c)
+For enquiries about Screen Australia’s adoption of AI, please contact [[email protected]](https://www.screenaustralia.gov.au/cdn-cgi/l/email-protection#3c5f5351514952555f5d485553524f7c4f5f4e5959525d494f484e5d50555d125b534a125d49)
 
 ## The Screen Guide
 

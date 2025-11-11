@@ -46,22 +46,3 @@ The AOFM’s Statement will be reviewed and updated at the earliest of these jun
   * when making a significant change to our approach to AI, or
 
   * when any new factor materially impacts the existing statement’s accuracy.
-
-## Header
-
-  * [Vision and Purpose](https://www.aofm.gov.au/about/vision-and-purpose)
-  * [Governance](https://www.aofm.gov.au/about/governance)
-  * [Operations](https://www.aofm.gov.au/about/operations)
-  * [Structure](https://www.aofm.gov.au/about/structure)
-  * [Careers](https://www.aofm.gov.au/about/careers)
-  * [Access to Information](https://www.aofm.gov.au/about/access-information)
-  * [Compliance Reporting](https://www.aofm.gov.au/about/compliance-reporting)
-    * [Legal Services](https://www.aofm.gov.au/about/compliance-reporting/legal-services)
-    * [Senate Order on Government Contracts](https://www.aofm.gov.au/about/compliance-reporting/senate-order-government-contracts)
-    * [Indexed List of Agency Files](https://www.aofm.gov.au/about/compliance-reporting/indexed-list-agency-files)
-    * [Remuneration](https://www.aofm.gov.au/about/compliance-reporting/remuneration)
-    * [Audit and Risk Committee Charter](https://www.aofm.gov.au/about/compliance-reports/audit-and-risk-committee-charter)
-    * [Gifts and benefits register](https://www.aofm.gov.au/about/compliance-reporting/gifts-and-benefits-register)
-    * [Artificial Intelligence Transparency Statement](https://www.aofm.gov.au/about/compliance-reporting/artificial-intelligence-transparency-statement)
-    * [Procedures for breaches of code of conduct](https://www.aofm.gov.au/about/compliance-reports/breaches-code-conduct)
-    * [Commonwealth Child Safe Framework Statement of Compliance](https://www.aofm.gov.au/about/compliance-reporting/commonwealth-child-safe-framework-annual-statement-compliance)

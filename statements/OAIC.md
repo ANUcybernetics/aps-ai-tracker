@@ -5,11 +5,6 @@ source_url: https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oai
 title: OAIC AI transparency statement | OAIC
 ---
 
-[](https://www.oaic.gov.au)
-  * [About the OAIC](https://www.oaic.gov.au/about-the-OAIC)
-  * [Our corporate information](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information)
-  * [OAIC AI transparency statement](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement)
-
 [ About the OAIC ](https://www.oaic.gov.au/about-the-OAIC)
 
 ####  [ Our corporate information ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information)
