@@ -1,7 +1,6 @@
 ---
 abbr: COMCARE
 agency: Comcare
-fetched_at: '2025-11-11T06:10:55.150093+00:00'
 source_url: https://www.comcare.gov.au/about/forms-pubs/docs/pubs/corporate-publications/ai-transparency-statement
 title: AI Transparency Statement | Comcare
 ---

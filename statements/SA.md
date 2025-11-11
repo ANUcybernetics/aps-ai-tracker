@@ -1,7 +1,6 @@
 ---
 abbr: SA
 agency: Screen Australia
-fetched_at: '2025-11-11T06:11:16.243711+00:00'
 source_url: https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/policies-(1)/ai-transparency-statement
 title: AI Transparency Statement - Corporate documents - About us - Screen Australia
 ---
@@ -90,7 +89,7 @@ Screen Australia is continually reviewing opportunities to assist stakeholders t
 
 This Transparency Statement was last updated on 24 February 2025. It will be updated as Screen Australia’s approach to AI changes, and at least every 12 months.
 
-For enquiries about Screen Australia’s adoption of AI, please contact [[email protected]](https://www.screenaustralia.gov.au/cdn-cgi/l/email-protection#d3b0bcbebea6bdbab0b2a7babcbda093a0b0a1b6b6bdb2a6a0a7a1b2bfbab2fdb4bca5fdb2a6)
+For enquiries about Screen Australia’s adoption of AI, please contact [[email protected]](https://www.screenaustralia.gov.au/cdn-cgi/l/email-protection#791a1614140c17101a180d1016170a390a1a0b1c1c17180c0a0d0b18151018571e160f57180c)
 
 ## The Screen Guide
 

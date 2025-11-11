@@ -1,7 +1,6 @@
 ---
 abbr: FWC
 agency: Fair Work Commission
-fetched_at: '2025-11-11T06:10:57.669159+00:00'
 source_url: https://www.fwc.gov.au/about-us/artificial-intelligence-transparency-statement
 title: Artificial intelligence transparency statement | Fair Work Commission
 ---

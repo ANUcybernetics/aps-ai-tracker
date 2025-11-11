@@ -1,7 +1,6 @@
 ---
 abbr: ANAO
 agency: Australian National Audit Office
-fetched_at: '2025-11-11T06:10:51.517917+00:00'
 source_url: https://www.anao.gov.au/work/corporate/anaos-artificial-intelligence-transparency-statement
 title: ANAO’s artificial intelligence transparency statement | Australian National
   Audit Office (ANAO)

@@ -1,7 +1,6 @@
 ---
 abbr: TREASURY
 agency: Treasury
-fetched_at: '2025-11-11T06:10:29.603445+00:00'
 source_url: https://treasury.gov.au/the-department/accountability-reporting/ai-transparency-statement
 title: Treasury AI transparency statement | Treasury.gov.au
 ---

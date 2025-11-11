@@ -1,7 +1,6 @@
 ---
 abbr: NHFB
 agency: National Health Funding Body
-fetched_at: '2025-11-11T06:11:00.287596+00:00'
 source_url: https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement
 title: AI Transparency Statement | National Health Funding Body
 ---
