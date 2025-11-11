@@ -513,7 +513,7 @@ abbr = "NFSA"
 size = "medium"
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
 selector = ".block-field-blocknodearticlebody"
-# manual = true
+manual = true
 
 [[agencies]]
 name = "National Health Funding Body"
