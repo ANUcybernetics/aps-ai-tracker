@@ -16,7 +16,7 @@ wheels = [
 ]
 
 [[package]]
-name = "ausgov-ai-transparency-statements"
+name = "aps-ai-transparency-tracker"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

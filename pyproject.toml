@@ -1,5 +1,5 @@
 [project]
-name = "ausgov-ai-transparency-statements"
+name = "aps-ai-transparency-tracker"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
@@ -20,7 +20,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-scrape-ai-statements = "ausgov_ai_transparency_statements.__main__:main"
+scrape-ai-statements = "aps_ai_transparency_tracker.__main__:main"
 
 [dependency-groups]
 dev = [

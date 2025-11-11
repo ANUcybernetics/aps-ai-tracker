@@ -21,7 +21,7 @@ jobs:
         uses: jdx/mise-action@v2
 
       - name: Run scraper
-        run: mise exec -- uv run --module ausgov_ai_transparency_statements
+        run: mise exec -- uv run --module aps_ai_transparency_tracker
 
       - name: Check for changes
         id: changes

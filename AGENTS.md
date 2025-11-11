@@ -14,12 +14,12 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Working on this project
 
-- Run scraper: `mise exec -- uv run --module ausgov_ai_transparency_statements`
+- Run scraper: `mise exec -- uv run --module aps_ai_transparency_tracker`
 - Run tests: `mise exec -- uv run pytest`
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
-  - `src/ausgov_ai_transparency_statements/` contains the package
+  - `src/aps_ai_transparency_tracker/` contains the package
   - `scraper.py` has core functionality
   - `__main__.py` provides CLI entry point
 
