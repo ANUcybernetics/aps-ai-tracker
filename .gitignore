@@ -36,3 +36,6 @@ env/
 
 # uv
 .uv/
+
+# Raw scraped content
+raw/
