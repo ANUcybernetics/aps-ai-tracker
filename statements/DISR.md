@@ -1,7 +1,6 @@
 ---
 abbr: DISR
 agency: Department of Industry, Science and Resources
-fetched_at: '2025-11-11T06:10:57.121726+00:00'
 source_url: https://www.industry.gov.au/publications/artificial-intelligence-transparency-statement
 title: Artificial intelligence transparency statement | Department of Industry Science
   and Resources

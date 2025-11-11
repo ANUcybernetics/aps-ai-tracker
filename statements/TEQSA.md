@@ -1,7 +1,6 @@
 ---
 abbr: TEQSA
 agency: Tertiary Education Quality and Standards Agency
-fetched_at: '2025-11-11T06:11:16.465470+00:00'
 source_url: https://www.teqsa.gov.au/about-us/reporting-and-accountability/ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | Tertiary Education Quality
   and Standards Agency

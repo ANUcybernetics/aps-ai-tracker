@@ -1,7 +1,6 @@
 ---
 abbr: DHDA
 agency: Department of Health, Disability and Ageing
-fetched_at: '2025-11-11T06:10:57.045330+00:00'
 source_url: https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement
 title: Artificial Intelligence (AI) transparency statement
 ---

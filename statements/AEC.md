@@ -1,7 +1,6 @@
 ---
 abbr: AEC
 agency: Australian Electoral Commission
-fetched_at: '2025-11-11T06:10:49.855305+00:00'
 source_url: https://www.aec.gov.au/Elections/electoral-advertising/ai-and-elections.htm
 title: AI & elections - Australian Electoral Commission
 ---

@@ -1,7 +1,6 @@
 ---
 abbr: CCA
 agency: Climate Change Authority
-fetched_at: '2025-11-11T06:10:53.189731+00:00'
 source_url: https://www.climatechangeauthority.gov.au/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | Climate Change Authority
 ---

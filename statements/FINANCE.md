@@ -1,7 +1,6 @@
 ---
 abbr: FINANCE
 agency: Department of Finance
-fetched_at: '2025-11-11T06:10:56.747516+00:00'
 source_url: https://www.finance.gov.au/about-us/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Finance
 ---

@@ -1,7 +1,6 @@
 ---
 abbr: DCCEEW
 agency: Department of Climate Change, Energy, the Environment and Water
-fetched_at: '2025-11-11T06:10:55.329005+00:00'
 source_url: https://www.dcceew.gov.au/about/commitment/information-public-data/ai-transparency-statement
 title: Artificial Intelligence Transparency Statement - DCCEEW
 ---

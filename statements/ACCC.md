@@ -1,7 +1,6 @@
 ---
 abbr: ACCC
 agency: Australian Competition and Consumer Commission
-fetched_at: '2025-11-11T06:10:49.649280+00:00'
 source_url: https://www.accc.gov.au/about-us/accc-role-and-structure/governance-and-accountability/artificial-intelligence-ai-transparency-statement
 title: Artificial intelligence (AI) transparency statement | ACCC
 ---
