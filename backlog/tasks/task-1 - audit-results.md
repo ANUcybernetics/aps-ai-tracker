@@ -18,7 +18,7 @@ Audit completed: 2025-11-11
 ruff linting with zero issues, has solid test coverage, and uses appropriate
 modern libraries.
 
-**Key findings:** 8 recommendations across 3 priority levels. Focus on the 3
+**Key findings:** 7 recommendations across 3 priority levels. Focus on the 3
 high-priority robustness improvements for production cron job usage.
 
 ---
@@ -144,32 +144,7 @@ logging setups if this is ever used as a library.
 
 ---
 
-### 7. Add HTTP connection pooling
-
-**Location:** `scraper.py:71` and `__main__.py:12`
-
-**Issue:** Creating new connection for each of 110 agencies is slower than
-reusing connections.
-
-**Implementation:**
-
-```python
-# In __main__.py
-with httpx.Client(...) as client:
-    for agency in agencies:
-        fetch_statement(agency, client)
-```
-
-**Benefits:** Faster scraping, reduced resource usage
-
-**When to implement:** Only if scraping time becomes an issue (currently
-acceptable)
-
-**Estimated effort:** 20 minutes
-
----
-
-### 8. Consider switching from NamedTuple to dataclass
+### 7. Consider switching from NamedTuple to dataclass
 
 **Location:** `scraper.py:18-23` (Agency class)
 
@@ -205,12 +180,14 @@ The following are already following best practices:
 - ✓ Code style (passes ruff with zero issues)
 - ✓ Type hints throughout
 - ✓ Project structure and separation of concerns
+- ✓ HTTP connection pooling with async parallel execution (implemented
+  2025-11-11)
 
 ---
 
 ## Implementation Priority
 
-**Total recommended changes:** 8 tasks across 3 priority levels
+**Total recommended changes:** 7 tasks across 3 priority levels
 
 **Time to implement high priority items:** ~1.5 hours
 
