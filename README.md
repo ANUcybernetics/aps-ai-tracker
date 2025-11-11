@@ -5,6 +5,19 @@ agencies.
 
 A _Cybernetic Studio_ project by [Ben Swift](https://benswift.me).
 
+## How does it work?
+
+The [script](./src/aps_ai_transparency_tracker/scraper.py):
+
+- loops over all the APS agencies defined in [`agencies.toml`](./agencies.toml)
+- hits the specified URL for each agency's AI Transparency Statement
+- converts it (from either HTML or PDF, depending on the agency) into a
+  markdown-formatted version
+- saves it to the [`statements/` directory](./statements)
+
+This process is run in a [GitHub action](.github/workflows/scrape.yml) every
+night, and any changes to an agency's statement are updated in the repository.
+
 ## Background
 
 Under the
@@ -56,7 +69,7 @@ size = "medium"  # small, medium, or large
 url = "https://example.gov.au/ai-transparency-statement"
 ```
 
-If the AI transparency statement URL is unknown or doesn't exist, set
+If the AI Transparency Statement URL is unknown or doesn't exist, set
 `url = ""`. The scraper will skip agencies with empty URLs, but tests will fail
 as a reminder to either find the URL or confirm none exists.
 
@@ -82,7 +95,7 @@ submit a pull request or email me at
 
 This scraper code is licensed under the MIT License.
 
-The scraped AI transparency statements themselves are copyright of their
+The scraped AI Transparency Statements themselves are copyright of their
 respective Australian Government agencies. Most agency content is licensed under
 [CC BY 4.0 Australia](https://creativecommons.org/licenses/by/4.0/) or
 [CC BY 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/), though
