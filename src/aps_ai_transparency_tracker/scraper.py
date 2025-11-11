@@ -3,7 +3,6 @@
 import logging
 import re
 import tomllib
-from datetime import UTC, datetime
 from io import BytesIO
 from pathlib import Path
 from typing import NamedTuple
@@ -132,7 +131,6 @@ def save_statement(
         "agency": agency.name,
         "abbr": agency.abbr,
         "source_url": agency.url,
-        "fetched_at": datetime.now(UTC).isoformat(),
         "title": data["title"],
     }
 
