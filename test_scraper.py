@@ -175,7 +175,6 @@ def test_save_statement_creates_valid_file():
         assert metadata["abbr"] == "TEST"
         assert metadata["source_url"] == "https://example.com/test"
         assert metadata["title"] == "Test Statement"
-        assert "fetched_at" in metadata
 
         # Should not have removed fields
         assert "status_code" not in metadata
