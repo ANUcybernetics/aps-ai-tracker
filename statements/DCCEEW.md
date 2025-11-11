@@ -5,23 +5,6 @@ source_url: https://www.dcceew.gov.au/about/commitment/information-public-data/a
 title: Artificial Intelligence Transparency Statement - DCCEEW
 ---
 
-## Sidebar first - About
-
-- [Our commitment to you](https://www.dcceew.gov.au/about/commitment)
-  - [First Nations people](https://www.dcceew.gov.au/about/commitment/first-nations)
-  - [Accessibility](https://www.dcceew.gov.au/about/commitment/accessibility)
-  - [Client service charter](https://www.dcceew.gov.au/about/commitment/client-service-charter)
-  - [Claiming compensation](https://www.dcceew.gov.au/about/commitment/compensation)
-  - [Compliance Policy](https://www.dcceew.gov.au/about/commitment/compliance-policy)
-  - [Information management and public data](https://www.dcceew.gov.au/about/commitment/information-public-data)
-  - [Integrity](https://www.dcceew.gov.au/about/commitment/integrity)
-  - [National Redress Scheme](https://www.dcceew.gov.au/about/commitment/national-redress-scheme)
-  - [Privacy](https://www.dcceew.gov.au/about/commitment/privacy)
-  - [Regulator Performance](https://www.dcceew.gov.au/about/commitment/regulator-performance)
-  - [Environmental compliance](https://www.dcceew.gov.au/about/commitment/environmental-compliance)
-    - [Environmental Compliance Plan 2024-25](https://www.dcceew.gov.au/about/commitment/environmental-compliance/compliance-plan-2024-25)
-  - [Health, Safety and Wellbeing Commitment Statement](https://www.dcceew.gov.au/about/commitment/work-health-safety-statement)
-
 # Artificial Intelligence Transparency Statement
 
 In accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), this page provides the department’s statement on Artificial Intelligence (AI) Transparency.

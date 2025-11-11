@@ -6,10 +6,6 @@ title: Artificial intelligence transparency statement | Department of Industry S
   and Resources
 ---
 
-1. [Home](https://www.industry.gov.au/) /
-1. [Publications](https://www.industry.gov.au/publications) /
-1. Artificial intelligence transparency statement
-
 # Artificial intelligence transparency statement
 
 Date published:

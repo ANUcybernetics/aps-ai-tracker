@@ -178,32 +178,3 @@ it depicts someone doing something that is unusual, out of the norm, or out of c
 The AEC’s Stop and Consider campaign, and supporting digital literacy material, has been increased significantly for the 2025 federal election. As citizens continue to mature their own consumption habits in line with modern communication methods, it is important they’re assisted by authorities and communicators alike to perform that important individual task.
 
 **Updated:** 25 September 2025
-
-##### Connect with us
-
-[\_\_Facebook](https://www.facebook.com/AusElectoralCom) [\_\_Twitter](https://twitter.com/AusElectoralCom) [\_\_Instagram](https://www.instagram.com/AusElectoralCom) [\_\_Threads](https://www.threads.net/AusElectoralCom) [\_\_ YouTube](https://www.youtube.com/AECTV) [ \_\_Flickr](https://www.flickr.com/photos/auselectoralcom/albums)[ \_\_LinkedIn](https://www.linkedin.com/company/australian-electoral-commission/)[ \_\_TikTok](https://www.tiktok.com/@auselectoralcom)
-
-##### Services
-
-- [Work with us](https://www.aec.gov.au/employment/)
-- [Fraud](https://www.aec.gov.au/footer/fraud.htm)
-- [FAQs](https://www.aec.gov.au/faqs/)
-- [Glossary](https://www.aec.gov.au/footer/Glossary.htm)
-
-##### About
-
-- [Contact us](https://www.aec.gov.au/About_AEC/Contact_the_AEC/index.htm)
-- [Accessibility](https://www.aec.gov.au/footer/accessibility.htm)
-- [Privacy](https://www.aec.gov.au/privacy/)
-- [Security](https://www.aec.gov.au/footer/security.htm)
-- [Copyright](https://www.aec.gov.au/footer/Copyright.htm)
-- [Disclaimer](https://www.aec.gov.au/footer/Disclaimer.htm)
-- [Access to information](https://www.aec.gov.au/information-access/)
-
-![AEC logo](https://www.aec.gov.au/_template/css/img/logo-aec-white-42px.png)
-
-The AEC acknowledges the Traditional Owners of country throughout Australia and recognises their continuing connection to land, waters, culture and community. We pay our respects to Elders past, present and emerging.
-
-© Australian Electoral Commission 2025
-
-Authorised by the Electoral Commissioner, Canberra

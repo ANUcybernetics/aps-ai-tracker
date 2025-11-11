@@ -5,11 +5,6 @@ source_url: https://www.comcare.gov.au/about/forms-pubs/docs/pubs/corporate-publ
 title: AI Transparency Statement | Comcare
 ---
 
-- [About us](https://www.comcare.gov.au/about)
-  - [Forms and publications](https://www.comcare.gov.au/about/forms-pubs)
-  - [Corporate publications](https://www.comcare.gov.au/about/forms-pubs/docs/pubs/corporate-publications)
-  - AI Transparency Statement
-
 Share this page:
 
 [Corporate publications](https://www.comcare.gov.au/about/forms-pubs/docs/pubs/corporate-publications)
