@@ -16,8 +16,8 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build"]
+build-backend = "uv_build"
 
 [project.scripts]
 scrape = "aps_ai_transparency_tracker.__main__:main"
