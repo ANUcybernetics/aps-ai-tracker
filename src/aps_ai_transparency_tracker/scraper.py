@@ -68,6 +68,15 @@ async def fetch_statement_async(
     """Fetch and parse an AI transparency statement (async version)."""
     logger.info(f"Fetching {agency.name}...")
 
+    if agency.url is None:
+        return {
+            "title": None,
+            "markdown": None,
+            "status_code": None,
+            "final_url": None,
+            "error": "No URL provided",
+        }
+
     try:
         response = await client.get(
             agency.url,
@@ -89,6 +98,7 @@ async def fetch_statement_async(
             )
             if not title and soup.find("h1"):
                 title = soup.find("h1").get_text(strip=True)
+            assert agency.url is not None
             markdown = clean_html_to_markdown(extract_main_content(soup), agency.url)
 
         return {
@@ -171,7 +181,7 @@ async def fetch_all_statements(
         headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
         limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
     ) as client:
-        async with asyncio.TaskGroup() as tg:
+        async with asyncio.TaskGroup() as tg:  # type: ignore[attr-defined]
             tasks = [
                 tg.create_task(fetch_statement_async(agency, client))
                 for agency in agencies
