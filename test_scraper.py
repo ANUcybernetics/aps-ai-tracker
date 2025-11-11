@@ -102,6 +102,32 @@ def test_extract_main_content_fallback():
     assert "Footer" not in content
 
 
+def test_extract_main_content_removes_boilerplate_from_main():
+    """Test boilerplate removal works even when main tag is present."""
+    html = """
+    <html>
+        <body>
+            <main>
+                <nav class="breadcrumb">Home > Page</nav>
+                <header class="page-header">Page Header</header>
+                <div>Main content here</div>
+                <aside role="complementary">Sidebar content</aside>
+                <footer class="site-footer">Footer content</footer>
+            </main>
+        </body>
+    </html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "Main content here" in content
+    # Boilerplate should be removed even within main tag
+    assert "Home > Page" not in content
+    assert "Page Header" not in content
+    assert "Sidebar content" not in content
+    assert "Footer content" not in content
+
+
 def test_fetch_statement_returns_required_fields():
     """Test fetch_statement returns dict with all required fields."""
     agencies = load_agencies()
