@@ -26,6 +26,7 @@ scrape-ai-statements = "ausgov_ai_transparency_statements.__main__:main"
 dev = [
     "pytest>=9.0.0",
     "pytest-xdist>=3.6.1",
+    "ruff>=0.14.4",
 ]
 
 [tool.pytest.ini_options]
