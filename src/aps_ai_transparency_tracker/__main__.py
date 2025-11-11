@@ -20,15 +20,23 @@ def main() -> int:
 
     success_count = 0
     error_count = 0
+    skipped_count = 0
 
     for agency in agencies:
+        if agency.url is None:
+            logger.info(f"Skipping {agency.name} (no URL configured)")
+            skipped_count += 1
+            continue
+
         data = fetch_statement(agency)
         if save_statement(agency, data, output_dir):
             success_count += 1
         else:
             error_count += 1
 
-    logger.info(f"Completed: {success_count} successful, {error_count} errors")
+    logger.info(
+        f"Completed: {success_count} successful, {error_count} errors, {skipped_count} skipped"
+    )
 
     return 0 if error_count == 0 else 1
 
