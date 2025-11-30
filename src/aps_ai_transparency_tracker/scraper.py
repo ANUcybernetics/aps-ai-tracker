@@ -19,6 +19,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Threshold for content shrinkage warning (as a ratio)
+# If new content is less than this fraction of old content, warn about possible scraping failure
+CONTENT_SHRINKAGE_THRESHOLD = 0.5
+
 
 @dataclass(frozen=True, slots=True)
 class Agency:
@@ -66,6 +70,27 @@ def load_agencies() -> list[Agency]:
         )
         for d in data["agencies"]
     ]
+
+
+def extract_markdown_from_statement(filepath: Path) -> str | None:
+    """Extract just the markdown content from a statement file (excluding frontmatter).
+
+    Returns None if file doesn't exist or can't be parsed.
+    """
+    if not filepath.exists():
+        return None
+
+    try:
+        content = filepath.read_text(encoding="utf-8")
+        # Split on frontmatter delimiters (---)
+        # Format is: ---\nyaml\n---\n\nmarkdown
+        parts = content.split("---\n", 2)
+        if len(parts) >= 3:
+            # parts[0] is empty (before first ---), parts[1] is yaml, parts[2] is markdown
+            return parts[2].strip()
+        return None
+    except Exception:
+        return None
 
 
 def clean_html_to_markdown(html_content: str, base_url: str) -> str:
@@ -270,12 +295,34 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
 
 
 def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> bool:
-    """Save statement as markdown file with YAML frontmatter."""
+    """Save statement as markdown file with YAML frontmatter.
+
+    Includes a heuristic check for significant content shrinkage, which may
+    indicate a scraping failure (e.g., page structure changed, JS didn't render).
+    """
     if data["error"] or not data["markdown"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
         return False
 
     output_dir.mkdir(parents=True, exist_ok=True)
+    filepath = output_dir / f"{agency.abbr}.md"
+
+    # Check for significant content shrinkage compared to existing file
+    new_markdown = str(data["markdown"])
+    existing_markdown = extract_markdown_from_statement(filepath)
+
+    if existing_markdown is not None:
+        old_len = len(existing_markdown)
+        new_len = len(new_markdown)
+
+        if old_len > 0 and new_len < old_len * CONTENT_SHRINKAGE_THRESHOLD:
+            shrinkage_pct = (1 - new_len / old_len) * 100
+            logger.warning(
+                f"CONTENT SHRINKAGE DETECTED for {agency.abbr}: "
+                f"content reduced by {shrinkage_pct:.0f}% "
+                f"({old_len} -> {new_len} chars). "
+                f"This may indicate a scraping failure."
+            )
 
     # Use fallback title if none extracted
     title = (
@@ -295,10 +342,8 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     yaml_str = yaml.dump(
         frontmatter, default_flow_style=False, allow_unicode=True
     ).strip()
-    markdown_str = str(data["markdown"])
-    content = "\n".join(["---", yaml_str, "---", "", markdown_str])
+    content = "\n".join(["---", yaml_str, "---", "", new_markdown])
 
-    filepath = output_dir / f"{agency.abbr}.md"
     filepath.write_text(content, encoding="utf-8")
     logger.info(f"Saved {agency.abbr}.md")
     return True
