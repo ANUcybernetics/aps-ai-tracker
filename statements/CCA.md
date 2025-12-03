@@ -53,7 +53,7 @@ For further information or enquiries about this statement, please [contact us](h
 
   - [ Sector Pathways Review ](https://www.climatechangeauthority.gov.au/sector-pathways-review "Sector Pathways Review")
   - [ 2035 Emissions Reduction Targets Advice ](https://www.climatechangeauthority.gov.au/2035-emissions-reduction-targets-advice "2035 Emissions Reduction Targets Advice")
-  - [ Annual Progress Advice ](https://www.climatechangeauthority.gov.au/annual-progress-report "Annual Progress Advice")
+  - [ Annual Progress Report ](https://www.climatechangeauthority.gov.au/annual-progress-report "Annual Progress Report")
   - [ ACCU Scheme Reviews ](https://www.climatechangeauthority.gov.au/accu-scheme-reviews "ACCU Scheme Reviews")
   - [ NGER Act Reviews ](https://www.climatechangeauthority.gov.au/nger-act-reviews "NGER Act Reviews")
   - [ Special Reviews ](https://www.climatechangeauthority.gov.au/special-reviews "Special Reviews")
