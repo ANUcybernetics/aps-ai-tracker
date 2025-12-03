@@ -168,7 +168,7 @@ url = "https://aifs.gov.au/main/policies/ai-transparency-statement"
 name = "Australian Institute of Health and Welfare"
 abbr = "AIHW"
 size = "medium"
-url = ""
+url = "https://www.aihw.gov.au/about-us/our-governance/ai-transparency-statement"
 
 [[agencies]]
 name = "Australian Law Reform Commission"
@@ -186,7 +186,7 @@ url = "https://www.anao.gov.au/work/corporate/anaos-artificial-intelligence-tran
 name = "Australian National Maritime Museum"
 abbr = "ANMM"
 size = "small"
-url = ""
+url = "https://www.sea.museum/en/about/reports-policies-and-plans"
 
 [[agencies]]
 name = "Australian Office of Financial Management"
@@ -210,7 +210,7 @@ url = "https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent
 name = "Australian Radiation Protection and Nuclear Safety Agency"
 abbr = "ARPANSA"
 size = "small"
-url = ""
+url = "https://www.arpansa.gov.au/about-us/corporate-publications/arpansas-artificial-intelligence-transparency-statement"
 
 [[agencies]]
 name = "Australian Research Council"
@@ -270,13 +270,13 @@ url = ""
 name = "Cancer Australia"
 abbr = "CA"
 size = "extra-small"
-url = ""
+url = "https://www.canceraustralia.gov.au/about-us/accountability-and-reporting"
 
 [[agencies]]
 name = "Clean Energy Regulator"
 abbr = "CER"
 size = "medium"
-url = ""
+url = "https://cer.gov.au/about-us/our-policies/artificial-intelligence-transparency-statement"
 
 [[agencies]]
 name = "Climate Change Authority"
