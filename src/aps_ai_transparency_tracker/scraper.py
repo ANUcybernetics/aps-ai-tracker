@@ -160,10 +160,13 @@ def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> st
     return str(soup)
 
 
-async def fetch_raw_async(agency: Agency, client: httpx.AsyncClient) -> RawFetchResult:
-    """Fetch raw content (HTML or PDF) without processing."""
-    logger.info(f"Fetching raw content for {agency.name}...")
+async def fetch_raw_async(
+    agency: Agency, client: httpx.AsyncClient, max_retries: int = 3
+) -> RawFetchResult:
+    """Fetch raw content (HTML or PDF) without processing.
 
+    Retries on timeout errors with exponential backoff.
+    """
     if agency.url is None:
         return {
             "content": None,
@@ -173,40 +176,71 @@ async def fetch_raw_async(agency: Agency, client: httpx.AsyncClient) -> RawFetch
             "error": "No URL provided",
         }
 
-    try:
-        response = await client.get(
-            agency.url,
-            follow_redirects=True,
-            timeout=30.0,
-        )
-        response.raise_for_status()
+    last_error: Exception | None = None
 
-        return {
-            "content": response.content,
-            "content_type": response.headers.get("content-type", "").lower(),
-            "status_code": response.status_code,
-            "final_url": str(response.url),
-            "error": None,
-        }
+    for attempt in range(max_retries):
+        if attempt > 0:
+            delay = 2**attempt
+            logger.info(
+                f"Retry {attempt}/{max_retries - 1} for {agency.name} after {delay}s..."
+            )
+            await asyncio.sleep(delay)
 
-    except httpx.HTTPStatusError as e:
-        logger.error(f"HTTP error fetching {agency.name}: {e}")
-        return {
-            "content": None,
-            "content_type": None,
-            "status_code": e.response.status_code,
-            "final_url": agency.url,
-            "error": str(e),
-        }
-    except Exception as e:
-        logger.error(f"Error fetching {agency.name}: {e}")
-        return {
-            "content": None,
-            "content_type": None,
-            "status_code": None,
-            "final_url": agency.url,
-            "error": str(e),
-        }
+        try:
+            logger.info(f"Fetching raw content for {agency.name}...")
+            response = await client.get(
+                agency.url,
+                follow_redirects=True,
+                timeout=60.0,
+            )
+            response.raise_for_status()
+
+            return {
+                "content": response.content,
+                "content_type": response.headers.get("content-type", "").lower(),
+                "status_code": response.status_code,
+                "final_url": str(response.url),
+                "error": None,
+            }
+
+        except httpx.HTTPStatusError as e:
+            logger.error(f"HTTP error fetching {agency.name}: {e}")
+            return {
+                "content": None,
+                "content_type": None,
+                "status_code": e.response.status_code,
+                "final_url": agency.url,
+                "error": str(e),
+            }
+        except (httpx.TimeoutException, httpx.ConnectError) as e:
+            last_error = e
+            error_type = type(e).__name__
+            logger.warning(
+                f"{error_type} fetching {agency.name} (attempt {attempt + 1}/{max_retries})"
+            )
+            continue
+        except Exception as e:
+            logger.error(f"Error fetching {agency.name}: {type(e).__name__}: {e}")
+            return {
+                "content": None,
+                "content_type": None,
+                "status_code": None,
+                "final_url": agency.url,
+                "error": f"{type(e).__name__}: {e}",
+            }
+
+    logger.error(
+        f"Failed to fetch {agency.name} after {max_retries} attempts: {type(last_error).__name__}"
+    )
+    return {
+        "content": None,
+        "content_type": None,
+        "status_code": None,
+        "final_url": agency.url,
+        "error": f"{type(last_error).__name__}: {last_error}"
+        if last_error
+        else "Unknown error",
+    }
 
 
 def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
@@ -352,16 +386,21 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
 async def fetch_all_raw(
     agencies: list[Agency],
 ) -> list[tuple[Agency, RawFetchResult]]:
-    """Fetch all raw content in parallel."""
+    """Fetch all raw content with limited concurrency."""
     async with httpx.AsyncClient(
         headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
-        limits=httpx.Limits(max_connections=20, max_keepalive_connections=10),
+        limits=httpx.Limits(max_connections=5, max_keepalive_connections=5),
     ) as client:
         agencies_with_urls = [a for a in agencies if a.url is not None]
+        semaphore = asyncio.Semaphore(5)
 
-        async with asyncio.TaskGroup() as tg:  # type: ignore[possibly-missing-attribute]
+        async def fetch_with_semaphore(agency: Agency) -> RawFetchResult:
+            async with semaphore:
+                return await fetch_raw_async(agency, client)
+
+        async with asyncio.TaskGroup() as tg:
             tasks = [
-                tg.create_task(fetch_raw_async(agency, client))
+                tg.create_task(fetch_with_semaphore(agency))
                 for agency in agencies_with_urls
             ]
 
