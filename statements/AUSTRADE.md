@@ -32,7 +32,7 @@ Austrade maintains visibility of AI use and classifies AI use according to the f
 
 ## Monitoring and Governance
 
-The General Manager Digital and Technology, is the designated Accountable Official (AO) for all AI matters. They are responsible for Austrade's implementation of the whole-of-government Policy for the Responsible Use of AI in Government.
+The Head of Digital Products and Platforms, is the designated Accountable Official (AO) for all AI matters. They are responsible for Austrade's implementation of the whole-of-government Policy for the Responsible Use of AI in Government.
 
 They are also responsible for ensuring the following:
 
