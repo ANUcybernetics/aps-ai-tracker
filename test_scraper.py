@@ -17,11 +17,13 @@ import yaml
 from bs4 import BeautifulSoup
 
 from aps_ai_transparency_tracker import (
+    CONTENT_SHRINKAGE_THRESHOLD,
     Agency,
     RawFetchResult,
     StatementResult,
     clean_html_to_markdown,
     extract_main_content,
+    extract_markdown_from_statement,
     fetch_all_raw,
     load_agencies,
     process_raw,
@@ -507,3 +509,191 @@ def test_all_agencies_can_be_fetched(agency):
     assert isinstance(markdown_content, str) and len(markdown_content) > 0, (
         f"{agency.abbr}: empty markdown"
     )
+
+
+# Tests for content shrinkage detection
+
+
+def test_extract_markdown_from_statement_valid_file():
+    """Test extracting markdown from a valid statement file."""
+    with TemporaryDirectory() as tmpdir:
+        filepath = Path(tmpdir) / "TEST.md"
+        content = """---
+agency: Test Agency
+abbr: TEST
+source_url: https://example.com
+title: Test Title
+---
+
+# Heading
+
+Some markdown content here."""
+        filepath.write_text(content, encoding="utf-8")
+
+        result = extract_markdown_from_statement(filepath)
+
+        assert result is not None
+        assert "# Heading" in result
+        assert "Some markdown content here." in result
+        # Should not include frontmatter
+        assert "agency:" not in result
+
+
+def test_extract_markdown_from_statement_missing_file():
+    """Test extracting markdown from non-existent file."""
+    with TemporaryDirectory() as tmpdir:
+        filepath = Path(tmpdir) / "MISSING.md"
+
+        result = extract_markdown_from_statement(filepath)
+
+        assert result is None
+
+
+def test_extract_markdown_from_statement_invalid_format():
+    """Test extracting markdown from file without proper frontmatter."""
+    with TemporaryDirectory() as tmpdir:
+        filepath = Path(tmpdir) / "INVALID.md"
+        filepath.write_text("Just some plain text without frontmatter", encoding="utf-8")
+
+        result = extract_markdown_from_statement(filepath)
+
+        assert result is None
+
+
+def test_save_statement_warns_on_content_shrinkage(caplog):
+    """Test that save_statement logs a warning when content shrinks significantly."""
+    agency = Agency(name="Test Agency", abbr="TEST-SHRINK", url="https://example.com")
+
+    with TemporaryDirectory() as tmpdir:
+        output_dir = Path(tmpdir)
+
+        # First, create an existing statement with substantial content
+        existing_content = """---
+agency: Test Agency
+abbr: TEST-SHRINK
+source_url: https://example.com
+title: Original Title
+---
+
+# Original Content
+
+This is a substantial amount of content that represents a properly
+scraped page. It has multiple paragraphs and sections.
+
+## Section 1
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+## Section 2
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat."""
+
+        (output_dir / "TEST-SHRINK.md").write_text(existing_content, encoding="utf-8")
+
+        # Now save a much smaller statement (simulating a scraping failure)
+        small_data: StatementResult = {
+            "title": "New Title",
+            "markdown": "# Short\n\nVery little content.",
+            "status_code": 200,
+            "final_url": "https://example.com",
+            "error": None,
+        }
+
+        import logging
+        with caplog.at_level(logging.WARNING):
+            result = save_statement(agency, small_data, output_dir)
+
+        # Should still save the file
+        assert result is True
+
+        # Should have logged a warning about content shrinkage
+        assert any("CONTENT SHRINKAGE DETECTED" in record.message for record in caplog.records)
+        assert any("TEST-SHRINK" in record.message for record in caplog.records)
+
+
+def test_save_statement_no_warning_on_similar_size():
+    """Test that save_statement does not warn when content size is similar."""
+    agency = Agency(name="Test Agency", abbr="TEST-SIMILAR", url="https://example.com")
+
+    with TemporaryDirectory() as tmpdir:
+        output_dir = Path(tmpdir)
+
+        # Create an existing statement
+        existing_content = """---
+agency: Test Agency
+abbr: TEST-SIMILAR
+source_url: https://example.com
+title: Original Title
+---
+
+# Content
+
+This is some content that will be replaced with similar-length content."""
+
+        (output_dir / "TEST-SIMILAR.md").write_text(existing_content, encoding="utf-8")
+
+        # Save a new statement with similar amount of content
+        new_data: StatementResult = {
+            "title": "New Title",
+            "markdown": "# Updated Content\n\nThis is updated content that has roughly the same length as before.",
+            "status_code": 200,
+            "final_url": "https://example.com",
+            "error": None,
+        }
+
+        import logging
+        import io
+        from unittest.mock import patch
+
+        # Capture log output
+        with patch('aps_ai_transparency_tracker.scraper.logger') as mock_logger:
+            result = save_statement(agency, new_data, output_dir)
+
+        # Should save successfully
+        assert result is True
+
+        # Should NOT have logged a warning (only info)
+        warning_calls = [call for call in mock_logger.warning.call_args_list
+                        if "CONTENT SHRINKAGE" in str(call)]
+        assert len(warning_calls) == 0
+
+
+def test_save_statement_no_warning_on_new_file():
+    """Test that save_statement does not warn when creating a new file."""
+    agency = Agency(name="Test Agency", abbr="TEST-NEW", url="https://example.com")
+
+    with TemporaryDirectory() as tmpdir:
+        output_dir = Path(tmpdir)
+
+        # No existing file - this is a new statement
+        new_data: StatementResult = {
+            "title": "New Title",
+            "markdown": "# New Content\n\nThis is brand new content.",
+            "status_code": 200,
+            "final_url": "https://example.com",
+            "error": None,
+        }
+
+        from unittest.mock import patch
+
+        with patch('aps_ai_transparency_tracker.scraper.logger') as mock_logger:
+            result = save_statement(agency, new_data, output_dir)
+
+        # Should save successfully
+        assert result is True
+
+        # Should NOT have logged a shrinkage warning
+        warning_calls = [call for call in mock_logger.warning.call_args_list
+                        if "CONTENT SHRINKAGE" in str(call)]
+        assert len(warning_calls) == 0
+
+
+def test_content_shrinkage_threshold_is_reasonable():
+    """Test that the shrinkage threshold is set to a reasonable value."""
+    # Threshold should be between 0 and 1
+    assert 0 < CONTENT_SHRINKAGE_THRESHOLD < 1
+
+    # Default of 0.5 means warn if content drops below 50% of original
+    assert CONTENT_SHRINKAGE_THRESHOLD == 0.5
