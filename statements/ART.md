@@ -64,8 +64,8 @@ The Tribunal is currently developing mandatory "safe use of AI" training for mem
 
 #### Governance
 
-  * The Tribunal’s accountable official under the policy is the Chief Information Officer (CIO). 
-  * The CIO engages with the Senior Management Committee and Principal Registrar/CEO under the Tribunal’s normative governance framework and any use of AI services must be approved through this mechanism.
+  * The Tribunal’s accountable official under the policy is the Chief Operating Officer (COO). 
+  * The COO engages with the Senior Management Committee and Principal Registrar/CEO under the Tribunal’s normative governance framework and any use of AI services must be approved through this mechanism.
   * The Tribunal Senior Management Committee has identified the appropriate use of AI as an emerging risk. Risk is managed through the Enterprise Risk Management Framework overseen by the Tribunal Audit and Risk Committee. 
   * the Senior Management Committee is actively involved when reviewing any and all potential uses for AI services.
 
@@ -79,6 +79,6 @@ The Tribunal is currently developing mandatory "safe use of AI" training for mem
 
 For questions about this statement or for further information on the Tribunal’s usage of AI, please contact [AI@art.gov.au](mailto:AI@art.gov.au). Note attempts at commercial engagement via this account will be ignored.
 
-Date last updated: 26 February 2025. 
+Date last updated: 24 November 2025. 
 
 __

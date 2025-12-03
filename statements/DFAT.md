@@ -8,39 +8,48 @@ title: Artificial Intelligence (AI) transparency statement | Australian Governme
 
 #  Artificial Intelligence (AI) transparency statement
 
-DFAT is investigating how AI can be used to enhance secure business outcomes. Embracing opportunities, while acknowledging the uncertainties and risks of new technologies, DFAT has adopted the Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+DFAT is dedicated to identifying and adopting emerging technologies, including artificial intelligence (AI), to enhance secure business outcomes. We embrace new opportunities while recognising the uncertainties and risks that come with technological change. This public transparency statement outlines DFAT’s approach to AI.
 
-The DTA's Policy for the responsible use of AI in government establishes mandatory requirements relating to identifying [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials) and publicly publishing DFAT's AI uses in [AI transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). This statement explains how DFAT is adhering to policy requirements.
+Safe and responsible use of AI is a guiding principle for AI use in DFAT. We comply with relevant legislation, regulations, guidance, and apply best practice where applicable.
 
-Safe, secure, and responsible use of AI is a guiding principle for AI use in DFAT.
+## Our approach to AI
 
-## Approach to using AI
+DFAT uses both automation and artificial intelligence (AI) to strengthen our operations and deliver better outcomes. We follow the [Organisation for Economic Co-operation and Development (OECD) definition](https://oecd.ai/en/ai-principles) of AI, in line with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy). At DFAT, "AI" refers to applications of machine learning, deep learning, and generative AI. Rule-based analytics and rule-based automation are managed separately and are not considered AI under this definition.
 
-**Public access**. Currently, the public are not provided access to any DFAT AI tools or the ability to contribute to outputs.
+Our people are central to the safe and effective use of AI at DFAT. We are committed to equipping our staff with the skills and knowledge needed to implement, maintain, and use AI responsibly. Comprehensive training ensures our workforce can confidently manage their use of AI, uphold ethical standards, and support secure business practices.
 
-**Departmental use**. DFAT's internal use of AI is based on policy and guidelines developed by DTA, Department of Industry, Science and Resources, CSIRO, and international best practice.
+By combining advanced technology with a skilled and informed workforce, DFAT aims to harness the benefits of AI while maintaining the highest standards or safety, transparency, and accountability.
 
-DFAT is part of the Whole of Australian Government Copilot trial.
+Based on the classification system for AI in government, we are using AI in:
 
-DFAT is reviewing the use of AI across service delivery, scientific, and corporate and enabling domains for relevant areas for insights into automating processes and identifying efficiencies.
+  * analytics for insights
+  * workplace productivity
+  * image processing.
 
-All staff are required to undertake training on the appropriate use of AI prior to enabling their access. General queries or concerns are encouraged to be reported through a dedicated internal channel.
+We are applying AI in the following domains:
+
+  * service delivery
+  * compliance and fraud detection
+  * policy and legal
+  * corporate and enabling.
 
 ## AI safety and governance
 
-DFAT has internal governance, policy and instructions to ensure:
+DFAT has internal governance for AI, covering every stage from initial idea to implementation. Our processes ensure:
 
-  * AI is implemented safely and responsibly
-  * monitoring of effectiveness of AI
-  * legal and regulatory compliance
-  * identification of any negative impacts of AI
-  * measures to mitigate potential harm from AI.
+  * AI is implemented and used safely and responsibly
+  * continuously monitoring how AI performs
+  * meeting all legal and regulatory obligations
+  * identifying risks and potential negative impacts
+  * taking action to reduce or prevent harm.
 
-This transparency statement will be updated as DFAT's approach to AI changes.
+Each AI use case is assigned an Accountable Use Case Owner to oversee its management. Risks are assessed before implementation and reviewed regularly, with governance processes updated as needed to remain effective. DFAT only uses AI in ways that protect security, privacy, transparency, and ethical use, always maintaining human oversight (‘Human-in-the-Loop’).
 
-## Accountable officials
+All staff must complete training on the responsible use of AI before they are granted access. Staff are encouraged to raise questions or report concerns through a dedicated internal channel.
 
-DFAT has identified relevant personnel to be accountable for DFAT.
+Currently, the Chief Information Officer is responsible for ensuring DFAT complies with whole-of-government AI policies and maintains the quality and integrity of departmental data.
+
+This transparency statement will be updated as our approach evolves, and at least every twelve months.
 
 Update Date| Update Comment  
 ---|---  
@@ -49,3 +58,8 @@ Update Date| Update Comment
 
   * Transparency statement completion
   * Align DFAT with the requirements of [_DTA's AI policy_](https://www.digital.gov.au/policy/ai/policy) (ver. 1.1), responsible use of AI in government
+
+  
+3 December 2025| 
+
+  * Transparency statement update

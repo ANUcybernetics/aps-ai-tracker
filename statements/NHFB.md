@@ -82,28 +82,28 @@ GPO Box 1252
 CANBERRA ACT 2601  
 Australia
 
-Skip to main content 
+Skip to main content
 
-  * [ About us ](https://www.publichospitalfunding.gov.au/about-us "About us")
+  * [About us](https://www.publichospitalfunding.gov.au/about-us "About us")
 
-    * [ Our vision ](https://www.publichospitalfunding.gov.au/about-us/strategic-overview "Our vision")
-    * [ Our purpose ](https://www.publichospitalfunding.gov.au/about-us/our-mission "Our purpose")
+    * [Our vision](https://www.publichospitalfunding.gov.au/about-us/strategic-overview "Our vision")
+    * [Our purpose](https://www.publichospitalfunding.gov.au/about-us/our-mission "Our purpose")
 
-      * [ Stakeholders and partners ](https://www.publichospitalfunding.gov.au/about-us/stakeholders-and-partners "Stakeholders and partners")
+      * [Stakeholders and partners](https://www.publichospitalfunding.gov.au/about-us/stakeholders-and-partners "Stakeholders and partners")
 
-    * [ Our teams ](https://www.publichospitalfunding.gov.au/about-us/our-teams "Our teams")
+    * [Our teams](https://www.publichospitalfunding.gov.au/about-us/our-people "Our teams")
 
-      * [ Leadership team ](https://www.publichospitalfunding.gov.au/about-us/leadership-team "Leadership team")
-      * [ Organisational structure ](https://www.publichospitalfunding.gov.au/about-us/organisational-structure "Organisational structure")
+      * [Leadership team](https://www.publichospitalfunding.gov.au/about-us/leadership-team "Leadership team")
+      * [Organisational structure](https://www.publichospitalfunding.gov.au/about-us/organisational-structure "Organisational structure")
 
-    * [ NHR Agreement ](https://www.publichospitalfunding.gov.au/about-us/nhr-agreement "NHR Agreement")
-    * [ Corporate governance ](https://www.publichospitalfunding.gov.au/about-us/corporate-governance "Corporate governance")
+    * [NHR Agreement](https://www.publichospitalfunding.gov.au/about-us/nhr-agreement "NHR Agreement")
+    * [Corporate governance](https://www.publichospitalfunding.gov.au/about-us/corporate-governance "Corporate governance")
 
-      * [ Artificial Intelligence ](https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement "Artificial Intelligence")
-      * [ Freedom of information ](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/freedom-information "Freedom of information")
-      * [ Senate Orders and directions ](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/senate-orders-and-directions "Senate Orders and directions")
+      * [Artificial Intelligence](https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement "Artificial Intelligence")
+      * [Freedom of information](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/freedom-information "Freedom of information")
+      * [Senate Orders and directions](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/senate-orders-and-directions "Senate Orders and directions")
 
-  * [ Contact us ](https://www.publichospitalfunding.gov.au/contact-us "Contact us")
-  * [ Careers ](https://www.publichospitalfunding.gov.au/about-us/careers "Careers")
+  * [Contact us](https://www.publichospitalfunding.gov.au/contact-us "Contact us")
+  * [Careers](https://www.publichospitalfunding.gov.au/about-us/careers "Careers")
 
-    * [ Current vacancies ](https://www.publichospitalfunding.gov.au/about-us/careers/current-vacancies "Current vacancies")
+    * [Current vacancies](https://www.publichospitalfunding.gov.au/about-us/careers/current-vacancies "Current vacancies")

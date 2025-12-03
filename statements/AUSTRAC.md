@@ -252,7 +252,7 @@ Leave this field blank
     * [For current reporting entities](https://www.austrac.gov.au/about-us/amlctf-reform/current-reporting-entities)
       * [Tipping off](https://www.austrac.gov.au/about-us/amlctf-reform/current-reporting-entities/tipping)
     * [New AML/CTF Rules](https://www.austrac.gov.au/about-us/amlctf-reform/new-amlctf-rules)
-  * [Careers](https://www.austrac.gov.au/about-us/work-with-austrac)
+  * [Careers](https://www.austrac.gov.au/work-with-austrac)
     * [Current vacancies](https://www.austrac.gov.au/careers/current-vacancies)
     * [How to apply](https://www.austrac.gov.au/about-us/work-with-austrac/how-apply)
     * [AUSTRAC culture and benefits](https://www.austrac.gov.au/about-us/work-with-austrac/austrac-culture-and-benefits)
