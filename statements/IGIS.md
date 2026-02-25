@@ -65,7 +65,7 @@ The accountable authority of the Office of the Inspector-General of Intelligence
 
 Recent Senate Orders for Entity Contracts:  
   
-[Senate Order for Entity Contracts - 1 July 2024 to 30 June 2025](https://www.igis.gov.au/sites/default/files/2025-08/Senate%20Order%20for%20Entity%20Contracts%20%E2%80%93%201%20July%202024%20to%2030%20June%202025.PDF)
+[Senate Order for Entity Contracts - 1 January 2025 to 31 December 2025](https://www.igis.gov.au/sites/default/files/2026-02/Senate%20Order%20for%20Entity%20Contracts%20%E2%80%93%201%20January%202025%20to%2031%20December%202025.PDF)
 
 ##  Legal Services Expenditure 
 

@@ -14,48 +14,43 @@ title: AUSTRAC Artificial Intelligence Transparency Statement | AUSTRAC
   * Usage patterns and domains
   * Data privacy and security
   * AI safety and governance
+  * Compliance with AI in Government Policy
   * Contact information
 
 ## Introduction
 
-AUSTRAC performs a dual role as Australia’s anti-money laundering and counter-terrorism financing (AML/CTF) regulator and financial intelligence unit. This dual role helps to build resilience in the financial system, and enables AUSTRAC to use financial intelligence and regulation to disrupt money laundering, terrorism financing and other serious crime.
+AUSTRAC performs a dual role as Australia’s anti-money laundering and counter-terrorism financing (AML/CTF) regulator and financial intelligence unit. This dual role helps to build resilience in the financial system and enables AUSTRAC to use financial intelligence and regulation to disrupt money laundering, terrorism financing and other serious crime.
 
 As Australia’s AML/CTF regulator, we regulate more than 17,000 businesses that provide financial, gambling, bullion, remittance and digital currency exchange services. We ensure regulated businesses comply with their obligations to have systems and controls in place to manage their risks and protect them and the community from criminal abuse.
 
-As a financial intelligence unit, we collect and analyse financial reports and information to generate financial intelligence. This financial intelligence contributes to law enforcement and national security investigations. Our specialist analysts generate targeted, actionable intelligence and work closely with industry, government and law enforcement partners to deliver tangible investigative and operational outcomes.
+As a financial intelligence unit, we collect and analyse financial reports and information to generate financial intelligence which contributes to law enforcement and national security investigations. Our specialist analysts generate targeted, actionable intelligence and work closely with industry, government and law enforcement partners to deliver tangible investigative and operational outcomes.
 
-New and emerging technologies are changing the way services are delivered. Criminals are always becoming more sophisticated and developing new ways to exploit vulnerabilities in the Australian financial system. To meet this challenge, we will continue to evolve how we work with industry and our partners, and adopt technologies such as Artificial Intelligence (AI) to support our specialist regulatory and intelligence capabilities. 
+New and emerging technologies are changing the way services are delivered. Criminals and terrorists are always becoming more sophisticated and developing new ways to exploit vulnerabilities in the Australian financial system. To meet this challenge, we will continue to evolve how we work with industry and our partners and adopt technologies such as Artificial Intelligence (AI) to support our specialist regulatory and intelligence capabilities. 
 
-AUSTRAC aims to be transparent about the way we use AI in our agency, and how we intend to approach adoption in the future. Where we have deployed AI, we comply with whole-of-government guidelines to ensure we meet the highest standards of security, privacy, and regulatory compliance. Our current approach and intended future use of AI is to leverage new techniques which advance outcomes while ensuring humans remain a key part of the decision making process. This statement will be reviewed annually and updated when:
+AUSTRAC aims to be transparent about the way we use AI in our agency and how we intend to approach adoption in the future. Where we have deployed AI, we comply with whole-of-government guidelines to ensure we meet the highest standards of security, privacy, accountability and regulatory compliance. Our current approach and intended future use of AI is to leverage new techniques which advance outcomes while ensuring humans remain a key part of the decision-making process. This statement will be reviewed annually and updated when:
 
-  * we deploy or engage with new AI technologies across our agency
-  * make a significant change to our approach to AI, or 
-  * new factors impact this statement. 
+  * we make a significant change to our approach to AI, or
+  * new factors impact the accuracy of this statement. 
 
-AUSTRAC’s intelligence functions are part of the national intelligence community, as defined under Section 4 of the Office of National Intelligence (ONI) Act 2018 _._ It should be noted that the Responsible Use of AI in Government Policy specifically exempts AUSTRAC’s intelligence functions from compliance with requirements of the policy, including this transparency statement. We may voluntarily adopt elements of this policy with respect to our [intelligence functions](https://www.digital.gov.au/policy/ai/implementation) _,_ where we are able to do so without compromising national security capabilities or interests.
+AUSTRAC’s intelligence functions are part of the national intelligence community, as defined under Section 4 of the Office of National Intelligence (ONI) Act 2018 _._ It should be noted that the _Responsible use of AI in government policy_ specifically exempts AUSTRAC’s intelligence functions from compliance with requirements of the policy, including this transparency statement. We may voluntarily adopt elements of this policy with respect to our [intelligence functions](https://www.digital.gov.au/policy/ai/implementation) _,_ where we are able to do so without compromising national security capabilities or interests.
 
 ## How we use AI
 
-AUSTRAC defers to the DTA’s definition of an Artificial Intelligence (AI) system as:
+AUSTRAC defers to the Digital Transformation Agency’s definition of an Artificial Intelligence (AI) system as:
 
-A machine-based system that for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions, that can influence physical or virtual environments.
+A machine-based system that for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions, that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
-Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
+AUSTRAC makes limited use of public generative AI tools to support workplace productivity. This is in alignment with the Digital Transformation Agency’s [ _Staff guidance on public generative AI tools_](https://www.digital.gov.au/policy/ai/staff-guidance-public-generative-ai).
 
-AUSTRAC uses generative AI tools to undertake research and discovery, and for workplace productivity purposes. This is in alignment with the Digital Transformation Agency (DTA) [ _Interim guidance on government use of public generative AI tools_](https://architecture.digital.gov.au/guidance-generative-ai). Privacy controls used in these processes are referred to in the relevant section of this statement.
+AUSTRAC applies mandatory protective security controls to ensure that no sensitive or classified information is entered into public generative AI systems, in accordance with the [Protective Security Policy Framework Advisory on OFFICIAL Information Use with Generative Artificial Intelligence](https://www.protectivesecurity.gov.au/system/files/2025-10/pspf-policy-advisory-information-use-gen-ai.pdf).
 
-AUSTRAC has not yet deployed any use of AI which directly interacts with the public or is involved in decision making and administrative action without human intervention. This includes automated decision making and automated communication with our stakeholders. 
+AUSTRAC has not yet deployed AI which directly interacts with the public or is involved in decision making and administrative action without human intervention.
 
-AUSTRAC is considering the future adoption of AI for the purposes of Workplace Productivity and Analytics for Insights. These usage patterns are currently in the pilot stage where they will be evaluated in alignment with the [ _Policy for Responsible Use of AI in Government_ and internal AUSTRAC AI Policy.](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf)
+AUSTRAC is currently trialling the use of enterprise generative AI systems to responsibly explore the benefits and risks of this emerging technology. This includes internal tools to improve workplace productivity and tools to support service delivery. As we continue to expand our use of AI, AUSTRAC will ensure we utilise the technology with clear human oversight, monitoring and decision making.
 
-Upon adoption, AUSTRAC will not use these AI methods without human intervention, monitoring and decision making. AUSTRAC also utilises statistical rules-based modelling and machine learning to:
+AUSTRAC leverages AI internally to enhance the effectiveness of our compliance and intelligence capabilities. AUSTRAC also utilises AI-enabled analytics to help detect indicators of financial crime and support analysts to generate insights for partners.
 
-  * identify indicators of money laundering, terrorism financing, or financially enabled crime
-  * support our financial intelligence analysts to generate actionable financial intelligence for our partners. 
-
-These methods do not meet the definition of AI due the rules-based nature of the inputs to these techniques, which are determined by humans.
-
-Over the next 2 years, AUSTRAC will implement the AML/CTF Reform priorities and deliver on our data and digital transformation priorities. To support this work, we are actively looking at opportunities to leverage generative AI tools to uplift our regulatory, intelligence and corporate operations.
+Over the next year, AUSTRAC will implement the AML/CTF Reform priorities and deliver on our data and digital transformation priorities. AUSTRAC remains committed to upholding the highest standards of security, accountability, and integrity while responsibly exploring AI. We will leverage these technologies to enhance our regulatory, intelligence and corporate operations in line with public expectations and with an eye to innovation and technological advancement.
 
 ## Usage patterns and domains
 
@@ -63,49 +58,64 @@ The [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.
 
 AUSTRAC’s current AI usage patterns are: 
 
-  * **Workplace Productivity:** Used to support non-sensitive research through the collation of publicly available information.
+  * **Workplace Productivity:** Used to improve process efficiencies such as supporting non-sensitive research**,** basic secretariat support and facilitating communications.
+  * **Analytics for Insights:** Used to identify, produce and understand indicators of financial crime.
 
 AUSTRAC’s current AI domains are: 
 
   * **Corporate and Enabling:** Supports corporate functions to improve operational efficiency and productivity.
+  * **Service Delivery:** Provides tailored and responsive support by assisting staff who deliver these services.
+  * **Law Enforcement, Intelligence and Security:** Support law enforcement and intelligence agencies through AI-enabled analysis of data which aids intelligence gathering.
 
-AUSTRAC is currently developing and piloting uses of AI which will in the future:
+AUSTRAC is currently developing and piloting uses of AI which will impact or expand**** the following**** AI usage patterns: 
 
-  * **Expand usage patterns** to include: 
-    * **Analytics for Insights** to identify, produce and understand insights within structured or unstructured materials
-    * **Workplace Productivity** to include virtual assistants.
-  * **Expand domains** to include: 
-    * **Service Delivery** to provide tailored and responsive services directly to external and internal stakeholders, through supporting staff who deliver these services.
-    * **Law Enforcement, Intelligence and Security** to support law enforcement and intelligence agencies through AI-enabled analysis of data from various sources which aid intelligence gathering.
+  * **Workplace Productivity:** Support the development of intelligence products to improve operational efficiency.
+  * **Compliance and Fraud Detection:** Identify patterns or anomalies in data to detect indicators of fraudulent activities and ensure compliance with laws and regulations.
+  * **Policy and Legal:** Support generating summaries and drafts to assist legal reviews of documents and preparation of internal documents.
 
 ## Data privacy and security
 
-Protecting the privacy and security of sensitive and classified information and the data of individuals is of paramount importance to us. We ensure that data is handled in compliance with the applicable legislations and regulations; Privacy Act 1988 (Cth), the _Protective Security Policy Framework_ and other relevant data protection laws. Personal information is only collected, used, and shared where necessary in line with our privacy policies.
+Protecting the privacy and security of sensitive and classified information and the data of individuals is of paramount importance to us. We ensure that data is handled in compliance with the applicable Australian legislation and regulations including the _Privacy Act 1988_(Cth), the _Protective Security Policy Framework_ and other relevant data protection laws. Personal information is only handled, including collection, usage, and disclosure, where necessary in line with our privacy policies and the Australian Privacy Principles.
 
-In accordance with internal guidelines and policies, staff who use publicly available generative AI tools for research purposes will not include or reveal any classified, personal or otherwise sensitive information. All activities will align with legislation and policies relating to information and data.
+In accordance with internal guidelines and policies, staff who use publicly available generative AI tools for research purposes will not include or reveal any classified, personal or otherwise sensitive information. All AUSTRAC activities that use, or intend to use, AI will be subject to appropriate privacy assurance to ensure they comply with all relevant Australian legislation and policies relating to information and data.
 
 ## AI safety and governance
 
-AUSTRAC’s AI Accountable Official is the General Manager, Data (Chief Data and Analytics Officer). AUSTRAC is committed to implementing AI systems to align with evolving legislation, ethical standards, and public expectations. As we deploy AI into our regulatory, intelligence and corporate operational capabilities, we will follow whole-of-government guidelines to ensure any use of AI is guided by the following key principles:
+AUSTRAC’s AI Accountable Official is the General Manager, Data (Chief Data and Analytics Officer). AUSTRAC is committed to implementing AI systems which align with evolving legislation, ethical standards, and public expectations. As we deploy AI into our regulatory, intelligence and corporate operational capabilities, we will follow whole-of-government guidelines to ensure any use of AI is guided by the following key principles:
 
-  * **Enable** : AUSTRAC will engage with AI in safe, ethical and responsible ways, including establishing clear accountabilities for AI adoption, use and explainability.
-  * **Engage responsibly** : AUSTRAC will ensure AI use is ethical, responsible, transparent and explainable, and that proportionate and targeted risk mitigations are applied for AI use cases.
-  * **Evolve** : AUSTRAC will apply flexibility and adaptability to AI uses to accommodate technological advances, including ongoing review and evaluation of existing AI use cases and exploration of new approaches. 
+  * **Enable** : AUSTRAC strategically adopts AI to support its mission of protecting Australia’s financial system. We ensure that AI enhances decision-making, supports our analytical and regulatory capability and aligns with our purpose and public expectations.
+  * **Engage** : AUSTRAC uses AI in ethical, transparent and fair ways that protect individuals, uphold public confidence and reinforce democratic values. We priorities risk mitigation, explainability and fairness in all AI use.
+  * **Evolve** : AUSTRAC embraces learning and innovation by continuously improving our application of AI through adaptive policies, collaboration and evaluation.
 
-To further support these efforts, AUSTRAC has established governance practices, policies and guidance to ensure the ethical, transparent, and secure implementation and use of AI. This includes:
+To further support these efforts, AUSTRAC has established governance practices, policies and guidance to ensure the ethical, transparent and secure implementation of AI. This includes:
 
-  * AUSTRAC’s AI Policy and guidance to staff relating to use of information technology systems and AI, inclusive of public generative AI tools.
-  * Availability of AI training for all staff to enable appropriate use of AI systems.
+  * AUSTRAC’s AI Policy, AI Governance Framework, and AI guidance. These are supported by internal governance committees and whole-of-government guidance, ensuring staff use AI safely and responsibly.
+  * All staff must complete trainings which build capability in the appropriate use of AI systems and handling of security classified information.
+  * Internal data and information governance forums that monitor AI performance, accountability, security and risk.
+  * Adherence to records management standards to ensure appropriate documentation, retention and traceability of AI-related activities.
 
-As the use of AI within AUSTRAC expands, consideration will be given to additional governance processes and practices which will ensure the appropriate, ethical, and safe use of AI.
+As the use of AI within AUSTRAC expands, consideration will be given to additional governance processes and practices which will ensure the appropriate, ethical and safe use of AI.
 
+## Compliance with AI in Government Policy
+
+Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) __ we are required to report our compliance with the requirements under the policy. 
+
+At time of publishing, this section is compliant with version 1.1 of the AI in government policy. Version 2.0 of the policy introduces new requirements from the 15th December, 2025 which AUSTRAC is committed to implementing.
+
+The following table outlines the requirements of version 1.1 of the AI in government policy and the status of compliance with those requirements:
+
+**Requirement** | **Status**  
+---|---  
+Accountable Official | Compliant  
+AI Transparency Statement | Compliant  
+  
 ## Contact information
 
-We will regularly review and update our AI policies and practices as part of our ongoing commitment to the responsible use of AI. This includes staying informed about new developments in AI technology, ethics, and regulatory requirements. We will strive to improve the transparency, fairness, and effectiveness of our use of AI systems through continuous learning and adaptation.
+We will regularly review and update our AI policies and practices as part of our ongoing commitment to the responsible use of AI. This includes staying informed about new developments in AI technology, ethics and regulatory requirements. We will strive to improve the transparency, fairness and effectiveness of our use of AI systems through continuous learning and adaptation.
 
-This statement was last updated on 28 February 2025 and will be reviewed annually, when we make a significant change to our approach to AI, or when new factors impact this statement.
+This statement was last updated on 12 December 2025 and will be reviewed annually, when we make a significant change to our approach to AI or when new factors impact this statement.
 
-If you have questions or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
+If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
 
 This guidance sets out how we interpret the Act, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened. 
 
@@ -113,7 +123,7 @@ The examples and scenarios in this guidance are meant to help explain our interp
 
 This guidance provides general information and isn't a substitute for legal advice. This guidance avoids legal language wherever possible and it might include generalisations about the application of the law. Some provisions of the law referred to have exceptions or important qualifications. In most cases your particular circumstances must be taken into account when determining how the law applies to you.
 
-Last updated: 27 Feb 2025 
+Last updated: 9 Jan 2026 
 
 Page ID: 1173 
 
@@ -139,119 +149,6 @@ Leave this field blank
   * [Our people](https://www.austrac.gov.au/about-us/our-people)
     * [AUSTRAC CEO](https://www.austrac.gov.au/about-us/our-people/our-ceo)
     * [AUSTRAC organisational chart](https://www.austrac.gov.au/about-us/our-people/organisational-chart)
-  * [AML/CTF Reform](https://www.austrac.gov.au/about-us/amlctf-reform)
-    * [About the reforms](https://www.austrac.gov.au/about-us/amlctf-reform/about-reforms)
-    * [Check if you may be regulated (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/check-if-you-may-be-regulated-reform)
-    * [Reforms guidance](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance)
-      * [Before you start](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start)
-        * [Check if you'll be regulated](https://www.austrac.gov.au/about-us/amlctf-reform/check-if-you-may-be-regulated-reform)
-        * [New industries and services to be regulated (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/new-industries-and-services-be-regulated-reform)
-          * [Real estate services (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/new-industries-and-services-be-regulated-reform/real-estate-services-reform)
-          * [Precious metals, stones and products services (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/new-industries-and-services-be-regulated-reform/precious-metals-stones-and-products-services-reform)
-          * [Virtual asset services (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/new-industries-and-services-be-regulated-reform/virtual-asset-services-reform)
-          * [Professional services (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/new-industries-and-services-be-regulated-reform/professional-services-reform)
-        * [Combating money laundering, terrorism financing and proliferation financing](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/combating-money-laundering-terrorism-financing-and-proliferation-financing)
-          * [Money laundering, terrorism financing and proliferation financing definitions](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/combating-money-laundering-terrorism-financing-and-proliferation-financing/money-laundering-terrorism-financing-and-proliferation-financing-definitions)
-        * [Learn how to use this guidance (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/learn-how-use-guidance-reform)
-        * [Summary of AML/CTF obligations for tranche 2 entities](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/summary-obligations-reform)
-        * [Summary of changes for current reporting entities](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/summary-changes-current-reporting-entities-reform)
-        * [Find out when to enrol and register (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/find-out-when-enrol-and-register-reform)
-          * [Enrol with us (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/find-out-when-enrol-and-register-reform/enrol-us-reform)
-          * [Register with us as a remittance or virtual asset service provider (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/before-you-start/find-out-when-enrol-and-register-reform/register-us-remittance-or-virtual-asset-service-provider-reform)
-      * [AML/CTF program (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform)
-        * [Develop your AML/CTF program (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform)
-          * [Your AML/CTF program (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/your-amlctf-program-reform)
-          * [Step 1: Establish your governance framework (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform)
-            * [Governing body (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform/governing-body-reform)
-            * [Senior manager (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform/senior-manager-reform)
-            * [AML/CTF compliance officer (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform/amlctf-compliance-officer-reform)
-            * [Governance and oversight for sole traders and micro businesses (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform/governance-and-oversight-sole-traders-and-micro-businesses-reform)
-            * [Establishing a strong AML/CTF culture (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-1-establish-your-governance-framework-reform/establishing-strong-amlctf-culture-reform)
-          * [Step 2: Identify and assess your risks: risk assessment (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-2-identify-and-assess-your-risks-risk-assessment-reform)
-          * [Step 3: Mitigate and manage your risks - AML/CTF policies (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-3-mitigate-and-manage-your-risks-amlctf-policies-reform)
-          * [Step 4: Review and update your AML/CTF program (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-4-review-and-update-your-amlctf-program-reform)
-          * [Step 5: Conduct an independent evaluation (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/step-5-conduct-independent-evaluation-reform)
-          * [Record keeping (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/record-keeping-reform)
-            * [Record keeping overview (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/record-keeping-reform/record-keeping-overview-reform)
-            * [Record keeping checklist (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/record-keeping-reform/record-keeping-checklist-reform)
-            * [Record keeping in ADI authorised account transfers (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/record-keeping-reform/record-keeping-adi-authorised-account-transfers-reform)
-            * [Record keeping in correspondent banking relationships (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/develop-your-amlctf-program-reform/record-keeping-reform/record-keeping-correspondent-banking-relationships-reform)
-        * [Customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform)
-          * [Overview of customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/overview-customer-due-diligence-reform)
-          * [Initial customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform)
-            * [Overview of initial customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/overview-initial-customer-due-diligence-reform)
-            * [Initial customer due diligence guides by customer type (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform)
-              * [Initial CDD for individuals (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform/initial-cdd-individuals-reform)
-              * [Initial CDD for sole traders (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform/initial-cdd-sole-traders-reform)
-              * [Initial CDD for a body corporate, partnership or unincorporated association (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform/initial-cdd-body-corporate-partnership-or-unincorporated)
-              * [Initial CDD for a trust (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform/initial-cdd-trust-reform)
-              * [Initial CDD for a government body (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/initial-customer-due-diligence-guides-customer-type-reform/initial-cdd-government-body-reform)
-            * [Delayed initial customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/delayed-initial-customer-due-diligence-reform)
-            * [Identifying individuals who don’t have standard identification (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/identifying-individuals-who-dont-have-standard-identification-reform)
-              * [Alternative identification for Aboriginal and Torres Strait Islander individuals (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/identifying-individuals-who-dont-have-standard-identification-reform/alternative-identification-aboriginal-and-torres-strait)
-              * [Examples of using alternative identification procedures (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/initial-customer-due-diligence-reform/identifying-individuals-who-dont-have-standard-identification-reform/examples-using-alternative-identification-procedures)
-          * [Assigning customer risk ratings (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/assigning-customer-risk-ratings-reform)
-          * [Reliance on customer identification by a third party (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/reliance-customer-identification-third-party-reform)
-            * [Overview of reliance on customer identification by a third party (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/reliance-customer-identification-third-party-reform/overview-reliance-customer-identification-third-party-reform)
-            * [Reliance under customer due diligence arrangements (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/reliance-customer-identification-third-party-reform/reliance-under-customer-due-diligence-arrangements-reform)
-            * [Reliance on a case-by-case basis (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/reliance-customer-identification-third-party-reform/reliance-case-case-basis-reform)
-            * [Managing risk and assessing foreign jurisdictions for reliance (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/reliance-customer-identification-third-party-reform/managing-risk-and-assessing-foreign-jurisdictions-reliance-reform)
-          * [Enhanced customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/enhanced-customer-due-diligence-reform)
-          * [Ongoing customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform)
-            * [Overview of ongoing customer due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform/overview-ongoing-customer-due-diligence-reform)
-            * [What you must monitor for (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform/what-you-must-monitor-reform)
-            * [How to monitor your customers (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform/how-monitor-your-customers-reform)
-            * [Responding to unusual transactions and behaviour (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform/responding-unusual-transactions-and-behaviour-reform)
-            * [Reviewing and updating customers’ ML/TF risk and KYC information (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/ongoing-customer-due-diligence-reform/reviewing-and-updating-customers-mltf-risk-and-kyc-information-reform)
-          * [Politically exposed persons (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/politically-exposed-persons-reform)
-          * [Persons designated for targeted financial sanctions (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/persons-designated-targeted-financial-sanctions-reform)
-          * [Source of funds and source of wealth (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/source-funds-and-source-wealth-reform)
-          * [Transitioning existing customers (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/customer-due-diligence-reform/transitioning-existing-customers-reform)
-        * [Personnel due diligence and training (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/personnel-due-diligence-and-training-reform)
-          * [Identifying personnel roles that require due diligence and training (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/personnel-due-diligence-and-training-reform/identifying-personnel-roles-require-due-diligence-and-training-reform)
-          * [Personnel due diligence (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/personnel-due-diligence-and-training-reform/personnel-due-diligence-reform)
-          * [AML/CTF training (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/personnel-due-diligence-and-training-reform/amlctf-training-reform)
-          * [Examples of personnel due diligence and training in practice (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/personnel-due-diligence-and-training-reform/examples-personnel-due-diligence-and-training-practice-reform)
-        * [Reporting to AUSTRAC (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/reporting-austrac-reform)
-          * [Suspicious matter reports (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/reporting-austrac-reform/suspicious-matter-reports-reform)
-          * [Threshold transaction reports (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/reporting-austrac-reform/threshold-transaction-reports-reform)
-          * [International funds transfer instruction (IFTI) reports](https://www.austrac.gov.au/business/core-guidance/reporting/money-transferred-and-overseas-international-funds-transfer-instruction-ifti-reports)
-          * [Cross-border movement reports – guidance for reporting entities (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/reporting-austrac-reform/cross-border-movement-reports-guidance-reporting-entities-reform)
-          * [Compliance reports](https://www.austrac.gov.au/business/core-guidance/reporting/austrac-compliance-reports)
-          * [Legal professional privilege (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/amlctf-program-reform/reporting-austrac-reform/legal-professional-privilege-reform)
-          * [Tipping off](https://www.austrac.gov.au/about-us/amlctf-reform/current-reporting-entities/tipping)
-      * [Other guidance](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance)
-        * [Determining ownership and control structures (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/determining-ownership-and-control-structures-reform)
-        * [Reporting groups (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/reporting-groups-reform)
-          * [Understanding reporting groups (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/reporting-groups-reform/understanding-reporting-groups-reform)
-          * [Forming reporting groups (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/reporting-groups-reform/forming-reporting-groups-reform)
-          * [Obligations for lead entities and members (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/reporting-groups-reform/obligations-lead-entities-and-members-reform)
-        * [The travel rule (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform)
-          * [When the travel rule doesn’t apply (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/when-travel-rule-doesnt-apply-reform)
-          * [Travel rule overview (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/travel-rule-overview-reform)
-          * [Travel rule obligations for ordering institutions (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/travel-rule-obligations-ordering-institutions-reform)
-          * [Travel rule obligations for intermediary institutions (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/travel-rule-obligations-intermediary-institutions-reform)
-          * [Travel rule obligations for beneficiary institutions (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/travel-rule-obligations-beneficiary-institutions-reform)
-          * [Additional travel rule obligations when transferring virtual assets (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/travel-rule-reform/additional-travel-rule-obligations-when-transferring-virtual-assets-reform)
-        * [Foreign branches and subsidiaries (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/foreign-branches-and-subsidiaries-reform)
-        * [Using outsourcing to help meet your AML/CTF obligations (Reform)](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/using-outsourcing-help-meet-your-amlctf-obligations-reform)
-        * [Repeal of the Financial Transaction Reports Act 1988](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/repeal-financial-transaction-reports-act-1988)
-        * [New information gathering powers](https://www.austrac.gov.au/about-us/amlctf-reform/reforms-guidance/other-guidance/new-information-gathering-powers)
-    * [Risks and indicators of suspicious activity](https://www.austrac.gov.au/about-us/amlctf-reform/risks-and-indicators-suspicious-activity)
-      * [Risk insights for virtual asset service providers](https://www.austrac.gov.au/business/how-comply-guidance-and-resources/guidance-resources/risk-insights-virtual-asset-service-providers)
-      * [Risk insights and indicators of suspicious activity for accountants](https://www.austrac.gov.au/business/how-comply-guidance-and-resources/guidance-resources/risk-insights-and-indicators-suspicious-activity-accountants)
-      * [Risk insights and indicators of suspicious activity for legal professionals](https://www.austrac.gov.au/business/how-comply-guidance-and-resources/guidance-resources/risk-insights-and-indicators-suspicious-activity-legal-professionals)
-      * [Risk insights and indicators of suspicious activity for the real estate sector](https://www.austrac.gov.au/business/how-comply-guidance-and-resources/guidance-resources/risk-insights-and-indicators-suspicious-activity-real-estate-sector)
-      * [Risk insights and indicators of suspicious activity for dealers in precious stones, metals and other products](https://www.austrac.gov.au/business/how-comply-guidance-and-resources/guidance-resources/risk-insights-and-indicators-suspicious-activity-dealers-precious-stones-metals-and-other-products)
-    * [What’s coming soon to help you](https://www.austrac.gov.au/about-us/amlctf-reform/whats-coming-soon-help-you)
-    * [Preparing for the changes as a current reporting entity](https://www.austrac.gov.au/about-us/amlctf-reform/preparing-changes-current-reporting-entity)
-    * [Preparing for the changes if you’re newly regulated](https://www.austrac.gov.au/about-us/amlctf-reform/preparing-changes-if-youre-newly-regulated)
-    * [AUSTRAC regulatory expectations and priorities for 2025–26](https://www.austrac.gov.au/about-us/amlctf-reform/austrac-regulatory-expectations-and-priorities-2025-26)
-    * [Future Law Compilation of the AML/CTF Act](https://www.austrac.gov.au/about-us/amlctf-reform/future-law-compilation-amlctf-act)
-    * [Education about reforms](https://www.austrac.gov.au/about-us/amlctf-reform/education-about-reforms)
-    * [For current reporting entities](https://www.austrac.gov.au/about-us/amlctf-reform/current-reporting-entities)
-      * [Tipping off](https://www.austrac.gov.au/about-us/amlctf-reform/current-reporting-entities/tipping)
-    * [New AML/CTF Rules](https://www.austrac.gov.au/about-us/amlctf-reform/new-amlctf-rules)
   * [Careers](https://www.austrac.gov.au/work-with-austrac)
     * [Current vacancies](https://www.austrac.gov.au/careers/current-vacancies)
     * [How to apply](https://www.austrac.gov.au/about-us/work-with-austrac/how-apply)

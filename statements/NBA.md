@@ -2,39 +2,98 @@
 abbr: NBA
 agency: National Blood Authority
 source_url: https://www.blood.gov.au/nbas-ai-transparency-statement
-title: NBA’s AI Transparency Statement | National Blood Authority
+title: Artificial Intelligence (AI) transparency statement | National Blood Authority
 ---
 
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI. 
+Our AI transparency statement explains how we intend to use AI technology, and how we will adopt and use AI in line with the Australian public's and Government's expectations.
 
-The National Blood Authority (NBA) is committed to identifying ethical, responsible and meaningful use when considering the adoption of AI capabilities. We will be transparent as we explore, adopt and integrate AI technology to benefit staff and external stakeholders.
+The National Blood Authority’s (NBA) commitment to the safe and responsible use of AI supports our vision to save and improve Australian lives and patient outcomes through a world-class blood supply. 
 
-Currently, the NBA does not use AI in any services we provide. We are in the process of exploring the potential appropriate use of AI in the NBA context, the risks that will need to be managed, and the benefits it may bring. 
+The Digital Transformation Agency’s (DTA) [Policy for the responsible use of Artificial Intelligence (AI) in government(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets a framework for the Australian Government’s safe, responsible, adoption and use of AI. Along with the [Standard for AI transparency statements(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) and [Interim guidance on government use of public generative AI tools(Opens in a new tab/window)](https://architecture.digital.gov.au/guidance-generative-ai). 
 
-If the NBA implements any AI capability, this statement will be updated to outline our use including:
+**Why we use AI**
 
-  * the intentions behind why the NBA is using AI or is considering its adoption
-  * classification1 of AI use according to usage patterns and domains
-  * classification1 of use where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention
-  * measures to monitor the effectiveness of deployed AI systems, such as governance or processes
-  * compliance with applicable legislation and regulation
-  * efforts to identify and protect the public against negative impacts
-  * compliance with each requirement under the [ _Policy for the responsible use of AI in government_(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf)_._
+To achieve our vision to save and improve Australian lives and patient outcomes through a world-class blood supply in delivering better health and wellbeing for all Australians, the NBA commits to the safe and responsible adoption of AI to take advantage of the various benefits the technology provides. 
 
-**Accountable official**
+**How we use AI**
 
-The Chief Information Officer is designated as the accountable official.
+The NBA uses generative AI in line with the DTA’s [Classification systems for use(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/resources/use-classification) as below: 
 
-**AI transparency statement**
+We use AI to enhance:
 
-This AI transparency statement was first published to our website in January 2025. This statement will be reviewed annually, or when we make any significant change to our approach to AI as outlined above.
+_Analytics for insights_
 
-**Contact Us**
+Identifies, produces or understands insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools. 
 
-If you have any enquiries about this statement, we can be reached via the details on [contact us](https://www.blood.gov.au/contact-us) page of this website
+ _Workplace productivity_
 
-[1] As per the [Classification system for AI use | digital.gov.au(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/resources/use-classification)
+Automates routine tasks, manage workflows, and facilitate communication. 
 
-Last updated: 07 Jan 2025
+We may apply AI in the following domains: 
+
+Domain| Description  
+---|---  
+Service delivery| Enhances efficiency or accuracy of government services, by providing tailored and responsive services to the public and/or stakeholders.  
+Policy and legal| Analyses policies and legal documents to provide advice and assurance on their impact and supports policy development that is consistent with existing laws.  
+Scientific| Leveraged in scientific endeavours to process complex datasets, simulate experiments, predict outcomes and enhance monitoring functions.  
+Corporate and enabling| Supports corporate functions, including HR, finance, media and communications, and IT, by automating processes, optimising resource allocation and improving operational efficiency.  
+  
+**Our approach with AI**
+
+A human will assess all AI outputs to ensure accuracy. We will not use AI for decision making purposes. 
+
+The NBA isn’t using AI applications where the public can directly interact with or be impacted by AI. We will update this transparency statement if our approach changes. 
+
+**Our commitment**
+
+The NBA is committed to using AI in a responsible and transparent way. Our AI initiatives will align with the APS values and have the publics’ best interest at heart. We will continue to work closely with the DTA and use AI in accordance with applicable: 
+
+  * legislation
+  * regulations
+  * frameworks
+  * policies
+  * best practice. 
+
+**Safe and responsible AI adoption**
+
+We will be transparent as we adopt responsibly the evolving AI technology and policy requirements. 
+
+These will align with the DTA’s Policy, advice and guidance on the safe, responsible and ethical use of AI.
+
+We will leverage whole of Australian Government policies and develop internal policies and guidance materials when necessary for: 
+
+  * AI Governance and approval processes
+  * acceptable use of AI in the NBA
+  * ethical considerations
+  * Freedom of Information (FOI) considerations
+  * record keeping
+  * security, procurement of AI systems
+  * risk mitigation and technical guardrails
+  * roles and responsibilities when using AI and required training for identified roles. 
+
+These internal policies will apply to all employees (including contractors) and consultants. 
+
+We will update this transparency statement as the NBA continues to develop policies on AI usage and to implement AI technology. 
+
+**AI systems we use**
+
+What we use| How we use| Commenced  
+---|---|---  
+GovAI Multi-Model| We use the GovAI platform as a secure space for staff to test AI models and to support staff learning. | January 2026  
+Microsoft 365 Copilot| We use Microsoft 365 Copilot within the NBA controlled environment.| February 2026  
+Microsoft Copilot via GovTEAMS| We use Microsoft Copilot in the secure GovTEAMS environment.| January 2026  
+GitHub| We use GitHub Copilot for software development.| February 2026  
+  
+**Privacy notice for Microsoft Teams recordings and transcripts**
+
+[Click here to find out how we manage the personal information we collect about you when you attend an MS Teams meeting that we record and transcribe.](https://www.blood.gov.au/privacy-notice-microsoft-teams-recordings-and-transcripts)
+
+**Contact**
+
+The Chief Information Officer is our AI Accountable Official for the NBA. 
+
+For questions about this statement or the NBA’s use of AI, you can email [ai@blood.gov.au](mailto:ai@blood.gov.au) or see the details on the contact us page of the NBA website.
+
+Last updated: 13 Feb 2026
 
 Back to top

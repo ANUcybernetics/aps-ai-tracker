@@ -5,83 +5,167 @@ source_url: https://cer.gov.au/about-us/our-policies/artificial-intelligence-tra
 title: Artificial intelligence transparency statement | Clean Energy Regulator
 ---
 
-We are committed to using technology, including artificial intelligence (AI), to enhance our capability to be an efficient and effective economic regulator accelerating carbon abatement for Australia. 
+We use artificial intelligence (AI) in carefully managed and transparent ways to support our role as Australia’s independent economic regulator accelerating carbon abatement.
 
-We don’t currently use AI in any of the services or advice we provide. As we adopt AI capabilities, we will update this statement to outline: 
+We use AI to improve the quality, efficiency and integrity of our regulatory functions. AI helps us analyse data, detect anomalies, and streamline internal processes. All decisions that affect people, organisations or scheme eligibility are made by Clean Energy Regulator staff, not AI.
 
-  * its use
-  * why we use it
-  * how we'll monitor the effectiveness of its use. 
+We review this statement at least once a year, updating it as our AI use matures.
 
-We will review this AI transparency statement and update it annually, or when any new factors impact this statement.
+## How we use AI
 
-## Background
+We'll consider AI use to provide analytics for and insights into the schemes we regulate on behalf of the Australian Government. We're using, developing and considering AI in the following usage patterns and domains.
 
-The Digital Transformation Agency's [policy for the responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government) sets out the Australian Government's approach to embracing AI's opportunities. It also provides for the safe and responsible use of AI. Transparency is critical to building public trust and is an important aim of the policy and broader APS Reform agenda.
+We're using, developing and considering AI in line with common Australian Government AI usage patterns and domains. See the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) for more information.
 
-####  Definition of AI 
+### Usage patterns
 
-We use the [Organisation for Economic Co-operation and Development](https://oecd.ai/en/ai-principles) definition of AI:
+#### Workplace productivity
 
-An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
+We allow our staff to use AI in their work with the objective of enhancing productivity and service delivery. This includes enterprise AI deployed in our internal ICT environment like Microsoft 365 Copilot.
 
-## Principles
+Our staff use AI to:
 
-  * We are committed to the ethical use of AI. Our AI systems will be developed and deployed with fairness, accountability, privacy, protection, security, reliability, safety, contestability and transparency in mind. We will regularly review our AI practices to ensure they align with ethical standards and do not perpetuate biases or discrimination.
-  * We will use our AI systems to help, not replace, human decision-making. Human-in-the-loop will ensure all critical decisions are reviewed and approved by qualified public officials to ensure accuracy and accountability.
-  * We are transparent about our AI use and its impact. We provide regular updates on our AI initiatives and their outcomes on our website.
-  * We will consider all AI use cases against our compliance with legislation, regulations and requirements under all relevant statutory bodies and the[ policy for responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government).
+  * assist in the creation of government documents
+  * assist with research and analysis
+  * summarise data across multiple sources
+  * interrogate, analyse and obtain insights from datasets
+  * answer questions from staff regarding workplace policies, procedures and processes
+  * assist in the analysis, creation or summarisation of documents, emails or other content
+  * create and debug code used in data analysis, management and processing
+  * assist in the creation of meeting minutes or interview transcripts
+  * search information repositories and retrieve documents, information or data.
+
+#### Image processing
+
+We're developing AI assisted image analysis to support compliance reviews, subject to human review and confirmation.
+
+### Domains
+
+#### Service delivery
+
+We're investigating the use of AI to support our staff to:
+
+  * assist with routine administrative tasks and information analysis
+  * improve collaboration and documentation practices
+  * support efficient drafting of standard content, subject to human review.
+
+#### Compliance and fraud detection
+
+We're developing:
+
+  * AI tools to spot unusual patterns that may indicate non-compliance or fraud
+  * AI under the Small-scale Renewable Energy Scheme (SRES) to support compliance monitoring, including identifying potentially non-compliant claims or data discrepancies for human review.
+
+#### Corporate and enabling
+
+We're investigating the use of AI to support corporate functions, including HR, finance, media and communications, and IT to improve operational efficiency.
+
+## Transparency
+
+We're committed to open communication about our AI use. AI contributes to information or insights but does not make regulatory decisions. Any AI derived advice that affects people or regulated entities is reviewed and approved by trained Clean Energy Regulator staff.
+
+We won't deploy public facing AI without user disclosure, a clear human in the loop escalation path, defined accuracy safeguards and accessibility consideration.
+
+## How we assess and manage risks
+
+We assess and monitor all AI systems to ensure they are safe, transparent and appropriate for our regulatory responsibilities. Our risk and assurance approach includes:
+
+  * completing a risk-based AI suitability assessment before any development or deployment
+  * testing and evaluating AI systems against agreed risk controls and thresholds before they are used
+  * monitoring the effectiveness of deployed AI systems on an ongoing basis and subsequent reassessments are conducted periodically or when triggered by significant changes such as model updates, new data sources, or incidents
+  * applying stronger safeguards for higher risk use cases
+  * pausing or discontinuing use if risk thresholds, accuracy metrics or safeguards are not met.
+
+We'll maintain an AI Use Case Register that describes each use case and corresponding risk-based AI suitability assessment. The register will be updated when new use cases are approved for deployment or when material changes occur.
+
+This process aligns with the [Australian Government Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/ai/ai-in-government-policy) and incorporates additional oversight for higher risk or higher impact AI use.
+
+## Ethical principles
+
+We're committed to the ethical use of AI. Our systems are developed and deployed with fairness, accountability, privacy, protection, security, reliability, safety, contestability and transparency in mind. We review our practices regularly to ensure they meet ethical standards and do not introduce bias or discrimination.
+
+To protect the public and scheme integrity, we won't:
+
+  * automate compliance, enforcement or eligibility decisions without human review and approval
+  * train or prompt AI systems with sensitive or personal information unless expressly assessed and approved (for example, through a privacy impact assessment and security review)
+  * generate or issue regulatory notices or legal instruments without human validation and sign off
+  * use generative AI to produce forecasting or analytical outputs without human validation, provenance controls and audit capture.
+
+## Staff capability and training
+
+We build staff AI capability through a community of practice, supporting knowledge sharing and safe adoption, and through targeted training such as prompt engineering skills aligned to our regulatory purpose. These activities ensure staff can use AI confidently, responsibly, effectively and in ways that strengthen our regulatory functions.
+
+All Clean Energy Regulator staff are required to complete mandatory training on the responsible use of AI in line with the [Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/ai/ai-in-government-policy). Staff with access to agency approved enterprise-wide AI systems such as Copilot are required to complete additional training and to read and accept updated ICT conditions of use. Additional specialist training is provided for staff who procure, develop or manage AI systems.
+
+## Legislative, policy and standards commitments
+
+Our AI use is governed by Australian Government legislation and policy. We commit to comply with, and be guided by, the following (as applicable):
+
+  * _Privacy Act 1988_ and the Australian Privacy Principles
+  *  _Freedom of Information Act 1982_
+  *  _Archives Act 1983_
+  *  _Public Governance, Performance and Accountability Act 2013_
+  * Protective Security Policy Framework
+  * Information Security Manual
+  * Australia’s AI Ethics Principles
+  * Policy for the Responsible Use of AI in Government.
 
 ## Governance
 
-Our accountable officials enable and prepare, responsibly engage with, and evolve and integrate AI. These are the:
+We have matured our governance arrangements to ensure strong oversight of AI, in line with the [Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
-  * Chief Data Officer and primary official
+  * Overall accountability rests with the Clean Energy Regulator Chair, as Accountable Authority.
+  * The Senior Leadership Team provides executive oversight of AI risk, compliance and outcomes.
+
+### Chief Artificial Intelligence Officer
+
+In July 2025, we appointed a Chief AI Officer (CAIO) to lead AI capability uplift, maturity, and responsible adoption of AI across the agency.
+
+The CAIO:
+
+  * oversees implementation of AI initiatives
+  * provides guidance on risk, ethics, security and compliance in the use of AI
+  * develops and reviews measures to monitor AI effectiveness
+  * ensures our alignment with Australian public service wide AI policy requirements.
+
+### Governance committees
+
+All AI initiatives progress through our established governance and change pathways. The Technology Strategy and Change Committee (TSCC) is the primary oversight body for AI across the agency.
+
+The TSCC:
+
+  * provides whole of agency oversight of AI use
+  * advises the Senior Leadership Team on the impacts of AI enabled initiatives
+  * oversees the AI Use Case Suitability Assessment process.
+
+The TSCC is chaired by the General Manager of Transformation and Chief Data Officer and includes AI accountable officials as members, providing collective oversight of our AI initiatives.
+
+### Accountable officials
+
+Our accountable officials for AI are:
+
+  * Chief Data Officer
+  * Chief Risk Officer
   * Chief Information Officer
-  * Chief Risk Officer.
+  * Chief Artificial Intelligence Officer.
 
-These officials report to our Chair (accountable authority) and convene an AI steering committee (chaired by the Chief Data Officer) to oversee and drive our AI capability maturity. Our AI investment and implementations will be governed through existing transformation and sustainment governance arrangements.
+These officials share responsibility for: 
 
-## Use of AI
+  * assessing internal AI proposals
+  * managing risks associated with the use of AI
+  * implementing the Policy for the Responsible Use of AI in Government
+  * ensuring the safe deployment of AI tools
+  * conducting ongoing reviews of the suitability and appropriateness of AI use over time.
 
-We will consider AI use to provide analytics for and insights into the schemes we regulate on behalf of the Australian Government. We will also consider AI use in the following usage patterns and domains.
+## Definition of AI
 
-### 
+We use the Organisation for Economic Cooperation and Development definition of AI:
 
-Workplace productivity
+An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
-Show __
+## More information 
 
-  * Automation of repetitive tasks
-  * Data-driven decision augmentation
-  * Advancing collaboration
-  * Efficient content creation  
-
-### 
-
-Service delivery
-
-Show __
-
-We are already using automation for efficient and effective activities, such as in the:
-
-  * solar panel verification arrangements for the Small-scale Renewable Energy Scheme
-  * preload geoprocessing service, that has automated the upload and processing of geospatial datasets for the Australian Carbon Credit Unit Scheme.
-
-We will investigate the use of AI to provide further efficiencies in our verification processes.
-
-### 
-
-Compliance and fraud detection
-
-Show __
-
-We will look to use AI to:
-
-  * monitor for anomalies in usage patterns to detect potential fraudulent activities in the government schemes we administer
-  * continue to analyse AI trends and consider how emerging products and approaches can further strengthen our cyber security posture.
-
-For questions or further information about our AI usage, contact [ai@cer.gov.au.](mailto:ai@cer.gov.au)
+For questions about how we use AI, contact [ai@cer.gov.au](mailto:ai@cer.gov.au).
 
 ## Find out more
 

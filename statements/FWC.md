@@ -35,7 +35,7 @@ Consistent with the DTA Policy, we use the Organisation for Economic Co-operatio
 
 ##  How we use AI 
 
-The Commission **will not** use generative AI to make decisions under the Fair Work Act 2009 or Fair Work Registered Organisations Act 2009. The power to make such decisions can only be exercised by an appropriate human office holder.
+The Commission **will not** use generative AI to make decisions under the _Fair Work Act 2009_ or _Fair Work (Registered Organisations) Act 2009_. The power to make such decisions can only be exercised by an appropriate human office holder.
 
 ### Usage Patterns and Domains
 
@@ -74,7 +74,7 @@ The Executive Director of Enabling Services is designated as the accountable off
 
 This statement was first published in February 2025, and will be reviewed at least annually, or when we make a significant change to our approach to AI as outlined above.
 
-Last updated: 28 February 2025
+Last updated: 3 February 2026
 
 You must have JavaScript enabled to use this form.
 

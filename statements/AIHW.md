@@ -54,7 +54,7 @@ AIHW complies with all applicable legislation, regulations, frameworks, and poli
 
 ## **Review and updates**
 
-This AI transparency statement is reviewed twice-annually or when significant changes occur. The latest review was conducted on 13 March 2025, with the next scheduled review on 20 August 2025.
+This AI transparency statement is reviewed annually or when significant changes occur. The latest review was conducted on 13 March 2025, with the next scheduled review on 13 March 2026.
 
 ## **Contact**
 

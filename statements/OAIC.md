@@ -126,6 +126,8 @@ This statement will be reviewed regularly to reflect any changes in the OAIC's a
 
 For further information on our approach to AI, or to raise any concerns, please contact the [OAIC directly.](https://www.oaic.gov.au/contact-us)
 
+This statement was last reviewed on 24 January 2026.
+
 Did you find this helpful?
 
 ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/thumbsup.svg) Yes

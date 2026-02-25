@@ -9,7 +9,7 @@ title: AI transparency statement | Geoscience Australia
 
 Page last updated:3 March 2025
 
-[Home](https://www.ga.gov.au/home) > [About](https://www.ga.gov.au/about) > [Corporate documents](https://www.ga.gov.au/about/corporate-documents) > [AI transparency statement](https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement) AI transparency statement 
+[Home](https://www.ga.gov.au/home) [Geoscience Australia](https://www.ga.gov.au) > [About](https://www.ga.gov.au/about) > [Corporate documents](https://www.ga.gov.au/about/corporate-documents) > [AI transparency statement](https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement) AI transparency statement 
 
 We are dedicated to the responsible, safe, and transparent use of Artificial Intelligence (AI). The Geoscience Australia AI Transparency Statement strives to ensure continuous transparency in our use of AI as we explore opportunities and implement AI capabilities. This commitment aligns with the Digital Transformation Agency's (DTA) [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 

@@ -2,10 +2,18 @@
 abbr: AEC
 agency: Australian Electoral Commission
 source_url: https://www.aec.gov.au/About_AEC/Publications/files/AEC-AI-Transparency-Statement.pdf
-title: AEC AI Transparency Statement
+title: !!python/object/new:pypdf.generic._base.TextStringObject
+  args:
+  - Australian Electoral Commission Artificial Intelligence (AI) Transparency Statement
+  state:
+    _original_bytes: !!binary |
+      QXVzdHJhbGlhbiBFbGVjdG9yYWwgQ29tbWlzc2lvbiBBcnRpZmljaWFsIEludGVsbGlnZW5jZSAo
+      QUkpIFRyYW5zcGFyZW5jeSBTdGF0ZW1lbnQ=
+    autodetect_pdfdocencoding: true
+    autodetect_utf16: false
+    utf16_bom: !!binary ""
 ---
 
-Classification: OFFICIAL 
 Australian Electoral Commission Artificial 
 Intelligence (AI) Transparency Statement  
 Background 
@@ -15,8 +23,10 @@ statement providing information about their use of AI.
 Consistent with the Policy, the AEC has provided the Digital Transformation Agency a link to this 
 statement on the AEC website.  
 The Policy also requires the AEC to nominate an accountable official for the implementation of the 
-Policy. The AEC’s accountable official is the First Assistant Commissioner, Enterprise Transformation 
-Group. 
+Policy. The AEC’s AI Accountable Official is the First Assistant Commissioner, Enterprise 
+Transformation Group. The AEC has also appointed the Chief Information Officer to the role of the 
+Chief AI Officer in recognition of the fundamental shift that generative AI is bringing to government 
+operations and as required in the AI Plan for the Australian Public Service.  
 The AEC’s use of AI 
 We have an internal policy on the use of AI by staff, which staff are required to follow when using 
 AEC approved AI tools. This policy encourages and assists staff to:  
@@ -28,13 +38,23 @@ based on the Pilot Australian Government AI assurance framework.
 The AEC’s use of AI includes: 
 • GitHub Copilot - GitHub Copilot is a generative AI tool for technical staff, designed to 
 improve productivity and efficiency of software application development. 
-• Microsoft Copilot - The AEC is conducting a limited trial of Microsoft 365 Copilot (licensed 
-version) for staff using their AEC corporate accounts to evaluate its potential for supporting 
-corporate tasks and individual productivity tasks. As a prerequisite to using Copilot, AEC staff 
-are required to complete internal training on the use of generative AI. 
+• Microsoft 365 Copilot - The AEC is conducting a limited trial of Microsoft 365 Copilot 
+(licensed version) for staff using their AEC corporate accounts to evaluate its potential for 
+supporting corporate tasks and individual productivity tasks. As a prerequisite to using 
+Microsoft 365 Copilot, AEC staff are required to complete internal training on the use of 
+generative AI. The AEC’s use of Microsoft co-pilot makes certain high-volume, manual tasks 
+quicker – this allows AEC staff to use more of their expertise on higher-value work and make 
+more informed decisions.  
+• Microsoft 365 Copilot Chat - By enabling Microsoft 365 Copilot Chat for all staff, the AEC is 
+enhancing staff productivity and collaboration across teams.  In no way does the AEC’s use of 
+Copilot replace AEC staff, their expertise or thorough consideration of their work. Protections 
+are also in place to ensure it is a secure environment – it operates within Microsoft 365’s 
+enterprise grade security controls and it is not used to train AI models. 
 • Other – Some AEC staff have access to assistive and adaptive technologies such as  
 speech-to-text software along with a limited number of staff in our graphical design area who 
 use AI to generate educational images. 
+Key election operations – including voting and the counting process – are undertaken manually, in 
+accordance with electoral law.  
 The AEC uses AI in the following domain and usage pattern: 
 • Domain: Corporate and enabling. The AEC’s current use relates to supporting corporate 
 functions and improving operational efficiency. 
@@ -43,9 +63,6 @@ purposes. This includes summarising and analysing data and information, automati
 reducing time spent on administrative tasks and supporting software application development. 
 More information about usage patterns and domains is available at Classification system for AI use | 
 digital.gov.au 
-
-OFFICIAL 
- 
 Identifying and protecting against risks to electoral integrity 
 The AEC acknowledges the transformative potential of AI for society and government, including 
 operational efficiencies and enhanced data analysis. The 2024 Australian Government trial of 
@@ -78,15 +95,13 @@ Committee.
 Investment Committee: 
 • security and risk considerations relating to AI use 
 • strategic transformation and investment considerations relating to AI use. 
+ 
 Advisory Audit Committee: 
 • established under the Public Governance, Performance and Accountability Act 2013 (PGPA 
 Act). 
 Compliance with Legislation and Regulation 
 • Privacy Act 1988: Regulates the collection, storage, and use of personal information by AI 
 • Archives Act 1983: Governs records created by AI 
-
-OFFICIAL 
- 
 • Freedom of Information Act 1982: Provides public access to documents created by AI. 
 Oversight and Audits 
 • Compliance overseen by the SEC. 
@@ -95,7 +110,8 @@ Oversight and Audits
 application of the new AI Policy. 
 Updates to this statement 
 Consistent with the Policy for the Responsible Use of AI in Government, this statement will be 
-updated at least once a year, or as the AEC’s approach to AI changes or evolves. This statement 
-was updated on 25 September 2025 and is authorised by AEC’s AI Accountable Officer. 
+updated at least once a year, or when the AEC makes a substantial change to the agency's approach 
+to AI, or when any new factor materially impacts the existing statement's accuracy. This statement 
+was updated on 9 February 2026 and is authorised by AEC’s AI Accountable Officer. 
 Contact 
 Enquires may be directed to media@aec.gov.au

@@ -20,15 +20,15 @@ We will be transparent in our assessment, preparation, engagement, adoption, mon
 
 ### Scope and Usage
 
-Currently, the Office uses AI to support security monitoring of its ICT systems.
+Currently, the Office uses AI for the following activities:
 
-This AI is embedded into the monitoring software we use, with access limited to ICT and Cyber Security personnel that are suitably cleared, trained, and have a need to know and need to access the monitoring system.
+  1. Support security monitoring of its ICT systems. This AI is embedded into the monitoring software we use, with access limited to ICT and Cyber Security personnel that are suitably cleared, trained, and have a need to know and need to access the monitoring system. No direct public access.
+  2. AI Assistants to support code completion and programming. This AI is used to assist with developing, configuring, maintaining and testing commercial software the Office uses. Access is limited to digital specialists with suitable ICT and Data skills. The use of these AI Coding Assistants is only for approved use cases of the Office’s system. All Human and AI assisted coding and system development, must undergo testing to ensure accuracy before being implement as part of the Office technical change management processes. The public does not currently access systems that are supported by these tools.
+  3. Use of Azure AI Text to Speech to support the creation of internal training materials based on a precise human generated text script. Access is limited to digital specialists with suitable ICT and Data skills.
 
-The Office has recently completed pilots of two Microsoft AI capabilities – Microsoft Co-Pilot and Microsoft Azure AI services.
+The Office has also completed pilots of two Microsoft AI capabilities – Microsoft Co-Pilot and Microsoft Azure AI services. The Azure AI pilot, within the Office secure IT environment, tested the feasibility of using Azure AI services to summarise written complaints for decision makers to review in order to process them.
 
-The Azure AI pilot, within the Office secure IT environment, tested the feasibility of using Azure AI services to summarise written complaints for decision makers to review in order to process them.
-
-If we do implement any additional AI use cases and technologies, we will update this statement to outline our use, with a summary of
+If we do implement any additional AI use cases and technologies, we will update this statement to outline our use, with a summary of:
 
   * why the Office is using AI
   * the legislative authority for the use of AI
@@ -40,7 +40,7 @@ If we do implement any additional AI use cases and technologies, we will update 
   * how the use complies with administrative law principles, is consistent with human rights obligations, applicable legislation including the [Privacy Act 1988](https://www.legislation.gov.au/C2004A03712/latest/text) and the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au)
   * compliance with each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) _._
 
-The Office does not currently use or intend to use AI to make discretionary decisions in accordance with the best practices set out in the Office’s [Automated Decision-making Better Practice Guide](https://www.ombudsman.gov.au/__data/assets/pdf_file/0025/317437/Automated-Decision-Making-Better-Practice-Guide-March-2025.pdf).
+The Office does not currently use or intend to use AI to make discretionary decisions in accordance with the best practices set out in the Office’s [Automated Decision-making Better Practice Guide](https://www.ombudsman.gov.au/__data/assets/pdf_file/0029/288236/OMB1188-Automated-Decision-Making-Report_Final-A1898885.pdf).
 
   
   
@@ -67,8 +67,6 @@ We have processes to ensure:
 **Accountable Officials**  
 The Chief Operating Officer and Chief Information Officer are the designated AI Accountable Officials.
 
-****
-
 **Transparency Statement Updates**  
 This statement will be reviewed annually or when we change our AI use cases and usage.
 
@@ -88,7 +86,8 @@ For questions about this statement or for further information on the Office’s 
 
 **Date**| **Note**  
 ---|---  
-26 February 2025| Initial release.  
+27 February 2025| Initial release.  
+20 December 2025| Add AI Assistant for Code Completion and Programming Usage and Text to Speech for training materials.  
   
 [1] [Explanatory memorandum on the updated OECD definition of an AI system](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html)
 

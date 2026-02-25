@@ -6,7 +6,7 @@ title: Artificial Intelligence (AI) Transparency Statement - Department of Educa
   Australian Government
 ---
 
-[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=13793&lang=en_au&readid=main-content&url=https%3A%2F%2Fwww.education.gov.au%2Fabout-department%2Fcorporate-reporting%2Fartificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
+[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=13793&lang=en_au&readid=main-content&url=https%3A//www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
 
 #  Artificial Intelligence (AI) Transparency Statement 
 
@@ -56,7 +56,7 @@ The department has appointed two Accountable Officers for the use of AI. They ar
 
 **Hamish McDonald,** **First Assistant Secretary, Strategy, Data and Measurement**
 
-The department will periodically review other measures, including these governance arrangements and this transparency statement, to ensure that the department remains compliant with all requirements for the [Policy for responsible use of AI in government](https://digital.gov.au/ai/policy).
+The department will periodically review other measures, including these governance arrangements and this transparency statement, to ensure that the department remains compliant with all requirements for the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai).
 
 ## What we won’t use AI for
 

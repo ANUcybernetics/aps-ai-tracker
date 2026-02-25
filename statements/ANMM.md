@@ -2,160 +2,209 @@
 abbr: ANMM
 agency: Australian National Maritime Museum
 source_url: https://www.sea.museum/en/about/reports-policies-and-plans
-title: Reports, policies and plans | Australian National Maritime Museum
+title: Governance | Australian National Maritime Museum
 ---
 
-![photo of colourful projection on the side of the museum and navy destroyer at night, with multicoloured reflections on the water. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fultra_horizontal%2Fpublic%2F2024-08%2Fmaritimevivid-frame03_master.jpg%3Fitok%3DC3v_DW4y&w=3840&q=75)
+![Photo showing a museum gallery with small wooden sailing ships. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fultra_horizontal%2Fpublic%2Ffotoweb%2F2024-09%2FANMM12_0702002.TIF%3Fitok%3DsnEmy0qN&w=3840&q=75)
 
-![photo of colourful projection on the side of the museum and navy destroyer at night, with multicoloured reflections on the water. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2F2024-08%2Fmaritimevivid-frame03_master.jpg%3Fitok%3DJBMFUjTQ&w=3840&q=80)
+![Photo showing a museum gallery with small wooden sailing ships. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2Ffotoweb%2F2024-09%2FANMM12_0702002.TIF%3Fitok%3D1SuHSIjK&w=3840&q=80)
 
-# Reports, policies and plansReports, policies and plans
+# GovernanceGovernance
 
-## Strategic framework
+## The Australian National Maritime Museum connects Australians with the past, present and future of our oceans and waterways. 
 
-Download the [2023-27 Strategic Framework](https://cms-web.seamuseum.net/sites/default/files/2024-08/anmm-strategic-framework-for-online-v2.pdf).
+The museum is committed to meeting the needs and requirements of Government, our visitors and stakeholders.
 
-## Corporate plan
+This page outlines the governance systems and processes at the museum. 
 
-Download the [2025-26 Corporate plan](https://cms-web.seamuseum.net/sites/default/files/2025-08/corporate-plan-2025-26.pdf).
+## Legislation and Government
 
-## Annual reports
+The museum is a Corporate Commonwealth Entity within the Department of Infrastructure, Transport, Regional Development, Communications, Sport and the Arts.
 
-Download and read the museum's annual reports.
+This section outlines the key pieces of legislation which define the functions and activities of the museum. 
 
-2024-2025 
+Australian National Maritime Museum Act 1990 
 
-2023-2024 
+Public Governance, Performance and Accountability Act 2013 
 
-2022-2023 
+Public Service Act 1999 
 
-2021-2022 
+Statement of expectations 
 
-2020-2021 
+Statement of intent 
 
-2019-2020 
+## Council and committees 
 
-2018-2019 
+[![Photo taken looking up at a white lighthouse and a clear blue sky. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2Ffotoweb%2F2025-12%2FANMM14_0801006.jpg%3Fitok%3D8jCEUC5c&w=3840&q=75)](https://www.sea.museum/en/about/governance/museum-council "Museum Council")
 
-2017-2018 
+pages
 
-2016-2017 
+### [Museum Council](https://www.sea.museum/en/about/governance/museum-council)
 
-2015-2016 
+[![Photo showing a close up of a wooden boat's mast, ropes and pulleys with a blue sky behind. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2Ffotoweb%2F2024-08%2FANMM07_0701006.JPG%3Fitok%3DkEOFX9SQ&w=3840&q=75)](https://www.sea.museum/en/about/governance/audit-finance-and-risk-committee "Audit Finance and Risk Committee")
 
-2014-2015 
+pages
 
-2013-2014 
+### [Audit Finance and Risk Committee](https://www.sea.museum/en/about/governance/audit-finance-and-risk-committee)
 
-## APS Census
+[![Photo of a projection artwork in a museum gallery](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2Ffotoweb%2F2025-12%2FANMM0624_SchoolTours_0031.jpg%3Fitok%3DjniPQeXR&w=3840&q=75)](https://www.sea.museum/en/about/governance/first-nations-advisory-committee "First Nations Advisory Committee")
 
-**2025 APS Employee Survey Results & Action Plan – Coming soon**
+pages
 
-Download the [2024 APS Employee Survey Results](https://cms-web.seamuseum.net/sites/default/files/2024-11/aps01807-anmm-redacted.pdf)
+### [First Nations Advisory Committee](https://www.sea.museum/en/about/governance/first-nations-advisory-committee)
 
-Download the [2024 APS Census Action Plan](https://cms-web.seamuseum.net/sites/default/files/2024-11/2024-census-action-plan-2024-for-website.pdf)
+## Reports and plans
 
-Download the [2023 APS Employee Survey Results](https://cms-web.seamuseum.net/sites/default/files/2024-10/2023-aps-employee-survey-results.pdf)
+Strategic Framework 
 
-Download the [2023 APS Census Action Plan](https://cms-web.seamuseum.net/sites/default/files/2024-10/2023-anmm-census-action-plan.pdf)
+Corporate Plan 
 
-## Procedures for determining breaches of the APS Code of Conduct 
+Annual reports 
 
-[Download](https://cms-web.seamuseum.net/sites/default/files/2025-06/procedures-for-determining-breaches-of-the-code-of-conduct_9-april-2025.pdf)
+APS Census and action plan 
 
-## Privacy policy
+Procedures for determining breaches of the APS Code of conduct 
 
-As a Commonwealth Government agency, the Museum is obliged to comply with the Privacy Act 1988 (Cth) (Privacy Act).
+AI Transparency Statement 
 
-All information and images on this website are the copyright of the Australian National Maritime Museum and may not be reproduced without the written consent of the museum.
+Disability Inclusion Action Plan 2024-2027 
 
-The privacy of your personal information is important to us and your name, contact details and other information will not be provided to any other person or organisation without your knowledge and consent unless required by law.
+Reconciliation Action Plan 
 
-Please contact us to update your details if your name, address or phone number changes. You may request that your details are removed from our database and mailing lists at any time.
+Information Publication Plan 
 
-[Download PDF](https://cms-web.seamuseum.net/sites/default/files/2024-09/anmm-privacy-policy-2023.pdf)
+## Policies and procedures
 
-[Read online](https://www.sea.museum/en/about/corporate-information/legals/privacy/privacy-policy)
+[Child safety and wellbeing policy](https://www.sea.museum/en/media/4340)
 
-[![Photo of an old, metal key on a white background.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fvertical%2Fpublic%2F2024-11%2F00008355_001-copy-2_3.jpg%3Fitok%3DWVbjNycS&w=3840&q=75)](https://www.sea.museum/en/about/corporate-information/legals/privacy/privacy-policy)
+[Collection development policy framework and priorities](https://www.sea.museum/en/media/3392)
+
+[Complaints handling procedure](https://www.sea.museum/en/media/3341)
+
+[Enterprise Agreement 2024-2027](https://www.sea.museum/en/media/1182)
+
+[Investment strategy policy ](https://www.sea.museum/en/media/3393)
+
+[Partnership and sponsorship policy](https://www.sea.museum/en/media/4341)
+
+[Privacy policy](https://www.sea.museum/en/media/1964)
+
+[Social media policy](https://www.sea.museum/en/media/4338)
+
+[Volunteer policy](https://www.sea.museum/en/media/4332)
+
+[Work health and safety policy](https://www.sea.museum/en/media/4339)
+
+For further information or to request access to other museum policies, please email [anmmcoord@sea.museum](mailto:anmmcoord@sea.museum)
+
+![Photo showing two, older men who are museum volunteers, standing behind a model boat. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM0824_Signals_009.jpg%3Fitok%3DF5eD6lYH&w=3840&q=75)
+
+Photo by: Jasmine Poole
+
+![Photo showing people walking around, outside a museum building. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-10%2FANMM_072025_SchHols_020.jpg%3Fitok%3DQJRKcLix&w=3840&q=75)
+
+Photo by: Anthony Smith Media
+
+![Group of school students and a museum educator standing outside in the sun, onboard a wooden tallship.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2024-11%2FANMM0624_SchoolTours_0833.jpg%3Fitok%3D0E4n8mo9&w=3840&q=75)
+
+Photo by: Lauren Trompp
+
+![Photo showing hands touching small sculptures in the shapes of sea creatures, made from recycled fishing line.  ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2024-08%2FANMM0724_CoC_156.jpeg%3Fitok%3DqjbaLqkG&w=3840&q=75)
+
+Photo by: Rhiannon Hopley
+
+![Photo showing a public talk. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM_BigBlueIdeas_Aug14_203.jpg%3Fitok%3DAP9hYGTW&w=3840&q=75)
+
+Photo by: Brendon Thorne
+
+![Photo showing 2 people viewing a projection artwork in a museum.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANNM0724_FirstNationsEvent_104.jpg%3Fitok%3DSrt0bpFQ&w=3840&q=75)
+
+Photo by: Marinco Kojdanovski
+
+![Photo showing a group of young children sitting on the ground listening to 2 young adults telling a story.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FRHPD-ANMM-SchoolHolidays-Oct24-032-HR.jpg%3Fitok%3DYuiCn0_n&w=3840&q=75)
+
+Photo by: Rhiannon Hopley
+
+![Photo of 2 people carrying a large box. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM0725_Barangaroo%2520Boat%2520Project_328.jpg%3Fitok%3DrG50N8jb&w=3840&q=75)
+
+Photo by: Marinco Kojdanovshi
+
+1 \- 8
+
+## Access to information
+
+### Freedom of Information
+
+The Australian National Maritime Museum is a Commonwealth statutory authority and makes information about its activities available to the public in accordance with the Freedom of Information Act, 1982 (FOI Act).
+
+[Freedom of Information](https://www.sea.museum/en/about/freedom-of-information)
+
+### Published File List
+
+File list for [1 July to 31 December 2025](https://cms-web.seamuseum.net/sites/default/files/2026-02/file-list-for-1-july-to-31-dec-2025.pdf) (pdf, 71kb)   
+File list for [1 January to 30 June 2025](https://cms-web.seamuseum.net/sites/default/files/2025-08/file-list-for-1-jan-to-30-june-2025.pdf) (pdf, 73kb)
+
+File list for [1 July to 31 December 2024](https://cms-web.seamuseum.net/sites/default/files/2025-02/file-list-for-1-july-to-31-dec-2024.pdf) (pdf, 71kb)  
+File list for [1 January to 30 June 2024](https://cms-web.seamuseum.net/sites/default/files/2025-02/file-list-for-1-jan-to-30-june-2024.pdf) (pdf, 76kb)
+
+File list for [1 July to 31 December 2023](https://cms-web.seamuseum.net/sites/default/files/2024-10/file-list-for-1-july-to-31-dec-2023.pdf) (pdf, 70kb)  
+File list for [1 January to 30 June 2023](https://cms-web.seamuseum.net/sites/default/files/2024-10/file-list-for-1-jan-to-30-june-2023.pdf) (pdf, 436kb)
+
+### Public Interest Disclosures
+
+The Public Interest Disclosure Act 2013 (PID Act) which commenced on 15 January 2014 promotes integrity and accountability in the Australian public sector by encouraging the disclosure of information about suspected wrongdoing, protecting people who make disclosures and requiring agencies to take action.
+
+[Public Interest Disclosures](https://www.sea.museum/en/about/governance/public-interest-disclosures)
+
+### Gifts and benefits register 
+
+Agency heads must publish a register of gifts and benefits they accept on their agency website on a quarterly basis.
+
+[Gifts and benefits register](https://www.sea.museum/en/about/governance/gifts-and-benefits-register)
+
+## Contracts
+
+Under the Senate Order for entity contracts, the following document sets out contracts entered into by the Australian National Maritime Museum that provide for a consideration to the value of $100,000 or more (GST inclusive)
+
+[Entity Contracts listing for 1 Jan to 30 Dec 2025](https://cms-web.seamuseum.net/sites/default/files/2026-02/reportable-contracts-list-jan-dec-2025.pdf)
 
 ## Privacy Impact Assessment Register
 
 Under section 15(1) of the Privacy (Australian Government Agencies – Governance) APP Code 2017 (Privacy Code), the museum is required to “maintain a register of the Privacy Impact Assessments (PIAs) it conducts. An agency must publish the register, or a version of the register, on its website”.
 
-The museum’s PIA Register is shown below.
-
+The museum’s PIA Register is shown below.  
 ID: PIA001  
 Project Name: Welcome Wall 2.0  
-Date: 16/1/2019 
+Date: 16/1/2019   
 
-## Policies
+![Photo showing a museum space with a group of seated children listening to a story book in front of a large projection screen](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FRHPD-ANMM-SchoolHolidays-Oct24-036-HR.jpg%3Fitok%3DZOm8ePoT&w=3840&q=75)
 
-Download the [Collection Development Policy Framework and Priorities](https://cms-web.seamuseum.net/sites/default/files/2025-01/collection-development-policy-framework-priorities.pdf)
+Photo by: Rhiannon Hopley
 
-Download the [Investment Strategy Policy ](https://cms-web.seamuseum.net/sites/default/files/2025-01/investment-strategy-policy-september-2024.pdf)
+![Photo showing a stage, with 5 people having a public discussion. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM_BigBlueIdeas_Aug14_211.jpg%3Fitok%3D-ryuWi09&w=3840&q=75)
 
-## AI Transparency Statement
+Photo by: Brendon Thorne
 
-[Download](https://cms-web.seamuseum.net/sites/default/files/2025-06/ai-transparency-statement-april-2025.pdf)
+![Photo showing an external view of the museum, with a navy warship. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM_072025_SchHols_322.jpg%3Fitok%3DeFiG4SmB&w=3840&q=75)
 
-## 2024 - 2027 Disability Inclusion Action Plan 
+Photo by: Marinco Kojdanovski
 
-The Australian National Maritime Museum’s Disability Inclusion Action Plan (DIAP) 2024 – 2027 sets out clear actions to inspire positive change to empower and engage audiences, collaborators, and Museum workers so that all Australians can connect with conversations about the unique role of our waterways and oceans in the past, present and future of this nation shaped by sea.
+![Photo taken inside the museum, with a group of students pointing up at a silver sculpture of a shark.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-04%2FANMM0624_SchoolTours_0454.jpg%3Fitok%3DkRxxukfW&w=3840&q=75)
 
-Download the [Disability Inclusion Action Plan](https://cms-web.seamuseum.net/sites/default/files/2024-08/anmm-disability-inclusion-action-plan-2024-27.pdf)
+Photo by: Lauren Trompp
 
-[Accessibility at the museum](https://www.sea.museum/en/visit/plan-your-visit/accessibility)
+![Photo of 2 male museum volunteers, with a larger group of people in the background in front of the museum building. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FANMM22_0603006%2520Volunteers.jpg%3Fitok%3D4Kp0YuIM&w=3840&q=75)
 
-[![Boy touching a wooden pole, with a glowing orange projection on the pole and in the background.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fsquare%2Fpublic%2F2024-08%2Fanmm0722_pp_126-copy.jpg%3Fitok%3DgIeKcW1s&w=3840&q=75)](https://www.sea.museum/en/visit/plan-your-visit/accessibility)
+Photo by: Cassandra Hannagan Photography
 
-## Reconciliation Action Plan
+![2 Children seated at a table drawing with coloured pencils.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2024-12%2FDSC07495%2520%25282%2529.JPG%3Fitok%3Dmrhpo7sc&w=3840&q=75)
 
-The museum's Reconciliation Action Plan (RAP), a strategic plan which sets out the museum's commitment to recognise, appreciate and celebrate our country's rich and unique Aboriginal and Torres Strait islander cultures and cultural heritages across every facet of the organisation.
+![Photo showing a museum exhibition space](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FBrian_Robinson_Ur_Wayii_99.jpg%3Fitok%3DqqXr-00f&w=3840&q=75)
 
-Download the [Reconciliation Action Plan](https://cms-web.seamuseum.net/sites/default/files/2024-09/reconciliation-action-plan-2021-23.pdf)
+Photo by: Marinco Kojdanovski
 
-![Single block print in black ink printed on white paper. It depicts eight masked men in a canoe. Three are standing, two at the bow and one at stern with five men seated in between. The background is an intricate pattern depicting foliage with a pelican flying near the bow.](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fvertical%2Fpublic%2Ffotoweb%2F2024-09%2F00054665.tif.png%3Fitok%3DhPa1JjtV&w=3840&q=75)
+![Photo showing 2 young adults talking to a group of seated children. ](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhorizontal%2Fpublic%2Ffotoweb%2F2025-12%2FRHPD-ANMM-SchoolHolidays-Oct24-025-HR.jpg%3Fitok%3Drwk3bBn9&w=3840&q=75)
 
-## Information Publication Plan
+Photo by: Rhiannon Hopley
 
-The Australian National Maritime Museum’s Information Publication Plan outlines what information the museum proposes to publish, how and to whom the information will be published, and how the requirements of the Freedom Of Information Act are complied with.
-
-The Australian National Maritime Museum (the Museum) is an agency subject to the Freedom of Information Act 1982 (FOI Act) and it is required to comply with its Information Publication Scheme (IPS) provisions.
-
-About this plan 
-
-Purpose 
-
-Objectives 
-
-Establishing and administering the IPS entry 
-
-Structure of the IPS 
-
-Information Required to be Published Under the IPS (S 8(2) 
-
-Other Information to be Published (S 8(4) 
-
-Accessibility under the IPS 
-
-IPS compliance review (S 8F) and other reviews 
-
-Contacting the Museum About its Information and IPS Entry 
-
-## Freedom of information
-
-[Find out more about FOI requests](https://www.sea.museum/en/about/freedom-of-information)
-
-## Order a Hard Copy
-
-For a copy of published documents, please contact our Publications Manager:
-
-Phone: +61 2 9298 3777  
-Email: [publications@sea.museum](mailto:publications@sea.museum)
-
-![the cover of the strategic framework document, with text over a water background](https://www.sea.museum/_next/image?url=https%3A%2F%2Fcms-web.seamuseum.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Funcropped%2Fpublic%2F2024-08%2Fscreenshot-2024-08-30-104518.png%3Fitok%3DBdZaRBv6&w=3840&q=75)
-
-## Collection Development Policy Framework and Priorities
-
-Download the [Collection Development Policy Framework and Priorities](https://cms-web.seamuseum.net/sites/default/files/2025-01/collection-development-policy-framework-priorities.pdf)
+1 \- 8

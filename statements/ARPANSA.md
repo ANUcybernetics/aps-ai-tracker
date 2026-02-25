@@ -98,6 +98,8 @@ Skip to main content
   * [Work health and safety policy statement](https://www.arpansa.gov.au/about-us/corporate-publications/work-health-and-safety "Work health and safety policy statement")
   * [Quarterly Report series](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-reports "Quarterly Report series")
 
+    * [Quarterly Report - April to June 2025](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-report-series/quarterly-report-april-june-2025 "Quarterly Report - April to June 2025")
+    * [Quarterly Report - January to March 2025](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-report-series/quarterly-report-january-march-2025 "Quarterly Report - January to March 2025")
     * [Quarterly Report - October to December 2024](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-report-series/quarterly-report-october-december-2024 "Quarterly Report - October to December 2024")
     * [Quarterly Report - July to September 2024](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-report-series/quarterly-report-july-september-2024 "Quarterly Report - July to September 2024")
     * [Quarterly Report - April to June 2024](https://www.arpansa.gov.au/about-us/corporate-publications/quarterly-report-series/quarterly-report-april-june-2024 "Quarterly Report - April to June 2024")
