@@ -2,8 +2,10 @@
 abbr: NHFB
 agency: National Health Funding Body
 source_url: https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement
-title: AI Transparency Statement | National Health Funding Body
+title: AI transparency statement | National Health Funding Body
 ---
+
+[Digital Transformation Agency policy(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy) for responsible AI use sets mandatory requirements for the National Health Funding Body's accountable official and transparency statement.
 
 - Background
 
@@ -21,7 +23,7 @@ The purpose of this statement is to explain how the NHFB intends to use AI and t
 
 AI technology was agreed by Organisation for Economic Cooperation and Development (OECD) member countries in November 2023 to be defined as “a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.” The department, along with other Commonwealth agencies, have adopted the OECD definition of AI as outlined in the [Policy for the responsible use of AI in government(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf).
 
-## Transparency Statement
+## AI transparency statement
 
 ### Why we use AI
 
@@ -72,7 +74,7 @@ The Deputy Chief Executive Officer is appointed as our AI Accountable Official f
 
 If you have any questions about this statement or the NHFB’s use of AI you can contact our AI Accountable Official as follows:
 
-Email: [enquires@nhfb.gov.au](mailto:enquires@nhfb.gov.au)
+Email: [nhfb.enquiries@nhfb.gov.au](mailto:nhfb.enquiries@nhfb.gov.au)
 
 Postal Address:
 
@@ -82,28 +84,25 @@ GPO Box 1252\
 CANBERRA ACT 2601\
 Australia
 
+Fri, 2025-02-28 12:00
+
 Skip to main content
 
 - [About us](https://www.publichospitalfunding.gov.au/about-us "About us")
 
-  - [Our vision](https://www.publichospitalfunding.gov.au/about-us/strategic-overview "Our vision")
+  - [Who we are](https://www.publichospitalfunding.gov.au/about-us/who-we-are "Who we are")
 
-  - [Our purpose](https://www.publichospitalfunding.gov.au/about-us/our-mission "Our purpose")
+  - [What we do](https://www.publichospitalfunding.gov.au/about-us/what-we-do "What we do")
 
     - [Stakeholders and partners](https://www.publichospitalfunding.gov.au/about-us/stakeholders-and-partners "Stakeholders and partners")
+    - [NHR Agreement](https://www.publichospitalfunding.gov.au/about-us/nhr-agreement "NHR Agreement")
 
   - [Our teams](https://www.publichospitalfunding.gov.au/about-us/our-people "Our teams")
 
     - [Leadership team](https://www.publichospitalfunding.gov.au/about-us/leadership-team "Leadership team")
     - [Organisational structure](https://www.publichospitalfunding.gov.au/about-us/organisational-structure "Organisational structure")
 
-  - [NHR Agreement](https://www.publichospitalfunding.gov.au/about-us/nhr-agreement "NHR Agreement")
-
   - [Corporate governance](https://www.publichospitalfunding.gov.au/about-us/corporate-governance "Corporate governance")
-
-    - [Artificial Intelligence](https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement "Artificial Intelligence")
-    - [Freedom of information](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/freedom-information "Freedom of information")
-    - [Senate Orders and directions](https://www.publichospitalfunding.gov.au/about-us/compliance-reporting/senate-orders-and-directions "Senate Orders and directions")
 
 - [Contact us](https://www.publichospitalfunding.gov.au/contact-us "Contact us")
 
