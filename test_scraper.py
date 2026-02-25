@@ -9,6 +9,7 @@ Usage:
 """
 
 import asyncio
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -314,7 +315,7 @@ def test_save_statement_includes_final_url_on_redirect():
 
 
 def test_save_raw_html():
-    """Test save_raw saves HTML content correctly."""
+    """Test save_raw saves HTML content and metadata correctly."""
     agency = Agency(name="Test Agency", abbr="TEST-HTML", url="https://example.com")
 
     html_content = b"<html><body><h1>Test</h1></body></html>"
@@ -322,7 +323,7 @@ def test_save_raw_html():
         "content": html_content,
         "content_type": "text/html; charset=utf-8",
         "status_code": 200,
-        "final_url": "https://example.com",
+        "final_url": "https://example.com/final",
         "error": None,
     }
 
@@ -335,9 +336,13 @@ def test_save_raw_html():
         assert filepath.exists()
         assert filepath.read_bytes() == html_content
 
+        meta = json.loads((raw_dir / "TEST-HTML.meta.json").read_text())
+        assert meta["final_url"] == "https://example.com/final"
+        assert meta["content_type"] == "text/html; charset=utf-8"
+
 
 def test_save_raw_pdf():
-    """Test save_raw saves PDF content correctly."""
+    """Test save_raw saves PDF content and metadata correctly."""
     agency = Agency(name="Test Agency", abbr="TEST-PDF", url="https://example.com")
 
     pdf_content = b"%PDF-1.4 fake pdf content"
@@ -357,6 +362,10 @@ def test_save_raw_pdf():
         filepath = raw_dir / "TEST-PDF.pdf"
         assert filepath.exists()
         assert filepath.read_bytes() == pdf_content
+
+        meta = json.loads((raw_dir / "TEST-PDF.meta.json").read_text())
+        assert meta["final_url"] == "https://example.com"
+        assert meta["content_type"] == "application/pdf"
 
 
 def test_save_raw_handles_error():
@@ -405,11 +414,32 @@ def test_process_raw_html():
         assert result["error"] is None
         assert result["status_code"] == 200
         assert result["title"] == "Test Title"
+        assert result["final_url"] == agency.url
         assert result["markdown"] is not None
         markdown_content = result["markdown"]
         assert isinstance(markdown_content, str)
         assert "Test Heading" in markdown_content
         assert "Test paragraph content" in markdown_content
+
+
+def test_process_raw_uses_metadata_final_url():
+    """Test process_raw reads final_url from metadata file."""
+    agency = Agency(name="Test Agency", abbr="TEST-META", url="https://example.com/old")
+
+    html_content = "<html><body><main><p>Content</p></main></body></html>"
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        (raw_dir / "TEST-META.html").write_text(html_content, encoding="utf-8")
+        (raw_dir / "TEST-META.meta.json").write_text(
+            json.dumps({"final_url": "https://example.com/new", "content_type": "text/html"}),
+            encoding="utf-8",
+        )
+
+        result = process_raw(agency, raw_dir)
+
+        assert result["error"] is None
+        assert result["final_url"] == "https://example.com/new"
 
 
 def test_process_raw_missing_file():
