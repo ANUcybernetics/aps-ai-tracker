@@ -38,7 +38,7 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Code patterns
 
-- Uses `NamedTuple` for data classes (Agency)
+- Uses `dataclass` for data classes (Agency)
 - Type hints throughout
 - Returns dicts with explicit `str | int | None` types
 - Handles both HTML and PDF sources
