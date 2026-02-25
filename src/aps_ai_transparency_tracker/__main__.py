@@ -71,7 +71,8 @@ def main() -> int:
         f"{manual_count} manual, {skipped_count} skipped"
     )
 
-    return 0 if process_error == 0 else 1
+    fetch_failures = len(auto_agencies) - fetch_success
+    return 0 if fetch_failures == 0 and process_error == 0 else 1
 
 
 if __name__ == "__main__":

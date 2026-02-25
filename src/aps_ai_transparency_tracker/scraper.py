@@ -1,6 +1,7 @@
 """Core scraping functionality for AI transparency statements."""
 
 import asyncio
+import json
 import logging
 import re
 import tomllib
@@ -244,7 +245,7 @@ async def fetch_raw_async(
 
 
 def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
-    """Save raw content to file."""
+    """Save raw content and metadata to files."""
     if data["error"] or not data["content"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
         return False
@@ -256,13 +257,30 @@ def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
     filepath = raw_dir / f"{agency.abbr}.{extension}"
 
     filepath.write_bytes(data["content"])
+
+    meta = {"final_url": data["final_url"], "content_type": data["content_type"]}
+    (raw_dir / f"{agency.abbr}.meta.json").write_text(
+        json.dumps(meta), encoding="utf-8"
+    )
+
     logger.info(f"Saved raw content to {agency.abbr}.{extension}")
     return True
+
+
+def _load_raw_meta(agency: Agency, raw_dir: Path) -> dict[str, str | None]:
+    """Load metadata saved alongside a raw file."""
+    meta_path = raw_dir / f"{agency.abbr}.meta.json"
+    if meta_path.exists():
+        return json.loads(meta_path.read_text(encoding="utf-8"))
+    return {"final_url": agency.url, "content_type": None}
 
 
 def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
     """Process raw content from file into markdown."""
     logger.info(f"Processing raw content for {agency.name}...")
+
+    meta = _load_raw_meta(agency, raw_dir)
+    final_url = meta["final_url"] or agency.url
 
     pdf_path = raw_dir / f"{agency.abbr}.pdf"
     html_path = raw_dir / f"{agency.abbr}.html"
@@ -277,7 +295,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "title": title,
                 "markdown": markdown.strip() if markdown else None,
                 "status_code": 200,
-                "final_url": agency.url,
+                "final_url": final_url,
                 "error": None,
             }
         except Exception as e:
@@ -286,7 +304,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "title": None,
                 "markdown": None,
                 "status_code": None,
-                "final_url": agency.url,
+                "final_url": final_url,
                 "error": str(e),
             }
     elif html_path.exists():
@@ -296,8 +314,8 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             title = (
                 soup.title.string.strip() if soup.title and soup.title.string else None
             )
-            if not title and soup.find("h1"):
-                title = soup.find("h1").get_text(strip=True)
+            if not title and (h1 := soup.find("h1")):
+                title = h1.get_text(strip=True)
             markdown = clean_html_to_markdown(
                 extract_main_content(soup, agency.selector), agency.url or ""
             )
@@ -306,7 +324,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "title": title,
                 "markdown": markdown.strip() if markdown else None,
                 "status_code": 200,
-                "final_url": agency.url,
+                "final_url": final_url,
                 "error": None,
             }
         except Exception as e:
@@ -315,7 +333,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "title": None,
                 "markdown": None,
                 "status_code": None,
-                "final_url": agency.url,
+                "final_url": final_url,
                 "error": str(e),
             }
     else:
@@ -323,7 +341,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             "title": None,
             "markdown": None,
             "status_code": None,
-            "final_url": agency.url,
+            "final_url": final_url,
             "error": f"No raw file found for {agency.abbr}",
         }
 
@@ -342,7 +360,7 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     filepath = output_dir / f"{agency.abbr}.md"
 
     # Check for significant content shrinkage compared to existing file
-    new_markdown = str(data["markdown"])
+    new_markdown = data["markdown"]
     existing_markdown = extract_markdown_from_statement(filepath)
 
     if existing_markdown is not None:
@@ -392,15 +410,10 @@ async def fetch_all_raw(
         limits=httpx.Limits(max_connections=5, max_keepalive_connections=5),
     ) as client:
         agencies_with_urls = [a for a in agencies if a.url is not None]
-        semaphore = asyncio.Semaphore(5)
-
-        async def fetch_with_semaphore(agency: Agency) -> RawFetchResult:
-            async with semaphore:
-                return await fetch_raw_async(agency, client)
 
         async with asyncio.TaskGroup() as tg:
             tasks = [
-                tg.create_task(fetch_with_semaphore(agency))
+                tg.create_task(fetch_raw_async(agency, client))
                 for agency in agencies_with_urls
             ]
 
