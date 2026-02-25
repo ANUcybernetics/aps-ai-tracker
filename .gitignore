@@ -37,5 +37,10 @@ env/
 # uv
 .uv/
 
+# Secrets
+.env
+.envrc
+*.pem
+
 # Raw scraped content
 raw/
