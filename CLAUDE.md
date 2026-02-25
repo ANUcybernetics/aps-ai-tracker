@@ -43,3 +43,7 @@ This is a Python web scraping project using uv for dependency management.
 - Returns dicts with explicit `str | int | None` types
 - Handles both HTML and PDF sources
 - Follows structured logging with stdlib `logging`
+
+## Version control
+
+Always use `jj` for version control in this repo, never bare `git`.
