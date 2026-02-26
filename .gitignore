@@ -44,3 +44,6 @@ env/
 
 # Raw scraped content
 raw/
+
+# Cron logs
+logs/

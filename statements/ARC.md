@@ -1,6 +1,7 @@
 ---
 abbr: ARC
 agency: Australian Research Council
+final_url: https://www.arc.gov.au/ai-transparency
 source_url: https://www.arc.gov.au/about-arc/arc-strategies-and-policies/ai-transparency
 title: AI Transparency | Australian Research Council
 ---
