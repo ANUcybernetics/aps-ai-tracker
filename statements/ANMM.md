@@ -1,6 +1,7 @@
 ---
 abbr: ANMM
 agency: Australian National Maritime Museum
+final_url: https://www.sea.museum/en/about/governance
 source_url: https://www.sea.museum/en/about/reports-policies-and-plans
 title: Governance | Australian National Maritime Museum
 ---

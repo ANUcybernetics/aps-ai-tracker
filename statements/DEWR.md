@@ -1,6 +1,7 @@
 ---
 abbr: DEWR
 agency: Department of Employment and Workplace Relations
+final_url: https://www.dewr.gov.au/artificial-intelligence-dewr/dewr-ai-transparency-statement
 source_url: https://www.dewr.gov.au/about-department/corporate-reporting/dewr-ai-transparency-statement
 title: DEWR AI Transparency Statement - Department of Employment and Workplace Relations,
   Australian Government
@@ -56,5 +57,3 @@ DEWR safeguards against risks and ensures responsible AI use through releasing a
 For inquiries or feedback regarding DEWR’s use of AI, please contact us at data[@dewr.gov.au](mailto:data@dewr.gov.au).
 
 ## Review and Updates
-
-It will be reviewed and updated annually or when significant changes occur.
