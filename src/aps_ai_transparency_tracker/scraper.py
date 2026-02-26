@@ -24,6 +24,9 @@ logger = logging.getLogger(__name__)
 # If new content is less than this fraction of old content, warn about possible scraping failure
 CONTENT_SHRINKAGE_THRESHOLD = 0.5
 
+AI_KEYWORD_RE = re.compile(r"(?i)\bAI\b|artificial intelligence")
+AI_KEYWORD_MIN_COUNT = 2
+
 
 @dataclass(frozen=True, slots=True)
 class Agency:
@@ -103,16 +106,41 @@ def clean_html_to_markdown(html_content: str, base_url: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", markdown).strip()
 
 
+_LAST_REVIEWED_RE = re.compile(
+    r"(?m)^.*(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated).*\d{1,2}.*\d{4}.*$\n?",
+    re.IGNORECASE,
+)
+
+_TRAILING_BOILERPLATE_RE = re.compile(
+    r"(?mi)^.*(?:did you find this (?:helpful|useful)\??|rate your experience|"
+    r"share (?:this|on)\b.*(?:facebook|twitter|linkedin)|"
+    r"\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?\s*\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?).*$\n?",
+)
+
+
+def clean_markdown(text: str) -> str:
+    """Strip date stamps and trailing boilerplate from converted markdown."""
+    text = _LAST_REVIEWED_RE.sub("", text)
+    text = _TRAILING_BOILERPLATE_RE.sub("", text)
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
 def remove_boilerplate(element: BeautifulSoup) -> None:
     """Remove common boilerplate elements from HTML."""
     boilerplate_selectors = [
         "nav",
         "header",
         "footer",
+        "aside",
+        "form",
+        "script",
+        "style",
+        "noscript",
         "[role='navigation']",
         "[role='banner']",
         "[role='contentinfo']",
         "[role='complementary']",
+        "[role='form']",
         ".breadcrumb",
         ".breadcrumbs",
         ".navigation",
@@ -122,6 +150,13 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         ".site-footer",
         ".page-header",
         ".page-footer",
+        ".feedback",
+        ".share",
+        ".social-share",
+        ".social-links",
+        ".social-media",
+        ".subscribe",
+        ".newsletter",
         "#header",
         "#footer",
         "#sidebar",
@@ -316,13 +351,15 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             )
             if not title and (h1 := soup.find("h1")):
                 title = h1.get_text(strip=True)
-            markdown = clean_html_to_markdown(
-                extract_main_content(soup, agency.selector), agency.url or ""
+            markdown = clean_markdown(
+                clean_html_to_markdown(
+                    extract_main_content(soup, agency.selector), agency.url or ""
+                )
             )
 
             return {
                 "title": title,
-                "markdown": markdown.strip() if markdown else None,
+                "markdown": markdown or None,
                 "status_code": 200,
                 "final_url": final_url,
                 "error": None,
@@ -375,6 +412,12 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
                 f"({old_len} -> {new_len} chars). "
                 f"This may indicate a scraping failure."
             )
+
+    if len(AI_KEYWORD_RE.findall(new_markdown)) < AI_KEYWORD_MIN_COUNT:
+        logger.warning(
+            f"LOW AI KEYWORD DENSITY for {agency.abbr}: "
+            f"content may not be an AI transparency statement."
+        )
 
     # Use fallback title if none extracted
     title = (
