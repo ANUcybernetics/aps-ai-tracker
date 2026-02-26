@@ -1,6 +1,7 @@
 ---
 abbr: DVA
 agency: Department of Veterans' Affairs
+final_url: https://www.dva.gov.au/about-us/corporate-governance/artificial-intelligence-ai-transparency-statement
 source_url: https://www.dva.gov.au/about/accessing-information/what-can-i-access/corporate-information-access/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Veterans'
   Affairs
@@ -21,8 +22,6 @@ Last updated
   5. Simpler forms of basic computer validation and task automation
   6. Compliance
   7. Review and Contact
-
-On this page 1 - Our Approach to AI 2 - Robust AI Governance 3 - Consultation with the Veteran Community 4 - Adoption of AI in DVA 5 - Simpler forms of basic computer validation and task automation 6 - Compliance 7 - Review and Contact
 
 This statement sets out the Department of Veterans’ Affairs (DVA) approach to the safe, responsible and ethical adoption of artificial intelligence (AI) technology in accordance with the Digital Transformation Agency’s (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
@@ -124,33 +123,3 @@ DVA meets mandatory requirements of the Policy for the responsible use of AI in 
 For enquiries about the DVA AI Transparency Statement or about our adoption and usage of AI, please contact us at [AI@dva.gov.au](mailto:AI@dva.gov.au).  
 
 Back to top
-
-Was this page useful?
-
-YES
-
-NO
-
-Please tell us why you selected 'Yes'?
-
-It was well written
-
-The layout and style made it easy to read
-
-It was helpful to me
-
-The content makes sense
-
-Please tell us why you selected 'No'?
-
-It was poorly written
-
-The layout & style made it difficult to read
-
-It didn't help me
-
-The content wasn't clear enough for me
-
-Something else
-
-Leave this field blank

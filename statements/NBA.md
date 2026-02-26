@@ -1,6 +1,7 @@
 ---
 abbr: NBA
 agency: National Blood Authority
+final_url: https://www.blood.gov.au/artificial-intelligence-ai-transparency-statement
 source_url: https://www.blood.gov.au/nbas-ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | National Blood Authority
 ---
@@ -93,7 +94,5 @@ GitHub| We use GitHub Copilot for software development.| February 2026
 The Chief Information Officer is our AI Accountable Official for the NBA. 
 
 For questions about this statement or the NBA’s use of AI, you can email [ai@blood.gov.au](mailto:ai@blood.gov.au) or see the details on the contact us page of the NBA website.
-
-Last updated: 13 Feb 2026
 
 Back to top

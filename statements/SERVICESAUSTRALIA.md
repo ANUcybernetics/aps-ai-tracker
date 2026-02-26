@@ -1,6 +1,7 @@
 ---
 abbr: SERVICESAUSTRALIA
 agency: Services Australia
+final_url: https://www.servicesaustralia.gov.au/automation-and-artificial-intelligence-transparency-statement?context=22
 source_url: https://www.servicesaustralia.gov.au/automation-and-artificial-intelligence-transparency-statement
 title: Automation and Artificial Intelligence Transparency Statement - About us -
   Services Australia
@@ -73,7 +74,5 @@ We’ve appointed the General Manager, Telecommunication Modernisation, Automati
 ## Who to contact
 
 For enquiries on our adoption and use of automation and AI, please email us at [AI.Accountable.Official@servicesaustralia.gov.au](mailto:AI.Accountable.Official@servicesaustralia.gov.au).
-
-This transparency statement was last updated on 10 October 2025.
 
 [ How we use Artificial Intelligence  We’re using Artificial Intelligence to help make processes more efficient so we can deliver better government services. ](https://www.servicesaustralia.gov.au/how-we-use-artificial-intelligence?context=22)

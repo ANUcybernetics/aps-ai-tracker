@@ -14,7 +14,7 @@ Date published:
 
 Date updated:
 
-26 February 2025
+26 February 2026
 
 ### Share
 
@@ -37,9 +37,9 @@ Our department is supporting Australia to become a leader in developing and adop
 
 Our own adoption of AI adheres to the Voluntary AI Safety Standard, which consists of [10 voluntary guardrails.](https://www.industry.gov.au/publications/voluntary-ai-safety-standard/10-guardrails) These guardrails include transparency and accountability requirements and explain what developers and deployers of AI systems must do to achieve them.
 
-The Digital Transformation Agency’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) came into effect on 1 September 2024. It has a set of requirements for Australian Government agencies to engage with AI in a safe and responsible way.
+The Digital Transformation Agency’s [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy) sets the requirements for Australian Government agencies to engage with AI in a safe and responsible way.
 
-The policy has mandatory requirements about [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials) and [transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). This statement details our implementation of the policy requirements. 
+The policy has mandatory requirements about accountable officials and transparency statements. This statement details our implementation of the policy requirements. 
 
 ## Governance
 
@@ -57,25 +57,29 @@ Our Chief Information Officer is the accountable official responsible for carryi
 
 ## How we use AI
 
-We use a small number of AI tools and functions to improve efficiencies and augment processes. These help staff focus on more complex and meaningful work.
+Our approach uses a number of AI tools to deliver efficiencies and augment processes. These help staff focus on more complex and meaningful work.
 
 The AIGC maintains visibility of AI use and classifies AI use according to the following [usage patterns and domains](https://www.digital.gov.au/policy/ai/resources/use-classification): 
 
-  * **Usage patterns** : supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work. 
+  * **Usage patterns** : supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
   * **Domains** : service delivery, compliance and fraud detection, policy and legal, and corporate and enabling domains. 
 
 We have a policy that guides all staff on: 
 
   * acceptable use of AI in our department 
-  * ethical considerations 
-  * Freedom of Information considerations 
-  * record keeping 
+  * ethical considerations
+  * Freedom of Information considerations
+  * record keeping
   * privacy
   * roles and responsibilities when using AI.
 
 We do not use AI in any instance where the public directly interacts with or feels a significant impact from AI without a human agent. 
 
 Staff review all AI tool outputs and treat them as drafts or starting points for further research, not for decision-making.
+
+**Australian AI Safety Institute**
+
+We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will also support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks. 
 
 ## Our commitment
 
