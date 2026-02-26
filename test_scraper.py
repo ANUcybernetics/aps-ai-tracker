@@ -18,11 +18,13 @@ import yaml
 from bs4 import BeautifulSoup
 
 from aps_ai_transparency_tracker import (
+    AI_KEYWORD_MIN_COUNT,
     CONTENT_SHRINKAGE_THRESHOLD,
     Agency,
     RawFetchResult,
     StatementResult,
     clean_html_to_markdown,
+    clean_markdown,
     extract_main_content,
     extract_markdown_from_statement,
     fetch_all_raw,
@@ -727,3 +729,150 @@ def test_content_shrinkage_threshold_is_reasonable():
 
     # Default of 0.5 means warn if content drops below 50% of original
     assert CONTENT_SHRINKAGE_THRESHOLD == 0.5
+
+
+# Tests for expanded boilerplate removal
+
+
+def test_remove_boilerplate_strips_feedback_forms():
+    """Test that feedback forms, aside, and social blocks are stripped."""
+    html = """
+    <html><body><main>
+        <p>AI transparency content</p>
+        <form><input type="text"><button>Submit</button></form>
+        <aside>Sidebar navigation links</aside>
+        <div class="feedback">Was this page helpful?</div>
+        <div class="social-share">Share on Facebook</div>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "AI transparency content" in content
+    assert "Submit" not in content
+    assert "Sidebar navigation" not in content
+    assert "Was this page helpful" not in content
+    assert "Share on Facebook" not in content
+
+
+def test_remove_boilerplate_strips_script_style():
+    """Test that script, style, and noscript tags are stripped."""
+    html = """
+    <html><body><main>
+        <p>Real content</p>
+        <script>var x = 1;</script>
+        <style>.foo { color: red; }</style>
+        <noscript>Enable JavaScript</noscript>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "Real content" in content
+    assert "var x" not in content
+    assert ".foo" not in content
+    assert "Enable JavaScript" not in content
+
+
+# Tests for clean_markdown
+
+
+def test_clean_markdown_strips_last_reviewed_dates():
+    """Test that date stamp lines are removed from markdown."""
+    text = (
+        "# AI Statement\n\n"
+        "We use AI responsibly.\n\n"
+        "This statement was last reviewed on 15 January 2025.\n\n"
+        "More content here.\n"
+    )
+    result = clean_markdown(text)
+
+    assert "AI Statement" in result
+    assert "We use AI responsibly" in result
+    assert "More content here" in result
+    assert "last reviewed" not in result
+
+
+def test_clean_markdown_strips_various_date_formats():
+    """Test multiple date line formats are stripped."""
+    cases = [
+        "Last updated: 3 March 2025\n",
+        "Date published: 12 June 2024\n",
+        "Page last updated 1 February 2025\n",
+        "Last modified on 22 December 2024\n",
+    ]
+    for line in cases:
+        result = clean_markdown(f"Content before.\n\n{line}\nContent after.")
+        assert "Content before" in result
+        assert "Content after" in result
+        assert "202" not in result, f"Date line not stripped: {line!r}"
+
+
+def test_clean_markdown_strips_trailing_widgets():
+    """Test that feedback and social share boilerplate is stripped."""
+    text = (
+        "# Statement\n\n"
+        "AI content here.\n\n"
+        "Did you find this helpful?\n"
+        "Facebook Twitter LinkedIn\n"
+    )
+    result = clean_markdown(text)
+
+    assert "AI content here" in result
+    assert "Did you find this helpful" not in result
+    assert "Facebook Twitter LinkedIn" not in result
+
+
+def test_clean_markdown_preserves_clean_content():
+    """Test that clean content passes through unchanged."""
+    text = "# AI Transparency\n\nWe use AI to improve services."
+    result = clean_markdown(text)
+    assert result == text
+
+
+# Tests for AI keyword density warning
+
+
+def test_save_statement_warns_on_low_ai_keywords(caplog):
+    """Test warning when content lacks AI-related keywords."""
+    agency = Agency(name="Test Agency", abbr="TEST-NOAI", url="https://example.com")
+
+    data: StatementResult = {
+        "title": "Governance Statement",
+        "markdown": "# Governance\n\nThis is about our general governance framework.",
+        "status_code": 200,
+        "final_url": "https://example.com",
+        "error": None,
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        import logging
+        with caplog.at_level(logging.WARNING):
+            save_statement(agency, data, Path(tmpdir))
+
+        assert any("LOW AI KEYWORD DENSITY" in r.message for r in caplog.records)
+        assert any("TEST-NOAI" in r.message for r in caplog.records)
+
+
+def test_save_statement_no_warning_with_sufficient_ai_keywords(caplog):
+    """Test no warning when content has enough AI-related keywords."""
+    agency = Agency(name="Test Agency", abbr="TEST-HASAI", url="https://example.com")
+
+    data: StatementResult = {
+        "title": "AI Transparency Statement",
+        "markdown": (
+            "# AI Transparency Statement\n\n"
+            "We use AI to improve services. Our AI systems are governed by "
+            "the artificial intelligence ethics framework."
+        ),
+        "status_code": 200,
+        "final_url": "https://example.com",
+        "error": None,
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        import logging
+        with caplog.at_level(logging.WARNING):
+            save_statement(agency, data, Path(tmpdir))
+
+        assert not any("LOW AI KEYWORD DENSITY" in r.message for r in caplog.records)
