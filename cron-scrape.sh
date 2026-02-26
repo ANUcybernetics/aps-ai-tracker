@@ -7,9 +7,6 @@ LOG_FILE="${LOG_DIR}/scrape-$(date +%Y-%m-%d).log"
 
 mkdir -p "$LOG_DIR"
 
-# clear nested-session guard (set when run from inside claude code)
-unset CLAUDECODE 2>/dev/null || true
-
 # mise activates tool shims into PATH (jj, uv, node, etc.)
 eval "$(/home/ben/.local/bin/mise activate bash)"
 
