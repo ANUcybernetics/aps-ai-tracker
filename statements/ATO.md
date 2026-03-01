@@ -9,15 +9,13 @@ title: ATO AI transparency statement | Australian Taxation Office
 
 See our public transparency statement outlining how we approach artificial intelligence (AI) in the ATO.
 
-**Published** 28 February 2025
-
 Print or Download
 
 ## How we define AI
 
 In the ATO, we use data and analytics (D&A), including automation and AI, and the insights they provide. D&A helps us administer the tax and superannuation systems more effectively. It enables us to tailor our services and make more informed decisions. It also makes it easier for taxpayers to comply and harder not to.
 
-We apply the [OECD definition of AIExternal Link](https://oecd.ai/en/ai-principles), in line with the [Policy for the responsible use of AI in governmentExternal Link](https://www.digital.gov.au/policy/ai/policy). We also refer to any application of machine learning, deep learning and generative AI as 'AI'. We don’t consider rules-based analytics, which are often if-then statements, to be AI. This form of analytics does not infer how to generate outputs from the inputs they receive.
+We apply the [OECD definition of AIExternal Link](https://oecd.ai/en/ai-principles), in line with the [Policy for the responsible use of AI in governmentExternal Link](https://www.digital.gov.au/policy/ai/policy). We also include any application of machine learning, deep learning and generative AI as 'AI'. We don’t consider rules-based analytics, which are often if-then statements, to be AI. This form of analytics does not infer how to generate outputs from the inputs they receive.
 
 While AI and automation are sometimes combined to deliver outcomes, they are distinct capabilities. Automated processes can be implemented without the use of AI, and vice versa.
 
@@ -31,24 +29,32 @@ We also use AI to ensure we can continue to protect the tax and superannuation s
 
 Based on the [classification system for AIExternal Link](https://www.digital.gov.au/policy/ai/resources/use-classification) in government, we are using AI in the:
 
-  * usage patterns of analytics for insights, workplace productivity, and decision making and administrative action (note, we do not use AI for administrative action)
-  * domains of service delivery, compliance and fraud detection, and corporate and enabling.
+  * usage patterns of analytics for insights, image processing, workplace productivity and decision making and administrative action
+  * domains of service delivery, compliance and fraud detection, corporate and enabling, and law enforcement, intelligence and security.
 
-**Examples** of how we are applying AI in these domains:
+Examples of how we are applying AI in these domains:
 
   * service delivery 
     * providing real time prompts to taxpayers
     * sending payment reminders
     * powering our virtual assistant Alex
     * managing call centre volumes
+    * assisting with readability and structure of select public advice and guidance content
   * compliance and fraud detection 
     * reviewing large quantities of unstructured data
-    * powering risk models to identify potential non-compliance or fraud for human review.
+    * powering risk models to identify potential non-compliance or fraud for human review
+    * alert taxpayers to lodgments suspected of identity crime
   * corporate and enabling services 
     * creating initial draft communications for review
-    * summarising content.
+    * summarising content
+  * law enforcement, intelligence and security 
+    * supporting AI-enabled analysis of data for intelligence gathering.
 
-See Examples of how we use AI.
+Under our AI policy, AI use is limited to approved tools used for approved use cases.
+
+We are currently expanding our use of enterprise generative AI systems to responsibly explore the benefits and risks of this emerging technology for workplace productivity use.
+
+See [Examples of how we use AI](https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/ato-ai-transparency-statement#ExamplesofhowweuseAI).
 
 ## AI governance
 
@@ -56,15 +62,17 @@ We recognise the importance of robust governance, oversight and accountability. 
 
 We take a measured and cautious approach when exploring AI tools and techniques. We closely monitor, and take appropriate action, if intended benefits are not being realised or unintended consequences are arising. We also actively identify and manage risks associated with all applications of AI. We only use AI in ways that maintain the security, privacy, transparency and ethical use of data. We always maintain appropriate human oversight.
 
-Our Chief Data Officer (CDO) oversees the development and use of data, analytics and insights. These support the administration of the tax and superannuation systems and government priorities. They deliver value for the Australian community. The CDO is also our AI Accountable Official under the Policy for the responsible use of AI in government.
+Our Chief Data Officer (CDO) oversees the development and use of data, analytics and insights. These support the administration of the tax and superannuation systems and government priorities. They deliver value for the Australian community. The CDO is also our AI Accountable Official under the _Policy for the responsible use of AI in government_.
 
-Our existing D&A (including data governance and [ethics](https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/data-and-analytics/how-we-use-data-and-analytics#ato-Howweprotectyourdataandprivacy)) and IT policies already broadly apply to AI. We continue to evolve our data governance as our D&A maturity increases. We are expanding our policies and guidance to reference AI more directly. Our approach adheres to all AI-related legislative, regulatory and policy frameworks, and all standard laws and frameworks.
+Our existing D&A (including data governance and [ethics](https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/data-and-analytics/how-we-use-data-and-analytics#ato-Howweprotectyourdataandprivacy)) and IT policies already broadly apply to AI. We continue to evolve our data governance as our D&A maturity increases, expanding our policies and guidance to reference AI more directly. Our approach adheres to all AI-related legislative, regulatory and policy frameworks, and all standard laws and frameworks.
 
-AI is evolving rapidly in an ever-changing technology environment. Therefore, we will continue to evaluate and change our data governance to ensure it remains fit for purpose. We will continue to train and develop our staff to ensure we use AI safely, responsibly and ethically.
+At time of publishing, the ATO is compliant with version 1.1 of the _AI in government policy_. Version 2.0 of the policy introduces new requirements from 15 December 2025, which we are committed to implementing. The ATO will soon release a standalone AI policy outlining specific obligations for staff when interacting with, using, or developing AI to support version 2.0 requirements.
 
-Decision making that adversely impacts taxpayers will always be made by a human. Taxpayers have a [right of review](https://www.ato.gov.au/individuals-and-families/your-tax-return/if-you-disagree-with-an-ato-decision) of our decisions. Their rights apply regardless of the technology we use to help us make those decisions.
+AI is evolving rapidly in an ever-changing technology environment. Therefore, we will continue to evaluate and change our governance to ensure it remains fit for purpose. We will continue to train and develop our staff to ensure we use AI safely, responsibly and ethically.
 
-Australian Government agencies are required to publish a transparency statement outlining their approach to adopting and using artificial intelligence (AI). We will review our AI transparency statement regularly and publish updates on our website. If you have feedback on our AI transparency statement, you can [contact us](https://www.ato.gov.au/about-ato/contact-us/complaints-compliments-and-feedback/compliments-and-feedback).
+Decision making that adversely impacts taxpayers' rights will always be made by a human. Taxpayers have a [right of review](https://www.ato.gov.au/individuals-and-families/your-tax-return/if-you-disagree-with-an-ato-decision) of our decisions. Their rights apply regardless of the technology we use to help us make those decisions.
+
+We will review our AI transparency statement regularly and publish updates on our website. If you have feedback on our AI transparency statement, you can [contact us](https://www.ato.gov.au/about-ato/contact-us/complaints-compliments-and-feedback/compliments-and-feedback).
 
 ## Examples of how we use AI
 
@@ -88,9 +96,9 @@ _Classification system for AI use: analytics for insights usage pattern, complia
 
 ### Communications content
 
-We use AI tools for creative and video production activities. They help us edit and enhance content quality and automate manual tasks. We use AI tools to separate subjects from backgrounds, resize images, and apply consistent styles. They also help us resolve accessibility issues, including readability, colour contrast, and formats. AI helps us produce better communications content, in less time and cost.
+We use AI tools for creative and video production activities. They help us edit and enhance content quality and automate manual tasks. We use AI tools to separate subjects from backgrounds, resize images, and apply consistent styles. They also help us resolve accessibility issues, including readability, colour contrast, and formats. AI helps us produce better communications content in less time and cost.
 
-_Classification system for AI use: workplace productivity usage pattern, corporate and enabling domain_
+_Classification system for AI use: workplace productivity usage pattern, corporate and enabling domain_.
 
 QC103887
 

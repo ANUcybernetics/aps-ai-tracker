@@ -5,7 +5,7 @@ source_url: https://www.asic.gov.au/about-asic/what-we-do/how-we-operate/account
 title: Artificial intelligence transparency statement | ASIC
 ---
 
-ASIC’s Artificial intelligence (AI) transparency statement is issued further to the Australian Government’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy "Australian Government's Policy for the responsible use of AI in government") (the policy). The policy provides mandatory requirements for [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials "Accountable officials") of government departments and agencies, and their [](https://www.digital.gov.au/policy/ai/accountable-officials)[transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements "Transparency statements"). This page provides details of ASIC’s implementation of those requirements.
+ASIC’s Artificial intelligence (AI) transparency statement is issued further to the Australian Government’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy "Australian Government's Policy for the responsible use of AI in government") (the policy). The policy provides mandatory requirements for government departments and agencies. This page provides details of ASIC’s implementation of those requirements.
 
 ASIC is Australia’s integrated corporate, financial services, consumer credit and markets regulator. ASIC’s work helps maintain the integrity of Australia’s financial system and protects consumers from harm. We do this by undertaking a range of regulatory activities that will be improved by developing and deploying AI systems.
 
@@ -21,45 +21,49 @@ ASIC has adopted the definition of AI used in the policy. This definition is bro
 
 As a law-enforcement agency, there may be occasions when we do not disclose the use of AI in connection with surveillance and enforcement activity, and this transparency statement should be read subject to that qualification.
 
-The following tables describe how ASIC is currently using AI, as prescribed by the Digital Transformation Agency:
+The following tables describe how ASIC is currently using AI, as prescribed by the Digital Transformation Agency (DTA):
 
-The table below demonstrates AI usage and patterns at ASIC.
+The table below describes AI usage at ASIC.
 
-**Usage pattern** | **Description**  
+Usage pattern | Description  
 ---|---  
 Analytics for insights |  Identifies patterns, produces insights, and extracts information within structured and unstructured data  
-Workplace productivity |  Automates routine tasks and helps manage workflows  
+Workplace productivity |  Automates routine tasks, helps manage workflows and supports staff with administrative activities  
 Decision making and administrative action |  Supports decision making by guiding, assessing, or by making a recommendation to a human decision maker  
 Image processing |  Identifies patterns and objects within images (such as nudity) to prevent exposure of ASIC staff to inappropriate material  
   
 The table below demonstrates ASIC domains where AI is used at ASIC.
 
-**Domain** | **Description**  
+Domain | Description  
 ---|---  
 Compliance and fraud detection |  Supports identification and summarisation of patterns and anomalies in data to detect fraudulent activities and risk  
 Corporate and enabling |  Supports corporate functions by automating processes, optimising resource allocation, and improving operational efficiency  
 Law enforcement, intelligence, and security |  Supports enforcement and intelligence activities by analysing data from various sources, and by aiding in intelligence gathering  
 Service delivery |  Enhances efficiency of internal services  
   
-## Classification of use where the public may directly interact with, or be significantly impacted by AI, without a human intermediary or intervention
+## Classification of use where the public may directly interact with, or be significantly impacted by AI or its outputs, without human review
 
 ASIC does not use AI in any manner that allows direct interaction with the public or significantly impacts the public, without human oversight or involvement.
 
-## Measures to monitor the effectiveness of deployed AI systems, such as governance or processes
+## Measures to monitor the effectiveness of deployed AI systems and protect the public against negative impacts
 
-ASIC currently has governance structures in place and is developing others. We are also building workforce capability. For example:
+ASIC has governance structures and processes in place and is continuously developing these in alignment with whole-government initiatives. For example:
 
 ### ASIC’s AI policy
 
 Our AI policy sets organisational responsibilities and considerations for developing, deploying, and using AI. Our AI policy is aligned with the principles underpinning the [Australian AI Ethics Principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles) and implements the [Australian Government’s Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-### Our AI assurance framework
+### AI assurance and risk management process
 
-We are participating in whole-of-government initiatives to develop an AI assurance framework comprising AI controls, measurement and assessment, monitoring and reporting, roles and responsibilities.
+We are participating in whole-of-government initiatives to develop an AI assurance process comprising of AI controls, measurement and assessment, monitoring and reporting, roles and responsibilities.
+
+For our regulatory and enforcement activities, ASIC uses well-understood systems that have clear and proven benefits. Our risk-based approach is aligned to the [National framework for the assurance of AI in government](https://www.finance.gov.au/government/public-data/data-and-digital-ministers-meeting/national-framework-assurance-artificial-intelligence-government).
+
+ASIC’s data and AI governance practices include privacy, ethics, and security assessments. In all cases of AI use, human review or oversight is involved before any action is taken.
 
 ### AI board
 
-An AI board oversees the design, development, deployment and use of AI by ASIC.
+Our AI board is the primary governance body for AI which oversees the design, development, deployment and use of AI in ASIC. This includes approval of AI use cases and making recommendations for improvements, risk mitigation, and ongoing monitoring and compliance.
 
 ### Foundational technologies
 
@@ -69,26 +73,35 @@ We are investigating and adopting fit-for purpose technology to support the use 
   * adoption of robust security measures and access control, including monitoring for abnormal security activities, and
   * implementation of explainable AI methods to ensure the AI systems are interpretable, explainable and understandable.
 
-### People capabilities
+## Compliance with the requirements under the Policy for responsible use of AI in government
 
-We are implementing role-based training programs for AI. We have also developed a series of organisation-wide AI training sessions to address our immediate needs. Data literacy is also a core capability within ASIC’s learning and development syllabus.
+### AI accountable official and chief AI officer
 
-## Efforts to identify and protect the public against negative impacts of AI
+ASIC’s Senior Executive Leader, Data, Analytics and AI is the accountable official under the policy and the chief AI officer under the [APS AI Plan 2025](https://www.digital.gov.au/sites/default/files/documents/2025-11/APS%20AI%20Plan%202025.pdf).
 
-For our regulatory and enforcement activities, ASIC uses well-understood systems that have clear and proven benefits. Our risk-based approach is aligned to the Australian Government AI Assurance Framework.
+### Strategic position on AI adoption
 
-AI systems developed by our data analytics teams and procured from external partners are used within ASIC. These are described under the usage patterns and domains section of this statement. ASIC’s data and AI governance practices include privacy, ethics, and security assessments. In all cases of AI use, human review or oversight is involved before any action is taken.
+ASIC is currently developing a Data, Digital and AI Strategy which will outline ASIC’s strategic position on AI adoption.
 
-## Accountable official
+### Internal AI use case register and use case accountability
 
-ASIC’s Senior Executive Leader, Data, Analytics and AI is the accountable official under the policy.
+ASIC maintains an internal register of AI use cases that captures the minimum required fields outlined in [the Standard for accountability](https://www.digital.gov.au/ai/ai-in-government-policy/accountability). Each use case has a designated accountable use case owner.
 
-**Update publication date** | **Update comment**  
----|---  
-28 February 2025 | Publication of first AI transparency statement  
-  
+### Operationalising the responsible use of AI and AI impact assessment
+
+ASIC has established an AI policy, AI board and AI use case assessment that integrates all provisions of the DTA’s AI impact assessment tool. This includes assessment of AI use cases by ASIC’s AI board and reporting of any high-risk use cases to the DTA. ASIC also has existing risk incident management processes which includes AI incidents.
+
+### Staff training on AI
+
+ASIC will be implementing the Australian Public Service Academy’s (APSC) AI in government fundamentals as a mandatory training for all ASIC staff. In addition, we implement role-based training programs and a series of organisation-wide AI training sessions. Data literacy is also a core capability within ASIC’s learning and development syllabus.
+
 ## Updates and more information
 
-This transparency statement was created on 28 February 2025. It will be updated to reflect significant changes in our approach to AI, and at least every twelve months.
+This transparency statement was most recently updated on 27 February 2026. It will be updated to reflect significant changes in our approach to AI, and at least every twelve months.
 
 If you have questions or seek more information about this AI transparency statement please submit an [online enquiry](https://asic.gov.au/about-asic/contact-us#online?get/landingPage/).
+
+Update publication date | Update comment  
+---|---  
+28 February 2025 | Publication of first AI transparency statement  
+27 February 2026 | Reviewed to reflect the updated Policy for responsible use of AI released in December 2025

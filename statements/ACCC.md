@@ -9,13 +9,13 @@ title: Artificial intelligence (AI) transparency statement | ACCC
 
 ## How we intend to use AI
 
-The ACCC sees the opportunity to use artificial intelligence (AI) in a safe and responsible way. We believe it can contribute to the effective and efficient delivery of our objectives for the Australian community, over time.
+The ACCC uses artificial intelligence (AI) in a safe and responsible way. We believe it will contribute to the effective and efficient delivery of our objectives to benefit the Australian community.
 
-In considering AI, we have adopted the Organisation for Economic Co-operation and Development (OECD) [definition of AI](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html):
+In considering AI, we have adopted the definition of AI used in the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy):
 
   * An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
-We are committed to building our AI capabilities and exploring our use of AI to support the ACCC’s functions in a safe and responsible manner. Humans will be at the centre of all oversight and decision making. When engaging with AI, we will always honour our commitments to the public, businesses, government and the courts, including with respect to security, privacy, confidentiality, ethics and other legal obligations. We will make risk-based decisions on its use.
+We are committed to building our AI capabilities and exploring how we use AI to support the ACCC’s functions in a safe and responsible manner. Our people will remain responsible for all oversight of tasks and decision making. When engaging with or using AI, we will meet our commitments to the public, businesses, government and the courts, including with respect to security, privacy, confidentiality, ethics and other legal obligations. We make risk-based decisions on its use.
 
 We will seek opportunities to:
 
@@ -40,40 +40,53 @@ The ACCC uses AI to produce insights from structured and unstructured materials 
 The ACCC’s use of AI is aimed at improving workplace productivity for staff. This includes:
 
   * summarising documents, emails, and other content
-  * transcribing interviews and meeting notes
+  * transcribing interviews and preparing meeting notes
   * creating training material for staff
-  * assisting staff in efficiently retrieving information.
+  * proactively seeking and retrieving information for analysis
+  * automating routine tasks
+  * editing or refining drafts of documents
+  * generating drafts of documents, except those subject to administrative review.
+
+We are exploring a range of AI driven innovations and tools, to make sure we continuously improve our efficiency and effectiveness. 
 
 ## Areas of AI application
 
 The domains used for AI applications focuses on the following areas:
 
   * **corporate and enabling** \- to support functions by automating processes, optimising resource allocation and improving operational efficiency.
-  * **compliance and fraud detection** \- to assist with identifying patterns the identification of patterns in records to help comply with laws and regulations.
+  * **compliance and fraud detection** \- to assist with identifying patterns in records to help detect non-compliance with our laws or anti-competitive conduct.
   * **scientific** \- to enhance the processing of complex datasets, to predict outcomes and to enhance monitoring functions.
 
 ## Public interaction and impact
 
-We do not currently deploy AI as part of the ACCC’s direct interaction with the public, including the Infocentre and ScamWatch.
+We do not currently deploy AI as part of the ACCC’s direct interaction with the public, through the Infocentre or ScamWatch.
 
-For all internal uses of AI, our processes make sure that we consider any potential impacts on the public, including businesses. While AI may be used to assist in various tasks, oversight and decision making remains in human hands.
+The ACCC will update this transparency statement if AI is used for any public interactions, including through other communication channels.
 
-## Governance and compliance
+For all internal uses of AI, our processes must consider any potential impacts on the community. While AI may be used to help in various tasks, our people will continue to be responsible for oversight and decision making.
+
+## Complying with legislation and regulation
+
+While we use AI in limited ways to help our staff, our AI systems do not make decisions or take actions on their own.
+
+Our AI use complies with all relevant legislation and regulations, and we apply strong safeguards to protect personal information.
 
 ### Monitoring AI systems
 
-We have taken the following steps to monitor the effectiveness of deployed AI systems, and to meet all mandatory requirements of the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) by:
+We have taken the following steps to monitor the effectiveness of deployed AI systems, and to meet all mandatory requirements of the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) (the policy) by:
 
-  * designating accountability for implementing this policy to an accountable official, the ACCC’s General Manager of Data and Intelligence
-  * adopting an AI policy and procedure that reflects the policy and includes an established AI review and approval pathway for internal use of AI. This includes supporting infrastructure such as an AI register
-  * standing up an internal working group that provides internal governance on the use of AI
-  * considering the potential risks of AI as part of our internal risk management
-  * introducing training (supported by internally developed resources) for all ACCC staff regarding the use of AI
+  * designating accountability for implementing the policy to the AI accountable official, the ACCC’s General Manager of Data and Intelligence
+  * publishing an AI policy that aligns with this policy and includes an established AI review and approval pathway for internal AI use. This includes supporting infrastructure such as an AI register
+  * establishing an internal working group for using AI to support the Corporate Governance Board
+  * considering the potential risks of AI as part of our internal risk management processes
+  * mandating training, supported by internally developed resources, for all ACCC staff regarding the use of AI in our work
   * the publication of this transparency statement.
+
+The ACCC Corporate Governance Board is our primary corporate governance body and has ultimate oversight for AI adoption across the agency.
 
 ### Review of this statement
 
-This statement was published in **February 2025**. It will be reviewed and updated:
+This statement was published in **February 2026**. It will be reviewed and updated:
 
   * at least once a year
   * when a significant change is made to the agency’s approach to AI
