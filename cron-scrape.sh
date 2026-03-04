@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="/home/ben/Code/aps-ai-transparency-tracker"
+PROJECT_DIR="/home/ben/projects/aps-ai-transparency-tracker"
 LOG_DIR="${PROJECT_DIR}/logs"
 LOG_FILE="${LOG_DIR}/scrape-$(date +%Y-%m-%d).log"
 
