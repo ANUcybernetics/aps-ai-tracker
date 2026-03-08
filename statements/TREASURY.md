@@ -2,49 +2,49 @@
 abbr: TREASURY
 agency: Treasury
 source_url: https://treasury.gov.au/the-department/accountability-reporting/ai-transparency-statement
-title: Treasury AI transparency statement | Treasury.gov.au
+title: Artificial Intelligence (AI) transparency statement | Treasury.gov.au
 ---
 
 False
 
-The [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials), and [transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). This page provides details of the Treasury’s implementation of these policy requirements.
+Treasury is exploring the benefits of emerging technologies such as AI.
 
-## Accountable Officials
+Treasury follows the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/ai/ai-in-government-policy/accountability), and [transparency statements](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements).
 
-The Treasury has designated the Chief Information Officer (CIO) as the accountable official for artificial intelligence (AI) use within the department.
+This page contains Treasury’s AI transparency statement and outlines progress against the outcomes in the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.).
 
-## Intentions Behind AI Adoption
+## Key roles
 
-AI applications are used internally to support workplace productivity, with the aim over time to leverage AI to enhance our analytical capabilities, improve decision‑making processes, and increase operational efficiency.
+Treasury has designated the Chief Information Officer (CIO) as the Accountable Official for artificial intelligence (AI) use within the department. Accountable Officials are responsible for implementing the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-## AI Use Cases
+A Chief AI Officer (CAIO) will be appointed by July 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at Treasury.
 
-The Treasury participated in the Australian Government’s trial of a generative AI service, Microsoft 365 Copilot. The Treasury now continues to make Copilot available to trial participants, under the classification of workplace productivity. As a prerequisite to using Copilot, Treasury staff are required to complete internal training on the use of generative AI.
+## AI adoption
 
-## Public Interaction with AI
+Treasury’s endorsed AI products for staff use are Microsoft 365 Copilot and Microsoft Copilot Chat. Treasury permits use of some publicly available AI tools in line with the Digital Transformation Agency’s [staff guidance on public generative AI.](https://www.digital.gov.au/policy/ai/staff-guidance-public-generative-ai)
 
-The Treasury does not use AI in ways that the public may directly interact with or be significantly impacted by without human intervention.
+Enterprise AI tools are piloted based on business needs. Low-risk use cases are in an exploratory stage.
 
-## Monitoring Effectiveness
+Treasury’s current use of AI is classified as workplace productivity, with the aim over time to leverage AI to enhance our operational efficiency.
 
-We have established robust processes, including regular reviews, audits, and staff training programs, to ensure the responsible and effective use of AI. These operate in tandem with broader Australian Government security policies, principles, minimum standards and common procedures in the Protective Security Policy Framework (PSPF) and Information Security Manual (ISM)
+## Public interaction with AI
 
-## Training and Governance
+Treasury does not use AI in ways that that involve direct interaction with the public, and decisions are not made by AI. All use of AI at Treasury has human oversight.
 
-Impacted staff will have access to training that aligns with the responsible and acceptable use of AI policies, and appropriate governance arrangements have been established to support AI within Treasury.
+## Governance of AI
 
-## Protecting Against Negative Impacts
+Appropriate governance arrangements have been established to support AI within Treasury.
 
-We have established robust processes and proactive risk management strategies, including staff training programs, to ensure the responsible and effective use of AI. Our efforts are aligned with broader Australian Government security policies, principles, minimum standards, and common procedures as outlined in the Protective Security Policy Framework (PSPF) and Information Security Manual (ISM).
+The Australian Public Service Commission’s AI in Government Fundamentals course is available for all staff and is mandatory under the APS AI plan. As a prerequisite to utilising Enterprise AI tools, staff are required to complete internal training on the use of AI.
 
-The use of publicly available AI services is governed by our IT Acceptable Use Policy, Treasury’s Information Security Policy, and the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+Treasury complies with all applicable legislation and regulations, including the Protective Security Policy Framework (PSPF) and Information Security Manual (ISM).
 
-## Compliance with Legislation
+We have robust processes, regular reviews and audits, and proactive risk management strategies, including staff training programs, to ensure the responsible and effective use of AI.
 
-The Treasury complies with all applicable legislation and regulations. We are committed to maintaining transparency and accountability in our AI practices through the AI transparency statement.
+The use of AI is governed by our IT Acceptable Use Policy, Treasury’s Information Security Policy, and the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-## Update Frequency
+## Update frequency
 
-This transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 28 February 2025.
+Treasury’s transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 28 February 2026.
 
 For further enquiries, please contact the Chief Information Officer at [ISBCoord@treasury.gov.au](mailto:ISBCoord@treasury.gov.au?subject=AI%20transparency%20statement%20enquiry).
