@@ -29,11 +29,11 @@ _An AI system is a machine-based system that, for explicit or implicit objective
 
 ## Oversight of our use of AI
 
-We are currently refreshing our approach to data and information governance to include a focus on AI governance, in alignment with our existing data and information governance policies. This will support decision making in relation to AI use cases with consideration of effectiveness, fairness, alignment with ethical standards and public expectations, and compliance with relevant legislation and regulation. This will also include our approach to monitoring AI use cases to support the safe and responsible ongoing use of AI, and identification of unintended impacts of the AI use cases.
+Over the past year, we have worked towards refreshing our approach to data and information governance to include a focus on AI governance, in alignment with our existing data and information governance policies. This will support decision making in relation to AI use cases with consideration of effectiveness, fairness, alignment with ethical standards and public expectations, and compliance with relevant legislation and regulation. This will also include our approach to monitoring AI use cases to support the safe and responsible ongoing use of AI, and identification of unintended impacts of the AI use cases.
 
 ## Our use of AI
 
-AFSA is using AI in the domain of Corporate and Enabling, and usage patterns of Analytics for Insights (for example, codebase analysis, and forecasting and predictive modelling to support insight generation), and Workplace Productivity (e.g. summarising documents and emails, and preparing internal content creation).
+AFSA is using AI in the domains of Service Delivery and Corporate & Enabling, and usage patterns of Analytics for Insights (e.g. codebase analysis, and forecasting and predictive modelling to support insight generation), and Workplace Productivity (e.g. summarising documents, meetings and emails, and preparing internal content creation).
 
 This does not include the use of AI where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention.
 
@@ -44,28 +44,10 @@ We comply with the mandatory requirements outlined in the DTA's AI Policy, inclu
   * nomination of AFSA's Chief Information Officer as our accountable official. This role ensures robust monitoring and evaluation of AI systems to maintain effectiveness, fairness, and compliance with government policies, and leads development of governance for AI adoption in AFSA.
   * publication of this transparency statement on AFSA's website.
 
-This statement will be reviewed annually, when there is a significant change to AFSA’s approach to AI, or when any new factor materially impacts the existing statement’s accuracy.
+We are also planning our approach to achieving compliance with the additional requirements within the timeframes required by the current version of the policy (v2.0).
 
-**Last updated:** 24/02/2025
+This statement will be reviewed annually, when there is a significant change to AFSA’s approach to AI, or when any new factor materially impacts the existing statement’s accuracy.
 
 **For further enquiries, contact:**[info@afsa.gov.au](mailto:info@afsa.gov.au)
 
 [Back to top](https://www.afsa.gov.au/about-us/accountability-and-reporting/ai-transparency-statement)
-
-Was this information helpful?
-
-Yes
-
-No
-
-What were you looking for?
-
-Please provide your feedback
-
-Client type \- None -Current clientCreditorGeneral publicPractitionerFinancial counsellorStaffOther
-
-We welcome your feedback to help us improve our website.
-
-We are unable to respond to comments or suggestions. Alternatively, if you would like a response, you can [send us feedback](https://services.afsa.gov.au/ccr-service/form/start) or [contact us](https://www.afsa.gov.au/contact-us "Contact us").
-
-Leave this field blank

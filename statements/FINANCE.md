@@ -21,7 +21,7 @@ In the use of AI within Finance, we follow whole-of-government policy and suppor
 
 We also apply [Australia’s AI Ethics Principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles) and use the [Organisation for Economic Co-operation and Developments (OECD)](https://oecd.ai/en/ai-principles) definitions to help identify which of our systems use AI.
 
-When we consider our use of AI, we apply the DTA’s [Pilot AI assurance framework](https://www.digital.gov.au/policy/ai/pilot-ai-assurance-framework), the [AI impact assessment tool](https://www.digital.gov.au/ai/impact-assessment-tool) and the [Technical standard for government’s use of artificial intelligence](https://www.finance.gov.au/about-us/department) to help us assess impacts, identify risks and put the right safeguards in place.
+When we consider our use of AI, we apply the DTA’s [Pilot AI assurance framework](https://www.digital.gov.au/policy/ai/pilot-ai-assurance-framework), the [AI impact assessment tool](https://www.digital.gov.au/ai/impact-assessment-tool) and the [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard) to help us assess impacts, identify risks and put the right safeguards in place.
 
 ### How we measure the effectiveness of our AI
 
@@ -51,11 +51,10 @@ Compliance with these requirements is monitored through our information security
 
 Finance classifies staff use of AI using the DTA’s [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification). Our AI use case patterns and domains are:
 
-· analytics for insights AI pattern, where we use AI to help analyse information, mainly in the Scientific and Policy and legal domains, using low‑risk information
+  * analytics for insights AI pattern, where we use AI to help analyse information, mainly in the Scientific and Policy and legal domains, using low‑risk information
+  * workplace productivity AI pattern, where we use AI to help staff with routine tasks, mainly in the Service delivery and Corporate and enabling domains.
 
-· workplace productivity AI pattern, where we use AI to help staff with routine tasks, mainly in the Service delivery and Corporate and enabling domains.
-
-We do not use AI within the Decision making and administrative action or Image processing usage patterns, or the Compliance and fraud detection, and Law enforcement, intelligence and security domains.
+We do not use AI within the decision making and administrative action or Image processing usage patterns, or the compliance and fraud detection, and Law enforcement, intelligence and security domains.
 
 ## How we govern our AI use
 

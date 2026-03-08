@@ -33,7 +33,7 @@ Date updated:
 
   * [Department of Industry, Science and Resources](https://www.industry.gov.au/publications?publisher=3026)
 
-Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible Artificial Intelligence (AI). 
+Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible artificial intelligence (AI). 
 
 Our own adoption of AI adheres to the Voluntary AI Safety Standard, which consists of [10 voluntary guardrails.](https://www.industry.gov.au/publications/voluntary-ai-safety-standard/10-guardrails) These guardrails include transparency and accountability requirements and explain what developers and deployers of AI systems must do to achieve them.
 
@@ -66,9 +66,9 @@ The AIGC maintains visibility of AI use and classifies AI use according to the f
 
 We have a policy that guides all staff on: 
 
-  * acceptable use of AI in our department 
+  * acceptable use of AI in our department
   * ethical considerations
-  * Freedom of Information considerations
+  * freedom of information considerations
   * record keeping
   * privacy
   * roles and responsibilities when using AI.
@@ -77,9 +77,9 @@ We do not use AI in any instance where the public directly interacts with or fee
 
 Staff review all AI tool outputs and treat them as drafts or starting points for further research, not for decision-making.
 
-**Australian AI Safety Institute**
+## Australian AI Safety Institute
 
-We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will also support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks. 
+We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks. 
 
 ## Our commitment
 

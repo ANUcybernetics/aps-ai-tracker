@@ -7,84 +7,88 @@ title: AI Transparency Statement | ALRC
 
 # AI Transparency Statement
 
-The policy for the responsible use of AI in government provides mandatory requirements for departments and agencies relating to accountable officials and transparency statements. This page provides details of the Australian Law Reform Commission (ALRC)’s implementation of these policy requirements.
+The Digital Transformation Agency (DTA) Policy for the responsible use of AI in government requires agencies to designate AI accountable officials and publish a public AI transparency statement. This page provides details of the Australian Law Reform Commission (ALRC)’s implementation of these requirements.
 
-## Accountable Official 
+## **Accountable Official**
 
-The ALRC has an AI Accountable Official under the policy, the Director of Operations and Finance (Mandeep Bahia), reporting to the Executive Director of the ALRC (Ruth Barson).
+The ALRC has an AI Accountable Official under the policy. The ALRC’s AI Accountable Official is the Director of Operations and Finance, reporting to the Executive Director of the ALRC. There is no change to the ALRC’s accountable official.
 
-The AI Accountable Official has primary responsibility for the development and application of the AI policy across the following: 
+The AI Accountable Official has primary responsibility for the development and application of the ALRC’s AI policy and implementation approach, including:
 
-  * Facilitating ALRC involvement in cross-government AI coordination and collaboration
+  * facilitating ALRC involvement in cross-government AI coordination and collaboration
 
-  * Developing ALRC’s AI policy and its associated implementation plan
+  * developing and maintaining the ALRC’s AI policy and supporting resources
 
-  * Embedding a culture that fairly balances AI risk management and innovation
+  * uplifting governance, education and guidance for AI use in the ALRC
 
-  * Uplifting governance and education of AI adoption in the ALRC
+  * embedding a culture that balances AI risk management and innovation
 
-  * Enhancing the response and adaptation to AI policy changes in the ALRC
+  * monitoring implementation
 
-  * Encouraging the development or alignment of an ALRC or Inquiry-specific AI policy
+  * supporting adaptation to changes in whole-of-government AI policy over time.
 
-  * Reviewing and monitoring ALRC’s AI policy implementation regularly and providing feedback to the ALRC’s President and Audit & Risk Committee
+## **ALRC’s approach to AI adoption and use**
 
-## ALRC’s Approach to AI Adoption and Use 
+The ALRC is committed to adopting and using AI in a way that is safe, ethical, accountable and transparent, consistent with Australian Government requirements and community expectations.
 
-The ALRC has not yet used AI in any formal setting or supported any Law Reform activities to date. Our intention is to trial the adoption of AI in 2025 and beyond as part of the Australian Government’s commitment to digital innovation. 
+At present, the ALRC’s approach is to:
 
-The ALRC is committed to demonstrating, encouraging, and supporting the safe and responsible adoption of AI within the Australian Public Service, and in digital and ICT investments, systems, and digital services. As part of this commitment, we will implement AI fundamentals training for all staff, regardless of their role.
+  * use AI only for approved, low-risk workplace productivity purposes, and
 
-## How the ALRC Uses AI 
+  * build organisational capability and governance so we can assess whether, and how, AI might responsibly support additional activities over time (subject to risk assessment and approvals).
 
-At this time, we are not using AI to support any of our Law Reform activities or engage with the public. 
+As part of this commitment, the ALRC maintains internal guidance and training requirements for staff on the safe and responsible use of AI tools.
 
-From April 2025 we intend to trial AI to support Workplace Productivity and trial generative AI service, Microsoft 365 Copilot. We understand that the Australian government trailed this software from 1 January 2024 to 30 June 2024 and a number of commonwealth agencies have adopted this software. Copilot has yet to be formally announced internally or made available to staff officially. As a prerequisite to using Copilot, ALRC staff are required to complete internal training on the use of generative AI.
+## **How the ALRC uses AI**
 
-We also intend to consider the use of AI tools to support Legal Research and will look to Pilot Lexis Nexis+ AI or similar such products which are used within the legal industry to support research. 
+### **Public interaction and impact**
 
-We have a policy and SharePoint page on the use of AI tools by staff, which staff are required to confirm and acknowledge they are familiar with before accessing any generative AI tools online. This policy encourages and assists staff to:
+The ALRC is not using AI in a way the public can directly interact with, or be significantly impacted by, If this changes, we will update this statement to describe the use and safeguards
 
-  * Not rely on the authenticity or veracity of content generated by AI, without external verification.
+### **Law reform activities**
 
-  * Prohibit the distribution of sensitive material (as outlined in Clause 9.2 in the [Australian Government Protective Security Policy Framework – Release 2024 Guidelines](https://www.protectivesecurity.gov.au/system/files/2025-02/pspf-release-2024-guidelines_0.pdf)) to third parties, for example by copy-and-pasting sensitive content into AI software.
+The ALRC does not use AI for strictly law reform activities, including legal analysis, drafting or recommendations. AI does not produce or materially influence inquiry outputs. 
 
-  * Sensitive materials contain information which, if disclosed without authorisation, could cause harm to an organisation, individual, or national security. These may include but is not limited to: 
+### **Corporate and workplace productivity**
 
-  * legal analysis documents, 
+Our current AI use is limited to workplace productivity. All staff have access to Microsoft Copilot, and Microsoft 365 Copilot is available to approved roles across the organisation (for example, for collaboration, meeting support, and drafting and summarising routine material). 
 
-  * confidential corporate information,
+## **Planned AI work**
 
-  * personal staff information, 
+In February 2026, the ALRC established a staff working group to assess broader AI use, including potential trials for inquiry-adjacent tasks such as submission analysis support, proofing and document handling (subject to governance and approval). The group is also considering legal-specific tools (for example, LexisNexis AI+ and Westlaw Edge) for possible future legal research support, noting these tools are not currently used for inquiry work. 
 
-  * stakeholder consultations, 
+We have internal guidance and a SharePoint page on the use of AI tools. Staff are required to confirm and acknowledge they are familiar with this guidance before accessing AI tools. Our guidance reminds staff to verify AI-generated content and to avoid sharing or copying sensitive material into AI tools, consistent with relevant Australian Government security and privacy requirements. 
 
-  * judicial reviews for ALRC papers,
-
-  * outcomes of Commissioner meetings,
-
-  * ALRC internal discussion papers.
-
-The above is in line with the [ALRC Privacy Policy](https://www.alrc.gov.au/about/policies/privacy-policy/).
-
-The ALRC is participating in the Pilot Australian Government AI assurance framework. Through our participation in this pilot, we are exploring the potential for AI to be used by our staff and by our ICT systems.
-
-The ALRC will use AI in the domain of Corporate and Enabling, and usage pattern of Workplace Productivity. 
-
-## AI Safety and Governance 
+## **AI safety and governance**
 
 Within the ALRC, all AI use cases are recorded in an internal register to track their progress and status. For new and emerging potential uses of AI, it is the responsibility of the AI Accountable Authority to: 
 
-  * Ensure that any AI is implemented safely and responsibly
+  * Ensure that any AI is implemented safely and responsibly 
 
-  * Monitor the effectiveness of the deployed AI system
+  * Monitor the effectiveness of the deployed AI system 
 
-  * Ensure legal and regulatory compliance of the ICT system
+  * Ensure legal and regulatory compliance of the ICT system 
 
-  * Identify potential negative impacts of the AI use case
+  * Identify potential negative impacts of the AI use case 
 
-  * Implement measures to mitigate potential harms from AI
+  * Implement measures to mitigate potential harms from AI 
 
-It will be updated as our approach to AI changes, and at least every twelve months.
+## **Classification of AI system use cases**
 
-For further information or enquiries about the ALRC’s adoption of artificial intelligence, you can contact us directly at [info@alrc.gov.au](mailto:info@alrc.gov.au).
+The DTA standard requires agencies to classify AI use by usage pattern and domain.
+
+The ALRC’s current AI use is classified as:
+
+  * Usage pattern: Workplace productivity using Microsoft CoPilot and Copilot 365.
+
+  * Domain: Corporate and enabling.
+
+If the ALRC’s AI use expands to additional usage patterns or domains, we will update this statement accordingly.
+
+## **Updates to this statement**
+
+This statement will be updated as the ALRC’s approach to AI changes, and at least every twelve months. It may also be updated sooner when the ALRC makes a significant change to its approach to AI, or when any new factor materially impacts the statement’s accuracy.
+
+## **Contact**
+
+For enquiries about the ALRC’s adoption of AI, contact: [info@alrc.gov.au](mailto:info@alrc.gov.au)
