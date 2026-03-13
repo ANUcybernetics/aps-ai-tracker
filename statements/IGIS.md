@@ -45,8 +45,6 @@ For inquires or feedback regarding this statement, please contact us at [info@ig
 
 ##### Review and Updates
 
-This AI Transparency Statement was last updated on 21 February 2025. It will be reviewed and updated annually or when significant changes occur.
-
 ##  Financial Statements 
 
 The Office’s financial statements are available in the [annual report](https://www.igis.gov.au/resources/publications).
@@ -110,6 +108,7 @@ In accordance with the Order, some information in file titles is deleted, such a
 
 File lists:
 
+[July - December 2025](https://www.igis.gov.au/sites/default/files/2026-02/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20created%20July%20to%20December%202025.PDF)  
 [January - June 2025](https://www.igis.gov.au/sites/default/files/2025-08/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20created%20January%20to%20June%202025.PDF)
 
 [July - December 2024](https://www.igis.gov.au/sites/default/files/2025-02/Index%20Files%20List%20created%201%20July%202024%20and%2031%20December%202024%20-%20ATTACHMENT%20B.PDF)   

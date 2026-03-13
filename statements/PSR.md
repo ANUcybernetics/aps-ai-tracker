@@ -18,7 +18,7 @@ PSR is engaging with AI according to Australia’s AI Ethics principles emphasis
 
 ## Monitoring and accountability
 
-PSR’s General Manager (GM), designated as the Accountable Officer (AO) for AI, is charged with implementing the Policy for the responsible use of AI in government across PSR. The COO is a member of PSR’s Executive Management Team (EMT) which has oversight of all PSR governance decisions and frameworks.
+PSR’s General Manager (GM), designated as the Accountable Officer (AO) for AI, is charged with implementing the Policy for the responsible use of AI in government across PSR. The GM is a member of PSR’s Executive Management Team (EMT) which has oversight of all PSR governance decisions and frameworks.
 
 The EMT has identified AI as an emerging risk but does not disregard its potential for improving operational processes and reporting that may inform and gain insights when applied responsibly. The EMT is monitoring the adoption of AI consistent with internal policies such as ‘Acceptable Use of ICT Resources’ which expressly prohibits PSR from using sensitive or personal information on open web-based generative AI platforms as well as relevant government legislation, regulations, policies and official guidance including secrecy provisions of the _Health Insurance Act 1973_. The adoption of AI in PSR will be supported by training.
 
@@ -27,7 +27,7 @@ The EMT has identified AI as an emerging risk but does not disregard its potenti
 PSR uses AI that complements and improves on operational efficiency while keeping a human in the loop. PSR is considering AI usage in a longer-term timeframe with specific regard to:
 
   * opportunities to automate internal business enabling processes and increase efficiency
-  * the use of AI for managing and viewing medical records, and how PSR processesand technologies need to adapt to take account of this during a review.
+  * the use of AI for managing and viewing medical records, and how PSR processes and technologies need to adapt to take account of this during a review.
 
 ## Usage Patterns
 
@@ -40,8 +40,6 @@ PSR does not use AI for any of its statutory functions administering the PSR Sch
 PSR currently applies its use of AI within Corporate and Enabling functions for internal communications.
 
 ## Review
-
-This transparency statement was last updated on 24 February 2025. It will be updated annually and following any event that may significantly influence PSR’s use of AI or materially impact the accuracy of this statement.
 
 ## Contact
 
