@@ -85,25 +85,3 @@ CANBERRA ACT 2601
 Australia
 
 Fri, 2025-02-28 12:00
-
-Skip to main content
-
-  * [About us](https://www.publichospitalfunding.gov.au/about-us "About us")
-
-    * [Who we are](https://www.publichospitalfunding.gov.au/about-us/who-we-are "Who we are")
-    * [What we do](https://www.publichospitalfunding.gov.au/about-us/what-we-do "What we do")
-
-      * [Stakeholders and partners](https://www.publichospitalfunding.gov.au/about-us/stakeholders-and-partners "Stakeholders and partners")
-      * [NHR Agreement](https://www.publichospitalfunding.gov.au/about-us/nhr-agreement "NHR Agreement")
-
-    * [Our teams](https://www.publichospitalfunding.gov.au/about-us/our-people "Our teams")
-
-      * [Leadership team](https://www.publichospitalfunding.gov.au/about-us/leadership-team "Leadership team")
-      * [Organisational structure](https://www.publichospitalfunding.gov.au/about-us/organisational-structure "Organisational structure")
-
-    * [Corporate governance](https://www.publichospitalfunding.gov.au/about-us/corporate-governance "Corporate governance")
-
-  * [Contact us](https://www.publichospitalfunding.gov.au/contact-us "Contact us")
-  * [Careers](https://www.publichospitalfunding.gov.au/about-us/careers "Careers")
-
-    * [Current vacancies](https://www.publichospitalfunding.gov.au/about-us/careers/current-vacancies "Current vacancies")

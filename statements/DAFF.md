@@ -73,7 +73,7 @@ DAFF does not currently use AI in any way that directly interacts with the publi
 
 DAFF has an Artificial Intelligence Accountable Official (AIAO) under the policy. The Chief Information and Security Officer has been designated as the Accountable Official. Previously, this role had been designated to the Chief Digital and Data Officer, who is now the Chief AI Officer. The AIAO is responsible for ensuring compliance with all AI obligations and implementation of the policy. 
 
-Under the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025), agencies must appoint a Chief AI Officer (CAIO). The Chief Digital and Data Officer has been designated as the CAIO and is responsible for leading the AI strategy and implementation, propelling innovation, integrating AI into business processes and championing adoption of AI. 
+Under the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025), agencies must appoint a Chief AI Officer. The Chief Digital and Data Officer has been designated as the Chief AI Officer and is responsible for leading the AI strategy and implementation, propelling innovation, integrating AI into business processes and championing adoption of AI. 
 
 ## AI safety and governance
 

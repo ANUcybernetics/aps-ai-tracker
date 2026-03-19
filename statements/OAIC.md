@@ -63,7 +63,7 @@ title: OAIC AI transparency statement | OAIC
   * [ Operational information ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
     * [ Accountable authority instructions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/accountable-authority-instructions)
-    * [ Appointment and authorisation instrument: Chief Security Officer/Chief Risk Officer ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-security-officerchief-risk-officer)
+    * [ Appointment and authorisation instrument: Chief Security Officer, Chief Information and Security Officer and Security Practitioner ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-security-officerchief-risk-officer)
     * [ Budget ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/budget)
     * [ Delegation of freedom of information powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-freedom-of-information-powers-and-functions)
     * [ Delegation of privacy powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-privacy-powers-and-functions)
@@ -72,6 +72,7 @@ title: OAIC AI transparency statement | OAIC
     * [ OAIC Enterprise Agreement 2024-2027 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-enterprise-agreement-2024-2027)
     * [ OAIC Privacy Champion, Chief Privacy Officer and Privacy Officer roles ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-privacy-champion,-chief-privacy-officer-and-privacy-officer-roles)
     * [ Regulator expectations and intent ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/regulator-expectations-and-intent)
+    * [ OAIC Freedom of Information Officers ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-freedom-of-information-officers)
   * [ Accountability ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
     * [ Advertising ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/advertising)
@@ -125,29 +126,3 @@ We are committed to ensuring that any future OAIC AI systems are deployed safely
 This statement will be reviewed regularly to reflect any changes in the OAIC's approach to AI, including any future adoption of AI technologies.
 
 For further information on our approach to AI, or to raise any concerns, please contact the [OAIC directly.](https://www.oaic.gov.au/contact-us)
-
-This statement was last reviewed on 24 January 2026.
-
-Did you find this helpful?
-
-![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/thumbsup.svg) Yes
-
-![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/thumbsdown.svg) No
-
-![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/thumbsup.svg) We'd love to hear more!
-
-![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/thumbsdown.svg) Please tell us more
-
-Rate your experience
-
-We'd love to hear more about your rating
-
-What did you come here to do?
-
-How can we improve this information?
-
-⨯
-
-Share
-
-[ Facebook ](https://www.facebook.com/share.php?u=https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement) [ Twitter ](https://twitter.com/intent/tweet?url=https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement) [ Linkedin ](https://www.linkedin.com/sharing/share-offsite?url=https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement)
