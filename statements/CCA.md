@@ -61,41 +61,6 @@ Last updated: February 2026
 
 This statement will be reviewed at least annually and updated sooner if our approach to AI changes or if any material change affects the statement’s accuracy.
 
-Skip to main content
-
-- [Home](https://www.climatechangeauthority.gov.au/ "Home")
-
-- [About](https://www.climatechangeauthority.gov.au/about-cca "About")
-
-  - [Who we are](https://www.climatechangeauthority.gov.au/about-authority/who-we-are "Who we are")
-  - [Authority Meetings](https://www.climatechangeauthority.gov.au/about-authority/authority-meetings "Authority Meetings")
-  - [Corporate documents](https://www.climatechangeauthority.gov.au/about-authority/corporate-documents "Corporate documents")
-  - [Reconciliation Action Plan](https://www.climatechangeauthority.gov.au/reconciliation-action-plan "Reconciliation Action Plan")
-  - [Employment](https://www.climatechangeauthority.gov.au/about-authority/employment "Employment")
-  - [Information Publication Scheme](https://www.climatechangeauthority.gov.au/about-authority/information-publication-scheme "Information Publication Scheme")
-  - [Emissions Reduction Plan](https://www.climatechangeauthority.gov.au/emissions-reduction-plan "Emissions Reduction Plan")
-
-- [Projects](https://www.climatechangeauthority.gov.au/projects "Projects")
-
-  - [Sector Pathways Review](https://www.climatechangeauthority.gov.au/sector-pathways-review "Sector Pathways Review")
-  - [2035 Emissions Reduction Targets Advice](https://www.climatechangeauthority.gov.au/2035-emissions-reduction-targets-advice "2035 Emissions Reduction Targets Advice")
-  - [Annual Progress Report](https://www.climatechangeauthority.gov.au/annual-progress-report "Annual Progress Report")
-  - [ACCU Scheme Reviews](https://www.climatechangeauthority.gov.au/accu-scheme-reviews "ACCU Scheme Reviews")
-  - [NGER Act Reviews](https://www.climatechangeauthority.gov.au/nger-act-reviews "NGER Act Reviews")
-  - [Special Reviews](https://www.climatechangeauthority.gov.au/special-reviews "Special Reviews")
-  - [Research reports](https://www.climatechangeauthority.gov.au/publications/research-reports "Research reports")
-
-- [Resources](https://www.climatechangeauthority.gov.au/resources "Resources")
-
-  - [Climate Policy Tracker](https://www.climatechangeauthority.gov.au/climate-policy-tracker "Climate Policy Tracker")
-  - [CCA Glossary](https://www.climatechangeauthority.gov.au/cca-glossary "CCA Glossary")
-  - [Reports and Publications](https://www.climatechangeauthority.gov.au/reports-and-publications "Reports and Publications")
-  - [Authority submissions to external consultations](https://www.climatechangeauthority.gov.au/authority-submissions-external-consultations "Authority submissions to external consultations")
-
-- [Consultation](https://www.climatechangeauthority.gov.au/public-consultation "Consultation")
-
-- [All News](https://www.climatechangeauthority.gov.au/latest-news "All News")
-
 #### Subscribe to email updates and news articles from the Climate Change Authority
 
 [ Subscribe (Opens in a new tab/window)](https://consult.to/cca/u/subscribe)

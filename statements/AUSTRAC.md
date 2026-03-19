@@ -113,8 +113,6 @@ AI Transparency Statement | Compliant
 
 We will regularly review and update our AI policies and practices as part of our ongoing commitment to the responsible use of AI. This includes staying informed about new developments in AI technology, ethics and regulatory requirements. We will strive to improve the transparency, fairness and effectiveness of our use of AI systems through continuous learning and adaptation.
 
-This statement was last updated on 12 December 2025 and will be reviewed annually, when we make a significant change to our approach to AI or when new factors impact this statement.
-
 If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
 
 This guidance sets out how we interpret the Act, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened.
@@ -123,65 +121,6 @@ The examples and scenarios in this guidance are meant to help explain our interp
 
 This guidance provides general information and isn't a substitute for legal advice. This guidance avoids legal language wherever possible and it might include generalisations about the application of the law. Some provisions of the law referred to have exceptions or important qualifications. In most cases your particular circumstances must be taken into account when determining how the law applies to you.
 
-Last updated: 9 Jan 2026
-
 Page ID: 1173
 
 ## Was this page helpful?
-
-Was this page helpful?
-
-Was this page helpful?
-
-Yes
-
-No
-
-Why or why not? (optional)
-
-Please note that feedback you provide here will be used only for the purpose of improving our website. If you have a specific question about your AML/CTF obligations, please [contact us](https://www.austrac.gov.au/contact-us).
-
-Leave this field blank
-
-- [What we do](https://www.austrac.gov.au/about-us/what-we-do)
-  - [Intelligence](https://www.austrac.gov.au/about-us/what-we-do/intelligence)
-  - [Regulation](https://www.austrac.gov.au/about-us/what-we-do/regulation)
-- [Our people](https://www.austrac.gov.au/about-us/our-people)
-  - [AUSTRAC CEO](https://www.austrac.gov.au/about-us/our-people/our-ceo)
-  - [AUSTRAC organisational chart](https://www.austrac.gov.au/about-us/our-people/organisational-chart)
-- [Careers](https://www.austrac.gov.au/work-with-austrac)
-  - [Current vacancies](https://www.austrac.gov.au/careers/current-vacancies)
-  - [How to apply](https://www.austrac.gov.au/about-us/work-with-austrac/how-apply)
-  - [AUSTRAC culture and benefits](https://www.austrac.gov.au/about-us/work-with-austrac/austrac-culture-and-benefits)
-  - [AUSTRAC salary rates](https://www.austrac.gov.au/about-us/work-with-austrac/austrac-salary-rates "AUSTRAC salary rates and salary points")
-  - [Our commitment to diversity and inclusion](https://www.austrac.gov.au/diversity-and-inclusion)
-- [Corporate information and governance](https://www.austrac.gov.au/about-us/corporate-information-and-governance)
-  - [Freedom of information](https://www.austrac.gov.au/about-us/corporate-information-and-governance/freedom-information)
-    - [Freedom of Information disclosure log](https://www.austrac.gov.au/about-us/corporate-information-and-governance/freedom-information/freedom-information-disclosure-log)
-    - [Information publishing scheme](https://www.austrac.gov.au/about-us/corporate-information-and-governance/freedom-information/information-publishing-scheme)
-    - [Information Publication Scheme Plan](https://www.austrac.gov.au/about-us/corporate-information-and-governance/freedom-information/information-publication-scheme-plan)
-  - [AUSTRAC policies](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies)
-    - [AUSTRAC's approach to regulation](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/austracs-approach-regulation)
-    - [Co-design at AUSTRAC](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/co-design-austrac)
-    - [Code of conduct procedures](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/code-conduct-procedures "AUSTRAC's code of conduct procedures where a breach has occurred")
-    - [English language translation policy](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/english-language-translation-policy)
-    - [Exemption policy](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/exemption-policy)
-    - [Privacy policy](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/privacy-policy)
-    - [Public Interest Disclosures](https://www.austrac.gov.au/about-us/corporate-information-and-governance/austrac-policies/public-interest-disclosure-act-2013-austrac-procedures)
-  - [Corporate plan](https://www.austrac.gov.au/about-us/corporate-information-and-governance/corporate-plan)
-  - [Annual reports](https://www.austrac.gov.au/about-us/corporate-information-and-governance/annual-reports)
-  - [Reports and accountability](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability)
-    - [AUSTRAC Audit and Risk Committee (ARC) Charter](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-audit-and-risk-committee-charter)
-    - [Statement of Expectations and Statement of Intent](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/statement-expectations-and-statement-intent)
-    - [ACLEI corruption prevention report](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-integrity-assessment-aclei-corruption-prevention-report)
-    - [Budget](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/budget)
-    - [Commonwealth Child Safe Framework - annual statement of compliance (2021)](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/commonwealth-child-safe-framework-annual-statement-compliance-2021)
-    - [Contracts](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/contracts)
-    - [Gifts and benefits register](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/gifts-and-benefits-register "Gifts and benefits register")
-    - [Grants](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/grants-awarded-austrac)
-    - [Report on the statutory review of the AML/CTF Act and associated Rules and Regulations](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/report-statutory-review-amlctf-act-and-associated-rules-and-regulations)
-    - [Review of the AUSTRAC industry contribution levy arrangements](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/review-austrac-industry-contribution-levy-arrangements)
-    - [Senate file list](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/senate-file-list)
-    - [AUSTRAC Artificial Intelligence Transparency Statement](https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement)
-
-✕
