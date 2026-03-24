@@ -11,7 +11,7 @@ On
 
 ## **Accountable Officials**
 
-The DTA has two accountable officials under the policy. These are the Chief Technology Officer (CTO), [_Andrew Morrison_](https://www.directory.gov.au/people/andrew-morrison) and the Chief Operating Officer (COO), [_Tom Gilmartin_](https://www.directory.gov.au/people/tom-gilmartin).
+The DTA has two accountable officials under the policy. These are the AI Branch Manager, [Ramsey Beydoun](https://www.directory.gov.au/portfolios/finance/digital-transformation-agency/chief-executive-officer-chris-fechner/deputy-ceo-strategy-planning-and-performance-lucy-poole/branch-manager-ai-technical-standards-ramsey-beydoun) and the Chief Operating Officer (COO), [_Tom Gilmartin_](https://www.directory.gov.au/people/tom-gilmartin).
 
 The CTO has primary responsibility for the following areas of the AI policy:
 
@@ -89,8 +89,6 @@ The DTA currently uses AI in the following system use cases as defined by the St
 **Workplace productivity through the use of Microsoft 365 Copilot:**
 
 - By integrating Microsoft 365 Copilot, the DTA is enhancing staff productivity and collaboration across teams. Copilot leverages generative AI to help automate repetitive tasks, summarise documents, generate emails and reports, and assist with data analysis. This enables staff to focus on higher-value work, make more informed decisions, and reduce time spent on manual processes.
-
-This transparency statement was last updated on 1 December 2025. It will be updated as our approach to AI changes, and at least every twelve months.
 
 **Update Publication Date** | **Update Comment**\
 ---|---\
