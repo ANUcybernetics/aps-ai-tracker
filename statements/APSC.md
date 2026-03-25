@@ -11,6 +11,10 @@ Published
 
 28 February 2025
 
+Last updated
+
+25 March 2026
+
 Share
 
 - \[Linkedin\](http://www.linkedin.com/shareArticle?mini=true&url=https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission&title=Transparent Use of AI at the Commission&source=/ "Share to Linkedin")
@@ -72,7 +76,7 @@ The Commission safeguards against risks and ensures responsible AI use through r
 
 ### Updates to this statement
 
-This transparency statement was last updated on 26 February 2025. We will update this statement at least every twelve months or when:
+This transparency statement was last updated in March 2026. We will update this statement at least every twelve months or when:
 
 - a significant change is made in our approach or use of AI;
 - any new decisions or other factors materially impacts the statement’s accuracy; or
@@ -89,14 +93,6 @@ Audience
 [APS employees](https://www.apsc.gov.au/taxonomy/term/6)
 
 [APS managers](https://www.apsc.gov.au/taxonomy/term/7)
-
-Was this page helpful?
-
-Yes
-
-No
-
-Please add your comments:
 
 ## Acknowledgement of Country
 
