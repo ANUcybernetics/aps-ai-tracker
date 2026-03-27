@@ -1,74 +1,55 @@
 ---
 abbr: NIAA
 agency: National Indigenous Australians Agency
+final_url: https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement-2026
 source_url: https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement
-title: Artificial Intelligence (AI) Transparency Statement | NIAA
+title: Artificial Intelligence (AI) Transparency Statement 2026 | NIAA
 ---
 
-# Artificial Intelligence (AI) Transparency Statement
+# Artificial Intelligence (AI) Transparency Statement 2026
 
 [__**Back to** Home](https://www.niaa.gov.au/)
 
-[ Listen ](https://app-as.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
+[ Listen ](https://app-as.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement-2026 "Listen to this page using ReadSpeaker")
 
-## Purpose
+## **Purpose**
 
-The [policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%201.1.pdf) provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials), and [transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). It sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI. This page discusses NIAA’s commitment to these policy requirements and for the ethical use of AI to enhance public services for Indigenous Australians, ensuring transparency, accountability, and inclusivity.
+The National Indigenous Australians Agency (NIAA) is committed to the safe, ethical, and transparent use of Artificial Intelligence (AI). The NIAA will leverage AI to improve outcomes for Aboriginal and Torres Strait Islander peoples while ensuring alignment with the Digital Transformation Agency (DTA) [Policy for the Responsible Use of AI in Government (v2.0)](https://www.digital.gov.au/ai/ai-in-government-policy).
 
-## NIAA approach to AI adoption and use
+The NIAA’s approach is guided by [Australia’s AI Ethics Principles](https://www.industry.gov.au/publications/australias-ai-ethics-principles). 
 
-### Opportunities and risks
+The NIAA supports Indigenous Data Sovereignty and applies the [Framework for Governance of Indigenous Data](https://www.niaa.gov.au/our-work/data-evaluation-and-research/framework-governance-indigenous-data-gid) to ensure that any use of AI strengthens community control, supports Closing the Gap priorities, and protects cultural rights through safe stewardship of Indigenous data. 
 
-The [policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%201.1.pdf) describes a family of technologies that brings together computing power, scalability, networking, connected devices and interfaces, and data. AI technologies and systems built on these technologies can be programmed to perform specific tasks such as reasoning, planning, natural language processing, computer vision, audio processing, interaction, prediction and more. AI technologies can operate with varying levels of autonomy.
+## **How NIAA uses AI**
 
-These potential efficiencies present opportunities for improved outcomes for service delivery, they also present risks. NIAA continues to review its internal policies to ensure our:
+The NIAA classifies its AI usage according to the [DTA Classification System](https://www.digital.gov.au/policy/ai/resources/use-classification). Based on this classification, the NIAA currently uses AI for workplace productivity. The NIAA has deployed enterprise tools (Microsoft 365 Copilot Chat) for administrative efficiency, including drafting correspondence and summarising meetings. This is governed under the DTA Policy for the Responsible Use of AI in Government and aligned with the [National Framework for the Assurance of Artificial Intelligence in Government](https://www.finance.gov.au/government/public-data/data-and-digital-ministers-meeting/national-framework-assurance-artificial-intelligence-government).
 
-  1. AI use is appropriately governed
-  2. engagement with AI is confident, culturally safe and responsible
-  3. stakeholders have trust in our use of AI
-  4. risks are identified and addressed
-  5. access and usage is monitored.
+The NIAA adopts human oversight policy for AI use in the Agency. The NIAA does not use AI for decision-making. All AI-generated outputs are reviewed and verified by an appropriately authorised NIAA staff member. 
 
-### How NIAA uses AI
+## **Staff training and capability**
 
-At this time NIAA has not authorised the use of AI in any way that members of the public may directly interact with, or be significantly impacted by, without a human intermediary or intervention.
+To ensure the responsible use of technology, the NIAA mandates that all staff complete AI literacy and ethics training as a core requirement under the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025).
 
-In September 2024 NIAA personnel gained access to a generative AI service Microsoft 365 Copilot. The usage of this service is ‘workplace productivity’ in the ‘corporate and enabling’ domain.
+All NIAA staff will complete the [AI in Government Fundamentals](https://www.apsacademy.gov.au/course-sessions/ai-government-fundamentals) course via the APS Academy. This training covers ethical implications, security risks, and output verification. 
 
-All staff are required to complete internal AI fundamentals training.
+## **Governance, reporting, and compliance**
 
-NIAA is considering trialling the adoption of AI as part of the Australian Government’s commitment to digital innovation through its technical partnership with the Department of Prime Minister and Cabinet (PM&C). See the ‘Adopting emerging technologies’ section in the [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies).
+To maintain public trust and meet Commonwealth mandatory requirements, the NIAA has implemented the following governance framework and will work on these measures: 
 
-## AI safety and governance
+  1. **Accountable Official:** The NIAA Chief Information Officer (CIO) is responsible for ensuring agency-wide compliance with [AI policies](https://www.digital.gov.au/ai/ai-in-government-policy/accountability).
+  2. **Risk Management:** The NIAA will establish an assessment approach aligned to the [DTA AI Impact Assessment](https://www.digital.gov.au/ai/impact-assessment-tool) to identify privacy, security, and cultural safety risks for AI use cases. 
+  3. **Mandatory Reporting:** The NIAA will maintain an internal AI Use Case Register. The NIAA will formally notify the DTA of transparency compliance and report any high-risk AI applications as required via the DTA Reporting Portal. 
+  4. **Technical Standards:** The NIAA systems are integrated within PROTECTED ICT environment, managed in partnership with the Department of the Prime Minister and Cabinet (PM&C). 
 
-### Operating environment
+## **Transparency and feedback**
 
-NIAA outsources the provision of its ICT network infrastructure & training from PM&C, governed under terms stipulated in a signed Memorandum of Understanding (MoU). One of the terms in the MoU is NIAA will abide by PM&C’s ICT policies and procedures. Where a statement in this document conflicts with another PM&C AI or ICT policy then the latter will take precedence.
+The NIAA reviews this statement annually. This statement was published on 27 March 2026 and will be reviewed annually, or when: 
 
-### Governance
+  1. If there is a notable change to the NIAA’s approach to AI, or 
+  2. Any Commonwealth and/or DTA measures are introduced which will impact this statement. 
 
-The governance of all NIAA’s official systems leverages PM&C ICT policies, protocols and procedures, including the PM&C AI Policy. The policy has been developed to align with the [policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%201.1.pdf), and outlines requirements for:
+We encourage feedback from the public regarding our use of these technologies. You can contact us on the following email addresses:
 
-  1. measuring effectiveness of AI services through governance and other processes.
-  2. maintain compliance with applicable legislation, regulation, and whole of government policies.
-
-Please [contact us](https://www.niaa.gov.au/about-niaa/contact-us "Contact us") if you have further enquiries.
-
-This statement was published on 19 February 2025 and will be reviewed annually, or when:
-
-  1. there is a significant change to the agency’s approach to AI, or 
-  2. any other new factor impacts this statement.
-
-## Feedback
-
-Did you find this page useful?
-
-Yes
-
-No
-
-Do you have any other feedback?
-
-View our [website privacy notice](https://www.niaa.gov.au/website-privacy-notice "Website Privacy Notice").
-
-Leave this field blank
+  * **General enquiries:** [ai@niaa.gov.au](mailto:"ai@niaa.gov.au").
+  * **Privacy matters:** [privacy@niaa.gov.au](mailto:"privacy@niaa.gov.au").
+  * **Media enquiries:** [media@niaa.gov.au](mailto:"media@niaa.gov.au").
