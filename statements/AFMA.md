@@ -14,7 +14,7 @@ The [policy for the responsible use of Artificial Intelligence (AI) in governmen
 
 ## Accountable Official
 
-AFMA has appointed its Chief Information Officer to the role of AI Accountable Official and they are responsible for implementing the policy within AFMA.
+AFMA has appointed its Chief Information Officer to the role of AI Accountable Official, and they are responsible for implementing the policy within AFMA.
 
 ## AFMA’s approach to AI adoption and use
 
@@ -36,11 +36,5 @@ We are investigating the use of AI as part of our [Data Transformation and Elect
 For further information or enquiries about AFMA’s adoption of AI, you can contact us directly at [info@afma.gov.au](mailto:info@afma.gov.au).
 
 _This statement will be reviewed annually when we make a significant change to our approach to AI, or when any new factor impacts this statement._
-
-## Did you find what you were looking for?
-
-|
-
-Page last updated: 28/02/2025
 
 Top

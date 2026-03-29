@@ -68,7 +68,7 @@ The NDIS Commission currently uses AI in the following system use cases, includi
 
 By integrating Microsoft 365 Copilot Chat, the NDIS Commission is enhancing staff productivity. Copilot leverages generative AI to help automate repetitive tasks, summarise documents, assist in drafting emails and reports, and assist with data analysis, with staff responsible for reviewing and finalising content. This enables staff to focus on higher-value work, make more informed decisions, and reduce time spent on manual processes.
 
-Classification system for AI use: workplace productivity usage pattern, corporate and enabling domain.
+_Classification system for AI use: workplace productivity usage pattern, corporate and enabling domain._
 
 ### Cloud‑based contact solution:
 
@@ -80,7 +80,7 @@ The NDIS Commission is enhancing customer service through the adoption of a secu
 
 These capabilities enable the NDIS Commission to gain actionable insights, improve service quality, and optimise communication workflows. The result is a strengthened client experience, achieved through greater transparency, efficiency and responsiveness.
 
-Classification system for AI use: analytics for insights usage pattern, service delivery domain.
+_Classification system for AI use: analytics for insights usage pattern, service delivery domain._
 
 ### Annotation of Text Documents
 
@@ -94,7 +94,7 @@ Examples of use include the following:
 - Categorisation with regard to main topics or themes.
 - Extraction of entity names to identify relevant Providers or Workers.
 
-Annotations provided by an LLM may be used to identify records that are relevant to a user’s search, may be presented in a summary or detailed views used by regulatory officers as part of an assessment or investigation, and/or may be used as part of an aggregation for reporting or to inform macro-analysis.
+_Annotations provided by an LLM may be used to identify records that are relevant to a user’s search, may be presented in a summary or detailed views used by regulatory officers as part of an assessment or investigation, and/or may be used as part of an aggregation for reporting or to inform macro-analysis._
 
 ### AI use through the browser
 
@@ -104,4 +104,4 @@ This capability may be available via publicly accessible services; however, the 
 
 This transparency statement was created in February 2026. It will be updated to reflect changes in our approach to AI.
 
-For enquiries, please contact [AI@ndiscommission.gov.au](mailto:AI@ndiscommission.gov.au).
+For enquiries, please contact [**AI@ndiscommission.gov.au**](mailto:AI@ndiscommission.gov.au).
