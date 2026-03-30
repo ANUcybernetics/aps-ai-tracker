@@ -1,11 +1,10 @@
 ---
 abbr: AUSTRAC
 agency: Australian Transaction Reports and Analysis Centre
+final_url: https://www.austrac.gov.au/about-us/policies-and-governance/reports-and-accountability/our-ai-transparency-statement
 source_url: https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement
-title: AUSTRAC Artificial Intelligence Transparency Statement | AUSTRAC
+title: Our AI transparency statement | AUSTRAC
 ---
-
-# AUSTRAC Artificial Intelligence Transparency Statement
 
 ## On this page
 
@@ -115,12 +114,10 @@ We will regularly review and update our AI policies and practices as part of our
 
 If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
 
-This guidance sets out how we interpret the Act, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened. 
+This guidance sets out how we interpret certain Australian legislation, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened. 
 
 The examples and scenarios in this guidance are meant to help explain our interpretation of these laws. They’re not exhaustive or meant to cover every possible scenario.
 
 This guidance provides general information and isn't a substitute for legal advice. This guidance avoids legal language wherever possible and it might include generalisations about the application of the law. Some provisions of the law referred to have exceptions or important qualifications. In most cases your particular circumstances must be taken into account when determining how the law applies to you.
-
-Page ID: 1173 
 
 ## Was this page helpful?
