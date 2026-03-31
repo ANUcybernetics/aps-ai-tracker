@@ -1,73 +1,125 @@
 ---
 abbr: DHDA
 agency: Department of Health, Disability and Ageing
-source_url: https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement
-title: Artificial Intelligence (AI) transparency statement
+source_url: https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement
+title: Artificial intelligence (AI) transparency statement | Australian Government
+  Department of Health, Disability and Ageing
 ---
 
-Search DHA
+Our commitment to the safe, ethical, responsible and legal use of AI supports our vision to deliver better health and wellbeing for all Australians, now and for future generations.
 
-# Artificial Intelligence (AI) transparency statement
+We are aligning with the whole of government approach to AI. The Digital Transformation Agency’s (DTA) [Policy for the responsible use of Artificial Intelligence (AI) in government](https://www.digital.gov.au/ai/ai-in-government-policy/accountability) 2.0 sets a framework for the Australian Government’s safe, responsible, adoption and use of AI, along with the [APS AI Plan](https://www.finance.gov.au/about-us/news/2025/introducing-aps-ai-plan), [Standard for AI transparency statements](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) and [Guidance on government use of public generative AI tools](https://architecture.digital.gov.au/guidance-generative-ai). We identify, assess and manage AI use case impacts and risks informed by [Australia's AI Ethics Principles](https://www.industry.gov.au/publications/australias-ai-ethics-principles) and [AI impact assessment tool](https://www.digital.gov.au/ai/impact-assessment-tool/introduction "https://www.digital.gov.au/ai/impact-assessment-tool/introduction").
 
-## **Introduction**  
+## Why we use AI
 
-Defence Housing Australia (DHA) is committed to the ethical use of Artificial Intelligence (AI) to enhance our services and operations while ensuring transparency, accountability, and the protection of privacy. This AI Transparency Statement outlines DHA’s approach to integrating AI technologies and how DHA will prioritise fairness, security, and transparency in all AI-driven initiatives.   
+Our adoption of AI will improve:
 
-## **Initiatives**
+  * service delivery
+  * policy outcomes
+  * efficiency
+  * productivity.
 
-DHA recognises the unique characteristics of AI systems means traditional governance approaches may not be appropriate. Therefore, DHA has committed to an AI Program of work to lay the foundations for AI readiness, compliance and benefits realisation.   
+Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies) in relation to adopting emerging technologies.
 
-DHA’s AI Initiatives will focus on continued improvements to our customers’ experience, through data driven decisions, remaining human centred and staying connected, coordinated and committed as we navigate the continually changing AI landscape. 
+## How we use AI
 
-### 1\. Purpose of AI Use
+From 1 January 2024 to 30 June 2024, we participated in the Australian Government’s trials of a generative AI service, Microsoft 365 Copilot. We have made Copilot Chat available to all staff and are rolling out Microsoft 365 Copilot licenced version to staff in phases. As a prerequisite to using Copilot, our staff must complete [AI fundamentals training](https://www.digital.gov.au/policy/ai/staff-training) that includes responsible and acceptable use of AI. We also require users to acknowledge safe, responsible and ethical use of AI before accessing and using generative AI tools. 
 
-DHA will continue to investigate how AI can be used to enhance customer experiences, streamline operations, and support the effective delivery of housing solutions to Defence personnel and their families. AI systems will be designed to complement human decision-making, ensuring better outcomes for our stakeholders. 
+We restrict the use of AI tools, including Microsoft 365 Copilot and Copilot Chat, to certain approved use cases in our use case register.
 
-**Usage patterns**
+We use [generative and narrow AI models](https://www.industry.gov.au/publications/guidance-for-ai-adoption/mitigating-risks-and-harms) in line with the DTA’s [Classification systems for use](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
-In line with the DTA classification system, DHA's AI use falls primarily within:
+### What we use AI for
 
-  * workplace productivity
-  * analytics for insights.
+We can use AI to:
 
-These uses support internal corporate and enabling functions such as information management, reporting and operational analysis. DHA does not currently use AI for automated decision‑making or administrative action without human oversight. 
+  * analyse data to gain insights
+  * automate activities to make tasks more efficient and increase workplace productivity
+  * identify patterns and objects automatically
+  * support decision making by helping staff summarise, analyse or synthesise information used to prepare advice or recommendations considered by our committees or decision makers.
 
-**Domains**
+We do not use AI to automate decisions. Human officials remain fully accountable for the advice and recommendations they provide.
 
-DHA’s AI use applies to the following domain:
+### Where we use AI
 
-  * corporate and enabling.
+We can use AI in these areas:
 
-AI is used internally to support functions such as ICT, communications and data analysis. It is not used for direct public service delivery or regulatory decision‑making.
+  * policy and legal
+  * scientific
+  * compliance and fraud detection
+  * corporate and enabling
+  * service delivery.
 
-### 2\. Transparency and Communication
+## Our approach with AI
 
-DHA strives to ensure that our stakeholders are fully informed about the role of AI in our processes. At present, DHA does not use AI in decision‑making processes. If this changes in the future, we will clearly communicate when AI is used in a way that could reasonably be expected to significantly affect the rights or interests of DHA’s employees, customers, partners, or the broader community.
+We set up an Artificial Intelligence Subcommittee (AISc) to guide our approach to AI. The AISc advises the Digital Committee which oversees our digital, data and ICT functions and capabilities and includes senior executive members from across the department. The AISc considers:
 
-### 3\. Ethical Use of AI
+  * the application of AI within the Health portfolio’s policy and program context
+  * the use and regulation of AI in the health, disability and aged care sectors
+  * the use of AI within the department
+  * the whole of government approach to AI and the intersection with health, disability and aged care sectors.
 
-DHA is committed to the ethical development and deployment of AI technologies. We will adhere to strict ethical principles that emphasise fairness, non-discrimination, and the avoidance of bias in all AI-driven activities. We will continuously monitor and audit AI models to ensure they operate in line with these principles. DHA will be guided by the Australian Government’s, "Australia's AI Ethics Principles".  
+Our staff will be able to explain, justify and take ownership of advice and decisions informed by AI.
 
-### 4\. Privacy and Data Protection
+We have an AI assurance framework in place. We also keep an internal register of AI use cases, in line with the whole-of-government approach. This register helps us see where AI is being used and monitor its usage properly. 
 
-The use of AI at DHA will comply with Australian privacy laws and regulations. DHA takes the protection of personal information seriously and will ensure that AI systems are designed with privacy and personal information security at their core. DHA has blocked DeepSeek AI to meet the Department of Home Affairs Protective Security Policy Framework compliance. 
+We have measures in place to:
 
-### 5\. Accountability and Oversight
+  * make sure AI is well governed and managed. Staff cannot use sensitive or personal information without approval through our assurance and governance processes
+  * make AI use across the department visible, so we can govern it effectively and manage risks, assurance and reporting
+  * encourage staff to use AI safely, responsibly, ethically and lawfully through corporate communications and training
+  * support collaboration across the department and with other government agencies on AI use, including developing shared resources to ensure safe, responsible, ethical and lawful use.
 
-DHA will be guided by the Digital Transformation Agency Policy for responsible use of AI in government and the National framework for the assurance of AI in government. In addition, DHA will classify AI use according to [DTA's Classification System](https://www.digital.gov.au/policy/ai/resources/use-classification). DHA will maintain robust oversight of all AI systems, ensuring that there is a clear line of accountability and decisions made by AI. Risk based monitoring and reporting will be applied to DHA’s AI applications.
+## Our commitment
 
-### 6\. Stakeholder Engagement and Feedback
+We are committed to using AI in a safe, ethical, responsible and lawful way for the benefit of Australians. We will continue to work closely with the DTA and use AI in accordance with applicable:
 
-DHA recognises the importance of ongoing dialogue with our stakeholders, including defence personnel, their families, and the wider community. DHA will provide accessible channels for feedback on the use of AI technologies and will take appropriate action to address concerns or suggestions.  
+  * laws
+  * frameworks
+  * policies
+  * best practice.
 
-### 7\. Continuous Improvement
+We remain committed to transparency and protecting the public. We will be transparent as we responsibly adopt evolving AI technology and policy requirements.
 
-DHA is committed to continually improving our AI practices by investing in new technologies, training, and partnerships. DHA will adapt to emerging trends and best practices in using AI to ensure our systems remain transparent, effective, and aligned with our strategic objectives.  
+## Safe and responsible AI adoption
 
-By following these principles, DHA will ensure that AI technologies are used responsibly and transparently, fostering trust and accountability with all stakeholders.  
+We are developing internal AI policy and guidance material. These will align with the DTA’s policy, advice and guidance on the safe, responsible and ethical use of AI. This includes our role in grants, procurement, regulation and policy making related to AI.
 
-* * *
+We will leverage whole-of-government policies and develop internal policies and guidance materials when necessary for:
 
-Published 4 February 2026
+  * AI Governance and approval processes
+  * acceptable use of AI in the department
+  * ethical considerations
+  * Freedom of Information (FOI) considerations
+  * record keeping
+  * security
+  * procurement of AI systems
+  * risk mitigation and technical guardrails
+  * roles and responsibilities when using AI and required training for identified roles.
 
-Back to top
+These internal policies will apply to all employees (including contractors) and consultants.
+
+We will update this transparency statement as we continue to develop policies on AI usage and to implement AI technology. We will continuously review our use of AI to:
+
+  * protect the public against negative impacts
+  * reflect the pace of technological change
+  * manage the evolving risk environment
+  * align with whole-of-government guidance.
+
+## Contact
+
+The Chief Digital Information Officer is our AI Accountable Official.
+
+###  [ AI team ](https://www.health.gov.au/contacts/ai-team?language=en)
+
+Contact us for questions about our AI transparency statement, our use of AI, or to report AI safety concerns, including AI-related incidents.
+
+[AI@health.gov.au](mailto:AI@health.gov.au)
+
+Date last updated:
+
+16 February 2026
+
+Tags: 
+
+  * [About the department](https://www.health.gov.au/topics/about-the-department)
