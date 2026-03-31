@@ -306,7 +306,7 @@ url = "https://www.cgc.gov.au/about-us/accountability-and-reporting/artificial-i
 name = "Defence Housing Australia"
 abbr = "DHA"
 size = "medium"
-url = ""
+url = "https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement"
 
 [[agencies]]
 name = "Department of Climate Change, Energy, the Environment and Water"
@@ -342,7 +342,7 @@ url = "https://www.dfat.gov.au/about-us/corporate/artificial-intelligence-ai-tra
 name = "Department of Health, Disability and Ageing"
 abbr = "DHDA"
 size = "medium"
-url = "https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement"
+url = "https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement"
 
 [[agencies]]
 name = "Department of Industry, Science and Resources"
