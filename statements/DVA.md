@@ -11,7 +11,7 @@ title: Artificial Intelligence (AI) Transparency Statement | Department of Veter
 
 Last updated
 
-9 February 2026
+1 April 2026
 
 ## On this page
 
@@ -84,7 +84,7 @@ DVA currently has AI technology deployed for:
 - Writing clarity tools to support spelling, grammar and punctuation checking
 - Microsoft 365 Copilot Chat for research, idea generation and writing assistance, with DVA‑specific safeguards ensuring no data is shared with public large language models
 - AI‑enabled website search, which only has access to publicly available information
-- Semantic Text Analysis to interpret unstructured MyService responses provided by DVA clients when submitting claims, with staff always retaining responsibility for analysis and decisions relating to claim outcomes.
+- Semantic Text Analysis (an advanced form of key word matching) to interpret unstructured MyService text responses provided by DVA clients when submitting claims, with staff always retaining responsibility for analysis and decisions relating to claim outcomes.
 
 DVA is also trialling AI tools:
 
@@ -92,7 +92,7 @@ DVA is also trialling AI tools:
 - GovAI platform capabilities to support claim processing, without using veteran personal data, and always with human oversight
 - CLIKChat, an internal chatbot that summarises information from three publicly available government sources - Consolidated Library of Information and Knowledge, Department of Veterans’ Affairs and Repatriation Medical Authority. It does not access veteran records or personal data and does not make decisions or recommendations.
 
-DVA is developing a trial of a voluntary, consent based, Proof of Concept Claims Document Reader AI tool. The prototype document reader has been built by DVA within the GovAI Platform. A proposed trial will use a clear consent model to ensure trial participants who volunteer to participate in the trial understand the purpose of the tool, what information may be used during the trial and how AI enabled technologies may interact with information. The trial will test the suitability of the tool to assist staff. The tool does not make decisions or determine claim outcomes. Claims decisions will continue to be made by trained DVA delegates.
+DVA has commenced a trial of a voluntary, consent based, Proof of Concept Claims Document Reader AI tool. The prototype document reader has been built by DVA within the GovAI Platform. The trial uses a clear consent model to ensure trial participants who volunteer to participate in the trial understand the purpose of the tool, what information may be used during the trial and how AI enabled technologies may interact with information. The trial will test the suitability of the tool to assist staff in processing claims. The tool does not make decisions or determine claim outcomes. Claims decisions will continue to be made by trained DVA delegates.
 
 For more information about the usage of AI in government and the domains in which they apply, please see [Artificial intelligence in government](http://digital.gov.au/ai/resources/use-classification).
 
