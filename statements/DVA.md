@@ -11,7 +11,7 @@ title: Artificial Intelligence (AI) Transparency Statement | Department of Veter
 
 Last updated
 
-1 April 2026
+2 April 2026
 
 ## On this page
 
@@ -118,7 +118,7 @@ Back to top
 
 ## Review and Contact
 
-DVA meets mandatory requirements of the Policy for the responsible use of AI in government and has designated an AI Accountable Official (October 2024). The designation of a Chief AI Officer is currently being formalised.
+DVA meets mandatory requirements of the Policy for the responsible use of AI in government and has designated an AI Accountable Official (October 2024). DVA has appointed a Chief AI Officer.
 
 For enquiries about the DVA AI Transparency Statement or about our adoption and usage of AI, please contact us at [AI@dva.gov.au](mailto:AI@dva.gov.au).  
 

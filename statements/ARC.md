@@ -10,30 +10,37 @@ title: AI Transparency | Australian Research Council
 
 The [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy) requires all non-corporate Commonwealth entities to make a publicly available statement outlining their approach to AI adoption and use as directed by the Digital Transformation Agency (DTA).
 
-The ARC is a non-corporate Commonwealth entity, as defined by the [_Public Governance, Performance and Accountability Act 2013_](https://www.legislation.gov.au/C2013A00123/latest/text)(PGPA ACT), and therefore must comply with all requirements outlined in the _Policy for the responsible use of AI in government_.
+The ARC is a non-corporate Commonwealth entity, as defined by the [_Public Governance, Performance and Accountability Act 2013_](https://www.legislation.gov.au/C2013A00123/latest/text) (PGPA Act), and therefore must comply with all requirements outlined in the [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy).
 
 ## Transparency Statement
 
-The ARC is committed to ensuring that the internal use of Artificial Intelligence (AI) is appropriate, responsible and ethical. The ARC embraces the opportunity for all its personnel to use AI as a complementary tool for internal purposes, however the appropriate, responsible and ethical use of AI will always be the highest priority. The ARC complies with the [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy), and other relevant guidance regarding government standards of AI use.
+The ARC is committed to capturing the opportunity of Artificial Intelligence (AI) across the organisation, while ensuring that the use of AI is appropriate, responsible and ethical. The ARC complies with the [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy), and other relevant guidance regarding government standards of AI use. The ARC has a separate policy to outline its expectations for the use of [_AI by grant applicants and ARC assessors_](https://www.arc.gov.au/node/11917 "Policy on Use of Generative Artificial Intelligence in the ARC's grant programs").
 
-To ensure the appropriate, responsible and ethical application of AI used internally within the agency, the ARC’s approach is to:
+To ensure the appropriate, responsible and ethical application of AI use within the agency, the ARC’s approach is to:
 
-  * Implement an internal AI policy for all personnel to follow. This policy will be reviewed annually (at a minimum) to ensure the ARC continues to align with best practice and government standards and keep pace with developments in AI technology.
-  * Continue to provide mandatory, and develop further, training on AI to all personnel.
-  * Maintain a register of AI use within the ARC to monitor and record the internal use of AI within the agency.
-  * Manage any potential and realised risks appropriately through the ARC’s Risk Management Framework, including reporting to the ARC Audit and Risk Committee.
+  * Implement an internal AI acceptable use policy for all personnel to follow. This policy will be reviewed annually (at minimum) to ensure the ARC continues to align with best practices and government standards and keep pace with developments in AI technology.
+  * Release a strategic position on AI adoption within the organisation to guide and empower ARC personnel to engage with AI through an aligned vision.
+  * Continue to provide mandatory and develop further training on AI to all personnel.
+  * Introduce an internal prioritisation process to consider new AI projects to ensure they align with the appropriate, responsible and ethical use of AI.
+  * Maintain a register of AI use cases within the ARC and assign accountable use case owners to monitor and record the internal use of AI within the agency.
+  * Manage any potential and realised risks appropriately through the ARC’s Risk Management Framework, including reporting to the ARC Audit and Risk Committee and Digital Transformation Agency.
 
-The ARC’s current use of AI within the agency is in its early stages, with few applications of AI currently being piloted within some business areas. **Table 1** outlines the current and potential internal applications of AI, as per the DTA’s [_Classification system for AI use_](https://www.digital.gov.au/policy/ai/resources/use-classification).
+The ARC’s current use of AI within the agency is in its early stages, with a few applications of AI currently being piloted within some business areas. **Table 1** outlines the current and potential internal applications of AI, as per the DTA’s [_Classification system for AI use_](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
-**Table 1:** Current and potential applications of AI used internally within the ARC (as of 28 February 2025).
+**Table 1:** Current and potential applications of AI used internally within the ARC (as of 26 March 2026).
 
-**Usage 1** | **Domain 2** | **ARC current or potential use**  
+Usage | Domain | ARC current or potential use  
 ---|---|---  
-**Analytics for insights** Identifies, produces or understands insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools. | Corporate and Enabling |  The use of advanced AI techniques are planned for development to inform policy development and where required, provide insights to the ARC’s stakeholders. Any internally developed models or the use of external models will have appropriate evaluation methods applied, and the results will be verified by domain experts. This rigour will ensure that the results are fit for purpose and responsibly used.  
-**Workplace productivity** Automate routine tasks, manage workflows, and facilitate communication. | Corporate and Enabling | The ARC is trialling the use of Microsoft CoPilot 365 to automate and assist with administrative tasks. For example, composing an initial draft of minutes and action items, with human review.  
-**Decision making and administrative action** Support decision making or the taking of administrative action by guiding, assessing or making a recommendation to a human decision maker and/or make decisions or take administrative action without human intervention. | Policy and Legal[1] | The use of AI to inform decision making and administrative action is not currently applied within the ARC.  
+**Analytics for insights** Identifies, produces or understands insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools. | Corporate and Enabling |  The use of advanced AI techniques is planned for development to inform policy settings and where required, provide insights to the ARC’s stakeholders. Any internally developed models or the use of external models will be considered through the internal prioritisation process, have appropriate evaluation methods applied, and the results will be verified by domain experts. This rigour will ensure that the results are fit for purpose and responsibly used.  
+**Workplace productivity** Automate routine tasks, manage workflows and facilitate communication. | Corporate and Enabling |  The ARC utilises Microsoft CoPilot 365 Enterprise to provide real-time transcription in meetings, summarise key discussion points and assist in administrative tasks. For example, composing an initial draft of minutes and action items in advance of human review.  The ARC will consider how AI may be used to improve grant administration and assist with coding for internal systems. Any implementation will be consistent with the principles of being appropriate, responsible and ethical, have appropriate risk management practices in place, and ensure there is human oversight.  
+**Decision making and administrative action** Support decision making or the taking of administrative action by guiding, assessing or making a recommendation to a human decision maker and/or make decisions or take administrative action without human intervention. | Policy and Legal | The ARC may consider how AI can support administrative decision-making processes in grants administration. Any implementation will be consistent with the principles of being appropriate, responsible and ethical, have appropriate risk management practices in place, and ensure there is human oversight.   
+**Image processing** Processes images to automatically identify patterns and objects, such as faces, for official purposes. | Nil | The usage of image processing is not applied within the ARC, nor are there any appropriate applications currently identified for potential use of this technology within the ARC.   
   
-[[1]](https://www.digital.gov.au/policy/ai/resources/use-classification) As per the DTA’s [_Classification system for AI use_](https://www.digital.gov.au/policy/ai/resources/use-classification) _._
+### Chief AI Officer
+
+Anthony Murfett, Deputy Chief Executive Officer
+
+Australian Research Council
 
 ### Accountable Official
 
@@ -43,6 +50,16 @@ Australian Research Council
 
 Phone: 02 6206 7226
 
-[**cio@arc.gov.au**](mailto:cio@arc.gov.au)
+[cio@arc.gov.au](mailto:cio@arc.gov.au)
 
-This AI transparency statement was first published in April 2025. This statement will be reviewed annually, or when significant change is made to the ARC’s approach to AI.
+### ARC Communications 
+
+Phone: 02 6287 6600 
+
+[communications@arc.gov.au](mailto:communications@arc.gov.au)
+
+Level 4 West, 47 Bowes Street Phillip ACT 2606 
+
+GPO Box 2702, Canberra ACT 2601
+
+This AI transparency statement was first published in April 2025 and updated in March 2026. This statement will be reviewed annually, or when significant change is made to the ARC’s approach to AI.
