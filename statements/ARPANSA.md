@@ -15,66 +15,59 @@ When considering AI, we apply the Organisation for Economic Co-operation and Dev
 
 ## Introduction
 
-ARPANSA is committed to the protection of Australia, the health and safety of its people, and the environment from the harmful effects of radiation. Delivering on our role includes the responsible, ethical, and transparent use of artificial intelligence (AI) to enhance our research, services and operations.
+ARPANSA works to protect Australians and the environment from the harmful effects of radiation by promoting safe, ethical, and transparent use of artificial intelligence in its operations. This transparency statement describes ARPANSA’s approach to AI, following DTA guidelines for responsible government use and transparency.
 
-The agency recognises this is a rapidly evolving technology; this statement covers our approach and consideration of AI and how we will go about ensuring its safe and responsible use. We are committed to adapting our use and capabilities as the technology, environment and policy requirements evolve.
+## Why we use AI
 
-## Purpose of AI use
+ARPANSA uses AI to support the delivery of high‑quality scientific advice, internal corporate operations, and regulatory assurance. AI helps staff perform routine or complex tasks more efficiently, enabling greater focus on mission‑critical work that protects the community from radiation risks.
 
-AI may be used across various corporate and enabling functions to enhance workplace productivity by streamlining workflows, automating routine tasks, providing analytics and intelligent data insights. It is used by select staff in their routine digital daily activities and to provide accessibility support.
+## How we use AI
 
-AI may also be used to support service delivery in relation to compliance and assurance.
+ARPANSA’s current use of AI aligns with the [DTA classification system](http://digital.gov.au/ai/resources/use-classification) for AI use in the following ways:
 
-### Workplace productivity
+### Usage patterns:
 
-We see the potential benefits in using AI to improve workplace productivity for all staff including:
+- Workplace productivity
+- Analytics for insights
+- Decision-support/administrative processes
+- Innovation and process improvement.
 
-- streamlining staff accessibility and understanding of policies and entitlements
-- improving accessibility to assist staff in using platforms, applications, and services
-- improving the uptake of features in existing products and services
-- providing specialised just in time education for staff
-- assisting in summarising content such as documents, emails and other content
-- enabling the transcription and dynamic review of interviews and meeting notes
-- supporting rapid prototyping of training and education materials for agency staff.
+### Domains:
 
-### Public interaction
+- Corporate and Enabling
 
-ARPANSA’s use of AI does not involve direct interaction with the public or pose any significant impact to individuals. AI is not used as part of automated decision making with respect to individuals and the agency commits to being clear if AI becomes part of a decision-making process.
+## Public interaction and impact
 
-## Monitoring and governance
+ARPANSA does not use AI in any way that directly interacts with members of the public. No AI system is used to make automated decisions about individuals, or to generate outcomes that could significantly impact individuals without human review.
 
-### Responsible AI usage policy
+## Monitoring AI effectiveness and impacts
 
-The agency will maintain an internal responsible AI usage policy that aligns with advice and guidance provided by the DTA, Australian Public Service Commission and other relevant agencies for using AI services responsibly.
+ARPANSA monitors AI use and applications to ensure ongoing safety, transparency and ethical operation. ARPANSA continually strengthens its AI governance in concert with our broader cyber security, data, digital and technical governance frameworks to ensure all AI use remains safe, ethical and well‑aligned with whole‑of‑agency risk settings.
 
-### Measure and monitoring
+ARPANSA has established governance and oversight mechanisms to support ethical and effective use of AI including:
 
-#### Training
+- An AI Governance Working Group
+- Communities of Practice and internal AI specialists
+- CIO and CISO oversight
 
-The agency will provide all staff with training and education in general AI knowledge and where relevant to specific AI tools as well as on-demand support. Staff complete mandatory training when accessing AI tools and have continued access to training on the proper use of AI services.
+#### Training and capability
 
-#### Support
+All staff who access AI tools must complete the AI Fundamentals mandatory training.
 
-The agency will provide internal support and information for staff and managers on the use of AI. All Staff are provided the means to report concerns or queries to the Digital Technology Team through the provision of feedback session, surveys, and service requests.
+We are committed to building staff capability, including digital capability required at all levels of the agency. We offer AI training, education and support and provide opportunities to enable our workforce to develop their skills and knowledge. Training needs will be assessed as ARPANSA’s use of AI evolves.
 
-#### Monitoring
+#### Compliance
 
-The agency acknowledges AI carries with it emerging risks and will continue to establish oversight and governance frameworks and processes to monitor the effectiveness, risk and ethical use of our AI systems.
+ARPANSA complies with the DTA policies, standards, legislation, privacy and security frameworks. The DTA requirements are regularly reviewed by the AI Working Group and Accountable Official.
 
-## Compliance
+This statement was last updated in March 2026. In line with the policy for [Responsible Use of AI in Government](https://www.digital.gov.au/policy/ai/policy), our statement will be reviewed at least annually and updated if our approach to and use of AI changes.
 
-Our AI practices will comply with the mandatory requirements of the Australian Government's Policy for the Responsible Use of AI in Government. We ensure that our AI systems are in accordance with all applicable laws and guidelines. This includes regular reviews and audits to maintain compliance with relevant legislation and regulations, and continuous improvement processes.
+#### Accountable official
 
-### Accountable official
+The Chief Information Officer was designated as ARPANSA’s Accountable Official for AI on 11 November 2024.
 
-ARPANSA's Chief Information Officer was designated as the accountable official for AI on 11 November 2024.
+## Contact
 
-### AI transparency statement
-
-The AI transparency statement was first published to our website on 14 February 2025.
-
-## ARPANSA AI Contact Information
-
-For further inquiries about our AI use, please contact us at [ai@arpansa.gov.au](mailto:ai@arpansa.gov.au)
+For questions about this statement please submit an enquiry via our [online contact form. ](https://www.arpansa.gov.au/contact-us/contact-us-form)
 
 [![Access to information](https://www.arpansa.gov.au/sites/default/files/images/2022-08/access-to-information.png)](https://www.arpansa.gov.au/about-us/accessing-our-information/access-information) [![FOI disclosure log](https://www.arpansa.gov.au/sites/default/files/images/2022-08/foi-disclosure-log.png)](https://www.arpansa.gov.au/about-us/accessing-our-information/disclosure-log) [![Information public scheme](https://www.arpansa.gov.au/sites/default/files/images/2022-08/ips_0.png)](https://www.arpansa.gov.au/about-us/accessing-our-information/information-publication-scheme)
