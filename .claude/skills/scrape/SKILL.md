@@ -6,7 +6,7 @@ description:
   transparency statements from agencies without URLs. Use when asked to "scrape",
   "run the scraper", "update statements", or "fetch transparency statements".
 disable-model-invocation: true
-allowed-tools: Read, Grep, Glob, Bash, Edit, WebSearch, WebFetch
+allowed-tools: Read, Grep, Glob, Bash, Edit, Agent, WebSearch, WebFetch
 ---
 
 Run the APS AI transparency statement scraper, validate the results, commit
@@ -115,20 +115,20 @@ After the scrape is complete (whether or not there were updates), search for
 newly published statements from agencies that currently have no URL.
 
 1. Read `agencies.toml` and collect all agencies where `url = ""`.
-2. Pick up to 5 agencies to search for. Prioritise larger agencies (by `size`)
-   and rotate through them across runs --- pick the ones that appear earliest in
-   the file that you haven't found yet, so over multiple weeks all agencies get
-   checked.
-3. For each selected agency, use WebSearch to look for their AI transparency
-   statement:
-   - `"[agency name]" AI transparency statement site:[domain].gov.au`
-   - `"[agency abbreviation]" AI transparency statement`
-   - `site:[domain].gov.au artificial intelligence transparency`
-4. If a search returns a plausible result, use WebFetch to visit the page and
-   verify it's actually an AI transparency statement (not a general policy page
-   or unrelated content).
-5. For each verified statement found, update the `url` field in `agencies.toml`.
-6. If any URLs were added, run the scraper again (the full pipeline --- it will
+2. Search for **all** missing agencies, not just a subset. Launch subagents in
+   parallel (batches of 5--6) using the Agent tool to search concurrently. Each
+   subagent should:
+   - Use WebSearch to look for the agency's AI transparency statement:
+     - `"[agency name]" AI transparency statement site:[domain].gov.au`
+     - `"[agency abbreviation]" AI transparency statement`
+     - `site:[domain].gov.au artificial intelligence transparency`
+   - If a search returns a plausible result, use WebFetch to visit the page and
+     verify it's actually an AI transparency statement (not a general policy page
+     or unrelated content)
+   - Return the verified URL, or report that no statement was found
+3. Collect results from all subagents. For each verified statement found, update
+   the `url` field in `agencies.toml`.
+4. If any URLs were added, run the scraper again (the full pipeline --- it will
    pick up the new URLs), then review the diff, discard spurious changes, and
    commit and push:
 
@@ -138,8 +138,7 @@ newly published statements from agencies that currently have no URL.
    git push
    ```
 
-7. If no new statements were found, report which agencies were checked and that
-   nothing was found.
+5. Report which agencies were checked and the outcome for each (found/not found).
 
 ## Error handling
 
