@@ -73,16 +73,3 @@ For enquiries, please contact us at [artificialintelligence@fwc.gov.au](mailto:a
 The Executive Director of Enabling Services is designated as the accountable official for our use of AI.
 
 This statement was first published in February 2025, and will be reviewed at least annually, or when we make a significant change to our approach to AI as outlined above.
-
-Last updated: 3 February 2026
-
-You must have JavaScript enabled to use this form.
-
-## How useful was this page?\*
-
-Star rating
-
-Do you have any comments?
-
-Note: your comments are anonymous. We use them to improve the website. Do not include any personal details.\
-[Contact us](https://www.fwc.gov.au/about-us/contact-us) or [find legal help](https://www.fwc.gov.au/simple-page/where-find-legal-help) if you need a response.

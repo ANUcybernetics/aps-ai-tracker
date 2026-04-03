@@ -110,8 +110,6 @@ We will update this transparency statement as we continue to develop policies on
 
 The Chief Digital Information Officer is our AI Accountable Official.
 
-![](https://www.health.gov.au/themes/custom/hga/images/contact-aus-gov.png)
-
 ### [ AI team ](https://www.health.gov.au/contacts/ai-team?language=en)
 
 Contact us for questions about our AI transparency statement, our use of AI, or to report AI safety concerns, including AI-related incidents.
@@ -125,17 +123,3 @@ Date last updated:
 Tags:
 
 - [About the department](https://www.health.gov.au/topics/about-the-department)
-
-**Is there anything wrong with this page?**
-
-## Help us improve health.gov.au
-
-If you would like a response please provide an email address. Your email address is covered by our [privacy policy](https://www.health.gov.au/node/6186).
-
-Email address
-
-What you were doing? (mandatory)
-
-What went wrong? (mandatory)
-
-Leave this field blank

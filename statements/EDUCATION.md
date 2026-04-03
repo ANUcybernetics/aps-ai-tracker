@@ -76,5 +76,3 @@ This transparency statement will be annually reviewed and re-released with relev
 ## Contact Information
 
 For inquiries regarding the department’s use of AI, please contact [digitalservices@education.gov.au](mailto:digitalservices@education.gov.au).
-
-**This statement was last updated 30/09/2025.**

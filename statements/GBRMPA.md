@@ -51,8 +51,6 @@ For questions about this statement, please contact [tads.helpdesk@gbrmpa.gov.au]
 
 ### AI Transparency Statement
 
-The Reef Authority's AI Transparency Statement was last updated in November 2025. In line with the \[Policy for responsible use of AI in government\](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf) this AI Transparency Statement will be updated if the Reef Authority's approach to AI changes, and at least every twelve months.
-
 Created Tue, 2025-02-25 11:21
 
 Updated 20 Nov 2025
