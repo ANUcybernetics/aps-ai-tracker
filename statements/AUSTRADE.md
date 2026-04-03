@@ -7,8 +7,6 @@ title: Artificial intelligence transparency | Austrade
 
 Skip to content or footer
 
-Search search
-
 ## How Austrade defines AI
 
 In Austrade we apply the OECD definition of AI in line with the policy for “Responsible Use of AI in Government” developed by the Digital Transformation Agency.

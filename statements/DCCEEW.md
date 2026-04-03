@@ -9,8 +9,6 @@ Skip to page navigation
 
 # Artificial Intelligence Transparency Statement
 
-Last updated: 19 February 2026
-
 This page explains how we are using Artificial Intelligence, in line with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
 We recognise that AI can help in supporting delivery of the outcomes in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan"). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
