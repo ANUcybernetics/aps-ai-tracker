@@ -78,5 +78,3 @@ The Tribunal has developed "safe use of AI" training which is mandatory for staf
 ### AI contact
 
 For questions about this statement or for further information on the Tribunal’s usage of AI, please contact [AI@art.gov.au](mailto:AI@art.gov.au). Note attempts at commercial engagement via this account will be ignored.
-
-Date last updated: 2 January 2026.

@@ -148,5 +148,3 @@ Your feedback has been successfully submitted.
 Thank you for providing feedback. Help us improve by [telling us what you think](https://www.dss.gov.au/contact-us/enquiries-and-feedback). 
 
 DSS3370 | Permalink: www.dss.gov.au/node/3370
-
-Last modified 20 January 2026.

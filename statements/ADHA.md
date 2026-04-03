@@ -48,5 +48,3 @@ The AI Accountable Official is responsible for overseeing implementation of the 
 This AI transparency statement was last updated in February 2025. Further adjustments will be made if the Agency's use of AI changes. This statement will be reviewed annually at a minimum.
 
 For enquiries, visit our [contact us](https://www.digitalhealth.gov.au/support/contact-us "Contact us") page or email [help@digitalhealth.gov.au](mailto:help@digitalhealth.gov.au).
-
-Date last updated: 28 February 2025
