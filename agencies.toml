@@ -102,7 +102,7 @@ url = "https://www.aciar.gov.au/artificial-intelligence"
 name = "Australian Commission on Safety and Quality in Health Care"
 abbr = "ACSQHC"
 size = "small"
-url = ""
+url = "https://www.safetyandquality.gov.au/about-us/governance/ai-transparency-statement"
 
 [[agencies]]
 name = "Australian Communications and Media Authority"
@@ -439,7 +439,7 @@ url = "https://www.ipaustralia.gov.au/news-and-community/news/artificial-intelli
 name = "Independent Parliamentary Expenses Authority"
 abbr = "IPEA"
 size = "extra-small"
-url = ""
+url = "https://www.ipea.gov.au/about-ipea/accountability/ipea-artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
 name = "Inspector-General of Taxation and Taxation Ombudsman"
@@ -603,7 +603,7 @@ url = "https://www.donatelife.gov.au/ai-transparency-statement"
 name = "Parliamentary Workplace Support Service"
 abbr = "PWSS"
 size = "extra-small"
-url = ""
+url = "https://www.pwss.gov.au/resources/pwss-artificial-intelligence-transparency-statement"
 
 [[agencies]]
 name = "Productivity Commission"
