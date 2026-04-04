@@ -15,8 +15,8 @@ The [script](./src/aps_ai_transparency_tracker/scraper.py):
   markdown-formatted version
 - saves it to the [`statements/` directory](./statements)
 
-This process is run in a [GitHub action](.github/workflows/scrape.yml) every
-week, and any changes to an agency's statement are updated in the repository.
+This process is run daily via a cron job, and any changes to an agency's
+statement are updated in the repository.
 
 ## Background
 
