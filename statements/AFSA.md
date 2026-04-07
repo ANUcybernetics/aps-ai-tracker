@@ -1,11 +1,13 @@
 ---
 abbr: AFSA
 agency: Australian Financial Security Authority
+final_url: https://www.afsa.gov.au/about-us/accountability-and-reporting/artificial-intelligence-ai-transparency-statement
 source_url: https://www.afsa.gov.au/about-us/accountability-and-reporting/ai-transparency-statement
-title: AI transparency statement | Australian Financial Security Authority
+title: Artificial Intelligence (AI) transparency statement | Australian Financial
+  Security Authority
 ---
 
-# AI transparency statement
+# Artificial Intelligence (AI) transparency statement
 
 The Digital Transformation Agency policy for responsible AI use sets mandatory requirements for AFSA's accountable official and transparency statement.
 
