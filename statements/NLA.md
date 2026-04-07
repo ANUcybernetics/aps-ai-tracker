@@ -58,7 +58,7 @@ For questions about this statement or for further information on the Library's u
 
 ## Review and updates
 
-This AI Transparency Statement was published on 27 February 2025 and will be reviewed and updated annually and/or when significant changes occur.
+This AI Transparency Statement was published on 10 April 2026 and will be reviewed and updated annually and/or when significant changes occur.
 
 Page published: 27 Feb 2025
 
