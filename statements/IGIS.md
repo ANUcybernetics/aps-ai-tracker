@@ -117,11 +117,11 @@ File lists:
 [July - December 2023](https://www.igis.gov.au/sites/default/files/2024-04/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20Created%20July%20to%20December%202023.pdf)\
 [January - June 2023](https://www.igis.gov.au/sites/default/files/2024-04/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20Created%20January%20to%20June%202023.pdf)
 
-## Audit Committee
+## Audit and Risk Committee
 
-The IGIS Audit Committee is established in accordance with the PGPA Act. The Audit Committee’s role is to provide independent assurance and advice to the Inspector-General on the appropriateness of the Office’s financial and performance reporting responsibilities, system of risk oversight and management, and system of internal control.
+The IGIS Audit and Risk Committee is established in accordance with the PGPA Act. The Audit and Risk Committee’s role is to provide independent assurance and advice to the Inspector-General on the appropriateness of the Office’s financial and performance reporting responsibilities, system of risk oversight and management, and system of internal control.
 
-More information about the membership and functions of the IGIS Audit Committee is available in the [IGIS Audit Committee Charter](https://www.igis.gov.au/sites/default/files/2024-05/IGIS%20Audit%20Committee%20Charter%20-%202024.pdf) and the [annual report](https://www.igis.gov.au/resources/publications).
+More information about the membership and functions of the IGIS Audit and Risk Committee is available in the [IGIS Audit and Risk Committee Charter](https://www.igis.gov.au/sites/default/files/2026-04/IGIS%20Audit%20and%20Risk%20Committee%20Charter%202026.pdf) and the [annual report](https://www.igis.gov.au/resources/publications).
 
 ## APS Census Results
 
