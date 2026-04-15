@@ -49,7 +49,7 @@ The department has approved the use of Microsoft Copilot and made Copilot Chat a
 
 ## Why and how does the department use Artificial Intelligence (AI)?
 
-The Department of Education is primarily using AI to improve internal efficiency. Staff are encouraged to use AI to draft, summarise and refine their work, support the processing of large volumes of data and information reduce time spent on routine tasks. Staff must review outputs for quality and accuracy.
+The Department of Education is primarily using AI to improve internal efficiency. Staff are encouraged to use AI to draft, summarise and refine their work, support the processing of large volumes of data and information, and reduce time spent on routine tasks. Staff must review outputs for quality and accuracy.
 
 To minimise risk and safeguard the public, the Department of Education **does not** use AI for automated decision-making. All decisions **are made by staff** , ensuring human oversight and accountability.
 
