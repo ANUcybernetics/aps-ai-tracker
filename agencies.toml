@@ -264,7 +264,7 @@ url = ""
 name = "Bureau of Meteorology"
 abbr = "BOM"
 size = "medium"
-url = ""
+url = "https://www.bom.gov.au/sites/default/files/2026-03/artificial-intelligence-ai-transparency-statement-2026.pdf"
 
 [[agencies]]
 name = "Cancer Australia"
