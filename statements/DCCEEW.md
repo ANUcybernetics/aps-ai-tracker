@@ -13,7 +13,7 @@ This page explains how we are using Artificial Intelligence, in line with the Di
 
 We recognise that AI can help in supporting delivery of the outcomes in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan"). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
 
-When we refer to AI, we use the [Organisation for Economic Co-operation and Development (OECD)](https://www.oecd-ilibrary.org/science-and-technology/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en) definition:
+When we refer to AI, we use the [Organisation for Economic Co-operation and Development](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html) (OECD) definition:
 
 > "A machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment." (OECD)
 
@@ -21,7 +21,7 @@ We commit to using AI in a safe and responsible manner. We always use AI with hu
 
 ## How we use AI
 
-We currently use AI to support the delivery of innovative and expert advice to the Australian Government grounded in evidence and science.
+We currently use AI to support the delivery of innovative and expert advice to the Australian Government, grounded in evidence and science.
 
 We classify our use of AI and related domains using the Australian Government classification system (see the Classification system for AI use on the DTA [Artificial intelligence in government](https://www.digital.gov.au/policy/ai/resources/use-classification) page), tailored to the department’s activities.
 
@@ -36,7 +36,11 @@ Across these domains, we use AI to support policy development, analysis, monitor
 
 We support staff using generative AI tools, by providing guidance on how to do so responsibly and ethically, and in accordance with relevant legislation and policies. Users of generative AI tools are reminded of their individual responsibilities when accessing publicly available tools.
 
-We continue exploring applications of AI to support our vision, purposes and outcomes as set out in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan") and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve). This may include uses across policy development, program delivery, asset management, the administration of legislation and regulation. We will update this statement as our use of AI changes.
+### AI in recruitment trial
+
+We are undertaking a limited, opt-in trial of AI in recruitment. AI will be used to support comparison and evaluation of recruitment processes, alongside standard human assessment for this process. We do not use AI to make selection decisions about candidates. All decisions to shortlist, assess or select candidates are made by a human selection panel, consistent with APS merit based recruitment principles. Results and outcomes of the trial will be explored once the recruitment process is completed.
+
+We continue exploring applications of AI to support our vision, purposes and outcomes as set out in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan") and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve). This may include uses across policy development, program delivery, asset management, the administration of legislation and regulation. We will continue to update this statement as its use of AI changes.
 
 ## Public interaction and impact
 
@@ -46,7 +50,7 @@ We are committed to ensuring our use of AI benefits the public. We recognise tha
 
 We have established and maintain an AI use case register and risk assessment process. The register collects information on AI solutions that are in development or in use across the department. Each use case has an identified executive sponsor and business owner.
 
-When completing the register, business owners ensure AI solutions are implemented safely and responsibly. This includes completing risk assessment and monitoring risk mitigating activities, ongoing effectiveness, potential negative impacts and implement steps to alleviate possible harms.
+When completing the register, business owners ensure AI solutions is implemented safely and responsibly. This includes completing risk assessment and monitoring risk mitigating activities, ongoing effectiveness, potential negative impacts and implement steps to alleviate possible harms.
 
 The AI register and AI risk assessment align with the DTA’s:
 
@@ -54,7 +58,7 @@ The AI register and AI risk assessment align with the DTA’s:
 - [AI Impact Assessment Tool](https://www.digital.gov.au/ai/impact-assessment-tool)
 - [Guidance on AI procurement in government](https://www.buyict.gov.au/sp?id=buyer&kb=KB0011755).
 
-To support AI risk mitigation, we will finalise our AI Risk Appetite Guidelines which sit alongside tools supporting staff to assess and manage risk effectively. We have also developed and published an AI ethics and governance framework that aligns with whole-of-government policy.
+To support AI risk mitigation, we have finalised our AI Risk Appetite Guidelines which sit alongside tools supporting staff to assess and manage risk effectively. We have also developed and published an AI ethics and governance framework that aligns with whole-of-government policy.
 
 ## Compliance
 
@@ -76,6 +80,6 @@ For questions about this statement, contact: [CDO@dcceew.gov.au](mailto:CDO@dcce
 
 ## AI Transparency Statement review and updates
 
-We last updated this statement February 2026.
+We last updated this statement in April 2026.
 
 We will review and update it if our approach to or use of AI changes, and at least every 12 months, in line with policy requirements.
