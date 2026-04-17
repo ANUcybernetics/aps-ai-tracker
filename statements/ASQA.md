@@ -1,17 +1,10 @@
 ---
 abbr: ASQA
 agency: Australian Skills Quality Authority
+final_url: https://www.asqa.gov.au/about-us/governance-and-accountability/artificial-intelligence-ai-transparency-statement
 source_url: https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement
-title: Artificial Intelligence (AI) Transparency Statement | Australian Skills Quality
-  Authority (ASQA)
+title: Artificial Intelligence (AI) Transparency Statement | asqa3
 ---
-
-* [Home](https://www.asqa.gov.au/)
-  * [About us](https://www.asqa.gov.au/about-us)
-  * [Reporting and accountability](https://www.asqa.gov.au/about-us/reporting-and-accountability)
-  * Artificial Intelligence (AI) Transparency Statement
-
-# Artificial Intelligence (AI) Transparency Statement
 
 The Australian Skills Quality Authority (ASQA) is committed to ensuring that Artificial Intelligence (AI) enhances the effectiveness and quality of our services while maintaining the highest standards of ethics, safety and public trust. Our intent is to leverage AI technologies to:
 
@@ -25,7 +18,7 @@ ASQA is engaging with AI in a way that is responsible and prioritises human righ
 
 ## Monitoring and accountability 
 
-ASQA's AI initiatives are overseen by the AI Accountable Official, who also serves as ASQAs Chief Security Officer and Privacy Champion. ASQA is establishing governance arrangements to ensure AI use is appropriately and ethically managed, governed, monitored and benefits are realised, including compliance with applicable Commonwealth laws and policies, such as requirements under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf) and the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au/pspf-annual-release).
+ASQA's AI initiatives are overseen by the AI Accountable Official, who also serves as ASQAs Chief Security Officer and Privacy Champion. ASQA is establishing governance arrangements to ensure AI use is appropriately and ethically managed, governed, monitored and benefits are realised, including compliance with applicable Commonwealth laws and policies, such as requirements under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) and the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au/pspf-annual-release).
 
 ## Usage patterns
 
@@ -38,24 +31,20 @@ ASQA does not currently employ AI capability in public-facing services, includin
 
 As ASQA deploys public-facing AI capability it will ensure its data and AI governance practices include privacy, ethics, and security assessments that aim to protect the public against any negative impacts of AI.
 
-In coming years, ASQA plans to leverage AI technologies as part of its ongoing transformation of digital and data systems and capabilities. 
+In coming years, ASQA plans to leverage AI technologies as part of its ongoing transformation of digital and data systems and capabilities.
 
 ## Domains
 
-ASQA's current AI focus is on workplace productivity, including tools to improve, automate and streamline routine tasks and to support data and analytical insights. 
+ASQA's current AI focus is on workplace productivity, including tools to improve, automate and streamline routine tasks and to support data and analytical insights.
 
-## Ensuring responsible use 
+## Ensuring responsible use
 
 ASQA safeguards against risks and ensures responsible use of AI through releasing at least an annual AI Transparency Statement – to provide visibility on how AI is used and managed. 
 
 ## Contact information
 
-For enquiries or feedback regarding ASQA's use of AI, please contact us at [digitaltransformation@asqa.gov.au](mailto:digitaltransformation@asqa.gov.au)   
+For enquiries or feedback regarding ASQA's use of AI, please contact us at [digitaltransformation@asqa.gov.au ](mailto:digitaltransformation@asqa.gov.au)
 
 ## Review and updates
 
-Share
-
-______[__](mailto:?subject=ASQA%20website&body= "Social link email")
-
-__Print
+On this page
