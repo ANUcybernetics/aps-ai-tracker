@@ -11,36 +11,41 @@ Print
 
 # AI transparency statement
 
-At NOPSEMA, we are excited to explore the potential of artificial intelligence (AI) to enhance workplace productivity in a way that keeps humans at the centre of our decision making. We are pledged to doing this in a safe, secure, and ethical fashion.
+NOPSEMA is exploring the use of artificial intelligence (AI) to improve workplace productivity, while ensuring that people remain accountable for all decisions. We are committed to using AI in a safe, secure and ethical manner.
 
-### Current AI usage
+### Current use of AI
 
-Our AI usage is focused on enhancing corporate and enabling functions by way of AI tools such as:
+NOPSEMA currently uses AI to support internal corporate and enabling functions only. 
 
-  * meeting transcription and automated document summarisation
-  * virtual assistants, that streamline workflows and improve efficiency
-  * deep data analysis, that helps us understand both structured and unstructured material.
+This includes:
 
-NOPSEMA does not currently use AI in service delivery - specifically AI is not used in compliance, auditing or decision-making without having a human-in-the-loop. This means that while AI technologies may be used to assist in various tasks, any final decisions or actions are made by a human.
+  * meeting transcription and document summarisation
+  * virtual assistants to streamline workflows and improve efficiency
+  * data analysis to assist with interpreting structured and unstructured information.
 
-### Future AI adoption
+NOPSEMA does not use AI in regulatory service delivery, including compliance, auditing or decision-making. Where AI is used, a human-in-the-loop approach applies. AI may assist with tasks, but all decisions and actions are made by NOPSEMA staff.
 
-Should we decide to extend our AI usage, or implement any public facing AI capabilities, we will update this statement to reflect this, including:
+### Future use of AI
 
-  * our purpose and objectives behind adopting AI
+If NOPSEMA expands its use of AI, or introduces any public-facing AI capability, this statement will be updated to describe:
+
+  * the purpose and intended outcomes of the AI use
   * any direct interactions the public may have with AI systems
-  * measures to monitor and evaluate the effectiveness of AI systems
-  * compliance with relevant legislation and regulations
-  * efforts to mitigate any potential negative impacts of AI.
+  * how AI systems are monitored, evaluated and reviewed
+  * compliance with relevant legislation, policies and regulatory obligations
+  * how risks and potential negative impacts are identified and mitigated.
 
 ### Governance and policy
 
-NOPSEMA is aligned to the [Australian Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) and we are committed to keeping our stakeholders informed about our AI initiatives.
+NOPSEMA aligns with the [Australian Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) and is committed to transparent and responsible AI use.
 
-  * We are developing an internal AI usage policy that conforms to government guidelines and best practices.
-  * This AI transparency statement will be reviewed annually, or whenever significant changes occur in our approach to AI.
-  * All staff will receive training on the responsible use of AI.
+Oversight of AI at NOPSEMA is provided through existing governance arrangements, with the Chief Information Officer acting as the Accountable Official responsible for AI oversight and risk management.
 
-### Contact information
+NOPSEMA's approach to AI governance includes:
 
-For any inquiries regarding this statement, or our AI initiatives, please contact [ai@nopsema.gov.au](mailto:ai@nopsema.gov.au).
+  * applying a risk-based approach, with higher-risk uses subject to stronger controls and oversight
+  * developing an internal AI usage policy aligned with whole-of-government requirements
+  * managing current AI tools, such as Microsoft Copilot, through existing ICT, information security and risk management frameworks
+  * providing all staff with access to training on the responsible and ethical use of AI.
+
+For any inquiries regarding this statement on NOPSEMA's use of AI, please contact [ai@nopsema.gov.au.](mailto:ai@nopsema.gov.au)
