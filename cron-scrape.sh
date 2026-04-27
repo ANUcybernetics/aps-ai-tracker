@@ -16,6 +16,7 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 /home/ben/.local/bin/claude \
   --dangerously-skip-permissions \
+  --effort max \
   -p "/scrape" \
   >> "$LOG_FILE" 2>&1
 
