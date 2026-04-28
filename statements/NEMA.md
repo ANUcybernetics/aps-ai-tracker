@@ -11,11 +11,11 @@ On this page
 
 # Privacy and disclosures
 
-We are committed to treating complaints seriously. This page provides information our Agency’s obligations for handling personal information under the Privacy Act 1988, how to raise concerns of wrongdoing under the provisions of the Public Interest Disclosure Act 2013, and procurements that are not in the public interest if suspended while a complaint is investigated.
+We are committed to treating complaints seriously. This page provides information on our Agency’s obligations for handling personal information under the _Privacy Act 1988_ , how to raise concerns of wrongdoing under the provisions of the _Public Interest Disclosure Act 2013_ and procurements that are not in the public interest if suspended while a complaint is investigated.
 
 AI Transparency Statement
 
-The National Emergency Management Agency (NEMA) will explore the use of Artificial Intelligence (AI) to help with preparedness, response, recovery, and risk reduction for all hazards, and to improve organisational efficiencies. In doing so we will keep humans at the centre of our decision making and:
+The National Emergency Management Agency (NEMA) will explore the use of Artificial Intelligence (AI) to help with preparedness, response, recovery and risk reduction for all hazards, and to improve organisational efficiencies. In doing so we will keep humans at the centre of our decision making and:
 
 - prioritise human rights
 - protect personal information; and
@@ -25,7 +25,7 @@ As we deliver against our role in developing, leading, and coordinating the Aust
 
 ### Monitoring and Accountability
 
-NEMA’s AI potential use cases are led by our AI Accountable Official - the Chief Data Officer. This official ensures the safe, ethical, and responsible use of AI technologies at NEMA. They also make sure that AI use meets changing laws, ethical standards, and public expectations.
+NEMA’s AI potential use cases are led by our AI Accountable Official, the Chief Data Officer. This official ensures the safe, ethical, and responsible use of AI technologies at NEMA. They also make sure that AI use meets changing laws, ethical standards, and public expectations.
 
 To support these efforts, NEMA has an interim strategy to ensure that the use of AI is ethical, transparent and secure. These elements include:
 
@@ -562,9 +562,9 @@ Personal information is collected by us when you subscribe to any subscription s
 
 Website privacy statement
 
-This website is managed by us (the Agency).
+This website, nema.gov.au, and ausalert.gov.au are managed by us (the Agency).
 
-This notification of collection outlines our collection, use and disclosure of your personal information in relation to your use of this website in accordance with the Privacy Act 1988.
+This notification of collection outlines our collection, use and disclosure of your personal information in relation to your use of either website in accordance with the _Privacy Act 1988_.
 
 Learn more about our handling of personal information in our Privacy Policy below.
 
@@ -572,15 +572,18 @@ Learn more about our handling of personal information in our Privacy Policy belo
 
 #### Clickstream data (information logged)
 
-When visiting this site, a record of your visit is logged. This ‘clickstream data’ is collected for statistical purposes and is used to help improve this website and the experience of visitors.
+When visiting either site, a record of your visit is logged. This ‘clickstream data’ is collected for statistical purposes and is used to help improve the website and the experience of visitors.
 
 The following information is supplied by your browser (for example Internet Explorer, Edge or Chrome) and collected by us:
 
 - your server address
 - your operating system (for example Windows, MAC)
-- your top-level domain name (for example .com, .gov)
-- the date and time of your visit to the site the pages accessed
-- the documents downloaded the previous site visited the type of browser used.
+- your top-level domain name (for example nema.gov.au)
+- the date and time of your visit to the site
+- the pages accessed
+- the documents downloaded
+- the previous site visited
+- the type of browser used.
 
 ### Disclosure
 

@@ -83,6 +83,6 @@ The Chief Information and Digital Officer is designated as the accountable offic
 
 ### AI transparency statement
 
-This AI transparency statement was first published in February 2025. This statement will be reviewed annually, or when any significant change is made to our approach to AI.
+This AI transparency statement was last reviewed in February 2026. This statement will be reviewed at least annually, or at any time where a significant change is made to our or the Government’s approach to AI.
 
 [ Next up: Compliance and enforcement priorities 2025–26 ](https://www.acma.gov.au/compliance-priorities)
