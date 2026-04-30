@@ -54,7 +54,7 @@ url = "https://www.education.gov.au/about-department/corporate-reporting/artific
 name = "Department of Home Affairs"
 abbr = "HOMEAFFAIRS"
 size = "extra-large"
-url = "https://www.homeaffairs.gov.au/commitments/files/ai-transparency-statement.pdf"
+url = "https://www.homeaffairs.gov.au/access-and-accountability/our-commitments/plans-and-charters/our-service-charters/ai-transparency-statement"
 
 [[agencies]]
 name = "Aboriginal Hostels Limited"
@@ -102,7 +102,7 @@ url = "https://www.aciar.gov.au/artificial-intelligence"
 name = "Australian Commission on Safety and Quality in Health Care"
 abbr = "ACSQHC"
 size = "small"
-url = "https://www.safetyandquality.gov.au/about-us/governance/ai-transparency-statement"
+url = ""
 
 [[agencies]]
 name = "Australian Communications and Media Authority"
@@ -186,7 +186,7 @@ url = "https://www.anao.gov.au/work/corporate/anaos-artificial-intelligence-tran
 name = "Australian National Maritime Museum"
 abbr = "ANMM"
 size = "small"
-url = "https://www.sea.museum/en/about/reports-policies-and-plans"
+url = "https://cms-web.seamuseum.net/sites/default/files/2025-06/ai-transparency-statement-april-2025.pdf"
 
 [[agencies]]
 name = "Australian Office of Financial Management"
@@ -433,7 +433,7 @@ url = "https://media.caapp.com.au/uNAjYmwT1let.pdf"
 name = "IP Australia"
 abbr = "IPA"
 size = "medium"
-url = "https://www.ipaustralia.gov.au/news-and-community/news/artificial-intelligence-ai-transparency-statement"
+url = "https://www.ipaustralia.gov.au/about-us/accountability-and-reporting"
 
 [[agencies]]
 name = "Independent Parliamentary Expenses Authority"
@@ -633,7 +633,7 @@ url = "https://www.safeworkaustralia.gov.au/about-us/corporate-publications-and-
 name = "Screen Australia"
 abbr = "SA"
 size = "micro"
-url = "https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/policies-(1)/ai-transparency-statement"
+url = "https://www.screenaustralia.gov.au/corporate-documents/policies/ai-transparency-statement/"
 
 [[agencies]]
 name = "Services Australia"
