@@ -1,6 +1,7 @@
 ---
 abbr: AIFS
 agency: Australian Institute of Family Studies
+final_url: https://aifs.gov.au/compliance-reporting/ai-transparency-statement
 source_url: https://aifs.gov.au/main/policies/ai-transparency-statement
 title: AI transparency statement | Australian Institute of Family Studies
 ---
