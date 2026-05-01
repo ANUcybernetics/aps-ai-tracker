@@ -16,86 +16,81 @@ Date updated:
 
 7 April 2026
 
-### Share
+\[\_\_Share this page\](javascript:;)
 
-[__Share this page](javascript:;)
-
-  * [__Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement&quote=Artificial%20intelligence%20transparency%20statement)
-  * [__X](https://x.com/intent/tweet?text=Artificial%20intelligence%20transparency%20statement&url=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement)
-  * [__LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement)
-  * [__Email](mailto:?body=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement)
+- [\_\_Email](mailto:?body=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement)
 
 ### Topics
 
-  * [Corporate](https://www.industry.gov.au/publications?pub-topic=2906)
+- [Corporate](https://www.industry.gov.au/publications?pub-topic=2906)
 
 ### Publisher
 
-  * [Department of Industry, Science and Resources](https://www.industry.gov.au/publications?publisher=3026)
+- [Department of Industry, Science and Resources](https://www.industry.gov.au/publications?publisher=3026)
 
-Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible artificial intelligence (AI). 
+Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible artificial intelligence (AI).
 
 Our own adoption of AI aligns to the Guidance for AI Adoption, which consists of [6 essential practices](https://www.industry.gov.au/publications/guidance-for-ai-adoption "Guidance for AI Adoption") for industry to adopt AI responsibly. This includes transparency and accountability practices for developers and deployers of AI systems.
 
 The Digital Transformation Agency’s [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy) sets the requirements for Australian Government agencies to engage with AI in a safe and responsible way.
 
-The policy has mandatory requirements about accountable officials and transparency statements. This statement details our implementation of the policy requirements. 
+The policy has mandatory requirements about accountable officials and transparency statements. This statement details our implementation of the policy requirements.
 
 ## Governance
 
 In January 2024, we formed an AI Governance Committee (AIGC) to have central oversight for AI use in the department. The committee’s members represent a range of perspectives from across the department and have involvement in developing AI policy or projects. The AIGC ensures:
 
-  * we find ways to use AI to improve efficiency, capability and innovate
-  * appropriate governance of AI use and adherence with relevant legislation, policies and best practice
-  * opportunities involving the use of AI are considered, safe and responsible
-  * we identify and address all potential AI related risks
-  * appropriate training and usage policies are available.
+- we find ways to use AI to improve efficiency, capability and innovate
+- appropriate governance of AI use and adherence with relevant legislation, policies and best practice
+- opportunities involving the use of AI are considered, safe and responsible
+- we identify and address all potential AI related risks
+- appropriate training and usage policies are available.
 
-## AI accountable official 
+## AI accountable official
 
-Our Chief Information Officer is the accountable official responsible for carrying out the policy. The AIGC supports the accountable official. 
+Our Chief Information Officer is the accountable official responsible for carrying out the policy. The AIGC supports the accountable official.
 
 ## How we use AI
 
 Our approach uses a number of AI tools to deliver efficiencies and augment processes. These help staff focus on more complex and meaningful work.
 
-The AIGC maintains visibility of AI use and classifies AI use according to the following [usage patterns and domains](https://www.digital.gov.au/policy/ai/resources/use-classification): 
+The AIGC maintains visibility of AI use and classifies AI use according to the following [usage patterns and domains](https://www.digital.gov.au/policy/ai/resources/use-classification):
 
-  * **Usage patterns** : supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
-  * **Domains** : service delivery, compliance and fraud detection, policy and legal, and corporate and enabling domains. 
+- **Usage patterns** : supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
+- **Domains** : service delivery, compliance and fraud detection, policy and legal, and corporate and enabling domains.
 
-We have a policy that guides all staff on: 
+We have a policy that guides all staff on:
 
-  * acceptable use of AI in our department
-  * ethical considerations
-  * freedom of information considerations
-  * record keeping
-  * privacy
-  * roles and responsibilities when using AI.
+- acceptable use of AI in our department
+- ethical considerations
+- freedom of information considerations
+- record keeping
+- privacy
+- roles and responsibilities when using AI.
 
-We do not use AI in any instance where the public directly interacts with or feels a significant impact from AI without a human agent. 
+We do not use AI in any instance where the public directly interacts with or feels a significant impact from AI without a human agent.
 
 Staff review all AI tool outputs and treat them as drafts or starting points for further research, not for decision-making.
 
 ## Australian AI Safety Institute
 
-We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks. 
+We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks.
 
 ## Our commitment
 
-We will continuously refine and enhance our AI capabilities. We do this by ensuring centralised oversight and evaluation of AI tools through the AIGC. 
+We will continuously refine and enhance our AI capabilities. We do this by ensuring centralised oversight and evaluation of AI tools through the AIGC.
 
 This statement will evolve to align with technology changes, legislation, policy and governance best practices. We will review at least every 12 months and update it if our AI approach changes, or if anything materially impacts its accuracy.
 
-##  More information
+## More information
 
-[Learn more about our corporate governance and integrity controls __](https://www.industry.gov.au/corporate-governance)
+[Learn more about our corporate governance and integrity controls \_\_](https://www.industry.gov.au/corporate-governance)
 
-[Read the Voluntary AI Safety Standard __](https://www.industry.gov.au/publications/voluntary-ai-safety-standard)
+[Read the Voluntary AI Safety Standard \_\_](https://www.industry.gov.au/publications/voluntary-ai-safety-standard)
 
-##  Contact us
+## Contact us
 
-__
+\_\_
 
 Email
 

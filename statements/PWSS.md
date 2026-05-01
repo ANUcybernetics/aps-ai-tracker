@@ -6,9 +6,9 @@ title: PWSS Artificial Intelligence Transparency Statement | Parliamentary Workp
   Support Service
 ---
 
-Policy 
+Policy
 
-# PWSS Artificial Intelligence Transparency Statement 
+# PWSS Artificial Intelligence Transparency Statement
 
 This outlines how PWSS uses artificial intelligence (AI) and details the PWSS implementation of the Digital Transformation Agency policy requirements.
 

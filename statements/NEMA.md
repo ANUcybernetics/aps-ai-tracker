@@ -5,23 +5,21 @@ source_url: https://www.nema.gov.au/about-us/privacy-disclosures
 title: Privacy and disclosures | NEMA
 ---
 
-#  Privacy and disclosures 
+# Privacy and disclosures
 
-On this page
-
-#  Privacy and disclosures 
+# Privacy and disclosures
 
 We are committed to treating complaints seriously. This page provides information on our Agency’s obligations for handling personal information under the _Privacy Act 1988_ , how to raise concerns of wrongdoing under the provisions of the _Public Interest Disclosure Act 2013_ and procurements that are not in the public interest if suspended while a complaint is investigated.
 
-AI Transparency Statement 
+AI Transparency Statement
 
 The National Emergency Management Agency (NEMA) will explore the use of Artificial Intelligence (AI) to help with preparedness, response, recovery and risk reduction for all hazards, and to improve organisational efficiencies. In doing so we will keep humans at the centre of our decision making and:
 
-  * prioritise human rights
-  * protect personal information; and
-  * respect first nations’ data.
+- prioritise human rights
+- protect personal information; and
+- respect first nations’ data.
 
-As we deliver against our role in developing, leading, and coordinating the Australian Government’s emergency management activities, we may look to innovate with AI. We will do this with a focus on managing the risks while increasing our organisational maturity and the potential AI we identify for use. We are committed to ensuring that AI enhances the effectiveness and quality of our services while maintaining the highest standards of ethics, safety and public trust. NEMA’s policy on the use of AI is transparent, responsible and aligns with legislative and regulatory requirements including the [Policy for the responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government)**,** the [Voluntary AI Safety Standard](https://www.industry.gov.au/publications/voluntary-ai-safety-standard)**** and the [Australian Artificial Intelligence Ethics Principles](https://architecture.digital.gov.au/australias-artificial-intelligence-ethics-principles).
+As we deliver against our role in developing, leading, and coordinating the Australian Government’s emergency management activities, we may look to innovate with AI. We will do this with a focus on managing the risks while increasing our organisational maturity and the potential AI we identify for use. We are committed to ensuring that AI enhances the effectiveness and quality of our services while maintaining the highest standards of ethics, safety and public trust. NEMA’s policy on the use of AI is transparent, responsible and aligns with legislative and regulatory requirements including the [Policy for the responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government)**,** the [Voluntary AI Safety Standard](https://www.industry.gov.au/publications/voluntary-ai-safety-standard)\*\*\*\* and the [Australian Artificial Intelligence Ethics Principles](https://architecture.digital.gov.au/australias-artificial-intelligence-ethics-principles).
 
 ### Monitoring and Accountability
 
@@ -29,32 +27,30 @@ NEMA’s AI potential use cases are led by our AI Accountable Official, the Chie
 
 To support these efforts, NEMA has an interim strategy to ensure that the use of AI is ethical, transparent and secure. These elements include:
 
-  * **Governance Committee** : Delivered through our Data Governance Committee and chaired by the Chief Data Officer. This committee reviews the appropriate use, access, quality, security, and introduction of new data and AI practices are in line with agreed data ethics.
-  * **Ethics Statement** : Designing and implementing a NEMA specific ethics statement for the use of AI. This sets appropriate expectations for the use of AI and is aligning to the whole of government AI principles.
-  * **Human Oversight** : Embed human mechanisms that are tasked to review AI outputs that contribute to decision making activities.
-  * **Cybersecurity Standards** : Managed by NEMA’s appointed Chief Information Security Officer, and overseen by NEMA’s appointed Chief Security Officer, we adhere to the Australian Government’s Protective Security Policy Framework (PSPF). As an interim measure NEMA has formally adopted the Department of Home Affairs’ position and guidance for the ethical and secure use of AI. This includes the Home Affairs Risk Management Plan for using AI (AI‑RMP). As we explore our usage patterns this may require us to implement a NEMA‑specific AI Risk Management Plan which incorporates a range of AI risks and controls.
+- **Governance Committee** : Delivered through our Data Governance Committee and chaired by the Chief Data Officer. This committee reviews the appropriate use, access, quality, security, and introduction of new data and AI practices are in line with agreed data ethics.
+- **Ethics Statement** : Designing and implementing a NEMA specific ethics statement for the use of AI. This sets appropriate expectations for the use of AI and is aligning to the whole of government AI principles.
+- **Human Oversight** : Embed human mechanisms that are tasked to review AI outputs that contribute to decision making activities.
+- **Cybersecurity Standards** : Managed by NEMA’s appointed Chief Information Security Officer, and overseen by NEMA’s appointed Chief Security Officer, we adhere to the Australian Government’s Protective Security Policy Framework (PSPF). As an interim measure NEMA has formally adopted the Department of Home Affairs’ position and guidance for the ethical and secure use of AI. This includes the Home Affairs Risk Management Plan for using AI (AI‑RMP). As we explore our usage patterns this may require us to implement a NEMA‑specific AI Risk Management Plan which incorporates a range of AI risks and controls.
 
 #### AI Patterns
 
 As we continue exploring AI use cases, we will consider our potential domain application focus. We will manage a register of domain and usage patterns to track our implementation in line with our interim AI strategy.
 
-NEMA knows AI is growing at speed, however any potential AI implementation will be implemented at a pace which manages risks appropriately. This is especially true for compliance, auditing, or decision-making processes that require human oversight and decision making. AI can assist with different tasks in the agency, but humans will make all final decisions on actions. 
+NEMA knows AI is growing at speed, however any potential AI implementation will be implemented at a pace which manages risks appropriately. This is especially true for compliance, auditing, or decision-making processes that require human oversight and decision making. AI can assist with different tasks in the agency, but humans will make all final decisions on actions.
 
 #### Our current usage pattern:
 
-Usage pattern | Description | Examples  
----|---|---  
-Workplace productivity Microsoft 365 CoPilot | Automates routine tasks, manage workflows and facilitate communication. | Virtual assistants, automated scheduling, document summary, content creation and basic secretariat support.  
-  
-#### 
+| Usage pattern                                | Description                                                             | Examples                                                                                                    |
+| -------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Workplace productivity Microsoft 365 CoPilot | Automates routine tasks, manage workflows and facilitate communication. | Virtual assistants, automated scheduling, document summary, content creation and basic secretariat support. |
 
-#### Our  _potential_ usage patterns are outlined below:
+#### Our _potential_ usage patterns are outlined below:
 
-Usage pattern | Description | Examples  
----|---|---  
-Analytics for insights | Identify, produce or create insights with structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools. | Change detection process across satellite imagery.  
-Situational awareness | Collect, identify patterns and summarise open source data | Identify insights in open source data to build situational context.  
-  
+| Usage pattern          | Description                                                                                                                                                  | Examples                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Analytics for insights | Identify, produce or create insights with structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools. | Change detection process across satellite imagery.                  |
+| Situational awareness  | Collect, identify patterns and summarise open source data                                                                                                    | Identify insights in open source data to build situational context. |
+
 ### Ensuring Responsible Use
 
 NEMA safeguards against risks and ensures responsible AI usage by publishing ongoing AI transparency statements when changes occur to provide visibility on the usage and management of AI.
@@ -65,18 +61,18 @@ For enquiries regarding NEMA’s use of AI, please contact us at [contact@nema.g
 
 ### Review and Updates
 
-Copyright, trade marks and disclaimer 
+Copyright, trade marks and disclaimer
 
 Intellectual property rights protection is an important aspect of our website content. You should keep copyright protection and trademark integrity in mind when using our website.
 
 The Commonwealth of Australia owns all the material we produce. All material presented on this website is provided under a [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/), with the exception of:
 
-  * the Commonwealth Coat of Arms – terms of use are available at [Commonwealth Coat of Arms | PM&C (pmc.gov.au)](https://www.pmc.gov.au/honours-and-symbols/commonwealth-coat-arms#:~:text=Description%20of%20the%20Commonwealth%20Coat%20of%20Arms,-The%20centre%20of&text=The%20shield%20is%20held%20up,Star%20sits%20above%20the%20shield.)
-  * the NEMA logo
-  * materials specifically not provided under a Creative Commons attribution 4.0 licence
-  * content supplied by third parties.
+- the Commonwealth Coat of Arms – terms of use are available at [Commonwealth Coat of Arms | PM&C (pmc.gov.au)](https://www.pmc.gov.au/honours-and-symbols/commonwealth-coat-arms#:~:text=Description%20of%20the%20Commonwealth%20Coat%20of%20Arms,-The%20centre%20of&text=The%20shield%20is%20held%20up,Star%20sits%20above%20the%20shield.)
+- the NEMA logo
+- materials specifically not provided under a Creative Commons attribution 4.0 licence
+- content supplied by third parties.
 
-License details and conditions are available in the [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/). 
+License details and conditions are available in the [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/).
 
 You should not alter any NEMA website content and should attribute website material as “Australian Government: NEMA”.
 
@@ -86,12 +82,12 @@ The copyright held by a third party to material on our website remains with that
 
 We have made all reasonable efforts to:
 
-  * label clearly the material where the copyright is owned by a third party
-  * ensure we have the consent of the copyright owner to use this material on our website.
+- label clearly the material where the copyright is owned by a third party
+- ensure we have the consent of the copyright owner to use this material on our website.
 
 ### Logos and trade marks
 
-Any logos, NEMA logos, registered trade marks and unregistered trade marks must not be used without prior, specific and written permission obtained in advance. 
+Any logos, NEMA logos, registered trade marks and unregistered trade marks must not be used without prior, specific and written permission obtained in advance.
 
 ### More information
 
@@ -103,12 +99,12 @@ Conditions of use
 
 By using this website you accept the following conditions:
 
-  * the Commonwealth of Australia accepts no responsibility for the completeness or accuracy of any of the information contained on or accessed through this website and makes no representations about its suitability for any particular purpose
-  * while we make every effort to ensure that the information on this website is accurate and comprehensive, the information is only intended as a basic guide to relevant policies and laws, and does not address the complexities of particular circumstances
-  * you should seek independent advice about your individual circumstances
-  * to the extent permitted by law, the Commonwealth excludes all liability for loss or damage arising from the use of, or reliance on, the information contained on or accessed through this website whether or not caused by any negligence on the part of the Commonwealth or its agents.
-  * we make every effort to ensure that links on this site are up-to-date. The currency of the links is dependent upon the owners of those sites letting us know of any changes.
-  * If you find a link that does not work, contact us at: [contact@nema.gov.au](mailto:contact@nema.gov.au).
+- the Commonwealth of Australia accepts no responsibility for the completeness or accuracy of any of the information contained on or accessed through this website and makes no representations about its suitability for any particular purpose
+- while we make every effort to ensure that the information on this website is accurate and comprehensive, the information is only intended as a basic guide to relevant policies and laws, and does not address the complexities of particular circumstances
+- you should seek independent advice about your individual circumstances
+- to the extent permitted by law, the Commonwealth excludes all liability for loss or damage arising from the use of, or reliance on, the information contained on or accessed through this website whether or not caused by any negligence on the part of the Commonwealth or its agents.
+- we make every effort to ensure that links on this site are up-to-date. The currency of the links is dependent upon the owners of those sites letting us know of any changes.
+- If you find a link that does not work, contact us at: [contact@nema.gov.au](mailto:contact@nema.gov.au).
 
 Information or materials which are offensive, pornographic, unsuitable for minors access or otherwise of a criminal or violent nature may potentially be accessible through this site either as a result of hacking or material placed on linked websites.
 
@@ -116,8 +112,8 @@ The Commonwealth makes no representations as to the suitability of the informati
 
 You assume all risks associated with use of the website, including:
 
-  * The risk of your computer, software or data being damaged by any virus, torjan which might be transmitted or activated via the website or your access to it
-  * or the risk that the content of this website and linked web sites complies with the laws of any country outside Australia.
+- The risk of your computer, software or data being damaged by any virus, torjan which might be transmitted or activated via the website or your access to it
+- or the risk that the content of this website and linked web sites complies with the laws of any country outside Australia.
 
 Your use of this website will be logged for the purpose of security and usage monitoring. For further information refer to the websites [Privacy Statement](https://www.nema.gov.au/about-us/privacy-disclosures).
 
@@ -127,25 +123,25 @@ This website is hosted on a GovCMS web server in Canberra in the Australian Capi
 
 These terms are governed by the law in force in the ACT and any dispute about these terms or the contents of this web site are subject to the exclusive jurisdiction of the courts of the ACT.
 
-Interactive map data 
+Interactive map data
 
 The interactive maps that appear across our website utilise data from a number of third-party providers, including:
 
-  * Services Australia
-  * Australian Bureau of Statistics
-  * State and Territory Governments 
-    * New South Wales
-    * Victoria
-    * Queensland
-    * South Australia
-    * Western Australia
-    * Tasmania
-    * Northern Territory
-    * Australian Capital Territory
+- Services Australia
+- Australian Bureau of Statistics
+- State and Territory Governments
+  - New South Wales
+  - Victoria
+  - Queensland
+  - South Australia
+  - Western Australia
+  - Tasmania
+  - Northern Territory
+  - Australian Capital Territory
 
 The data is maintained by these third-party providers. While every effort has been made to ensure the accuracy of this information, no guarantee is given.
 
-Privacy Policy 
+Privacy Policy
 
 **Introduction**
 
@@ -169,12 +165,12 @@ The Code enhances existing privacy capability within agencies, builds greater tr
 
 The Code requires agencies to:
 
-  * have a privacy management plan,
-  * appoint a Privacy Officer, or Privacy Officers, and ensure that particular Privacy Officer functions are undertaken,
-  * appoint a senior official as a Privacy Champion to provide cultural leadership and promote the value of personal information, and ensure that the Privacy Champion functions are undertaken,
-  * undertake a written Privacy Impact Assessment (PIA) for all ‘high privacy risk’ projects or initiatives that involve new or changed ways of handling personal information,
-  * keep a register of all PIAs conducted and publish this register, or a version of the register, on their websites,
-  * take steps to enhance internal privacy capability, including by providing appropriate privacy education or training in staff induction programs, and annually to all staff who have access to personal information.
+- have a privacy management plan,
+- appoint a Privacy Officer, or Privacy Officers, and ensure that particular Privacy Officer functions are undertaken,
+- appoint a senior official as a Privacy Champion to provide cultural leadership and promote the value of personal information, and ensure that the Privacy Champion functions are undertaken,
+- undertake a written Privacy Impact Assessment (PIA) for all ‘high privacy risk’ projects or initiatives that involve new or changed ways of handling personal information,
+- keep a register of all PIAs conducted and publish this register, or a version of the register, on their websites,
+- take steps to enhance internal privacy capability, including by providing appropriate privacy education or training in staff induction programs, and annually to all staff who have access to personal information.
 
 Agencies will still need to take other steps under APP 1.2 to ensure compliance with all the APPs.
 
@@ -190,8 +186,8 @@ Agencies will need to ensure that particular Privacy Officer and Privacy Champio
 
 The Privacy Act defines personal information as information or an opinion about an identified individual, or an individual who is reasonably identifiable:
 
-  * whether the information or opinion is true or not; and
-  * whether the information or opinion is recorded in a material form or not.
+- whether the information or opinion is true or not; and
+- whether the information or opinion is recorded in a material form or not.
 
 The Privacy Act also requires NEMA to notify an individual of certain matters when we collect personal information about them. NEMA’s Privacy Notice, or specific privacy notices where collection is beyond the scope of NEMA’s Privacy Notice, provides further notification of those matters.
 
@@ -203,48 +199,48 @@ In accordance with section 15(1) of the Privacy Code, NEMA is required to mainta
 
 NEMA collects both personal and sensitive information. Sensitive information is a subset of personal information. The Privacy Act defines sensitive information as:
 
-  * information or an opinion, that is also considered personal information, about an individual’s
-  * racial or ethnic origin
-  * political opinions
-  * membership of a political association
-  * religious beliefs or affiliations
-  * philosophical beliefs
-  * membership of a professional or trade association
-  * membership of a trade union
-  * sexual orientation or practices
-  * criminal record
-  * health information about an individual
-  * genetic information about an individual that is not otherwise health information
-  * biometric information that is to be used for the purpose of automated biometric verification or biometric identification or
-  * biometric templates.
+- information or an opinion, that is also considered personal information, about an individual’s
+- racial or ethnic origin
+- political opinions
+- membership of a political association
+- religious beliefs or affiliations
+- philosophical beliefs
+- membership of a professional or trade association
+- membership of a trade union
+- sexual orientation or practices
+- criminal record
+- health information about an individual
+- genetic information about an individual that is not otherwise health information
+- biometric information that is to be used for the purpose of automated biometric verification or biometric identification or
+- biometric templates.
 
 Sensitive information is generally afforded a greater level of protection under the Privacy Act.
 
 The type of information collected will vary depending on the purpose for collection. Broadly, the types of information collected includes, but is not limited to:
 
-  * name
-  * date of birth
-  * gender
-  * contact details such as address, email address and telephone numbers
-  * country of residence or citizenship
-  * country of birth
-  * ethnicity
-  * religion
-  * main language and English/reading proficiency
-  * employment status, occupation/career history and qualifications
-  * family details/history
-  * health details, medical reports, x-ray images
-  * criminal history
-  * personal identifiers such as fingerprint images and facial image
-  * copies of any identity documents
-  * financial details
-  * interpreter requirements
-  * relationship status
-  * information and intelligence from other government agencies,
-  * information obtained through warrants,
-  * interview reports from third parties,
-  * staff information including biographical details, tax file number, next of kin, information related to security clearance, staff development, training details, medical information, compensation details, salary/payment details and details of accounts with financial institutions, and
-  * information relating to NEMA website access such as user IP or server address, the date and time of the visit to the site, pages accessed, operating system, web browser version and type, time taken to transmit information to the person, previous internet address from which the person came directly to this website (referring address).
+- name
+- date of birth
+- gender
+- contact details such as address, email address and telephone numbers
+- country of residence or citizenship
+- country of birth
+- ethnicity
+- religion
+- main language and English/reading proficiency
+- employment status, occupation/career history and qualifications
+- family details/history
+- health details, medical reports, x-ray images
+- criminal history
+- personal identifiers such as fingerprint images and facial image
+- copies of any identity documents
+- financial details
+- interpreter requirements
+- relationship status
+- information and intelligence from other government agencies,
+- information obtained through warrants,
+- interview reports from third parties,
+- staff information including biographical details, tax file number, next of kin, information related to security clearance, staff development, training details, medical information, compensation details, salary/payment details and details of accounts with financial institutions, and
+- information relating to NEMA website access such as user IP or server address, the date and time of the visit to the site, pages accessed, operating system, web browser version and type, time taken to transmit information to the person, previous internet address from which the person came directly to this website (referring address).
 
 **How NEMA collects your personal information**
 
@@ -252,11 +248,11 @@ NEMA only collects personal information for purposes reasonably necessary for, o
 
 Individuals have the option of dealing anonymously or by pseudonym with NEMA (APP 2). However, this may not be possible where NEMA is required or authorised by law or a court or tribunal order to deal with identified individuals, or it is impracticable for NEMA to deal with individuals who have not identified themselves. NEMA usual practice is to collect personal information directly from the individual or their authorised representative through application forms. We sometimes collect personal information from other sources. These include third parties or publicly available sources. Third parties include:
 
-  * other Australian government agencies,
-  * law enforcement agencies,
-  * organisations that a person has nominated,
-  * employers, or
-  * members of the public who contact us with information.
+- other Australian government agencies,
+- law enforcement agencies,
+- organisations that a person has nominated,
+- employers, or
+- members of the public who contact us with information.
 
 If clients are concerned about the inherent risks associated with transmission of information over the internet, we can communicate with them through other avenues. Online, all interactions between clients and us are protected by an industry standard 128-bit SSL encryption technology. We employ firewall technology to help to protect our internal systems and personal information against intrusion from the internet.
 
@@ -270,20 +266,20 @@ NEMA may use personal information for a secondary purpose where reasonably neces
 
 NEMA may also disclose your personal information for the following purposes, amongst others:
 
-  * **to other government agencies to:**
-  * confirm identity
-  * verify the authenticity of documents provided
-  * undertake data matching
-  * manage compliance obligations
-  * obtain information where their portfolio legislation provides them with a power under an Australia law to obtain certain personal information
-  * **to keep your nominated representatives informed. This could include:**
-  * a family member
-  * Ombudsman
-  * solicitor
-  * to facilitate merits or judicial review of a decision
-  * where contact details may be provided to Australian law enforcement bodies or emergency services in the event of an emergency, serious injury or death
-  * to Centrelink
-  * for health purposes including for the management of public health risks
+- **to other government agencies to:**
+- confirm identity
+- verify the authenticity of documents provided
+- undertake data matching
+- manage compliance obligations
+- obtain information where their portfolio legislation provides them with a power under an Australia law to obtain certain personal information
+- **to keep your nominated representatives informed. This could include:**
+- a family member
+- Ombudsman
+- solicitor
+- to facilitate merits or judicial review of a decision
+- where contact details may be provided to Australian law enforcement bodies or emergency services in the event of an emergency, serious injury or death
+- to Centrelink
+- for health purposes including for the management of public health risks
 
 **How NEMA holds personal information**
 
@@ -295,32 +291,32 @@ A NEMA record containing personal information can only be destroyed after it has
 
 The Commonwealth has developed a Protective Security Policy Framework (**PSPF**), which includes information security management policies. The PSPF ensures that:
 
-  * all official information is safeguarded to ensure its confidentiality, integrity, and availability by applying safeguards so that:
-  * only authorised people, using approved processes, access information
-  * information is only used for its official purpose, retains its content integrity, and is available to satisfy operational requirements
-  * information is classified and labelled as required
-  * all information created, stored, processed, or transmitted in or over government information and communication technology (ICT) systems is properly managed and protected throughout all phases of a system's life cycle. This is in accordance with the protocols and guidelines set out in the PSPF, which includes the Australian Government Information Security Manual, produced by the Australian Signals Directorate.
+- all official information is safeguarded to ensure its confidentiality, integrity, and availability by applying safeguards so that:
+- only authorised people, using approved processes, access information
+- information is only used for its official purpose, retains its content integrity, and is available to satisfy operational requirements
+- information is classified and labelled as required
+- all information created, stored, processed, or transmitted in or over government information and communication technology (ICT) systems is properly managed and protected throughout all phases of a system's life cycle. This is in accordance with the protocols and guidelines set out in the PSPF, which includes the Australian Government Information Security Manual, produced by the Australian Signals Directorate.
 
 The following is a brief summary of our current practices and procedures in storing and securing data:
 
-  * access to information collected from clients is restricted to authorised persons on a need-to-know basis
-  * our internal networks and databases are protected using firewall, intrusion detection and other technologies
-  * applications made using online services and e-services sections of our website are encrypted
-  * paper files containing sensitive information are protected in accordance with Australian Government Security policy. They are secured in locked cabinets, Australian Government-approved security containers or Secure Rooms with restricted access
-  * our premises are under 24-hour surveillance. Access is via security passes only, with all access and attempted access logged electronically
-  * we regularly conduct system audits and staff training.
+- access to information collected from clients is restricted to authorised persons on a need-to-know basis
+- our internal networks and databases are protected using firewall, intrusion detection and other technologies
+- applications made using online services and e-services sections of our website are encrypted
+- paper files containing sensitive information are protected in accordance with Australian Government Security policy. They are secured in locked cabinets, Australian Government-approved security containers or Secure Rooms with restricted access
+- our premises are under 24-hour surveillance. Access is via security passes only, with all access and attempted access logged electronically
+- we regularly conduct system audits and staff training.
 
 **Visits to the NEMA website**
 
 NEMA logs a record of each visit to our website [www.nema.gov.au](http://www.nema.gov.au). We record information for statistical purposes and we use it to:
 
-  * monitor the use of the NEAM website
-  * discover what information is most and least accessed
-  * make the website more useful.
-  * analyse the information we collect to show broken links on our website, bottlenecks, and other site problems. We use this information to maintain the site for efficient use. We might also collect information about the IT device you use. We could use this information to identify you so we can carry out our functions and activities.
-  * **Cookies**
+- monitor the use of the NEAM website
+- discover what information is most and least accessed
+- make the website more useful.
+- analyse the information we collect to show broken links on our website, bottlenecks, and other site problems. We use this information to maintain the site for efficient use. We might also collect information about the IT device you use. We could use this information to identify you so we can carry out our functions and activities.
+- **Cookies**
 
-NEMA**** use cookies for maintaining contact with a user through a website session. A cookie is a small file supplied by us, and stored by the web browser software on a person’s computer when they access our site. Cookies allow us to recognise people as individual web users as they browse the website.
+NEMA\*\*\*\* use cookies for maintaining contact with a user through a website session. A cookie is a small file supplied by us, and stored by the web browser software on a person’s computer when they access our site. Cookies allow us to recognise people as individual web users as they browse the website.
 
 Our website uses two cookie types - session cookies and persistent cookies.
 
@@ -334,14 +330,14 @@ No personal information is stored within cookies used by our website. We will no
 
 NEMA may use Google Analytics as a website analytics tool to collect data about how you interact with the NEMA website, including:
 
-  * device IP address (collected and stored in an anonymized format);
-  * search terms and pages visited on the NEMA website;
-  * date and time when pages were accessed;
-  * downloads, time spent on page and bounce rate;
-  * referring domain and out link if applicable;
-  * device type, operating system and browser information;
-  * device screen size; and
-  * geographic location (city).
+- device IP address (collected and stored in an anonymized format);
+- search terms and pages visited on the NEMA website;
+- date and time when pages were accessed;
+- downloads, time spent on page and bounce rate;
+- referring domain and out link if applicable;
+- device type, operating system and browser information;
+- device screen size; and
+- geographic location (city).
 
 This information will not ordinarily be personal information, because you will not be identified, or reasonably identifiable from it.
 
@@ -353,11 +349,11 @@ NEMA collects Personal Information, such as contact details that you provide to 
 
 Information about you is also collected by NEMA when you open, click on links or download any image in an email sent to you via a NEMA mailing list. The information collected includes:
 
-  * whether you opened an email sent to you via a NEMA mailing list;
-  * which links you click in those emails;
-  * your mail client (e.g. ‘Outlook 2016’ or ‘iPhone’);
-  * if interactions with those emails occurred on a mobile or desktop environment; and
-  * the country geolocation of your IP address (the IP address itself is not stored).
+- whether you opened an email sent to you via a NEMA mailing list;
+- which links you click in those emails;
+- your mail client (e.g. ‘Outlook 2016’ or ‘iPhone’);
+- if interactions with those emails occurred on a mobile or desktop environment; and
+- the country geolocation of your IP address (the IP address itself is not stored).
 
 **Event Registrations**
 
@@ -371,10 +367,10 @@ NEMA may use Qualtrics XM to conduct surveys and may collect certain Personal In
 
 NEMA collects your Personal Information when you provide it via a job application including, where relevant, your:
 
-  * name;
-  * address;
-  * contact details; and
-  * application documentation, including identification information and resume details.
+- name;
+- address;
+- contact details; and
+- application documentation, including identification information and resume details.
 
 This Personal Information will ordinarily be used to assess your job application. This assessment process may include the use of the Document Verification Service (DVS) through the Attorney-General’s Department (AGD) user interface to electronically verify proof of identity (POI) documents, such as a birth certificates or passports, provided by you during the recruitment process.
 
@@ -388,11 +384,11 @@ NEMA is required to report DVS related security incidents to the DVS Operations 
 
 NEMA stores personal information collected or created for human resources purposes (**human resources information**) including:
 
-  * job application information
-  * information it generates about staff performance
-  * pay, superannuation and tax information
-  * Australian Public Service (APS) Employment Database data for the APS Commission, and
-  * diversity information including, age, sexual orientation, ethnicity, employment history information, code and investigation history and medical certificates.
+- job application information
+- information it generates about staff performance
+- pay, superannuation and tax information
+- Australian Public Service (APS) Employment Database data for the APS Commission, and
+- diversity information including, age, sexual orientation, ethnicity, employment history information, code and investigation history and medical certificates.
 
 NEMA uses a SAP software solution provided by the Shared Delivery Office (SDO) and hosted on DEWR servers within Australia. The SDO is part of the Department of Finance (DOF).
 
@@ -400,11 +396,11 @@ NEMA uses a SAP software solution provided by the Shared Delivery Office (SDO) a
 
 NEMA takes steps to ensure that the personal information we collect is accurate, up-to-date and complete. These steps include correcting personal information, when it is reasonable to do so, that is:
 
-  * inaccurate
-  * out-of-date
-  * incomplete
-  * irrelevant
-  * misleading.
+- inaccurate
+- out-of-date
+- incomplete
+- irrelevant
+- misleading.
 
 We conduct regular audits and quality inspections to ensure the accuracy and integrity of information. We check information regularly, and promptly resolve any systemic data quality issues that we identify.
 
@@ -436,10 +432,10 @@ A person can make a complaint directly to the OAIC rather than to us if they wis
 
 The _Privacy Act 1988_ (the**Privacy Act**) requires us to notify you of certain matters when we collect personal information about you. The National Emergency Management Agency (**NEMA)** have published a Privacy Policy, which contains information about NEMA’s approach to complying with the Australian Privacy Principles (**APPs**) set out in the Privacy Act and, in particular, information about:
 
-  * how you may access personal information held by us about you,
-  * how you can seek the correction of such information,
-  * how you may make a complaint about a breach of the APPs , and
-  * how we deal with such a complaint.
+- how you may access personal information held by us about you,
+- how you can seek the correction of such information,
+- how you may make a complaint about a breach of the APPs , and
+- how we deal with such a complaint.
 
 NEMA’s Privacy Policy can be found on the NEMA website and may be amended from time to time with the changes to take effect immediately, or at any future time specified by NEMA. NEMA values your privacy and takes its obligations under the Privacy Act seriously. We are committed to treating your personal information as a valuable business and personal asset to be respected, managed and protected.
 
@@ -473,8 +469,8 @@ We have a wide range of functions and powers relating to the collection, use and
 
 The Privacy Act recognises that personal (including sensitive) information may be collected by us under an Australian law. The Privacy Act also provides that personal information other than sensitive information can be collected if the information is reasonably necessary for, or directly related to, one of our functions or activities. With respect to the collection of sensitive information, the Privacy Act permits collection of sensitive information by us in certain circumstances, including:
 
-  * if you consent and the information is reasonably necessary for, or directly related to, one of our functions or activities, or
-  * the collection is reasonably necessary for, or directly related to, one or more of our enforcement related activities.
+- if you consent and the information is reasonably necessary for, or directly related to, one of our functions or activities, or
+- the collection is reasonably necessary for, or directly related to, one or more of our enforcement related activities.
 
 **The purpose for which we collect your personal information**
 
@@ -500,10 +496,10 @@ NEMA are, in certain circumstances, authorised or permitted under Australian law
 
 Government agencies we may disclose personal information to include but are not limited to:
 
-  * Services Australia, to administer the _Social Security Act_ 1991, the _Child Support (Assessment) Act_ 1989 _and Child Support (Registration and Collection) Act_ 1988;
-  * The Department of Social Services;
-  * The Australian Taxation Office, to administer the _Income Tax Assessment Act_ 1997 and other taxation legislation; and
-  * The Australian Bureau of Statistics.
+- Services Australia, to administer the _Social Security Act_ 1991, the _Child Support (Assessment) Act_ 1989 _and Child Support (Registration and Collection) Act_ 1988;
+- The Department of Social Services;
+- The Australian Taxation Office, to administer the _Income Tax Assessment Act_ 1997 and other taxation legislation; and
+- The Australian Bureau of Statistics.
 
 **Disclosure for enforcement related activities**
 
@@ -513,37 +509,37 @@ NEMA disclose personal information to Australian (Commonwealth, state and territ
 
 Your personal information may be provided to governmental health agencies and medical providers in relation to visa considerations and the management of public health risks. Your personal information may also be provided to Australian law enforcement agencies or emergency services where the disclosure is necessary to lessen or prevent a serious threat to the life, health or safety of any individual, or to public health or safety.
 
-Public interest disclosure 
+Public interest disclosure
 
 Public interest disclosure (PID) is the reporting of wrongdoing in the Commonwealth public sector.
 
 This may include conduct which you reasonably believe:
 
-  * contravenes a law
-  * is corrupt
-  * perverts the course of justice
-  * results in a wastage of public funds or property
-  * is an abuse of public trust
-  * endangers health and safety
-  * endangers the environment
-  * is maladministration, including conduct that is unjust, oppressive or negligent.
+- contravenes a law
+- is corrupt
+- perverts the course of justice
+- results in a wastage of public funds or property
+- is an abuse of public trust
+- endangers health and safety
+- endangers the environment
+- is maladministration, including conduct that is unjust, oppressive or negligent.
 
 PIDs to the National Emergency Management Agency can be made:
 
-  * Email: [publicinterestdisclosure@nema.gov.au](mailto:publicinterestdisclosure@nema.gov.au)
-  * Post: Chief Operating Officer, National Emergency Management Agency, GPO Box 133, Canberra City ACT 2601
+- Email: [publicinterestdisclosure@nema.gov.au](mailto:publicinterestdisclosure@nema.gov.au)
+- Post: Chief Operating Officer, National Emergency Management Agency, GPO Box 133, Canberra City ACT 2601
 
 ### Making a Public Interest Disclosure
 
 Public interest disclosures can be made by a public official. This includes:
 
-  * any person who is, or was, employed by the Australian Government
-  * individuals employed by any Commonwealth companies, authorities and statutory agencies, the Parliamentary service, statutory officeholders
-  * service providers under contract to the Commonwealth and anyone employed by them.
+- any person who is, or was, employed by the Australian Government
+- individuals employed by any Commonwealth companies, authorities and statutory agencies, the Parliamentary service, statutory officeholders
+- service providers under contract to the Commonwealth and anyone employed by them.
 
 Disclosures are about matters where investigation and correction is in the public interest. This doesn’t include disagreements with government policy or expenditure.
 
-Public interest certificate log 
+Public interest certificate log
 
 A public interest certificate (PIC) is a document issued by our Coordinator-General (or their delegate). It is created in accordance with section 22 of the Government Procurement (Judicial Review) Act 2018.
 
@@ -551,16 +547,16 @@ A PIC will state that it’s not in the public interest for a particular procure
 
 The following PICs have been issued by the National Emergency Management Agency:
 
-Procurement | Date Issued  
----|---  
-[National Emergency Management Stockpile Panel ](https://www.nema.gov.au/sites/default/files/2024-08/Public%20Interest%20Certificate%20-%20NEMS%20Panel%205%20Dec%202023.pdf)(PDF 884KB) | 05/12/2023  
-[National Emergency Management Stockpile Panel](https://www.nema.gov.au/sites/default/files/2024-08/public-interest-certificate-cg-signed.pdf) (PDF 563KB) | 23/05/2024  
-  
-Subscription services 
+| Procurement                                                                                                                                                                              | Date Issued |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| [National Emergency Management Stockpile Panel ](https://www.nema.gov.au/sites/default/files/2024-08/Public%20Interest%20Certificate%20-%20NEMS%20Panel%205%20Dec%202023.pdf)(PDF 884KB) | 05/12/2023  |
+| [National Emergency Management Stockpile Panel](https://www.nema.gov.au/sites/default/files/2024-08/public-interest-certificate-cg-signed.pdf) (PDF 563KB)                               | 23/05/2024  |
+
+Subscription services
 
 Personal information is collected by us when you subscribe to any subscription service on this website. The contact information you provide will only be used for the purposes of the subscription service. If you fail to provide the personal information we request when you subscribe, we may not be able to provide the subscription service to you.
 
-Website privacy statement 
+Website privacy statement
 
 This website, nema.gov.au, and ausalert.gov.au are managed by us (the Agency).
 
@@ -576,17 +572,15 @@ When visiting either site, a record of your visit is logged. This ‘clickstream
 
 The following information is supplied by your browser (for example Internet Explorer, Edge or Chrome) and collected by us:
 
-  * your server address
-  * your operating system (for example Windows, MAC)
-  * your top-level domain name (for example nema.gov.au)
-  * the date and time of your visit to the site 
-  * the pages accessed
-  * the documents downloaded 
-  * the previous site visited 
-  * the type of browser used.
+- your server address
+- your operating system (for example Windows, MAC)
+- your top-level domain name (for example nema.gov.au)
+- the date and time of your visit to the site
+- the pages accessed
+- the documents downloaded
+- the previous site visited
+- the type of browser used.
 
 ### Disclosure
 
 We’ll only disclose your personal information where we are authorised to do so under the Privacy Act.
-
-  * [Email](mailto:?subject=Privacy and disclosures&body=https://www.nema.gov.au/about-us/privacy-disclosures "Email this page")

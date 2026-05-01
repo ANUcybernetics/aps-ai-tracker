@@ -5,9 +5,7 @@ source_url: https://www.atsb.gov.au/ai-transparency-statement
 title: AI transparency statement | ATSB
 ---
 
-Back to top
-
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI in the Australian Public Service. 
+The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI in the Australian Public Service.
 
 The Australian Transport Safety Bureau (ATSB) adheres to this policy supporting its principles under the "enable, engage, and evolve" framework. We will be transparent in our internal use of AI technology as we explore, evaluate and adopt AI technology to benefit our work and our stakeholders.
 
@@ -19,7 +17,7 @@ Presently, the ATSB does not utilise AI to deliver any of its services. Although
 
 ## **Monitoring and governing AI use**
 
-The ATSB is developing an overarching agency approach to AI and will establish an AI Steering Committee to assess the opportunities and risks in using AI within the agency. 
+The ATSB is developing an overarching agency approach to AI and will establish an AI Steering Committee to assess the opportunities and risks in using AI within the agency.
 
 ## **Accountable official**
 

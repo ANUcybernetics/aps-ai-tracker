@@ -5,7 +5,11 @@ source_url: https://www.austrade.gov.au/en/site-information/ai-transparency
 title: Artificial intelligence transparency | Austrade
 ---
 
-Skip to content or footer
+close
+
+info
+
+For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/find-export-markets/middle-east-updates-and-support) for the latest updates and support available.
 
 ## How Austrade defines AI
 
@@ -25,8 +29,8 @@ When Austrade approves solutions for use, this transparency statement will be up
 
 Austrade maintains visibility of AI use and classifies AI use according to the following [usage patterns and domains](https://www.digital.gov.au/policy/ai/resources/use-classification):
 
-  * **Usage patterns:** supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
-  * **Domains:** Corporate and Enabling – Supporting our corporate functions, including HR, finance, media and communications, and ICT, by automating processes, optimising resource allocation and improving operational efficiency.
+- **Usage patterns:** supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
+- **Domains:** Corporate and Enabling – Supporting our corporate functions, including HR, finance, media and communications, and ICT, by automating processes, optimising resource allocation and improving operational efficiency.
 
 ## Monitoring and Governance
 
@@ -34,9 +38,9 @@ The Head of Digital Products and Platforms, is the designated Accountable Offici
 
 They are also responsible for ensuring the following:
 
-  * AI is only used under human supervision.
-  * The outputs of AI models are monitored for effectiveness.
-  * AI use complies with all relevant legislation and regulation regarding Privacy and AI.
+- AI is only used under human supervision.
+- The outputs of AI models are monitored for effectiveness.
+- AI use complies with all relevant legislation and regulation regarding Privacy and AI.
 
 Any proposed AI solutions must be reviewed and considered by Austrade’s Digital and Technology Steering Committee and adhere to Australia’s AI Ethics Principles. A security risk management plan needs to be developed for any potential AI tool put forward for use, as well as an ethics assessment. As our AI maturity increases, we will continue to evolve our governance processes and ensure that our staff are trained in how to use AI safely and ethically.
 

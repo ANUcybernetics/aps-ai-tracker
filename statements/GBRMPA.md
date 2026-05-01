@@ -7,10 +7,10 @@ title: Artificial Intelligence (AI) Transparency Statement | Reef Authority
 
 ## AI transparency statement
 
-In accordance with the Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf), this page provides the Great Barrier Reef Marine Park Authority's (Reef Authority) statement on Artificial Intelligence (AI) transparency. The Reef Authority is a non-corporate, statutory authority within the portfolio of the Department of Climate Change, Energy, the Environment and Water (DCCEEW), and the Reef Authority's AI Transparency Statement has been adapted from that of DCCEEW to ensure alignment in the responsible use and governance of AI. .  
-  
-The Reef Authority sees potential benefits from the application of AI in the future. The Reef Authority's commitment to digital innovation aligns with the Australian Government's [Data and Digital Government Strategy](https://www.dta.gov.au/digital-government-strategy), see adopting emerging technologies.  
-  
+In accordance with the Digital Transformation Agency's (DTA) \[Policy for the responsible use of AI in government\](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf), this page provides the Great Barrier Reef Marine Park Authority's (Reef Authority) statement on Artificial Intelligence (AI) transparency. The Reef Authority is a non-corporate, statutory authority within the portfolio of the Department of Climate Change, Energy, the Environment and Water (DCCEEW), and the Reef Authority's AI Transparency Statement has been adapted from that of DCCEEW to ensure alignment in the responsible use and governance of AI. .
+
+The Reef Authority sees potential benefits from the application of AI in the future. The Reef Authority's commitment to digital innovation aligns with the Australian Government's [Data and Digital Government Strategy](https://www.dta.gov.au/digital-government-strategy), see adopting emerging technologies.
+
 When referring to AI the Reef Authority applies the Organisation for Economic Co-operation and Development (OECD) definition:
 
 > _"a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment" (OECD)._
@@ -19,14 +19,14 @@ The Reef Authority commits to using AI in a safe and responsible manner, with ap
 
 ### How we use AI
 
-The Reef Authority does not currently deploy AI across its operational domains. Any future uses of AI by the Reef Authority would be documented in subsequent iterations of the AI Transparency Statement and would align with the Australian Government's classification system, see Classification system for AI use on the [DTA Artificial intelligence in government page](https://www.digital.gov.au/policy/ai/resources/use-classification). 
+The Reef Authority does not currently deploy AI across its operational domains. Any future uses of AI by the Reef Authority would be documented in subsequent iterations of the AI Transparency Statement and would align with the Australian Government's classification system, see Classification system for AI use on the [DTA Artificial intelligence in government page](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
 The Reef Authority acknowledges that AI capabilities are increasingly embedded within commercial software and productivity tools. As the integration of AI features within software continues to evolve, the Reef Authority maintains a commitment to:
 
-  * Ongoing monitoring and evaluation of authorised software to identify embedded AI functionality.
-  * Providing education and guidance to staff regarding the identification and responsible use of AI features.
-  * Ensuring staff maintain appropriate human oversight and quality assurance of all outputs.
-  * Encouraging staff to report identified AI features to support organisational awareness and transparency.
+- Ongoing monitoring and evaluation of authorised software to identify embedded AI functionality.
+- Providing education and guidance to staff regarding the identification and responsible use of AI features.
+- Ensuring staff maintain appropriate human oversight and quality assurance of all outputs.
+- Encouraging staff to report identified AI features to support organisational awareness and transparency.
 
 ### Public interaction and impact
 
@@ -36,16 +36,16 @@ The Reef Authority is committed to ensuring that the use of AI does not directly
 
 The Reef Authority will:
 
-  * Utilise AI in accordance with applicable legislation, regulations, frameworks and policies.
-  * Comply with all mandatory requirements of the Policy for responsible use of AI in government.
-  * Regularly review our compliance as a part of existing governance, and risk management processes.
-  * Ensure ongoing compliance by embedding a culture that fairly balances AI risk management and innovation.
+- Utilise AI in accordance with applicable legislation, regulations, frameworks and policies.
+- Comply with all mandatory requirements of the Policy for responsible use of AI in government.
+- Regularly review our compliance as a part of existing governance, and risk management processes.
+- Ensure ongoing compliance by embedding a culture that fairly balances AI risk management and innovation.
 
 ### Accountable official
 
-The Reef Authority’s Chief Digital Officer is the designated AI Accountable Official for the Reef Authority under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf).
+The Reef Authority’s Chief Digital Officer is the designated AI Accountable Official for the Reef Authority under the \[Policy for the responsible use of AI in government\](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf).
 
-### Contact 
+### Contact
 
 For questions about this statement, please contact [tads.helpdesk@gbrmpa.gov.au](mailto:tads.helpdesk@gbrmpa.gov.au).
 

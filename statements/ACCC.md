@@ -5,57 +5,55 @@ source_url: https://www.accc.gov.au/about-us/accc-role-and-structure/governance-
 title: Artificial intelligence (AI) transparency statement | ACCC
 ---
 
-## On this page
-
 ## How we intend to use AI
 
 The ACCC uses artificial intelligence (AI) in a safe and responsible way. We believe it will contribute to the effective and efficient delivery of our objectives to benefit the Australian community.
 
 In considering AI, we have adopted the definition of AI used in the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy):
 
-  * An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
+- An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
 We are committed to building our AI capabilities and exploring how we use AI to support the ACCC’s functions in a safe and responsible manner. Our people will remain responsible for all oversight of tasks and decision making. When engaging with or using AI, we will meet our commitments to the public, businesses, government and the courts, including with respect to security, privacy, confidentiality, ethics and other legal obligations. We make risk-based decisions on its use.
 
 We will seek opportunities to:
 
-  * cultivate expertise within the agency to understand the impacts of AI across our regulatory remits
-  * inform our identification of threats and harms in markets that we regulate more quickly and accurately
-  * enhance our ability to undertake analytics and generate insights
-  * improve workplace productivity including through reducing manual processes.
+- cultivate expertise within the agency to understand the impacts of AI across our regulatory remits
+- inform our identification of threats and harms in markets that we regulate more quickly and accurately
+- enhance our ability to undertake analytics and generate insights
+- improve workplace productivity including through reducing manual processes.
 
 ## How we are using AI
 
-The ACCC usage patterns are: 
+The ACCC usage patterns are:
 
 ### Analytics for insights
 
 The ACCC uses AI to produce insights from structured and unstructured materials in the following ways:
 
-  * assisting with reviewing and interrogating large and complex sets of documents or datasets
-  * enhancing pattern detection by predicting and identifying potentially concerning behaviour.
+- assisting with reviewing and interrogating large and complex sets of documents or datasets
+- enhancing pattern detection by predicting and identifying potentially concerning behaviour.
 
 ### Workplace productivity
 
 The ACCC’s use of AI is aimed at improving workplace productivity for staff. This includes:
 
-  * summarising documents, emails, and other content
-  * transcribing interviews and preparing meeting notes
-  * creating training material for staff
-  * proactively seeking and retrieving information for analysis
-  * automating routine tasks
-  * editing or refining drafts of documents
-  * generating drafts of documents, except those subject to administrative review.
+- summarising documents, emails, and other content
+- transcribing interviews and preparing meeting notes
+- creating training material for staff
+- proactively seeking and retrieving information for analysis
+- automating routine tasks
+- editing or refining drafts of documents
+- generating drafts of documents, except those subject to administrative review.
 
-We are exploring a range of AI driven innovations and tools, to make sure we continuously improve our efficiency and effectiveness. 
+We are exploring a range of AI driven innovations and tools, to make sure we continuously improve our efficiency and effectiveness.
 
 ## Areas of AI application
 
 The domains used for AI applications focuses on the following areas:
 
-  * **corporate and enabling** \- to support functions by automating processes, optimising resource allocation and improving operational efficiency.
-  * **compliance and fraud detection** \- to assist with identifying patterns in records to help detect non-compliance with our laws or anti-competitive conduct.
-  * **scientific** \- to enhance the processing of complex datasets, to predict outcomes and to enhance monitoring functions.
+- **corporate and enabling** - to support functions by automating processes, optimising resource allocation and improving operational efficiency.
+- **compliance and fraud detection** - to assist with identifying patterns in records to help detect non-compliance with our laws or anti-competitive conduct.
+- **scientific** - to enhance the processing of complex datasets, to predict outcomes and to enhance monitoring functions.
 
 ## Public interaction and impact
 
@@ -75,12 +73,12 @@ Our AI use complies with all relevant legislation and regulations, and we apply 
 
 We have taken the following steps to monitor the effectiveness of deployed AI systems, and to meet all mandatory requirements of the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) (the policy) by:
 
-  * designating accountability for implementing the policy to the AI accountable official, the ACCC’s General Manager of Data and Intelligence
-  * publishing an AI policy that aligns with this policy and includes an established AI review and approval pathway for internal AI use. This includes supporting infrastructure such as an AI register
-  * establishing an internal working group for using AI to support the Corporate Governance Board
-  * considering the potential risks of AI as part of our internal risk management processes
-  * mandating training, supported by internally developed resources, for all ACCC staff regarding the use of AI in our work
-  * the publication of this transparency statement.
+- designating accountability for implementing the policy to the AI accountable official, the ACCC’s General Manager of Data and Intelligence
+- publishing an AI policy that aligns with this policy and includes an established AI review and approval pathway for internal AI use. This includes supporting infrastructure such as an AI register
+- establishing an internal working group for using AI to support the Corporate Governance Board
+- considering the potential risks of AI as part of our internal risk management processes
+- mandating training, supported by internally developed resources, for all ACCC staff regarding the use of AI in our work
+- the publication of this transparency statement.
 
 The ACCC Corporate Governance Board is our primary corporate governance body and has ultimate oversight for AI adoption across the agency.
 
@@ -88,9 +86,9 @@ The ACCC Corporate Governance Board is our primary corporate governance body and
 
 This statement was published in **February 2026**. It will be reviewed and updated:
 
-  * at least once a year
-  * when a significant change is made to the agency’s approach to AI
-  * when the ACCC becomes aware of any new factor that materially impacts the statement’s accuracy.
+- at least once a year
+- when a significant change is made to the agency’s approach to AI
+- when the ACCC becomes aware of any new factor that materially impacts the statement’s accuracy.
 
 ## Contact
 

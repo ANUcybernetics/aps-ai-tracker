@@ -8,11 +8,11 @@ title: ANAO’s artificial intelligence transparency statement | Australian Nati
 
 Corporate
 
-##  ANAO’s artificial intelligence transparency statement 
+## ANAO’s artificial intelligence transparency statement
 
-Updated 
+Updated
 
-Monday 21 July 2025 
+Monday 21 July 2025
 
 Contact
 
@@ -24,13 +24,13 @@ The [policy for responsible use of artificial intelligence (AI) in government](h
 
 The ANAO is exploring how AI may be used to improve business operations by enhancing efficiency, while ensuring quality and transparency in decision-making.
 
-The ANAO will embrace emerging technologies — including AI — thoughtfully, while managing risk for safe and effective use. 
+The ANAO will embrace emerging technologies — including AI — thoughtfully, while managing risk for safe and effective use.
 
 The ANAO Use of Artificial Intelligence Policy (the policy) outlines the conditions under which ANAO staff and contractors may use AI. This is to ensure the responsible, safe, and ethical use of AI, with the intention of:
 
-  * reducing the risk of using AI;
-  * enabling the highest ethical standards when using AI; and
-  * increasing transparency in the use of AI at the ANAO.
+- reducing the risk of using AI;
+- enabling the highest ethical standards when using AI; and
+- increasing transparency in the use of AI at the ANAO.
 
 The policy limits the use of publicly available generative AI tools (such as ChatGPT, Bing AI, and other large language models). It outlines staff obligations regarding the use of both publicly available AI and licensed enterprise AI. The policy also sets out expectations for the use of AI in audit-related activities.
 
@@ -42,9 +42,9 @@ The ANAO is exploring how generative AI can enhance the audit process in a profe
 
 The ANAO uses three enterprise applications that incorporate AI:
 
-  * Nuix — Nuix is an eDiscovery tool used to search large unstructured data sets. One of its features uses AI to identify shapes and words in images. The ANAO has been using Nuix prior to the introduction of this AI function and does not view the AI-powered image search as a risk.
-  * Adobe Acrobat — This software includes an automatic form-filling function which cannot be disabled. Given its limited use, this feature is considered low risk.
-  * Copilot — Microsoft Copilot is an AI-powered assistant embedded across the Microsoft 365 ecosystem — including Word, Excel, Outlook, PowerPoint, Teams, and other applications. It leverages large language models combined with the Microsoft Graph (which includes data like emails, documents, meetings, chats, and calendar events) to deliver contextually aware productivity support. The ANAO is conducting a comprehensive trial of this tool in its environment.
+- Nuix — Nuix is an eDiscovery tool used to search large unstructured data sets. One of its features uses AI to identify shapes and words in images. The ANAO has been using Nuix prior to the introduction of this AI function and does not view the AI-powered image search as a risk.
+- Adobe Acrobat — This software includes an automatic form-filling function which cannot be disabled. Given its limited use, this feature is considered low risk.
+- Copilot — Microsoft Copilot is an AI-powered assistant embedded across the Microsoft 365 ecosystem — including Word, Excel, Outlook, PowerPoint, Teams, and other applications. It leverages large language models combined with the Microsoft Graph (which includes data like emails, documents, meetings, chats, and calendar events) to deliver contextually aware productivity support. The ANAO is conducting a comprehensive trial of this tool in its environment.
 
 The ANAO actively monitors proposed changes to installed software within its IT environment — including and specifically for the introduction of new AI functions — to identify any potential risks before the software update is installed.
 
@@ -70,8 +70,8 @@ The ANAO complies with all relevant legislation and has not identified any breac
 
 The ANAO has:
 
-  * implemented all elements of the Digital Transformation Agency policy;
-  * appointed the Chief Operating Officer and Chief Digital Officer as the Accountable Officials for AI within the ANAO; and
-  * a program to inform all staff of the appropriate use and risks associated with the use of generative AI through an internal communications and training program, including the implementation of mandatory AI fundamentals training.
+- implemented all elements of the Digital Transformation Agency policy;
+- appointed the Chief Operating Officer and Chief Digital Officer as the Accountable Officials for AI within the ANAO; and
+- a program to inform all staff of the appropriate use and risks associated with the use of generative AI through an internal communications and training program, including the implementation of mandatory AI fundamentals training.
 
 Approved for publication by Dr Caralee McLiesh PSM, Auditor-General for Australia

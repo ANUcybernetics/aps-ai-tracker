@@ -10,11 +10,11 @@ The National Library of Australia acknowledges First Australians as the Traditio
 
 This website may contain images, voices and names of deceased persons and references to collections which may be considered culturally sensitive.
 
-Continue 
+Continue
 
-#  Artificial Intelligence (AI) transparency statement
+# Artificial Intelligence (AI) transparency statement
 
-Our vision for Artificial Intelligence (AI) in the National Library of Australia is intrinsically linked to legal, responsible and ethical innovation in service to unlocking the national collection - in ways that further amplify its breadth, accessibility and impact without perpetrating or entrenching harms. 
+Our vision for Artificial Intelligence (AI) in the National Library of Australia is intrinsically linked to legal, responsible and ethical innovation in service to unlocking the national collection - in ways that further amplify its breadth, accessibility and impact without perpetrating or entrenching harms.
 
 We also see AI as a tool for extending the Library's practices and supporting its statutory role of maintaining, developing and protecting a national collection for all Australians.
 
@@ -32,9 +32,9 @@ The Library does not use AI for decision-making or high-risk use cases, nor does
 
 The Library deploys AI in the following ways:
 
-  * Workplace productivity: automates routine tasks, manages workflows and facilitates communication, such as document summarisation, spelling, grammar check and tone review, voice to text transcription and software coding assistance.
-  * Analytics for insights: used to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools, such as cyber security monitoring or classification of data.
-  * Image processing: processes images to automatically identify patterns and objects (including Optical Character Recognition used in the digitisation of the collection).
+- Workplace productivity: automates routine tasks, manages workflows and facilitates communication, such as document summarisation, spelling, grammar check and tone review, voice to text transcription and software coding assistance.
+- Analytics for insights: used to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools, such as cyber security monitoring or classification of data.
+- Image processing: processes images to automatically identify patterns and objects (including Optical Character Recognition used in the digitisation of the collection).
 
 ## Domain
 
@@ -60,9 +60,7 @@ For questions about this statement or for further information on the Library's u
 
 This AI Transparency Statement was published on 10 April 2026 and will be reviewed and updated annually and/or when significant changes occur.
 
-Page published: 27 Feb 2025 
-
-## 
+Page published: 27 Feb 2025
 
 Need help?
 

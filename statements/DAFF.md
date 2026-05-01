@@ -7,20 +7,20 @@ title: Artificial Intelligence transparency statement - DAFF
 
 # Artificial Intelligence transparency statement
 
-The [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) version 2.0 (the policy) provides mandatory requirements for departments and agencies relating to: 
+The [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) version 2.0 (the policy) provides mandatory requirements for departments and agencies relating to:
 
-  * [accountable officials](https://www.digital.gov.au/ai/ai-in-government-policy/accountability);
-  * [transparency statements](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements);
-  * [developing a strategic position on AI adoption](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
-  * [operationalising the responsible use of AI](https://www.digital.gov.au/ai/ai-in-government-policy/preparedness-and-operations);
-  * [AI use case accountability](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
-  * [internal use case registers](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
-  * [staff training on AI](https://www.digital.gov.au/ai/ai-in-government-policy/preparedness-and-operations); and
-  * [AI use case impact assessment](https://www.digital.gov.au/ai/ai-in-government-policy/ai-use-case-impact-assessment). 
+- [accountable officials](https://www.digital.gov.au/ai/ai-in-government-policy/accountability);
+- [transparency statements](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements);
+- [developing a strategic position on AI adoption](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
+- [operationalising the responsible use of AI](https://www.digital.gov.au/ai/ai-in-government-policy/preparedness-and-operations);
+- [AI use case accountability](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
+- [internal use case registers](https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight);
+- [staff training on AI](https://www.digital.gov.au/ai/ai-in-government-policy/preparedness-and-operations); and
+- [AI use case impact assessment](https://www.digital.gov.au/ai/ai-in-government-policy/ai-use-case-impact-assessment).
 
-The policy sets out the Australian Government’s approach to Artificial Intelligence (AI). 
+The policy sets out the Australian Government’s approach to Artificial Intelligence (AI).
 
-This page provides details of the Department of Agriculture, Fisheries and Forestry’s (DAFF’s) implementation of these policy requirements to ensure our use of AI is safe, responsible, ethical and legal. 
+This page provides details of the Department of Agriculture, Fisheries and Forestry’s (DAFF’s) implementation of these policy requirements to ensure our use of AI is safe, responsible, ethical and legal.
 
 ## Scope
 
@@ -36,44 +36,44 @@ DAFF is committed to ensuring the governance, design and application of AI is sa
 
 DAFF is exploring the adoption of emerging technologies, including AI, as part of the Australian Government’s broader commitment to improve regulatory service delivery and decision-making. For more information, see the [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/). DAFF will continue to explore innovative ways of using AI in alignment with the Government’s broader commitment to uplift data capability across the Australian Public Service (APS).
 
-DAFF is committed to building strong governance foundations to support the safe and responsible use of AI. 
+DAFF is committed to building strong governance foundations to support the safe and responsible use of AI.
 
-All staff have access to the AI in Government fundamentals training, produced by the Digital Transformation Agency (DTA), and are required to report on the use of AI to the department’s Digital Business Division who manage the internal use case register. The department actively encourages staff to undertake the AI in Government fundamentals training through regular communications and promotional events. 
+All staff have access to the AI in Government fundamentals training, produced by the Digital Transformation Agency (DTA), and are required to report on the use of AI to the department’s Digital Business Division who manage the internal use case register. The department actively encourages staff to undertake the AI in Government fundamentals training through regular communications and promotional events.
 
 Additionally, DAFF has an _Artificial Intelligence User Acceptance requirement_ , which staff must confirm and acknowledge that they are familiar with before accessing external generative AI tools online. This requires staff to agree that they will:
 
-  * Be responsible for ensuring the accuracy and relevancy of any content generated by any Artificial Intelligence platform.
-  * Not input any personal, sensitive or classified information that may be subject to third party restrictions.
+- Be responsible for ensuring the accuracy and relevancy of any content generated by any Artificial Intelligence platform.
+- Not input any personal, sensitive or classified information that may be subject to third party restrictions.
 
 Through the _User Acceptance_ page, staff are reminded that they must act in accordance with the Government’s Protective Security Policy Framework, Information Security Manual and internal departmental policies. Staff are also encouraged to read the department’s ICT Acceptable Use and Security Policies and Privacy Policy and are required to complete mandatory annual training on these topics.
 
 ## DAFF’s use of AI
 
-Based on the [classification system detailed in the Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/resources/use-classification), DAFF uses AI in the following ways: 
+Based on the [classification system detailed in the Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/resources/use-classification), DAFF uses AI in the following ways:
 
-  * **Domains** include:
-    * Corporate and enabling
-    * Scientific
-    * Service delivery
-    * Compliance and fraud detection
-  * **Usage patterns** include:
-    * Analytics for insights
-    * Workplace productivity
+- **Domains** include:
+  - Corporate and enabling
+  - Scientific
+  - Service delivery
+  - Compliance and fraud detection
+- **Usage patterns** include:
+  - Analytics for insights
+  - Workplace productivity
 
 The department is using AI to:
 
-  * Improve workplace productivity by automating routine tasks, supporting workflows, brainstorming and creation of draft content, and facilitating communications
-  * Summarise high volumes of documents or information
-  * Identify and understand patterns from dataset(s) to produce insights and reporting
-  * Categorise documents for storage and retention.
+- Improve workplace productivity by automating routine tasks, supporting workflows, brainstorming and creation of draft content, and facilitating communications
+- Summarise high volumes of documents or information
+- Identify and understand patterns from dataset(s) to produce insights and reporting
+- Categorise documents for storage and retention.
 
 DAFF does not currently use AI in any way that directly interacts with the public without a human intermediary or intervention.
 
 ## Artificial Intelligence Accountable Official and Chief AI Officer
 
-DAFF has an Artificial Intelligence Accountable Official (AIAO) under the policy. The Chief Information and Security Officer has been designated as the Accountable Official. Previously, this role had been designated to the Chief Digital and Data Officer, who is now the Chief AI Officer. The AIAO is responsible for ensuring compliance with all AI obligations and implementation of the policy. 
+DAFF has an Artificial Intelligence Accountable Official (AIAO) under the policy. The Chief Information and Security Officer has been designated as the Accountable Official. Previously, this role had been designated to the Chief Digital and Data Officer, who is now the Chief AI Officer. The AIAO is responsible for ensuring compliance with all AI obligations and implementation of the policy.
 
-Under the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025), agencies must appoint a Chief AI Officer. The Chief Digital and Data Officer has been designated as the Chief AI Officer and is responsible for leading the AI strategy and implementation, propelling innovation, integrating AI into business processes and championing adoption of AI. 
+Under the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025), agencies must appoint a Chief AI Officer. The Chief Digital and Data Officer has been designated as the Chief AI Officer and is responsible for leading the AI strategy and implementation, propelling innovation, integrating AI into business processes and championing adoption of AI.
 
 ## AI safety and governance
 
@@ -81,31 +81,31 @@ DAFF has an internal register of AI use cases. The internal register provides tr
 
 DAFF has measures to:
 
-  * Ensure the design and application of AI is effectively governed and managed.
-  * Ensure risk management frameworks include AI-specific considerations, ensuring mitigation and controls are implemented when risks are identified.
-  * Ensure AI use cases undergo an assurance process and re tracked and monitored through the internal register across the AI lifecycle.
-  * Ensure AI use across the department is visible, to support the effective governance, assurance, reporting and risk management of use cases.
-  * Promote the safe and responsible use of AI to departmental staff.
-  * Promote collaboration across the department and other government agencies on the use of AI, including the ongoing development of resources to ensure its safe and responsible use.
+- Ensure the design and application of AI is effectively governed and managed.
+- Ensure risk management frameworks include AI-specific considerations, ensuring mitigation and controls are implemented when risks are identified.
+- Ensure AI use cases undergo an assurance process and re tracked and monitored through the internal register across the AI lifecycle.
+- Ensure AI use across the department is visible, to support the effective governance, assurance, reporting and risk management of use cases.
+- Promote the safe and responsible use of AI to departmental staff.
+- Promote collaboration across the department and other government agencies on the use of AI, including the ongoing development of resources to ensure its safe and responsible use.
 
 ## Compliance
 
 DAFF will only utilise AI in accordance with applicable legislation, regulations, frameworks, and policies.
 
-## Continuous improvement 
+## Continuous improvement
 
 DAFF acknowledges the value of strong governance, oversight, and accountability, and is dedicated to regularly reviewing and updating its AI guidance and practices. This includes keeping up-to-date with advancements in AI technology, ethics, regulatory requirements and Whole of Government initiatives, such as [GovAI](https://www.govai.gov.au/). As these services roll out, the department will seek to utilise the functions GovAI offers to the Australian Public Service. These may include services that feature learning resources, an AI app catalogue, peer-to-peer collaboration tools, and a secure sandbox environment for testing and experimentation. DAFF will adopt GovAI offerings where consistent with departmental and government priorities.
 
-As the landscape evolves, DAFF will continue to systematically review relevant AI policies and frameworks in consultation with staff, stakeholders, the community and our partners, where appropriate. 
+As the landscape evolves, DAFF will continue to systematically review relevant AI policies and frameworks in consultation with staff, stakeholders, the community and our partners, where appropriate.
 
 ## Updates
 
 DAFF acknowledges that the AI Transparency Statement will be updated and published:
 
-  * At least once a year.
-  * When making a significant change to our approach to AI.
-  * When any new factor materially impacts the existing statement’s accuracy.
-  * This Transparency Statement was modified on 16 February 2026.
+- At least once a year.
+- When making a significant change to our approach to AI.
+- When any new factor materially impacts the existing statement’s accuracy.
+- This Transparency Statement was modified on 16 February 2026.
 
 ## Contact Us
 

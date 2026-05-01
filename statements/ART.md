@@ -5,17 +5,17 @@ source_url: https://www.art.gov.au/ai-transparency-statement
 title: AI transparency statement | Administrative Review Tribunal
 ---
 
-The Administrative Review Tribunal (The Tribunal) is committed to identifying ethical, responsible and meaningful use of Artificial Intelligence (AI) as part of its support functions. We will be transparent as we explore, adopt and integrate AI technology to benefit staff, members, applicants and external stakeholders. 
+The Administrative Review Tribunal (The Tribunal) is committed to identifying ethical, responsible and meaningful use of Artificial Intelligence (AI) as part of its support functions. We will be transparent as we explore, adopt and integrate AI technology to benefit staff, members, applicants and external stakeholders.
 
-  * The Tribunal does not, and has no intention of, utilising AI services for the purposes of undertaking its [review decision making function](https://www.legislation.gov.au/C2024A00040/latest/text) exercised under the [_Administrative Review Tribunal Act 2024_](https://www.legislation.gov.au/C2024A00040). 
-  * The Tribunal does not utilise AI services for the purposes of making operational decisions.
-  * Where the Tribunal does use, or, intends to use AI in the domains of service delivery, corporate and enabling services, policy and legal or compliance and fraud detection; it shall be subject to human oversight. 
+- The Tribunal does not, and has no intention of, utilising AI services for the purposes of undertaking its [review decision making function](https://www.legislation.gov.au/C2024A00040/latest/text) exercised under the [_Administrative Review Tribunal Act 2024_](https://www.legislation.gov.au/C2024A00040).
+- The Tribunal does not utilise AI services for the purposes of making operational decisions.
+- Where the Tribunal does use, or, intends to use AI in the domains of service delivery, corporate and enabling services, policy and legal or compliance and fraud detection; it shall be subject to human oversight.
 
 ### Definition of AI
 
-The Tribunal, in alignment with the [Commonwealth of Australia guidance](https://www.digital.gov.au/policy/ai/policy), uses the [Organisation for Economic Co-operation and Development (OECD)](https://www.oecd.org/en.html) AI definition: 
+The Tribunal, in alignment with the [Commonwealth of Australia guidance](https://www.digital.gov.au/policy/ai/policy), uses the [Organisation for Economic Co-operation and Development (OECD)](https://www.oecd.org/en.html) AI definition:
 
- _An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment._
+_An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment._
 
 ### AI use in the Tribunal
 
@@ -27,54 +27,54 @@ The Tribunal provides ReadSpeaker and Google Translate services for users of our
 
 Intended future use of AI will cover the following key domains. Any additional usage domains will be added to this statement if utilised.
 
-  * **Analytics for insights**
-    * For example, forecasting future demand trends for Tribunal services.
-  * **Workplace productivity (corporate and enabling functions)**
-    * For example, fast query engagement to controlled internal policy documents.
-  * **Compliance and Fraud Detection (corporate and enabling functions)**
-    * For example, analysing large internal service logs for performance improvement. 
+- **Analytics for insights**
+  - For example, forecasting future demand trends for Tribunal services.
+- **Workplace productivity (corporate and enabling functions)**
+  - For example, fast query engagement to controlled internal policy documents.
+- **Compliance and Fraud Detection (corporate and enabling functions)**
+  - For example, analysing large internal service logs for performance improvement.
 
 ### Safe and responsible AI usage policy
 
 The Tribunal has developed and maintains a Responsible AI usage policy that aligns with advice and guidance provided by the Digital Transformation Agency (DTA) and other relevant agencies, for using AI services responsibly. The Tribunal approach prioritises employee safety, human rights, the protection of personal information and respecting Indigenous data, while keeping humans at the centre of our decision-making.
 
-The policy applies to all staff, members, consultants and contractors. It requires: 
+The policy applies to all staff, members, consultants and contractors. It requires:
 
-  * AI services to be evaluated using specific criteria, approved by the Tribunal governance approach, both business and technology reviews, prior to usage, and
-  * all users of AI to review and validate any content generated by AI services.
+- AI services to be evaluated using specific criteria, approved by the Tribunal governance approach, both business and technology reviews, prior to usage, and
+- all users of AI to review and validate any content generated by AI services.
 
 The Tribunal utilisation and introduction of AI into its operations is guided by:
 
-  * Australia’s [AI ethics principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles)
-  * DTA policy for the [responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy)
-  * relevant legislation and regulations, Commonwealth framework, external and industry frameworks.
+- Australia’s [AI ethics principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles)
+- DTA policy for the [responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy)
+- relevant legislation and regulations, Commonwealth framework, external and industry frameworks.
 
 The Tribunal’s approach to the adoption of AI is designed to:
 
-  * meet staff expectations for modern ICT experiences
-  * minimise the risk associated with the use of AI 
-  * support experimentation and leverage new technology to unlock value 
-  * align with whole-of-government direction and policy on the use of AI. 
+- meet staff expectations for modern ICT experiences
+- minimise the risk associated with the use of AI
+- support experimentation and leverage new technology to unlock value
+- align with whole-of-government direction and policy on the use of AI.
 
 #### Training and assistance
 
-The Tribunal has developed "safe use of AI" training which is mandatory for staff, contractors and consultants. The Tribunal Enterprise Technology Group (ETG) is available to assist staff and members with responsible AI use. Regular advice is provided to members and staff on the limits of AI use and the Tribunal’s current ICT policies. 
+The Tribunal has developed "safe use of AI" training which is mandatory for staff, contractors and consultants. The Tribunal Enterprise Technology Group (ETG) is available to assist staff and members with responsible AI use. Regular advice is provided to members and staff on the limits of AI use and the Tribunal’s current ICT policies.
 
 ### Monitoring AI effectiveness and negative impacts
 
 #### Governance
 
-  * The Tribunal’s accountable official under the policy is the Chief Information Officer (CIO). 
-  * The Tribunal's Chief AI Officer under the policy is the Chief Data and AI Officer (CDAIO).
-  * The CIO and CDAIO engage with the Senior Management Committee and Principal Registrar/CEO under the Tribunal’s normative governance framework and any use of AI services must be approved through this mechanism.
-  * The Tribunal Senior Management Committee has identified the appropriate use of AI as an emerging risk. Risk is managed through the Enterprise Risk Management Framework overseen by the Tribunal Audit and Risk Committee. 
-  * The Senior Management Committee is actively involved when reviewing any and all potential uses for AI services.
+- The Tribunal’s accountable official under the policy is the Chief Information Officer (CIO).
+- The Tribunal's Chief AI Officer under the policy is the Chief Data and AI Officer (CDAIO).
+- The CIO and CDAIO engage with the Senior Management Committee and Principal Registrar/CEO under the Tribunal’s normative governance framework and any use of AI services must be approved through this mechanism.
+- The Tribunal Senior Management Committee has identified the appropriate use of AI as an emerging risk. Risk is managed through the Enterprise Risk Management Framework overseen by the Tribunal Audit and Risk Committee.
+- The Senior Management Committee is actively involved when reviewing any and all potential uses for AI services.
 
 #### Compliance with applicable legislation and regulations
 
-  * The Tribunal will only utilise AI services in accordance with applicable legislation, regulations, frameworks and policies.
-  * We comply with all mandatory requirements of the DTA [Policy for the responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government).
-  * This statement will be reviewed annually, or when we make any significant change to our approach to AI as outlined above. 
+- The Tribunal will only utilise AI services in accordance with applicable legislation, regulations, frameworks and policies.
+- We comply with all mandatory requirements of the DTA [Policy for the responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government).
+- This statement will be reviewed annually, or when we make any significant change to our approach to AI as outlined above.
 
 ### AI contact
 

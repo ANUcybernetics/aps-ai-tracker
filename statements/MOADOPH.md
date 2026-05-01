@@ -15,56 +15,56 @@ The Museum of Australian Democracy at Old Parliament House (MoAD) is committed t
 
 In this statement, we describe:
 
-  * How we use AI
-  * Why we use AI
-  * How we ensure quality and safety of data
+- How we use AI
+- Why we use AI
+- How we ensure quality and safety of data
 
-Explanations for specific terms are included in the 'definitions' section of this document. 
+Explanations for specific terms are included in the 'definitions' section of this document.
 
 ## **How we use AI**
 
-  * MoAD uses AI in some of its Corporate and Enabling works. This includes some level of AI assistance in the area of contact and data matching (refer Definitions below)
-  * Generative AI is occasionally used in the following areas:
-    * planning stages of creative work
-    * the production of subtitles and narration for video and audio products. NB: content is always thoroughly proofed and edited by MoAD staff before publication
-    * generation of short form content for internal use (e.g. content or meeting summaries)
-    * data analytics and reporting
-    * cyber security monitoring and response activities
-  * Generative AI is not used to alter historical digital assets/records
+- MoAD uses AI in some of its Corporate and Enabling works. This includes some level of AI assistance in the area of contact and data matching (refer Definitions below)
+- Generative AI is occasionally used in the following areas:
+  - planning stages of creative work
+  - the production of subtitles and narration for video and audio products. NB: content is always thoroughly proofed and edited by MoAD staff before publication
+  - generation of short form content for internal use (e.g. content or meeting summaries)
+  - data analytics and reporting
+  - cyber security monitoring and response activities
+- Generative AI is not used to alter historical digital assets/records
 
 MoAD **does not** currently use AI in any services where members of the public directly interact with AI systems or are significantly impacted by AI outputs without human oversight.
 
 ## **Why we use AI**
 
-AI is not widely used across MoAD systems, however MoAD recognises that AI is an increasingly prevalent and critical component of many digital systems. 
+AI is not widely used across MoAD systems, however MoAD recognises that AI is an increasingly prevalent and critical component of many digital systems.
 
-MoAD uses AI for its benefits in creating business efficiencies and reducing human error. 
+MoAD uses AI for its benefits in creating business efficiencies and reducing human error.
 
 Where AI components have been incorporated into proprietary software or IT products used by MoAD, we will consider using these components if:
 
-  * there is a demonstrated benefit to MoAD's audience in bodies of work; and
-  * the data governance and compliance requirements are met. 
+- there is a demonstrated benefit to MoAD's audience in bodies of work; and
+- the data governance and compliance requirements are met.
 
 ## **How we ensure quality and safety of data**
 
 MoAD manages the quality and safety of data through the following controls:
 
-  * Periodic reviews, audits, performance evaluation to monitor effectiveness of AI use cases.
-  * Thorough robust risk and change management processes, including escalation thresholds and human review.
-  * MoAD has additional backups and audit arrangements in place to ensure the integrity and confidentiality of our data.
-  * Staff undertake mandatory training upon induction, with annual refresher training to ensure compliance with quality and safety requirements of MoAD's AI policy.
-  * The AI policy aligns with the [AI in government policy](https://www.digital.gov.au/policy/ai/policy).
+- Periodic reviews, audits, performance evaluation to monitor effectiveness of AI use cases.
+- Thorough robust risk and change management processes, including escalation thresholds and human review.
+- MoAD has additional backups and audit arrangements in place to ensure the integrity and confidentiality of our data.
+- Staff undertake mandatory training upon induction, with annual refresher training to ensure compliance with quality and safety requirements of MoAD's AI policy.
+- The AI policy aligns with the [AI in government policy](https://www.digital.gov.au/policy/ai/policy).
 
 ## **Classification of AI use**
 
 MoAD’s use of AI is classified under the DTA’s AI classification system as follows:
 
-  * **Usage patterns:** improving workplace productivity, supporting analytics and reporting
-  * **Domains:** corporate and enabling functions
+- **Usage patterns:** improving workplace productivity, supporting analytics and reporting
+- **Domains:** corporate and enabling functions
 
 ## **Government policy alignment**
 
-The content on this page aligns with the Digital Transformation Agency's policy on [the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) outlining how the Australian government plans to leverage AI opportunities while ensuring its safe and ethical use. 
+The content on this page aligns with the Digital Transformation Agency's policy on [the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) outlining how the Australian government plans to leverage AI opportunities while ensuring its safe and ethical use.
 
 ## **Statement review process**
 
@@ -84,40 +84,32 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-## You may also be interested in...
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
 
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
-
-###  [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
-
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
-
-![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
-
-###  [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
-
-Find our strategic and corporate plans, policies and reporting.
-
-![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-###  [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
-
-The APS Census reports reflect how staff feel about working at MoAD.
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
 
 ![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
 
-###  [Media](https://moadoph.gov.au/about/media)
+### [Media](https://moadoph.gov.au/about/media)
 
-Find our latest media releases, download publicity images and request interviews and film shoots. 
+Find our latest media releases, download publicity images and request interviews and film shoots.
 
-![Venue hire](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-04/MoAD-venue-hire-courtyard.jpg.webp?h=7282df9d&itok=hsWDZPcg)
+![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
 
-###  [Venue hire](https://moadoph.gov.au/about/venue-hire)
+### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
 
-Plan your next event at Old Parliament House.
+The Board directs the objectives, strategies and policies followed by Old Parliament House.
 
-![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+![Careers](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
 
-###  [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+### [Careers](https://moadoph.gov.au/about/careers)
 
-Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
+Join our team and help us tell the story of Australian democracy.
+
+### [Learn](https://moadoph.gov.au/learn)
+
+Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+
+![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+
+### [Access to information](https://moadoph.gov.au/about/access-to-information)

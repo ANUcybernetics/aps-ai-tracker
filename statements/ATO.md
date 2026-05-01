@@ -29,26 +29,26 @@ We also use AI to ensure we can continue to protect the tax and superannuation s
 
 Based on the [classification system for AIExternal Link](https://www.digital.gov.au/policy/ai/resources/use-classification) in government, we are using AI in the:
 
-  * usage patterns of analytics for insights, image processing, workplace productivity and decision making and administrative action
-  * domains of service delivery, compliance and fraud detection, corporate and enabling, and law enforcement, intelligence and security.
+- usage patterns of analytics for insights, image processing, workplace productivity and decision making and administrative action
+- domains of service delivery, compliance and fraud detection, corporate and enabling, and law enforcement, intelligence and security.
 
 Examples of how we are applying AI in these domains:
 
-  * service delivery 
-    * providing real time prompts to taxpayers
-    * sending payment reminders
-    * powering our virtual assistant Alex
-    * managing call centre volumes
-    * assisting with readability and structure of select public advice and guidance content
-  * compliance and fraud detection 
-    * reviewing large quantities of unstructured data
-    * powering risk models to identify potential non-compliance or fraud for human review
-    * alert taxpayers to lodgments suspected of identity crime
-  * corporate and enabling services 
-    * creating initial draft communications for review
-    * summarising content
-  * law enforcement, intelligence and security 
-    * supporting AI-enabled analysis of data for intelligence gathering.
+- service delivery
+  - providing real time prompts to taxpayers
+  - sending payment reminders
+  - powering our virtual assistant Alex
+  - managing call centre volumes
+  - assisting with readability and structure of select public advice and guidance content
+- compliance and fraud detection
+  - reviewing large quantities of unstructured data
+  - powering risk models to identify potential non-compliance or fraud for human review
+  - alert taxpayers to lodgments suspected of identity crime
+- corporate and enabling services
+  - creating initial draft communications for review
+  - summarising content
+- law enforcement, intelligence and security
+  - supporting AI-enabled analysis of data for intelligence gathering.
 
 Under our AI policy, AI use is limited to approved tools used for approved use cases.
 

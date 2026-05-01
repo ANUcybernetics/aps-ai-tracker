@@ -21,11 +21,11 @@ As required by the Plan, a Chief AI Officer will be appointed by July 2026.
 
 Two Accountable Officials are nominated under the Policy and have responsibility for:
 
-  * implementation of the Policy within the Entity
-  * participating in whole-of-government AI activity as representatives of the Entity
-  * proactively maintaining awareness of and responding to developments in the AI space, including changes to regulatory requirements
-  * ensuring that Entity staff are appropriately trained in relation to the intersection of AI with their duties, particularly those with responsibility for developing, using and monitoring AI systems, and
-  * ensuring Entity-wide awareness of our approach to adopting AI, including relevant policies, controls and supports.
+- implementation of the Policy within the Entity
+- participating in whole-of-government AI activity as representatives of the Entity
+- proactively maintaining awareness of and responding to developments in the AI space, including changes to regulatory requirements
+- ensuring that Entity staff are appropriately trained in relation to the intersection of AI with their duties, particularly those with responsibility for developing, using and monitoring AI systems, and
+- ensuring Entity-wide awareness of our approach to adopting AI, including relevant policies, controls and supports.
 
 ## Use and classification
 

@@ -17,31 +17,31 @@ Our approach is regularly reviewed through governance and risk management proces
 
 ## Why We Use AI
 
-Our staff use AI to increase their productivity in line with**** the**** usage patterns and domains as outlined by the Digital Transformation Agency’s (DTA) [Classification system for AI use](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf).
+Our staff use AI to increase their productivity in line with\*\*\*\* the\*\*\*\* usage patterns and domains as outlined by the Digital Transformation Agency’s (DTA) [Classification system for AI use](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf).
 
-AI is approved for use within the department in the following Domains: 
+AI is approved for use within the department in the following Domains:
 
-  * **Service Delivery:** For enhancing the efficiency and accuracy of our services (note: our department does not use AI to deliver services directly to the public).
-  * **Compliance and Fraud Detection:** For detecting patterns or anomalies to ensure compliance with laws and regulations.
-  * **Policy and Legal:** For analysing policies and documents to support policy development.
-  * **Scientific:** For**** processing and interpreting data and information to support research.
-  * **Corporate and Enabling:** For supporting corporate and enabling functions across our human resource, finance, communications and information technology areas.
+- **Service Delivery:** For enhancing the efficiency and accuracy of our services (note: our department does not use AI to deliver services directly to the public).
+- **Compliance and Fraud Detection:** For detecting patterns or anomalies to ensure compliance with laws and regulations.
+- **Policy and Legal:** For analysing policies and documents to support policy development.
+- **Scientific:** For\*\*\*\* processing and interpreting data and information to support research.
+- **Corporate and Enabling:** For supporting corporate and enabling functions across our human resource, finance, communications and information technology areas.
 
 AI is approved for the following Usage Patterns:
 
-  * **Workplace Productivity** : primarily across the _Corporate and enabling, Service delivery_ and _Compliance and fraud detection_ domains.
-  * **Analytics for Insights** : primarily across the _Policy and legal_ and _Scientific_ domains.
+- **Workplace Productivity** : primarily across the _Corporate and enabling, Service delivery_ and _Compliance and fraud detection_ domains.
+- **Analytics for Insights** : primarily across the _Policy and legal_ and _Scientific_ domains.
 
 Examples of AI use include:
 
-  * analysing, simplifying and summarising documents, emails or other content
-  * creating accessible versions of documents
-  * drafting operational documents, such as project plans and operating procedures.
-  * assisting with policy research and analysis.
-  * preparing meeting minutes and transcribe interviews.
-  * searching and retrieving documents, data and information from repositories.
-  * analysing events or problems to identify root causes, trends and actionable improvements.
-  * producing content for internal reports and communications.
+- analysing, simplifying and summarising documents, emails or other content
+- creating accessible versions of documents
+- drafting operational documents, such as project plans and operating procedures.
+- assisting with policy research and analysis.
+- preparing meeting minutes and transcribe interviews.
+- searching and retrieving documents, data and information from repositories.
+- analysing events or problems to identify root causes, trends and actionable improvements.
+- producing content for internal reports and communications.
 
 ## Public Interaction and Human Review
 

@@ -7,7 +7,7 @@ title: DEWR AI Transparency Statement - Department of Employment and Workplace R
   Australian Government
 ---
 
-#  DEWR AI Transparency Statement 
+# DEWR AI Transparency Statement
 
 The Department of Employment and Workplace Relations (DEWR) recognises the transformative potential of artificial intelligence (AI) and is committed to adopting AI in a way that remains responsible, ethical, and aligned with public trust and expectations.
 
@@ -15,32 +15,30 @@ We are using AI in a way that prioritises human rights, the protection of person
 
 Our intent is to leverage AI to drive innovation, enhance productivity and elevate service delivery to support the broader goal of enabling people to have safe, secure, and well-paid work with the skills for a sustainable future.
 
-## On this page:
-
 DEWR use of AI is transparent, responsible, and aligned with legislative and regulatory requirements, including the [Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/policy/ai/policy), [APS AI Plan](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025) and the [Voluntary AI Safety Standard](https://www.industry.gov.au/publications/voluntary-ai-safety-standard).
 
 As defined in the Policy for Responsible Use of AI in Government, an AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
 Automated systems are different, and range from:
 
-  * traditional rules-based systems (for example a system which calculates a rate of payment in accordance with a formula set out in legislation)
-  * to more specialised systems which use automated tools to predict and deliberate, including through the use of machine learning.
+- traditional rules-based systems (for example a system which calculates a rate of payment in accordance with a formula set out in legislation)
+- to more specialised systems which use automated tools to predict and deliberate, including through the use of machine learning.
 
 ## Monitoring and accountability
 
-DEWR’s AI initiatives are overseen by the AI Accountable Officer, who also serves as the department’s Chief Data Officer. This role ensures robust monitoring and evaluation of AI systems to maintain effectiveness, fairness, and compliance with government policies and the law. DEWR is committed to adapting AI systems as needed to align with evolving legislation, ethical standards, and public expectations.  
-  
+DEWR’s AI initiatives are overseen by the AI Accountable Officer, who also serves as the department’s Chief Data Officer. This role ensures robust monitoring and evaluation of AI systems to maintain effectiveness, fairness, and compliance with government policies and the law. DEWR is committed to adapting AI systems as needed to align with evolving legislation, ethical standards, and public expectations.
+
 To support these efforts, DEWR has established a robust governance framework to ensure the ethical, transparent, and secure use of AI. Key elements include:
 
-  * AI Governance: The department’s AI Adoption Committee oversees all AI initiatives deployed by the department, ensuring they align with DEWR’s strategic objectives and government standards. The Committee advises the AI Accountable Official in overseeing AI initiatives by third party providers such as employment service providers.
-  * Ethical and Privacy Principles: AI development and deployment adhere to DEWR’s Data, Digital and AI Ethics Policy and whole-of-government AI guidelines, embedding considerations like privacy, safety, lawfulness, transparency and fairness from the outset. Privacy assessments and data security considerations are embedded into the AI governance process, ensuring that the department’s AI tools maintain the privacy of Australians and that their use adheres to our privacy policy.
-  * Human Oversight: Human-in-the-loop mechanisms are embedded at critical stages to ensure accountability and accuracy in AI outputs.
-  * Cybersecurity Standards: DEWR is committed to applying the cybersecurity requirements outlined in the Australian Government Information Security Manual (ISM) and the Protective Security Policy Framework (PSPF), using a risk-based approach, to ensure the secure operation of all AI applications.
+- AI Governance: The department’s AI Adoption Committee oversees all AI initiatives deployed by the department, ensuring they align with DEWR’s strategic objectives and government standards. The Committee advises the AI Accountable Official in overseeing AI initiatives by third party providers such as employment service providers.
+- Ethical and Privacy Principles: AI development and deployment adhere to DEWR’s Data, Digital and AI Ethics Policy and whole-of-government AI guidelines, embedding considerations like privacy, safety, lawfulness, transparency and fairness from the outset. Privacy assessments and data security considerations are embedded into the AI governance process, ensuring that the department’s AI tools maintain the privacy of Australians and that their use adheres to our privacy policy.
+- Human Oversight: Human-in-the-loop mechanisms are embedded at critical stages to ensure accountability and accuracy in AI outputs.
+- Cybersecurity Standards: DEWR is committed to applying the cybersecurity requirements outlined in the Australian Government Information Security Manual (ISM) and the Protective Security Policy Framework (PSPF), using a risk-based approach, to ensure the secure operation of all AI applications.
 
 The department engages with various third-party providers and has governance in place to ensure AI is used transparently, responsibly, and ethically. This includes:
 
-  * A _Third-Party AI Assessment Framework_ that ensures that third-party providers contracted to deliver government services on behalf of government are effectively overseen by the department.
-  * _AI in Procurement Principles_ in place that help to ensure where third-party providers are using AI as part of delivering services to the department, the risks have been considered, the usage is transparent to, and agreed to by the department, and that AI-aware quality assurance processes are in place.
+- A _Third-Party AI Assessment Framework_ that ensures that third-party providers contracted to deliver government services on behalf of government are effectively overseen by the department.
+- _AI in Procurement Principles_ in place that help to ensure where third-party providers are using AI as part of delivering services to the department, the risks have been considered, the usage is transparent to, and agreed to by the department, and that AI-aware quality assurance processes are in place.
 
 ## How we use AI
 
@@ -52,9 +50,9 @@ DEWR uses AI to support service delivery, including using AI to ensure services 
 
 DEWR employs AI in the following way:
 
-  * Workplace productivity: Use tools like automated document summarisation and virtual assistants to streamline workflows and improve efficiency.
-  * Analytics for insights: Used to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis.
-  * Supporting decision making and administrative action: Supporting human decision making or administrative action by guiding, assessing, or making a recommendation to a human decision maker. AI is not used for automated decision making.
+- Workplace productivity: Use tools like automated document summarisation and virtual assistants to streamline workflows and improve efficiency.
+- Analytics for insights: Used to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis.
+- Supporting decision making and administrative action: Supporting human decision making or administrative action by guiding, assessing, or making a recommendation to a human decision maker. AI is not used for automated decision making.
 
 For more about usage patterns, see the [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) on the digital.gov.au website.
 
@@ -62,8 +60,8 @@ For more about usage patterns, see the [Classification system for AI use](https:
 
 Our AI applications focus on:
 
-  * Corporate and enabling services: supporting corporate functions, including HR, finance, media and communications, and IT, by automating processes, optimising resource allocation and improving operational efficiency, including research and innovation; and
-  * Service delivery: enhancing the efficiency and accuracy of the government services DEWR delivers. This includes the delivery of services by contracted third party providers, which are overseen by DEWR to ensure safe, responsible, and ethical use of AI.
+- Corporate and enabling services: supporting corporate functions, including HR, finance, media and communications, and IT, by automating processes, optimising resource allocation and improving operational efficiency, including research and innovation; and
+- Service delivery: enhancing the efficiency and accuracy of the government services DEWR delivers. This includes the delivery of services by contracted third party providers, which are overseen by DEWR to ensure safe, responsible, and ethical use of AI.
 
 For more about domains, see the [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) on the digital.gov.au website.
 

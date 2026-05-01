@@ -6,7 +6,7 @@ source_url: https://aifs.gov.au/main/policies/ai-transparency-statement
 title: AI transparency statement | Australian Institute of Family Studies
 ---
 
-[Home __](https://aifs.gov.au/) [Compliance and reporting ](https://aifs.gov.au/compliance-reporting)
+[Home \_\_](https://aifs.gov.au/) [Compliance and reporting ](https://aifs.gov.au/compliance-reporting)
 
 # AI transparency statement
 
@@ -20,7 +20,7 @@ When discussing AI, we apply the [Organisation for Economic Co-operation and Dev
 
 Liz Neville, Director
 
-* * *
+______________________________________________________________________
 
 ## AI use
 
@@ -30,32 +30,32 @@ We utilise AI across the _corporate and enabling_ , and _scientific_ domains as 
 
 As a research agency, we see the potential benefits in using AI to assist with analysing both primary and secondary data including:
 
-  * generating and debugging code used in data analysis, management and processing
-  * grouping data and performing thematic analysis
-  * interrogating, analysing and obtaining insights from quantitative data
-  * performing sentiment analysis across qualitative data
-  * summarising data across multiple sources.
+- generating and debugging code used in data analysis, management and processing
+- grouping data and performing thematic analysis
+- interrogating, analysing and obtaining insights from quantitative data
+- performing sentiment analysis across qualitative data
+- summarising data across multiple sources.
 
 ### Workplace productivity
 
 We see the potential benefits in using AI to improve workplace productivity for all staff including:
 
-  * helping answer questions from staff regarding workplace policies and entitlements
-  * improving accessibility to help all staff use platforms, applications and services
-  * improving the uptake of features in existing products and services
-  * summarising documents, emails and other content
-  * performing transcription of interviews and meeting notes
-  * preparing training material for new and existing staff.
+- helping answer questions from staff regarding workplace policies and entitlements
+- improving accessibility to help all staff use platforms, applications and services
+- improving the uptake of features in existing products and services
+- summarising documents, emails and other content
+- performing transcription of interviews and meeting notes
+- preparing training material for new and existing staff.
 
 ## Public interaction and impact
 
-We do not propose to use AI where the public may directly interact with or be significantly impacted by it. 
+We do not propose to use AI where the public may directly interact with or be significantly impacted by it.
 
 ## Monitoring AI effectiveness and negative impacts
 
 ### Executive monitoring
 
-Our Executive Leadership Team have identified the appropriate use of AI as an emerging risk and are actively involved in reviewing potential use cases for AI services. 
+Our Executive Leadership Team have identified the appropriate use of AI as an emerging risk and are actively involved in reviewing potential use cases for AI services.
 
 ### Responsible AI usage policy
 
@@ -91,14 +91,8 @@ Change history
 
 ## Change history
 
-Date| Note  
----|---  
-29 October 2025| Clarified AI training is mandatory for all staff.  
-23 June 2025| Statement review. No changes.  
-2 December 2024| Initial release.  
-  
-Share
-
-[ ](https://www.facebook.com/sharer/sharer.php?u=https://aifs.gov.au/compliance-reporting/ai-transparency-statement&title=AI%20transparency%20statement "Share to Facebook")
-
-[ ](https://www.linkedin.com/sharing/share-offsite/?url=https://aifs.gov.au/compliance-reporting/ai-transparency-statement "Share to Linkedin")
+| Date            | Note                                              |
+| --------------- | ------------------------------------------------- |
+| 29 October 2025 | Clarified AI training is mandatory for all staff. |
+| 23 June 2025    | Statement review. No changes.                     |
+| 2 December 2024 | Initial release.                                  |

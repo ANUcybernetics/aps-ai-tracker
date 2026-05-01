@@ -10,7 +10,7 @@ title: Artificial Intellligence (AI) transparency statement | Productivity Commi
 
 Updated 02 / 04 / 2026
 
-This statement is published in accordance with requirements set out in the Digital Transformation Agency’s (DTA) [_Policy for responsible use of AI in government_ __](https://www.digital.gov.au/policy/ai/policy).
+This statement is published in accordance with requirements set out in the Digital Transformation Agency’s (DTA) [_Policy for responsible use of AI in government_ \_\_](https://www.digital.gov.au/policy/ai/policy).
 
 Consistent with the DTA policy we have applied the following definition provided by the Organisation for Economic Co-operation and Development (OECD):
 
@@ -18,36 +18,38 @@ Consistent with the DTA policy we have applied the following definition provided
 
 ## Our approach to AI adoption and use
 
-We are adopting and using AI in a way that enhances and supports our work while ensuring its safe, ethical, and responsible use. We are doing so within existing frameworks and legislation relevant to government’s use of AI including those relating to: 
+We are adopting and using AI in a way that enhances and supports our work while ensuring its safe, ethical, and responsible use. We are doing so within existing frameworks and legislation relevant to government’s use of AI including those relating to:
 
-  * data governance 
-  * privacy 
-  * cyber security 
+- data governance
 
-  * the APS Values and Code of Conduct.
+- privacy
+
+- cyber security
+
+- the APS Values and Code of Conduct.
 
 ## How we use AI
 
-In accordance with the [_DTA Classification system for AI Use_ __](https://www.digital.gov.au/policy/ai/resources/use-classification)we may use AI as follows:
+In accordance with the [_DTA Classification system for AI Use_ \_\_](https://www.digital.gov.au/policy/ai/resources/use-classification)we may use AI as follows:
 
 ### Usage patterns
 
-  * **Analytics for insights** – to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools.
-  * **Workplace Productivity** – to automate routine tasks, manage workflows, and facilitate communication. 
+- **Analytics for insights** – to identify, produce or understand insights within structured or unstructured materials via comprehensive data analysis, predictive modelling and/or reporting tools.
+- **Workplace Productivity** – to automate routine tasks, manage workflows, and facilitate communication.
 
 ### Domains
 
-  * **Scientific** – to process complex datasets, simulate experiments, predict outcomes, and enhance monitoring functions.
-  * **Corporate and enabling** – to support corporate functions by automating processes, optimising resource allocation, and improving operational efficiency.
-  * **Policy and legal** – to analyse policies and legal documents to provide advice and assurance on their impact and to support policy development that is consistent with existing laws.
+- **Scientific** – to process complex datasets, simulate experiments, predict outcomes, and enhance monitoring functions.
+- **Corporate and enabling** – to support corporate functions by automating processes, optimising resource allocation, and improving operational efficiency.
+- **Policy and legal** – to analyse policies and legal documents to provide advice and assurance on their impact and to support policy development that is consistent with existing laws.
 
-We do not propose using AI where the public may directly interact with or be significantly impacted by it without a human intermediary or intervention. 
+We do not propose using AI where the public may directly interact with or be significantly impacted by it without a human intermediary or intervention.
 
-In 2024 we participated in the Australian Government’s trials of a generative AI service, Microsoft 365 Copilot. We continue to make this available to all staff. We have also made a licensed version of ChatGPT available to a number of staff, primarily in research focussed areas. 
+In 2024 we participated in the Australian Government’s trials of a generative AI service, Microsoft 365 Copilot. We continue to make this available to all staff. We have also made a licensed version of ChatGPT available to a number of staff, primarily in research focussed areas.
 
 ## Governance processes
 
-We maintain an internal policy on the use of AI which applies to all Commissioners, staff, and contractors. It is consistent with, and supports, the provisions of DTA policy and guidance and will be reviewed and updated to ensure it remains so. 
+We maintain an internal policy on the use of AI which applies to all Commissioners, staff, and contractors. It is consistent with, and supports, the provisions of DTA policy and guidance and will be reviewed and updated to ensure it remains so.
 
 The policy specifies that only authorised AI tools may be introduced and used in our Data Technology (DT) environment. It also requires all AI users to be open and transparent about their use of AI. When submitting work for review or approval, users must, where applicable, describe the purpose(s) for which AI tools were used and confirm that all AI generated outputs relied upon have been carefully reviewed for accuracy, quality and appropriateness.
 
@@ -69,7 +71,7 @@ This transparency statement will be reviewed and updated if our approach to the 
 
 **Date********Note******
 
-24 February 2025  Initial version
+24 February 2025 Initial version
 
 31 March 2026 Review and amended to align with updated DTA policy
 

@@ -6,8 +6,6 @@ title: Artificial intelligence (AI) transparency statement - February 2026 | NDI
   Quality and Safeguards Commission
 ---
 
-On this page:
-
 The NDIS Quality and Safeguards Commission’s commitment to the safe and responsible use of Artificial Intelligence (AI) supports our vision to uphold the rights of people with disability and ensure safe, high-quality services across Australia, now and into the future.
 
 The NDIS Commission applies the Organisation for Economic Co-operation and Development (OECD) definition of AI in line with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) by the Digital Transformation Agency (DTA) to ensure our AI use is safe, ethical, and transparent.
@@ -18,7 +16,7 @@ The NDIS Commission will comply with mandatory requirements under the DTA’s Po
 
 ## Use of AI by the NDIS Commission
 
-At this time, the NDIS Commission is not using AI in any way that members of the public may directly interact with, or be significantly impacted by, without a human intermediary or intervention. As a prerequisite to using AI tools, NDIS Commission staff are required to complete internal training on the use of AI. 
+At this time, the NDIS Commission is not using AI in any way that members of the public may directly interact with, or be significantly impacted by, without a human intermediary or intervention. As a prerequisite to using AI tools, NDIS Commission staff are required to complete internal training on the use of AI.
 
 The AI we use helps our staff make more informed decisions. It frees them to focus more on aspects of our work that require human judgment and empathy.
 
@@ -26,36 +24,35 @@ We classify our AI use according to [classification system for AI](https://www.d
 
 The table below represents AI usage patterns at the NDIS Commission:
 
-Usage Pattern| Description  
----|---  
-Analytics for insights| Identifying patterns and producing insights using data analysis and modelling.  
-Workplace productivity| Automating routine tasks, assisting with document drafting and summarising content.  
-Decision making and administrative action| Informing performance and productivity improvement. No regulatory decisions are made by AI.  
-  
+| Usage Pattern                             | Description                                                                                 |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Analytics for insights                    | Identifying patterns and producing insights using data analysis and modelling.              |
+| Workplace productivity                    | Automating routine tasks, assisting with document drafting and summarising content.         |
+| Decision making and administrative action | Informing performance and productivity improvement. No regulatory decisions are made by AI. |
+
 The table below illustrates how the AI usage patterns are applied within the domains where AI is used at the NDIS Commission:
 
-Domain| Description  
----|---  
-Service delivery| Supporting clear communication and timely responses.  
-Compliance and fraud detection| Identifying anomalies to support compliance activities.  
-Policy and legal| Assisting analysis and assurance in policy development and legal research.  
-Scientific| Processing complex datasets to inform monitoring and research.  
-Corporate and enabling| Improving internal operations (e.g. Finance and ICT) AI is not used to automate recruitment, selection, or employment related decision making.  
-  
+| Domain                         | Description                                                                                                                                    |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Service delivery               | Supporting clear communication and timely responses.                                                                                           |
+| Compliance and fraud detection | Identifying anomalies to support compliance activities.                                                                                        |
+| Policy and legal               | Assisting analysis and assurance in policy development and legal research.                                                                     |
+| Scientific                     | Processing complex datasets to inform monitoring and research.                                                                                 |
+| Corporate and enabling         | Improving internal operations (e.g. Finance and ICT) AI is not used to automate recruitment, selection, or employment related decision making. |
+
 ## AI governance
 
 We recognise the importance of robust governance, oversight and accountability. This helps us to ensure AI development and use is ethical and safe and delivers fit for purpose outcomes. We take a measured and cautious approach when exploring AI tools and techniques. We will closely monitor AI-enabled tools through governance processes, and take appropriate action, if intended benefits are not being realised or unintended consequences are arising. We only use AI in ways that maintain the security, privacy, transparency and ethical use of data. We always maintain appropriate human oversight. We continue to evolve our data governance as our maturity increases. We are expanding our policies and guidance to reference AI more directly. AI is evolving rapidly in an ever-changing technology environment. Therefore, we will continue to evaluate and change our data governance to ensure it remains fit for purpose. We will continue to train and develop our staff to ensure we use AI safely, responsibly and ethically.
 
-  
 The NDIS Commission will adhere to the Digital Transformation Agency’s Policy for the Responsible Use of AI in Government (Version 2.0), ensuring safe and ethical AI governance. This commitment includes strategic adoption, operationalising responsible practices, clear accountability, and risk-based oversight. The policy is dynamic and will evolve alongside technological advancements, emerging best practices, and regulatory developments.
 
 ## Our Commitment
 
 The NDIS Commission is committed to using AI in a safe, responsible and transparent way. Our AI initiatives align with the APS values, AI Ethics Principles and are central to the public’s best interest. We will:
 
-  * Comply with relevant legislation, regulations, frameworks, and best practice standards.
-  * Continue to work closely with the DTA and use AI in accordance with applicable guidelines and new insights as they emerge.
-  * Review this statement annually or when significant changes occur in our AI approach.
+- Comply with relevant legislation, regulations, frameworks, and best practice standards.
+- Continue to work closely with the DTA and use AI in accordance with applicable guidelines and new insights as they emerge.
+- Review this statement annually or when significant changes occur in our AI approach.
 
 ### Safe and Responsible AI Adoption
 
@@ -63,7 +60,7 @@ We will be transparent as we adopt responsibly for the evolving AI technology an
 
 ## Examples of how we use AI
 
-The NDIS Commission currently uses AI in the following system use cases, including: 
+The NDIS Commission currently uses AI in the following system use cases, including:
 
 ### Microsoft 365 Copilot Chat:
 
@@ -75,9 +72,9 @@ _Classification system for AI use: workplace productivity usage pattern, corpora
 
 The NDIS Commission is enhancing customer service through the adoption of a secure cloud‑based contact platform. This platform uses AI‑enabled speech and transcription functions to:
 
-  * Convert written text to spoken language.
-  * Transcribe audio conversations.
-  * Assess customer sentiment.
+- Convert written text to spoken language.
+- Transcribe audio conversations.
+- Assess customer sentiment.
 
 These capabilities enable the NDIS Commission to gain actionable insights, improve service quality, and optimise communication workflows. The result is a strengthened client experience, achieved through greater transparency, efficiency and responsiveness.
 
@@ -91,15 +88,15 @@ This AI use-case involves deployment of Large Language Models (LLMs) to process 
 
 Examples of use include the following:
 
-  * Identifying specific risk-indicators, such as a description within a Complaint indicating that a Participant was physically injured or that the Participant is a child.
-  * Categorisation with regard to main topics or themes.
-  * Extraction of entity names to identify relevant Providers or Workers.
+- Identifying specific risk-indicators, such as a description within a Complaint indicating that a Participant was physically injured or that the Participant is a child.
+- Categorisation with regard to main topics or themes.
+- Extraction of entity names to identify relevant Providers or Workers.
 
 _Annotations provided by an LLM may be used to identify records that are relevant to a user’s search, may be presented in a summary or detailed views used by regulatory officers as part of an assessment or investigation, and/or may be used as part of an aggregation for reporting or to inform macro-analysis._
 
 ### AI use through the browser
 
-This capability may be available via publicly accessible services; however, the NDIS Commission does not use browser-based AI to make, automate, or determine regulatory or compliance decisions. 
+This capability may be available via publicly accessible services; however, the NDIS Commission does not use browser-based AI to make, automate, or determine regulatory or compliance decisions.
 
 ## Updates and more information
 

@@ -1,72 +1,64 @@
 ---
 abbr: SA
 agency: Screen Australia
-source_url: https://www.screenaustralia.gov.au/sa/about-us/corporate-documents/policies-(1)/ai-transparency-statement
-title: AI Transparency Statement - Corporate documents - About us - Screen Australia
+source_url: https://www.screenaustralia.gov.au/corporate-documents/policies/ai-transparency-statement/
+title: AI Transparency Statement - Screen Australia
 ---
 
-# **AI Transparency Statement**
+______________________________________________________________________
+
+## AI Transparency Statement
 
 Screen Australia is committed to safe, ethical, and responsible use of Artificial Intelligence (AI). Screen Australia recognises that AI tools offer opportunities to improve productivity and service delivery, while requiring careful management of risks.
 
-In accordance with the principles outlined by the Digital Transformation Agency’s (DTA) [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy), this statement outlines Screen Australia’s approach to AI usage and adoption, and how AI related risks are being managed. 
+In accordance with the principles outlined by the Digital Transformation Agency’s (DTA) [ _Policy for the Responsible use of AI in government_](https://www.digital.gov.au/ai/ai-in-government-policy) _,_ this statement outlines Screen Australia’s approach to AI usage and adoption, and how AI related risks are being managed.
 
-### How we use AI
+#### How we use AI
 
-Screen Australia enables staff and contractors to use AI tools responsibly to improve productivity in the course of their work and service delivery, while protecting confidential, personal and sensitive information and maintaining public trust. 
+Screen Australia enables staff and contractors to use AI tools responsibly to improve productivity in the course of their work and service delivery, while protecting confidential, personal and sensitive information and maintaining public trust.
 
-In March 2026, we updated our internal Policy on the use of Artificial Intelligence (AI) by Screen Australia Employees & Contractors. The policy incorporates the Australian Government’s [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025) and [Staff guidance on public generative AI](https://www.digital.gov.au/policy/ai/staff-guidance-public-generative-ai). We also implemented mandatory training for staff on the responsible use of AI. 
+In March 2026, we updated our internal _Policy on the use of Artificial Intelligence (AI) by Screen Australia Employees & Contractors._ The policy incorporates the Australian Government’s [_AI Plan for the Australian Public Service 2025_](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025) \_\_ and [_Staff guidance on public generative AI._](https://www.digital.gov.au/policy/ai/staff-guidance-public-generative-ai)\_\_ We also implemented mandatory training for staff on the responsible use of AI.
 
 Our internal policy states the terms for approved usage of AI tools by Screen Australia employees and contractors. It reminds all Screen Australia employees and contractors that they:
 
-  * are fully accountable for all work products, advice and decisions
-
-  * must not input anything into an AI tool that could reveal confidential, personal or commercial in confidence information.
+- are fully accountable for all work products, advice and decisions
+- must not input anything into an AI tool that could reveal confidential, personal or commercial in confidence information.
 
 Screen Australia’s internal policy also states the terms upon which contractors and consultants must follow Screen Australia’s security requirements, and disclose and document their AI use.
 
 AI tools used by Screen Australia staff includes enterprise AI deployed in our closed internal ICT environment, including Microsoft 365 Copilot, as well as publicly available browser-based or app-based AI such as ChatGPT and Claude. Screen Australia follows the direction of Government on the use of specific AI platforms. For example, following the directive from Government, Screen Australia staff cannot access or use DeepSeek on agency devices or personal devices that contain a work profile.
 
-The public do not have direct interaction with any Screen Australia systems that utilise AI technologies and will not by impacted by our use of AI. The tasks completed by Screen Australia staff using AI falls into several domains and usage patterns as outlined by the DTA’s Classification system for AI use. These are:
+The public do not have direct interaction with any Screen Australia systems that utilise AI technologies and will not by impacted by our use of AI. The tasks completed by Screen Australia staff using AI falls into several domains and usage patterns as outlined by the DTA’s [_Classification system for AI use._](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) These are:
 
-  * The domains of ‘service delivery’ and ‘corporate and enabling’; and
+- The domains of ‘service delivery’ and ‘corporate and enabling’; and
+- The usage patterns ‘workplace productivity’ and ‘analytics for insights’.
 
-  * The usage patterns ‘workplace productivity’ and ‘analytics for insights’.
+#### Managing stakeholder usage
 
-### Managing stakeholder usage
+Any use of AI by our stakeholders, including applicants for funding, must be declared and be consistent with Screen Australia’s [Terms of Trade](https://www.screenaustralia.gov.au/doing-business-with-us/terms-of-trade/), the relevant program guidelines, and any applicable laws. We are continually reviewing opportunities to assist stakeholders to balance the uptake of AI as a tool for innovation and best practice, alongside the safe and responsible use of AI.
 
-Any use of AI by our stakeholders, including applicants for funding, must be declared and be consistent with Screen Australia’s [Terms of Trade](https://www.screenaustralia.gov.au/screen-australia/about-us/doing-business-with-us/terms-of-trade), the relevant program guidelines, and any applicable laws. We are continually reviewing opportunities to assist stakeholders to balance the uptake of AI as a tool for innovation and best practice, alongside the safe and responsible use of AI.
+In September 2024, Screen Australia published a set of[ _AI Guiding Principles_](https://www.screenaustralia.gov.au/corporate-documents/policies/ai-guiding-principles/) _,_ which publicly articulates our expectations around the proposed use of AI technologies or services by Screen Australia and its stakeholders. These key principles are:
 
-In September 2024, Screen Australia published a set of AI Guiding Principles, which publicly articulates our expectations around the proposed use of AI technologies or services by Screen Australia and its stakeholders. These key principles are:
-
-  * Talent, creativity, culture and the individual
-
-  * Transparency
-
-  * Ethical use of AI
-
-  * Diversity, equity and inclusion
-
-  * Fairness
-
-  * Responsibility and accountability.
+- Talent, creativity, culture and the individual
+- Transparency
+- Ethical use of AI
+- Diversity, equity and inclusion
+- Fairness
+- Responsibility and accountability.
 
 In 2025, Screen Australia updated all agency funding application forms to collect information on AI usage in applications, and in projects and activities seeking agency funding. The information is collected for research purposes only, to better inform the agency on how AI tools may be used by applicants.
 
-### Monitoring & Compliance
+#### Monitoring and compliance
 
-Screen Australia has a risk-based approach to the use of AI. We monitor the effectiveness of AI systems by having robust governance arrangements, policies and processes; and monitoring AI usage. 
+Screen Australia has a risk-based approach to the use of AI. We monitor the effectiveness of AI systems by having robust governance arrangements, policies and processes; and monitoring AI usage.
 
 We acknowledge that AI usage and adoption is rapidly evolving, and are committed to ongoing refinement of our policies and approaches to AI to align with Government guidance and requirements, regulation and best practice. We also commit to updating our approaches in accordance with applicable legislation, including relevant copyright and privacy laws.
 
 Screen Australia’s designated accountable official who is responsible for implementing the DTA’s policy is our Chief Operating Officer, Grainne Brunsdon. The accountable official’s other responsibilities include:
 
-  * reporting of newly identified high-risk use cases
-
-  * acting as Screen Australia’s contact point for AI
-
-  * engaging with whole-of-government AI forums and processes
-
-  * keeping up to date with changing requirements.
+- reporting of newly identified high-risk use cases
+- acting as Screen Australia’s contact point for AI
+- engaging with whole-of-government AI forums and processes
+- keeping up to date with changing requirements.
 
 For enquiries about Screen Australia’s adoption and usage of AI, please contact [email protected].

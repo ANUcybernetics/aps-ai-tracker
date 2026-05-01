@@ -8,8 +8,6 @@ title: Artificial Intelligence Transparency Statement | Australian Fisheries Man
 
 # Artificial Intelligence Transparency Statement
 
-On this page
-
 The [policy for the responsible use of Artificial Intelligence (AI) in government](https://www.digital.gov.au/policy/ai/policy) provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/policy/ai/accountable-officials), and [transparency statements](https://www.digital.gov.au/policy/ai/transparency-statements). This page provides details of AFMA’s implementation of these policy requirements.
 
 ## Accountable Official
@@ -22,10 +20,10 @@ We will be transparent as we evolve and adapt to changes in AI technology and po
 
 We have processes to ensure:
 
-  * our AI use is appropriately governed
-  * our engagement with AI is confident, safe and responsible
-  * our risks are identified and addressed, and
-  * our AI access and usage is monitored.
+- our AI use is appropriately governed
+- our engagement with AI is confident, safe and responsible
+- our risks are identified and addressed, and
+- our AI access and usage is monitored.
 
 We do not use AI in compliance, auditing or decision-making processes without human oversight.
 

@@ -8,11 +8,9 @@ title: Artificial Intelligence (AI) Transparency Statement - Department of Educa
 
 [ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=13793&lang=en_au&readid=main-content&url=https%3A//www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
 
-#  Artificial Intelligence (AI) Transparency Statement 
+# Artificial Intelligence (AI) Transparency Statement
 
 Learn how the Department of Education uses artificial intelligence safely and responsibly to improve services, inform policy, and support quality education.
-
-## On this page:
 
 The Department of Education recognises the opportunities artificial intelligence (AI) presents to transform the way we work and how we deliver our services. We are committed to using AI safely, responsibly and transparently to support our mission to ensure all Australians can access quality education.
 
@@ -20,26 +18,26 @@ Our use of AI is considered and purposeful. We are maturing our understanding an
 
 Our use of AI is informed by and aligned with the AI Plan for the Australian Public Service and the Policy for Responsible use of AI in Government.
 
-The department is developing its own AI Strategy and Roadmap for the coming 12 – 18 month period. We also have our own internal AI Guidelines to help staff understand their responsibilities and obligations when using AI in the workplace. 
+The department is developing its own AI Strategy and Roadmap for the coming 12 – 18 month period. We also have our own internal AI Guidelines to help staff understand their responsibilities and obligations when using AI in the workplace.
 
 ## AI Accountable Officer and Chief AI Officer
 
 The Department of Education’s use of AI is overseen by our AI Accountable Officers. The AI Accountable Officers:
 
-  * are the primary contacts for whole‑of‑government AI assurance and coordination, and keep staff informed of AI policy obligations and changes.
-  * are accountable for implementing AI policy within the agency, including governance frameworks, transparency statements and internal registers
-  * oversee AI risk assessments and ensure appropriate controls are in place, 
+- are the primary contacts for whole‑of‑government AI assurance and coordination, and keep staff informed of AI policy obligations and changes.
+- are accountable for implementing AI policy within the agency, including governance frameworks, transparency statements and internal registers
+- oversee AI risk assessments and ensure appropriate controls are in place,
 
 The departments AI Accountable Officers are:
 
-  * Kerryn Kovacevic, Chief Information Officer
-  * Matthew Johnston, First Assistant Secretary, Strategy, Data and Measurement 
+- Kerryn Kovacevic, Chief Information Officer
+- Matthew Johnston, First Assistant Secretary, Strategy, Data and Measurement
 
 The departments Chief AI Officer is responsible for driving value, adoption and cultural change through AI. The departments Chief AI Officer will be in place by June 2026.
 
 ## Governance and transparency
 
-The department is maturing its AI governance arrangements. Existing governance arrangements such as the departments Audit and Risk Committee receive regular updates and review of AI usage, tooling, training and compliance. 
+The department is maturing its AI governance arrangements. Existing governance arrangements such as the departments Audit and Risk Committee receive regular updates and review of AI usage, tooling, training and compliance.
 
 The departments AI Transparency Statement and internal AI guidance are regularly reviewed and updated to reflect progress or changes and comply with Australian Government policy.
 
@@ -53,7 +51,7 @@ The Department of Education is primarily using AI to improve internal efficiency
 
 To minimise risk and safeguard the public, the Department of Education **does not** use AI for automated decision-making. All decisions **are made by staff** , ensuring human oversight and accountability.
 
-## Review and Updates 
+## Review and Updates
 
 This statement is reviewed annually, or sooner if there are significant changes to how the Department uses AI.
 

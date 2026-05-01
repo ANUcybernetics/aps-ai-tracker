@@ -7,7 +7,7 @@ title: AI Transparency Statement | Commonwealth Director of Public Prosecutions
 
 # AI Transparency Statement
 
-The Office of the Director of Public Prosecutions (Cth) follows the Digital Transformation Agency’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which sets out a whole of Australian Government Approach to use AI safely and responsibly while embracing the opportunities AI provides. 
+The Office of the Director of Public Prosecutions (Cth) follows the Digital Transformation Agency’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which sets out a whole of Australian Government Approach to use AI safely and responsibly while embracing the opportunities AI provides.
 
 ## **Accountable Official**
 
@@ -17,15 +17,15 @@ The CDPP has an accountable official, the Chief Information Officer (CIO). It al
 
 The CDPP is considering AI use cases being developed in other agencies as we see significant potential benefits from using AI to improve analysis, research and workplace productivity. On this basis, we will explore the development of our own AI use cases. We commit to using AI in a safe and responsible manner.
 
-Currently the CDPP does not use AI in any services or advice we provide publicly or currently use AI internally. 
+Currently the CDPP does not use AI in any services or advice we provide publicly or currently use AI internally.
 
 If we do implement AI capability, we will update this statement to outline our use, with a summary of:
 
-  * the intentions behind why we are considering adoption
-  * classification of AI use according to required outcomes and AI system or tool
-  * classification of use where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention
-  * measures to monitor the effectiveness of deployed AI systems, such as governance or processes
-  * compliance with applicable legislation and regulation.
+- the intentions behind why we are considering adoption
+- classification of AI use according to required outcomes and AI system or tool
+- classification of use where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention
+- measures to monitor the effectiveness of deployed AI systems, such as governance or processes
+- compliance with applicable legislation and regulation.
 
 ## **AI governance and oversight**
 
@@ -39,12 +39,10 @@ Protecting the privacy and security of individuals' data, sensitive and classifi
 
 If you have questions, concerns, or would like more information about how the office uses AI, please contact the CDPP’s accountable official for AI:
 
-_Email:_  
+_Email:_\
 [inquiries@cdpp.gov.au](mailto:inquiries@cdpp.gov.au)
 
-_Postal Address:_  
-Commonwealth DPP  
-GPO Box 3104  
+_Postal Address:_\
+Commonwealth DPP\
+GPO Box 3104\
 CANBERRA ACT 2601
-
-This statement was last updated in February 2026 and will be updated as our approach to AI changes, and at least every 12 months.

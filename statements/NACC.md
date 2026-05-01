@@ -13,19 +13,19 @@ The National Anti-Corruption Commission (NACC) is open to exploring the opportun
 
 Prior to the further adoption of AI technologies at the NACC, we will ensure appropriate technology, process, and ethical governance is established. We will also update this statement to summarise:
 
-  * the intentions behind why the NACC uses AI or is considering its adoption
-  * classification of AI use according to required outcomes and AI system or tool
-  * classification of use where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention
-  * measures to monitor the effectiveness of deployed AI systems, such as governance or processes
-  * compliance with applicable legislation and regulation
-  * efforts to identify and protect the public against negative impacts
-  * compliance with each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf).
+- the intentions behind why the NACC uses AI or is considering its adoption
+- classification of AI use according to required outcomes and AI system or tool
+- classification of use where the public may directly interact with, or be significantly impacted by, AI without a human intermediary or intervention
+- measures to monitor the effectiveness of deployed AI systems, such as governance or processes
+- compliance with applicable legislation and regulation
+- efforts to identify and protect the public against negative impacts
+- compliance with each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf).
 
 The NACC will update this statement in accordance with the Australian Government’s Policy for the responsible use of AI in government:
 
-  * every twelve months (12) months
-  * when making a significant change to the agency’s approach to AI
-  * when any new factor materially impacts the existing statement’s accuracy.
+- every twelve months (12) months
+- when making a significant change to the agency’s approach to AI
+- when any new factor materially impacts the existing statement’s accuracy.
 
 For further information [please contact us](https://www.nacc.gov.au/about-nacc/contact-us).
 

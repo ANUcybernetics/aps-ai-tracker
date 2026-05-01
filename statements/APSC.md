@@ -15,14 +15,9 @@ Last updated
 
 25 March 2026
 
-Share
+- \[Email\](mailto:?subject=Interesting page Transparent Use of AI at the Commission&body=Check out this site I came across https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission "Share via email")
 
-  * [Linkedin](http://www.linkedin.com/shareArticle?mini=true&url=https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission&title=Transparent Use of AI at the Commission&source=/ "Share to Linkedin")
-  * [Twitter](http://twitter.com/intent/tweet?status=Transparent Use of AI at the Commission+https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission "Share to Twitter")
-  * [Facebook](http://www.facebook.com/share.php?u=https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission&title=Transparent Use of AI at the Commission "Share to Facebook")
-  * [Email](mailto:?subject=Interesting page Transparent Use of AI at the Commission&body=Check out this site I came across https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission "Share via email")
-
-[Print](javascript:if\(window.print\)window.print\(\))
+\[Print\](javascript:if(window.print)window.print())
 
 ## AI Transparency Statement
 
@@ -78,9 +73,9 @@ The Commission safeguards against risks and ensures responsible AI use through r
 
 This transparency statement was last updated in March 2026. We will update this statement at least every twelve months or when:
 
-  * a significant change is made in our approach or use of AI;
-  * any new decisions or other factors materially impacts the statement’s accuracy; or
-  * changes in the operating, regulatory or policy environment impact our use of AI.
+- a significant change is made in our approach or use of AI;
+- any new decisions or other factors materially impacts the statement’s accuracy; or
+- changes in the operating, regulatory or policy environment impact our use of AI.
 
 It is the intention of this statement to demonstrate the Commission’s commitment to ethical AI development, foster trust and create a strong foundation for sustainable and innovative AI practices. For further information or enquiries around the Commission’s approach to the adoption and use of artificial intelligence, you can contact us directly at [Artificial.Intelligence@apsc.gov.au](mailto:Artificial.Intelligence@apsc.gov.au).
 

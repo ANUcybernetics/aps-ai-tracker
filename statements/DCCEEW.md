@@ -5,8 +5,6 @@ source_url: https://www.dcceew.gov.au/about/commitment/information-public-data/a
 title: Artificial Intelligence Transparency Statement - DCCEEW
 ---
 
-Skip to page navigation
-
 # Artificial Intelligence Transparency Statement
 
 This page explains how we are using Artificial Intelligence, in line with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
@@ -29,10 +27,10 @@ Our current use of AI focuses on policy, scientific, and administrative and regu
 
 Across these domains, we use AI to support policy development, analysis, monitoring, decision making, and communication by:
 
-  * informing decision making and administrative actions by providing input to human decision makers. For example, analysing document sets submitted to the department to ensure all relevant information is included.
-  * finding and creating insights from data through detailed analysis, predictive modelling, and reporting. For example, creating insights from unstructured PDF documents.
-  * improving workplace productivity through task automation, workflow management and communication support. For example, checking that documents meet accessibility requirements and providing feedback to improve clarity and conciseness.
-  * processing sensor data (such as video, imagery, sound, and radar) to identify patterns and objects. For example, identifying the presence of animals using thermal imaging.
+- informing decision making and administrative actions by providing input to human decision makers. For example, analysing document sets submitted to the department to ensure all relevant information is included.
+- finding and creating insights from data through detailed analysis, predictive modelling, and reporting. For example, creating insights from unstructured PDF documents.
+- improving workplace productivity through task automation, workflow management and communication support. For example, checking that documents meet accessibility requirements and providing feedback to improve clarity and conciseness.
+- processing sensor data (such as video, imagery, sound, and radar) to identify patterns and objects. For example, identifying the presence of animals using thermal imaging.
 
 We support staff using generative AI tools, by providing guidance on how to do so responsibly and ethically, and in accordance with relevant legislation and policies. Users of generative AI tools are reminded of their individual responsibilities when accessing publicly available tools.
 
@@ -54,9 +52,9 @@ When completing the register, business owners ensure AI solutions is implemented
 
 The AI register and AI risk assessment align with the DTA’s:
 
-  * [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard)
-  * [AI Impact Assessment Tool](https://www.digital.gov.au/ai/impact-assessment-tool)
-  * [Guidance on AI procurement in government](https://www.buyict.gov.au/sp?id=buyer&kb=KB0011755).
+- [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard)
+- [AI Impact Assessment Tool](https://www.digital.gov.au/ai/impact-assessment-tool)
+- [Guidance on AI procurement in government](https://www.buyict.gov.au/sp?id=buyer&kb=KB0011755).
 
 To support AI risk mitigation, we have finalised our AI Risk Appetite Guidelines which sit alongside tools supporting staff to assess and manage risk effectively. We have also developed and published an AI ethics and governance framework that aligns with whole-of-government policy.
 
@@ -64,9 +62,9 @@ To support AI risk mitigation, we have finalised our AI Risk Appetite Guidelines
 
 We use AI in line with:
 
-  * applicable legislation and regulations
-  * whole-of-government frameworks and policies
-  * the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+- applicable legislation and regulations
+- whole-of-government frameworks and policies
+- the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
 We review compliance through existing governance and risk management processes. As we implement our [Enterprise Data Strategy](https://www.dcceew.gov.au/about/commitment/information-public-data/strategy "Enterprise Data Strategy"), we continue to build a culture that balances innovation with responsible AI risk management and use.
 

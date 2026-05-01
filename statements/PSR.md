@@ -26,8 +26,8 @@ The EMT has identified AI as an emerging risk but does not disregard its potenti
 
 PSR uses AI that complements and improves on operational efficiency while keeping a human in the loop. PSR is considering AI usage in a longer-term timeframe with specific regard to:
 
-  * opportunities to automate internal business enabling processes and increase efficiency
-  * the use of AI for managing and viewing medical records, and how PSR processes and technologies need to adapt to take account of this during a review.
+- opportunities to automate internal business enabling processes and increase efficiency
+- the use of AI for managing and viewing medical records, and how PSR processes and technologies need to adapt to take account of this during a review.
 
 ## Usage Patterns
 
@@ -43,6 +43,6 @@ PSR currently applies its use of AI within Corporate and Enabling functions for 
 
 ## Contact
 
-For further information about this statement or PSR’s usage of AI, please contact [feedback@psr.gov.au](mailto:feedback@psr.gov.au). 
+For further information about this statement or PSR’s usage of AI, please contact [feedback@psr.gov.au](mailto:feedback@psr.gov.au).
 
-[Download PSR Artificial Intelligence (AI) transparency statement 2025.pdf.PDF](https://www.psr.gov.au/sites/default/files/2025-03/PSR%20Artificial%20Intelligence%20%28AI%29%20transparency%20statement%202025.pdf.PDF) \- 290.98 KB
+[Download PSR Artificial Intelligence (AI) transparency statement 2025.pdf.PDF](https://www.psr.gov.au/sites/default/files/2025-03/PSR%20Artificial%20Intelligence%20%28AI%29%20transparency%20statement%202025.pdf.PDF) - 290.98 KB

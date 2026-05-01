@@ -20,11 +20,11 @@ Agencies must designate accountability for implementing the policy for responsib
 
 The responsibilities of the accountable officials are to:
 
-  * be accountable for implementation of the [policy](https://www.digital.gov.au/sites/default/files/documents/2024-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%201.1.pdf) within their agencies
-  * notify the Digital Transformation Agency (DTA) where the agency has identified a new high-risk use case by emailing [ai@dta.gov.au](mailto:ai@dta.gov.au). This information will be used by the DTA to build visibility and inform the development of further risk mitigation approaches
-  * be a contact point for whole-of-government AI coordination
-  * engage in whole-of-government AI forums and processes
-  * keep up-to-date with changing requirements as they evolve over time.
+- be accountable for implementation of the [policy](https://www.digital.gov.au/sites/default/files/documents/2024-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%201.1.pdf) within their agencies
+- notify the Digital Transformation Agency (DTA) where the agency has identified a new high-risk use case by emailing [ai@dta.gov.au](mailto:ai@dta.gov.au). This information will be used by the DTA to build visibility and inform the development of further risk mitigation approaches
+- be a contact point for whole-of-government AI coordination
+- engage in whole-of-government AI forums and processes
+- keep up-to-date with changing requirements as they evolve over time.
 
 The accountable official for the AIC is the Deputy Director.
 
@@ -44,8 +44,8 @@ Prior to undertaking research that involves applying AI, AIC staff will seek app
 
 AI is used to improve productivity of staff by:
 
-  * Generating abstracts from publicly available and open-source non-commercial publications for use by the library.
-  * Generating and debugging code used in data analysis.
+- Generating abstracts from publicly available and open-source non-commercial publications for use by the library.
+- Generating and debugging code used in data analysis.
 
 ### Staff training
 

@@ -6,16 +6,6 @@ source_url: https://www.austrac.gov.au/about-us/corporate-information-and-govern
 title: Our AI transparency statement | AUSTRAC
 ---
 
-## On this page
-
-  * Introduction
-  * How we use AI
-  * Usage patterns and domains
-  * Data privacy and security
-  * AI safety and governance
-  * Compliance with AI in Government Policy
-  * Contact information
-
 ## Introduction
 
 AUSTRAC performs a dual role as Australia’s anti-money laundering and counter-terrorism financing (AML/CTF) regulator and financial intelligence unit. This dual role helps to build resilience in the financial system and enables AUSTRAC to use financial intelligence and regulation to disrupt money laundering, terrorism financing and other serious crime.
@@ -24,12 +14,12 @@ As Australia’s AML/CTF regulator, we regulate more than 17,000 businesses that
 
 As a financial intelligence unit, we collect and analyse financial reports and information to generate financial intelligence which contributes to law enforcement and national security investigations. Our specialist analysts generate targeted, actionable intelligence and work closely with industry, government and law enforcement partners to deliver tangible investigative and operational outcomes.
 
-New and emerging technologies are changing the way services are delivered. Criminals and terrorists are always becoming more sophisticated and developing new ways to exploit vulnerabilities in the Australian financial system. To meet this challenge, we will continue to evolve how we work with industry and our partners and adopt technologies such as Artificial Intelligence (AI) to support our specialist regulatory and intelligence capabilities. 
+New and emerging technologies are changing the way services are delivered. Criminals and terrorists are always becoming more sophisticated and developing new ways to exploit vulnerabilities in the Australian financial system. To meet this challenge, we will continue to evolve how we work with industry and our partners and adopt technologies such as Artificial Intelligence (AI) to support our specialist regulatory and intelligence capabilities.
 
 AUSTRAC aims to be transparent about the way we use AI in our agency and how we intend to approach adoption in the future. Where we have deployed AI, we comply with whole-of-government guidelines to ensure we meet the highest standards of security, privacy, accountability and regulatory compliance. Our current approach and intended future use of AI is to leverage new techniques which advance outcomes while ensuring humans remain a key part of the decision-making process. This statement will be reviewed annually and updated when:
 
-  * we make a significant change to our approach to AI, or
-  * new factors impact the accuracy of this statement. 
+- we make a significant change to our approach to AI, or
+- new factors impact the accuracy of this statement.
 
 AUSTRAC’s intelligence functions are part of the national intelligence community, as defined under Section 4 of the Office of National Intelligence (ONI) Act 2018 _._ It should be noted that the _Responsible use of AI in government policy_ specifically exempts AUSTRAC’s intelligence functions from compliance with requirements of the policy, including this transparency statement. We may voluntarily adopt elements of this policy with respect to our [intelligence functions](https://www.digital.gov.au/policy/ai/implementation) _,_ where we are able to do so without compromising national security capabilities or interests.
 
@@ -55,22 +45,22 @@ Over the next year, AUSTRAC will implement the AML/CTF Reform priorities and del
 
 The [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) requires AUSTRAC to state the usage pattern(s) and domain(s) associated with our use of AI. For more information, refer to the Digital Transformation Agency (DTA) [ _classification system for AI use_](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
-AUSTRAC’s current AI usage patterns are: 
+AUSTRAC’s current AI usage patterns are:
 
-  * **Workplace Productivity:** Used to improve process efficiencies such as supporting non-sensitive research**,** basic secretariat support and facilitating communications.
-  * **Analytics for Insights:** Used to identify, produce and understand indicators of financial crime.
+- **Workplace Productivity:** Used to improve process efficiencies such as supporting non-sensitive research\*\*,\*\* basic secretariat support and facilitating communications.
+- **Analytics for Insights:** Used to identify, produce and understand indicators of financial crime.
 
-AUSTRAC’s current AI domains are: 
+AUSTRAC’s current AI domains are:
 
-  * **Corporate and Enabling:** Supports corporate functions to improve operational efficiency and productivity.
-  * **Service Delivery:** Provides tailored and responsive support by assisting staff who deliver these services.
-  * **Law Enforcement, Intelligence and Security:** Support law enforcement and intelligence agencies through AI-enabled analysis of data which aids intelligence gathering.
+- **Corporate and Enabling:** Supports corporate functions to improve operational efficiency and productivity.
+- **Service Delivery:** Provides tailored and responsive support by assisting staff who deliver these services.
+- **Law Enforcement, Intelligence and Security:** Support law enforcement and intelligence agencies through AI-enabled analysis of data which aids intelligence gathering.
 
-AUSTRAC is currently developing and piloting uses of AI which will impact or expand**** the following**** AI usage patterns: 
+AUSTRAC is currently developing and piloting uses of AI which will impact or expand\*\*\*\* the following\*\*\*\* AI usage patterns:
 
-  * **Workplace Productivity:** Support the development of intelligence products to improve operational efficiency.
-  * **Compliance and Fraud Detection:** Identify patterns or anomalies in data to detect indicators of fraudulent activities and ensure compliance with laws and regulations.
-  * **Policy and Legal:** Support generating summaries and drafts to assist legal reviews of documents and preparation of internal documents.
+- **Workplace Productivity:** Support the development of intelligence products to improve operational efficiency.
+- **Compliance and Fraud Detection:** Identify patterns or anomalies in data to detect indicators of fraudulent activities and ensure compliance with laws and regulations.
+- **Policy and Legal:** Support generating summaries and drafts to assist legal reviews of documents and preparation of internal documents.
 
 ## Data privacy and security
 
@@ -82,39 +72,39 @@ In accordance with internal guidelines and policies, staff who use publicly avai
 
 AUSTRAC’s AI Accountable Official is the General Manager, Data (Chief Data and Analytics Officer). AUSTRAC is committed to implementing AI systems which align with evolving legislation, ethical standards, and public expectations. As we deploy AI into our regulatory, intelligence and corporate operational capabilities, we will follow whole-of-government guidelines to ensure any use of AI is guided by the following key principles:
 
-  * **Enable** : AUSTRAC strategically adopts AI to support its mission of protecting Australia’s financial system. We ensure that AI enhances decision-making, supports our analytical and regulatory capability and aligns with our purpose and public expectations.
-  * **Engage** : AUSTRAC uses AI in ethical, transparent and fair ways that protect individuals, uphold public confidence and reinforce democratic values. We priorities risk mitigation, explainability and fairness in all AI use.
-  * **Evolve** : AUSTRAC embraces learning and innovation by continuously improving our application of AI through adaptive policies, collaboration and evaluation.
+- **Enable** : AUSTRAC strategically adopts AI to support its mission of protecting Australia’s financial system. We ensure that AI enhances decision-making, supports our analytical and regulatory capability and aligns with our purpose and public expectations.
+- **Engage** : AUSTRAC uses AI in ethical, transparent and fair ways that protect individuals, uphold public confidence and reinforce democratic values. We priorities risk mitigation, explainability and fairness in all AI use.
+- **Evolve** : AUSTRAC embraces learning and innovation by continuously improving our application of AI through adaptive policies, collaboration and evaluation.
 
 To further support these efforts, AUSTRAC has established governance practices, policies and guidance to ensure the ethical, transparent and secure implementation of AI. This includes:
 
-  * AUSTRAC’s AI Policy, AI Governance Framework, and AI guidance. These are supported by internal governance committees and whole-of-government guidance, ensuring staff use AI safely and responsibly.
-  * All staff must complete trainings which build capability in the appropriate use of AI systems and handling of security classified information.
-  * Internal data and information governance forums that monitor AI performance, accountability, security and risk.
-  * Adherence to records management standards to ensure appropriate documentation, retention and traceability of AI-related activities.
+- AUSTRAC’s AI Policy, AI Governance Framework, and AI guidance. These are supported by internal governance committees and whole-of-government guidance, ensuring staff use AI safely and responsibly.
+- All staff must complete trainings which build capability in the appropriate use of AI systems and handling of security classified information.
+- Internal data and information governance forums that monitor AI performance, accountability, security and risk.
+- Adherence to records management standards to ensure appropriate documentation, retention and traceability of AI-related activities.
 
 As the use of AI within AUSTRAC expands, consideration will be given to additional governance processes and practices which will ensure the appropriate, ethical and safe use of AI.
 
 ## Compliance with AI in Government Policy
 
-Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) __ we are required to report our compliance with the requirements under the policy. 
+Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) \_\_ we are required to report our compliance with the requirements under the policy.
 
 At time of publishing, this section is compliant with version 1.1 of the AI in government policy. Version 2.0 of the policy introduces new requirements from the 15th December, 2025 which AUSTRAC is committed to implementing.
 
 The following table outlines the requirements of version 1.1 of the AI in government policy and the status of compliance with those requirements:
 
-**Requirement** | **Status**  
----|---  
-Accountable Official | Compliant  
-AI Transparency Statement | Compliant  
-  
+| **Requirement**           | **Status** |
+| ------------------------- | ---------- |
+| Accountable Official      | Compliant  |
+| AI Transparency Statement | Compliant  |
+
 ## Contact information
 
 We will regularly review and update our AI policies and practices as part of our ongoing commitment to the responsible use of AI. This includes staying informed about new developments in AI technology, ethics and regulatory requirements. We will strive to improve the transparency, fairness and effectiveness of our use of AI systems through continuous learning and adaptation.
 
 If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
 
-This guidance sets out how we interpret certain Australian legislation, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened. 
+This guidance sets out how we interpret certain Australian legislation, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened.
 
 The examples and scenarios in this guidance are meant to help explain our interpretation of these laws. They’re not exhaustive or meant to cover every possible scenario.
 

@@ -5,7 +5,7 @@ source_url: https://www.arpansa.gov.au/about-us/corporate-publications/arpansas-
 title: ARPANSA's artificial intelligence transparency statement | ARPANSA
 ---
 
-This statement outlines our approach to the ongoing assessment, adoption and use of AI technologies at ARPANSA. It follows the Australian Government's Digital Transformation Agency's [policy for the responsible AI use in government](https://www.digital.gov.au/policy/ai?utm_source=dta.gov.au&utm_medium=blog&utm_campaign=AI%20policy%20launch). 
+This statement outlines our approach to the ongoing assessment, adoption and use of AI technologies at ARPANSA. It follows the Australian Government's Digital Transformation Agency's [policy for the responsible AI use in government](https://www.digital.gov.au/policy/ai?utm_source=dta.gov.au&utm_medium=blog&utm_campaign=AI%20policy%20launch).
 
 We recognise AI's potential to boost workplace productivity and pledge to use it safely and responsibly.
 
@@ -27,14 +27,14 @@ ARPANSA’s current use of AI aligns with the [DTA classification system](http:/
 
 ### Usage patterns:
 
-  * Workplace productivity
-  * Analytics for insights
-  * Decision-support/administrative processes
-  * Innovation and process improvement.
+- Workplace productivity
+- Analytics for insights
+- Decision-support/administrative processes
+- Innovation and process improvement.
 
 ### Domains:
 
-  * Corporate and Enabling
+- Corporate and Enabling
 
 ## Public interaction and impact
 
@@ -46,15 +46,15 @@ ARPANSA monitors AI use and applications to ensure ongoing safety, transparency 
 
 ARPANSA has established governance and oversight mechanisms to support ethical and effective use of AI including:
 
-  * An AI Governance Working Group
-  * Communities of Practice and internal AI specialists
-  * CIO and CISO oversight
+- An AI Governance Working Group
+- Communities of Practice and internal AI specialists
+- CIO and CISO oversight
 
 #### Training and capability
 
 All staff who access AI tools must complete the AI Fundamentals mandatory training.
 
-We are committed to building staff capability, including digital capability required at all levels of the agency. We offer AI training, education and support and provide opportunities to enable our workforce to develop their skills and knowledge. Training needs will be assessed as ARPANSA’s use of AI evolves. 
+We are committed to building staff capability, including digital capability required at all levels of the agency. We offer AI training, education and support and provide opportunities to enable our workforce to develop their skills and knowledge. Training needs will be assessed as ARPANSA’s use of AI evolves.
 
 #### Compliance
 

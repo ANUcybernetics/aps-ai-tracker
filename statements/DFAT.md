@@ -6,7 +6,7 @@ title: Artificial Intelligence (AI) transparency statement | Australian Governme
   Department of Foreign Affairs and Trade
 ---
 
-#  Artificial Intelligence (AI) transparency statement
+# Artificial Intelligence (AI) transparency statement
 
 DFAT is dedicated to identifying and adopting emerging technologies, including artificial intelligence (AI), to enhance secure business outcomes. We embrace new opportunities while recognising the uncertainties and risks that come with technological change. This public transparency statement outlines DFAT’s approach to AI.
 
@@ -22,26 +22,26 @@ By combining advanced technology with a skilled and informed workforce, DFAT aim
 
 Based on the classification system for AI in government, we are using AI in:
 
-  * analytics for insights
-  * workplace productivity
-  * image processing.
+- analytics for insights
+- workplace productivity
+- image processing.
 
 We are applying AI in the following domains:
 
-  * service delivery
-  * compliance and fraud detection
-  * policy and legal
-  * corporate and enabling.
+- service delivery
+- compliance and fraud detection
+- policy and legal
+- corporate and enabling.
 
 ## AI safety and governance
 
 DFAT has internal governance for AI, covering every stage from initial idea to implementation. Our processes ensure:
 
-  * AI is implemented and used safely and responsibly
-  * continuously monitoring how AI performs
-  * meeting all legal and regulatory obligations
-  * identifying risks and potential negative impacts
-  * taking action to reduce or prevent harm.
+- AI is implemented and used safely and responsibly
+- continuously monitoring how AI performs
+- meeting all legal and regulatory obligations
+- identifying risks and potential negative impacts
+- taking action to reduce or prevent harm.
 
 Each AI use case is assigned an Accountable Use Case Owner to oversee its management. Risks are assessed before implementation and reviewed regularly, with governance processes updated as needed to remain effective. DFAT only uses AI in ways that protect security, privacy, transparency, and ethical use, always maintaining human oversight (‘Human-in-the-Loop’).
 
@@ -51,15 +51,14 @@ Currently, the Chief Information Officer is responsible for ensuring DFAT compli
 
 This transparency statement will be updated as our approach evolves, and at least every twelve months.
 
-Update Date| Update Comment  
----|---  
-29 November 2024| Designation of Accountable Officials  
-06 February 2025| 
+| Update Date      | Update Comment                       |
+| ---------------- | ------------------------------------ |
+| 29 November 2024 | Designation of Accountable Officials |
+| 06 February 2025 |                                      |
 
-  * Transparency statement completion
-  * Align DFAT with the requirements of [_DTA's AI policy_](https://www.digital.gov.au/policy/ai/policy) (ver. 1.1), responsible use of AI in government
+- Transparency statement completion
+- Align DFAT with the requirements of [_DTA's AI policy_](https://www.digital.gov.au/policy/ai/policy) (ver. 1.1), responsible use of AI in government
 
-  
-3 December 2025| 
+3 December 2025|
 
-  * Transparency statement update
+- Transparency statement update

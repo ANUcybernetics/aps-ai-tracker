@@ -11,13 +11,6 @@ title: Automation and Artificial Intelligence Transparency Statement - About us 
 
 Our transparency statement explains our current approach to using automation and Artificial Intelligence (AI).
 
-## on this page
-
-  * How we use automation and AI safely and responsibly
-  * What we use automation and AI for
-  * Our accountable official
-  * Who to contact
-
 We’ll review it at least once a year and update it if we make any major changes to how we use AI, or if anything new needs to be included.
 
 We’re committed to ensuring that our use of automation and AI is human-centric, safe, responsible, transparent, fair, ethical and legal. We comply with relevant legislation and regulations.
@@ -30,15 +23,15 @@ Our workforce is central to the success of using automation and AI in the agency
 
 We safeguard against risks and ensure we use automation and AI responsibly by:
 
-  * trialling automation and AI in closely controlled offline environments to explore their appropriateness and safety
-  * only using automation and AI outside these environments when we have identified and implemented controls to protect against any potential negative impacts
-  * evaluating initiatives against assurance and governance requirements before implementation
-  * continuing to monitor and evaluate, and immediately pausing any systems if they stop meeting assurance and governance requirements
-  * having a human ‘in the loop’ to check AI outputs, where appropriate
-  * building staff capabilities through training programs so they can confidently use automation and AI technologies responsibly
-  * regularly seeking feedback from users, including staff and customers
-  * collaborating with strategic partners from government, industry, academia, and advocacy groups to help guide and support strategic decisions
-  * aligning and implementing whole-of-government policies, frameworks and best practices, including [Australia’s AI Ethics Principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles), [National framework for the assurance of artificial intelligence in government](https://www.finance.gov.au/government/public-data/data-and-digital-ministers-meeting/national-framework-assurance-artificial-intelligence-government) and compliance with each requirement under the [Policy for responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government).
+- trialling automation and AI in closely controlled offline environments to explore their appropriateness and safety
+- only using automation and AI outside these environments when we have identified and implemented controls to protect against any potential negative impacts
+- evaluating initiatives against assurance and governance requirements before implementation
+- continuing to monitor and evaluate, and immediately pausing any systems if they stop meeting assurance and governance requirements
+- having a human ‘in the loop’ to check AI outputs, where appropriate
+- building staff capabilities through training programs so they can confidently use automation and AI technologies responsibly
+- regularly seeking feedback from users, including staff and customers
+- collaborating with strategic partners from government, industry, academia, and advocacy groups to help guide and support strategic decisions
+- aligning and implementing whole-of-government policies, frameworks and best practices, including [Australia’s AI Ethics Principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles), [National framework for the assurance of artificial intelligence in government](https://www.finance.gov.au/government/public-data/data-and-digital-ministers-meeting/national-framework-assurance-artificial-intelligence-government) and compliance with each requirement under the [Policy for responsible use of AI in government](https://architecture.digital.gov.au/responsible-use-of-AI-in-government).
 
 ## What we use automation and AI for
 
@@ -46,16 +39,16 @@ We use automation and AI in the following usage patterns and domains, which alig
 
 ### Usage Patterns
 
-  * Analytics for insights
-  * Workplace productivity
-  * Image processing
-  * Decision making and administrative action.
+- Analytics for insights
+- Workplace productivity
+- Image processing
+- Decision making and administrative action.
 
 ### Domains
 
-  * Compliance and fraud detection
-  * Corporate and enabling
-  * Service delivery.
+- Compliance and fraud detection
+- Corporate and enabling
+- Service delivery.
 
 We use automation to improve efficiency of government service delivery, including payments. By automating some repetitive tasks, we can deliver faster payments and more tailored services to customers who need it.
 
@@ -75,4 +68,4 @@ We’ve appointed the General Manager, Telecommunication Modernisation, Automati
 
 For enquiries on our adoption and use of automation and AI, please email us at [AI.Accountable.Official@servicesaustralia.gov.au](mailto:AI.Accountable.Official@servicesaustralia.gov.au).
 
-[ How we use Artificial Intelligence  We’re using Artificial Intelligence to help make processes more efficient so we can deliver better government services. ](https://www.servicesaustralia.gov.au/how-we-use-artificial-intelligence?context=22)
+[ How we use Artificial Intelligence We’re using Artificial Intelligence to help make processes more efficient so we can deliver better government services. ](https://www.servicesaustralia.gov.au/how-we-use-artificial-intelligence?context=22)

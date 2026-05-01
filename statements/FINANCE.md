@@ -51,8 +51,8 @@ Compliance with these requirements is monitored through our information security
 
 Finance classifies staff use of AI using the DTA’s [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification). Our AI use case patterns and domains are:
 
-  * analytics for insights AI pattern, where we use AI to help analyse information, mainly in the Scientific and Policy and legal domains, using low‑risk information
-  * workplace productivity AI pattern, where we use AI to help staff with routine tasks, mainly in the Service delivery and Corporate and enabling domains.
+- analytics for insights AI pattern, where we use AI to help analyse information, mainly in the Scientific and Policy and legal domains, using low‑risk information
+- workplace productivity AI pattern, where we use AI to help staff with routine tasks, mainly in the Service delivery and Corporate and enabling domains.
 
 We do not use AI within the decision making and administrative action or Image processing usage patterns, or the compliance and fraud detection, and Law enforcement, intelligence and security domains.
 
@@ -66,20 +66,20 @@ We have established an AI Governance Committee (AIGC) as well as appointed an Ac
 
 The AIGC is jointly chaired by the AO and CAIO, with membership drawn from senior executives across the department. It supports safe and responsible AI use by providing oversight of key decisions, risks and controls for AI use at Finance. The functions of AIGC include:
 
-  * promoting a culture of safe and responsible AI use across our workplace
-  * monitoring, assessing and managing AI‑related risks and opportunities
-  * overseeing and implementing policies and guidance from the DTA.
+- promoting a culture of safe and responsible AI use across our workplace
+- monitoring, assessing and managing AI‑related risks and opportunities
+- overseeing and implementing policies and guidance from the DTA.
 
 ### **Our internal policies and processes**
 
 Finance has policies and processes for the adoption and use of AI by our staff, including:
 
-  * Acceptable use policy
-  * Guidance on the use of generative artificial intelligence
-  * Information security management policy framework
-  * Information and data policy
-  * Privacy policy
-  * Risk management policy framework.
+- Acceptable use policy
+- Guidance on the use of generative artificial intelligence
+- Information security management policy framework
+- Information and data policy
+- Privacy policy
+- Risk management policy framework.
 
 These policies and processes are regularly reviewed to ensure they remain fit for purpose.
 

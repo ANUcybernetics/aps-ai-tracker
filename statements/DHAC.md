@@ -14,16 +14,16 @@ We are aligning with the whole of government approach to AI. The Digital Transfo
 
 Our adoption of AI will improve:
 
-  * service delivery
-  * policy outcomes
-  * efficiency
-  * productivity.
+- service delivery
+- policy outcomes
+- efficiency
+- productivity.
 
 Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies) in relation to adopting emerging technologies.
 
 ## How we use AI
 
-From 1 January 2024 to 30 June 2024, we participated in the Australian Government’s trials of a generative AI service, Microsoft 365 Copilot. We have made Copilot Chat available to all staff and are rolling out Microsoft 365 Copilot licenced version to staff in phases. As a prerequisite to using Copilot, our staff must complete [AI fundamentals training](https://www.digital.gov.au/policy/ai/staff-training) that includes responsible and acceptable use of AI. We also require users to acknowledge safe, responsible and ethical use of AI before accessing and using generative AI tools. 
+From 1 January 2024 to 30 June 2024, we participated in the Australian Government’s trials of a generative AI service, Microsoft 365 Copilot. We have made Copilot Chat available to all staff and are rolling out Microsoft 365 Copilot licenced version to staff in phases. As a prerequisite to using Copilot, our staff must complete [AI fundamentals training](https://www.digital.gov.au/policy/ai/staff-training) that includes responsible and acceptable use of AI. We also require users to acknowledge safe, responsible and ethical use of AI before accessing and using generative AI tools.
 
 We restrict the use of AI tools, including Microsoft 365 Copilot and Copilot Chat, to certain approved use cases in our use case register.
 
@@ -33,10 +33,10 @@ We use [generative and narrow AI models](https://www.industry.gov.au/publication
 
 We can use AI to:
 
-  * analyse data to gain insights
-  * automate activities to make tasks more efficient and increase workplace productivity
-  * identify patterns and objects automatically
-  * support decision making by helping staff summarise, analyse or synthesise information used to prepare advice or recommendations considered by our committees or decision makers.
+- analyse data to gain insights
+- automate activities to make tasks more efficient and increase workplace productivity
+- identify patterns and objects automatically
+- support decision making by helping staff summarise, analyse or synthesise information used to prepare advice or recommendations considered by our committees or decision makers.
 
 We do not use AI to automate decisions. Human officials remain fully accountable for the advice and recommendations they provide.
 
@@ -44,40 +44,40 @@ We do not use AI to automate decisions. Human officials remain fully accountable
 
 We can use AI in these areas:
 
-  * policy and legal
-  * scientific
-  * compliance and fraud detection
-  * corporate and enabling
-  * service delivery.
+- policy and legal
+- scientific
+- compliance and fraud detection
+- corporate and enabling
+- service delivery.
 
 ## Our approach with AI
 
 We set up an Artificial Intelligence Subcommittee (AISc) to guide our approach to AI. The AISc advises the Digital Committee which oversees our digital, data and ICT functions and capabilities and includes senior executive members from across the department. The AISc considers:
 
-  * the application of AI within the Health portfolio’s policy and program context
-  * the use and regulation of AI in the health, disability and aged care sectors
-  * the use of AI within the department
-  * the whole of government approach to AI and the intersection with health, disability and aged care sectors.
+- the application of AI within the Health portfolio’s policy and program context
+- the use and regulation of AI in the health, disability and aged care sectors
+- the use of AI within the department
+- the whole of government approach to AI and the intersection with health, disability and aged care sectors.
 
 Our staff will be able to explain, justify and take ownership of advice and decisions informed by AI.
 
-We have an AI assurance framework in place. We also keep an internal register of AI use cases, in line with the whole-of-government approach. This register helps us see where AI is being used and monitor its usage properly. 
+We have an AI assurance framework in place. We also keep an internal register of AI use cases, in line with the whole-of-government approach. This register helps us see where AI is being used and monitor its usage properly.
 
 We have measures in place to:
 
-  * make sure AI is well governed and managed. Staff cannot use sensitive or personal information without approval through our assurance and governance processes
-  * make AI use across the department visible, so we can govern it effectively and manage risks, assurance and reporting
-  * encourage staff to use AI safely, responsibly, ethically and lawfully through corporate communications and training
-  * support collaboration across the department and with other government agencies on AI use, including developing shared resources to ensure safe, responsible, ethical and lawful use.
+- make sure AI is well governed and managed. Staff cannot use sensitive or personal information without approval through our assurance and governance processes
+- make AI use across the department visible, so we can govern it effectively and manage risks, assurance and reporting
+- encourage staff to use AI safely, responsibly, ethically and lawfully through corporate communications and training
+- support collaboration across the department and with other government agencies on AI use, including developing shared resources to ensure safe, responsible, ethical and lawful use.
 
 ## Our commitment
 
 We are committed to using AI in a safe, ethical, responsible and lawful way for the benefit of Australians. We will continue to work closely with the DTA and use AI in accordance with applicable:
 
-  * laws
-  * frameworks
-  * policies
-  * best practice.
+- laws
+- frameworks
+- policies
+- best practice.
 
 We remain committed to transparency and protecting the public. We will be transparent as we responsibly adopt evolving AI technology and policy requirements.
 
@@ -87,30 +87,30 @@ We are developing internal AI policy and guidance material. These will align wit
 
 We will leverage whole-of-government policies and develop internal policies and guidance materials when necessary for:
 
-  * AI Governance and approval processes
-  * acceptable use of AI in the department
-  * ethical considerations
-  * Freedom of Information (FOI) considerations
-  * record keeping
-  * security
-  * procurement of AI systems
-  * risk mitigation and technical guardrails
-  * roles and responsibilities when using AI and required training for identified roles.
+- AI Governance and approval processes
+- acceptable use of AI in the department
+- ethical considerations
+- Freedom of Information (FOI) considerations
+- record keeping
+- security
+- procurement of AI systems
+- risk mitigation and technical guardrails
+- roles and responsibilities when using AI and required training for identified roles.
 
 These internal policies will apply to all employees (including contractors) and consultants.
 
 We will update this transparency statement as we continue to develop policies on AI usage and to implement AI technology. We will continuously review our use of AI to:
 
-  * protect the public against negative impacts
-  * reflect the pace of technological change
-  * manage the evolving risk environment
-  * align with whole-of-government guidance.
+- protect the public against negative impacts
+- reflect the pace of technological change
+- manage the evolving risk environment
+- align with whole-of-government guidance.
 
 ## Contact
 
 The Chief Digital Information Officer is our AI Accountable Official.
 
-###  [ AI team ](https://www.health.gov.au/contacts/ai-team?language=en)
+### [ AI team ](https://www.health.gov.au/contacts/ai-team?language=en)
 
 Contact us for questions about our AI transparency statement, our use of AI, or to report AI safety concerns, including AI-related incidents.
 
@@ -120,6 +120,6 @@ Date last updated:
 
 16 February 2026
 
-Tags: 
+Tags:
 
-  * [About the department](https://www.health.gov.au/topics/about-the-department)
+- [About the department](https://www.health.gov.au/topics/about-the-department)

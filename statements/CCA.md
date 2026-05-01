@@ -7,13 +7,13 @@ title: Artificial Intelligence Transparency Statement | Climate Change Authority
 
 ## Artificial Intelligence Transparency Statement
 
-This page explains how the Authority is using artificial intelligence (AI), in line with the Australian Government’s [Policy for responsible use of AI in government(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy).
+This page explains how the Authority is using artificial intelligence (AI), in line with the Australian Government’s [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-When we refer to AI, we use the [Organisation for Economic Co-operation and Development(Opens in a new tab/window)](https://www.oecd-ilibrary.org/science-and-technology/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en) (OECD) definition of an AI system:
+When we refer to AI, we use the [Organisation for Economic Co-operation and Development](https://www.oecd-ilibrary.org/science-and-technology/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en) (OECD) definition of an AI system:
 
 _"A machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.”_
 
-The Authority’s commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy(Opens in a new tab/window)](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan(Opens in a new tab/window)](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
+The Authority’s commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
 
 The Authority commits to using AI in a safe and responsible manner. We use AI with human oversight and do not rely on AI alone to make decisions.
 
@@ -21,15 +21,15 @@ The Authority commits to using AI in a safe and responsible manner. We use AI wi
 
 The Authority uses AI to support our development of high‑quality, evidence‑based advice to the Australian Government and improve our workplace productivity.
 
-In accordance with the [Australian Government’s Classification system for AI use(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/resources/use-classification), our current AI use focuses on scientific, policy, corporate and enabling domains. 
+In accordance with the [Australian Government’s Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification), our current AI use focuses on scientific, policy, corporate and enabling domains.
 
 Examples of how we use AI, with human oversight, include support with editing and drafting documents, assistance with policy research, analysis of structured and unstructured information to identify themes and insights, and support for creating internal administrative content such as minutes and transcripts.
 
-The Authority supports staff use of generative AI tools by providing guidance to ensure use is responsible and ethical, and in accordance with relevant legislation and policies. 
+The Authority supports staff use of generative AI tools by providing guidance to ensure use is responsible and ethical, and in accordance with relevant legislation and policies.
 
 ## Public interaction and impact
 
-The Authority is committed to ensuring that its use of AI is responsible, environmentally considerate, and in the public interest. The Authority does not currently use any AI systems that directly interact with the public or make decisions that affect individuals without human oversight. 
+The Authority is committed to ensuring that its use of AI is responsible, environmentally considerate, and in the public interest. The Authority does not currently use any AI systems that directly interact with the public or make decisions that affect individuals without human oversight.
 
 ## Monitoring AI effectiveness and impacts
 
@@ -37,21 +37,21 @@ The Authority uses AI with human oversight, and staff remain responsible for con
 
 ## Governance processes
 
-The Authority’s Corporate General Manager is designated as the accountable official for AI under the [Policy for responsible use of AI in government(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy). 
+The Authority’s Corporate General Manager is designated as the accountable official for AI under the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
 Staff must comply with all internal AI policies, which are aligned with broader Australian Government policy requirements and the Department of Climate Change, Energy, the Environment and Water’s (the Authority’s ICT shared service provider) policies.
 
 ## Compliance
 
-We comply with all mandatory requirements under the [Policy for responsible use of AI in government(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy). 
+We comply with all mandatory requirements under the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
 We use AI in accordance with applicable legislation and regulation, including (where relevant):
 
-  * _Public Governance, Performance and Accountability Act 2013_
-  *  _Privacy Act 1988_
-  *  _Archives Act 1983_
+- _Public Governance, Performance and Accountability Act 2013_
+- _Privacy Act 1988_
+- _Archives Act 1983_
 
-##  Contact
+## Contact
 
 For further information or enquiries about this statement, please [contact us](https://www.climatechangeauthority.gov.au/contact-us "Contact us").
 
@@ -63,4 +63,4 @@ This statement will be reviewed at least annually and updated sooner if our appr
 
 #### Subscribe to email updates and news articles from the Climate Change Authority
 
-[ Subscribe (Opens in a new tab/window)](https://consult.to/cca/u/subscribe)
+[ Subscribe](https://consult.to/cca/u/subscribe)

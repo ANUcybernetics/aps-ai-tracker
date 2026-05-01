@@ -5,9 +5,9 @@ source_url: https://www.ga.gov.au/about/corporate-documents/ai-transparency-stat
 title: AI transparency statement | Geoscience Australia
 ---
 
-#  AI transparency statement 
+# AI transparency statement
 
-[Home](https://www.ga.gov.au/home) [Geoscience Australia](https://www.ga.gov.au) > [About](https://www.ga.gov.au/about) > [Corporate documents](https://www.ga.gov.au/about/corporate-documents) > [AI transparency statement](https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement) AI transparency statement 
+[Home](https://www.ga.gov.au/home) [Geoscience Australia](https://www.ga.gov.au) > [About](https://www.ga.gov.au/about) > [Corporate documents](https://www.ga.gov.au/about/corporate-documents) > [AI transparency statement](https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement) AI transparency statement
 
 We are dedicated to the responsible, safe, and transparent use of Artificial Intelligence (AI). The Geoscience Australia AI Transparency Statement strives to ensure continuous transparency in our use of AI as we explore opportunities and implement AI capabilities. This commitment aligns with the Digital Transformation Agency's (DTA) [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
@@ -19,15 +19,15 @@ Geoscience Australia has long been engaged in the exploration of innovative AI t
 
 Geoscience Australia is investigating and employing AI systems for Scientific, Corporate and Enabling domains, and as a subset within each, the Service Delivery domain.
 
-_Scientific Research and Information_  
- _Usage Patterns: Analytics for insights, Image processing_
+_Scientific Research and Information_\
+_Usage Patterns: Analytics for insights, Image processing_
 
 The investigation and application of AI involve multiple scientific disciplines, including Critical Minerals, Satellite Imagery, Uncover-ML, Passive Seismic, Marine, Earthquakes, etc. The investigation of Generative AI technologies also aims to enhance user experience and improve access to Geoscience Australia’s scientific resources.
 
 Examples of our utilisation of AI include tailored Machine Learning products made available to both internal and external stakeholders. Additionally, in support of Critical Minerals initiatives, current investigations are focused on building covariate libraries, large dataset analyses, and geochemical and geophysical modelling, all leveraging the High-Performance Computing capabilities at the National Computational Infrastructure (NCI).
 
-_Work Process Improvement AI_  
- _Usage Patterns: Decision making and administrative action, Workplace productivity_
+_Work Process Improvement AI_\
+_Usage Patterns: Decision making and administrative action, Workplace productivity_
 
 We are enhancing workplace efficiency with the use of Generative AI (such as Microsoft CoPilot) by automating administration tasks, accessing information quickly through improved user experience, letting staff focus on core tasks.
 
@@ -53,8 +53,8 @@ The use of AI within Geoscience Australia is monitored through an AI register an
 
 The transparency statement will be reviewed at least every twelve months, or as our approach to AI changes.
 
-Statement update| Comment  
----|---  
-20 February 2025 | Transparency statement released  
-  
+| Statement update | Comment                         |
+| ---------------- | ------------------------------- |
+| 20 February 2025 | Transparency statement released |
+
 For more information or enquires about Geoscience Australia’s adoption of AI, you can [contact us](https://www.ga.gov.au/contact-us).

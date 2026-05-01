@@ -21,9 +21,9 @@ Currently, ACIAR primarily employs Microsoft Copilot as its enterprise AI tool. 
 
 ACIAR’s current AI use falls into the following categories:
 
-  * **Efficiency Through Automation** : Copilot helps streamline repetitive tasks, such as meeting transcriptions, note-taking, and data organisation, increasing efficiency and productivity.
-  * **Enhanced Productivity** : Copilot assists with drafting, document structuring, and content summarisation, creating a more efficient and effective workflow.
-  * **Collaboration** : Copilot supports real-time teamwork, providing insights and suggestions that promote consistency and quality across projects.
+- **Efficiency Through Automation** : Copilot helps streamline repetitive tasks, such as meeting transcriptions, note-taking, and data organisation, increasing efficiency and productivity.
+- **Enhanced Productivity** : Copilot assists with drafting, document structuring, and content summarisation, creating a more efficient and effective workflow.
+- **Collaboration** : Copilot supports real-time teamwork, providing insights and suggestions that promote consistency and quality across projects.
 
 We maintain a culture of responsible AI use through regular staff communications and ongoing training. AI systems used by ACIAR do not make automated decisions that directly affect the public, funding recipients or program beneficiaries.
 
@@ -31,11 +31,11 @@ We maintain a culture of responsible AI use through regular staff communications
 
 ACIAR uses DTA’s [AI assurance framework](https://www.digital.gov.au/policy/ai/pilot-ai-assurance-framework) to review the impact of AI use. In governing the use of AI, ACIAR also adheres to any relevant legislation and regulations governing AI across Commonwealth agencies, such as the DTA's:
 
-  * [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard)
-  * [AI Impact Assessment Tool](https://www.digital.gov.au/ai/impact-assessment-tool)
-  * [Guidance on AI procurement in government](https://www.buyict.gov.au/public/en/buyers?id=public_content_navigation&topic_id=09f5d0e81b762a50f421db96b04bcb94)
-  * [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve)
-  * Other applicable internal policies and governance frameworks.
+- [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard)
+- [AI Impact Assessment Tool](https://www.digital.gov.au/ai/impact-assessment-tool)
+- [Guidance on AI procurement in government](https://www.buyict.gov.au/public/en/buyers?id=public_content_navigation&topic_id=09f5d0e81b762a50f421db96b04bcb94)
+- [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve)
+- Other applicable internal policies and governance frameworks.
 
 ## Privacy and Security
 
@@ -57,16 +57,16 @@ For more information on AI use at ACIAR, please [contact us](https://www.aciar.g
 
 The first version of this Statement was published in March 2025, followed by an annual update published in March 2026. This Statement will be reviewed annually, or when there are significant changes to ACIAR’s use of AI technologies.
 
-[ ACIAR Statement on the Responsible Use of AI 367.3 KB \-  pdf ](https://www.aciar.gov.au/sites/default/files/2026-03/ACIAR-Statement-on-the-Responsible-Use-of-AI.pdf)
+[ ACIAR Statement on the Responsible Use of AI 367.3 KB - pdf ](https://www.aciar.gov.au/sites/default/files/2026-03/ACIAR-Statement-on-the-Responsible-Use-of-AI.pdf)
 
-[Accountability](https://www.aciar.gov.au/search?search_api_fulltext="Accountability")
+[Accountability](https://www.aciar.gov.au/search?search_api_fulltext=%22Accountability%22)
 
-[AI](https://www.aciar.gov.au/search?search_api_fulltext="AI")
+[AI](https://www.aciar.gov.au/search?search_api_fulltext=%22AI%22)
 
-[Artificial Intelligence](https://www.aciar.gov.au/search?search_api_fulltext="Artificial Intelligence")
+\[Artificial Intelligence\](https://www.aciar.gov.au/search?search_api_fulltext="Artificial Intelligence")
 
-[Governance](https://www.aciar.gov.au/search?search_api_fulltext="Governance")
+[Governance](https://www.aciar.gov.au/search?search_api_fulltext=%22Governance%22)
 
-[Responsibility](https://www.aciar.gov.au/search?search_api_fulltext="Responsibility")
+[Responsibility](https://www.aciar.gov.au/search?search_api_fulltext=%22Responsibility%22)
 
-[Transparency](https://www.aciar.gov.au/search?search_api_fulltext="Transparency")
+[Transparency](https://www.aciar.gov.au/search?search_api_fulltext=%22Transparency%22)

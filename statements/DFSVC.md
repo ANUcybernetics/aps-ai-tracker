@@ -17,8 +17,8 @@ The Commission recognises the benefits arising from safe and responsible use of 
 
 The Department’s AI Transparency Statement provides information about how AI systems are governed and used and can be accessed at: [Artificial Intelligence (AI) Transparency Statement ](https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement)
 
-At a time where this information changes or updates are required, the Commission will inform the public by updating this webpage. 
+At a time where this information changes or updates are required, the Commission will inform the public by updating this webpage.
 
-The Director - Corporate Support remains as the contact for the Commission and the designated Executive Level 2 accountable official and will continue to work with DTA and the Department in relation to the Commission’s responsible use of AI. Any questions regarding the Commission’s use of AI can be directed to [corporate@dfsvc.gov.au](mailto:corporate@dfsvc.gov.au).  
+The Director - Corporate Support remains as the contact for the Commission and the designated Executive Level 2 accountable official and will continue to work with DTA and the Department in relation to the Commission’s responsible use of AI. Any questions regarding the Commission’s use of AI can be directed to [corporate@dfsvc.gov.au](mailto:corporate@dfsvc.gov.au).
 
 Thu, 2026-03-19 11:00 [Other](https://www.dfsvc.gov.au/taxonomy/term/25)

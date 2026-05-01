@@ -25,22 +25,22 @@ The following tables describe how ASIC is currently using AI, as prescribed by t
 
 The table below describes AI usage at ASIC.
 
-Usage pattern | Description  
----|---  
-Analytics for insights |  Identifies patterns, produces insights, and extracts information within structured and unstructured data  
-Workplace productivity |  Automates routine tasks, helps manage workflows and supports staff with administrative activities  
-Decision making and administrative action |  Supports decision making by guiding, assessing, or by making a recommendation to a human decision maker  
-Image processing |  Identifies patterns and objects within images (such as nudity) to prevent exposure of ASIC staff to inappropriate material  
-  
+| Usage pattern                             | Description                                                                                                                |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Analytics for insights                    | Identifies patterns, produces insights, and extracts information within structured and unstructured data                   |
+| Workplace productivity                    | Automates routine tasks, helps manage workflows and supports staff with administrative activities                          |
+| Decision making and administrative action | Supports decision making by guiding, assessing, or by making a recommendation to a human decision maker                    |
+| Image processing                          | Identifies patterns and objects within images (such as nudity) to prevent exposure of ASIC staff to inappropriate material |
+
 The table below demonstrates ASIC domains where AI is used at ASIC.
 
-Domain | Description  
----|---  
-Compliance and fraud detection |  Supports identification and summarisation of patterns and anomalies in data to detect fraudulent activities and risk  
-Corporate and enabling |  Supports corporate functions by automating processes, optimising resource allocation, and improving operational efficiency  
-Law enforcement, intelligence, and security |  Supports enforcement and intelligence activities by analysing data from various sources, and by aiding in intelligence gathering  
-Service delivery |  Enhances efficiency of internal services  
-  
+| Domain                                      | Description                                                                                                                      |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Compliance and fraud detection              | Supports identification and summarisation of patterns and anomalies in data to detect fraudulent activities and risk             |
+| Corporate and enabling                      | Supports corporate functions by automating processes, optimising resource allocation, and improving operational efficiency       |
+| Law enforcement, intelligence, and security | Supports enforcement and intelligence activities by analysing data from various sources, and by aiding in intelligence gathering |
+| Service delivery                            | Enhances efficiency of internal services                                                                                         |
+
 ## Classification of use where the public may directly interact with, or be significantly impacted by AI or its outputs, without human review
 
 ASIC does not use AI in any manner that allows direct interaction with the public or significantly impacts the public, without human oversight or involvement.
@@ -69,9 +69,9 @@ Our AI board is the primary governance body for AI which oversees the design, de
 
 We are investigating and adopting fit-for purpose technology to support the use of AI. This has involved:
 
-  * regular monitoring and evaluation of performance,
-  * adoption of robust security measures and access control, including monitoring for abnormal security activities, and
-  * implementation of explainable AI methods to ensure the AI systems are interpretable, explainable and understandable.
+- regular monitoring and evaluation of performance,
+- adoption of robust security measures and access control, including monitoring for abnormal security activities, and
+- implementation of explainable AI methods to ensure the AI systems are interpretable, explainable and understandable.
 
 ## Compliance with the requirements under the Policy for responsible use of AI in government
 
@@ -101,7 +101,7 @@ This transparency statement was most recently updated on 27 February 2026. It wi
 
 If you have questions or seek more information about this AI transparency statement please submit an [online enquiry](https://asic.gov.au/about-asic/contact-us#online?get/landingPage/).
 
-Update publication date | Update comment  
----|---  
-28 February 2025 | Publication of first AI transparency statement  
-27 February 2026 | Reviewed to reflect the updated Policy for responsible use of AI released in December 2025
+| Update publication date | Update comment                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| 28 February 2025        | Publication of first AI transparency statement                                             |
+| 27 February 2026        | Reviewed to reflect the updated Policy for responsible use of AI released in December 2025 |
