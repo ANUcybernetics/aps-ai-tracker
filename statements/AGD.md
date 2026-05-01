@@ -12,16 +12,22 @@ Print
 
 ## Introduction
 
-We are trialling the use of Artificial Intelligence (AI) as part of the Australian Government’s commitment to harness analytical tools and techniques to:
+We are trialling the use of artificial intelligence (AI) to help our staff work more effectively and support the department's responsibilities.\
+We are using AI to:
 
-- predict service needs
-- improve user experience
-- support evidence-based decisions
-- gain efficiencies in agency operations.
+- summarise and compare information to
+- support policy and legal work
+- draft and refine routine internal content to improve consistency and timeliness
+- classify and manage documents to support records and information management
+- identify patterns and unusual activity in system information to support cyber security and protective practices.
 
-We are committed to ensuring the way we develop, deploy and use AI systems is transparent, accountable and fair.
+We only use AI where it is appropriate for the task and the information involved. AI supports staff, but it does not replace human judgement – staff remain accountable for decisions and for any content or actions informed by AI.
 
-This transparency statement explains the AI systems we use, how they function, and the data they rely on. This aligns with the Australian Government’s [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy) and the requirements for AI transparency. It is also part of our ongoing commitment to safe and responsible use of AI and innovation.
+We are committed to using AI in ways that are transparent, accountable and fair. Our use of AI is confined to non‑decision making activities and does not directly interact with the public. All AI use is subject to governance arrangements and mandatory human oversight.
+
+This transparency statement explains the AI systems we use, how they function and the data they rely on.
+
+This aligns with the Australian Government's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy) and the requirements for AI transparency. It also reflects our ongoing commitment to safe and responsible use of AI and innovation.
 
 ## Scope and applications
 
@@ -37,56 +43,135 @@ The AI technologies we use include:
 We apply these technologies to:
 
 - automate routine administrative tasks
-- assist with drafting routine, internal and non-sensitive communications
-- automate document classification
+- help draft and refine routine, internal and non-sensitive content
+- summarise publicly available reports and synthesise information from multiple sources
+- simplify or clarify content to make it easier to understand
+- support research by identifying publicly available information and relevant references
+- provide analytical support, such as outlining options, risks or considerations
+- automate document classification and categorisation
 - analyse sentiment to understand patterns and trends in large data sets
-- categorise documents using predictive analytics.
+- support information security by analysing system activity to detect behaviour that differs from normal usage patterns and generate alerts for human review.
+
+### Future use of AI
+
+Any expansion of our AI use will be subject to:
+
+- risk assessment
+- approval through established governance processes
+- compliance with the _Policy for the responsible use of AI in government_.
+
+We will update this transparency statement if our use of AI changes.
 
 ## Data privacy and security
 
-Protecting the privacy and security of personal, sensitive and classified information is of paramount importance to us. We ensure that any data used in AI systems is handled in accordance with the [_Privacy Act 1988_ (Cth)](https://www.legislation.gov.au/C2004A03712/latest/text), the [_Protective Security Policy Framework_](https://www.protectivesecurity.gov.au/) and other relevant data protection laws. Personal information is only collected, used, and shared where necessary, and in ways that comply with our [privacy policy](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy "Privacy policy").
+We are committed to protecting the privacy and security of personal, sensitive and classified information.
+
+We make sure that any data used in AI systems is handled in line with the [ _Privacy Act 1988_ (Cth) ](https://www.legislation.gov.au/C2004A03712/latest/text), the [ _Protective Security Policy Framework_](https://www.protectivesecurity.gov.au/) and other relevant data protection laws.
+
+We only collect, use and share personal information when necessary and in ways that comply with our [privacy policy](https://www.ag.gov.au/about-us/accountability-and-reporting/privacy-policy).
 
 ## AI governance and oversight
 
-We have developed guidance material and implemented rigorous governance processes to monitor and oversee the use of AI within the department. This includes:
+We have guidance material and rigorous governance processes in place to monitor and oversee the use of AI within the department. This includes:
 
-- appointing accountable officials in line with the _Policy for the responsible use of AI in government_
-- ensuring governance bodies have oversight of all AI projects within the department
-- developing policies guiding staff use of AI and information technology systems
+- appointing the Chief Information Officer as the accountable official and a Chief AI Officer in line with the _Policy for the responsible use of AI in government_ and AI Plan for the Australian Public Service
+- ensuring governance bodies oversee all AI projects
+- developing policies for staff use of AI and information technology systems
 - making AI training available to all staff
 - implementing our Data Governance Framework and Data Strategy, which serve as the foundation for managing and leveraging data effectively within the department
-- maintaining user accreditation under _the Data Availability and Transparency Act 2022_
-- implementing the Commonwealth’s AI Assurance Framework.
+- maintaining user accreditation under the _Data Availability and Transparency Act 2022_
+- implementing the Commonwealth's AI Impact Assessment tool.
+
+## Monitoring and assurance
+
+We monitor AI use through a combination of policy controls, user guidance and ongoing review. This includes:
+
+- monitoring authorised use of AI tools
+- requiring staff to check outputs for accuracy and appropriateness
+- reviewing AI use as part of broader information and technology governance activities.
+
+Staff can report inappropriate outputs, privacy or security concerns, or unintended disclosure of information. The appropriate areas then investigate these reports.
+
+If issues are identified, we may restrict, correct or pause AI use while we complete a full assessment.
 
 ## Usage patterns and domains
 
-The following section shows how we classify our AI use and the domains in which we apply it, in keeping with the [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) under the _Policy for the responsible use of AI in government._
+This section shows how we classify our AI use and the domains where we apply it. This is in line with the [Classification system for AI use ](https://www.digital.gov.au/policy/ai/resources/use-classification) under the _Policy for the responsible use of AI in government._
 
 ### Usage patterns
 
-The following usage patterns describe our use of AI:
+The following usage patterns describe our use of AI.
 
-- analytics for insights
-- workplace productivity
-- image processing.
+#### Analytics for insights
+
+We use AI to help analyse large amounts of data and identify patterns or trends that may not be obvious. This can support better understanding of issues, improve planning and inform policy or service delivery.
+
+AI provides insights and summaries only. Staff review and interpret the results before they are used.
+
+#### Workplace productivity
+
+We use AI tools to assist staff with everyday tasks such as drafting documents, summarising information and organising work. This improves efficiency and allows staff to focus on more complex or high-value work.
+
+Staff review and edit any AI-generated content before it is used. AI does not replace human judgement.
+
+#### Image processing
+
+We use AI to analyse and process images, such as identifying objects, features or patterns in photos or scanned documents. This supports tasks like classification, quality checks, or record management.
+
+Staff check all results to make sure they are accurate and appropriate.
 
 ### Domains
 
-We apply AI tools across the department in the following domains:
+We use AI in the following domains:
 
 - service delivery
 - compliance and fraud detection
 - policy and legal
 - corporate and enabling services.
 
+## Public interaction and significant impact
+
+The _Standard for AI transparency statements_ guidance requires agencies to provide classification details for AI use where the public may directly interact with, or be significantly impacted by, AI or its outputs without human review.
+
+None of our currently deployed AI systems result in direct public interaction or generate outputs that significantly impact an individual without mandatory human review.
+
+Although we use technologies such as generative AI, chatbots and natural language processing across domains including service delivery, these systems are exclusively designed to assist staff with internal processes, analysis and administrative tasks.
+
+All AI outputs and recommendations that could potentially impact a member of the public are subject to **mandatory human oversight and approval** before any final action or communication takes place.
+
+## Risks and mitigations
+
+Our AI use presents risks that include:
+
+- incorrect or incomplete outputs
+- bias introduced through model training
+- use beyond intended purposes.
+
+We manage these risks through defined controls. These include:
+
+- restricting AI use to approved tools,
+- only allowing the use of publicly available AI tools with information already in the public domain
+- mandating AI training for staff
+- requiring staff to independently verify AI outputs.
+
+Our guidance makes it clear that AI outputs are not authoritative and any identified issues may lead to corrective action, restrictions or stopping use of the tool.
+
 ## Continuous improvement
 
-As part of our ongoing commitment to responsible AI, we regularly review and update our AI policies and practices. This includes staying informed about new developments in AI technology, ethics, and regulatory requirements. We strive to improve the transparency, fairness, and effectiveness of our AI systems through continuous learning and adaptation.
+We regularly review and update our AI policies and practices. This includes keeping up to date with new developments in AI technology, ethics and regulatory requirements.
 
-We will review this statement annually, when we make a significant change to our approach to AI, or when new factors impact this statement.
+We strive to improve the transparency, fairness, and effectiveness of our AI use through continuous learning and improvement.
 
-## Contact information
+We will review this statement:
 
-We are committed to engaging with stakeholders and providing opportunities for feedback on our use of AI systems.
+- every year annually
+- when we make a significant change to our AI use
+- when new factors affect this statement.
 
-If you have questions, concerns, or would like more information about how we use AI, please [contact us](https://www.ag.gov.au/about-us/connect-us/contact-us "Contact us").
+## Contact us
+
+We value feedback and engagement on our use of AI.
+
+If you have questions or concerns, or would like more information about how we use AI, contact us using the [departmental contact form](https://www.ag.gov.au/about-us/connect-us/contact-us).
+
+**Due for review:** 1 November 2026, or upon significant change
