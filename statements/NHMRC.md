@@ -9,8 +9,6 @@ title: Artificial Intelligence (AI) Transparency Statement | NHMRC
 
 The National Health and Medical Research Council (NHMRC) is dedicated to the adoption and responsible use of Artificial Intelligence (AI). This Transparency Statement outlines our approach to AI use within the NHMRC, in accordance with the DTA's [policy for responsible AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-Print this page \_\_
-
 ## Purpose of AI Use
 
 The NHMRC encourages the use of AI to achieve productivity where it is ethical and safe to do so. Our AI initiatives include automation of repeatable processes which helps us streamline our work to support the overall mission of building a healthy Australia.

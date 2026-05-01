@@ -7,8 +7,6 @@ title: AI transparency statement - Australian Institute of Health and Welfare
 
 # AI transparency statement
 
-Print this page Click to open the social media sharing options Share
-
 [ Share via Facebook ](https://www.facebook.com/sharer/sharer.php?u=https://www.aihw.gov.au/about-us/our-governance/ai-transparency-statement) [ Share via Twitter ](https://twitter.com/intent/tweet?text=AI%20transparency%20statement&url=https://www.aihw.gov.au/about-us/our-governance/ai-transparency-statement) [ Share via Linkedin ](https://www.linkedin.com/shareArticle?mini=true&title=AI%20transparency%20statement&url=https://www.aihw.gov.au/about-us/our-governance/ai-transparency-statement) Share via email
 
 ## **Introduction**

@@ -5,13 +5,9 @@ source_url: https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-
 title: AI transparency statement | Australian Bureau of Statistics
 ---
 
-[Print](https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement "Print this page.")
-
 # AI transparency statement
 
 How we develop, deploy and manage artificial intelligence
-
-[Print](https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement "Print this page.")
 
 Release date and time
 

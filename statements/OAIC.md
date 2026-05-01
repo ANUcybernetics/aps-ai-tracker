@@ -77,6 +77,8 @@ title: OAIC AI transparency statement | OAIC
   - [ OAIC Privacy Champion, Chief Privacy Officer and Privacy Officer roles ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-privacy-champion,-chief-privacy-officer-and-privacy-officer-roles)
   - [ Regulator expectations and intent ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/regulator-expectations-and-intent)
   - [ OAIC Freedom of Information Officers ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-freedom-of-information-officers)
+  - [ Appointment and authorisation instrument: Chief Risk Officer ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-risk-officer)
+  - [ Delegation of human resources powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-human-resources-powers-and-functions)
 
 - [ Accountability ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 

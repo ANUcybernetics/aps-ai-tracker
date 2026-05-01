@@ -46,5 +46,3 @@ _Postal Address:_\
 Commonwealth DPP\
 GPO Box 3104\
 CANBERRA ACT 2601
-
-This statement was last updated in February 2026 and will be updated as our approach to AI changes, and at least every 12 months.

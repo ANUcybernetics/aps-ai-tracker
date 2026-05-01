@@ -588,5 +588,3 @@ The following information is supplied by your browser (for example Internet Expl
 ### Disclosure
 
 We’ll only disclose your personal information where we are authorised to do so under the Privacy Act.
-
-- \[Email\](mailto:?subject=Privacy and disclosures&body=https://www.nema.gov.au/about-us/privacy-disclosures "Email this page")

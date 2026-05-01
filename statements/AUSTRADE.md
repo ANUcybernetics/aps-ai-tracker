@@ -7,6 +7,12 @@ title: Artificial intelligence transparency | Austrade
 
 Skip to content or footer
 
+close
+
+info
+
+For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/find-export-markets/middle-east-updates-and-support) for the latest updates and support available.
+
 ## How Austrade defines AI
 
 In Austrade we apply the OECD definition of AI in line with the policy for “Responsible Use of AI in Government” developed by the Digital Transformation Agency.
