@@ -11,9 +11,12 @@ from typing import TypedDict
 
 import html2text
 import httpx
+import mdformat
 import yaml
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
+
+from aps_ai_transparency_tracker.pdf_cleanup import clean_pdf_markdown
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -114,15 +117,31 @@ _LAST_REVIEWED_RE = re.compile(
 _TRAILING_BOILERPLATE_RE = re.compile(
     r"(?mi)^.*(?:did you find this (?:helpful|useful)\??|rate your experience|"
     r"share (?:this|on)\b.*(?:facebook|twitter|linkedin)|"
+    r"print this page|email this page|"
     r"\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?\s*\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?).*$\n?",
+)
+
+_OFFICIAL_MARKER_RE = re.compile(
+    r"(?im)^\s*(?:classification:\s*)?official(?:\s*[-:]\s*sensitive)?\s*$\n?"
+)
+
+_ALSO_INTERESTED_RE = re.compile(
+    r"(?ims)^#{1,6}\s*you may also be interested in.*?(?=^#{1,6}\s|\Z)"
 )
 
 
 def clean_markdown(text: str) -> str:
-    """Strip date stamps and trailing boilerplate from converted markdown."""
+    """Strip date stamps, classification markers, and trailing boilerplate."""
     text = _LAST_REVIEWED_RE.sub("", text)
     text = _TRAILING_BOILERPLATE_RE.sub("", text)
+    text = _OFFICIAL_MARKER_RE.sub("", text)
+    text = _ALSO_INTERESTED_RE.sub("", text)
     return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
+def format_markdown(text: str) -> str:
+    """Apply deterministic markdown formatting to reduce diff variance."""
+    return mdformat.text(text).strip()
 
 
 def remove_boilerplate(element: BeautifulSoup) -> None:
@@ -157,6 +176,11 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         ".social-media",
         ".subscribe",
         ".newsletter",
+        ".alert",
+        ".alert-banner",
+        ".banner",
+        ".notification",
+        ".notice-banner",
         "#header",
         "#footer",
         "#sidebar",
@@ -323,12 +347,18 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
     if pdf_path.exists():
         try:
             pdf_reader = PdfReader(pdf_path)
-            title = pdf_reader.metadata.title if pdf_reader.metadata else None
-            markdown = "\n\n".join(page.extract_text() for page in pdf_reader.pages)
+            raw_title = pdf_reader.metadata.title if pdf_reader.metadata else None
+            title = str(raw_title) if raw_title else None
+            raw_text = "\n\n".join(page.extract_text() for page in pdf_reader.pages)
+            markdown = (
+                clean_pdf_markdown(raw_text.strip(), agency.abbr, raw_dir)
+                if raw_text.strip()
+                else None
+            )
 
             return {
                 "title": title,
-                "markdown": markdown.strip() if markdown else None,
+                "markdown": markdown,
                 "status_code": 200,
                 "final_url": final_url,
                 "error": None,
@@ -396,8 +426,7 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     output_dir.mkdir(parents=True, exist_ok=True)
     filepath = output_dir / f"{agency.abbr}.md"
 
-    # Check for significant content shrinkage compared to existing file
-    new_markdown = data["markdown"]
+    new_markdown = format_markdown(data["markdown"])
     existing_markdown = extract_markdown_from_statement(filepath)
 
     if existing_markdown is not None:
