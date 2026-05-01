@@ -30,6 +30,10 @@ Capture both stdout/stderr. The scraper logs to stderr. Note:
 - exit code 1 means some agencies failed (check logs for details)
 - a non-zero exit code does NOT mean no useful work was done --- many agencies
   may have succeeded
+- PDF-sourced statements are LLM-cleaned (Haiku 4.5) and cached by raw-content
+  hash --- re-runs are no-ops unless the source PDF changed. The very first run
+  after deploying this pipeline will produce a one-time large diff for every
+  PDF as the cache populates; treat that as expected, not noise.
 
 After the scraper finishes, report a brief summary: how many succeeded, how many
 failed, and list any WARNING lines (especially CONTENT SHRINKAGE DETECTED and
@@ -51,17 +55,19 @@ Classify each changed file as **good** or **spurious**:
 
 ### Spurious changes
 
-- whitespace-only or formatting-only changes (line wrapping, trailing spaces)
-- date stamp changes that leaked through cleaning ("last updated", "page
-  updated", release dates in content)
 - link URL parameter changes (tracking params, session IDs, cache busters)
-- Cloudflare email protection hash changes (`cdn-cgi/l/email-protection`)
-- boilerplate that leaked through removal (nav text, breadcrumbs, "print this
-  page", social widgets, feedback prompts)
 - changes where only the YAML frontmatter order changed but values are identical
 - trivially small changes (a single character or punctuation mark)
 - content shrinkage --- if the scraper warned about CONTENT SHRINKAGE DETECTED,
   the new content is likely a scraping failure; discard that file's changes
+
+Most other "noise" categories (whitespace-only diffs, date stamps, Cloudflare
+email hashes, classification markers, "print this page" / social widgets,
+"you may also be interested in" sidebars) are caught upstream by the
+deterministic cleanup pipeline or by mdformat. If they reappear in a diff,
+that's a regression in the cleanup pipeline rather than expected noise --- note
+it in the commit description so it can be patched later, but don't manually
+discard the file.
 
 If a file has a mix of good and spurious changes, keep it (the good outweighs
 the noise). Only discard files where the changes are entirely spurious.
