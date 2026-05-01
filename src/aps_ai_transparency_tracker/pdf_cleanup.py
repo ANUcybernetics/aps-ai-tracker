@@ -3,6 +3,7 @@
 import hashlib
 import json
 import logging
+import os
 from pathlib import Path
 
 import anthropic
@@ -37,7 +38,8 @@ def clean_pdf_markdown(raw_text: str, abbr: str, raw_dir: Path) -> str:
     """Return LLM-cleaned markdown for a PDF, cached by raw-content hash.
 
     Re-runs the LLM only when the raw extracted text has changed since the
-    last cleanup. Returns the raw text unchanged if the LLM call fails.
+    last cleanup. Returns the raw text unchanged if no API key is configured
+    or the LLM call fails.
     """
     raw_hash = hashlib.sha256(raw_text.encode("utf-8")).hexdigest()
     cache_file = _cache_path(abbr, raw_dir)
@@ -51,6 +53,12 @@ def clean_pdf_markdown(raw_text: str, abbr: str, raw_dir: Path) -> str:
         except (json.JSONDecodeError, KeyError):
             logger.warning(f"Invalid cache file for {abbr}, regenerating")
 
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        logger.warning(
+            f"ANTHROPIC_API_KEY not set; skipping LLM cleanup for {abbr}"
+        )
+        return raw_text
+
     logger.info(f"Running LLM cleanup for {abbr} PDF...")
     try:
         client = anthropic.Anthropic()
@@ -63,7 +71,7 @@ def clean_pdf_markdown(raw_text: str, abbr: str, raw_dir: Path) -> str:
         cleaned = next(
             (b.text for b in response.content if b.type == "text"), raw_text
         ).strip()
-    except anthropic.APIError as e:
+    except anthropic.AnthropicError as e:
         logger.error(f"LLM cleanup failed for {abbr}: {e}; using raw text")
         return raw_text
 
