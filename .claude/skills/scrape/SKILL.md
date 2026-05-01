@@ -30,16 +30,83 @@ Capture both stdout/stderr. The scraper logs to stderr. Note:
 - exit code 1 means some agencies failed (check logs for details)
 - a non-zero exit code does NOT mean no useful work was done --- many agencies
   may have succeeded
-- PDF-sourced statements are LLM-cleaned (Haiku 4.5) and cached by raw-content
-  hash --- re-runs are no-ops unless the source PDF changed. The very first run
-  after deploying this pipeline will produce a one-time large diff for every
-  PDF as the cache populates; treat that as expected, not noise.
+- HTML-sourced statements are extracted, cleaned, mdformatted and saved
+  directly. PDF-sourced statements are saved as raw extracted text plus a
+  `raw_hash` field in the frontmatter; the actual cleanup happens in Step 3
+  below. If a PDF's raw text is unchanged from the previous scrape, the file
+  isn't rewritten at all (so cleaned bodies aren't clobbered).
 
 After the scraper finishes, report a brief summary: how many succeeded, how many
 failed, and list any WARNING lines (especially CONTENT SHRINKAGE DETECTED and
 LOW AI KEYWORD DENSITY).
 
-## Step 2: review the diff
+## Step 2: clean PDF-sourced statements
+
+PDF-sourced statement files are saved by the scraper as raw extracted text plus
+a `raw_hash` field in the frontmatter. They need to be cleaned in this step
+before the diff review.
+
+List the files that need cleanup (files where `raw_hash` is set but
+`cleaned_hash` is missing or doesn't match):
+
+```
+mise exec -- uv run python -c "
+import yaml
+from pathlib import Path
+for p in sorted(Path('statements').glob('*.md')):
+    parts = p.read_text(encoding='utf-8').split('---\n', 2)
+    if len(parts) < 3:
+        continue
+    fm = yaml.safe_load(parts[1]) or {}
+    raw = fm.get('raw_hash')
+    if raw and raw != fm.get('cleaned_hash'):
+        print(p)
+"
+```
+
+For each file in the list, read it and rewrite the body in place. Apply these
+transformations and **only** these transformations:
+
+- Remove repeated `OFFICIAL`, `OFFICIAL: Sensitive`, `Classification: ...`
+  markers (they're page watermarks, not content)
+- Remove standalone page numbers and `Page N of M` headers/footers
+- Remove dotted leader lines from tables of contents (e.g.
+  `Introduction ........ 2`)
+- Reflow paragraphs that were broken across PDF lines into normal prose ---
+  collapse runs of single newlines into single spaces, but preserve real
+  paragraph breaks (blank lines)
+- Convert obvious headings to markdown headings (`#`, `##`, `###`) based on
+  context (short, all-caps or title-case lines that introduce a section)
+- Convert obvious bullet lists (lines starting with `•`, `-`, `*`, or numbered)
+  to markdown lists with `-`
+
+Do NOT:
+
+- Add, remove, or rephrase any factual content
+- Add commentary, headers, or footers of your own
+- Translate or summarise
+- Re-order sections
+
+After cleaning, set `cleaned_hash` in the frontmatter equal to the existing
+`raw_hash` and write the file back. The frontmatter format is:
+
+```yaml
+---
+abbr: ABBR
+agency: ...
+source_url: ...
+title: ...
+raw_hash: <existing hash, leave unchanged>
+cleaned_hash: <copy of raw_hash>
+---
+```
+
+If a file's body looks like it was already mostly-clean text (e.g. the PDF was
+already well-structured), you may end up writing back something close to the
+original; that's fine. The point is to set `cleaned_hash` so the next scrape
+treats it as cleaned.
+
+## Step 3: review the diff
 
 Use `git diff --stat` to see which files changed, then `git diff` to inspect the
 actual changes.
@@ -75,7 +142,7 @@ the noise). Only discard files where the changes are entirely spurious.
 If in doubt about whether a change is good or spurious, keep it and mention it
 in the commit description.
 
-## Step 3: discard spurious changes
+## Step 4: discard spurious changes
 
 For each file classified as spurious, restore it:
 
@@ -93,7 +160,7 @@ substantive updates:
 git checkout HEAD -- .
 ```
 
-## Step 4: commit and push
+## Step 5: commit and push
 
 If there are good changes remaining:
 
@@ -115,7 +182,7 @@ git push
 If there are no good changes, skip the commit and report that the scrape
 produced no new content.
 
-## Step 5: search for new transparency statements
+## Step 6: search for new transparency statements
 
 After the scrape is complete (whether or not there were updates), search for
 newly published statements from agencies that currently have no URL.

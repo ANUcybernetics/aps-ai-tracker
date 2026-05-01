@@ -1,13 +1,14 @@
 """Core scraping functionality for AI transparency statements."""
 
 import asyncio
+import hashlib
 import json
 import logging
 import re
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 import html2text
 import httpx
@@ -15,8 +16,6 @@ import mdformat
 import yaml
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
-
-from aps_ai_transparency_tracker.pdf_cleanup import clean_pdf_markdown
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -50,6 +49,7 @@ class StatementResult(TypedDict):
     status_code: int | None
     final_url: str | None
     error: str | None
+    source_type: Literal["html", "pdf"] | None
 
 
 class RawFetchResult(TypedDict):
@@ -95,6 +95,20 @@ def extract_markdown_from_statement(filepath: Path) -> str | None:
         if len(parts) >= 3:
             # parts[0] is empty (before first ---), parts[1] is yaml, parts[2] is markdown
             return parts[2].strip()
+        return None
+    except Exception:
+        return None
+
+
+def extract_frontmatter(filepath: Path) -> dict | None:
+    """Parse the YAML frontmatter from a statement file."""
+    if not filepath.exists():
+        return None
+    try:
+        content = filepath.read_text(encoding="utf-8")
+        parts = content.split("---\n", 2)
+        if len(parts) >= 3:
+            return yaml.safe_load(parts[1]) or {}
         return None
     except Exception:
         return None
@@ -314,6 +328,8 @@ def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
     is_pdf = "application/pdf" in (data["content_type"] or "")
     extension = "pdf" if is_pdf else "html"
     filepath = raw_dir / f"{agency.abbr}.{extension}"
+    stale = raw_dir / f"{agency.abbr}.{'html' if is_pdf else 'pdf'}"
+    stale.unlink(missing_ok=True)
 
     filepath.write_bytes(data["content"])
 
@@ -349,19 +365,17 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             pdf_reader = PdfReader(pdf_path)
             raw_title = pdf_reader.metadata.title if pdf_reader.metadata else None
             title = str(raw_title) if raw_title else None
-            raw_text = "\n\n".join(page.extract_text() for page in pdf_reader.pages)
-            markdown = (
-                clean_pdf_markdown(raw_text.strip(), agency.abbr, raw_dir)
-                if raw_text.strip()
-                else None
-            )
+            raw_text = "\n\n".join(
+                page.extract_text() for page in pdf_reader.pages
+            ).strip()
 
             return {
                 "title": title,
-                "markdown": markdown,
+                "markdown": raw_text or None,
                 "status_code": 200,
                 "final_url": final_url,
                 "error": None,
+                "source_type": "pdf",
             }
         except Exception as e:
             logger.error(f"Error processing PDF for {agency.name}: {e}")
@@ -371,6 +385,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "status_code": None,
                 "final_url": final_url,
                 "error": str(e),
+                "source_type": "pdf",
             }
     elif html_path.exists():
         try:
@@ -393,6 +408,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "status_code": 200,
                 "final_url": final_url,
                 "error": None,
+                "source_type": "html",
             }
         except Exception as e:
             logger.error(f"Error processing HTML for {agency.name}: {e}")
@@ -402,6 +418,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "status_code": None,
                 "final_url": final_url,
                 "error": str(e),
+                "source_type": "html",
             }
     else:
         return {
@@ -410,14 +427,18 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             "status_code": None,
             "final_url": final_url,
             "error": f"No raw file found for {agency.abbr}",
+            "source_type": None,
         }
 
 
 def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> bool:
     """Save statement as markdown file with YAML frontmatter.
 
-    Includes a heuristic check for significant content shrinkage, which may
-    indicate a scraping failure (e.g., page structure changed, JS didn't render).
+    For HTML sources, applies markdown cleanup + mdformat and writes the result.
+    For PDF sources, writes the raw extracted text plus a `raw_hash` field; the
+    actual cleanup is performed by the scrape skill in a separate step. If the
+    PDF's raw text is unchanged from the last save (matching `raw_hash`), the
+    write is skipped entirely so cleaned bodies aren't clobbered.
     """
     if data["error"] or not data["markdown"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
@@ -425,14 +446,25 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
 
     output_dir.mkdir(parents=True, exist_ok=True)
     filepath = output_dir / f"{agency.abbr}.md"
+    is_pdf = data["source_type"] == "pdf"
 
-    new_markdown = format_markdown(data["markdown"])
+    if is_pdf:
+        new_body = data["markdown"]
+        new_raw_hash = hashlib.sha256(new_body.encode("utf-8")).hexdigest()
+        existing = extract_frontmatter(filepath) or {}
+        if existing.get("raw_hash") == new_raw_hash:
+            logger.info(
+                f"Skipping {agency.abbr}: PDF unchanged (raw_hash match)"
+            )
+            return True
+    else:
+        new_body = format_markdown(data["markdown"])
+        new_raw_hash = None
+
     existing_markdown = extract_markdown_from_statement(filepath)
-
-    if existing_markdown is not None:
+    if existing_markdown is not None and not is_pdf:
         old_len = len(existing_markdown)
-        new_len = len(new_markdown)
-
+        new_len = len(new_body)
         if old_len > 0 and new_len < old_len * CONTENT_SHRINKAGE_THRESHOLD:
             shrinkage_pct = (1 - new_len / old_len) * 100
             logger.warning(
@@ -442,13 +474,12 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
                 f"This may indicate a scraping failure."
             )
 
-    if len(AI_KEYWORD_RE.findall(new_markdown)) < AI_KEYWORD_MIN_COUNT:
+    if len(AI_KEYWORD_RE.findall(new_body)) < AI_KEYWORD_MIN_COUNT:
         logger.warning(
             f"LOW AI KEYWORD DENSITY for {agency.abbr}: "
             f"content may not be an AI transparency statement."
         )
 
-    # Use fallback title if none extracted
     title = (
         data["title"] if data["title"] else f"{agency.abbr} AI Transparency Statement"
     )
@@ -459,14 +490,15 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
         "source_url": agency.url,
         "title": title,
     }
-
     if data["final_url"] != agency.url:
         frontmatter["final_url"] = data["final_url"]
+    if is_pdf:
+        frontmatter["raw_hash"] = new_raw_hash
 
     yaml_str = yaml.dump(
         frontmatter, default_flow_style=False, allow_unicode=True
     ).strip()
-    content = "\n".join(["---", yaml_str, "---", "", new_markdown])
+    content = "\n".join(["---", yaml_str, "---", "", new_body])
 
     filepath.write_text(content, encoding="utf-8")
     logger.info(f"Saved {agency.abbr}.md")
