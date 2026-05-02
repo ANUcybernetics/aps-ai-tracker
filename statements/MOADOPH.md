@@ -84,15 +84,9 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
+### [Venue hire](https://moadoph.gov.au/about/venue-hire)
 
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
-
-![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
-
-### [Media](https://moadoph.gov.au/about/media)
-
-Find our latest media releases, download publicity images and request interviews and film shoots.
+Plan your next event at Old Parliament House.
 
 ![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
 
@@ -106,10 +100,20 @@ The Board directs the objectives, strategies and policies followed by Old Parlia
 
 Join our team and help us tell the story of Australian democracy.
 
-### [Learn](https://moadoph.gov.au/learn)
+![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
 
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
 
-![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+We are located inside Old Parliament House and you can get here by car, bus or bike.
 
-### [Access to information](https://moadoph.gov.au/about/access-to-information)
+![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
+
+### [Media](https://moadoph.gov.au/about/media)
+
+Find our latest media releases, download publicity images and request interviews and film shoots.
+
+![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+
+### [Contact us](https://moadoph.gov.au/about/contact)
+
+Do you have questions or feedback for us?
