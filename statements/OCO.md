@@ -9,73 +9,71 @@ title: AI Transparency Statement | Commonwealth Ombudsman
 
 ### Introduction
 
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of Artificial Intelligence (AI) 1 and provide for safe and responsible use of AI.
+The Digital Transformation Agency (DTA)'s [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) sets out the Australian Government approach to Artificial Intelligence (AI).
 
-The Office of Commonwealth Ombudsman (the Office), including the ACT Ombudsman, is committed to identifying ethical, responsible and meaningful usage of AI to deliver our mission of _“helping people, improving government”_.
+The Office of Commonwealth Ombudsman (the Office), including the ACT Ombudsman, is committed to identifying opportunities for AI to help us deliver our mission of _“helping people, improving government”_.
 
-We will be transparent in our assessment, preparation, engagement, adoption, monitoring, and pivot to changes in AI technology, environment and policy requirements.
+Any use of AI by the Office is carefully considered for compatibility with Australia’s AI Ethics Principles and the Policy for the Responsible Use of AI in Government. These require transparency in how AI is used by the Office.
 
-### Scope and Usage
+This statement explains:
 
-Currently, the Office uses AI for the following activities:
+- the scope and classification system for AI use in the Office
+- ways we do and don’t use AI in the Office
+- the policy and governance for AI use in the Office.
 
-1. Support security monitoring of its ICT systems. This AI is embedded into the monitoring software we use, with access limited to ICT and Cyber Security personnel that are suitably cleared, trained, and have a need to know and need to access the monitoring system. No direct public access.
-1. AI Assistants to support code completion and programming. This AI is used to assist with developing, configuring, maintaining and testing commercial software the Office uses. Access is limited to digital specialists with suitable ICT and Data skills. The use of these AI Coding Assistants is only for approved use cases of the Office’s system. All Human and AI assisted coding and system development, must undergo testing to ensure accuracy before being implement as part of the Office technical change management processes. The public does not currently access systems that are supported by these tools.
-1. Use of Azure AI Text to Speech to support the creation of internal training materials based on a precise human generated text script. Access is limited to digital specialists with suitable ICT and Data skills.
+### Tools in use
 
-The Office has also completed pilots of two Microsoft AI capabilities – Microsoft Co-Pilot and Microsoft Azure AI services. The Azure AI pilot, within the Office secure IT environment, tested the feasibility of using Azure AI services to summarise written complaints for decision makers to review in order to process them.
+The Office currently uses specific AI tools to make our work more efficient. This helps staff to focus on more complex and meaningful work. Currently, the Office uses AI for the following activities:
 
-If we do implement any additional AI use cases and technologies, we will update this statement to outline our use, with a summary of:
+1. To create a short summary of complaints to the Office. This summary is used to help us find the right team and staff member to assist with the complaint (“allocation”), and to help us prioritise the most urgent complaints (“triage”). These summaries are never used to make a decision about what action to take in relation to a complaint.
+1. To populate complaint forms from information we receive by letter or email. This helps minimise manual data entry. These suggestions must be confirmed by an Officer before they are recorded.
+1. To support security monitoring of our ICT systems. This AI is embedded into the monitoring software we use, and uses machine learning to help us identify new security threats.
+1. To support development and programming. This is limited to staff involved in developing new ICT capabilities in the Office and supports them with code completion.
+1. We use Text-to-Speech software to support the creation of internal training materials based on a human generated text script.
 
-- why the Office is using AI
-- the legislative authority for the use of AI
-- whether the public may directly interact with the AI or be significantly impacted by it
-- how the Office intends to notify those affected by our use of AI
-- what role AI plays in relation to decision-making, administrative action or service delivery, or other such usage patterns and domains as described in the [Classifications system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification)
-- measures to identify and protect the public against negative impacts and other risk mitigation measures
-- measures in place to identify and remediate errors
-- how the use complies with administrative law principles, is consistent with human rights obligations, applicable legislation including the [Privacy Act 1988](https://www.legislation.gov.au/C2004A03712/latest/text) and the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au)
-- compliance with each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) _._
+If we decide to use AI in new ways in the future, we will update this statement to explain how this may affect you.
 
-The Office does not currently use or intend to use AI to make discretionary decisions in accordance with the best practices set out in the Office’s [Automated Decision-making Better Practice Guide](https://www.ombudsman.gov.au/__data/assets/pdf_file/0029/288236/OMB1188-Automated-Decision-Making-Report_Final-A1898885.pdf).
+### Scope and classification
 
-### Governance
+The Digital Transformation Agency publishes [a classification system](https://www.digital.gov.au/sites/default/files/documents/2025-12/Standard%20for%20AI%20transparency%20statements%202.0_0.pdf) for the use of AI in government. In this system, the Office’s use of AI primarily falls into the **workplace productivity** pattern. This means we may use AI to automate routine tasks, manage workflows and to support triage and categorisation of communications.
 
-**AI Governance**\
-Each AI use case and AI technology in the Office requires the Ombudsman’s approval, after endorsement by the Information Technology Governance Committee (ITGC) chaired by the Deputy Ombudsman.
+The Office uses AI in the **service delivery** domain, to support staff to register, categorise and triage complaints. We do not use AI in making decisions. We also use AI in the **corporate and enabling** domain, including HR, finance, media, communications, and IT.
 
-**AI Usage Policy and Processes**\
+### Prohibited use
+
+Certain uses of AI are prohibited within the Office. We do not allow staff to use AI tools to make decisions under our legislation. Statutory decisions are always made by an Officer with the appropriate delegation.
+
+We also do not allow staff to use AI to generate text to be used in communications outside the Office. Our communications with complainants about their complaint are always written by an Officer.
+
+### **AI usage policy and processes**
+
 We have an internal AI Policy that aligns with advice and guidance provided by the DTA and other agencies for using AI services responsibly.
 
-We have processes to ensure:
+This policy helps ensure:
 
-- our AI use is appropriately governed
-- our engagement with AI is confident, safe and responsible
-- our staff are appropriately trained in AI
-- any relevant and likely cyber, data and privacy risks are identified and addressed
-- our AI access and usage is monitored
-- our stakeholders have trust in our use of AI.
+- we have a framework to adopt AI where it can support us to do our work more effectively and efficiently, consistent with Australia’s AI Ethics Principles
+- our AI use has appropriate governance
+- our staff are appropriately trained in AI systems
+- relevant risks are identified and appropriately treated
+- our use of AI supports our reputation and does not compromise stakeholder trust in our work.
 
-______________________________________________________________________
+Each use case requires individual approval after a detailed impact assessment. Low and medium risk use cases can be approved by the Chief AI Officer. High risk use cases are considered by the Office's Executive Committee. The Office does not currently engage in any high-risk use of AI.
 
-**Accountable Officials**\
+### Accountable Officials
+
 The Chief Operating Officer and Chief Information Officer are the designated AI Accountable Officials.
-
-**Transparency Statement Updates**\
-This statement will be reviewed annually or when we change our AI use cases and usage.
 
 ### Contact
 
-For questions about this statement or for further information on the Office’s usage of AI, please contact [ai@ombudsman.gov.au](mailto:ai@ombudsman.gov.au).
+For questions about this statement or if you would like to make a complaint about how the Office has used AI you can do so by writing to: [ai@ombudsman.gov.au](mailto:ai@ombudsman.gov.au).
 
-### Change Log
-
-______________________________________________________________________
+### Change log
 
 **Date**| **Note**\
 ---|---\
-27 February 2025| Initial release.\
-20 December 2025| Add AI Assistant for Code Completion and Programming Usage and Text to Speech for training materials.
+February 2025| Initial release.\
+December 2025| Add AI Assistant for Code Completion and Programming Usage and Text to Speech for training materials.\
+April 2026| Update to reflect revised AI Policy and new use cases.
 
 [1] [Explanatory memorandum on the updated OECD definition of an AI system](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html)
 
