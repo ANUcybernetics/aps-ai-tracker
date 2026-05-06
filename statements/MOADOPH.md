@@ -84,9 +84,9 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Careers](https://moadoph.gov.au/about/careers)
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
 
-Join our team and help us tell the story of Australian democracy.
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
 
 ![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
 
@@ -94,26 +94,26 @@ Join our team and help us tell the story of Australian democracy.
 
 Discover the benefits of a partnership with MoAD.
 
-![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
-
-### [Media](https://moadoph.gov.au/about/media)
-
-Find our latest media releases, download publicity images and request interviews and film shoots.
-
 ![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
 
 ### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
 
 The APS Census reports reflect how staff feel about working at MoAD.
 
-![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
 
-### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
 
-Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
+We are a living museum of Australian political and social history.
 
-![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
 
-### [Contact us](https://moadoph.gov.au/about/contact)
+### [Media](https://moadoph.gov.au/about/media)
 
-Do you have questions or feedback for us?
+Find our latest media releases, download publicity images and request interviews and film shoots.
+
+![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
+
+### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
+
+Find our strategic and corporate plans, policies and reporting.
