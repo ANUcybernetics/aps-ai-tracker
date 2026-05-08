@@ -18,24 +18,27 @@ The Department of Education recognises the opportunities artificial intelligence
 
 Our use of AI is considered and purposeful. We are maturing our understanding and use through trialling and experimentation to better inform our policy development, unlock internal efficiencies and uplift our capabilities.
 
-Our use of AI is informed by and aligned with the AI Plan for the Australian Public Service and the Policy for Responsible use of AI in Government.
+Our use of AI is informed by and aligned with the [AI Plan for the Australian Public Service and the Policy for Responsible use of AI in Government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
 The department is developing its own AI Strategy and Roadmap for the coming 12 – 18 month period. We also have our own internal AI Guidelines to help staff understand their responsibilities and obligations when using AI in the workplace.
 
 ## AI Accountable Officer and Chief AI Officer
 
-The Department of Education’s use of AI is overseen by our AI Accountable Officers. The AI Accountable Officers:
+The Department of Education’s use of AI is overseen by our AI Accountable Officer and a Chief AI Officer. The AI Accountable Officer:
 
-- are the primary contacts for whole‑of‑government AI assurance and coordination, and keep staff informed of AI policy obligations and changes.
-- are accountable for implementing AI policy within the agency, including governance frameworks, transparency statements and internal registers
-- oversee AI risk assessments and ensure appropriate controls are in place,
+- is the primary contact for whole‑of‑government AI assurance and coordination, and keeping staff informed of AI policy obligations and changes,
+- is accountable for implementing AI policy within the agency, including governance frameworks, transparency statements and internal registers,
+- oversees AI risk assessments and ensures appropriate controls are in place.
 
-The departments AI Accountable Officers are:
+The department’s AI Accountable Officer is Kerryn Kovacevic, Chief Information Officer.
 
-- Kerryn Kovacevic, Chief Information Officer
-- Matthew Johnston, First Assistant Secretary, Strategy, Data and Measurement
+The department’s Chief AI Officer is responsible for:
 
-The departments Chief AI Officer is responsible for driving value, adoption and cultural change through AI. The departments Chief AI Officer will be in place by June 2026.
+- leading and championing a department-wide approach to AI adoption, driving change and uplifting AI literacy in the department,
+- identifying, prioritising and sponsoring high-value AI use cases,
+- reporting to the department’s Executive Board, working with the AI Accountable Officer to ensure AI adoption occurs within agreed risk boundaries and in alignment with whole-of-government policy and community expectations.
+
+The department’s Chief AI Officer is Brendan Moon, First Assistant Secretary, Child Care Integrity Division.
 
 ## Governance and transparency
 
@@ -51,7 +54,7 @@ The department has approved the use of Microsoft Copilot and made Copilot Chat a
 
 The Department of Education is primarily using AI to improve internal efficiency. Staff are encouraged to use AI to draft, summarise and refine their work, support the processing of large volumes of data and information, and reduce time spent on routine tasks. Staff must review outputs for quality and accuracy.
 
-To minimise risk and safeguard the public, the Department of Education **does not** use AI for automated decision-making. All decisions **are made by staff** , ensuring human oversight and accountability.
+To minimise risk and safeguard the public, the Department of Education does not use AI for automated decision-making. All decisions are made by staff, ensuring human oversight and accountability.
 
 ## Review and Updates
 
