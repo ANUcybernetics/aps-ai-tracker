@@ -35,7 +35,7 @@ Date updated:
 
 Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible artificial intelligence (AI).
 
-Our own adoption of AI aligns to the Guidance for AI Adoption, which consists of [6 essential practices](https://www.industry.gov.au/publications/guidance-for-ai-adoption "Guidance for AI Adoption") for industry to adopt AI responsibly. This includes transparency and accountability practices for developers and deployers of AI systems.
+Our own adoption of AI aligns to the Guidance for AI Adoption, which consists of [6 essential practices](https://www.industry.gov.au/node/95254 "Guidance for AI Adoption") for industry to adopt AI responsibly. This includes transparency and accountability practices for developers and deployers of AI systems.
 
 The Digital Transformation Agency’s [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy) sets the requirements for Australian Government agencies to engage with AI in a safe and responsible way.
 

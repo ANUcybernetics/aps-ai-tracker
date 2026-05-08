@@ -84,13 +84,23 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Contact us](https://moadoph.gov.au/about/contact)
+### [Careers](https://moadoph.gov.au/about/careers)
 
-Do you have questions or feedback for us?
+Join our team and help us tell the story of Australian democracy.
+
+![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+
+### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
 
 ### [Learn](https://moadoph.gov.au/learn)
 
 Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+
+![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
+
+### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
+
+Find our strategic and corporate plans, policies and reporting.
 
 ![Venue hire](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-04/MoAD-venue-hire-courtyard.jpg.webp?h=7282df9d&itok=hsWDZPcg)
 
@@ -98,20 +108,8 @@ Driven by an inquiry approach and critical reflection, we empower young people t
 
 Plan your next event at Old Parliament House.
 
-![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
+![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
 
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
+### [Contact us](https://moadoph.gov.au/about/contact)
 
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
-
-![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
-
-### [Partnerships](https://moadoph.gov.au/support/partnerships)
-
-Discover the benefits of a partnership with MoAD.
-
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
-
-### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
-
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
+Do you have questions or feedback for us?
