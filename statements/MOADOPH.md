@@ -84,23 +84,21 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+### [Media](https://moadoph.gov.au/about/media)
 
-![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
+Find our latest media releases, download publicity images and request interviews and film shoots.
 
-### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
+![Map](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2025-11/front-reception-desk-2025-branding.jpg.webp?h=533a6927&itok=xIyg1m-p)
 
-We are located inside Old Parliament House and you can get here by car, bus or bike.
+### [Map](https://moadoph.gov.au/visit/map)
 
-### [Learn](https://moadoph.gov.au/learn)
+Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
 
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
 
-![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
 
-### [Contact us](https://moadoph.gov.au/about/contact)
-
-Do you have questions or feedback for us?
+Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
 
 ![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
 
@@ -113,3 +111,9 @@ Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament H
 ### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
 
 We are a living museum of Australian political and social history.
+
+![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
+
+### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
+
+We are located inside Old Parliament House and you can get here by car, bus or bike.
