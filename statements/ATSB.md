@@ -5,24 +5,51 @@ source_url: https://www.atsb.gov.au/ai-transparency-statement
 title: AI transparency statement | ATSB
 ---
 
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_(Opens in a new tab/window)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI in the Australian Public Service.
+### Principles
 
-The Australian Transport Safety Bureau (ATSB) adheres to this policy supporting its principles under the "enable, engage, and evolve" framework. We will be transparent in our internal use of AI technology as we explore, evaluate and adopt AI technology to benefit our work and our stakeholders.
+- The Australian Transport Safety Bureau (ATSB) is committed to the safe, responsible, and ethical use of artificial intelligence (AI) technologies. Our AI systems will be developed and deployed with fairness, accountability, privacy, security, reliability, and transparency in mind.
+- We will use our AI systems to enhance, not replace, human decision-making. Human-in-the-loop will ensure all critical decisions are reviewed and approved by qualified public officials to ensure accuracy and accountability.
+- We are transparent about our AI use and its impact. We will regularly update this statement on our AI initiatives and their outcomes.
 
-Currently, ATSB does not plan to use AI in services that the public may directly interact with or be significantly impacted by. If this changes, we will update this statement to detail our use of AI.
+### Transparency statement
 
-## **AI use**
+This transparency statement is reviewed at least annually, or whenever there is a significant change to the ATSB’s approach to AI.
 
-Presently, the ATSB does not utilise AI to deliver any of its services. Although, the ATSB did participate in the Australian Government trial of Microsoft 365 Copilot.
+### Why we use AI
 
-## **Monitoring and governing AI use**
+ATSB recognises the value in using modern technology, including AI, to improve our workplace efficiency and effectiveness and assist with quality control and accuracy.
 
-The ATSB is developing an overarching agency approach to AI and will establish an AI Steering Committee to assess the opportunities and risks in using AI within the agency.
+We see AI as an opportunity to reduce administrative burden on our staff, allowing them to focus on areas of their work that best use their experience, expertise, and judgement.
 
-## **Accountable official**
+### How we use AI
 
-The Chief Operating Officer is the accountable official for AI and is supported by Chief Information Officer to assist in guiding implementation of AI governance and monitoring current and emerging systems to ensure AI is used in a safe, ethical and effective way.
+The ATSB’s current AI focus is on improving workplace productivity and information discovery.
 
-## **AI transparency statement**
+- **Productivity:** Assisting with administrative tasks, summarising and drafting documents, drafting emails and managing inboxes, transcribing interviews, note taking in meetings.
+- **Information discovery:** Search tools and chat bots to assist with finding and retrieving information across various internal repositories, as an alternative to traditional search.
+- **Data analytics and coding:** Analysis of datasets, development of scripts and code for data analytics and software systems.
+- **Training materials and research:** Developing internal training materials and explanatory guides, assisting with policy development and research.
 
-This AI transparency statement was first published in March 2025. This statement will be reviewed annually, or when any significant change is made to our approach to AI.
+### What we do not use AI for
+
+- **Investigative decision-making:** The ATSB does not use AI to make decisions or findings in the course of transport safety investigations. All investigative conclusions remain the result of human analysis.
+- **Employee relations:** AI is not used for HR recruitment, hiring decisions, performance management, or other areas with direct human impact.
+- **Public interaction:** We do not use AI for any direct service delivery or as a primary point of contact for external stakeholders.
+
+### Monitoring and safeguards
+
+All AI outputs are subject to human review. The ATSB adheres to the principle that AI assists, but does not replace, human judgment. Before any AI-generated content is used in an official capacity, it must be verified by a staff member for accuracy, fairness, and compliance with our standards. All decisions, outcomes, and work products are reviewed, owned and managed by a human.
+
+We operate AI within secure, controlled environments to ensure that sensitive and personal information is protected in accordance with the Privacy Act 1988 and other relevant legislation and frameworks.
+
+### Governance and accountability
+
+The ATSB has established governance frameworks to oversee the adoption of AI:
+
+- **Accountable official:** The Chief Operating Officer is the accountable official for AI.
+- **Internal oversight:** We utilise internal governance processes to assess the opportunities and risks associated with new AI use cases before deployment.
+- **Training:** All staff undertake mandatory AI fundamentals training, and staff using key AI tools are provided with additional training and guidance on the responsible and ethical use of these technologies, including awareness of bias and data security.
+
+### Contact us
+
+For questions or further information about our AI usage contact [**ai@atsb.gov.au**](mailto:ai@atsb.gov.au).
