@@ -84,13 +84,21 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
+### [Media](https://moadoph.gov.au/about/media)
 
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
+Find our latest media releases, download publicity images and request interviews and film shoots.
 
-![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+![Venue hire](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-04/MoAD-venue-hire-courtyard.jpg.webp?h=7282df9d&itok=hsWDZPcg)
 
-### [Access to information](https://moadoph.gov.au/about/access-to-information)
+### [Venue hire](https://moadoph.gov.au/about/venue-hire)
+
+Plan your next event at Old Parliament House.
+
+![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+
+### [Contact us](https://moadoph.gov.au/about/contact)
+
+Do you have questions or feedback for us?
 
 ### [Learn](https://moadoph.gov.au/learn)
 
@@ -102,14 +110,8 @@ Driven by an inquiry approach and critical reflection, we empower young people t
 
 Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
 
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
+![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
 
-### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
 
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
-
-![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
-
-The APS Census reports reflect how staff feel about working at MoAD.
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
