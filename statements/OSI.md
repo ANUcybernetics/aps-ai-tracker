@@ -10,7 +10,16 @@ title: Policy for the responsible use of AI in government – AI Transparency St
 
 ## **Introduction**
 
-The Office of the Special Investigator (OSI) receives Information Technology (IT) services from the Attorney-General’s Department (AGD) and the Australian Federal Police (AFP) under shared services agreements. The use of artificial intelligence (AI) by the OSI is in line with the AI policies of AGD and AFP.
+The Office of the Special Investigator (OSI) receives Information Technology (IT) services from the Attorney-General’s Department (AGD) and the Australian Federal Police (AFP) under shared services agreements. The use of artificial intelligence (AI) by the OSI is in line with the AI policies of AGD and the AFP.
+
+## **AI classification**
+
+In accordance with the Digital Transformation Agency Standard for AI transparency statements, we classify our current and intended use of AI as follows:
+
+- Usage patterns: our primary focus is on workplace productivity to facilitate communication such as document summarisation and content creation.
+- Domains: our AI application is situated within the corporate and enabling domain, supporting internal functions like HR, finance, communication and IT.
+
+At this stage of adoption, the public does not directly interact with, nor is it significantly impacted by our AI systems or their outputs without human review.
 
 ## **Data privacy and security**
 
