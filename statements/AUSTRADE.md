@@ -11,7 +11,7 @@ close
 
 info
 
-For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/find-export-markets/middle-east-updates-and-support) for the latest updates and support available.
+For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/freight-and-shipping/trade-resilience-service) for the latest updates and support available.
 
 ## How Austrade defines AI
 
