@@ -84,34 +84,32 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Partnerships](https://moadoph.gov.au/support/partnerships)
+### [Venue hire](https://moadoph.gov.au/about/venue-hire)
 
-Discover the benefits of a partnership with MoAD.
-
-![Careers](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-### [Careers](https://moadoph.gov.au/about/careers)
-
-Join our team and help us tell the story of Australian democracy.
-
-![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
-
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
-
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
-
-### [Learn](https://moadoph.gov.au/learn)
-
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
-
-![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
-
-### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
-
-We are a living museum of Australian political and social history.
+Plan your next event at Old Parliament House.
 
 ![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
 
 ### [Media](https://moadoph.gov.au/about/media)
 
 Find our latest media releases, download publicity images and request interviews and film shoots.
+
+![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+
+### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+
+![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
+
+### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
+
+The APS Census reports reflect how staff feel about working at MoAD.
+
+### [Learn](https://moadoph.gov.au/learn)
+
+Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+
+![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+
+### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+
+Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
