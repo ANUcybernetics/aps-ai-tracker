@@ -17,7 +17,7 @@ The Office of the Inspector-General of Intelligence and Security (OIGIS) does no
 
 Within our operating environment, we are committed to ensuring that any future use of AI is appropriate for our business activities, is aligned to relevant legislative requirements and maintains human decision making and advice.
 
-The statement below can also be downloaded [here](https://www.igis.gov.au/sites/default/files/2025-02/OIGIS%20Use%20of%20Artificial%20Intelligence%20%28AI%29%20Transparency%20Statement.pdf).
+The statement below can also be downloaded [here](https://www.igis.gov.au/sites/default/files/2026-05/OIGIS%20Use%20of%20Artificial%20Intelligence%20%28AI%29%20Transparency%20Statement.pdf).
 
 ##### Monitoring and Accountability
 
