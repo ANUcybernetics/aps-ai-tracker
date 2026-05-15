@@ -9,52 +9,51 @@ title: AI transparency statement | Geoscience Australia
 
 [Home](https://www.ga.gov.au/home) [Geoscience Australia](https://www.ga.gov.au) > [About](https://www.ga.gov.au/about) > [Corporate documents](https://www.ga.gov.au/about/corporate-documents) > [AI transparency statement](https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement) AI transparency statement
 
-We are dedicated to the responsible, safe, and transparent use of Artificial Intelligence (AI). The Geoscience Australia AI Transparency Statement strives to ensure continuous transparency in our use of AI as we explore opportunities and implement AI capabilities. This commitment aligns with the Digital Transformation Agency's (DTA) [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+We are dedicated to the responsible, safe, and transparent use of Artificial Intelligence (AI). The Geoscience Australia AI Transparency Statement strives to ensure continuous transparency in our use of AI as we explore opportunities and implement AI capabilities. Our commitment aligns with the Digital Transformation Agency's (DTA) [policy for the responsible use of AI in government 2.0](https://www.digital.gov.au/policy/ai/policy) and we are working towards meeting the obligations of the policy and the outcomes of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.).
 
 ## How we use AI
 
-Geoscience Australia has long been engaged in the exploration of innovative AI techniques to further support the delivery of scientific information. Geoscience Australia has applied Machine Learning to process, analyse and synthesise scientific data, particularly in Satellite Imagery and Geological Information, for many years. We are in the early stages of exploring broader artificial intelligence technologies to provide an enhanced level of efficiencies and capabilities, within our work practices and scientific disciplines, focussing on internal testing and exploration with no use cases being used on published products and services.
+Geoscience Australia has long been engaged in the exploration of innovative AI techniques to further support the delivery of scientific information. Geoscience Australia has applied Machine Learning to process, analyse and synthesise scientific data, particularly in Satellite Imagery and Geological Information, for many years. We are in the early stages of exploring broader artificial intelligence technologies to provide an enhanced level of efficiencies and capabilities, within our work practices and scientific disciplines, focused on internal testing and exploration.
 
-**Use patterns and domains**
+We are using AI, based on the [classification system for AI](https://www.digital.gov.au/policy/ai/resources/use-classification) in government, for:
 
-Geoscience Australia is investigating and employing AI systems for Scientific, Corporate and Enabling domains, and as a subset within each, the Service Delivery domain.
+- Usage patterns of analytics for insights, workplace productivity, decision making and administrative action, and image processing.
+- Domains of service delivery, corporate and enabling, and scientific endeavours.
 
-_Scientific Research and Information_\
-_Usage Patterns: Analytics for insights, Image processing_
+Examples of how we are applying AI in these domains:
+
+_Scientific_
 
 The investigation and application of AI involve multiple scientific disciplines, including Critical Minerals, Satellite Imagery, Uncover-ML, Passive Seismic, Marine, Earthquakes, etc. The investigation of Generative AI technologies also aims to enhance user experience and improve access to Geoscience Australia’s scientific resources.
 
-Examples of our utilisation of AI include tailored Machine Learning products made available to both internal and external stakeholders. Additionally, in support of Critical Minerals initiatives, current investigations are focused on building covariate libraries, large dataset analyses, and geochemical and geophysical modelling, all leveraging the High-Performance Computing capabilities at the National Computational Infrastructure (NCI).
+Our utilisation of AI includes tailored Machine Learning products available to both internal and external stakeholders. Additionally, current investigations in support of Critical Minerals initiatives are focused on building covariate libraries, large dataset analyses, and geochemical and geophysical modelling, all leveraging the High-Performance Computing capabilities at the National Computational Infrastructure (NCI).
 
-_Work Process Improvement AI_\
-_Usage Patterns: Decision making and administrative action, Workplace productivity_
+_Corporate and enabling_
 
-We are enhancing workplace efficiency with the use of Generative AI (such as Microsoft CoPilot) by automating administration tasks, accessing information quickly through improved user experience, letting staff focus on core tasks.
+Geoscience Australia endorsed AI products for staff use are Microsoft 365 Copilot, available as an Enterprise AI tool. Workplace productivity is being improved by automating administration tasks, improved services and access to information, letting staff focus on core tasks.
 
-## Compliance
+## AI governance
 
-We will utilise AI services in accordance with applicable legislation, regulations, frameworks and policies.
+We meet the current [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) due to date and developing appropriate governance arrangements aligned to our agency strategic direction and operations.
 
-### Accountable officials
+Our aim is to utilise AI services in accordance with applicable legislation, regulations, frameworks and policies.
 
-In alignment with DTA’s [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), we have two accountable officials under the policy. These are the Chief Information Officer (CIO) and the Chief Scientist represented by those within each [role](https://www.ga.gov.au/about/organisational-structure).
+### Key roles
+
+In alignment with the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), the Chief Information Officer ([CIO](https://www.ga.gov.au/about/organisational-structure)) is our designated Accountable Official.
+
+A Chief AI Officer (CAIO) will be appointed by July 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead our AI transformation.
 
 ### Authoritative source, individual responsibility and monitoring
 
 Quality assurance promotes transparency and accountability in AI usage.
 
-Geoscience Australia highlights the importance of AI training, with a focus on accountability. As a government entity, it serves as an authoritative source when presenting critical information. Officials are required to ensure rigorous quality assurance checks to maintain the integrity and reliability of all systems, including AI.
+Geoscience Australia highlights the importance of AI training, with a focus on accountability. As a government entity, it serves as an authoritative source when presenting critical information. Officials are required to ensure rigorous quality assurance checks to maintain the integrity and reliability of all systems, including AI. Staff are also required to complete mandatory training prior to using Enterprise AI tools.
 
 Generative AI can be useful for research, summarising information, or creating content from known sources, but it should not generate messages or summarise unverified information without consent. AI-generated material must undergo thorough quality checks and should not be treated as the final source of truth; instead, it should be verified and cited by the original source.
 
-The use of AI within Geoscience Australia is monitored through an AI register and assessed (when applicable) through multiple processes with a focus on business cases, security and efficiency.
+The use of AI within Geoscience Australia is monitored through an AI register and assessed (when applicable) for use case suitability, risks and security. Assessments consider the relevant governance, standards, procedures or guidance, either in part or full and where applicable, such as the [Artificial intelligence impact assessment tool](https://www.digital.gov.au/a), [Technical standard for government’s use of artificial intelligence](https://www.digital.gov.au/policy/ai/AI-technical-standard), and [Guidance for AI proof of concept to scale](https://www.digital.gov.au/policy/ai/AI-POC-to-scale).
 
 ### Reviews and more information
 
-The transparency statement will be reviewed at least every twelve months, or as our approach to AI changes.
-
-Statement update| Comment\
----|---\
-20 February 2025 | Transparency statement released
-
-For more information or enquires about Geoscience Australia’s adoption of AI, you can [contact us](https://www.ga.gov.au/contact-us).
+The transparency statement will be reviewed at least every twelve months, or as our approach to AI changes. The most recent update was on 15th May 2026.
