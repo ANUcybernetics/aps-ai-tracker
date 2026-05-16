@@ -84,29 +84,33 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Venue hire](https://moadoph.gov.au/about/venue-hire)
+### [Map](https://moadoph.gov.au/visit/map)
 
-Plan your next event at Old Parliament House.
+Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
 
-![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
+![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
 
-### [Media](https://moadoph.gov.au/about/media)
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
 
-Find our latest media releases, download publicity images and request interviews and film shoots.
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
 
-![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
 
-### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+### [Partnerships](https://moadoph.gov.au/support/partnerships)
 
-![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
+Discover the benefits of a partnership with MoAD.
 
-### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
+![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
 
-The APS Census reports reflect how staff feel about working at MoAD.
+### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
 
-### [Learn](https://moadoph.gov.au/learn)
+We are a living museum of Australian political and social history.
 
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+
+### [Contact us](https://moadoph.gov.au/about/contact)
+
+Do you have questions or feedback for us?
 
 ![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
 
