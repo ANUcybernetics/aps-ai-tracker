@@ -84,15 +84,23 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
+### [Careers](https://moadoph.gov.au/about/careers)
+
+Join our team and help us tell the story of Australian democracy.
+
+![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+
+### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+
+![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+
+### [Access to information](https://moadoph.gov.au/about/access-to-information)
+
+![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
+
 ### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
 
 The Board directs the objectives, strategies and policies followed by Old Parliament House.
-
-![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
-
-### [Media](https://moadoph.gov.au/about/media)
-
-Find our latest media releases, download publicity images and request interviews and film shoots.
 
 ![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
 
@@ -100,18 +108,8 @@ Find our latest media releases, download publicity images and request interviews
 
 Do you have questions or feedback for us?
 
-![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
 
-### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
 
-Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
-
-![Map](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2025-11/front-reception-desk-2025-branding.jpg.webp?h=533a6927&itok=xIyg1m-p)
-
-### [Map](https://moadoph.gov.au/visit/map)
-
-Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
-
-### [Learn](https://moadoph.gov.au/learn)
-
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+We are located inside Old Parliament House and you can get here by car, bus or bike.
