@@ -84,32 +84,34 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Careers](https://moadoph.gov.au/about/careers)
+### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
 
-Join our team and help us tell the story of Australian democracy.
+Find our strategic and corporate plans, policies and reporting.
 
-![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
 
-### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
 
-![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+We are a living museum of Australian political and social history.
 
-### [Access to information](https://moadoph.gov.au/about/access-to-information)
+### [Learn](https://moadoph.gov.au/learn)
 
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
+Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
 
-### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
+![Venue hire](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-04/MoAD-venue-hire-courtyard.jpg.webp?h=7282df9d&itok=hsWDZPcg)
 
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
+### [Venue hire](https://moadoph.gov.au/about/venue-hire)
 
-![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
+Plan your next event at Old Parliament House.
 
-### [Contact us](https://moadoph.gov.au/about/contact)
+![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
 
-Do you have questions or feedback for us?
+### [Media](https://moadoph.gov.au/about/media)
 
-![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
+Find our latest media releases, download publicity images and request interviews and film shoots.
 
-### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
+![Map](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2025-11/front-reception-desk-2025-branding.jpg.webp?h=533a6927&itok=xIyg1m-p)
 
-We are located inside Old Parliament House and you can get here by car, bus or bike.
+### [Map](https://moadoph.gov.au/visit/map)
+
+Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
