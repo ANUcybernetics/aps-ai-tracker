@@ -5,8 +5,6 @@ source_url: https://www.nhmrc.gov.au/about-us/accountability-and-reporting/artif
 title: Artificial Intelligence (AI) Transparency Statement | NHMRC
 ---
 
-28 February 2026
-
 The National Health and Medical Research Council (NHMRC) is dedicated to the adoption and responsible use of Artificial Intelligence (AI). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies) in relation to adopting emerging technologies.
 
 This Transparency Statement outlines our approach to AI use within the NHMRC, in accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible AI in government](https://www.digital.gov.au/ai/ai-in-government-policy/staff-training).
