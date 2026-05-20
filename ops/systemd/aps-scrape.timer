@@ -1,0 +1,12 @@
+[Unit]
+Description=Trigger APS scrape daily at 20:00 local
+Requires=aps-scrape.service
+
+[Timer]
+OnCalendar=20:00
+RandomizedDelaySec=30min
+Persistent=true
+Unit=aps-scrape.service
+
+[Install]
+WantedBy=timers.target
