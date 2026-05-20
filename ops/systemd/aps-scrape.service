@@ -1,0 +1,12 @@
+[Unit]
+Description=APS AI Transparency Tracker: scrape latest statements
+Documentation=file:///home/ben/projects/aps-ai-transparency-tracker/cron-scrape.sh
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/ben/projects/aps-ai-transparency-tracker
+Environment=PATH=/home/ben/.local/share/mise/shims:/home/ben/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/ben/projects/aps-ai-transparency-tracker/cron-scrape.sh
+TimeoutStartSec=2h
