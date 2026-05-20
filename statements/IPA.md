@@ -98,7 +98,7 @@ IP Australia provides this Employer Statement to provide context to its gender p
 
 The data that the WGEA collects relates to women and men. Due to the limited amount of data available, we are currently unable to provide comprehensive insights on gender representation beyond male and female categories.
 
-IP Australia welcomes a diverse workforce and is committed to inclusive practices for female, transgender, gender non-conforming and non-binary gender identities supported through the [Gender Action Plan 2025-27](https://www.ipaustralia.gov.au/-/media/Project/IPA/IPAustralia/PDF/Gender-Action-Plan-2025-27.pdf?rev=44ee236c30ac486a9930a1ceed0c3a54&hash=358791AC5B0A59EDC508217E1FA6106B).
+IP Australia welcomes a diverse workforce and is committed to inclusive practices for female, transgender, gender non-conforming and non-binary gender identities supported through the [Gender Action Plan 2025-27](https://www.ipaustralia.gov.au/-/media/Project/IPA/IPAustralia/PDF/Gender-Action-Plan-2025-27.pdf?rev=bef1d7df1a634d1fb44bc7bdd52ba80d&hash=019DDBD70901C5C486D75AC8E115913F).
 
 Download
 
@@ -114,7 +114,7 @@ Our activities throughout the year are also guided by the following frameworks:
 
 Our customer service charter outlines our commitment to our customers.
 
-[Our customer promise](https://www.ipaustralia.gov.au/about-us/our-customer-promise)
+[Our customer promise](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
 
 ##### Cost recovery implementation statement
 
@@ -126,7 +126,7 @@ Our cost recovery implementation statement shows how we cover some of the costs 
 
 The regulator performance framework aims to reduce unnecessary or inefficient regulation. We complete a self assessment against this framework each year.
 
-[ Regulator Performance Framework Report 2019-2020 PDF | 227KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/ip-australia-rpf-self-assessment-report-2019-20.pdf?rev=9c89958593164a149866196ea4946b44)
+[ Regulator Performance Framework Report 2019-2020 PDF | 227KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/ip-australia-rpf-self-assessment-report-2019-20.pdf?rev=a80fb5849a684b02b383833cef0deb2c)
 
 ##### Tenders and contracts
 
@@ -224,7 +224,7 @@ Our Director General decides how the PID scheme operates in our agency. Read det
 
 As per [section 13 of the Public Service Act 1999](http://classic.austlii.edu.au/au/legis/cth/consol_act/psa1999152/s13.html#:~:text=%281%29%20An%20APS%20employee%20must,in%20connection%20with%20APS%20employment.), everyone who works at IP Australia Is required to adhere to the APS (Australian public service) Code of Conduct. Suspected breaches will be dealt with as per our procedures for determining breaches of the Code of Conduct and for determining sanction.
 
-[ Procedures for determining breaches of code of conduct and for determining sanction PDF | 390KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Procedures_for_determining_breaches_of_code_of_conduct_and_for_determining_sanction.pdf?rev=bf4973a69c014c4b8a80dccb326ad89c)
+[ Procedures for determining breaches of code of conduct and for determining sanction PDF | 390KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Procedures_for_determining_breaches_of_code_of_conduct_and_for_determining_sanction.pdf?rev=42e18675965e4d69be7eb4f2ba70e319)
 
 ## Related content
 
@@ -234,11 +234,11 @@ You can request copies of information held by our agency at anytime. Here's how 
 
 [Read more](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/freedom-of-information)
 
-Our customer promise
+Customer service charter
 
-As part of our commitment to creating a world-leading IP system, customers are the core of everything we do. Our customer promise outlines this commitment.
+Our customer service charter outlines what our customers can expect when interacting with us and how we aim to provide high levels of service.
 
-[Read more](https://www.ipaustralia.gov.au/about-us/our-customer-promise)
+[Read more](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
 
 Gift register
 
