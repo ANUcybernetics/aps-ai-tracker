@@ -23,6 +23,20 @@ This is a Python web scraping project using uv for dependency management.
   - `scraper.py` has core functionality
   - `__main__.py` provides CLI entry point
 
+## Scheduled scrape
+
+`cron-scrape.sh` runs daily at 20:00 local from `aps-scrape.timer`, a
+systemd user unit on weddle. Canonical unit files live in `ops/systemd/`.
+Install with:
+
+```sh
+cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now aps-scrape.timer
+```
+
+Inspect runs with `journalctl --user -u aps-scrape.service -n 50`.
+
 ## Managing agency URLs
 
 - `agencies.toml` contains 110 Australian Government agencies
