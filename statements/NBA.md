@@ -93,4 +93,4 @@ We will update this transparency statement as the NBA continues to develop polic
 
 The Chief Information Officer is our AI Accountable Official for the NBA.
 
-For questions about this statement or the NBA’s use of AI, you can email [ai@blood.gov.au](mailto:ai@blood.gov.au) or see the details on the contact us page of the NBA website.
+For questions or concerns about this statement or the NBA’s use of AI, you can email [ai@blood.gov.au](mailto:ai@blood.gov.au) or see the details on the contact us page of the NBA website.
