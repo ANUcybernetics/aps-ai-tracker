@@ -234,6 +234,8 @@ You can request copies of information held by our agency at anytime. Here's how 
 
 [Read more](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/freedom-of-information)
 
+Corporate
+
 Customer service charter
 
 Our customer service charter outlines what our customers can expect when interacting with us and how we aim to provide high levels of service.
