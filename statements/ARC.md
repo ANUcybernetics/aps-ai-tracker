@@ -24,7 +24,7 @@ Use of generative artificial intelligence in ARC grant programs
 - provides guidance for applicants, administering organisations and assessors
 - takes effect from **28 April 2026**
 
-[Read the policy](https://www.arc.gov.au/publications/policy-use-generative-artificial-intelligence-arcs-grants-programs-2026)
+[Read the policy](https://www.arc.gov.au/news-and-publications/publications/policy-use-generative-artificial-intelligence-arcs-grants-programs-2026)
 
 To ensure the appropriate, responsible and ethical application of AI use within the agency, the ARC’s approach is to:
 
