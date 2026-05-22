@@ -84,34 +84,32 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
-
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
-
-![Map](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2025-11/front-reception-desk-2025-branding.jpg.webp?h=533a6927&itok=xIyg1m-p)
-
-### [Map](https://moadoph.gov.au/visit/map)
-
-Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
-
-![Venue hire](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2026-05/vh-banner.jpg.webp?h=35d1abc8&itok=2g_MnYG-)
-
-### [Venue hire](https://moadoph.gov.au/about/venue-hire)
-
-Plan your next event at Old Parliament House.
-
-![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
-
 ### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
 
-![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
+![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
 
-### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
+### [Partnerships](https://moadoph.gov.au/support/partnerships)
 
-We are located inside Old Parliament House and you can get here by car, bus or bike.
+Discover the benefits of a partnership with MoAD.
 
-![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
+![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
 
-### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
+### [Access to information](https://moadoph.gov.au/about/access-to-information)
 
-Find our strategic and corporate plans, policies and reporting.
+![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
+
+### [Media](https://moadoph.gov.au/about/media)
+
+Find our latest media releases, download publicity images and request interviews and film shoots.
+
+![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+
+### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+
+Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
+
+![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
+
+### [Collection and heritage](https://moadoph.gov.au/explore/collection/collection-and-heritage)
+
+We are a living museum of Australian political and social history.
