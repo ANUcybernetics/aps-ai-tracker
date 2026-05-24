@@ -84,17 +84,9 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+### [Careers](https://moadoph.gov.au/about/careers)
 
-![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
-
-### [Partnerships](https://moadoph.gov.au/support/partnerships)
-
-Discover the benefits of a partnership with MoAD.
-
-![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
-
-### [Access to information](https://moadoph.gov.au/about/access-to-information)
+Join our team and help us tell the story of Australian democracy.
 
 ![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
 
@@ -102,11 +94,21 @@ Discover the benefits of a partnership with MoAD.
 
 Find our latest media releases, download publicity images and request interviews and film shoots.
 
-![About Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Old-Parliament-House-1927-Mildenhall-9716d362.jpg.webp?h=fa47d53b&itok=JqoYggg9)
+![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
 
-### [About Old Parliament House](https://moadoph.gov.au/about/old-parliament-house)
+### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
 
-Old Parliament House was the home of Australia’s federal government from 1927 to 1988.
+Find our strategic and corporate plans, policies and reporting.
+
+![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
+
+### [Access to information](https://moadoph.gov.au/about/access-to-information)
+
+![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
+
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
+
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
 
 ![Collection and heritage](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-05/senate-chamber-tom-ferguson-collection-heritage.jpg.webp?h=b7d2572b&itok=2GWN_mMI)
 
