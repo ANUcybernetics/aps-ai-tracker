@@ -11,25 +11,18 @@ title: OAIC AI transparency statement | OAIC
 
 ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus-white.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus-white.svg)
 
-- [ OAIC annual reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
+- [ Accountability ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
-  - [ Annual report 2024-25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2024-25)
-  - [ Annual report 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202324)
-  - [ Annual report 2022-23 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2022-23)
-  - [ Annual report 2021–22 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202122)
-  - [ Annual report 2020–21 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202021)
-  - [ Annual report 2019–20 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-201920)
-  - [ Annual report 2018–19 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-201819)
+  - [ Advertising ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/advertising)
+  - [ Gifts and benefits register ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/gifts-and-benefits-register)
+  - [ Government contracts ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/government-contracts)
+  - [ Grants and appointments ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/grants-and-appointments)
+  - [ Indexed list of files ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/indexed-list-of-files)
+  - [ Legal services expenditure ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/legal-services-expenditure)
+  - [ Public interest disclosures ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/public-interest-disclosures)
+  - [ Reporting fraud and corruption at the OAIC ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/reporting-fraud-and-corruption-at-the-oaic)
 
-- [ Digital health annual reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
-
-  - [ Annual report of the Australian Information Commissioner’s activities in relation to digital health 2024–25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202425)
-  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202325)
-  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2022–23 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-into-the-australian-information-commissioners-activities-in-relation-to-digital-health-202223)
-  - [ Annual report into the Australian Information Commissioner's activities in relation to digital health 2021–22 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-into-the-australian-information-commissioners-activities-in-relation-to-digital-health-202122)
-  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2020–21 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202021)
-  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2019–20 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-201920)
-  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2018–19 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-201819)
+- [ Annual Statement of Compliance with the Commonwealth Child Safe Framework 2025 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/annual-statement-of-compliance-with-the-commonwealth-child-safe-framework)
 
 - [ Corporate plans ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
@@ -41,6 +34,50 @@ title: OAIC AI transparency statement | OAIC
   - [ Corporate plan 2020–21 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-202021)
   - [ Corporate plan 2019–20 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-201920)
   - [ Corporate plan 2018–19 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-201819)
+
+- [ Digital health annual reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
+
+  - [ Annual report of the Australian Information Commissioner’s activities in relation to digital health 2024–25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202425)
+  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202325)
+  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2022–23 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-into-the-australian-information-commissioners-activities-in-relation-to-digital-health-202223)
+  - [ Annual report into the Australian Information Commissioner's activities in relation to digital health 2021–22 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-into-the-australian-information-commissioners-activities-in-relation-to-digital-health-202122)
+  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2020–21 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-202021)
+  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2019–20 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-201920)
+  - [ Annual report of the Australian Information Commissioner's activities in relation to digital health 2018–19 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/digital-health-annual-reports/annual-report-of-the-australian-information-commissioners-activities-in-relation-to-digital-health-201819)
+
+- [ Memorandums of understanding ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
+
+  - [ Current memorandums of understanding ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/current-memorandums-of-understanding)
+  - [ Memorandum of understanding reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/memorandum-of-understanding-reports)
+  - [ Other agreements ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/other-agreements)
+
+- [ OAIC annual reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
+
+  - [ Annual report 2024-25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2024-25)
+  - [ Annual report 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202324)
+  - [ Annual report 2022-23 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2022-23)
+  - [ Annual report 2021–22 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202122)
+  - [ Annual report 2020–21 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202021)
+  - [ Annual report 2019–20 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-201920)
+  - [ Annual report 2018–19 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-201819)
+
+- [ OAIC AI transparency statement ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement)
+
+- [ Operational information ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
+
+  - [ Accountable authority instructions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/accountable-authority-instructions)
+  - [ Appointment and authorisation instrument: Chief Security Officer, Chief Information and Security Officer and Security Practitioner ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-security-officerchief-risk-officer)
+  - [ Budget ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/budget)
+  - [ Delegation of freedom of information powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-freedom-of-information-powers-and-functions)
+  - [ Delegation of privacy powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-privacy-powers-and-functions)
+  - [ Employee census results ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/employee-census-results)
+  - [ OAIC Audit Committee ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-audit-committee)
+  - [ OAIC Enterprise Agreement 2024-2027 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-enterprise-agreement-2024-2027)
+  - [ OAIC Privacy Champion, Chief Privacy Officer and Privacy Officer roles ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-privacy-champion,-chief-privacy-officer-and-privacy-officer-roles)
+  - [ Regulator expectations and intent ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/regulator-expectations-and-intent)
+  - [ OAIC Freedom of Information Officers ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-freedom-of-information-officers)
+  - [ Appointment and authorisation instrument: Chief Risk Officer ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-risk-officer)
+  - [ Delegation of human resources powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-human-resources-powers-and-functions)
 
 - [ Plans, policies and procedures ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
@@ -63,43 +100,6 @@ title: OAIC AI transparency statement | OAIC
   - [ Procurement judicial review policy ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/procurement-judicial-review-policy)
   - [ Privacy management plan ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/privacy-management-plan)
   - [ Communicating with the OAIC for members of the public ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/policy-on-communicating-with-the-oaic-for-members-of-the-public)
-
-- [ Operational information ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
-
-  - [ Accountable authority instructions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/accountable-authority-instructions)
-  - [ Appointment and authorisation instrument: Chief Security Officer, Chief Information and Security Officer and Security Practitioner ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-security-officerchief-risk-officer)
-  - [ Budget ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/budget)
-  - [ Delegation of freedom of information powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-freedom-of-information-powers-and-functions)
-  - [ Delegation of privacy powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-privacy-powers-and-functions)
-  - [ Employee census results ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/employee-census-results)
-  - [ OAIC Audit Committee ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-audit-committee)
-  - [ OAIC Enterprise Agreement 2024-2027 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-enterprise-agreement-2024-2027)
-  - [ OAIC Privacy Champion, Chief Privacy Officer and Privacy Officer roles ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-privacy-champion,-chief-privacy-officer-and-privacy-officer-roles)
-  - [ Regulator expectations and intent ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/regulator-expectations-and-intent)
-  - [ OAIC Freedom of Information Officers ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-freedom-of-information-officers)
-  - [ Appointment and authorisation instrument: Chief Risk Officer ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/appointment-and-authorisation-instrument-chief-risk-officer)
-  - [ Delegation of human resources powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-human-resources-powers-and-functions)
-
-- [ Accountability ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
-
-  - [ Advertising ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/advertising)
-  - [ Gifts and benefits register ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/gifts-and-benefits-register)
-  - [ Government contracts ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/government-contracts)
-  - [ Grants and appointments ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/grants-and-appointments)
-  - [ Indexed list of files ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/indexed-list-of-files)
-  - [ Legal services expenditure ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/legal-services-expenditure)
-  - [ Public interest disclosures ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/public-interest-disclosures)
-  - [ Reporting fraud and corruption at the OAIC ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/accountability/reporting-fraud-and-corruption-at-the-oaic)
-
-- [ Memorandums of understanding ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
-
-  - [ Current memorandums of understanding ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/current-memorandums-of-understanding)
-  - [ Memorandum of understanding reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/memorandum-of-understanding-reports)
-  - [ Other agreements ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/memorandums-of-understanding/other-agreements)
-
-- [ Annual Statement of Compliance with the Commonwealth Child Safe Framework 2025 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/annual-statement-of-compliance-with-the-commonwealth-child-safe-framework)
-
-- [ OAIC AI transparency statement ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement)
 
 - ## On this page
 

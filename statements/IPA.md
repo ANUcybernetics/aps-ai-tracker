@@ -114,7 +114,7 @@ Our activities throughout the year are also guided by the following frameworks:
 
 Our customer service charter outlines our commitment to our customers.
 
-[Our customer promise](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
+[Customer service charter](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
 
 ##### Cost recovery implementation statement
 

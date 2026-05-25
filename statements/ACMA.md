@@ -9,7 +9,7 @@ title: Planning and priorities | ACMA
 
 We set strategic plans and priorities to guide our work and the benefits we aim to deliver.
 
-On this page
+## On this page
 
 ## Corporate plan
 
@@ -27,7 +27,11 @@ Our _Data strategy 2024–25_ sets out a 12-month plan to enhance digital, data 
 
 Data and analytics are critical tools and capabilities that position us for the future. As recognised in our [2024–25 corporate plan](https://www.acma.gov.au/publications/2024-08/plan/corporate-plan-2024-25 "Corporate plan 2024–25"), data and analytics support our evidence-based regulatory analysis and actions, and give greater insight into, and understanding of, Australia’s communications and media sectors. This 2024 _–_ 25 strategy will be updated with a 4-year strategy and governance framework in 2025 _–_ 26.
 
-[ ![](https://www.acma.gov.au/themes/custom/acmatheme/images/icons/mime/application-pdf.png) 572.52 KB Data strategy 2024–25 ](https://www.acma.gov.au/sites/default/files/2025-03/Data%20strategy%202025.pdf)
+pdf
+
+572.52 KB
+
+[ Data strategy 2024–25 [pdf, 572.52 KB] ](https://www.acma.gov.au/sites/default/files/2025-03/Data%20strategy%202025.pdf)
 
 ## Statement of intent
 
@@ -85,4 +89,4 @@ The Chief Information and Digital Officer is designated as the accountable offic
 
 This AI transparency statement was last reviewed in February 2026. This statement will be reviewed at least annually, or at any time where a significant change is made to our or the Government’s approach to AI.
 
-[ Next up: Compliance and enforcement priorities 2025–26 ](https://www.acma.gov.au/compliance-priorities)
+[ Next up: Compliance and enforcement priorities 2025–26 chevron_right ](https://www.acma.gov.au/compliance-priorities)
