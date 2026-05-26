@@ -49,7 +49,7 @@ AI is used to improve productivity of staff by:
 
 ### Staff training
 
-All AIC staff are required to complete the Australian Public Service Academy’s _AI in Government Fundamentals_ course by 31 May 2025.
+All AIC staff are required to complete the Australian Public Service Academy’s _AI in Government Fundamentals_ course by 30 June 2026.
 
 ### Public interaction and impact
 
