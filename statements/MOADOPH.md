@@ -88,30 +88,28 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 The Board directs the objectives, strategies and policies followed by Old Parliament House.
 
+![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
+
+### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
+
 ![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
 
 ### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
 
 The APS Census reports reflect how staff feel about working at MoAD.
 
-![Reports, policies and plans](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Statement-Jack-Green%27s-paintings-exhibition-MoAD-policies-and-plans.jpg.webp?h=148e76d6&itok=XaMpGeip)
-
-### [Reports, policies and plans](https://moadoph.gov.au/about/reports-policies-and-plans)
-
-Find our strategic and corporate plans, policies and reporting.
-
 ![Access to information](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Senate-Chamber-Old-Parliament-House-curtins.jpg.webp?h=a1873a58&itok=M_MkON-7)
 
 ### [Access to information](https://moadoph.gov.au/about/access-to-information)
 
-![Map](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2025-11/front-reception-desk-2025-branding.jpg.webp?h=533a6927&itok=xIyg1m-p)
+![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
 
-### [Map](https://moadoph.gov.au/visit/map)
+### [Volunteer](https://moadoph.gov.au/support/volunteer)
 
-Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
+Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
 
-![Getting here and parking](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/getting-here-and-parking-banner.png.webp?h=40144d9c&itok=exOuJbMy)
+![Careers](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
 
-### [Getting here and parking](https://moadoph.gov.au/visit/getting-here-and-parking)
+### [Careers](https://moadoph.gov.au/about/careers)
 
-We are located inside Old Parliament House and you can get here by car, bus or bike.
+Join our team and help us tell the story of Australian democracy.
