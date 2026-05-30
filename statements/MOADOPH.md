@@ -84,33 +84,31 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
 
-### [Learn](https://moadoph.gov.au/learn)
+### [Map](https://moadoph.gov.au/visit/map)
 
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
+Use this page to find the locations of exhibitions, heritage spaces, the cafe and visitor facilities.
 
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
+![Partnerships](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/MoAD-Changemakers-exhibition-launch-Quentin-Bryce-pewpewstudio_0.jpg.webp?h=f9353e1e&itok=zBXy77RF)
 
-### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
+### [Partnerships](https://moadoph.gov.au/support/partnerships)
 
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
+Discover the benefits of a partnership with MoAD.
 
-![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
+![Conditions of entry](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-10/moad-front-steps-and-entry.jpg.webp?h=74f1a18f&itok=uWRvqIpp)
 
-### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
-
-The APS Census reports reflect how staff feel about working at MoAD.
-
-![Careers](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-### [Careers](https://moadoph.gov.au/about/careers)
-
-Join our team and help us tell the story of Australian democracy.
+### [Conditions of entry](https://moadoph.gov.au/about/conditions-of-entry)
 
 ![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
 
 ### [Contact us](https://moadoph.gov.au/about/contact)
 
 Do you have questions or feedback for us?
+
+![Media](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2024-02/highres-231129-moad-btl-295687.jpg.webp?h=2bc16611&itok=BW-8H-5Z)
+
+### [Media](https://moadoph.gov.au/about/media)
+
+Find our latest media releases, download publicity images and request interviews and film shoots.
 
 ![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
 
