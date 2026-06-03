@@ -27,9 +27,9 @@ Our _Data strategy 2024–25_ sets out a 12-month plan to enhance digital, data 
 
 Data and analytics are critical tools and capabilities that position us for the future. As recognised in our [2024–25 corporate plan](https://www.acma.gov.au/publications/2024-08/plan/corporate-plan-2024-25 "Corporate plan 2024–25"), data and analytics support our evidence-based regulatory analysis and actions, and give greater insight into, and understanding of, Australia’s communications and media sectors. This 2024 _–_ 25 strategy will be updated with a 4-year strategy and governance framework in 2025 _–_ 26.
 
-pdf
+download
 
-572.52 KB
+pdf
 
 [ Data strategy 2024–25 [pdf, 572.52 KB] ](https://www.acma.gov.au/sites/default/files/2025-03/Data%20strategy%202025.pdf)
 
