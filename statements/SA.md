@@ -28,7 +28,7 @@ Screen Australia’s internal policy also states the terms upon which contractor
 
 AI tools used by Screen Australia staff includes enterprise AI deployed in our closed internal ICT environment, including Microsoft 365 Copilot, as well as publicly available browser-based or app-based AI such as ChatGPT and Claude. Screen Australia follows the direction of Government on the use of specific AI platforms. For example, following the directive from Government, Screen Australia staff cannot access or use DeepSeek on agency devices or personal devices that contain a work profile.
 
-The public do not have direct interaction with any Screen Australia systems that utilise AI technologies and will not by impacted by our use of AI. The tasks completed by Screen Australia staff using AI falls into several domains and usage patterns as outlined by the DTA’s [_Classification system for AI use._](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) These are:
+The public do not have direct interaction with any Screen Australia systems that utilise AI technologies and will not by impacted by our use of AI. The tasks completed by Screen Australia staff using AI falls into several domains and usage patterns as outlined by the DTA’s [_Classification system for AI use._ (PDF)](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) These are:
 
 - The domains of ‘service delivery’ and ‘corporate and enabling’; and
 - The usage patterns ‘workplace productivity’ and ‘analytics for insights’.
