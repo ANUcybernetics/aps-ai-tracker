@@ -32,6 +32,12 @@ dev = [
     "pytest-xdist>=3.6.1",
     "ruff>=0.14.4",
 ]
+# Heavier deps only the `export` command needs; kept out of the default install
+# so the scraper stays lean. Run with `uv run --group export export`.
+export = [
+    "numpy>=2.0",
+    "openai>=1.0",
+]
 
 [tool.pytest.ini_options]
 addopts = "-n auto -m 'not might_fail'"
