@@ -1,35 +1,55 @@
 ---
 abbr: OIGAC
 agency: Office of the Inspector-General of Aged Care
-source_url: https://www.igac.gov.au/resources/artificial-intelligence-ai-transparency-statement
+source_url: https://www.igac.gov.au/about-us/our-governance/artificial-intelligence-ai-transparency-statement
 title: Artificial intelligence (AI) transparency statement | Inspector-General of
   Aged Care
 ---
 
-Scroll down to access downloads and media.
+## Our approach to using AI
 
-## Downloads
+The Office of the Inspector-General of Aged Care (OIGAC) follows the Australian Government’s [policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
-### Artificial intelligence transparency statement
+We take a cautious and proportionate approach to the use of artificial intelligence (AI). AI is used only to support low-risk, internal activities and does not replace human judgement.
 
-[ Download [Publication] Artificial intelligence (AI) transparency statement (PDF) as PDF - 218 KB - 2 pages ](https://www.igac.gov.au/sites/default/files/2025-02/artificial-intelligence-ai-transparency-statement.pdf)
+## Why we use AI
 
-[ Download [Publication] Artificial intelligence (AI) transparency statement (Word) as Word - 214 KB - 2 pages ](https://www.igac.gov.au/sites/default/files/2025-02/artificial-intelligence-ai-transparency-statement.docx)
+Where appropriate, we may use AI to support internal workplace productivity and administrative efficiency. AI is not used to make decisions, exercise powers, or determine outcomes.
 
-Publication type:
+## How we currently use AI
 
-Notice
+Our current use of AI is limited and internal.
 
-Publication date:
+We use AI to support internal administrative activities, such as transcribing voicemail submissions. Original audio recordings are retained, and transcripts are reviewed by staff for accuracy before use.
 
-28 February 2025
+We are also beginning to use AI to assist some staff with background research activities supporting the development of projects outlined in our [Annual Work Plan](https://www.igac.gov.au/what-we-do/annual-work-plans "Annual work plans"). This use is limited to identifying and summarising publicly available information and internal materials to support early research and scoping. AI does not determine project selection, priorities, or outcomes. All planning and decision‑making remains the responsibility of our staff.
 
-Language:
+Our use of AI is confined to assistive, internal productivity purposes within corporate and enabling services. There is no direct public interaction with AI, and AI outputs are not relied on without human review and oversight
 
-English
+Our AI use is classified under the DTA's AI taxonomy as workplace productivity, within the corporate and enabling services domain.
+
+## Human oversight and safeguards
+
+All AI outputs we use are subject to human review. We do not use automated decision‑making or recommendation systems.
+
+## Monitoring and risk management
+
+Given the limited and low‑risk nature of AI use, we monitor AI through existing executive oversight and information and communication technology (ICT) controls. This statement is reviewed and updated annually, or when our AI use changes materially.
+
+## Compliance with policy and law
+
+Our use of AI complies with the [policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) and applicable Commonwealth legislation, including privacy and information security requirements.
+
+Our ICT services are provided through the Department of Health, Disability and Ageing, and our AI use operates within that environment and its policies.
+
+## Governance and accountability
+
+The Inspector‑General of Aged Care is our Accountable Official for AI.
+
+Last updated:
+
+1 May 2026
 
 Tags:
 
 - About us
-- What we do
-- IGAC activity
