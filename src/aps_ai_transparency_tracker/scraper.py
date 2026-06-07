@@ -4,6 +4,7 @@ import asyncio
 import hashlib
 import json
 import logging
+import random
 import re
 import tomllib
 from dataclasses import dataclass
@@ -28,6 +29,33 @@ CONTENT_SHRINKAGE_THRESHOLD = 0.5
 
 AI_KEYWORD_RE = re.compile(r"(?i)\bAI\b|artificial intelligence")
 AI_KEYWORD_MIN_COUNT = 2
+
+# Government-site WAFs (Cloudflare, CloudFront) block unrecognised User-Agents
+# and challenge bursts of bot-like traffic. A realistic browser identity plus
+# gentle, jittered concurrency keeps the daily scrape under the bot radar: the
+# old "AU-Gov-AI-Transparency-Tracker/1.0" UA was returning 403 outright (e.g.
+# MDBA), and firing every request at once tripped per-IP rate limiters, which is
+# what produced the rotating 403s in the scrape logs.
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "application/pdf,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "en-AU,en;q=0.9",
+}
+
+# Keep concurrent fetches low so the run doesn't look like a burst to per-IP
+# limiters (a shared Cloudflare reputation spans many of these gov domains).
+MAX_CONCURRENT_FETCHES = 3
+
+# Statuses worth retrying: rate-limiting and transient WAF blocks (403, 429)
+# plus 5xx. 403 is included because gov WAFs return it for burst throttling, not
+# only genuine "forbidden"; 401/404/410 are never retried.
+RETRYABLE_STATUS_CODES = frozenset({403, 408, 425, 429, 500, 502, 503, 504})
 
 
 @dataclass(frozen=True, slots=True)
@@ -234,12 +262,27 @@ def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> st
     return str(soup)
 
 
+def _retry_after_seconds(response: httpx.Response) -> float | None:
+    """Server's Retry-After hint in seconds (capped), if given as an integer."""
+    value = response.headers.get("retry-after", "")
+    return min(float(value), 30.0) if value.isdigit() else None
+
+
+def _backoff_delay(attempt: int, retry_after: float | None) -> float:
+    """Exponential backoff with jitter, honouring a server Retry-After hint."""
+    if retry_after is not None:
+        return retry_after + random.uniform(0, 1.0)
+    return 2.0**attempt + random.uniform(0, 1.5)
+
+
 async def fetch_raw_async(
-    agency: Agency, client: httpx.AsyncClient, max_retries: int = 3
+    agency: Agency, client: httpx.AsyncClient, max_retries: int = 4
 ) -> RawFetchResult:
     """Fetch raw content (HTML or PDF) without processing.
 
-    Retries on timeout errors with exponential backoff.
+    Retries on timeouts, connection errors, and transient HTTP statuses
+    (rate-limiting and WAF blocks in RETRYABLE_STATUS_CODES) with exponential
+    backoff and jitter, honouring a server Retry-After hint when present.
     """
     if agency.url is None:
         return {
@@ -250,13 +293,18 @@ async def fetch_raw_async(
             "error": "No URL provided",
         }
 
+    # Spread request start times so the run doesn't hit WAFs as one burst.
+    await asyncio.sleep(random.uniform(0, 1.5))
+
     last_error: Exception | None = None
+    retry_after: float | None = None
 
     for attempt in range(max_retries):
         if attempt > 0:
-            delay = 2**attempt
+            delay = _backoff_delay(attempt, retry_after)
+            retry_after = None
             logger.info(
-                f"Retry {attempt}/{max_retries - 1} for {agency.name} after {delay}s..."
+                f"Retry {attempt}/{max_retries - 1} for {agency.name} after {delay:.1f}s..."
             )
             await asyncio.sleep(delay)
 
@@ -278,11 +326,20 @@ async def fetch_raw_async(
             }
 
         except httpx.HTTPStatusError as e:
+            last_error = e
+            status = e.response.status_code
+            if status in RETRYABLE_STATUS_CODES and attempt < max_retries - 1:
+                retry_after = _retry_after_seconds(e.response)
+                logger.warning(
+                    f"HTTP {status} fetching {agency.name} "
+                    f"(attempt {attempt + 1}/{max_retries}); will retry"
+                )
+                continue
             logger.error(f"HTTP error fetching {agency.name}: {e}")
             return {
                 "content": None,
                 "content_type": None,
-                "status_code": e.response.status_code,
+                "status_code": status,
                 "final_url": agency.url,
                 "error": str(e),
             }
@@ -303,13 +360,21 @@ async def fetch_raw_async(
                 "error": f"{type(e).__name__}: {e}",
             }
 
+    # Retries exhausted on the final attempt (a timeout/connect error, since
+    # retryable statuses on the last attempt return directly above).
+    status_code = (
+        last_error.response.status_code
+        if isinstance(last_error, httpx.HTTPStatusError)
+        else None
+    )
     logger.error(
-        f"Failed to fetch {agency.name} after {max_retries} attempts: {type(last_error).__name__}"
+        f"Failed to fetch {agency.name} after {max_retries} attempts: "
+        f"{type(last_error).__name__}"
     )
     return {
         "content": None,
         "content_type": None,
-        "status_code": None,
+        "status_code": status_code,
         "final_url": agency.url,
         "error": f"{type(last_error).__name__}: {last_error}"
         if last_error
@@ -510,8 +575,11 @@ async def fetch_all_raw(
 ) -> list[tuple[Agency, RawFetchResult]]:
     """Fetch all raw content with limited concurrency."""
     async with httpx.AsyncClient(
-        headers={"User-Agent": "AU-Gov-AI-Transparency-Tracker/1.0"},
-        limits=httpx.Limits(max_connections=5, max_keepalive_connections=5),
+        headers=BROWSER_HEADERS,
+        limits=httpx.Limits(
+            max_connections=MAX_CONCURRENT_FETCHES,
+            max_keepalive_connections=MAX_CONCURRENT_FETCHES,
+        ),
     ) as client:
         agencies_with_urls = [a for a in agencies if a.url is not None]
 
