@@ -1,0 +1,64 @@
+/* Design tokens. Colours are defined as raw light/dark pairs, then composed with
+   light-dark() so native UI (scrollbars, form controls) adapts automatically via
+   color-scheme. Custom-minimal: a system font stack, one confident accent, a
+   sequential heat scale for the passage-reuse map. */
+
+:root {
+  color-scheme: light dark;
+
+  /* type */
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  /* spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-12: 5rem;
+
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --measure: 68ch;
+  --page-max: 72rem;
+
+  /* surfaces + text */
+  --bg: light-dark(oklch(99% 0.004 250), oklch(17% 0.012 255));
+  --surface: light-dark(oklch(97.5% 0.005 250), oklch(21% 0.014 255));
+  --surface-2: light-dark(oklch(95% 0.007 250), oklch(25% 0.016 255));
+  --text: light-dark(oklch(26% 0.02 260), oklch(93% 0.012 250));
+  --muted: light-dark(oklch(48% 0.02 260), oklch(68% 0.016 250));
+  --border: light-dark(oklch(90% 0.01 260), oklch(32% 0.016 255));
+
+  /* accent (confident blue) */
+  --accent: light-dark(oklch(50% 0.15 245), oklch(76% 0.12 240));
+  --accent-strong: light-dark(oklch(44% 0.17 245), oklch(82% 0.13 240));
+  --accent-contrast: light-dark(oklch(99% 0 0), oklch(17% 0.02 255));
+  --accent-wash: light-dark(oklch(95% 0.03 245), oklch(28% 0.05 245));
+
+  /* status hues */
+  --ok: light-dark(oklch(52% 0.13 150), oklch(78% 0.13 150));
+  --warn: light-dark(oklch(60% 0.14 70), oklch(80% 0.13 75));
+  --off: var(--muted);
+
+  /* diff */
+  --ins-bg: light-dark(oklch(92% 0.09 150), oklch(38% 0.09 150));
+  --ins-text: light-dark(oklch(35% 0.12 150), oklch(92% 0.08 150));
+  --del-bg: light-dark(oklch(92% 0.08 25), oklch(38% 0.1 25));
+  --del-text: light-dark(oklch(42% 0.15 25), oklch(90% 0.08 25));
+
+  /* passage reuse heat: unique -> ubiquitous */
+  --heat-0: light-dark(oklch(96% 0.006 250), oklch(26% 0.014 255));
+  --heat-1: light-dark(oklch(92% 0.05 245), oklch(32% 0.06 250));
+  --heat-2: light-dark(oklch(86% 0.09 240), oklch(40% 0.09 248));
+  --heat-3: light-dark(oklch(80% 0.12 235), oklch(50% 0.12 245));
+  --heat-4: light-dark(oklch(72% 0.15 30), oklch(60% 0.15 35));
+
+  --shadow:
+    0 1px 2px light-dark(oklch(0% 0 0 / 6%), oklch(0% 0 0 / 30%)),
+    0 4px 16px light-dark(oklch(0% 0 0 / 4%), oklch(0% 0 0 / 24%));
+}

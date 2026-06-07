@@ -1,0 +1,37 @@
+---
+import { withBase } from "@/lib/paths";
+
+const links = [
+  { href: withBase("/"), label: "Overview", exact: true },
+  { href: withBase("/timeline"), label: "Timeline", exact: false },
+  { href: withBase("/agencies"), label: "Agencies", exact: false },
+  { href: withBase("/similarity"), label: "Similarity", exact: false },
+  { href: withBase("/propagation"), label: "Propagation", exact: false },
+  { href: withBase("/about"), label: "About", exact: false },
+];
+
+const here = Astro.url.pathname.replace(/\/$/, "");
+
+function isCurrent(href: string, exact: boolean): boolean {
+  const h = href.replace(/\/$/, "");
+  return exact ? here === h : here === h || here.startsWith(`${h}/`);
+}
+---
+
+<header class="site-header">
+  <div class="page site-header__inner">
+    <a class="brand" href={withBase("/")}>AI Transparency <span>Tracker</span></a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isCurrent(link.href, link.exact) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
