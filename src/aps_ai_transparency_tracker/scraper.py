@@ -518,9 +518,7 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
         new_raw_hash = hashlib.sha256(new_body.encode("utf-8")).hexdigest()
         existing = extract_frontmatter(filepath) or {}
         if existing.get("raw_hash") == new_raw_hash:
-            logger.info(
-                f"Skipping {agency.abbr}: PDF unchanged (raw_hash match)"
-            )
+            logger.info(f"Skipping {agency.abbr}: PDF unchanged (raw_hash match)")
             return True
     else:
         new_body = format_markdown(data["markdown"])
