@@ -39,6 +39,14 @@ function item(p: PassageRow): Item {
   return { html: inline(p.rawText), heat: heat(p), tip: tip(p) };
 }
 
+// Demote statement headings to sit under the page <h1>, normalising so the
+// shallowest heading becomes <h2> — avoids an h1 → h3 jump when a scraped
+// statement starts at "##".
+const headingDepths = passages
+  .filter((p) => p.kind === "heading")
+  .map((p) => /^(#{1,6})/.exec(p.rawText)?.[1].length ?? 1);
+const headingOffset = headingDepths.length ? 2 - Math.min(...headingDepths) : 1;
+
 const blocks: Block[] = [];
 let i = 0;
 while (i < passages.length) {
@@ -52,7 +60,8 @@ while (i < passages.length) {
     blocks.push({ kind: "list", items });
   } else if (p.kind === "heading") {
     const hashes = /^(#{1,6})/.exec(p.rawText);
-    const level = Math.min((hashes ? hashes[1].length : 1) + 1, 6);
+    const raw = hashes ? hashes[1].length : 1;
+    const level = Math.min(Math.max(raw + headingOffset, 2), 6);
     blocks.push({ kind: "heading", level, html: inline(p.rawText), heat: heat(p), tip: tip(p) });
     i++;
   } else {
@@ -69,16 +78,29 @@ while (i < passages.length) {
         return (
           <ul>
             {b.items.map((it) => (
-              <li class="heat" data-heat={it.heat} title={it.tip} set:html={it.html} />
+              <li class="heat" data-heat={it.heat} title={it.tip}>
+                <span set:html={it.html} />
+                {it.heat >= 1 && <span class="visually-hidden"> ({it.tip})</span>}
+              </li>
             ))}
           </ul>
         );
       }
       if (b.kind === "heading") {
         const Tag = `h${b.level}` as "h2";
-        return <Tag class="heat" data-heat={b.heat} title={b.tip} set:html={b.html} />;
+        return (
+          <Tag class="heat" data-heat={b.heat} title={b.tip}>
+            <span set:html={b.html} />
+            {b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>}
+          </Tag>
+        );
       }
-      return <p class="heat" data-heat={b.heat} title={b.tip} set:html={b.html} />;
+      return (
+        <p class="heat" data-heat={b.heat} title={b.tip}>
+          <span set:html={b.html} />
+          {b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>}
+        </p>
+      );
     })
   }
 </div>

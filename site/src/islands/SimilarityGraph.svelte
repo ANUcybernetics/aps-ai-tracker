@@ -98,6 +98,18 @@
 
     node.append("title").text((d) => `${d.abbr} — ${Math.round(d.originality * 100)}% bespoke`);
 
+    const reduceMotion =
+      typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function ticked(): void {
+      link
+        .attr("x1", (d) => (d.source as GNode).x!)
+        .attr("y1", (d) => (d.source as GNode).y!)
+        .attr("x2", (d) => (d.target as GNode).x!)
+        .attr("y2", (d) => (d.target as GNode).y!);
+      node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    }
+
     const sim = forceSimulation(nodes)
       .force(
         "link",
@@ -108,28 +120,35 @@
       .force("charge", forceManyBody().strength(-130))
       .force("center", forceCenter(width / 2, height / 2))
       .force("collide", forceCollide(16))
-      .on("tick", () => {
-        link
-          .attr("x1", (d) => (d.source as GNode).x!)
-          .attr("y1", (d) => (d.source as GNode).y!)
-          .attr("x2", (d) => (d.target as GNode).x!)
-          .attr("y2", (d) => (d.target as GNode).y!);
-        node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-      });
+      .on("tick", ticked);
+
+    // Reduced motion: settle the layout synchronously and paint once, so nodes
+    // don't animate into place. Dragging still works (below), just without the
+    // springy reflow of the rest of the graph.
+    if (reduceMotion) {
+      sim.stop();
+      for (let i = 0; i < 300; i++) sim.tick();
+      ticked();
+    }
 
     node.call(
       drag<SVGGElement, GNode>()
         .on("start", (event, d) => {
-          if (!event.active) sim.alphaTarget(0.3).restart();
+          if (!reduceMotion && !event.active) sim.alphaTarget(0.3).restart();
           d.fx = d.x;
           d.fy = d.y;
         })
         .on("drag", (event, d) => {
           d.fx = event.x;
           d.fy = event.y;
+          if (reduceMotion) {
+            d.x = event.x;
+            d.y = event.y;
+            ticked();
+          }
         })
         .on("end", (event, d) => {
-          if (!event.active) sim.alphaTarget(0);
+          if (!reduceMotion && !event.active) sim.alphaTarget(0);
           d.fx = null;
           d.fy = null;
         }),

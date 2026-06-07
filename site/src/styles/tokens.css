@@ -42,7 +42,7 @@
 
   /* status hues */
   --ok: light-dark(oklch(52% 0.13 150), oklch(78% 0.13 150));
-  --warn: light-dark(oklch(60% 0.14 70), oklch(80% 0.13 75));
+  --warn: light-dark(oklch(49% 0.14 66), oklch(80% 0.13 75));
   --off: var(--muted);
 
   /* diff */

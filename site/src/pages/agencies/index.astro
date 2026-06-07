@@ -30,6 +30,7 @@ const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
         <span class="muted">{published.length}</span>
       </div>
       <table class="agencies">
+        <caption class="visually-hidden">Agencies with a published AI transparency statement</caption>
         <thead>
           <tr>
             <th scope="col">Agency</th>
