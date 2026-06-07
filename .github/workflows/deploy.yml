@@ -8,6 +8,19 @@ name: Build and deploy site
 on:
   push:
     branches: [main]
+    # Skip rebuilds for pushes that can't change the built site. Everything else
+    # — statements/, agencies.toml, the embeddings cache, the exporter, site/ —
+    # still triggers a deploy. (paths-ignore skips only when EVERY changed file
+    # matches, so a mixed commit still builds.) workflow_dispatch always runs.
+    paths-ignore:
+      - "README.md"
+      - "CLAUDE.md"
+      - "LICENSE"
+      - ".gitignore"
+      - "cron-scrape.sh"
+      - "ops/**"
+      - "backlog/**"
+      - "test_*.py"
   workflow_dispatch:
 
 permissions:
