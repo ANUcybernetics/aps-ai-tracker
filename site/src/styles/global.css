@@ -340,3 +340,12 @@ main {
     scroll-behavior: auto !important;
   }
 }
+
+/* Cross-document view transitions: a subtle cross-fade between pages. Progressive
+   — browsers without support just navigate instantly — and gated on no-preference
+   so reduced-motion users get instant navigation. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
