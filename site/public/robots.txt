@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anucybernetics.github.io/aps-ai-transparency-tracker/sitemap-index.xml
