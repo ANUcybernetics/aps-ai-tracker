@@ -1,0 +1,107 @@
+---
+import Layout from "@/components/Layout.astro";
+import SimilarityGraph from "@/islands/SimilarityGraph.svelte";
+import { similarity, agencies } from "@/lib/load";
+import { statementPath } from "@/lib/paths";
+
+const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
+const rows = similarity.abbrs.map((abbr) => ({
+  abbr,
+  name: nameByAbbr.get(abbr) ?? abbr,
+  neighbours: similarity.neighbours[abbr] ?? [],
+}));
+---
+
+<Layout
+  title="Similarity"
+  description="A map of which Australian Government AI transparency statements read alike, from sentence-embedding distances."
+>
+  <div class="page stack">
+    <header class="stack">
+      <h1>Similarity map</h1>
+      <p class="lede">
+        Every statement is embedded with OpenAI and placed so that statements
+        reading alike sit closer together. Drag a node to explore; scroll to zoom.
+        Colour runs from <strong>templated</strong> (red) to <strong>bespoke</strong>
+        (blue).
+      </p>
+    </header>
+
+    <SimilarityGraph client:visible />
+
+    <details class="sim-table">
+      <summary>Nearest matches as a table</summary>
+      {
+        rows.length === 0 ? (
+          <p class="muted">Not computed yet.</p>
+        ) : (
+          <table class="sim">
+            <thead>
+              <tr>
+                <th scope="col">Statement</th>
+                <th scope="col">Reads most like</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <th scope="row">
+                    <a href={statementPath(r.abbr)}>{r.name}</a>
+                  </th>
+                  <td>
+                    {r.neighbours.slice(0, 5).map((n, i) => (
+                      <>
+                        {i > 0 && ", "}
+                        <a href={statementPath(n.abbr)}>{n.abbr}</a>
+                      </>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )
+      }
+    </details>
+  </div>
+</Layout>
+
+<style>
+  .sim-table {
+    margin-block-start: var(--space-2);
+  }
+
+  .sim-table summary {
+    cursor: pointer;
+    color: var(--muted);
+  }
+
+  .sim {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-start: var(--space-4);
+    font-size: 0.9rem;
+  }
+
+  .sim th[scope="col"] {
+    text-align: start;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sim th[scope="row"] {
+    text-align: start;
+    font-weight: 550;
+  }
+
+  .sim td,
+  .sim th[scope="row"] {
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: baseline;
+  }
+</style>
