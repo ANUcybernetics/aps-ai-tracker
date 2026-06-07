@@ -528,6 +528,147 @@ def originality_score(passages: list[Passage], shared_count: dict[str, int]) -> 
     }
 
 
+# --- embeddings + similarity (OpenAI) ---------------------------------------
+
+EMBED_MODEL = "text-embedding-3-small"
+CACHE_PATH = REPO_ROOT / ".cache" / "embeddings.json"
+_NEIGHBOURS = 8
+_EDGE_FLOOR = 0.80
+# numpy/openai live in the optional `export` group, so they are imported lazily:
+# the timeline/passage/originality artifacts must still build without them.
+
+
+def content_hash(body: str) -> str:
+    return "sha256:" + hashlib.sha256(body.encode("utf-8")).hexdigest()
+
+
+def load_embedding_cache(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def save_embedding_cache(path: Path, cache: dict) -> None:
+    """Write one statement per line so a changed statement is a one-line git diff."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    items = sorted(cache.items())
+    lines = ["{"]
+    for i, (key, value) in enumerate(items):
+        tail = "," if i < len(items) - 1 else ""
+        lines.append(
+            f"  {json.dumps(key)}: {json.dumps(value, separators=(',', ':'))}{tail}"
+        )
+    lines.append("}\n")
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def embed_statements(
+    bodies: dict[str, str], cache: dict
+) -> tuple[dict[str, list], bool]:
+    """Return {abbr: vector} for whatever can be embedded; (vectors, api_called).
+
+    Only cache misses hit the API, so the typical daily build makes zero calls.
+    Missing key or API failure degrades to the cache rather than failing the build.
+    """
+    import os
+
+    need = {abbr: b for abbr, b in bodies.items() if content_hash(b) not in cache}
+    api_called = False
+    if need and not os.environ.get("OPENAI_API_KEY"):
+        logger.warning(
+            "OPENAI_API_KEY absent; %d statements have no embedding (cache covers %d)",
+            len(need),
+            len(bodies) - len(need),
+        )
+    elif need:
+        try:
+            from openai import OpenAI, OpenAIError
+
+            client = OpenAI()
+            items = sorted(need.items())
+            response = client.embeddings.create(
+                model=EMBED_MODEL, input=[body for _, body in items]
+            )
+            for (_, body), datum in zip(items, response.data, strict=True):
+                cache[content_hash(body)] = {
+                    "model": EMBED_MODEL,
+                    "dim": len(datum.embedding),
+                    "vector": [float(f"{x:.7g}") for x in datum.embedding],
+                }
+            api_called = True
+            logger.info("Embedded %d new statements via %s", len(items), EMBED_MODEL)
+        except OpenAIError as exc:
+            logger.warning("Embedding API failed (%s); falling back to cache", exc)
+    vectors = {
+        abbr: cache[content_hash(body)]["vector"]
+        for abbr, body in bodies.items()
+        if content_hash(body) in cache
+    }
+    return vectors, api_called
+
+
+def cosine_neighbours(
+    vectors: dict[str, list], k: int = _NEIGHBOURS
+) -> tuple[dict[str, list], list[dict]]:
+    """Top-k nearest neighbours per statement + a thresholded, deduped edge list."""
+    if not vectors:
+        return {}, []
+    import numpy as np
+
+    abbrs = sorted(vectors)
+    matrix = np.asarray([vectors[a] for a in abbrs], dtype=np.float64)
+    matrix /= np.linalg.norm(matrix, axis=1, keepdims=True)
+    sims = matrix @ matrix.T
+    np.fill_diagonal(sims, -np.inf)
+
+    neighbours = {}
+    for i, abbr in enumerate(abbrs):
+        top = np.argsort(-sims[i])[:k]
+        neighbours[abbr] = [
+            {"abbr": abbrs[j], "score": round(float(sims[i, j]), 4)} for j in top
+        ]
+
+    edges = [
+        {"a": abbrs[i], "b": abbrs[j], "score": round(float(sims[i, j]), 4)}
+        for i in range(len(abbrs))
+        for j in range(i + 1, len(abbrs))
+        if sims[i, j] >= _EDGE_FLOOR
+    ]
+    edges.sort(key=lambda e: (-e["score"], e["a"], e["b"]))
+    return neighbours, edges
+
+
+def compute_similarity(
+    bodies: dict[str, str], sizes: dict[str, str], originalities: dict[str, dict]
+) -> tuple[dict, dict, dict[str, list]]:
+    """Build similarity.json, the slim graph, and per-statement neighbour lists."""
+    cache = load_embedding_cache(CACHE_PATH)
+    vectors, api_called = embed_statements(bodies, cache)
+    if api_called:
+        save_embedding_cache(CACHE_PATH, cache)
+
+    neighbours, edges = cosine_neighbours(vectors)
+    abbrs = sorted(vectors)
+    similarity = {
+        "model": EMBED_MODEL,
+        "k": _NEIGHBOURS,
+        "abbrs": abbrs,
+        "neighbours": neighbours,
+        "edges": edges,
+    }
+    graph = {
+        "nodes": [
+            {
+                "id": abbr,
+                "abbr": abbr,
+                "size": sizes.get(abbr, "unknown"),
+                "originality": originalities[abbr]["score"],
+            }
+            for abbr in abbrs
+        ],
+        "edges": edges,
+    }
+    return similarity, graph, neighbours
+
+
 # --- artifact builders ------------------------------------------------------
 
 
@@ -538,8 +679,9 @@ def build_statement_doc(
     timeline: list[dict],
     passages: list[dict],
     originality: dict,
+    neighbours: list[dict],
 ) -> dict:
-    """Per-statement document (neighbours added later)."""
+    """Per-statement document consumed by the statement page."""
     doc: dict = {
         "abbr": abbr,
         "agency": frontmatter.get("agency", abbr),
@@ -551,6 +693,7 @@ def build_statement_doc(
         "timeline": timeline,
         "passages": passages,
         "originality": originality,
+        "neighbours": neighbours,
     }
     if frontmatter.get("final_url"):
         doc["finalUrl"] = frontmatter["final_url"]
@@ -663,6 +806,11 @@ def main() -> int:
         key=lambda e: (-e["score"], e["abbr"]),
     )
 
+    logger.info("Computing statement similarity...")
+    sizes = {r["abbr"]: r["size"] for r in records}
+    bodies = {abbr: data["body"] for abbr, data in statements.items()}
+    similarity, graph, neighbours = compute_similarity(bodies, sizes, originalities)
+
     agency_index = build_agency_index(records, statements, timelines, originalities)
     statuses = [a["status"] for a in agency_index]
 
@@ -674,6 +822,7 @@ def main() -> int:
             timeline_entries(timelines[abbr]),
             statement_passages(passages_by_abbr[abbr], shared_count),
             originalities[abbr],
+            neighbours.get(abbr, []),
         )
         for abbr, data in statements.items()
     }
@@ -683,6 +832,7 @@ def main() -> int:
         "headSha": git("rev-parse", "HEAD"),
         "builtAt": datetime.now(UTC).isoformat(),
         "firstCommit": first_commit.splitlines()[0] if first_commit else None,
+        "apiUsed": bool(similarity["abbrs"]),
         "counts": {
             "agencies": len(records),
             "published": statuses.count("published"),
@@ -690,6 +840,7 @@ def main() -> int:
             "exempt": statuses.count("exempt"),
             "statements": len(statements),
             "revisions": total_revisions,
+            "embedded": len(similarity["abbrs"]),
         },
     }
 
@@ -699,13 +850,15 @@ def main() -> int:
         GENERATED_DIR / "propagation.json",
         {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
+    write_json(GENERATED_DIR / "similarity.json", similarity)
+    write_json(PUBLIC_DATA_DIR / "similarity.graph.json", graph)
     for abbr, doc in statement_docs.items():
         write_json(GENERATED_DIR / "statements" / f"{abbr}.json", doc)
     write_json(GENERATED_DIR / "meta.json", meta)
 
     logger.info(
         "Exported: %d agencies (%d published, %d not-yet, %d exempt), "
-        "%d statements, %d timeline events, %d shared-passage clusters",
+        "%d statements, %d timeline events, %d clusters, %d embedded",
         meta["counts"]["agencies"],
         meta["counts"]["published"],
         meta["counts"]["notYet"],
@@ -713,6 +866,7 @@ def main() -> int:
         meta["counts"]["statements"],
         len(timeline),
         len(clusters),
+        len(similarity["abbrs"]),
     )
     return 0
 
