@@ -1,44 +1,60 @@
 ---
 abbr: WGEA
 agency: Workplace Gender Equality Agency
-raw_hash: d2755c088997d31fa818fe729e9a2bc563e2508faf2c0b30f59230d13fb1f74b
-cleaned_hash: d2755c088997d31fa818fe729e9a2bc563e2508faf2c0b30f59230d13fb1f74b
-source_url: https://www.wgea.gov.au/sites/default/files/documents/WGEA-AI-transparency-statement-25Feb2025.pdf
-title: https://sharedservicescentre.sharepoint.com/sites/WGEA-Operations-TEAM/Policy
-  and Procedure Development/03 - Operations/AI Transparency Statement/WGEA AI transparency
-  statement 25 Feb 2025
+source_url: https://www.wgea.gov.au/about/governance/AI-transparency-statement
+title: AI transparency statement | WGEA
 ---
 
-# WGEA AI transparency statement
+\_\_
 
-In accordance with the Digital Transformation Agency’s (DTA) Policy for responsible use of AI in government, the following information provides the Workplace Gender Equality Agency’s statement on Artiﬁcial Intelligence (AI) Transparency.
+# AI transparency statement
 
-Consistent with Policy for Responsible Use of AI in Government, an AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can inﬂuence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment. Whereas automated systems range from traditional rules-based systems (for example a system which calculates a rate of payment in accordance with a formula set out in legislation) through to more specialised systems which use automated tools to predict and deliberate, including through the use of machine learning.
+18 May 2026
+
+[Publication](https://www.wgea.gov.au/taxonomy/term/4630)
+
+[All industries](https://www.wgea.gov.au/taxonomy/term/4406)
+
+[Reporting](https://www.wgea.gov.au/terms/reporting)
+
+[For everyone](https://www.wgea.gov.au/taxonomy/term/4636)
+
+In accordance with the Digital Transformation Agency’s (DTA) Policy for the Responsible Use of AI in Government, the following information provides the Workplace Gender Equality Agency’s (WGEA) statement on Artificial Intelligence (AI) transparency.
+
+Consistent with this policy, an AI system is a machine-based system that, for explicit or implicit objectives, infers from the input it receives how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. AI systems vary in their levels of autonomy and adaptiveness after deployment, ranging from traditional rules-based systems through to more advanced systems that use statistical or machine-learning techniques
 
 ## Usage
 
-At this time, WGEA does not employ AI in service delivery. AI is not use in compliance, auditing, or statutory decision-making processes.
+WGEA uses AI to enhance workplace productivity and to support internal service delivery processes, including case management, in a controlled and human-centred manner. AI is not used for statutory decision-making, compliance determinations, auditing outcomes, or enforcement actions.
 
-WGEA uses AI to enhance workplace productivity and support corporate and enabling functions. These applications focus on streamlining internal processes and automating routine tasks. Use tools like automated document summarisation and virtual assistants to streamline workﬂows and improve efficiency.
+AI is used internally to support staff in managing and responding to enquiries, including supporting staff in managing and responding to enquiries using approved information sources. All outputs are reviewed and approved by WGEA staff prior to use. AI outputs are advisory only and do not replace human judgement or decision-making.
 
 ## Public interaction and impact
 
-At this time, WGEA is not using AI in any way that members of the public may directly interact with, or be signiﬁcantly impacted by, without a human intermediary or intervention. The WGEA is using AI in the domain of Corporate and Enabling, and usage pattern of Workplace Productivity.
+WGEA does not use AI systems to directly interact with members of the public or to make decisions that affect individuals without human involvement. All external communications are reviewed and issued by WGEA staff.
 
-## Monitoring and Accountability
+AI is used only as an internal support capability and does not change WGEA’s accountability for the accuracy, quality, or appropriateness of information provided.
 
-The Chief Operating Officer was designated as the accountable official on 19 December 2024.
+## Monitoring and accountability
 
-As the accountable official, the Chief Operating Officer is responsible for ensuring the compliance of AI use in accordance with internal and external policies, and relevant regulations and legislation within the Agency.
+WGEA monitors the use of AI to ensure it operates as intended and aligns with responsible AI principles. This includes monitoring usage levels, outcomes where AI assistance is not applied, and maintaining oversight through appropriate reporting mechanisms to support quality assurance and continuous improvement.
 
-## Responsible AI usage policy
+The Chief Operating Officer was designated as the accountable official on 19 December 2024 and is responsible for ensuring that AI use complies with relevant legislation, whole-of-government policy, and internal governance arrangements.
 
-As part of the governance of AI use in the Agency, a responsible AI usage policy will be developed to ensure alignment with the resources provided by the Digital Transformation Agency.
+## Responsible AI governance
 
-## Contact Information
+WGEA maintains appropriate governance and controls to ensure its use of AI aligns with guidance provided by the Digital Transformation Agency.
 
-For inquiries or feedback regarding WGEA’s use of AI, please contact us at wgea@wgea.gov.au.
+## Contact information
 
-## Review and Updates
+For enquiries or feedback regarding WGEA’s use of AI, please contact: [wgea@wgea.gov.au](mailto:wgea@wgea.gov.au)
 
-This AI Transparency Statement was last updated on 25 February 2025. It will be reviewed and updated annually or when signiﬁcant changes occur.
+## Review and updates
+
+## More WGEA policies
+
+### [ WGEA privacy policy ](https://www.wgea.gov.au/about/governance/privacy-policy)
+
+### [ Data management and governance ](https://www.wgea.gov.au/about/governance/data-management-and-data-governance)
+
+### [ Compliance strategy ](https://www.wgea.gov.au/about/governance/WGEA-Compliance-Strategy)
