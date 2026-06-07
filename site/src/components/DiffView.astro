@@ -1,0 +1,16 @@
+---
+import { wordDiffHtml, compactWordDiffHtml } from "@/lib/diff";
+
+interface Props {
+  before: string;
+  after: string;
+  compact?: boolean;
+}
+
+const { before, after, compact = false } = Astro.props;
+const html = compact
+  ? compactWordDiffHtml(before, after)
+  : wordDiffHtml(before, after);
+---
+
+<div class="diff" set:html={html}></div>

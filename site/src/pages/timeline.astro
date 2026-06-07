@@ -1,0 +1,127 @@
+---
+import Layout from "@/components/Layout.astro";
+import ChangeFeedItem from "@/components/ChangeFeedItem.astro";
+import TimelineFilter from "@/islands/TimelineFilter.svelte";
+import { timeline } from "@/lib/load";
+import { statements } from "@/lib/statements";
+import type { TimelineEvent } from "@/types/exporter";
+
+// Join each event to its statement's revision history to compute the diff
+// against the previous revision (build-time; only rendered diff HTML ships).
+function diffFor(event: TimelineEvent) {
+  const stmt = statements[event.statementId];
+  if (!stmt) return null;
+  const idx = stmt.timeline.findIndex((t) => t.sha === event.sha);
+  if (idx <= 0) return null; // first-seen events have nothing to diff against
+  const prev = stmt.timeline[idx - 1];
+  const curr = stmt.timeline[idx];
+  return { before: prev.body, after: curr.body, delta: curr.charDelta };
+}
+
+const rows = timeline.map((event) => ({ event, diff: diffFor(event) }));
+
+const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries()]
+  .map(([abbr, name]) => ({ abbr, name }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout
+  title="Timeline"
+  description="Every recorded change to every Australian Government AI transparency statement, newest first."
+>
+  <div class="page stack">
+    <header class="stack">
+      <h1>Timeline</h1>
+      <p class="lede">
+        Every change the daily scrape has recorded, newest first. First-tracked
+        imports and known scrape noise are hidden by default — reveal them with
+        the toggles. Open a row to see exactly which words changed.
+      </p>
+    </header>
+
+    <TimelineFilter client:load agencies={agencyOpts} total={timeline.length} />
+
+    <ul class="tl-feed" id="tl-feed">
+      {rows.map(({ event, diff }) => <ChangeFeedItem event={event} diff={diff} />)}
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .tl-feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tl-row {
+    border-bottom: 1px solid var(--border);
+    padding-block: var(--space-3);
+    /* Defer rendering of off-screen rows; remember measured height on re-hide. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 56px;
+  }
+
+  /* Low-signal rows (noise, first-tracked imports) ship with the `hidden`
+     attribute set, so the feed reads well with JS off; the filter island
+     reveals them on demand. */
+
+  .tl-row__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .tl-row__date {
+    color: var(--muted);
+    font-size: 0.85rem;
+    min-width: 6.5rem;
+  }
+
+  .tl-row__agency {
+    font-weight: 550;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .tl-row__agency:hover {
+    color: var(--accent);
+  }
+
+  .tl-row__delta {
+    margin-inline-start: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .tl-row__delta[data-sign="+"] {
+    color: var(--ok);
+  }
+
+  .tl-row__delta[data-sign="-"] {
+    color: var(--del-text);
+  }
+
+  .tl-row__diff {
+    margin-block-start: var(--space-2);
+  }
+
+  .tl-row__diff summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.85rem;
+    width: max-content;
+  }
+
+  .tl-row__diff .diff {
+    margin-block-start: var(--space-2);
+    padding: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+</style>
