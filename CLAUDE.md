@@ -48,13 +48,17 @@ repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
 - The exporter writes gitignored JSON into `site/src/generated/` (+ the slim
   `site/public/data/similarity.graph.json`); only `.cache/embeddings.json` is
   committed. Run `export` before building the site locally.
-- **Deploy**: `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
-  every push to `main`. CI runs `export` **without** an OpenAI key (it reuses the
-  committed embeddings cache), so no GitHub secret is needed. Enable Pages with
-  source = GitHub Actions. It serves from `/aps-ai-transparency-tracker/`, so all
-  internal links go through `withBase()` in `site/src/lib/paths.ts`.
+- **Deploy**: live at <https://anucybernetics.github.io/aps-ai-transparency-tracker/>.
+  `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
+  `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI runs
+  `export` **without** an OpenAI key (it reuses the committed embeddings cache),
+  so no GitHub secret is needed. Pages is already configured (Settings → Pages →
+  Source: GitHub Actions); only re-set that if it's ever reset. It serves from
+  `/aps-ai-transparency-tracker/`, so all internal links go through `withBase()`
+  in `site/src/lib/paths.ts`.
 - **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export` after
-  the scrape (using `OPENAI_API_KEY` from the environment), commits the refreshed
+  the scrape (with `OPENAI_API_KEY` from weddle's global
+  `~/.config/mise/config.local.toml`), commits the refreshed
   `.cache/embeddings.json`, and pushes. Statements are only re-embedded when their
   text changes, so most runs make zero API calls.
 
@@ -63,8 +67,9 @@ repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
 `cron-scrape.sh` runs daily at 20:00 local from `aps-scrape.timer`, a
 systemd user unit on weddle. It scrapes (`claude -p "/scrape"`), then refreshes
 the embeddings cache (`export`) and `git push`es so the Pages site redeploys.
-weddle needs push credentials for `origin` and `OPENAI_API_KEY` in its
-environment. Canonical unit files live in `ops/systemd/`. Install with:
+weddle pushes to `origin` (credentials confirmed working) and reads
+`OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
+unit files live in `ops/systemd/`. Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/
