@@ -1,13 +1,7 @@
 // Build-time loaders for the small, shared generated artifacts. Heavy per-
 // statement docs (which carry full revision bodies) live in statements.ts so
 // pages that only need index data don't pull them in.
-import type {
-  AgencyIndex,
-  Meta,
-  Propagation,
-  Similarity,
-  TimelineData,
-} from "@/types/exporter";
+import type { AgencyIndex, Meta, Propagation, Similarity, TimelineData } from "@/types/exporter";
 
 import agenciesJson from "../generated/agencies.json";
 import metaJson from "../generated/meta.json";
