@@ -24,6 +24,7 @@ build-backend = "uv_build"
 scrape = "aps_ai_transparency_tracker.__main__:main"
 process = "aps_ai_transparency_tracker.process:main"
 status = "aps_ai_transparency_tracker.status:main"
+export = "aps_ai_transparency_tracker.export:main"
 
 [dependency-groups]
 dev = [
