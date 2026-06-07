@@ -182,9 +182,10 @@ def test_embedding_cache_roundtrip(tmp_path):
     assert load_embedding_cache(path) == cache
 
 
-def test_cosine_neighbours_ranks_and_thresholds():
+def test_cosine_neighbours_ranks_and_builds_knn_edges():
     pytest.importorskip("numpy")
     vectors = {"A": [1.0, 0.0], "B": [0.0, 1.0], "C": [1.0, 0.05]}
     neighbours, edges = cosine_neighbours(vectors, k=1)
     assert neighbours["A"][0]["abbr"] == "C"  # A is closest to C, not B
-    assert any({e["a"], e["b"]} == {"A", "C"} for e in edges)  # A-C clears 0.80
+    assert any({e["a"], e["b"]} == {"A", "C"} for e in edges)  # nearest-neighbour edge
+    assert all(e["a"] < e["b"] for e in edges)  # deduped, ordered

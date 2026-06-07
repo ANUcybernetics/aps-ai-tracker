@@ -533,7 +533,15 @@ def originality_score(passages: list[Passage], shared_count: dict[str, int]) -> 
 EMBED_MODEL = "text-embedding-3-small"
 CACHE_PATH = REPO_ROOT / ".cache" / "embeddings.json"
 _NEIGHBOURS = 8
-_EDGE_FLOOR = 0.80
+# Graph edges come from each node's top few neighbours, not a global cosine
+# threshold: government statements share so much vocabulary that any fixed floor
+# produces a hairball. A k-nearest-neighbour graph stays legible.
+_GRAPH_NEIGHBOURS = 3
+# The embedding endpoint caps inputs at 8192 tokens, and one bad input fails the
+# whole batch. Truncate to a safe char budget (~3.5 chars/token); the opening of
+# a statement is plenty to characterise it for similarity. The cache key is still
+# the full-body hash, so a statement re-embeds only when its real text changes.
+_MAX_EMBED_CHARS = 24000
 # numpy/openai live in the optional `export` group, so they are imported lazily:
 # the timeline/passage/originality artifacts must still build without them.
 
@@ -585,7 +593,7 @@ def embed_statements(
             client = OpenAI()
             items = sorted(need.items())
             response = client.embeddings.create(
-                model=EMBED_MODEL, input=[body for _, body in items]
+                model=EMBED_MODEL, input=[body[:_MAX_EMBED_CHARS] for _, body in items]
             )
             for (_, body), datum in zip(items, response.data, strict=True):
                 cache[content_hash(body)] = {
@@ -626,12 +634,15 @@ def cosine_neighbours(
             {"abbr": abbrs[j], "score": round(float(sims[i, j]), 4)} for j in top
         ]
 
-    edges = [
-        {"a": abbrs[i], "b": abbrs[j], "score": round(float(sims[i, j]), 4)}
-        for i in range(len(abbrs))
-        for j in range(i + 1, len(abbrs))
-        if sims[i, j] >= _EDGE_FLOOR
-    ]
+    seen: set[tuple[str, str]] = set()
+    edges = []
+    for abbr, neighs in neighbours.items():
+        for n in neighs[:_GRAPH_NEIGHBOURS]:
+            key = (abbr, n["abbr"]) if abbr < n["abbr"] else (n["abbr"], abbr)
+            if key in seen:
+                continue
+            seen.add(key)
+            edges.append({"a": key[0], "b": key[1], "score": n["score"]})
     edges.sort(key=lambda e: (-e["score"], e["a"], e["b"]))
     return neighbours, edges
 
