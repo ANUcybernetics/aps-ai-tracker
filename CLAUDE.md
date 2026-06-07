@@ -10,18 +10,25 @@ This is a Python web scraping project using uv for dependency management.
 - Converts HTML/PDF to markdown with YAML frontmatter
 - Tracks changes via git commits (designed for cron jobs)
 - Dependencies defined in `pyproject.toml`: httpx, beautifulsoup4, html2text,
-  lxml, pypdf, pyyaml
+  lxml, mdformat, pypdf, pyyaml
 
 ## Working on this project
 
 - Run scraper: `mise exec -- uv run --module aps_ai_transparency_tracker`
-- Run tests: `mise exec -- uv run pytest`
+  (or the `scrape` entry point: `mise exec -- uv run scrape`)
+- Reprocess cached `raw/` files into statements without refetching:
+  `mise exec -- uv run process`
+- Show collection status (statements vs agencies): `mise exec -- uv run status`
+- Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
+  console-script form does not resolve; invoke pytest as a module)
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
   - `src/aps_ai_transparency_tracker/` contains the package
   - `scraper.py` has core functionality
-  - `__main__.py` provides CLI entry point
+  - `__main__.py` provides CLI entry point (the `scrape` command)
+  - `process.py` reprocesses cached `raw/` files into statements without fetching
+  - `status.py` reports collection status
 
 ## Scheduled scrape
 
