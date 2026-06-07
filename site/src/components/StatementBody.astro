@@ -1,0 +1,84 @@
+---
+import { marked } from "marked";
+import { heatLevel } from "@/lib/format";
+import type { PassageRow } from "@/types/exporter";
+
+interface Props {
+  passages: PassageRow[];
+}
+
+const { passages } = Astro.props;
+
+type Item = { html: string; heat: number; tip: string };
+type Block =
+  | { kind: "list"; items: Item[] }
+  | { kind: "heading"; level: number; html: string; heat: number; tip: string }
+  | { kind: "para"; html: string; heat: number; tip: string };
+
+function stripMarker(raw: string): string {
+  return raw.replace(/^\s*(?:[-*+]|\d+\.|#{1,6})\s*/, "");
+}
+
+function inline(raw: string): string {
+  return marked.parseInline(stripMarker(raw)) as string;
+}
+
+function heat(p: PassageRow): number {
+  return heatLevel(p.sharedCount, p.containsCanonicalPhrase);
+}
+
+function tip(p: PassageRow): string {
+  if (p.sharedCount >= 2) {
+    const others = p.sharedCount - 1;
+    return `Shared with ${others} other ${others === 1 ? "agency" : "agencies"}`;
+  }
+  return p.containsCanonicalPhrase ? "Template language" : "Unique to this statement";
+}
+
+function item(p: PassageRow): Item {
+  return { html: inline(p.rawText), heat: heat(p), tip: tip(p) };
+}
+
+const blocks: Block[] = [];
+let i = 0;
+while (i < passages.length) {
+  const p = passages[i];
+  if (p.kind === "list_item") {
+    const items: Item[] = [];
+    while (i < passages.length && passages[i].kind === "list_item") {
+      items.push(item(passages[i]));
+      i++;
+    }
+    blocks.push({ kind: "list", items });
+  } else if (p.kind === "heading") {
+    const hashes = /^(#{1,6})/.exec(p.rawText);
+    const level = Math.min((hashes ? hashes[1].length : 1) + 1, 6);
+    blocks.push({ kind: "heading", level, html: inline(p.rawText), heat: heat(p), tip: tip(p) });
+    i++;
+  } else {
+    blocks.push({ kind: "para", html: inline(p.rawText), heat: heat(p), tip: tip(p) });
+    i++;
+  }
+}
+---
+
+<div class="statement-body prose">
+  {
+    blocks.map((b) => {
+      if (b.kind === "list") {
+        return (
+          <ul>
+            {b.items.map((it) => (
+              <li class="heat" data-heat={it.heat} title={it.tip} set:html={it.html} />
+            ))}
+          </ul>
+        );
+      }
+      if (b.kind === "heading") {
+        const Tag = `h${b.level}` as "h2";
+        return <Tag class="heat" data-heat={b.heat} title={b.tip} set:html={b.html} />;
+      }
+      return <p class="heat" data-heat={b.heat} title={b.tip} set:html={b.html} />;
+    })
+  }
+</div>

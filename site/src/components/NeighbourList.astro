@@ -1,0 +1,43 @@
+---
+import { statementPath } from "@/lib/paths";
+import { statements } from "@/lib/statements";
+import type { Neighbour } from "@/types/exporter";
+
+interface Props {
+  neighbours: Neighbour[];
+}
+
+const { neighbours } = Astro.props;
+---
+
+{
+  neighbours.length === 0 ? (
+    <p class="muted">Similarity not yet computed.</p>
+  ) : (
+    <ol class="neighbours">
+      {neighbours.map((n) => (
+        <li class="neighbours__row">
+          <a href={statementPath(n.abbr)}>{statements[n.abbr]?.agency ?? n.abbr}</a>
+          <span class="mono muted">{n.score.toFixed(2)}</span>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+<style>
+  .neighbours {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .neighbours__row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+</style>
