@@ -47,3 +47,13 @@ raw/
 
 # Cron logs
 logs/
+
+# Generated site data (derivable from git history + statements; built in CI).
+# The embeddings cache under .cache/ is the one derived artifact we DO commit.
+site/src/generated/
+site/public/data/
+
+# Node / Astro
+site/node_modules/
+site/dist/
+site/.astro/
