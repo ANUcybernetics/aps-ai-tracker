@@ -495,6 +495,39 @@ def statement_passages(
     return rows
 
 
+def _is_shared(passage: Passage, shared_count: dict[str, int]) -> bool:
+    """A passage is boilerplate if shared verbatim or carrying template language."""
+    return shared_count.get(passage.norm_key, 1) >= _BOILERPLATE_MIN_AGENCIES or (
+        contains_canonical_phrase(passage.normalised)
+    )
+
+
+def originality_score(passages: list[Passage], shared_count: dict[str, int]) -> dict:
+    """Length-weighted share of a statement that is bespoke vs template/boilerplate.
+
+    Score 1.0 = wholly unique, low = mostly copied. DTA scores low *because* it is
+    the template source, so the site labels it canonical rather than unoriginal.
+    """
+    total = sum(len(p.normalised) for p in passages)
+    if total == 0:
+        return {
+            "score": 1.0,
+            "sharedChars": 0,
+            "totalChars": 0,
+            "unique": 0,
+            "shared": 0,
+        }
+    shared = [p for p in passages if _is_shared(p, shared_count)]
+    shared_chars = sum(len(p.normalised) for p in shared)
+    return {
+        "score": round(1 - shared_chars / total, 4),
+        "sharedChars": shared_chars,
+        "totalChars": total,
+        "unique": len(passages) - len(shared),
+        "shared": len(shared),
+    }
+
+
 # --- artifact builders ------------------------------------------------------
 
 
@@ -504,8 +537,9 @@ def build_statement_doc(
     body: str,
     timeline: list[dict],
     passages: list[dict],
+    originality: dict,
 ) -> dict:
-    """Per-statement document (originality/neighbours added later)."""
+    """Per-statement document (neighbours added later)."""
     doc: dict = {
         "abbr": abbr,
         "agency": frontmatter.get("agency", abbr),
@@ -516,6 +550,7 @@ def build_statement_doc(
         "frontmatter": frontmatter,
         "timeline": timeline,
         "passages": passages,
+        "originality": originality,
     }
     if frontmatter.get("final_url"):
         doc["finalUrl"] = frontmatter["final_url"]
@@ -526,6 +561,7 @@ def build_agency_index(
     records: list[dict],
     statements: dict[str, dict],
     timelines: dict[str, list[Revision]],
+    originalities: dict[str, dict],
 ) -> list[dict]:
     """Index of every agency with coverage status + revision summary, sorted by abbr."""
     index = []
@@ -545,6 +581,7 @@ def build_agency_index(
                 "firstSeenIsBulkImport": revs[0].bulk if revs else None,
                 "lastUpdated": revs[-1].date if revs else None,
                 "revisionCount": len(revs),
+                "originality": originalities[abbr]["score"] if has_statement else None,
             }
         )
     return sorted(index, key=lambda a: a["abbr"])
@@ -611,14 +648,23 @@ def main() -> int:
     }
     total_revisions = sum(len(r) for r in timelines.values())
 
-    agency_index = build_agency_index(records, statements, timelines)
-    statuses = [a["status"] for a in agency_index]
     timeline = build_timeline(timelines, records, statements)
 
     passages_by_abbr = {
         abbr: segment_passages(data["body"], abbr) for abbr, data in statements.items()
     }
     clusters, shared_count = build_clusters(passages_by_abbr)
+    originalities = {
+        abbr: originality_score(passages, shared_count)
+        for abbr, passages in passages_by_abbr.items()
+    }
+    leaderboard = sorted(
+        ({"abbr": abbr, "score": o["score"]} for abbr, o in originalities.items()),
+        key=lambda e: (-e["score"], e["abbr"]),
+    )
+
+    agency_index = build_agency_index(records, statements, timelines, originalities)
+    statuses = [a["status"] for a in agency_index]
 
     statement_docs = {
         abbr: build_statement_doc(
@@ -627,6 +673,7 @@ def main() -> int:
             data["body"],
             timeline_entries(timelines[abbr]),
             statement_passages(passages_by_abbr[abbr], shared_count),
+            originalities[abbr],
         )
         for abbr, data in statements.items()
     }
@@ -649,8 +696,8 @@ def main() -> int:
     write_json(GENERATED_DIR / "agencies.json", {"agencies": agency_index})
     write_json(GENERATED_DIR / "timeline.json", {"events": timeline})
     write_json(
-        GENERATED_DIR / "passages.json",
-        {"clusters": clusters, "ursource": "DTA", "sortedBy": "count_desc"},
+        GENERATED_DIR / "propagation.json",
+        {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
     for abbr, doc in statement_docs.items():
         write_json(GENERATED_DIR / "statements" / f"{abbr}.json", doc)
