@@ -41,7 +41,8 @@ env/
 .env
 .envrc
 *.pem
-# Untracked local mise env (e.g. OPENAI_API_KEY for the scrape's embedding step)
+# Untracked local mise overrides (the OpenAI key lives in the global
+# ~/.config/mise/config.local.toml on weddle, not here)
 mise.local.toml
 .mise.local.toml
 
