@@ -22,6 +22,7 @@ import re
 import subprocess
 import sys
 import tomllib
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -292,13 +293,219 @@ def timeline_entries(revisions: list[Revision]) -> list[dict]:
     return entries
 
 
+# --- passage propagation (lexical) ------------------------------------------
+
+# Propagation is literal text reuse, so it is detected lexically (not via
+# embeddings). Exact normalised clustering catches verbatim boilerplate; a
+# canonical-phrase pass recovers the policy sentence that exact matching misses
+# because it hides inside differently-worded host sentences.
+CANONICAL_PHRASES = {
+    "responsible-use": "responsible use of ai in government",
+    "accountable-official": "accountable official",
+}
+
+_MD_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
+_NAV_RE = re.compile(
+    r"(?i)\(opens in a new tab(?:/window)?\)|back to top(?: of the page)?"
+)
+_LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]|\d+\.)\s+")
+_HEADING_RE = re.compile(r"^\s*#{1,6}\s+")
+_LEADING_MARKER_RE = re.compile(r"^\s*(?:[-*+]|\d+\.|#{1,6})\s*")
+_MIN_NORM_CHARS = 25
+_MIN_WORDS = 4
+# Boilerplate = a passage shared verbatim by at least this many agencies.
+_BOILERPLATE_MIN_AGENCIES = 2
+
+
+@dataclass(frozen=True, slots=True)
+class Passage:
+    """One atomic passage of a statement body, with its normalised form."""
+
+    abbr: str
+    raw_text: str
+    normalised: str
+    norm_key: str
+    kind: str  # paragraph | list_item | heading
+
+
+def normalise_passage(text: str) -> str:
+    """Canonicalise a passage for matching: drop links/markup/punctuation/case."""
+    t = _MD_LINK_RE.sub(r"\1", text)
+    t = _NAV_RE.sub(" ", t)
+    t = _LEADING_MARKER_RE.sub("", t)
+    t = re.sub(r"[*_`~]", "", t)
+    t = t.lower()
+    t = re.sub(r"[^\w\s]", " ", t)
+    return _WS_RE.sub(" ", t).strip()
+
+
+def _norm_key(normalised: str) -> str:
+    return hashlib.sha256(normalised.encode("utf-8")).hexdigest()[:16]
+
+
+def contains_canonical_phrase(normalised: str) -> bool:
+    return any(phrase in normalised for phrase in CANONICAL_PHRASES.values())
+
+
+def _split_list_items(lines: list[str]) -> list[str]:
+    """Group list lines into items, attaching continuation lines to their marker."""
+    items: list[str] = []
+    current: list[str] = []
+    for line in lines:
+        if _LIST_ITEM_RE.match(line):
+            if current:
+                items.append("\n".join(current))
+            current = [line]
+        elif line.strip() and current:
+            current.append(line)
+    if current:
+        items.append("\n".join(current))
+    return items
+
+
+def segment_passages(body: str, abbr: str) -> list[Passage]:
+    """Split a body into paragraph / list-item / heading passages, dropping stubs."""
+    passages: list[Passage] = []
+
+    def add(raw: str, kind: str) -> None:
+        raw = raw.strip()
+        normalised = normalise_passage(raw)
+        if len(normalised) >= _MIN_NORM_CHARS and len(normalised.split()) >= _MIN_WORDS:
+            passages.append(Passage(abbr, raw, normalised, _norm_key(normalised), kind))
+
+    for block in re.split(r"\n\s*\n", body.strip()):
+        block = block.strip()
+        if not block:
+            continue
+        first = block.splitlines()[0]
+        if _LIST_ITEM_RE.match(first):
+            for item in _split_list_items(block.splitlines()):
+                add(item, "list_item")
+        elif _HEADING_RE.match(first):
+            add(block, "heading")
+        else:
+            add(block, "paragraph")
+    return passages
+
+
+def _modal(values: list[str]) -> str:
+    """Most frequent value, breaking ties lexicographically for determinism."""
+    counts = Counter(values)
+    return min(counts, key=lambda v: (-counts[v], v))
+
+
+def build_clusters(
+    passages_by_abbr: dict[str, list[Passage]], dta_abbr: str = "DTA"
+) -> tuple[list[dict], dict[str, int]]:
+    """Cluster shared passages and return (clusters, sharedCount-by-norm_key).
+
+    Clusters assert co-occurrence only — the schema has no directional origin
+    field, only `alsoInDta` (template overlap, which is defensible).
+    """
+    groups: dict[str, list[Passage]] = defaultdict(list)
+    for passages in passages_by_abbr.values():
+        for passage in passages:
+            groups[passage.norm_key].append(passage)
+
+    shared_count = {key: len({p.abbr for p in group}) for key, group in groups.items()}
+
+    clusters: list[dict] = []
+    for key, group in groups.items():
+        members = sorted({p.abbr for p in group})
+        if len(members) < _BOILERPLATE_MIN_AGENCIES:
+            continue
+        clusters.append(
+            {
+                "normKey": key,
+                "canonicalText": _modal([p.raw_text for p in group]),
+                "kind": _modal([p.kind for p in group]),
+                "memberAbbrs": members,
+                "count": len(members),
+                "alsoInDta": dta_abbr in members,
+                "containsCanonicalPhrase": contains_canonical_phrase(
+                    group[0].normalised
+                ),
+                "mergeMethod": "exact",
+            }
+        )
+
+    # Canonical-phrase clusters: agencies whose text contains a template phrase,
+    # however it is worded. Recovers the policy sentence exact matching misses.
+    for phrase_id, phrase in CANONICAL_PHRASES.items():
+        members = sorted(
+            abbr
+            for abbr, passages in passages_by_abbr.items()
+            if any(phrase in p.normalised for p in passages)
+        )
+        if len(members) < _BOILERPLATE_MIN_AGENCIES:
+            continue
+        clusters.append(
+            {
+                "normKey": f"phrase:{phrase_id}",
+                "canonicalText": _phrase_example(
+                    passages_by_abbr, members, phrase, dta_abbr
+                ),
+                "kind": "phrase",
+                "memberAbbrs": members,
+                "count": len(members),
+                "alsoInDta": dta_abbr in members,
+                "containsCanonicalPhrase": True,
+                "mergeMethod": "phrase",
+            }
+        )
+
+    clusters.sort(key=lambda c: (-c["count"], c["normKey"]))
+    return clusters, shared_count
+
+
+def _phrase_example(
+    passages_by_abbr: dict[str, list[Passage]],
+    members: list[str],
+    phrase: str,
+    dta_abbr: str,
+) -> str:
+    """A representative raw passage containing `phrase`, preferring the DTA template."""
+    order = [dta_abbr, *members] if dta_abbr in members else members
+    for abbr in order:
+        for passage in passages_by_abbr.get(abbr, []):
+            if phrase in passage.normalised:
+                return passage.raw_text
+    return phrase
+
+
+def statement_passages(
+    passages: list[Passage], shared_count: dict[str, int]
+) -> list[dict]:
+    """Per-statement passage rows (document order) powering the heat-map + browser."""
+    rows = []
+    for passage in passages:
+        count = shared_count.get(passage.norm_key, 1)
+        rows.append(
+            {
+                "normKey": passage.norm_key,
+                "kind": passage.kind,
+                "rawText": passage.raw_text,
+                "sharedCount": count,
+                "isBoilerplate": count >= _BOILERPLATE_MIN_AGENCIES,
+                "containsCanonicalPhrase": contains_canonical_phrase(
+                    passage.normalised
+                ),
+            }
+        )
+    return rows
+
+
 # --- artifact builders ------------------------------------------------------
 
 
 def build_statement_doc(
-    abbr: str, frontmatter: dict, body: str, timeline: list[dict]
+    abbr: str,
+    frontmatter: dict,
+    body: str,
+    timeline: list[dict],
+    passages: list[dict],
 ) -> dict:
-    """Per-statement document (originality/neighbours/passages added later)."""
+    """Per-statement document (originality/neighbours added later)."""
     doc: dict = {
         "abbr": abbr,
         "agency": frontmatter.get("agency", abbr),
@@ -308,6 +515,7 @@ def build_statement_doc(
         "body": body,
         "frontmatter": frontmatter,
         "timeline": timeline,
+        "passages": passages,
     }
     if frontmatter.get("final_url"):
         doc["finalUrl"] = frontmatter["final_url"]
@@ -407,9 +615,18 @@ def main() -> int:
     statuses = [a["status"] for a in agency_index]
     timeline = build_timeline(timelines, records, statements)
 
+    passages_by_abbr = {
+        abbr: segment_passages(data["body"], abbr) for abbr, data in statements.items()
+    }
+    clusters, shared_count = build_clusters(passages_by_abbr)
+
     statement_docs = {
         abbr: build_statement_doc(
-            abbr, data["frontmatter"], data["body"], timeline_entries(timelines[abbr])
+            abbr,
+            data["frontmatter"],
+            data["body"],
+            timeline_entries(timelines[abbr]),
+            statement_passages(passages_by_abbr[abbr], shared_count),
         )
         for abbr, data in statements.items()
     }
@@ -431,19 +648,24 @@ def main() -> int:
 
     write_json(GENERATED_DIR / "agencies.json", {"agencies": agency_index})
     write_json(GENERATED_DIR / "timeline.json", {"events": timeline})
+    write_json(
+        GENERATED_DIR / "passages.json",
+        {"clusters": clusters, "ursource": "DTA", "sortedBy": "count_desc"},
+    )
     for abbr, doc in statement_docs.items():
         write_json(GENERATED_DIR / "statements" / f"{abbr}.json", doc)
     write_json(GENERATED_DIR / "meta.json", meta)
 
     logger.info(
         "Exported: %d agencies (%d published, %d not-yet, %d exempt), "
-        "%d statements, %d timeline events",
+        "%d statements, %d timeline events, %d shared-passage clusters",
         meta["counts"]["agencies"],
         meta["counts"]["published"],
         meta["counts"]["notYet"],
         meta["counts"]["exempt"],
         meta["counts"]["statements"],
         len(timeline),
+        len(clusters),
     )
     return 0
 
