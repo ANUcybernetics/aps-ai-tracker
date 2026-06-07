@@ -229,6 +229,21 @@ main {
   color: var(--muted);
 }
 
+/* Screen-reader-only text: present in the accessibility tree, out of the visual
+   layout. The :focus-within/:active exception lets focusable hidden content
+   reveal itself (unused here, but keeps the utility correct). */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
 .cluster {
   display: flex;
   flex-wrap: wrap;
@@ -292,6 +307,13 @@ main {
 
 .heat[data-heat="4"] {
   background: var(--heat-4);
+}
+
+/* Links inside a tinted (shared/template) passage: the accent blue sits too
+   close to the heat blues to clear AA contrast, so fall back to the body text
+   colour. The underline (from the base `a` rule) keeps them recognisable. */
+.heat:not([data-heat="0"]) a {
+  color: var(--text);
 }
 
 .heat-legend {

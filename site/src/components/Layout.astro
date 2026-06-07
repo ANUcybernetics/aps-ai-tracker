@@ -34,7 +34,7 @@ const fullTitle = title === suffix ? title : `${title} · ${suffix}`;
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <Nav />
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer />
