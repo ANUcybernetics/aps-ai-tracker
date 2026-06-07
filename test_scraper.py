@@ -18,7 +18,6 @@ import yaml
 from bs4 import BeautifulSoup
 
 from aps_ai_transparency_tracker import (
-    AI_KEYWORD_MIN_COUNT,
     CONTENT_SHRINKAGE_THRESHOLD,
     Agency,
     RawFetchResult,
@@ -445,7 +444,9 @@ def test_process_raw_uses_metadata_final_url():
         raw_dir = Path(tmpdir)
         (raw_dir / "TEST-META.html").write_text(html_content, encoding="utf-8")
         (raw_dir / "TEST-META.meta.json").write_text(
-            json.dumps({"final_url": "https://example.com/new", "content_type": "text/html"}),
+            json.dumps(
+                {"final_url": "https://example.com/new", "content_type": "text/html"}
+            ),
             encoding="utf-8",
         )
 
@@ -596,7 +597,9 @@ def test_extract_markdown_from_statement_invalid_format():
     """Test extracting markdown from file without proper frontmatter."""
     with TemporaryDirectory() as tmpdir:
         filepath = Path(tmpdir) / "INVALID.md"
-        filepath.write_text("Just some plain text without frontmatter", encoding="utf-8")
+        filepath.write_text(
+            "Just some plain text without frontmatter", encoding="utf-8"
+        )
 
         result = extract_markdown_from_statement(filepath)
 
@@ -646,6 +649,7 @@ nisi ut aliquip ex ea commodo consequat."""
         }
 
         import logging
+
         with caplog.at_level(logging.WARNING):
             result = save_statement(agency, small_data, output_dir)
 
@@ -653,7 +657,9 @@ nisi ut aliquip ex ea commodo consequat."""
         assert result is True
 
         # Should have logged a warning about content shrinkage
-        assert any("CONTENT SHRINKAGE DETECTED" in record.message for record in caplog.records)
+        assert any(
+            "CONTENT SHRINKAGE DETECTED" in record.message for record in caplog.records
+        )
         assert any("TEST-SHRINK" in record.message for record in caplog.records)
 
 
@@ -688,20 +694,21 @@ This is some content that will be replaced with similar-length content."""
             "source_type": "html",
         }
 
-        import logging
-        import io
         from unittest.mock import patch
 
         # Capture log output
-        with patch('aps_ai_transparency_tracker.scraper.logger') as mock_logger:
+        with patch("aps_ai_transparency_tracker.scraper.logger") as mock_logger:
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully
         assert result is True
 
         # Should NOT have logged a warning (only info)
-        warning_calls = [call for call in mock_logger.warning.call_args_list
-                        if "CONTENT SHRINKAGE" in str(call)]
+        warning_calls = [
+            call
+            for call in mock_logger.warning.call_args_list
+            if "CONTENT SHRINKAGE" in str(call)
+        ]
         assert len(warning_calls) == 0
 
 
@@ -724,15 +731,18 @@ def test_save_statement_no_warning_on_new_file():
 
         from unittest.mock import patch
 
-        with patch('aps_ai_transparency_tracker.scraper.logger') as mock_logger:
+        with patch("aps_ai_transparency_tracker.scraper.logger") as mock_logger:
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully
         assert result is True
 
         # Should NOT have logged a shrinkage warning
-        warning_calls = [call for call in mock_logger.warning.call_args_list
-                        if "CONTENT SHRINKAGE" in str(call)]
+        warning_calls = [
+            call
+            for call in mock_logger.warning.call_args_list
+            if "CONTENT SHRINKAGE" in str(call)
+        ]
         assert len(warning_calls) == 0
 
 
@@ -862,6 +872,7 @@ def test_save_statement_warns_on_low_ai_keywords(caplog):
 
     with TemporaryDirectory() as tmpdir:
         import logging
+
         with caplog.at_level(logging.WARNING):
             save_statement(agency, data, Path(tmpdir))
 
@@ -888,6 +899,7 @@ def test_save_statement_no_warning_with_sufficient_ai_keywords(caplog):
 
     with TemporaryDirectory() as tmpdir:
         import logging
+
         with caplog.at_level(logging.WARNING):
             save_statement(agency, data, Path(tmpdir))
 
