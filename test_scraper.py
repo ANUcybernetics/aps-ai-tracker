@@ -158,7 +158,14 @@ def test_fetch_statement_returns_required_fields():
     agency = agencies[0]
     result = fetch_statement(agency)
 
-    required_fields = {"title", "markdown", "status_code", "final_url", "error"}
+    required_fields = {
+        "title",
+        "markdown",
+        "status_code",
+        "final_url",
+        "error",
+        "source_type",
+    }
     assert set(result.keys()) == required_fields
 
 
@@ -203,6 +210,7 @@ def test_save_statement_creates_valid_file():
         "status_code": 200,
         "final_url": "https://example.com/test",
         "error": None,
+        "source_type": "html",
     }
 
     with TemporaryDirectory() as tmpdir:
@@ -251,6 +259,7 @@ def test_save_statement_handles_error_case():
         "status_code": 404,
         "final_url": "https://example.com/test",
         "error": "Not found",
+        "source_type": None,
     }
 
     with TemporaryDirectory() as tmpdir:
@@ -273,6 +282,7 @@ def test_save_statement_handles_no_content():
         "status_code": 200,
         "final_url": "https://example.com/test",
         "error": None,
+        "source_type": None,
     }
 
     with TemporaryDirectory() as tmpdir:
@@ -297,6 +307,7 @@ def test_save_statement_includes_final_url_on_redirect():
         "status_code": 200,
         "final_url": "https://example.com/new",
         "error": None,
+        "source_type": "html",
     }
 
     with TemporaryDirectory() as tmpdir:
@@ -631,6 +642,7 @@ nisi ut aliquip ex ea commodo consequat."""
             "status_code": 200,
             "final_url": "https://example.com",
             "error": None,
+            "source_type": "html",
         }
 
         import logging
@@ -673,6 +685,7 @@ This is some content that will be replaced with similar-length content."""
             "status_code": 200,
             "final_url": "https://example.com",
             "error": None,
+            "source_type": "html",
         }
 
         import logging
@@ -706,6 +719,7 @@ def test_save_statement_no_warning_on_new_file():
             "status_code": 200,
             "final_url": "https://example.com",
             "error": None,
+            "source_type": "html",
         }
 
         from unittest.mock import patch
@@ -843,6 +857,7 @@ def test_save_statement_warns_on_low_ai_keywords(caplog):
         "status_code": 200,
         "final_url": "https://example.com",
         "error": None,
+        "source_type": "html",
     }
 
     with TemporaryDirectory() as tmpdir:
@@ -868,6 +883,7 @@ def test_save_statement_no_warning_with_sufficient_ai_keywords(caplog):
         "status_code": 200,
         "final_url": "https://example.com",
         "error": None,
+        "source_type": "html",
     }
 
     with TemporaryDirectory() as tmpdir:
