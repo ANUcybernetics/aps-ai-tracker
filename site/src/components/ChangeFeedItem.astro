@@ -49,3 +49,84 @@ const KIND_LABEL: Record<string, string> = {
     )
   }
 </li>
+
+<style>
+  .tl-row {
+    border-bottom: 1px solid var(--border);
+    padding-block: var(--space-3);
+    /* Defer rendering of off-screen rows; remember measured height on re-hide. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 56px;
+  }
+
+  /* The first rows are above the fold, so exempt them: evaluating containment
+     boundaries on the critical paint is the one case where content-visibility
+     costs more than it saves. */
+  .tl-row:nth-child(-n + 12) {
+    content-visibility: visible;
+  }
+
+  /* Low-signal rows (noise, first-tracked imports) ship with the `hidden`
+     attribute set, so the feed reads well with JS off; the filter island
+     reveals them on demand. */
+
+  .tl-row__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .tl-row__date {
+    color: var(--muted);
+    font-size: 0.85rem;
+    min-width: 6.5rem;
+  }
+
+  .tl-row__agency {
+    font-weight: 550;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .tl-row__agency:hover {
+    color: var(--accent);
+  }
+
+  .tl-row__delta {
+    margin-inline-start: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .tl-row__delta[data-sign="+"] {
+    color: var(--ok);
+  }
+
+  .tl-row__delta[data-sign="-"] {
+    color: var(--del-text);
+  }
+
+  .tl-row__diff {
+    margin-block-start: var(--space-2);
+  }
+
+  .tl-row__diff summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.85rem;
+    width: max-content;
+  }
+
+  /* .diff is rendered by DiffView, so it needs :global to cross the scope. */
+  .tl-row__diff :global(.diff) {
+    margin-block-start: var(--space-2);
+    padding: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+</style>
