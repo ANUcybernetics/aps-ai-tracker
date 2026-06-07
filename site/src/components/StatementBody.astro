@@ -19,8 +19,17 @@ function stripMarker(raw: string): string {
   return raw.replace(/^\s*(?:[-*+]|\d+\.|#{1,6})\s*/, "");
 }
 
+// Statement text is scraped from agency sites, so harden the markdown → HTML
+// step before it reaches set:html: drop any raw HTML tags from the source (the
+// pattern skips `<https://…>` autolinks), then neutralise non-http(s) link
+// schemes that marked might still emit from a markdown link.
+function stripTags(raw: string): string {
+  return raw.replace(/<\/?[a-z][a-z0-9]*(?:\s[^>]*)?\/?>/gi, "");
+}
+
 function inline(raw: string): string {
-  return marked.parseInline(stripMarker(raw)) as string;
+  const html = marked.parseInline(stripMarker(stripTags(raw))) as string;
+  return html.replace(/\b(href|src)\s*=\s*(["'])\s*(?:javascript|data|vbscript):/gi, "$1=$2#");
 }
 
 function heat(p: PassageRow): number {
