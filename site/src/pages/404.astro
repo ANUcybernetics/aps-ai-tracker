@@ -1,0 +1,22 @@
+---
+import Layout from "@/components/Layout.astro";
+import { withBase } from "@/lib/paths";
+---
+
+<Layout title="Page not found">
+  <div class="page stack notfound">
+    <h1>Page not found</h1>
+    <p class="lede">That page doesn&rsquo;t exist here.</p>
+    <p>
+      <a href={withBase("/")}>Back to the overview</a> &middot;
+      <a href={withBase("/agencies")}>browse agencies</a> &middot;
+      <a href={withBase("/timeline")}>the timeline</a>
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .notfound {
+    padding-block: var(--space-8);
+  }
+</style>
