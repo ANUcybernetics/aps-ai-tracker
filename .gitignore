@@ -41,6 +41,9 @@ env/
 .env
 .envrc
 *.pem
+# Untracked local mise env (e.g. OPENAI_API_KEY for the scrape's embedding step)
+mise.local.toml
+.mise.local.toml
 
 # Raw scraped content
 raw/
