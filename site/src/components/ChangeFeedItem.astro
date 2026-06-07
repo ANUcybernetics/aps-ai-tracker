@@ -1,0 +1,51 @@
+---
+import DiffView from "@/components/DiffView.astro";
+import { formatDate, signedDelta } from "@/lib/format";
+import { statementPath } from "@/lib/paths";
+import type { TimelineEvent } from "@/types/exporter";
+
+interface Props {
+  event: TimelineEvent;
+  diff: { before: string; after: string; delta: number } | null;
+}
+
+const { event, diff } = Astro.props;
+
+const KIND_LABEL: Record<string, string> = {
+  updated: "updated",
+  published: "published",
+  "tracked-since": "first tracked",
+};
+---
+
+<li
+  class="tl-row"
+  data-abbr={event.abbr}
+  data-kind={event.kind}
+  data-noise={String(event.isNoise)}
+  hidden={event.isNoise || event.kind === "tracked-since" ? true : undefined}
+>
+  <div class="tl-row__head">
+    <time class="tl-row__date mono" datetime={event.date}>
+      {formatDate(event.date)}
+    </time>
+    <a class="tl-row__agency" href={statementPath(event.abbr)}>{event.agency}</a>
+    <span class="pill">{KIND_LABEL[event.kind] ?? event.kind}</span>
+    {event.isNoise && <span class="pill pill--warn">noise</span>}
+    {
+      diff && (
+        <span class="tl-row__delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>
+          {signedDelta(diff.delta)}
+        </span>
+      )
+    }
+  </div>
+  {
+    diff && (
+      <details class="tl-row__diff">
+        <summary>What changed</summary>
+        <DiffView before={diff.before} after={diff.after} compact />
+      </details>
+    )
+  }
+</li>
