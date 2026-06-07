@@ -1,0 +1,177 @@
+---
+import Layout from "@/components/Layout.astro";
+import CoverageStats from "@/components/CoverageStats.astro";
+import { timeline } from "@/lib/load";
+import { formatDate } from "@/lib/format";
+import { withBase, statementPath } from "@/lib/paths";
+
+// One row per agency (their most recent genuine change) so a single daily-churning
+// statement doesn't crowd out the feed.
+const seen = new Set<string>();
+const recent = timeline
+  .filter((e) => e.kind === "updated" && !e.isNoise)
+  .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
+  .slice(0, 12);
+
+const explorers = [
+  {
+    href: withBase("/timeline"),
+    title: "Timeline",
+    body: "Every change to every statement, newest first — with the exact words that changed.",
+  },
+  {
+    href: withBase("/agencies"),
+    title: "Agencies",
+    body: "Who has published, who hasn't, and who's exempt — across all 126 agencies.",
+  },
+  {
+    href: withBase("/similarity"),
+    title: "Similarity",
+    body: "A map of which statements read alike, from sentence-embedding distances.",
+  },
+  {
+    href: withBase("/propagation"),
+    title: "Propagation",
+    body: "How a shared template bleeds across agencies — and who wrote something of their own.",
+  },
+];
+---
+
+<Layout title="AI Transparency Tracker">
+  <div class="page stack">
+    <header class="hero stack">
+      <h1>How the Australian Government talks about its use of AI</h1>
+      <p class="lede">
+        Since February 2025, Commonwealth agencies must publish AI transparency
+        statements. This tracker scrapes them daily and records every change in
+        git — so you can watch the statements evolve, see which read alike, and
+        trace the template language that spreads between them.
+      </p>
+    </header>
+
+    <CoverageStats />
+
+    <section aria-labelledby="recent-heading">
+      <div class="section-title">
+        <h2 id="recent-heading">Recent changes</h2>
+        <a href={withBase("/timeline")}>Full timeline &rarr;</a>
+      </div>
+      <ul class="feed">
+        {
+          recent.map((e) => (
+            <li class="feed__row">
+              <time class="feed__date mono" datetime={e.date}>
+                {formatDate(e.date)}
+              </time>
+              <a class="feed__agency" href={statementPath(e.abbr)}>
+                {e.agency}
+              </a>
+              <span class="pill">{e.abbr}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="explore-heading">
+      <div class="section-title">
+        <h2 id="explore-heading">Explore</h2>
+      </div>
+      <ul class="explorers">
+        {
+          explorers.map((x) => (
+            <li>
+              <a class="card explorer" href={x.href}>
+                <span class="explorer__title">{x.title}</span>
+                <span class="explorer__body muted">{x.body}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    padding-block: var(--space-4) var(--space-6);
+    max-width: 52rem;
+  }
+
+  .feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .feed__row {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feed__date {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .feed__agency {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 550;
+  }
+
+  .feed__agency:hover {
+    color: var(--accent);
+  }
+
+  .explorers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-4);
+  }
+
+  .explorer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    height: 100%;
+    text-decoration: none;
+    color: var(--text);
+    transition:
+      border-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .explorer:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .explorer__title {
+    font-weight: 650;
+    font-size: 1.1rem;
+  }
+
+  .explorer__body {
+    font-size: 0.9rem;
+  }
+
+  @media (width < 34rem) {
+    .feed__row {
+      grid-template-columns: 1fr auto;
+    }
+
+    .feed__date {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

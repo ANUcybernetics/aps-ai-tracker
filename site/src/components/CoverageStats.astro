@@ -1,0 +1,87 @@
+---
+import { meta, agencies, propagation } from "@/lib/load";
+import { formatDate, originalityPercent } from "@/lib/format";
+import { statementPath } from "@/lib/paths";
+
+const c = meta.counts;
+const published = agencies.filter((a) => a.statementId);
+const mostRevised = [...published].sort((a, b) => b.revisionCount - a.revisionCount)[0];
+const board = propagation.originality;
+const leastOriginal = board[board.length - 1];
+
+const stats = [
+  { value: c.published, total: c.agencies, label: "agencies with a published statement" },
+  { value: c.notYet, label: "in scope but not yet published" },
+  { value: c.exempt, label: "exempt or out of scope" },
+  { value: c.revisions, label: "tracked changes since " + (meta.firstCommit ? formatDate(meta.firstCommit) : "launch") },
+];
+---
+
+<section class="coverage" aria-label="Coverage at a glance">
+  <ul class="coverage__grid">
+    {
+      stats.map((s) => (
+        <li class="coverage__stat">
+          <span class="coverage__value">
+            {s.value}
+            {s.total ? <span class="coverage__total">/ {s.total}</span> : null}
+          </span>
+          <span class="coverage__label">{s.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="coverage__highlights muted">
+    Most revised: <a href={statementPath(mostRevised.abbr)}>{mostRevised.abbr}</a>
+    ({mostRevised.revisionCount} changes). Most templated:
+    <a href={statementPath(leastOriginal.abbr)}>{leastOriginal.abbr}</a>
+    (just {originalityPercent(leastOriginal.score)}% bespoke).
+  </p>
+</section>
+
+<style>
+  .coverage__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--space-4);
+  }
+
+  .coverage__stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .coverage__value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .coverage__total {
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .coverage__label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-wrap: balance;
+  }
+
+  .coverage__highlights {
+    margin-block-start: var(--space-4);
+    font-size: 0.95rem;
+  }
+</style>
