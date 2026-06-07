@@ -271,6 +271,47 @@ main {
   color: var(--muted);
 }
 
+/* passage reuse heat-map */
+.heat {
+  border-radius: var(--radius-sm);
+  padding-inline: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.heat[data-heat="1"] {
+  background: var(--heat-1);
+}
+
+.heat[data-heat="2"] {
+  background: var(--heat-2);
+}
+
+.heat[data-heat="3"] {
+  background: var(--heat-3);
+}
+
+.heat[data-heat="4"] {
+  background: var(--heat-4);
+}
+
+.heat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.heat-legend__swatch {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  vertical-align: -0.2em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.01ms !important;

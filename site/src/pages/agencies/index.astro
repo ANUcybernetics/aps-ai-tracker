@@ -1,0 +1,136 @@
+---
+import Layout from "@/components/Layout.astro";
+import { agencies } from "@/lib/load";
+import { SIZE_LABEL, originalityPercent } from "@/lib/format";
+import { statementPath } from "@/lib/paths";
+
+const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
+const published = agencies.filter((a) => a.status === "published").toSorted(byName);
+const notYet = agencies.filter((a) => a.status === "not-yet").toSorted(byName);
+const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
+---
+
+<Layout
+  title="Agencies"
+  description="Which of the 126 tracked Australian Government agencies have published an AI transparency statement, which haven't, and which are exempt."
+>
+  <div class="page stack">
+    <header class="stack">
+      <h1>Agencies</h1>
+      <p class="lede">
+        All {agencies.length} agencies on the APSC list. Most are required to publish
+        an AI transparency statement; intelligence, defence and corporate entities
+        sit outside the mandate.
+      </p>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <h2>Published</h2>
+        <span class="muted">{published.length}</span>
+      </div>
+      <table class="agencies">
+        <thead>
+          <tr>
+            <th scope="col">Agency</th>
+            <th scope="col">Size</th>
+            <th scope="col" class="num">Bespoke</th>
+            <th scope="col" class="num">Revisions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            published.map((a) => (
+              <tr>
+                <td>
+                  <a href={statementPath(a.abbr)}>{a.name}</a>
+                  <span class="muted mono"> {a.abbr}</span>
+                </td>
+                <td>{SIZE_LABEL[a.size]}</td>
+                <td class="num">
+                  {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
+                </td>
+                <td class="num">{a.revisionCount}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Not yet published</h2>
+        <span class="muted">{notYet.length}</span>
+      </div>
+      <ul class="agency-list">
+        {
+          notYet.map((a) => (
+            <li>
+              {a.name} <span class="muted mono">{a.abbr}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Exempt or out of scope</h2>
+        <span class="muted">{exempt.length}</span>
+      </div>
+      <ul class="agency-list">
+        {
+          exempt.map((a) => (
+            <li>
+              {a.name} <span class="muted mono">{a.abbr}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .agencies {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .agencies th {
+    text-align: start;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .agencies td {
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: baseline;
+  }
+
+  .agencies .num {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .agency-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 18rem 2;
+    gap: var(--space-5);
+  }
+
+  .agency-list li {
+    padding-block: var(--space-1);
+    break-inside: avoid;
+  }
+</style>

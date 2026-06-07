@@ -1,0 +1,60 @@
+---
+import { originalityPercent } from "@/lib/format";
+import type { Originality } from "@/types/exporter";
+
+interface Props {
+  originality: Originality;
+  isUrsource?: boolean;
+}
+
+const { originality, isUrsource = false } = Astro.props;
+const pct = originalityPercent(originality.score);
+const total = originality.shared + originality.unique;
+---
+
+<div class="orig">
+  <div class="orig__top">
+    <span class="orig__pct">{isUrsource ? "Template source" : `${pct}%`}</span>
+    <span class="muted">{isUrsource ? "the canonical DTA wording" : "bespoke"}</span>
+  </div>
+  <div class="orig__bar" role="presentation">
+    <span style={`inline-size:${pct}%`}></span>
+  </div>
+  <p class="muted">
+    {originality.shared} of {total} passages are shared with other agencies.
+  </p>
+</div>
+
+<style>
+  .orig__top {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+
+  .orig__pct {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .orig__bar {
+    margin-block: var(--space-2);
+    block-size: 0.5rem;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .orig__bar span {
+    display: block;
+    block-size: 100%;
+    background: var(--accent);
+  }
+
+  .orig p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+</style>
