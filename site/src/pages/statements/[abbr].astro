@@ -1,0 +1,152 @@
+---
+import Layout from "@/components/Layout.astro";
+import StatementMeta from "@/components/StatementMeta.astro";
+import StatementBody from "@/components/StatementBody.astro";
+import OriginalityBadge from "@/components/OriginalityBadge.astro";
+import NeighbourList from "@/components/NeighbourList.astro";
+import RevisionList from "@/components/RevisionList.astro";
+import { allStatements } from "@/lib/statements";
+import { propagation } from "@/lib/load";
+import { formatDate } from "@/lib/format";
+import type { StatementDoc } from "@/types/exporter";
+
+export function getStaticPaths() {
+  return allStatements.map((doc) => ({ params: { abbr: doc.abbr }, props: { doc } }));
+}
+
+interface Props {
+  doc: StatementDoc;
+}
+
+const { doc } = Astro.props;
+const isUrsource = doc.abbr === propagation.ursource;
+const firstSeen = doc.timeline[0]?.date;
+const lastUpdated = doc.timeline.at(-1)?.date;
+const changes = doc.timeline.filter((t) => t.kind === "updated").length;
+
+const legend = [
+  { heat: 1, label: "a few" },
+  { heat: 2, label: "several" },
+  { heat: 3, label: "many" },
+  { heat: 4, label: "most" },
+];
+---
+
+<Layout
+  title={doc.agency}
+  description={`How ${doc.agency} describes its use of AI — the current statement, how original it is, and every tracked change.`}
+>
+  <div class="page stmt stack">
+    <header class="stmt__header stack">
+      <p class="stmt__abbr mono muted">{doc.abbr}</p>
+      <h1>{doc.agency}</h1>
+      <StatementMeta doc={doc} />
+      <p class="muted stmt__dates">
+        {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
+        {" · "}{doc.timeline.length} revisions ({changes} changes)
+        {lastUpdated && <> · last change {formatDate(lastUpdated)}</>}
+      </p>
+    </header>
+
+    <div class="stmt__grid">
+      <article class="stmt__main">
+        <div class="heat-legend" aria-hidden="true">
+          <span>Text reuse:</span>
+          {
+            legend.map((l) => (
+              <span>
+                <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
+              </span>
+            ))
+          }
+        </div>
+        <StatementBody passages={doc.passages} />
+        <p class="muted stmt__attribution">
+          Statement text &copy; {doc.agency}, reproduced for transparency tracking
+          (most agency content is CC BY 4.0 &mdash; check the original for specifics).
+        </p>
+      </article>
+
+      <aside class="stmt__aside stack">
+        <section class="card">
+          <h2>Originality</h2>
+          <OriginalityBadge originality={doc.originality} isUrsource={isUrsource} />
+        </section>
+        <section class="card">
+          <h2>Reads most like</h2>
+          <NeighbourList neighbours={doc.neighbours} />
+        </section>
+      </aside>
+    </div>
+
+    <section class="stmt__history">
+      <div class="section-title">
+        <h2>Revision history</h2>
+      </div>
+      <RevisionList timeline={doc.timeline} />
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .stmt__abbr {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .stmt__header h1 {
+    margin: 0;
+  }
+
+  .stmt__dates {
+    font-size: 0.9rem;
+  }
+
+  .stmt__grid {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (width >= 60rem) {
+    .stmt__grid {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+    }
+
+    .stmt__aside {
+      position: sticky;
+      top: 4.5rem;
+    }
+  }
+
+  .heat-legend [data-heat="1"] {
+    background: var(--heat-1);
+  }
+  .heat-legend [data-heat="2"] {
+    background: var(--heat-2);
+  }
+  .heat-legend [data-heat="3"] {
+    background: var(--heat-3);
+  }
+  .heat-legend [data-heat="4"] {
+    background: var(--heat-4);
+  }
+
+  .heat-legend {
+    margin-block-end: var(--space-4);
+  }
+
+  .stmt__aside h2 {
+    margin-block: 0 var(--space-3);
+    font-size: 1rem;
+  }
+
+  .stmt__attribution {
+    margin-block-start: var(--space-6);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    padding-block-start: var(--space-3);
+  }
+</style>

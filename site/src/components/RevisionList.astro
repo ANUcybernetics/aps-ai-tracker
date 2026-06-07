@@ -1,0 +1,110 @@
+---
+import DiffView from "@/components/DiffView.astro";
+import { formatDate, signedDelta } from "@/lib/format";
+import type { TimelineRevision } from "@/types/exporter";
+
+interface Props {
+  timeline: TimelineRevision[];
+}
+
+const { timeline } = Astro.props;
+
+// Pair each revision with its predecessor, then show newest first.
+const revs = timeline
+  .map((rev, idx) => ({ rev, prev: idx > 0 ? timeline[idx - 1] : null }))
+  .reverse();
+
+const KIND_LABEL: Record<string, string> = {
+  updated: "updated",
+  published: "published",
+  "tracked-since": "first tracked",
+};
+---
+
+<ol class="revs">
+  {
+    revs.map(({ rev, prev }) => (
+      <li class="rev">
+        <div class="rev__head">
+          <time class="mono muted" datetime={rev.date}>
+            {formatDate(rev.date)}
+          </time>
+          <span class="pill">{KIND_LABEL[rev.kind] ?? rev.kind}</span>
+          {rev.isNoise && <span class="pill pill--warn">noise</span>}
+          <span class="rev__delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
+            {signedDelta(rev.charDelta)}
+          </span>
+        </div>
+        {prev ? (
+          <details class="rev__diff">
+            <summary>View diff</summary>
+            <DiffView before={prev.body} after={rev.body} />
+          </details>
+        ) : (
+          <p class="muted rev__first">First tracked revision.</p>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .revs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rev {
+    border-bottom: 1px solid var(--border);
+    padding-block: var(--space-3);
+  }
+
+  .rev__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .rev__delta {
+    margin-inline-start: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .rev__delta[data-sign="+"] {
+    color: var(--ok);
+  }
+
+  .rev__delta[data-sign="-"] {
+    color: var(--del-text);
+  }
+
+  .rev__first {
+    margin-block: var(--space-2) 0;
+    font-size: 0.85rem;
+  }
+
+  .rev__diff {
+    margin-block-start: var(--space-2);
+  }
+
+  .rev__diff summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.85rem;
+    width: max-content;
+  }
+
+  .rev__diff .diff {
+    margin-block-start: var(--space-2);
+    padding: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+</style>
