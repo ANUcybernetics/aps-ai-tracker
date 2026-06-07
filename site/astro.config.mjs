@@ -1,3 +1,4 @@
+import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 
@@ -9,5 +10,9 @@ export default defineConfig({
   base: "/aps-ai-transparency-tracker",
   trailingSlash: "ignore",
   output: "static",
-  integrations: [svelte()],
+  integrations: [
+    svelte(),
+    // Exclude the JSON data endpoint; it isn't a navigable page.
+    sitemap({ filter: (page) => !page.includes("/data/") }),
+  ],
 });
