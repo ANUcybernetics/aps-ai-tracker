@@ -16,6 +16,10 @@ const {
 
 const suffix = "AI Transparency Tracker";
 const fullTitle = title === suffix ? title : `${title} · ${suffix}`;
+
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, origin).href;
+const ogImage = new URL(withBase("/og.png"), origin).href;
 ---
 
 <!doctype html>
@@ -26,10 +30,22 @@ const fullTitle = title === suffix ? title : `${title} · ${suffix}`;
     <meta name="color-scheme" content="light dark" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={suffix} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AI Transparency Tracker" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
+    <link rel="sitemap" type="application/xml" href={withBase("/sitemap-index.xml")} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
