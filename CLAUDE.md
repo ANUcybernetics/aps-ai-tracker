@@ -19,8 +19,11 @@ This is a Python web scraping project using uv for dependency management.
 - Reprocess cached `raw/` files into statements without refetching:
   `mise exec -- uv run process`
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
+- Export site data (JSON for the Astro site): `mise exec -- uv run --group export export`
+  (needs the `export` dependency group: numpy + openai)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
-  console-script form does not resolve; invoke pytest as a module)
+  console-script form does not resolve; invoke pytest as a module). Exporter
+  tests live in `test_export.py`; run with `--group export` so numpy is present.
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
@@ -29,12 +32,39 @@ This is a Python web scraping project using uv for dependency management.
   - `__main__.py` provides CLI entry point (the `scrape` command)
   - `process.py` reprocesses cached `raw/` files into statements without fetching
   - `status.py` reports collection status
+  - `export.py` turns the corpus + git history into JSON for the site (timeline
+    with revert/noise collapse, lexical passage propagation, originality scores,
+    OpenAI similarity with a committed content-hash cache)
+
+## Static site (`site/`)
+
+An Astro static site presents the data: a timeline of every change, agency and
+per-statement pages (with a passage-reuse heat-map and revision time-travel), a
+D3 similarity map, and a propagation explorer. Toolchain mirrors the benswift-me
+repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
+
+- Dev: `cd site && mise exec -- pnpm dev`
+- Build/lint/format/typecheck: `mise exec -- pnpm run {build,lint,format,typecheck}`
+- The exporter writes gitignored JSON into `site/src/generated/` (+ the slim
+  `site/public/data/similarity.graph.json`); only `.cache/embeddings.json` is
+  committed. Run `export` before building the site locally.
+- **Deploy**: `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
+  every push to `main`. CI runs `export` **without** an OpenAI key (it reuses the
+  committed embeddings cache), so no GitHub secret is needed. Enable Pages with
+  source = GitHub Actions. It serves from `/aps-ai-transparency-tracker/`, so all
+  internal links go through `withBase()` in `site/src/lib/paths.ts`.
+- **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export` after
+  the scrape (using `OPENAI_API_KEY` from the environment), commits the refreshed
+  `.cache/embeddings.json`, and pushes. Statements are only re-embedded when their
+  text changes, so most runs make zero API calls.
 
 ## Scheduled scrape
 
 `cron-scrape.sh` runs daily at 20:00 local from `aps-scrape.timer`, a
-systemd user unit on weddle. Canonical unit files live in `ops/systemd/`.
-Install with:
+systemd user unit on weddle. It scrapes (`claude -p "/scrape"`), then refreshes
+the embeddings cache (`export`) and `git push`es so the Pages site redeploys.
+weddle needs push credentials for `origin` and `OPENAI_API_KEY` in its
+environment. Canonical unit files live in `ops/systemd/`. Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/

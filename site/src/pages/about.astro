@@ -1,0 +1,91 @@
+---
+import Layout from "@/components/Layout.astro";
+import { meta } from "@/lib/load";
+import { formatDate } from "@/lib/format";
+
+const c = meta.counts;
+---
+
+<Layout title="About">
+  <div class="page about prose stack">
+    <h1>About this tracker</h1>
+    <p class="lede">
+      Under the Policy for the responsible use of AI in government, Commonwealth
+      agencies have had to publish AI transparency statements since February 2025.
+      This project keeps a faithful, versioned record of those statements and makes
+      the changes legible.
+    </p>
+
+    <h2>How it works</h2>
+    <p>
+      A scraper visits each agency&rsquo;s statement daily, converts it to markdown,
+      and commits any change to git. The commit history is therefore a complete,
+      timestamped record of how every statement has evolved. This site is a static
+      front end built from that history &mdash; it adds no editorial content beyond
+      the analysis described below.
+    </p>
+
+    <h2>Methodology</h2>
+    <ul>
+      <li>
+        <strong>Timeline.</strong> Each change is read straight from git. Spurious
+        scrape churn that is later reverted, and pure reformatting, are collapsed
+        out; commits the maintainer flagged as noise are hidden by default. Bulk
+        imports are shown as &ldquo;first tracked&rdquo; rather than
+        &ldquo;published&rdquo;, since we don&rsquo;t know the true publication date.
+      </li>
+      <li>
+        <strong>Propagation</strong> is detected lexically: passages are normalised
+        (links, markup, punctuation and case removed) and matched across agencies,
+        with a separate pass for canonical template phrases. We only assert that a
+        passage co-occurs across statements &mdash; never who copied whom &mdash;
+        though passages also found in the DTA&rsquo;s own statement are marked.
+      </li>
+      <li>
+        <strong>Originality</strong> is the share of a statement&rsquo;s text (by
+        length) that is <em>not</em> shared with other agencies or drawn from
+        template language. The DTA scores low because it is the template source, so
+        it is labelled accordingly.
+      </li>
+      <li>
+        <strong>Similarity</strong> uses OpenAI <code>text-embedding-3-small</code>
+        vectors and cosine distance. Embeddings are cached by content hash, so a
+        statement is only re-embedded when its text changes.
+      </li>
+    </ul>
+
+    <h2>Caveats</h2>
+    <p>
+      Scraping is imperfect: site redesigns, bot-blocks and PDF extraction can
+      introduce noise, and the coverage classification (published / not yet /
+      exempt) is a best-effort reading of each agency&rsquo;s obligations. Treat the
+      figures as indicative, and follow the source link on any statement to check
+      the original.
+    </p>
+
+    <h2>Licensing</h2>
+    <p>
+      The scraper and this site are released under the MIT License. The statement
+      text belongs to the respective agencies; most Australian Government content is
+      licensed CC BY 4.0, but check each agency&rsquo;s site for specifics.
+    </p>
+
+    <p class="muted about__build">
+      {c.statements} statements, {c.revisions} tracked changes, {c.embedded} embedded.
+      Built {formatDate(meta.builtAt)} from {meta.headSha.slice(0, 7)}.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .about {
+    max-width: 46rem;
+  }
+
+  .about__build {
+    margin-block-start: var(--space-6);
+    padding-block-start: var(--space-3);
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+</style>

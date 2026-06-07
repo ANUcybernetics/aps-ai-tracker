@@ -21,3 +21,25 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
   >> "$LOG_FILE" 2>&1
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
+
+# Refresh embeddings for any changed statements. This is the one place the
+# OpenAI key is used (from the environment); CI rebuilds the site from the
+# committed cache without a key. Unchanged statements are cache hits, so a
+# typical run makes zero API calls.
+echo "=== export started at $(date -Iseconds) ===" >> "$LOG_FILE"
+uv run --group export export >> "$LOG_FILE" 2>&1 || echo "export failed (continuing)" >> "$LOG_FILE"
+
+# Commit the refreshed embeddings cache (the only derived artifact we track);
+# generated site JSON is rebuilt in CI.
+git add -- .cache/embeddings.json 2>/dev/null || true
+if ! git diff --cached --quiet -- .cache/embeddings.json; then
+  git commit -m "embeddings: refresh cache after scrape" >> "$LOG_FILE" 2>&1
+fi
+
+# Publish: push so the GitHub Pages workflow rebuilds and deploys the site.
+# (Overrides the global manual-push default for this repo; weddle needs push
+# credentials for origin.)
+echo "=== push at $(date -Iseconds) ===" >> "$LOG_FILE"
+git push >> "$LOG_FILE" 2>&1 || echo "push failed" >> "$LOG_FILE"
+
+echo "=== run finished at $(date -Iseconds) ===" >> "$LOG_FILE"
