@@ -1,0 +1,153 @@
+---
+import Layout from "@/components/Layout.astro";
+import PassageBrowser from "@/islands/PassageBrowser.svelte";
+import { propagation, agencies } from "@/lib/load";
+import { statementPath, withBase } from "@/lib/paths";
+import { originalityPercent } from "@/lib/format";
+
+const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
+const board = propagation.originality;
+const clusters = propagation.clusters;
+const templateClusters = clusters.filter((c) => c.alsoInDta).length;
+
+const mostBespoke = board.slice(0, 8);
+const mostTemplated = board.slice(-8).reverse();
+
+const columns = [
+  { heading: "Most bespoke", rows: mostBespoke },
+  { heading: "Most templated", rows: mostTemplated },
+];
+---
+
+<Layout
+  title="Propagation"
+  description="How a shared template spreads across Australian Government AI transparency statements — an originality leaderboard and a browser of the passages agencies copy."
+>
+  <div class="page stack">
+    <header class="stack">
+      <h1>The template effect</h1>
+      <p class="lede">
+        Many agencies start from the same DTA template, then edit. This shows how
+        much each statement is bespoke versus shared, and lets you browse the exact
+        passages that recur &mdash; {templateClusters} of them also appear in the
+        DTA&rsquo;s own statement.
+      </p>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <h2>Originality leaderboard</h2>
+        <a href={withBase("/agencies")}>All {board.length} ranked &rarr;</a>
+      </div>
+      <div class="boards">
+        {
+          columns.map((col) => (
+            <div class="board">
+              <h3 class="board__heading">{col.heading}</h3>
+              <ol class="board__list">
+                {col.rows.map((e) => (
+                  <li class="board__row">
+                    <a class="board__name" href={statementPath(e.abbr)}>
+                      {nameByAbbr.get(e.abbr) ?? e.abbr}
+                    </a>
+                    <span class="board__bar" role="presentation">
+                      <span style={`inline-size:${originalityPercent(e.score)}%`} />
+                    </span>
+                    <span class="board__pct mono">{originalityPercent(e.score)}%</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Shared passages</h2>
+        <span class="muted">{clusters.length} clusters</span>
+      </div>
+      <p class="muted shared-note">
+        Passages that recur across statements, widest reach first. {propagation.ursource}
+        publishes the canonical template, so passages also found there are marked.
+      </p>
+      <PassageBrowser client:visible clusters={clusters} />
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: var(--space-5) var(--space-8);
+  }
+
+  .board__heading {
+    font-size: 1rem;
+    margin: 0 0 var(--space-2);
+    color: var(--muted);
+  }
+
+  .board__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .board__row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) minmax(4rem, 9rem) 3rem;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-1);
+  }
+
+  .board__name {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .board__name:hover {
+    color: var(--accent);
+  }
+
+  .board__bar {
+    block-size: 0.55rem;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .board__bar span {
+    display: block;
+    block-size: 100%;
+    background: var(--accent);
+  }
+
+  .board__pct {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: end;
+  }
+
+  .shared-note {
+    max-width: var(--measure);
+    margin-block-end: var(--space-4);
+  }
+
+  @media (width < 34rem) {
+    .board__row {
+      grid-template-columns: 1fr 3rem;
+    }
+
+    .board__bar {
+      display: none;
+    }
+  }
+</style>
