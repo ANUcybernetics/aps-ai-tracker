@@ -46,9 +46,12 @@
       score: e.score,
     }));
 
+    // Originality → colour, matching the site-wide language: warm ochre =
+    // heavily templated/borrowed, cool teal = bespoke, neutral in between. Mid
+    // lightness so nodes stay legible on both the light and dark canvas.
     const colour = scaleLinear<string>()
       .domain([0, 0.5, 1])
-      .range(["#e5534b", "#9aa4b2", "#1f6feb"])
+      .range(["#c6862f", "#9aa1ab", "#3f8f9c"])
       .clamp(true);
 
     const svg = select(container)

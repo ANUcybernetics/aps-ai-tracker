@@ -117,9 +117,10 @@ const columns = [
     color: var(--accent);
   }
 
+  /* ink fill (bespoke) on an ochre track (borrowed), so the bar reads itself */
   .board__bar {
     block-size: 0.55rem;
-    background: var(--surface-2);
+    background: var(--heat-2);
     border-radius: 999px;
     overflow: hidden;
   }
@@ -127,7 +128,8 @@ const columns = [
   .board__bar span {
     display: block;
     block-size: 100%;
-    background: var(--accent);
+    background: var(--text);
+    border-radius: 999px;
   }
 
   .board__pct {
