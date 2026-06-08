@@ -1,7 +1,7 @@
 [project]
 name = "aps-ai-transparency-tracker"
 version = "0.1.0"
-description = "Add your description here"
+description = "Scrape and track Australian Government AI transparency statements over time"
 authors = [
     { name = "Ben Swift", email = "ben@benswift.me" }
 ]
