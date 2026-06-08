@@ -54,6 +54,41 @@ const c = meta.counts;
       </li>
     </ul>
 
+    <h2>Related work</h2>
+    <p>
+      Plenty of people study these statements; as far as we know, nobody else
+      tracks how they <em>change</em>. The first systematic analysis of the
+      Australian corpus &mdash; <a href="https://arxiv.org/abs/2604.26075">Pan
+      et al. (2026)</a>, who assembled the <em>AITS-101</em> dataset &mdash; and
+      an <a
+        href="https://www.admscentre.org.au/government-ai-transparency-statements-hard-to-find-new-report-finds/"
+        >audit by the ADM+S Centre</a
+      > both read the statements as a single snapshot. The Digital
+      Transformation Agency&rsquo;s <a
+        href="https://www.dta.gov.au/articles/new-central-register-ai-transparency-statements-commonwealth-entities"
+        >central register</a
+      > aspires to surface major updates but publishes no version history. The
+      missing time axis is what this project adds.
+    </p>
+    <p>
+      The method is borrowed rather than invented. Longitudinal corpora of
+      privacy policies &mdash; notably the <a
+        href="https://privacypolicies.cs.princeton.edu/">Princeton&ndash;Leuven
+        corpus</a
+      > &mdash; and terms-of-service trackers have long committed each snapshot
+      to git and diffed it; we point the same technique at government AI
+      transparency statements. The nearest efforts abroad track AI <em>use</em>
+      rather than the statements themselves &mdash; registers like the
+      UK&rsquo;s <a
+        href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub"
+        >Algorithmic Transparency Recording Standard</a
+      > and the Amsterdam and Helsinki algorithm registers &mdash; or score
+      transparency over time, like Stanford&rsquo;s <a
+        href="https://news.stanford.edu/stories/2025/12/foundation-model-transparency-index-ai-companies-information"
+        >Foundation Model Transparency Index</a
+      >. None diffs the text of agency statements.
+    </p>
+
     <h2>Caveats</h2>
     <p>
       Scraping is imperfect: site redesigns, bot-blocks and PDF extraction can
