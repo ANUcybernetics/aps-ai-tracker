@@ -16,42 +16,76 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: var(--text-base);
   line-height: 1.6;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
 }
+
+::selection {
+  background: var(--accent-wash);
+  color: var(--text);
+}
+
+/* --- headings: Archivo across its width + weight axes for civic, masthead type --- */
 
 h1,
 h2,
 h3,
 h4 {
-  line-height: 1.2;
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   text-wrap: balance;
+  margin-block: 0;
 }
 
 h1 {
-  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem);
+  font-size: var(--h1);
+  font-weight: 800;
+  font-stretch: 88%;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: var(--h2);
+  font-weight: 720;
+  font-stretch: 94%;
+  line-height: 1.12;
+}
+
+h3 {
+  font-size: var(--h3);
+  font-weight: 680;
+  line-height: 1.2;
 }
 
 p {
   text-wrap: pretty;
 }
 
+/* Editorial link: ink text with an ochre marker underline; deepens on hover.
+   Colour is never the sole signal — the underline carries it. */
 a {
-  color: var(--accent);
-  text-underline-offset: 0.15em;
-  text-decoration-thickness: 1px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.16em;
+  transition:
+    color var(--dur-fast) var(--ease-out-quart),
+    text-decoration-color var(--dur-fast) var(--ease-out-quart);
 }
 
 a:hover {
-  color: var(--accent-strong);
+  color: var(--accent-ink);
+  text-decoration-color: var(--accent-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -60,6 +94,7 @@ code,
 .mono {
   font-family: var(--font-mono);
   font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
 }
 
 hr {
@@ -85,28 +120,30 @@ hr {
   position: absolute;
   left: var(--space-3);
   top: var(--space-3);
-  z-index: 100;
+  z-index: var(--z-skip);
   padding: var(--space-2) var(--space-4);
-  background: var(--accent);
-  color: var(--accent-contrast);
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
-  transition: transform 0.15s ease;
+  transition: transform var(--dur-fast) var(--ease-out-quart);
 }
 
 .skip-link:focus {
   transform: translateY(0);
 }
 
-/* --- site chrome --- */
+/* --- masthead --- */
 
 .site-header {
   border-block-end: 1px solid var(--border);
-  background: color-mix(in oklab, var(--bg) 85%, transparent);
-  backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--bg) 90%, transparent);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: var(--z-sticky);
 }
 
 .site-header__inner {
@@ -118,15 +155,18 @@ hr {
 }
 
 .brand {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-stretch: 112%;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
   color: var(--text);
   text-decoration: none;
   margin-inline-end: auto;
 }
 
-.brand span {
-  color: var(--accent);
+.brand b {
+  font-weight: inherit;
+  color: var(--accent-ink);
 }
 
 .nav {
@@ -139,6 +179,7 @@ hr {
 .nav a {
   color: var(--muted);
   text-decoration: none;
+  padding-block: 2px;
 }
 
 .nav a:hover,
@@ -150,6 +191,7 @@ hr {
   text-decoration: underline;
   text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
 }
 
 main {
@@ -160,19 +202,26 @@ main {
 .site-footer {
   border-block-start: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   padding-block: var(--space-6);
-  margin-block-start: var(--space-12);
+  margin-block-start: var(--space-section);
 }
 
 .site-footer a {
   color: var(--muted);
+  text-decoration-color: var(--border-strong);
+}
+
+.site-footer a:hover {
+  color: var(--text);
+  text-decoration-color: var(--accent);
 }
 
 /* --- reusable pieces --- */
 
 .lede {
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
+  line-height: 1.5;
   color: var(--muted);
   max-width: var(--measure);
 }
@@ -188,12 +237,14 @@ main {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  padding: 0.1em 0.6em;
+  padding: 0.12em 0.6em;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   border: 1px solid var(--border);
   color: var(--muted);
+  background: var(--surface);
   white-space: nowrap;
 }
 
@@ -202,14 +253,17 @@ main {
   border-color: color-mix(in oklab, var(--ok) 40%, var(--border));
 }
 
+/* noise is low signal, not an alarm: read it as de-emphasised, not warm */
 .pill--warn {
-  color: var(--warn);
-  border-color: color-mix(in oklab, var(--warn) 40%, var(--border));
+  color: var(--muted);
+  border-style: dashed;
+  border-color: var(--border-strong);
 }
 
 .pill--pdf {
-  color: var(--accent);
-  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  color: var(--accent-ink);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+  background: var(--accent-wash);
 }
 
 .section-title {
@@ -222,7 +276,6 @@ main {
 
 .section-title h2 {
   margin: 0;
-  font-size: 1.4rem;
 }
 
 .muted {
@@ -231,7 +284,7 @@ main {
 
 /* Screen-reader-only text: present in the accessibility tree, out of the visual
    layout. The :focus-within/:active exception lets focusable hidden content
-   reveal itself (unused here, but keeps the utility correct). */
+   reveal itself. */
 .visually-hidden:where(:not(:focus-within, :active)) {
   position: absolute !important;
   clip-path: inset(50%) !important;
@@ -282,14 +335,16 @@ main {
 .prose blockquote {
   margin-inline: 0;
   padding-inline-start: var(--space-4);
-  border-inline-start: 3px solid var(--border);
+  border-inline-start: 3px solid var(--border-strong);
   color: var(--muted);
 }
 
-/* passage reuse heat-map */
+/* passage reuse heat: the highlighter. More agencies share a passage, the more
+   it's marked up. Unique text (heat 0) gets no highlight. */
 .heat {
   border-radius: var(--radius-sm);
-  padding-inline: 0.2em;
+  padding-inline: 0.15em;
+  box-decoration-break: clone;
   text-decoration-thickness: 1px;
 }
 
@@ -309,11 +364,11 @@ main {
   background: var(--heat-4);
 }
 
-/* Links inside a tinted (shared/template) passage: the accent blue sits too
-   close to the heat blues to clear AA contrast, so fall back to the body text
-   colour. The underline (from the base `a` rule) keeps them recognisable. */
+/* Links inside a highlighted passage: the ochre underline would vanish against
+   the ochre mark, so carry colour + underline in the ink instead. */
 .heat:not([data-heat="0"]) a {
   color: var(--text);
+  text-decoration-color: currentColor;
 }
 
 .heat-legend {
@@ -336,14 +391,15 @@ main {
 
 @media (prefers-reduced-motion: reduce) {
   * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
 
 /* Cross-document view transitions: a subtle cross-fade between pages. Progressive
-   — browsers without support just navigate instantly — and gated on no-preference
-   so reduced-motion users get instant navigation. */
+   and gated on no-preference so reduced-motion users navigate instantly. */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;

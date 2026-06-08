@@ -1,5 +1,6 @@
 ---
 import Layout from "@/components/Layout.astro";
+import AgencyWall from "@/components/AgencyWall.astro";
 import { agencies } from "@/lib/load";
 import { SIZE_LABEL, originalityPercent } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
@@ -23,6 +24,8 @@ const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
         sit outside the mandate.
       </p>
     </header>
+
+    <AgencyWall />
 
     <section>
       <div class="section-title">
