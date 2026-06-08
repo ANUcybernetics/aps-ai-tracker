@@ -42,7 +42,9 @@ jobs:
           fetch-depth: 0 # the timeline IS the full git history
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v8
+        # Full version pin: setup-uv publishes no floating v8 major tag (only
+        # v1–v7 have major aliases), so @v8 fails to resolve at job setup.
+        uses: astral-sh/setup-uv@v8.2.0
         with:
           python-version: "3.14"
 
