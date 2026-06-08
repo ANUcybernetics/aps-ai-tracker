@@ -1,0 +1,185 @@
+---
+// The register, as one image: a cell per tracked agency, coloured by how much of
+// its statement is borrowed from the DTA template (deep ochre) versus bespoke
+// (ink). Published cells link through; gaps and exemptions read as absences. The
+// agencies table is the accessible canonical list — this is the overview on top.
+import { agencies } from "@/lib/load";
+import { statementPath } from "@/lib/paths";
+import { originalityPercent } from "@/lib/format";
+
+const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
+
+// Templated-ness (1 − originality) → a 0–4 ochre step, matching the passage heat.
+function cellHeat(status: string, originality: number | null): number {
+  if (status !== "published" || originality === null) return 0;
+  const t = 1 - originality;
+  return t < 0.3 ? 0 : t < 0.55 ? 1 : t < 0.75 ? 2 : t < 0.9 ? 3 : 4;
+}
+
+function cellLabel(name: string, status: string, originality: number | null): string {
+  if (status === "not-yet") return `${name} — not yet published`;
+  if (status === "exempt") return `${name} — exempt or out of scope`;
+  if (originality === null) return `${name} — published`;
+  return `${name} — ${originalityPercent(originality)}% bespoke`;
+}
+
+const cells = agencies.toSorted(byName).map((a) => ({
+  abbr: a.abbr,
+  status: a.status,
+  heat: cellHeat(a.status, a.originality),
+  label: cellLabel(a.name, a.status, a.originality),
+  href: a.status === "published" ? statementPath(a.abbr) : null,
+}));
+---
+
+<figure class="wall">
+  <ul class="wall__grid" role="list">
+    {
+      cells.map((c) => (
+        <li>
+          {c.href ? (
+            <a
+              class="wall__cell"
+              data-status={c.status}
+              data-heat={c.heat}
+              href={c.href}
+              title={c.label}
+              aria-label={c.label}
+            />
+          ) : (
+            <span class="wall__cell" data-status={c.status} title={c.label} aria-label={c.label} role="img" />
+          )}
+        </li>
+      ))
+    }
+  </ul>
+
+  <figcaption class="wall__legend">
+    <span class="wall__scale">
+      <span class="wall__key" data-heat="0" aria-hidden="true" /> bespoke
+      <span class="wall__key" data-heat="2" aria-hidden="true" />
+      <span class="wall__key" data-heat="4" aria-hidden="true" /> borrowed
+    </span>
+    <span class="wall__sep" aria-hidden="true">·</span>
+    <span><span class="wall__key" data-status="not-yet" aria-hidden="true" /> not yet</span>
+    <span><span class="wall__key" data-status="exempt" aria-hidden="true" /> exempt</span>
+  </figcaption>
+</figure>
+
+<style>
+  .wall {
+    margin: 0;
+  }
+
+  .wall__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(1.45rem, 1fr));
+    gap: 0.32rem;
+  }
+
+  .wall__cell {
+    display: block;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    text-decoration: none;
+  }
+
+  /* published, bespoke: inky neutral (their own words) */
+  .wall__cell[data-status="published"][data-heat="0"] {
+    background: color-mix(in oklab, var(--text) 16%, var(--surface));
+    border-color: color-mix(in oklab, var(--text) 22%, var(--border));
+  }
+
+  .wall__cell[data-heat="1"] {
+    background: var(--heat-1);
+  }
+  .wall__cell[data-heat="2"] {
+    background: var(--heat-2);
+  }
+  .wall__cell[data-heat="3"] {
+    background: var(--heat-3);
+  }
+  .wall__cell[data-heat="4"] {
+    background: var(--heat-4);
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
+  }
+
+  .wall__cell[data-status="not-yet"] {
+    background: transparent;
+    border: 1.5px dashed var(--border-strong);
+  }
+
+  .wall__cell[data-status="exempt"] {
+    background: var(--surface);
+    opacity: 0.5;
+  }
+
+  a.wall__cell {
+    transition:
+      transform var(--dur-fast) var(--ease-out-quart),
+      border-color var(--dur-fast) var(--ease-out-quart);
+  }
+
+  a.wall__cell:hover {
+    transform: scale(1.2);
+    border-color: var(--accent-ink);
+    z-index: 1;
+  }
+
+  a.wall__cell:focus-visible {
+    transform: scale(1.2);
+    z-index: 1;
+  }
+
+  .wall__legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    margin-block-start: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+
+  .wall__scale {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .wall__sep {
+    color: var(--border-strong);
+  }
+
+  .wall__key {
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    vertical-align: -0.12em;
+  }
+
+  .wall__key[data-heat="0"] {
+    background: color-mix(in oklab, var(--text) 16%, var(--surface));
+  }
+  .wall__key[data-heat="2"] {
+    background: var(--heat-2);
+  }
+  .wall__key[data-heat="4"] {
+    background: var(--heat-4);
+  }
+  .wall__key[data-status="not-yet"] {
+    background: transparent;
+    border: 1.5px dashed var(--border-strong);
+  }
+  .wall__key[data-status="exempt"] {
+    background: var(--surface);
+    opacity: 0.6;
+  }
+</style>

@@ -102,15 +102,13 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    gap: var(--space-3);
+    border-block-start: 1px solid var(--border);
   }
 
+  /* a divided results list reads lighter than 150 bordered cards */
   .pb__cluster {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: var(--space-4);
-    background: var(--surface);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--border);
   }
 
   .pb__meta {

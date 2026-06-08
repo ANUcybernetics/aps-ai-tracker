@@ -33,16 +33,19 @@ const total = originality.shared + originality.unique;
   }
 
   .orig__pct {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
+    font-stretch: 90%;
+    letter-spacing: -0.02em;
     line-height: 1;
-    color: var(--accent);
+    color: var(--text);
   }
 
+  /* ink fill (their own words) on an ochre track (the borrowed remainder) */
   .orig__bar {
     margin-block: var(--space-2);
-    block-size: 0.5rem;
-    background: var(--surface-2);
+    block-size: 0.55rem;
+    background: var(--heat-2);
     border-radius: 999px;
     overflow: hidden;
   }
@@ -50,7 +53,8 @@ const total = originality.shared + originality.unique;
   .orig__bar span {
     display: block;
     block-size: 100%;
-    background: var(--accent);
+    background: var(--text);
+    border-radius: 999px;
   }
 
   .orig p {

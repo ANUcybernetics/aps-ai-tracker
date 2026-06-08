@@ -8,80 +8,106 @@ const published = agencies.filter((a) => a.statementId);
 const mostRevised = [...published].sort((a, b) => b.revisionCount - a.revisionCount)[0];
 const board = propagation.originality;
 const leastOriginal = board[board.length - 1];
+const since = meta.firstCommit ? formatDate(meta.firstCommit) : "launch";
 
-const stats = [
-  { value: c.published, total: c.agencies, label: "agencies with a published statement" },
-  { value: c.notYet, label: "in scope but not yet published" },
-  { value: c.exempt, label: "exempt or out of scope" },
-  { value: c.revisions, label: "tracked changes since " + (meta.firstCommit ? formatDate(meta.firstCommit) : "launch") },
+const facts = [
+  { label: "Published", value: `${c.published} of ${c.agencies}`, href: null },
+  { label: "Not yet", value: String(c.notYet), href: null },
+  { label: "Exempt", value: String(c.exempt), href: null },
+  {
+    label: "Most revised",
+    value: `${mostRevised.abbr} · ${mostRevised.revisionCount}`,
+    href: statementPath(mostRevised.abbr),
+  },
+  {
+    label: "Most templated",
+    value: `${leastOriginal.abbr} · ${originalityPercent(leastOriginal.score)}% bespoke`,
+    href: statementPath(leastOriginal.abbr),
+  },
 ];
 ---
 
 <section class="coverage" aria-label="Coverage at a glance">
-  <ul class="coverage__grid">
+  <p class="coverage__lead">
+    <span class="coverage__big mono">{c.revisions}</span>
+    <span class="coverage__gloss">
+      changes tracked since {since}, across <strong>{c.published}</strong> published
+      statements from {c.agencies} agencies on the APSC list.
+    </span>
+  </p>
+
+  <dl class="coverage__facts">
     {
-      stats.map((s) => (
-        <li class="coverage__stat">
-          <span class="coverage__value">
-            {s.value}
-            {s.total ? <span class="coverage__total">/ {s.total}</span> : null}
-          </span>
-          <span class="coverage__label">{s.label}</span>
-        </li>
+      facts.map((f) => (
+        <div class="coverage__fact">
+          <dt>{f.label}</dt>
+          <dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd>
+        </div>
       ))
     }
-  </ul>
-
-  <p class="coverage__highlights muted">
-    Most revised: <a href={statementPath(mostRevised.abbr)}>{mostRevised.abbr}</a>
-    ({mostRevised.revisionCount} changes). Most templated:
-    <a href={statementPath(leastOriginal.abbr)}>{leastOriginal.abbr}</a>
-    (just {originalityPercent(leastOriginal.score)}% bespoke).
-  </p>
+  </dl>
 </section>
 
 <style>
-  .coverage__grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-    gap: var(--space-4);
-  }
-
-  .coverage__stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: var(--space-4) var(--space-5);
+  .coverage {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: var(--space-5);
+    padding-block: var(--space-2);
   }
 
-  .coverage__value {
-    font-size: 2.2rem;
+  .coverage__lead {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .coverage__big {
+    font-size: clamp(3rem, 2rem + 5vw, 5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--text);
+  }
+
+  .coverage__gloss {
+    flex: 1 1 14rem;
+    color: var(--muted);
+    font-size: var(--text-lg);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .coverage__gloss strong {
+    color: var(--text);
     font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--accent);
   }
 
-  .coverage__total {
-    font-size: 1.1rem;
+  .coverage__facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: var(--space-4) var(--space-5);
+    border-block-start: 2px solid var(--border-strong);
+    padding-block-start: var(--space-4);
+  }
+
+  .coverage__fact dt {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--muted);
-    font-weight: 500;
+    margin-block-end: 0.15rem;
   }
 
-  .coverage__label {
-    font-size: 0.9rem;
-    color: var(--muted);
-    text-wrap: balance;
-  }
-
-  .coverage__highlights {
-    margin-block-start: var(--space-4);
-    font-size: 0.95rem;
+  .coverage__fact dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
   }
 </style>

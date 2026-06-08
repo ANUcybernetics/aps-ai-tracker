@@ -1,7 +1,8 @@
 ---
 import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
-import { timeline } from "@/lib/load";
+import AgencyWall from "@/components/AgencyWall.astro";
+import { timeline, meta, propagation } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { withBase, statementPath } from "@/lib/paths";
 
@@ -11,47 +12,57 @@ const seen = new Set<string>();
 const recent = timeline
   .filter((e) => e.kind === "updated" && !e.isNoise)
   .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
-  .slice(0, 12);
+  .slice(0, 10);
 
+const c = meta.counts;
 const explorers = [
   {
     href: withBase("/timeline"),
     title: "Timeline",
-    body: "Every change to every statement, newest first — with the exact words that changed.",
+    hint: `${c.revisions} changes`,
+    body: "Every change to every statement, newest first, down to the words that moved.",
   },
   {
     href: withBase("/agencies"),
     title: "Agencies",
-    body: "Who has published, who hasn't, and who's exempt — across all 126 agencies.",
+    hint: `${c.published} / ${c.agencies}`,
+    body: "Who has published, who hasn't, and who sits outside the mandate.",
   },
   {
     href: withBase("/similarity"),
     title: "Similarity",
+    hint: `${c.embedded} mapped`,
     body: "A map of which statements read alike, from sentence-embedding distances.",
   },
   {
     href: withBase("/propagation"),
     title: "Propagation",
-    body: "How a shared template bleeds across agencies — and who wrote something of their own.",
+    hint: `${propagation.clusters.length} clusters`,
+    body: "How one DTA template bleeds across agencies, and who wrote their own.",
   },
 ];
 ---
 
 <Layout title="AI Transparency Tracker">
-  <div class="page stack">
-    <header class="hero stack">
-      <h1>How the Australian Government talks about its use of AI</h1>
-      <p class="lede">
+  <div class="page home">
+    <header class="hero">
+      <p class="hero__dateline mono">Tracking {c.agencies} agencies · rescraped daily</p>
+      <h1 class="hero__title">How the Australian Government talks about its use of AI</h1>
+      <p class="lede hero__lede">
         Since February 2025, Commonwealth agencies must publish AI transparency
-        statements. This tracker scrapes them daily and records every change in
-        git — so you can watch the statements evolve, see which read alike, and
-        trace the template language that spreads between them.
+        statements. This tracker scrapes them every day and records every change in
+        git, so you can watch the statements evolve, see which read alike, and trace
+        the template language that spreads between them.
       </p>
     </header>
 
+    <div class="home__wall">
+      <AgencyWall />
+    </div>
+
     <CoverageStats />
 
-    <section aria-labelledby="recent-heading">
+    <section class="recent" aria-labelledby="recent-heading">
       <div class="section-title">
         <h2 id="recent-heading">Recent changes</h2>
         <a href={withBase("/timeline")}>Full timeline &rarr;</a>
@@ -66,24 +77,30 @@ const explorers = [
               <a class="feed__agency" href={statementPath(e.abbr)}>
                 {e.agency}
               </a>
-              <span class="pill">{e.abbr}</span>
+              <span class="feed__abbr mono">{e.abbr}</span>
             </li>
           ))
         }
       </ul>
     </section>
 
-    <section aria-labelledby="explore-heading">
+    <section class="explore" aria-labelledby="explore-heading">
       <div class="section-title">
         <h2 id="explore-heading">Explore</h2>
       </div>
-      <ul class="explorers">
+      <ul class="directory">
         {
           explorers.map((x) => (
             <li>
-              <a class="card explorer" href={x.href}>
-                <span class="explorer__title">{x.title}</span>
-                <span class="explorer__body muted">{x.body}</span>
+              <a class="directory__link" href={x.href}>
+                <span class="directory__head">
+                  <span class="directory__title">{x.title}</span>
+                  <span class="directory__hint mono">{x.hint}</span>
+                </span>
+                <span class="directory__body">{x.body}</span>
+                <span class="directory__arrow" aria-hidden="true">
+                  &rarr;
+                </span>
               </a>
             </li>
           ))
@@ -94,75 +111,159 @@ const explorers = [
 </Layout>
 
 <style>
-  .hero {
-    padding-block: var(--space-4) var(--space-6);
-    max-width: 52rem;
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-section);
   }
 
+  /* --- hero --- */
+  .hero {
+    max-width: 56rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-block-start: var(--space-2);
+  }
+
+  .hero__dateline {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--accent-ink);
+    letter-spacing: 0.01em;
+  }
+
+  .hero__title {
+    font-size: var(--display);
+    font-weight: 800;
+    font-stretch: 86%;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    max-width: 18ch;
+  }
+
+  .hero__lede {
+    margin: 0;
+    max-width: 54ch;
+  }
+
+  .home__wall {
+    margin-block-start: calc(-1 * var(--space-4));
+  }
+
+  /* --- recent changes feed --- */
   .feed {
     list-style: none;
     margin: 0;
     padding: 0;
-    border-top: 1px solid var(--border);
+    border-block-start: 1px solid var(--border);
   }
 
   .feed__row {
     display: grid;
-    grid-template-columns: 7.5rem 1fr auto;
-    align-items: center;
+    grid-template-columns: 7rem 1fr auto;
+    align-items: baseline;
     gap: var(--space-3);
-    padding-block: var(--space-3);
-    border-bottom: 1px solid var(--border);
+    padding: var(--space-3);
+    margin-inline: calc(-1 * var(--space-3));
+    border-block-end: 1px solid var(--border);
+    transition: background var(--dur-fast) var(--ease-out-quart);
+  }
+
+  .feed__row:hover {
+    background: var(--surface);
   }
 
   .feed__date {
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .feed__agency {
     color: var(--text);
     text-decoration: none;
-    font-weight: 550;
+    font-weight: 600;
   }
 
-  .feed__agency:hover {
-    color: var(--accent);
+  .feed__row:hover .feed__agency {
+    color: var(--accent-ink);
   }
 
-  .explorers {
+  .feed__abbr {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* --- explore directory --- */
+  .directory {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: var(--space-4);
+    border-block-start: 1px solid var(--border-strong);
   }
 
-  .explorer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    height: 100%;
+  .directory__link {
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.5fr) 1fr auto;
+    align-items: baseline;
+    gap: var(--space-3) var(--space-6);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--border);
     text-decoration: none;
     color: var(--text);
-    transition:
-      border-color 0.15s ease,
-      transform 0.15s ease;
   }
 
-  .explorer:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  .directory__head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
   }
 
-  .explorer__title {
-    font-weight: 650;
-    font-size: 1.1rem;
+  .directory__title {
+    font-size: var(--text-xl);
+    font-weight: 720;
+    font-stretch: 96%;
+    letter-spacing: -0.01em;
+    transition: color var(--dur-fast) var(--ease-out-quart);
   }
 
-  .explorer__body {
-    font-size: 0.9rem;
+  .directory__hint {
+    font-size: var(--text-sm);
+    color: var(--accent-ink);
+    white-space: nowrap;
+  }
+
+  .directory__body {
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-wrap: pretty;
+  }
+
+  .directory__arrow {
+    font-size: 1.3rem;
+    color: var(--accent);
+    justify-self: end;
+    transition: transform var(--dur) var(--ease-out-expo);
+  }
+
+  .directory__link:hover .directory__title {
+    color: var(--accent-ink);
+  }
+
+  .directory__link:hover .directory__arrow {
+    transform: translateX(0.35rem);
+  }
+
+  @media (width < 40rem) {
+    .directory__link {
+      grid-template-columns: 1fr auto;
+    }
+
+    .directory__body {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
   }
 
   @media (width < 34rem) {
@@ -172,6 +273,38 @@ const explorers = [
 
     .feed__date {
       grid-column: 1 / -1;
+    }
+  }
+
+  /* --- one orchestrated entrance on load (reduced-motion falls back instantly
+     via the global rule that collapses animation duration) --- */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__dateline,
+    .hero__title,
+    .hero__lede,
+    .home__wall {
+      animation: rise var(--dur-slow) var(--ease-out-expo) both;
+    }
+
+    .hero__title {
+      animation-delay: 0.06s;
+    }
+    .hero__lede {
+      animation-delay: 0.12s;
+    }
+    .home__wall {
+      animation-delay: 0.18s;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.7rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
     }
   }
 </style>
