@@ -32,11 +32,6 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# setup-uv@v5 still ships as a Node 20 action; opt its runtime into Node 24 so it
-# keeps working past the 16 June 2026 Node 20 removal.
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,7 +42,7 @@ jobs:
           fetch-depth: 0 # the timeline IS the full git history
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8
         with:
           python-version: "3.14"
 
