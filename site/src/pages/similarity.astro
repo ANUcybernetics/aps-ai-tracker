@@ -1,6 +1,7 @@
 ---
 import Layout from "@/components/Layout.astro";
 import SimilarityGraph from "@/islands/SimilarityGraph.svelte";
+import ReadingLink from "@/components/ReadingLink.astro";
 import { similarity, agencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
 
@@ -25,6 +26,7 @@ const rows = similarity.abbrs.map((abbr) => ({
         Colour runs warm (<strong>heavily templated</strong>) to cool
         (<strong>bespoke</strong>).
       </p>
+      <p><ReadingLink anchor="similarity" label="How to read this map" /></p>
     </header>
 
     <SimilarityGraph client:visible />
