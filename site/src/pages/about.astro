@@ -12,17 +12,17 @@ const c = meta.counts;
     <p class="lede">
       Under the Policy for the responsible use of AI in government, Commonwealth
       agencies have had to publish AI transparency statements since February 2025.
-      This project keeps a faithful, versioned record of those statements and makes
+      This project keeps a faithful, dated record of those statements and makes
       the changes legible.
     </p>
 
     <h2>How it works</h2>
     <p>
-      A scraper visits each agency&rsquo;s statement daily, converts it to markdown,
-      and commits any change to git. The commit history is therefore a complete,
-      timestamped record of how every statement has evolved. This site is a static
-      front end built from that history &mdash; it adds no editorial content beyond
-      the analysis described below.
+      Every day, an automated program visits each agency&rsquo;s statement, saves a
+      copy, and notes anything that has changed since the day before. Over time this
+      builds a complete, dated history of how every statement has evolved, down to
+      the wording. This site presents that history &mdash; it adds no commentary of
+      its own beyond the analysis described below.
     </p>
 
     <h2>Methodology</h2>
