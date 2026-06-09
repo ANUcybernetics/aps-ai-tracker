@@ -11,9 +11,11 @@ committed. All JSON is written deterministically (sorted keys, rounded floats)
 so CI output is byte-reproducible and diffs stay clean.
 
 This module asserts text *co-occurrence* between statements; it never claims a
-directional "agency A copied from B". The most it says is that a passage also
-appears in the DTA template (`alsoInDta`), which is defensible because the DTA
-publishes the canonical policy.
+directional "agency A copied from B". The most it infers is temporal: which
+tracked statement *first observed* a shared passage (`firstObserved`), which is
+"first seen by us" — never proof of authorship, since a passage may predate the
+corpus. It also marks passages that appear in the DTA template (`alsoInDta`),
+defensible because the DTA publishes the canonical policy.
 """
 
 import hashlib
@@ -394,13 +396,108 @@ def _modal(values: list[str]) -> str:
     return min(counts, key=lambda v: (-counts[v], v))
 
 
+def first_seen_passages(
+    timelines: dict[str, list[Revision]],
+) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]], str | None]:
+    """Earliest date each agency's history shows a given passage / template phrase.
+
+    Walks every de-noised revision oldest-first, recording for each agency the
+    first date a passage's `norm_key` — and each canonical phrase — is observed.
+    These feed every shared-passage cluster's "first observed in our corpus"
+    provenance. Also returns the corpus start: the earliest first-tracked date
+    across all statements (the moment continuous tracking begins).
+
+    This is "first observed by us", never "authored first": a passage present at
+    an agency's first tracked revision may predate the corpus entirely.
+    """
+    by_key: dict[str, dict[str, str]] = {}
+    by_phrase: dict[str, dict[str, str]] = {}
+    corpus_start: str | None = None
+    for abbr, revisions in timelines.items():
+        keys: dict[str, str] = {}
+        phrases: dict[str, str] = {}
+        for index, rev in enumerate(revisions):
+            if index == 0 and (
+                corpus_start is None
+                or datetime.fromisoformat(rev.date)
+                < datetime.fromisoformat(corpus_start)
+            ):
+                corpus_start = rev.date
+            passages = segment_passages(rev.body, abbr)
+            for passage in passages:
+                keys.setdefault(passage.norm_key, rev.date)
+            blob = "\n".join(p.normalised for p in passages)
+            for phrase_id, phrase in CANONICAL_PHRASES.items():
+                if phrase in blob:
+                    phrases.setdefault(phrase_id, rev.date)
+        by_key[abbr] = keys
+        by_phrase[abbr] = phrases
+    return by_key, by_phrase, corpus_start
+
+
+# How far past the corpus start a passage's earliest sighting must fall before we
+# treat that agency as having genuinely *added* it (rather than carrying it in at
+# tracking start, which says nothing about who came first).
+_FIRST_OBSERVED_GRACE_DAYS = 2
+
+
+def _first_observed(
+    members: list[str],
+    first_seen: dict[str, dict[str, str]],
+    key: str,
+    corpus_start: str | None,
+) -> dict | None:
+    """First-observed provenance for one cluster: who carried the passage earliest.
+
+    Returns the per-member first-seen dates (oldest first), the single earliest
+    agency, and a tier describing how much weight the ordering bears:
+
+    - ``added``: the earliest agency first showed the passage well after the
+      corpus opened, so we watched it enter — the strongest signal.
+    - ``present-at-start``: the earliest agency already had it when tracking
+      began; others adopted it later, but its own origin may predate the corpus.
+    - ``tied``: several agencies share the earliest date, so we cannot order them.
+
+    Still only "first observed by us", never proof of authorship.
+    """
+    seen = sorted(
+        ((first_seen[a][key], a) for a in members if key in first_seen.get(a, {})),
+        key=lambda da: (datetime.fromisoformat(da[0]), da[1]),
+    )
+    if len(seen) < 2:
+        return None
+    earliest = datetime.fromisoformat(seen[0][0])
+    winners = [a for d, a in seen if datetime.fromisoformat(d) == earliest]
+    if len(winners) > 1:
+        tier = "tied"
+    elif (
+        corpus_start
+        and (earliest - datetime.fromisoformat(corpus_start)).days
+        > _FIRST_OBSERVED_GRACE_DAYS
+    ):
+        tier = "added"
+    else:
+        tier = "present-at-start"
+    return {
+        "abbr": winners[0] if len(winners) == 1 else None,
+        "date": seen[0][0],
+        "tier": tier,
+        "order": [{"abbr": a, "date": d} for d, a in seen],
+    }
+
+
 def build_clusters(
-    passages_by_abbr: dict[str, list[Passage]], dta_abbr: str = "DTA"
+    passages_by_abbr: dict[str, list[Passage]],
+    dta_abbr: str = "DTA",
+    first_seen_key: dict[str, dict[str, str]] | None = None,
+    first_seen_phrase: dict[str, dict[str, str]] | None = None,
+    corpus_start: str | None = None,
 ) -> tuple[list[dict], dict[str, int]]:
     """Cluster shared passages and return (clusters, sharedCount-by-norm_key).
 
-    Clusters assert co-occurrence only — the schema has no directional origin
-    field, only `alsoInDta` (template overlap, which is defensible).
+    Clusters assert co-occurrence, plus two defensible extras: `alsoInDta`
+    (template overlap) and `firstObserved` (which tracked statement showed the
+    passage earliest — "first seen by us", not authorship; see `_first_observed`).
     """
     groups: dict[str, list[Passage]] = defaultdict(list)
     for passages in passages_by_abbr.values():
@@ -424,6 +521,11 @@ def build_clusters(
                 "alsoInDta": dta_abbr in members,
                 "containsCanonicalPhrase": contains_canonical_phrase(
                     group[0].normalised
+                ),
+                "firstObserved": (
+                    _first_observed(members, first_seen_key, key, corpus_start)
+                    if first_seen_key is not None
+                    else None
                 ),
                 "mergeMethod": "exact",
             }
@@ -450,6 +552,13 @@ def build_clusters(
                 "count": len(members),
                 "alsoInDta": dta_abbr in members,
                 "containsCanonicalPhrase": True,
+                "firstObserved": (
+                    _first_observed(
+                        members, first_seen_phrase, phrase_id, corpus_start
+                    )
+                    if first_seen_phrase is not None
+                    else None
+                ),
                 "mergeMethod": "phrase",
             }
         )
@@ -804,10 +913,17 @@ def main() -> int:
 
     timeline = build_timeline(timelines, records, statements)
 
+    first_seen_key, first_seen_phrase, corpus_start = first_seen_passages(timelines)
+
     passages_by_abbr = {
         abbr: segment_passages(data["body"], abbr) for abbr, data in statements.items()
     }
-    clusters, shared_count = build_clusters(passages_by_abbr)
+    clusters, shared_count = build_clusters(
+        passages_by_abbr,
+        first_seen_key=first_seen_key,
+        first_seen_phrase=first_seen_phrase,
+        corpus_start=corpus_start,
+    )
     originalities = {
         abbr: originality_score(passages, shared_count)
         for abbr, passages in passages_by_abbr.items()
@@ -843,6 +959,7 @@ def main() -> int:
         "headSha": git("rev-parse", "HEAD"),
         "builtAt": datetime.now(UTC).isoformat(),
         "firstCommit": first_commit.splitlines()[0] if first_commit else None,
+        "corpusStart": corpus_start,
         "apiUsed": bool(similarity["abbrs"]),
         "counts": {
             "agencies": len(records),
