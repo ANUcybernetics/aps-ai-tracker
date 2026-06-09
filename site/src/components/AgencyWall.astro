@@ -6,6 +6,7 @@
 import { agencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
+import ReadingLink from "@/components/ReadingLink.astro";
 
 const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
 
@@ -63,6 +64,7 @@ const cells = agencies.toSorted(byName).map((a) => ({
     <span class="wall__sep" aria-hidden="true">·</span>
     <span><span class="wall__key" data-status="not-yet" aria-hidden="true" /> not yet</span>
     <span><span class="wall__key" data-status="exempt" aria-hidden="true" /> exempt</span>
+    <ReadingLink anchor="originality" label="What is bespoke?" class="wall__how" />
   </figcaption>
 </figure>
 
@@ -150,6 +152,10 @@ const cells = agencies.toSorted(byName).map((a) => ({
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+  }
+
+  .wall__how {
+    margin-inline-start: auto;
   }
 
   .wall__sep {
