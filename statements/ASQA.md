@@ -3,7 +3,7 @@ abbr: ASQA
 agency: Australian Skills Quality Authority
 final_url: https://www.asqa.gov.au/about-us/governance-and-accountability/artificial-intelligence-ai-transparency-statement
 source_url: https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement
-title: Australian Skills Quality Authority
+title: Artificial Intelligence (AI) Transparency Statement | ASQA
 ---
 
 The Australian Skills Quality Authority (ASQA) is committed to ensuring that Artificial Intelligence (AI) enhances the effectiveness and quality of our services while maintaining the highest standards of ethics, safety and public trust. Our intent is to leverage AI technologies to:
