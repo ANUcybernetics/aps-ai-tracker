@@ -1,6 +1,15 @@
 <script lang="ts">
   import type { PassageCluster } from "@/types/exporter";
-  import { statementPath, dataUrl } from "@/lib/paths";
+  import { statementPath, dataUrl, withBase } from "@/lib/paths";
+  import { formatDate } from "@/lib/format";
+
+  // Short gloss for a first-observed tier (see the Reading page for the full
+  // explanation); the "tied" case is handled separately in the markup.
+  function tierLabel(tier: string): string {
+    if (tier === "added") return "added during tracking";
+    if (tier === "present-at-start") return "present when tracking began";
+    return "";
+  }
 
   let clusters = $state<PassageCluster[]>([]);
   let status = $state<"loading" | "empty" | "ready">("loading");
@@ -52,6 +61,21 @@
             <span class="muted">{c.kind}</span>
           </div>
           <p class="pb__text">{c.canonicalText}</p>
+          {#if c.firstObserved}
+            <p class="pb__first">
+              {#if c.firstObserved.abbr}
+                <span class="muted">First observed:</span>
+                <a href={statementPath(c.firstObserved.abbr)}>{c.firstObserved.abbr}</a>,
+                {formatDate(c.firstObserved.date)}{#if tierLabel(c.firstObserved.tier)}
+                  <span class="muted">· {tierLabel(c.firstObserved.tier)}</span>{/if}
+              {:else}
+                <span class="muted">Present across agencies from the corpus start</span>
+              {/if}
+              <a class="pb__how" href={withBase("/reading#first-observed")}>
+                How to read this &rarr;
+              </a>
+            </p>
+          {/if}
           <details class="pb__members">
             <summary>Which agencies</summary>
             <div class="cluster">
@@ -128,6 +152,25 @@
     line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .pb__first {
+    margin: var(--space-2) 0 0;
+    font-size: 0.85rem;
+  }
+
+  .pb__first a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .pb__first a:hover {
+    text-decoration: underline;
+  }
+
+  .pb__how {
+    margin-inline-start: var(--space-2);
+    white-space: nowrap;
   }
 
   .pb__members {

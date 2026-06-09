@@ -1,0 +1,35 @@
+---
+// A small, consistent "how to read this" affordance. Every place that shows a
+// similarity score, originality figure, reuse colour or propagation marking
+// links back to the canonical explainer (the Reading page) through this, so the
+// wording and destination stay identical everywhere.
+import { withBase } from "@/lib/paths";
+
+interface Props {
+  anchor?: "corpus" | "reuse" | "originality" | "similarity";
+  label?: string;
+  class?: string;
+}
+
+const { anchor, label = "How to read this", class: className } = Astro.props;
+const href = withBase(`/reading${anchor ? `#${anchor}` : ""}`);
+---
+
+<a class:list={["reading-link", className]} href={href}>
+  {label}<span aria-hidden="true"> &rarr;</span>
+</a>
+
+<style>
+  .reading-link {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .reading-link:hover,
+  .reading-link:focus-visible {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import Layout from "@/components/Layout.astro";
+import { propagation, meta } from "@/lib/load";
+import { formatDate } from "@/lib/format";
+import { withBase } from "@/lib/paths";
+
+const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "November 2025";
+
+const tierCounts: Record<"added" | "present-at-start" | "tied", number> = {
+  added: 0,
+  "present-at-start": 0,
+  tied: 0,
+};
+for (const c of propagation.clusters) {
+  const t = c.firstObserved?.tier;
+  if (t) tierCounts[t] += 1;
+}
+---
+
+<Layout
+  title="Reading the data"
+  description="How to read the similarity scores, originality figures, reuse heat-map and passage provenance on this site — and what each of them does not claim."
+>
+  <div class="page reading prose stack">
+    <h1>Reading the data</h1>
+    <p class="lede">
+      This site turns a stack of government web pages into numbers and colours:
+      similarity scores, originality figures, a reuse heat-map, and a record of
+      which statement we saw a passage in first. Here is what each one means
+      &mdash; and, just as importantly, what it does not.
+    </p>
+
+    <h2 id="corpus">When the record starts</h2>
+    <p>
+      Continuous tracking opens in November 2025, at the launch of the Australian
+      Public Service&rsquo;s AI Plan. This tracker was begun live, from a laptop in
+      the audience, as the plan was unveiled &mdash; which is why the record starts
+      exactly when it does. The earliest snapshot is timestamped {corpusStart}.
+    </p>
+    <p>
+      The <em>Policy for the responsible use of AI in government</em> has required
+      these statements since February 2025, so their first nine months &mdash; when
+      most agencies drafted, published and borrowed from one another &mdash; happened
+      before the tracker was watching. Every statement that already existed enters
+      the record together on day one, marked &ldquo;first tracked&rdquo; rather than
+      &ldquo;published&rdquo;: we don&rsquo;t know what those statements looked like
+      before we first saw them. This is the single biggest limit on everything below.
+    </p>
+
+    <h2 id="reuse">Shared passages and the reuse heat-map</h2>
+    <p>
+      Agencies reuse one another&rsquo;s wording heavily. On each statement page,
+      every passage is tinted by how widely the same words appear across all the
+      statements we track:
+    </p>
+    <ul>
+      <li><strong>uncoloured</strong> &mdash; unique to that statement;</li>
+      <li><strong>a few</strong> &mdash; shared with two or three other agencies;</li>
+      <li><strong>several</strong> &mdash; shared with four to nine;</li>
+      <li><strong>many</strong> &mdash; shared with ten to twenty-four;</li>
+      <li><strong>most</strong> &mdash; shared with twenty-five or more.</li>
+    </ul>
+    <p>
+      Wording lifted straight from the Policy is always tinted at least lightly. A
+      passage that also appears in the Digital Transformation Agency&rsquo;s own
+      statement is marked <em>in DTA template</em>, because the DTA publishes the
+      wording most other agencies start from.
+    </p>
+    <h3 id="first-observed">First observed in our corpus</h3>
+    <p>
+      For every shared passage we also record which tracked statement showed it
+      earliest, and the order the others picked it up. Each passage falls into one
+      of three tiers, by how much weight that ordering can bear:
+    </p>
+    <ul>
+      <li>
+        <strong>added during tracking</strong> ({tierCounts.added}) &mdash; we watched
+        the first agency add the passage well after the record opened, then watched
+        others follow. The strongest signal.
+      </li>
+      <li>
+        <strong>present at the start</strong> ({tierCounts["present-at-start"]}) &mdash;
+        the first agency already had the passage when tracking began; others adopted it
+        later. We can order the latecomers, but not that first agency&rsquo;s own source.
+      </li>
+      <li>
+        <strong>tied</strong> ({tierCounts.tied}) &mdash; several agencies share the
+        earliest date, usually because they were all present on day one, so we make no
+        claim about order.
+      </li>
+    </ul>
+    <p>
+      Read this as <em>first observed by us</em>, never as proof of who wrote it
+      first. A passage two agencies both carried on day one cannot be ordered at all,
+      and even a clean ordering only says who we saw with it first. The real source
+      could be an agency we don&rsquo;t track, an internal draft circulated off the
+      web, or the DTA template itself.
+    </p>
+
+    <h2 id="originality">Originality scores</h2>
+    <p>
+      A statement&rsquo;s originality score is the share of its text, weighted by
+      length, that is <em>not</em> shared with other agencies and <em>not</em> drawn
+      from the template. A statement at 80% is mostly in its own words; one at 20% is
+      mostly shared or templated language. The leaderboard and the agency grid colour
+      each statement on this scale, from borrowed to bespoke.
+    </p>
+    <p>
+      The DTA scores low by design: it publishes the template, so almost everything
+      it says is, by definition, shared. We label it the template source rather than
+      reading its low score as a lack of effort.
+    </p>
+
+    <h2 id="similarity">Similarity</h2>
+    <p>
+      Similarity is a different measurement from reuse. Reuse is literal &mdash; the
+      same words, matched exactly. Similarity is about meaning: each statement is
+      turned into a numeric fingerprint (an embedding) and compared with every other,
+      so two statements can score as similar even when they share no identical
+      passages, simply because they cover the same ground in the same way. The
+      similarity map and the &ldquo;reads most like&rdquo; lists use this measure.
+      Scores run from 0 to 1; closer to 1 means more alike.
+    </p>
+
+    <h2 id="more">The fine print</h2>
+    <p>
+      For how all of this is computed &mdash; how spurious scrape churn is collapsed
+      out, the exact passage-matching rules, the embedding model &mdash; and for the
+      limits of the scraping itself, see the methodology and caveats on the <a
+        href={withBase("/about")}>About page</a
+      >.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .reading {
+    max-width: 46rem;
+  }
+
+  .reading h3 {
+    font-size: 1.05rem;
+    margin-block-start: var(--space-4);
+  }
+</style>

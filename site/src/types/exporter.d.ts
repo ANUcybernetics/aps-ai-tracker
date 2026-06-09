@@ -18,6 +18,7 @@ export interface Meta {
   headSha: string;
   builtAt: string;
   firstCommit: string | null;
+  corpusStart: string | null;
   apiUsed: boolean;
   counts: {
     agencies: number;
@@ -114,6 +115,16 @@ export interface TimelineData {
   events: TimelineEvent[];
 }
 
+// Temporal provenance for a shared passage: which tracked statement showed it
+// earliest. "First observed by us", never proof of authorship — a passage may
+// predate the corpus. `tier` grades how much the ordering bears (see export.py).
+export interface FirstObserved {
+  abbr: string | null; // earliest agency; null when several tie
+  date: string; // ISO date the earliest member first showed the passage
+  tier: "added" | "present-at-start" | "tied";
+  order: { abbr: string; date: string }[]; // every member, oldest first
+}
+
 export interface PassageCluster {
   normKey: string;
   canonicalText: string;
@@ -122,6 +133,7 @@ export interface PassageCluster {
   count: number;
   alsoInDta: boolean;
   containsCanonicalPhrase: boolean;
+  firstObserved: FirstObserved | null;
   mergeMethod: "exact" | "phrase";
 }
 
