@@ -5,6 +5,7 @@ import StatementBody from "@/components/StatementBody.astro";
 import OriginalityBadge from "@/components/OriginalityBadge.astro";
 import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
+import ReadingLink from "@/components/ReadingLink.astro";
 import { allStatements } from "@/lib/statements";
 import { propagation } from "@/lib/load";
 import { formatDate } from "@/lib/format";
@@ -50,15 +51,18 @@ const legend = [
 
     <div class="stmt__grid">
       <article class="stmt__main">
-        <div class="heat-legend" aria-hidden="true">
-          <span>Text reuse:</span>
-          {
-            legend.map((l) => (
-              <span>
-                <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
-              </span>
-            ))
-          }
+        <div class="heat-legend">
+          <div class="heat-legend__items" aria-hidden="true">
+            <span>Text reuse:</span>
+            {
+              legend.map((l) => (
+                <span>
+                  <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
+                </span>
+              ))
+            }
+          </div>
+          <ReadingLink anchor="reuse" />
         </div>
         <StatementBody passages={doc.passages} />
         <p class="muted stmt__attribution">
@@ -71,10 +75,12 @@ const legend = [
         <section class="card">
           <h2>Originality</h2>
           <OriginalityBadge originality={doc.originality} isUrsource={isUrsource} />
+          <ReadingLink anchor="originality" class="card__how" />
         </section>
         <section class="card">
           <h2>Reads most like</h2>
           <NeighbourList neighbours={doc.neighbours} />
+          <ReadingLink anchor="similarity" class="card__how" />
         </section>
       </aside>
     </div>
@@ -135,12 +141,29 @@ const legend = [
   }
 
   .heat-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
     margin-block-end: var(--space-4);
+  }
+
+  .heat-legend__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
   }
 
   .stmt__aside h2 {
     margin-block: 0 var(--space-3);
     font-size: 1rem;
+  }
+
+  .card__how {
+    display: inline-block;
+    margin-block-start: var(--space-3);
   }
 
   .stmt__attribution {

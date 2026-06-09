@@ -1,6 +1,7 @@
 ---
 import Layout from "@/components/Layout.astro";
 import PassageBrowser from "@/islands/PassageBrowser.svelte";
+import ReadingLink from "@/components/ReadingLink.astro";
 import { propagation, agencies } from "@/lib/load";
 import { statementPath, withBase } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
@@ -37,7 +38,10 @@ const columns = [
     <section>
       <div class="section-title">
         <h2>Originality leaderboard</h2>
-        <a href={withBase("/agencies")}>All {board.length} ranked &rarr;</a>
+        <span class="section-title__links">
+          <ReadingLink anchor="originality" />
+          <a href={withBase("/agencies")}>All {board.length} ranked &rarr;</a>
+        </span>
       </div>
       <div class="boards">
         {
@@ -66,7 +70,10 @@ const columns = [
     <section>
       <div class="section-title">
         <h2>Shared passages</h2>
-        <span class="muted">{clusters.length} clusters</span>
+        <span class="section-title__links">
+          <ReadingLink anchor="reuse" />
+          <span class="muted">{clusters.length} clusters</span>
+        </span>
       </div>
       <p class="muted shared-note">
         Passages that recur across statements, widest reach first. {propagation.ursource}
@@ -78,6 +85,12 @@ const columns = [
 </Layout>
 
 <style>
+  .section-title__links {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+
   .boards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
