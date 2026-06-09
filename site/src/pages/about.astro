@@ -5,6 +5,7 @@ import { formatDate } from "@/lib/format";
 import { withBase } from "@/lib/paths";
 
 const c = meta.counts;
+const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 November 2025";
 ---
 
 <Layout title="About">
@@ -29,19 +30,20 @@ const c = meta.counts;
     <h2>Origins</h2>
     <p>
       This tracker began in the audience. As Senator Katy Gallagher launched the
-      Australian Public Service&rsquo;s AI Plan in November 2025, I opened a laptop and
-      started archiving agencies&rsquo; transparency statements then and there. That is
-      why the record opens when it does &mdash; and why the statements&rsquo; first nine
-      months, before this project was watching, fall outside it. What that start point
-      means for the figures is set out in <a href={withBase("/reading#corpus")}>how to
-      read the data</a>.
+      Australian Public Service&rsquo;s AI Plan on {corpusStart}, Ben Swift opened a
+      laptop and started archiving the agencies&rsquo; transparency statements then and
+      there. That is why the record opens when it does, and why the statements&rsquo;
+      first nine months, before the project was watching, fall outside it. What that
+      start point means for the figures is set out in <a
+        href={withBase("/reading#corpus")}>how to read the data</a
+      >.
     </p>
 
     <h2>Methodology</h2>
     <p>
-      For a plain-language guide to what the scores and colours on this site mean
-      &mdash; and what they don&rsquo;t &mdash; see <a href={withBase("/reading")}>how
-      to read the data</a>. The notes here are the technical method behind them.
+      For a plain-language guide to what the scores and colours on this site mean,
+      and what they don&rsquo;t, see <a href={withBase("/reading")}>how to read the
+      data</a>. The notes here are the technical method behind them.
     </p>
     <ul>
       <li>
