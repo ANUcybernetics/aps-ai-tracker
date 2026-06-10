@@ -53,11 +53,28 @@ The ALRC does not use AI for strictly law reform activities, including legal ana
 
 Our current AI use is limited to workplace productivity. All staff have access to Microsoft Copilot, and Microsoft 365 Copilot is available to approved roles across the organisation (for example, for collaboration, meeting support, and drafting and summarising routine material).
 
-## **Planned AI work**
+## Current trials and pilot use of AI
 
-In February 2026, the ALRC established a staff working group to assess broader AI use, including potential trials for inquiry-adjacent tasks such as submission analysis support, proofing and document handling (subject to governance and approval). The group is also considering legal-specific tools (for example, LexisNexis AI+ and Westlaw Edge) for possible future legal research support, noting these tools are not currently used for inquiry work.
+We are trialling the use of artificial intelligence (AI) to support ALRC staff to work more effectively and to assist with our responsibilities in a controlled and low‑risk way. This pilot is governed by an internal framework that sets out approved tools, including Microsoft 365 Copilot for productivity and operational efficiency and selected legal AI tools — LexisNexis Lexis+ AI with Protégé and Thomson Reuters Westlaw Precision Australia with AI‑Assisted Research — to support legal research, analysis and synthesis.
 
-We have internal guidance and a SharePoint page on the use of AI tools. Staff are required to confirm and acknowledge they are familiar with this guidance before accessing AI tools. Our guidance reminds staff to verify AI-generated content and to avoid sharing or copying sensitive material into AI tools, consistent with relevant Australian Government security and privacy requirements.
+In this pilot, AI may be used to:
+
+- support operational efficiencies, such as calendar and email management
+- summarise and organise information from approved documents and materials
+- prepare meeting notes, transcripts, summaries and action items
+- assist with internal planning, coordination and other operational tasks
+- help draft and refine internal and / or non-sensitive content and routine correspondence
+- support legal research, drafting and analysis including by:
+  - identifying potentially relevant cases, legislation and other sources
+  - identifying themes, issues and patterns in academic, consultation or submission material
+  - summarising legal materials
+  - comparing approaches across jurisdictions
+  - checking whether sources support a stated proposition
+  - assisting with editing, proof reading and spelling and grammar checking legal and policy work.
+
+AI is not being trialled to produce substantive ALRC work from scratch – it is not being used in legal reasoning, to substitute independent analysis, or to produce inquiry findings or recommendations.
+
+AI supports staff, but it does not replace human judgement. All AI outputs are reviewed, verified against source material, and refined before use. ALRC staff remain accountable for all decisions and final content.
 
 ## **AI safety and governance**
 
