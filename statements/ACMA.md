@@ -47,46 +47,87 @@ For more information about the review, visit the [Department of Infrastructure, 
 
 ## ACMA AI transparency statement
 
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI in the Australian Public Service.
+The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) sets out the Australian Government approach to embrace the opportunities of artificial intelligence (AI) for the benefit of Australians while ensuring its safe, ethical and responsible use, in line with community expectations.
 
-The Australian Communications and Media Authority (ACMA) adheres to this policy supporting its principles under the "enable, engage, and evolve" framework. We will be transparent in our internal use of AI technology as we explore, evaluate and adopt AI technology to benefit our work and our stakeholders.
+The Australian Communications and Media Authority (ACMA) adhere to this policy supporting its principles and requirements to enable a forward-leaning approach to agency adoption.
 
-Currently, ACMA does not plan to use AI in services that the public may directly interact with or be significantly impacted by. If this changes, we will update this statement to detail our use of AI.
+We are committed to building AI capabilities and exploring how we use AI to strengthen the quality, efficiency and integrity of our regulatory functions while maintaining public trust. We use AI in a safe and responsible manner to support, but never replace, the professional judgement of staff, with clear human oversight and accountability for decisions and advice remaining with ACMA staff.
 
-### AI use
+### AI definition
 
-We may employ AI across various corporate and enabling functions, including software engineering, data analytics and workplace productivity.
+In considering AI, we have adopted the OECD definition of AI, as outlined in the policy:
 
-#### Software engineering
+“An AI system is a machine‑based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.”
 
-ACMA uses AI to assist in software development, debugging and testing when developing digital and data solutions and administering ACMA systems. Some of these systems are accessed by the public, but all systems are tested by humans to ensure they behave as expected before they are released.
+### Why the ACMA uses, or considers using, AI
 
-#### Data analytics
+The ACMA uses, and is considering further use of, AI to support efficient, lawful and evidence-informed regulation. AI may help staff manage information, analyse data, improve internal workflows and test or improve digital systems. The ACMA’s use of AI is intended to support staff judgement, not replace human responsibility for regulatory decisions.
 
-ACMA sees benefits in using AI to assist with data and insights in the areas of data management and obtaining insights from data through interrogation and analysis. ACMA’s data and insights can influence our approach to regulation, policy and informing advice to government on legislation.
+The main reasons the ACMA is exploring or using AI are to:
+
+- improve the speed and consistency of internal analysis, research and document handling
+- support data management, data quality checking and insight generation
+- assist software development, debugging, testing and quality assurance for ACMA systems
+- help staff summarise, search and organise large volumes of internal information
+- improve workplace productivity while maintaining privacy, security, confidentiality and integrity
+- strengthen ACMA’s ability to understand technological change, including the use of AI, in the communications and media sectors it regulates
+
+### How we use AI
+
+In line with the Australian Government [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification), we use and consider AI across our active domain in the following usage patterns.
+
+### Usage patterns\*\*\*\*
 
 #### Workplace productivity
 
-We see the potential benefits in using AI to improve workplace productivity for staff including:
+We are currently using generative AI to improve workplace productivity for staff including:
 
-- helping answer questions from staff regarding workplace policies and entitlements
-- summarising documents, emails, instant messages and other content
+- helping answer questions from staff regarding workplace policies
 - summarising and transcribing meetings
+- summarising, editing or refining documents, emails, instant messages and other content
+- assist in the analysis to obtain insights from datasets, including identifying patterns and trends
+- image processing and generation
+
+#### Decision making and administrative action
+
+ACMA uses AI to support decision making and administrative activities, not to make final decisions without human involvement. This includes using AI to assist with software development, debugging and testing when developing and administering digital and data systems. These uses support staff productivity within IT and enabling functions. All usage is subject to human testing and review before release, including where systems may be accessed by the public.
+
+#### Analytics for insights
+
+ACMA sees benefits in using AI to assist with data and insights in the areas of data management and obtaining insights from data through interrogation and analysis. ACMA’s data and insights can influence our approach to regulation, policy and informing advice to government on legislation and regulation.
 
 ### Monitoring and governing AI use
 
-The ACMA has developed an overarching agency approach to AI and has established an AI Steering Committee to assess the opportunities and risks in using AI within ACMA. The Steering Committee considers AI use case benefits, risks, and guidelines as well as continuing to raise staff awareness of AI.
+ACMA manages risks associated with AI use through the following measures:
 
-An internal AI policy ensures responsible, ethical, and secure usage of AI tools while safeguarding the privacy, confidentiality, and integrity of agency data and operations. Under the policy, generative AI tools must not be used unless specifically approved under a robust approval, assurance and evaluation process and staff have undertaken AI training.
+- AI tools and use cases are assessed for risks, including security, privacy and suitability, before approval. An internal AI policy sets requirements for responsible, ethical and secure use, including safeguards to protect the privacy, confidentiality and integrity of agency data and operations.
+- Approved AI uses are monitored to ensure they continue to operate as intended and remain appropriate over time, including periodic review of performance and unintended impacts.
+- AI is used to support, not replace, professional judgement, with decisions and advice remaining the responsibility of ACMA staff.
+- AI use is overseen through established governance arrangements. Where issues or increased risks are identified, outputs are reviewed by staff and escalated, and ACMA can restrict, pause or stop the use of an AI system.
+- ACMA requires staff to complete mandatory training on the responsible use of AI, with additional guidance and training for staff involved in AI‑enabled systems.
 
-The AI Steering Committee undertakes regular review of AI projects and solutions that are of medium to high risk to ensure compliance with the policy and AI ethical principles.
+### Future AI use intentions
 
-### Accountable official
+ACMA may explore additional uses of AI where it supports our regulatory, corporate or operational functions and aligns with our legal obligations, risk appetite and public trust responsibilities. ACMA will take advantage of evolutionary whole of government AI initiatives such as GovAI. Any future use of AI will be subject to appropriate governance, risk assessment and human oversight.
 
-The Chief Information and Digital Officer is designated as the accountable official.
+### Compliance and accountability
 
-### AI transparency statement
+ACMA’s use of AI is governed through clear accountability and oversight arrangements:
 
-This AI transparency statement was last reviewed in February 2026. This statement will be reviewed at least annually, or at any time where a significant change is made to our or the Government’s approach to AI.
+- Our approach is supported by an AI Steering Committee that oversees AI adoption, considers proposed use cases, and assesses associated risks and alignment with Australian Government policy and ethical principles.
+- We appointed a Chief AI Officer (CAIO) in February 2026 to lead AI adoption across the agency, champion strategic change and accelerate consistent and collaborative AI capability development across the APS.
+- ACMA has designated an AI Accountable Official to oversee implementation of the Australian Government Policy for the responsible use of AI in government and ensure appropriate governance, compliance and assurance arrangements are in place.
+
+We will not use AI in ways that are inconsistent with our legal obligations, public trust responsibilities, or Australian Government policy. AI will not make final regulatory decisions or enforcement decisions without accountable human judgment.
+
+### Transparency
+
+ACMA will use AI where it helps us do our work better, safely and lawfully. We will use AI to support our regulatory, corporate and operational functions where it improves efficiency, supports better analysis, or reduces manual work. ACMA will consult with staff and their representatives when considering AI uses that may materially affect work practices, roles or responsibilities.
+
+ACMA does not currently deploy AI in direct interactions with the public.
+
+### Contact
+
+For questions about this statement or further information on our use of AI, please contact [info@acma.gov.au](mailto:info@acma.gov.au).
 
 [ Next up: Compliance and enforcement priorities 2025–26 chevron_right ](https://www.acma.gov.au/compliance-priorities)
