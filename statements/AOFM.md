@@ -19,7 +19,7 @@ The AOFM has designated the Manager, Data & Digital Solutions as the Accountable
 
 Accountable Officials are responsible for implementing the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-A Chief AI Officer (CAIO) will be appointed during 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at Treasury.
+A Chief AI Officer (CAIO) will be appointed during 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at the AOFM.
 
 **AI Adoption**
 
@@ -33,11 +33,11 @@ AOFM’s current use of AI is classified as workplace productivity, with the aim
 
 **Public Interaction with AI**
 
-The AOFM does not use AI in ways that that involve direct interaction with the public, and decisions are not made by AI. All use of AI at the AOFM has human oversight.
+AI is not used in decision-making or service delivery, does not directly impact members of the public, and does not involve direct interaction with the public. All use of AI at the AOFM has human oversight.
 
 **Governance of AI**
 
-Appropriate governance arrangements have been established to support AI within the AOFM.
+Governance of AI at the AOFM is integrated into existing management, risk and information governance arrangements including a specialised AI focus group.
 
 The Australian Public Service Commission’s AI in Government Fundamentals course is available for all staff and is mandatory under the APS AI plan. As a prerequisite to utilising Enterprise AI tools, staff are required to complete internal training on the use of AI.
 
@@ -45,8 +45,35 @@ The AOFM complies with all applicable legislation and regulations, including the
 
 The use of AI is governed by Treasury’s IT Acceptable Use Policy, AOFM’s Information Security Policy, and the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
+**AI Safety and Risk Management**
+
+The AOFM applies a proportionate approach to managing risks associated with the use of artificial intelligence.
+
+Current controls include:
+
+- restricting AI use to approved tools within the Treasury ICT environment
+- prohibiting the entry of sensitive, classified or market‑sensitive information into public AI tools
+- maintaining human oversight of all AI‑assisted outputs, and
+- aligning AI use with existing governance frameworks, including information security, privacy, records management and APS Values
+
+As AI use evolves, the AOFM will continue to assess and manage risks associated with accuracy, bias, data handling and appropriate use, and will adapt controls as needed to ensure safe and responsible use.
+
+**Monitoring and Evaluation**
+
+The AOFM monitors the use of AI within the agency to assess its effectiveness and ensure it remains appropriate and aligned with policy requirements.
+
+Current monitoring activities include:
+
+- initial cost, risk and benefit assessments of AI use cases and tools across the agency
+- oversight through existing governance forums and management structures
+- monitoring developments in whole-of-government policy and guidance
+
+Given the current limited and low-risk use of AI, performance measurement frameworks are basic. As AI adoption increases, the AOFM will strengthen monitoring and evaluation arrangements to assess effectiveness, benefits and risks on an ongoing basis.
+
+The AOFM maintains visibility of AI use through internal oversight and reporting mechanisms appropriate to its scale and level of adoption.
+
 **Update Frequency**
 
-AOFM’s transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 28 February 2026
+AOFM’s transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 12 June 2026
 
 For further enquiries, please contact the AOFM at [enquiries@aofm.gov.au](mailto:enquiries@aofm.gov.au).
