@@ -1,23 +1,22 @@
 ---
 abbr: APRA
 agency: Australian Prudential Regulation Authority
+final_url: https://apra.gov.au/apras-ai-transparency-statement
 source_url: https://www.apra.gov.au/apras-ai-transparency-statement
 title: APRA's AI Transparency Statement | APRA
 ---
-
-# APRA's AI Transparency Statement
 
 In accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy "https://www.digital.gov.au/policy/ai/policy"), this page presents the Australian Prudential Regulation Authority’s statement on Artificial Intelligence Transparency.
 
 ## How APRA uses Artificial Intelligence
 
-At this time, APRA has not yet deployed any use of Artificial Intelligence (AI) which directly interacts with the public or is involved in decision making and administrative action without human intervention in its entity facing supervision, decision-making, and/or its engagements with the regulated entities and members of the public. APRA's use of AI is limited to the development of use cases within internal departments, focused on improving operational efficiencies. (DTA domains of Corporate and Enabling, and Workplace Productivity \*).
+At this time, APRA has not yet deployed any use of Artificial Intelligence (AI) which directly interacts with the public or is involved in decision making and administrative action without human intervention in its entity facing supervision, decision-making, and/or its engagements with the regulated entities and members of the public. APRA's use of AI is limited to the development of use cases within internal departments, focused on improving operational efficiencies. (DTA domains of Corporate and Enabling, and Workplace Productivity\*).
 
 \*Please see [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification "https://www.digital.gov.au/policy/ai/resources/use-classification") for more information on usage patterns related to AI in agencies.
 
 ### Monitoring and Governance
 
-#### **Accountable Officials:**
+#### Accountable Officials:
 
 APRA has designated a panel consisting of the Executive Director – Technology & Data, Chief Information Officer (CIO) and Chief Data Officer (CDO) to be the Accountable Officers for AI.
 
@@ -25,28 +24,20 @@ APRA has designated a panel consisting of the Executive Director – Technology 
 
 APRA has developed and maintains an IT Acceptable Use & Privacy Policy which has been updated to include responsible AI usage. The policy aligns with advice and guidance provided by the DTA for using AI services ethically and responsibly to ensure that it is appropriately governed, is safe and that risks are identified and addressed.
 
-#### **Training and assistance:**
+#### Training and assistance:
 
 All staff must complete mandatory training on the appropriate use of AI before being granted an AI license (e.g., Microsoft Copilot) and staff have access to APRA’s Risk framework to report any concerns or issues. APRA has adopted Copilot as its preferred AI tool.
 
-### **Compliance with Legislation and Regulations**
+### Compliance with Legislation and Regulations
 
 APRA ensures AI usage complies with Australian legislation, such as data privacy and anti-discrimination laws through the implementation of its IT Acceptable Use & Privacy Policy. The Policy aligns with the Australian Government's Policy for responsible use of AI in government.
 
-### **Statement Review and Updates**
+### Statement Review and Updates
 
 This statement will be updated as and when APRA’s approach to AI changes or when developments materially affect the statement’s accuracy, and at least every twelve months.
 
-### **Contact Information**
+### Contact Information
 
 For inquiries about APRA's AI use, please email: [aiao@apra.gov.au](mailto:aiao@apra.gov.au).
 
-[ Previous page: Disclaimer ](https://www.apra.gov.au/disclaimer)
-
-[ Next page: Privacy ](https://www.apra.gov.au/privacy)
-
-#### Subscribe for updates
-
-To receive media releases, publications, speeches and other industry-related information by email
-
-[Subscribe](https://www.apra.gov.au/newsletter-signup)
+## Footnotes
