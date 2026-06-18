@@ -13,7 +13,7 @@ On
 
 The DTA has two accountable officials under the policy. These are the AI Branch Manager, [Ramsey Beydoun](https://www.directory.gov.au/portfolios/finance/digital-transformation-agency/chief-executive-officer-chris-fechner/deputy-ceo-strategy-planning-and-performance-lucy-poole/branch-manager-ai-technical-standards-ramsey-beydoun) and the Chief Operating Officer (COO), [_Tom Gilmartin_](https://www.directory.gov.au/people/tom-gilmartin).
 
-The CTO has primary responsibility for the following areas of the AI policy:
+The AI Branch Manager has primary responsibility for the following areas of the AI policy:
 
 - facilitating our involvement in cross-government coordination and collaboration
 - encouraging the implementation of further actions suggested in the policy.
@@ -84,6 +84,7 @@ The DTA currently uses AI in the following system use cases as defined by the St
 
 **Assisting decision making and administrative action through assessing and making recommendations on submitted applications to a human decision maker:**
 
+- By leveraging AI for a part of the evaluation process for Digital Marketplace Panel 2 applications. The use of AI followed the Australian Government AI assurance framework and was implemented with external probity, privacy and technical advice.
 - By leveraging AI to support the assessment process, the DTA can enhance the consistency and efficiency of administrative decisions. This approach helps ensure that all applications are evaluated against the same set of criteria, reducing potential human bias and increasing transparency.
 
 **Workplace productivity through the use of Microsoft 365 Copilot:**
@@ -105,5 +106,11 @@ The DTA currently uses AI in the following system use cases as defined by the St
 01 December 2025 |
 
 - Update stating Copilot and AI DMP2 are now in use.
+
+17 June 2026 |
+
+- Revised and updated to align with current AI Transparency Statement requirements.
+- Updated Accountable Official details.
+- Included reference to the use of AI in DMP2 evaluation process.
 
 For further information or enquiries about the DTA’s adoption of artificial intelligence, contact us directly at [_info@dta.gov.au_](mailto:info@dta.gov.au?subject=AI%20transparency%20statement%20enquiry).
