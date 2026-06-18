@@ -1,17 +1,30 @@
 ---
 abbr: PBO
 agency: Parliamentary Budget Office
+final_url: https://www.pbo.gov.au/corporate-information/ai-pbo
 source_url: https://www.pbo.gov.au/about-the-pbo/performance-and-reporting/information-and-privacy/ai-transparency-statement
-title: AI Transparency Statement | Parliamentary Budget Office
+title: AI at the PBO | Parliamentary Budget Office
 ---
 
 Share
 
 Print
 
-23 February 2026
+18 June 2026
 
-# Introduction
+**On this page**
+
+The **strategic position** sets our overall direction for AI adoption.
+
+The **AI transparency statement** explains how AI is used.
+
+# Strategic position on AI adoption
+
+The PBO’s strategic position on AI adoption sets a clear, organisation-wide approach to how we use AI to support our work. It reflects our role in a high‑trust parliamentary environment, balancing the opportunities of AI with the need to maintain quality, confidentiality and accountability.
+
+![PBO strategic position on AI adoption](https://www.pbo.gov.au/sites/default/files/2026-06/PBO%20Strategic%20Position%20on%20AI%20Adoption%20-%20One%20page.png)
+
+# AI transparency statement
 
 The Parliamentary Budget Office (PBO) is committed to the responsible and ethical use of Artificial Intelligence (AI) technologies.
 
@@ -27,7 +40,7 @@ The PBO’s Chief Operating Officer (COO) is the PBO’s accountable official, a
 
 This transparency statement will be reviewed annually or when significant changes to the use or governance of AI use occur.
 
-# AI Adoption and Use
+## AI Adoption and Use
 
 The PBO believe that as with any technology, AI presents opportunities that should be harnessed and risks that must be managed.
 
@@ -88,7 +101,7 @@ The shared responsibility model is managed by an AI working group composed of on
 
 See the [DPS AI Transparency statement](https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_Parliamentary_Services/Publications/AI_Transparency_Statement) for more information on how DPS support parliament’s use of AI and the implementation of the shared responsibility model.
 
-# AI Safety and Monitoring
+## AI Safety and Monitoring
 
 The PBO have implemented controls to manage the risks associated with AI tools, and generative AI in particular, including:
 
@@ -123,6 +136,6 @@ PBO staff that use AI tools must:
 
 All unintended outcomes or faults with AI systems used by the PBO should be reported to the PBO COO. They will also be raised with DPS IT and DPS Cyber Security via internal governance and processes, where appropriate. Staff are also encouraged to raise issues directly with DPS IT and DPS Cyber Security.
 
-# Contact
+## Contact
 
 For further information about the adoption of artificial intelligence within the Parliamentary Budget Office, please [contact us](https://www.pbo.gov.au/about-the-pbo/contact-us).
