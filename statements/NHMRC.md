@@ -11,7 +11,9 @@ This Transparency Statement outlines our approach to AI use within the NHMRC, in
 
 ## Purpose of AI use
 
-The NHMRC encourages the use of Generative AI (GenAI) to enhance our productivity, where it is ethical and safe to do so. Our AI initiatives include automation of repeatable processes which helps us streamline our work to support the overall mission of building a healthy Australia. GenAI is not relied upon for decision-making in NHMRC.
+The NHMRC encourages the use of Generative AI (GenAI) to enhance our productivity, where it is ethical and safe to do so. Our AI initiatives include automation of repeatable processes which helps us streamline our work to support the overall mission of building a healthy Australia.
+
+GenAI is not relied upon for decision-making in NHMRC. Use of GenAI is limited to support functions (such as drafting, editing, summarising, structuring and supporting research analyses) and does not replace human authorship, decision-making or accountability.
 
 ## AI applications
 
@@ -20,7 +22,7 @@ Following a [pilot](https://www.digital.gov.au/initiatives/copilot-trial) and [e
 ### Workplace productivity
 
 - Automating repetitive tasks (for example, meeting transcriptions, minutes, searching for emails or sorting data), allowing staff to focus on more complex and value-added activities.
-- Structuring content in documents such as internal reports.
+- Structuring and refining content in documents such as internal reports, publications and briefing materials.
 - Generating and debugging code used in systems and applications development and maintenance.
 
 ### Corporate and enabling
@@ -31,6 +33,10 @@ Following a [pilot](https://www.digital.gov.au/initiatives/copilot-trial) and [e
 
 - Used to support a range of reporting and analytics activities such as internally classifying research topics.
 
+### Research and analysis support
+
+- GenAI may be used to assist with research, including summarising information, structuring analyses, and supporting the preparation of written materials such as reports, publications and briefing content. AI is used as a support tool only and does not replace human judgement or accountability.
+
 _Note: We also allow staff to access certain public GenAI tools in line with the DTA's guide on APS use of public generative AI tools._
 
 ## Monitoring and governance
@@ -40,6 +46,8 @@ The NHMRC has established governance mechanisms to ensure the ethical and effect
 - **Training** – All staff must complete [AI fundamentals](https://www.apsacademy.gov.au/course-sessions/ai-government-fundamentals) training to ensure that there is always human involvement for any processes where AI is applied.
 - **Community of Practice** – An inclusive group that meets regularly to discuss AI related risks and opportunities.
 - **Governance forums** – We use our range of existing forums integrating AI issues such as security and privacy.
+
+Staff remain responsible for verifying the accuracy and appropriateness of all AI-assisted outputs.
 
 ## Public impact and compliance
 
@@ -53,6 +61,7 @@ This Transparency Statement is part of our commitment to open and transparent co
 
 ### Update history
 
+- 19 June 2026: Updated version published.
 - 6 May 2026: Updated version published.
 - 26 February 2025: Initial version published.
 
