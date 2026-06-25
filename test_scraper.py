@@ -832,6 +832,24 @@ def test_clean_markdown_strips_various_date_formats():
         assert "202" not in result, f"Date line not stripped: {line!r}"
 
 
+def test_clean_markdown_strips_relative_date_counters():
+    """Relative 'last reviewed N ago' counters tick over every scrape; strip them."""
+    cases = [
+        "Page last reviewed: **1 months ago**\n",
+        "Page last reviewed: **28 days ago**\n",
+        "Page last reviewed: **3 hours ago**\n",
+        "Last updated 2 weeks ago\n",
+        "Page last reviewed: yesterday\n",
+    ]
+    for line in cases:
+        result = clean_markdown(f"Content before.\n\n{line}\nContent after.")
+        assert "Content before" in result
+        assert "Content after" in result
+        assert "ago" not in result and "yesterday" not in result, (
+            f"Relative date line not stripped: {line!r}"
+        )
+
+
 def test_clean_markdown_strips_trailing_widgets():
     """Test that feedback and social share boilerplate is stripped."""
     text = (

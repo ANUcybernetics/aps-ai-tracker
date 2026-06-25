@@ -19,5 +19,3 @@ This statement was **published in February 2025 and reviewed in April 2026**. It
 ## Contact us
 
 Comcare's Chief Information Office is designated as the accountable official under the Policy. If you have any enquiries about this statement, we can be reached via the details on the [contact us](https://www.seacare.gov.au/about-us/contact-us) page of this website.
-
-Page last reviewed: **1 months ago**
