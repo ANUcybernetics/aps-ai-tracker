@@ -1,9 +1,10 @@
 ---
 id: TASK-7
 title: Mint a Zenodo DOI via the GitHub release pathway
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-06-25 08:11'
+updated_date: '2026-06-25 08:24'
 labels:
   - zenodo
   - doi
@@ -24,7 +25,18 @@ Order of operations: add CITATION.cff at repo root (title; Ben Swift sole author
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 CITATION.cff added at repo root with correct metadata (sole author, ORCID, type: software, MIT, repo URL)
-- [ ] #2 One tagged GitHub release published and the Zenodo integration has minted a DOI
-- [ ] #3 Concept (all-versions) DOI recorded and handed to promotion repo TASK-37 AC#1
+- [x] #1 CITATION.cff added at repo root with correct metadata (sole author, ORCID, type: software, MIT, repo URL)
+- [x] #2 One tagged GitHub release published and the Zenodo integration has minted a DOI
+- [x] #3 Concept (all-versions) DOI recorded and handed to promotion repo TASK-37 AC#1
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Done via Zenodo GitHub-release pathway.
+- CITATION.cff already at repo root (committed 33b7e13): sole author Ben Swift + ORCID 0000-0003-2138-5969, type: software, MIT, repo URL.
+- Published release v2026.06 (target main @5bd80ae). Zenodo minted: version DOI 10.5281/zenodo.20842438, CONCEPT DOI 10.5281/zenodo.20842437.
+- Concept DOI wired into benswift-cv.typ n-aps-tracker plate (promotion repo commit 49ba64f, TASK-37 AC#1) and CV recompiles clean.
+
+CAVEAT: Zenodo ignored CITATION.cff and used bare GitHub metadata on the v2026.06 record -- no ORCID, generic title 'ANUcybernetics/aps-ai-transparency-tracker: v2026.06', affiliation '@ANUcybernetics'. DOI is unaffected. Fix the current record's metadata in the Zenodo web UI (DOI persists); add a .zenodo.json to the repo so future releases archive with correct metadata.
+<!-- SECTION:NOTES:END -->
