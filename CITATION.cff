@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "Australian Government AI Transparency Tracker"
+abstract: "A tool that continuously scrapes AI Transparency Statements published by Australian Government agencies, converts them to markdown, and tracks changes over time through git. Includes a static site presenting a timeline of every change, agency and per-statement pages, similarity analysis, and a passage-reuse explorer. A Cybernetic Studio project."
+authors:
+  - family-names: Swift
+    given-names: Ben
+    email: ben.swift@anu.edu.au
+    affiliation: "ANU School of Cybernetics"
+    orcid: "https://orcid.org/0000-0003-2138-5969"
+repository-code: "https://github.com/ANUcybernetics/aps-ai-transparency-tracker"
+url: "https://anucybernetics.github.io/aps-ai-transparency-tracker/"
+type: software
+license: MIT
+keywords:
+  - AI transparency
+  - government accountability
+  - public sector AI
+  - change tracking
+  - web scraping
+  - longitudinal corpus
+  - Australian Public Service

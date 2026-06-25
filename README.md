@@ -94,7 +94,10 @@ That's it---dependencies are automatically installed by uv from
 
 ## Author
 
-(c) Ben Swift
+(c) 2025 Ben Swift
+
+This work is a project of the _Cybernetic Studio_ at the
+[ANU School of Cybernetics](https://cybernetics.anu.edu.au).
 
 ## Contributing
 
