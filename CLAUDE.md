@@ -14,13 +14,14 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Working on this project
 
-- Run scraper: `mise exec -- uv run --module aps_ai_transparency_tracker`
-  (or the `scrape` entry point: `mise exec -- uv run scrape`)
+- Run scraper: `mise exec -- uv run --module aps_ai_transparency_tracker` (or
+  the `scrape` entry point: `mise exec -- uv run scrape`)
 - Reprocess cached `raw/` files into statements without refetching:
   `mise exec -- uv run process`
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
-- Export site data (JSON for the Astro site): `mise exec -- uv run --group export export`
-  (needs the `export` dependency group: numpy + openai)
+- Export site data (JSON for the Astro site):
+  `mise exec -- uv run --group export export` (needs the `export` dependency
+  group: numpy + openai)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
   console-script form does not resolve; invoke pytest as a module). Exporter
   tests live in `test_export.py`; run with `--group export` so numpy is present.
@@ -30,7 +31,8 @@ This is a Python web scraping project using uv for dependency management.
   - `src/aps_ai_transparency_tracker/` contains the package
   - `scraper.py` has core functionality
   - `__main__.py` provides CLI entry point (the `scrape` command)
-  - `process.py` reprocesses cached `raw/` files into statements without fetching
+  - `process.py` reprocesses cached `raw/` files into statements without
+    fetching
   - `status.py` reports collection status
   - `export.py` turns the corpus + git history into JSON for the site (timeline
     with revert/noise collapse, lexical passage propagation, originality scores,
@@ -44,11 +46,13 @@ D3 similarity map, and a propagation explorer. Toolchain mirrors the benswift-me
 repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
 
 - Dev: `cd site && mise exec -- pnpm dev`
-- Build/lint/format/typecheck: `mise exec -- pnpm run {build,lint,format,typecheck}`
+- Build/lint/format/typecheck:
+  `mise exec -- pnpm run {build,lint,format,typecheck}`
 - The exporter writes gitignored JSON into `site/src/generated/` (+ the slim
   `site/public/data/similarity.graph.json`); only `.cache/embeddings.json` is
   committed. Run `export` before building the site locally.
-- **Deploy**: live at <https://anucybernetics.github.io/aps-ai-transparency-tracker/>.
+- **Deploy**: live at
+  <https://anucybernetics.github.io/aps-ai-transparency-tracker/>.
   `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
   `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI runs
   `export` **without** an OpenAI key (it reuses the committed embeddings cache),
@@ -56,20 +60,20 @@ repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
   Source: GitHub Actions); only re-set that if it's ever reset. It serves from
   `/aps-ai-transparency-tracker/`, so all internal links go through `withBase()`
   in `site/src/lib/paths.ts`.
-- **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export` after
-  the scrape (with `OPENAI_API_KEY` from weddle's global
+- **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
+  after the scrape (with `OPENAI_API_KEY` from weddle's global
   `~/.config/mise/config.local.toml`), commits the refreshed
-  `.cache/embeddings.json`, and pushes. Statements are only re-embedded when their
-  text changes, so most runs make zero API calls.
+  `.cache/embeddings.json`, and pushes. Statements are only re-embedded when
+  their text changes, so most runs make zero API calls.
 
 ## Scheduled scrape
 
-`cron-scrape.sh` runs daily at 20:00 local from `aps-scrape.timer`, a
-systemd user unit on weddle. It scrapes (`claude -p "/scrape"`), then refreshes
-the embeddings cache (`export`) and `git push`es so the Pages site redeploys.
-weddle pushes to `origin` (credentials confirmed working) and reads
-`OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
-unit files live in `ops/systemd/`. Install with:
+`cron-scrape.sh` runs daily at 03:00 local from `aps-scrape.timer`, a systemd
+user unit on weddle. It scrapes (`claude -p "/scrape"`), then refreshes the
+embeddings cache (`export`) and `git push`es so the Pages site redeploys. weddle
+pushes to `origin` (credentials confirmed working) and reads `OPENAI_API_KEY`
+from its global `~/.config/mise/config.local.toml`. Canonical unit files live in
+`ops/systemd/`. Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/
