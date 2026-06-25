@@ -83,9 +83,9 @@ Use of the Australian Government Solicitor for national security matters is a re
 
 In accordance with the Australian Public Service Commission's [_guidelines on gifts and benefits_](https://www.apsc.gov.au/working-aps/integrity/integrity-resources/guidance-agency-heads-gifts-and-benefits), agency heads (including departmental secretaries) must not accept gifts or benefits which might reasonably be seen to compromise their integrity.
 
-Agency heads must publish a register of gifts and benefits they accept, and all gifts or benefits accepted (valued at over $AUD100 ex GST) must be publicly disclosed. The register is updated quarterly.
+Agency heads must publish a register of gifts and benefits they accept, and all gifts or benefits accepted (valued at over AU$100 ex GST) must be publicly disclosed. The register is updated quarterly.
 
-[View the Gifts and Benefits Register](https://www.igis.gov.au/sites/default/files/2025-08/IGIS%20Gifts%20and%20Benefits%20Register%20Q4%202024-25.pdf)
+[View the Gifts and Benefits Register](https://www.igis.gov.au/sites/default/files/2026-06/IGIS%20Gifts%20and%20Benefits%20Register%20Q3%202025-26.pdf)
 
 ## Consultant Services Expenditure
 
