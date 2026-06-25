@@ -470,6 +470,9 @@ name = "Future Fund Management Agency"
 abbr = "FFMA"
 size = "medium"
 url = "https://www.futurefund.gov.au/en/About-us/access-to-information/parliamentary-and-statutory-reporting"
+# Statement lives in one accordion panel on a multi-item reporting page; this is
+# the AI panel's stable id (the DTA register links to the same GUID).
+selector = "#collapse_5e267a11-5db5-47b2-b2d2-c51f65bbd871"
 
 [[agencies]]
 name = "Geoscience Australia"
