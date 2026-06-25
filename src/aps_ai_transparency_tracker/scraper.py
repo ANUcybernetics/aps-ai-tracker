@@ -151,9 +151,15 @@ def clean_html_to_markdown(html_content: str, base_url: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", markdown).strip()
 
 
+# Date-stamp lines, in two flavours: an absolute date ("last reviewed 15 January
+# 2025") or a relative counter ("Page last reviewed: 1 months ago"). The relative
+# form ticks over on every scrape even when the statement text is unchanged, so it
+# must be stripped here rather than surfacing as a spurious content diff.
 _LAST_REVIEWED_RE = re.compile(
-    r"(?m)^.*(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated).*\d{1,2}.*\d{4}.*$\n?",
-    re.IGNORECASE,
+    r"(?mi)^.*(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated)"
+    r".*(?:\d{1,2}.*\d{4}|"
+    r"\d+\s*(?:second|minute|hour|day|week|month|year)s?\s+ago|just now|yesterday|today"
+    r").*$\n?",
 )
 
 _TRAILING_BOILERPLATE_RE = re.compile(
