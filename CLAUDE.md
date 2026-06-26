@@ -43,11 +43,15 @@ This is a Python web scraping project using uv for dependency management.
 An Astro static site presents the data: a timeline of every change, agency and
 per-statement pages (with a passage-reuse heat-map and revision time-travel), a
 D3 similarity map, and a propagation explorer. Toolchain mirrors the benswift-me
-repo: pnpm + Astro 6 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24.
+repo: pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The
+site is light-only (no dark mode); design tokens live in
+`src/styles/tokens.css`.
 
 - Dev: `cd site && mise exec -- pnpm dev`
-- Build/lint/format/typecheck:
-  `mise exec -- pnpm run {build,lint,format,typecheck}`
+- Build/lint/format/typecheck/test:
+  `mise exec -- pnpm run {build,lint,format,typecheck,test}`
+- Site unit tests use Vitest (`pnpm run test`); pure-TS helpers under `src/lib/`
+  (e.g. `markdown.ts`) carry `*.test.ts` files. The exporter still uses pytest.
 - The exporter writes gitignored JSON into `site/src/generated/` (+ the slim
   `site/public/data/similarity.graph.json`); only `.cache/embeddings.json` is
   committed. Run `export` before building the site locally.
