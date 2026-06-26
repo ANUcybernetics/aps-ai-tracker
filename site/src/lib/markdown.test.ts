@@ -3,18 +3,14 @@ import { escapeHtml, inlineMarkdownToHtml } from "./markdown";
 
 describe("escapeHtml", () => {
   it("escapes the HTML-significant characters", () => {
-    expect(escapeHtml(`a & b < c > d " e ' f`)).toBe(
-      "a &amp; b &lt; c &gt; d &quot; e &#39; f",
-    );
+    expect(escapeHtml(`a & b < c > d " e ' f`)).toBe("a &amp; b &lt; c &gt; d &quot; e &#39; f");
   });
 });
 
 describe("inlineMarkdownToHtml", () => {
   it("renders a markdown link as an anchor", () => {
     expect(
-      inlineMarkdownToHtml(
-        "see the [AI policy](https://www.digital.gov.au/ai) for details",
-      ),
+      inlineMarkdownToHtml("see the [AI policy](https://www.digital.gov.au/ai) for details"),
     ).toBe(
       'see the <a href="https://www.digital.gov.au/ai" target="_blank" rel="noopener noreferrer">AI policy</a> for details',
     );
@@ -43,9 +39,7 @@ describe("inlineMarkdownToHtml", () => {
   });
 
   it("renders bold and italic", () => {
-    expect(inlineMarkdownToHtml("**External facing:**")).toBe(
-      "<strong>External facing:</strong>",
-    );
+    expect(inlineMarkdownToHtml("**External facing:**")).toBe("<strong>External facing:</strong>");
     expect(inlineMarkdownToHtml("an _italic_ word")).toBe("an <em>italic</em> word");
   });
 

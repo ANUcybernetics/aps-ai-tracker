@@ -102,10 +102,6 @@
      same end of the scale as the originality bars (see SimilarityGraph). */
   --node-ink: oklch(34% 0.03 264);
 
-  --shadow:
-    0 1px 2px oklch(0% 0 0 / 6%),
-    0 4px 16px oklch(0% 0 0 / 4%);
-  --shadow-lg:
-    0 2px 6px oklch(0% 0 0 / 7%),
-    0 16px 40px oklch(0% 0 0 / 7%);
+  --shadow: 0 1px 2px oklch(0% 0 0 / 6%), 0 4px 16px oklch(0% 0 0 / 4%);
+  --shadow-lg: 0 2px 6px oklch(0% 0 0 / 7%), 0 16px 40px oklch(0% 0 0 / 7%);
 }
