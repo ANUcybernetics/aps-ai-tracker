@@ -22,8 +22,11 @@ interface Props {
 const { doc } = Astro.props;
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
-const lastUpdated = doc.timeline.at(-1)?.date;
-const changes = doc.timeline.filter((t) => t.kind === "updated").length;
+// "Changes" and "last change" count only genuine edits, not scrape noise
+// (reverted churn, reformatting), so the header isn't dominated by junk.
+const realChanges = doc.timeline.filter((t) => t.kind === "updated" && !t.isNoise);
+const changes = realChanges.length;
+const lastUpdated = realChanges.at(-1)?.date;
 
 const legend = [
   { heat: 1, label: "a few" },

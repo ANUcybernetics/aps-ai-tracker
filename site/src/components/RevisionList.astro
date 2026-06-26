@@ -14,6 +14,8 @@ const revs = timeline
   .map((rev, idx) => ({ rev, prev: idx > 0 ? timeline[idx - 1] : null }))
   .reverse();
 
+const noiseCount = timeline.filter((t) => t.isNoise).length;
+
 const KIND_LABEL: Record<string, string> = {
   updated: "updated",
   published: "published",
@@ -21,10 +23,21 @@ const KIND_LABEL: Record<string, string> = {
 };
 ---
 
-<ol class="revs">
+<div class="revs-wrap">
+  {
+    noiseCount > 0 && (
+      <div class="revs-toggle">
+        <input type="checkbox" id="show-noise-revs" />
+        <label for="show-noise-revs">
+          Show {noiseCount} scrape-noise {noiseCount === 1 ? "revision" : "revisions"}
+        </label>
+      </div>
+    )
+  }
+  <ol class="revs">
   {
     revs.map(({ rev, prev }) => (
-      <li class="rev">
+      <li class="rev" data-noise={rev.isNoise ? "" : undefined}>
         <div class="rev__head">
           <time class="mono muted" datetime={rev.date}>
             {formatDate(rev.date)}
@@ -46,9 +59,30 @@ const KIND_LABEL: Record<string, string> = {
       </li>
     ))
   }
-</ol>
+  </ol>
+</div>
 
 <style>
+  .revs-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The toggle sits below the list; the list keeps its natural order above. */
+  .revs-toggle {
+    order: 2;
+    margin-block-start: var(--space-3);
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .revs-toggle label {
+    cursor: pointer;
+  }
+
   .revs {
     list-style: none;
     margin: 0;
@@ -58,6 +92,17 @@ const KIND_LABEL: Record<string, string> = {
   .rev {
     border-bottom: 1px solid var(--border);
     padding-block: var(--space-3);
+  }
+
+  /* Scrape noise (reverted churn, reformatting) is hidden by default so the
+     real edit history reads clean; the checkbox reveals it. :has() keeps this
+     CSS-only and independent of DOM order. */
+  .rev[data-noise] {
+    display: none;
+  }
+
+  .revs-wrap:has(#show-noise-revs:checked) .rev[data-noise] {
+    display: list-item;
   }
 
   .rev__head {
