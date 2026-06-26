@@ -763,3 +763,12 @@ name = "Workplace Gender Equality Agency"
 abbr = "WGEA"
 size = "extra-small"
 url = "https://www.wgea.gov.au/about/governance/AI-transparency-statement"
+
+# Corporate Commonwealth entity, outside the APSC list and the policy's mandate,
+# but it published an AI transparency statement voluntarily — found via the DTA
+# register (2026-06-27). We track any such body once it has a real statement.
+[[agencies]]
+name = "AgriFutures Australia"
+abbr = "AFA"
+size = "small"
+url = "https://agrifutures.com.au/legal/ai-transparency-statement/"
