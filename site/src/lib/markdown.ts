@@ -60,3 +60,19 @@ export function inlineMarkdownToHtml(text: string): string {
 
   return html;
 }
+
+// Strip the leading block-level Markdown scaffolding that prefixes a stored
+// passage — heading hashes, blockquote markers, list bullets — so a heading or
+// quoted passage reads as text rather than showing "## …" or "> …" raw.
+export function stripBlockMarkers(text: string): string {
+  return text
+    .replace(/^>\s?/gm, "") // blockquote marker on each line
+    .replace(/^\s*(?:#{1,6}\s+|[-*+]\s+|\d+\.\s+)/, "") // one leading heading/list marker
+    .trim();
+}
+
+// Render a stored passage to safe display HTML: block scaffolding removed, then
+// inline links/emphasis rendered.
+export function passageToHtml(text: string): string {
+  return inlineMarkdownToHtml(stripBlockMarkers(text));
+}

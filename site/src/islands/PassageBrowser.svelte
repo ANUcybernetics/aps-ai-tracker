@@ -2,7 +2,7 @@
   import type { PassageCluster } from "@/types/exporter";
   import { statementPath, dataUrl, withBase } from "@/lib/paths";
   import { formatDate } from "@/lib/format";
-  import { inlineMarkdownToHtml } from "@/lib/markdown";
+  import { passageToHtml } from "@/lib/markdown";
 
   // Full agency names keyed by abbreviation, so the member pills and the
   // first-observed link can name the acronym on hover.
@@ -74,8 +74,8 @@
             {#if c.alsoInDta}<span class="pill pill--pdf">in DTA template</span>{/if}
             <span class="muted">{c.kind}</span>
           </div>
-          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked in inlineMarkdownToHtml -->
-          <p class="pb__text">{@html inlineMarkdownToHtml(c.canonicalText)}</p>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked in passageToHtml -->
+          <p class="pb__text">{@html passageToHtml(c.canonicalText)}</p>
           {#if c.firstObserved}
             <p class="pb__first">
               {#if c.firstObserved.abbr}

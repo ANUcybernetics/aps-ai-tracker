@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { escapeHtml, inlineMarkdownToHtml } from "./markdown";
+import { escapeHtml, inlineMarkdownToHtml, passageToHtml, stripBlockMarkers } from "./markdown";
 
 describe("escapeHtml", () => {
   it("escapes the HTML-significant characters", () => {
@@ -51,5 +51,46 @@ describe("inlineMarkdownToHtml", () => {
 
   it("leaves plain text untouched", () => {
     expect(inlineMarkdownToHtml("just a sentence.")).toBe("just a sentence.");
+  });
+});
+
+describe("stripBlockMarkers", () => {
+  it("strips heading hashes", () => {
+    expect(stripBlockMarkers("## Public interaction and impact")).toBe(
+      "Public interaction and impact",
+    );
+    expect(stripBlockMarkers("# Artificial Intelligence (AI) statement")).toBe(
+      "Artificial Intelligence (AI) statement",
+    );
+  });
+
+  it("strips blockquote markers on every line", () => {
+    expect(stripBlockMarkers("> An AI system is a machine-based system.")).toBe(
+      "An AI system is a machine-based system.",
+    );
+    expect(stripBlockMarkers("> line one\n> line two")).toBe("line one\nline two");
+  });
+
+  it("strips a leading list marker", () => {
+    expect(stripBlockMarkers("- a bullet point")).toBe("a bullet point");
+    expect(stripBlockMarkers("1. a numbered point")).toBe("a numbered point");
+  });
+
+  it("leaves an unmarked paragraph alone", () => {
+    expect(stripBlockMarkers("Just a normal sentence.")).toBe("Just a normal sentence.");
+  });
+});
+
+describe("passageToHtml", () => {
+  it("strips block scaffolding and renders inline links", () => {
+    expect(passageToHtml("## See the [policy](https://www.digital.gov.au/ai)")).toBe(
+      'See the <a href="https://www.digital.gov.au/ai" target="_blank" rel="noopener noreferrer">policy</a>',
+    );
+  });
+
+  it("renders a quoted definition as plain prose", () => {
+    expect(passageToHtml("> An AI system **infers** outputs.")).toBe(
+      "An AI system <strong>infers</strong> outputs.",
+    );
   });
 });
