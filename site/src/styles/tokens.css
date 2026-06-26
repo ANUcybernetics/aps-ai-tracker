@@ -5,12 +5,13 @@
    across its weight + width axes for a civic, newspaper-masthead feel, and
    JetBrains Mono for the ledger texture (dates, commit SHAs, byte deltas).
 
-   Colours are raw light/dark pairs composed with light-dark(), so native UI
-   (scrollbars, form controls) adapts via color-scheme. One semantic runs through
-   every visualisation: warm ochre = borrowed / templated / reused, ink = bespoke. */
+   Light only, by choice: one context to tune properly rather than two to
+   compromise across. Native UI (scrollbars, form controls) is pinned light via
+   color-scheme. One semantic runs through every visualisation: warm ochre =
+   borrowed / templated / reused, ink = bespoke. */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   /* type: one display+body family (width/weight carry the hierarchy) + a mono */
   --font-sans:
@@ -64,43 +65,47 @@
   --z-skip: 100;
 
   /* surfaces + ink */
-  --bg: light-dark(oklch(98.6% 0.003 250), oklch(17.5% 0.014 264));
-  --surface: light-dark(oklch(96.8% 0.004 250), oklch(20.5% 0.016 264));
-  --surface-2: light-dark(oklch(93.8% 0.006 250), oklch(24.5% 0.018 264));
-  --text: light-dark(oklch(23% 0.024 264), oklch(92% 0.012 250));
-  --muted: light-dark(oklch(45% 0.022 264), oklch(67% 0.016 250));
-  --border: light-dark(oklch(88% 0.008 255), oklch(30% 0.016 264));
-  --border-strong: light-dark(oklch(74% 0.012 255), oklch(42% 0.018 264));
+  --bg: oklch(98.6% 0.003 250);
+  --surface: oklch(96.8% 0.004 250);
+  --surface-2: oklch(93.8% 0.006 250);
+  --text: oklch(23% 0.024 264);
+  --muted: oklch(45% 0.022 264);
+  --border: oklch(88% 0.008 255);
+  --border-strong: oklch(74% 0.012 255);
 
   /* signature ochre — the highlighter / red-pen of someone marking up documents */
-  --accent: light-dark(oklch(66% 0.142 64), oklch(80% 0.14 78));
-  --accent-strong: light-dark(oklch(56% 0.14 56), oklch(86% 0.13 80));
+  --accent: oklch(66% 0.142 64);
+  --accent-strong: oklch(56% 0.14 56);
   /* ochre dark/saturated enough to carry AA as text + links on paper */
-  --accent-ink: light-dark(oklch(46% 0.132 54), oklch(83% 0.13 80));
-  --accent-contrast: light-dark(oklch(21% 0.04 60), oklch(18% 0.03 60));
-  --accent-wash: light-dark(oklch(95% 0.04 78), oklch(27% 0.05 70));
+  --accent-ink: oklch(46% 0.132 54);
+  --accent-contrast: oklch(21% 0.04 60);
+  --accent-wash: oklch(95% 0.04 78);
 
   /* status */
-  --ok: light-dark(oklch(50% 0.13 150), oklch(78% 0.13 150));
+  --ok: oklch(50% 0.13 150);
   --off: var(--muted);
 
   /* diff: conventional green insert / red delete, kept distinct from the ochre */
-  --ins-bg: light-dark(oklch(91% 0.09 150), oklch(36% 0.09 150));
-  --ins-text: light-dark(oklch(33% 0.12 150), oklch(92% 0.08 150));
-  --del-bg: light-dark(oklch(92% 0.08 22), oklch(37% 0.1 22));
-  --del-text: light-dark(oklch(45% 0.17 25), oklch(89% 0.09 25));
+  --ins-bg: oklch(91% 0.09 150);
+  --ins-text: oklch(33% 0.12 150);
+  --del-bg: oklch(92% 0.08 22);
+  --del-text: oklch(45% 0.17 25);
 
   /* passage-reuse heat: a highlighter ramp, unique (clear) -> ubiquitous (deep amber).
-     Tuned so body ink stays ≥4.5:1 over every step in both colour schemes. */
-  --heat-1: light-dark(oklch(95% 0.05 92), oklch(29% 0.04 82));
-  --heat-2: light-dark(oklch(90.5% 0.1 84), oklch(34% 0.07 74));
-  --heat-3: light-dark(oklch(85% 0.14 72), oklch(39% 0.1 66));
-  --heat-4: light-dark(oklch(78.5% 0.155 58), oklch(44% 0.12 58));
+     Tuned so body ink stays ≥4.5:1 over every step. */
+  --heat-1: oklch(95% 0.05 92);
+  --heat-2: oklch(90.5% 0.1 84);
+  --heat-3: oklch(85% 0.14 72);
+  --heat-4: oklch(78.5% 0.155 58);
+
+  /* node ink for the similarity map: bespoke statements read as deep ink, the
+     same end of the scale as the originality bars (see SimilarityGraph). */
+  --node-ink: oklch(34% 0.03 264);
 
   --shadow:
-    0 1px 2px light-dark(oklch(0% 0 0 / 6%), oklch(0% 0 0 / 32%)),
-    0 4px 16px light-dark(oklch(0% 0 0 / 4%), oklch(0% 0 0 / 26%));
+    0 1px 2px oklch(0% 0 0 / 6%),
+    0 4px 16px oklch(0% 0 0 / 4%);
   --shadow-lg:
-    0 2px 6px light-dark(oklch(0% 0 0 / 7%), oklch(0% 0 0 / 36%)),
-    0 16px 40px light-dark(oklch(0% 0 0 / 7%), oklch(0% 0 0 / 34%));
+    0 2px 6px oklch(0% 0 0 / 7%),
+    0 16px 40px oklch(0% 0 0 / 7%);
 }
