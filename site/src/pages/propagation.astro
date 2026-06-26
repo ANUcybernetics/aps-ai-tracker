@@ -11,6 +11,10 @@ const board = propagation.originality;
 const clusters = propagation.clusters;
 const templateClusters = clusters.filter((c) => c.alsoInDta).length;
 
+// Spell out the template source on first mention — a newcomer won't know "DTA".
+const ursource = propagation.ursource;
+const ursourceName = nameByAbbr.get(ursource) ?? ursource;
+
 const mostBespoke = board.slice(0, 8);
 const mostTemplated = board.slice(-8).reverse();
 
@@ -28,10 +32,10 @@ const columns = [
     <header class="stack">
       <h1>The template effect</h1>
       <p class="lede">
-        Many agencies start from the same DTA template, then edit. This shows how
-        much each statement is bespoke versus shared, and lets you browse the exact
-        passages that recur &mdash; {templateClusters} of them also appear in the
-        DTA&rsquo;s own statement.
+        Many agencies start from the same template, published by the {ursourceName}
+        ({ursource}), then edit. This shows how much each statement is bespoke versus
+        shared, and lets you browse the exact passages that recur &mdash; {templateClusters}
+        of them also appear in the {ursource}&rsquo;s own statement.
       </p>
     </header>
 

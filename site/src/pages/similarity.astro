@@ -6,6 +6,7 @@ import { similarity, agencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
 
 const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
+const names = Object.fromEntries(nameByAbbr);
 const rows = similarity.abbrs.map((abbr) => ({
   abbr,
   name: nameByAbbr.get(abbr) ?? abbr,
@@ -23,13 +24,22 @@ const rows = similarity.abbrs.map((abbr) => ({
       <p class="lede">
         Every statement is embedded with OpenAI and placed so that statements
         reading alike sit closer together. Drag a node to explore; scroll to zoom.
-        Colour runs warm (<strong>heavily templated</strong>) to cool
-        (<strong>bespoke</strong>).
+        Each dot is coloured by originality, the same scale as the rest of the
+        site: <strong>ochre</strong> for heavily templated, deepening to
+        <strong>ink</strong> for bespoke. Hover a dot for the agency and its
+        score.
       </p>
       <p><ReadingLink anchor="similarity" label="How to read this map" /></p>
     </header>
 
-    <SimilarityGraph client:visible />
+    <SimilarityGraph client:visible names={names} />
+    <p class="sim-legend" aria-hidden="true">
+      <span class="sim-legend__bar"></span>
+      <span class="sim-legend__ends">
+        <span>ochre · heavily templated</span>
+        <span>ink · bespoke</span>
+      </span>
+    </p>
 
     <details class="sim-table">
       <summary>Nearest matches as a table</summary>
@@ -55,7 +65,9 @@ const rows = similarity.abbrs.map((abbr) => ({
                     {r.neighbours.slice(0, 5).map((n, i) => (
                       <>
                         {i > 0 && ", "}
-                        <a href={statementPath(n.abbr)}>{n.abbr}</a>
+                        <a href={statementPath(n.abbr)} title={names[n.abbr] ?? n.abbr}>
+                          {n.abbr}
+                        </a>
                       </>
                     ))}
                   </td>
@@ -70,8 +82,31 @@ const rows = similarity.abbrs.map((abbr) => ({
 </Layout>
 
 <style>
+  /* Map colour key: a gradient matching the node scale in SimilarityGraph,
+     ochre (templated) → ink (bespoke), so the page explains its own colours. */
+  .sim-legend {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    max-inline-size: 26rem;
+    margin-block: var(--space-3) 0;
+  }
+
+  .sim-legend__bar {
+    block-size: 0.5rem;
+    border-radius: 999px;
+    background: linear-gradient(to right, #bd7714, #9c8f7c, #373d4b);
+  }
+
+  .sim-legend__ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
   .sim-table {
-    margin-block-start: var(--space-2);
+    margin-block-start: var(--space-4);
   }
 
   .sim-table summary {
