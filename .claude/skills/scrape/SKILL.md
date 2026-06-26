@@ -3,8 +3,9 @@ name: scrape
 description:
   Runs the APS AI transparency tracker scraper, reviews the diff for quality,
   commits good changes and discards spurious ones, then searches for new
-  transparency statements from agencies without URLs. Use when asked to "scrape",
-  "run the scraper", "update statements", or "fetch transparency statements".
+  transparency statements from agencies without URLs. Use when asked to
+  "scrape", "run the scraper", "update statements", or "fetch transparency
+  statements".
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, Bash, Edit, Agent, WebSearch, WebFetch
 ---
@@ -13,8 +14,9 @@ Run the APS AI transparency statement scraper, validate the results, commit
 substantive changes, discard spurious ones, then search for newly published
 statements from agencies that don't have URLs yet.
 
-Never ask for confirmation or wait for user input at any step --- this skill runs
-non-interactively from a cron job. Proceed immediately at every decision point.
+Never ask for confirmation or wait for user input at any step --- this skill
+runs non-interactively from a cron job. Proceed immediately at every decision
+point.
 
 ## Step 1: run the scraper
 
@@ -129,12 +131,11 @@ Classify each changed file as **good** or **spurious**:
   the new content is likely a scraping failure; discard that file's changes
 
 Most other "noise" categories (whitespace-only diffs, date stamps, Cloudflare
-email hashes, classification markers, "print this page" / social widgets,
-"you may also be interested in" sidebars) are caught upstream by the
-deterministic cleanup pipeline or by mdformat. If they reappear in a diff,
-that's a regression in the cleanup pipeline rather than expected noise --- note
-it in the commit description so it can be patched later, but don't manually
-discard the file.
+email hashes, classification markers, "print this page" / social widgets, "you
+may also be interested in" sidebars) are caught upstream by the deterministic
+cleanup pipeline or by mdformat. If they reappear in a diff, that's a regression
+in the cleanup pipeline rather than expected noise --- note it in the commit
+description so it can be patched later, but don't manually discard the file.
 
 If a file has a mix of good and spurious changes, keep it (the good outweighs
 the noise). Only discard files where the changes are entirely spurious.
@@ -167,7 +168,8 @@ If there are good changes remaining:
 1. Count the number of changed statement files with
    `git diff --stat | grep statements/`
 2. Write a concise commit message in imperative mood. Use this pattern:
-   - For statement updates: `update N transparency statements from latest scrape`
+   - For statement updates:
+     `update N transparency statements from latest scrape`
    - For mixed changes: `update N transparency statements, add M new`
    - Include a blank line then a brief list of notable changes if any agencies
      had warnings or interesting updates
@@ -182,36 +184,92 @@ git push
 If there are no good changes, skip the commit and report that the scrape
 produced no new content.
 
-## Step 6: search for new transparency statements
+## Step 6: discover new and corrected statement URLs
 
-After the scrape is complete (whether or not there were updates), search for
-newly published statements from agencies that currently have no URL.
+After the scrape (whether or not there were updates), look for statements we're
+missing or pointing at the wrong URL. The corpus is only as complete as our
+discovery, so use **every source below**, not just one. Run both sources, then
+reconcile. Proceed non-interactively --- act on the findings without asking.
 
-1. Read `agencies.toml` and collect all agencies where `url = ""`.
-2. Search for **all** missing agencies, not just a subset. Launch subagents in
-   parallel (batches of 5--6) using the Agent tool to search concurrently. Each
-   subagent should:
-   - Use WebSearch to look for the agency's AI transparency statement:
-     - `"[agency name]" AI transparency statement site:[domain].gov.au`
-     - `"[agency abbreviation]" AI transparency statement`
-     - `site:[domain].gov.au artificial intelligence transparency`
-   - If a search returns a plausible result, use WebFetch to visit the page and
-     verify it's actually an AI transparency statement (not a general policy page
-     or unrelated content)
-   - Return the verified URL, or report that no statement was found
-3. Collect results from all subagents. For each verified statement found, update
-   the `url` field in `agencies.toml`.
-4. If any URLs were added, run the scraper again (the full pipeline --- it will
-   pick up the new URLs), then review the diff, discard spurious changes, and
-   commit and push:
+### Source A --- the DTA register (authoritative cross-check)
 
-   ```
-   git add agencies.toml statements/
-   git commit -m "add N new transparency statement URLs ([ABBR1], [ABBR2])"
-   git push
-   ```
+The Digital Transformation Agency publishes the central register of every
+Commonwealth AI transparency statement:
 
-5. Report which agencies were checked and the outcome for each (found/not found).
+https://www.digital.gov.au/policy/ai/list-of-transparency-statements
+
+Fetch it with `curl` and a browser User-Agent --- **not** WebFetch. WebFetch
+often returns a partial or blocked render, and a truncated fetch is a fetch
+failure, NOT proof a statement is missing (this is what made the register look
+"partial" on 2026-06-26 --- the curl form has every entry, including the ones
+WebFetch dropped). The curl form returns the full ~220 KB with every statement
+link server-rendered:
+
+```sh
+curl -s -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" \
+  "https://www.digital.gov.au/policy/ai/list-of-transparency-statements" \
+  | grep -oiE 'href="https?://[^"]*(ai-transparency|transparency-statement|ai-statement)[^"]*"' | sort -u
+```
+
+The grep is a starting filter, not exhaustive on URL shape --- a statement
+linked via an unusual path or a PDF may not match it, so also eyeball the
+register HTML for agency names that didn't surface a link. Then cross-check
+against `agencies.toml` **both ways**:
+
+- **tracked agency, `url = ""`, register has a link** --- candidate to add.
+  Before adding, fetch the link and confirm it's real statement content: the
+  register is authoritative for _whether_ an agency has published, not always
+  for the _best URL_. Known traps --- stub pages that only link to a PDF we
+  already track (ACQSC), and register URLs that 404 while ours works (Screen
+  Australia); keep the working URL in those cases.
+- **tracked agency, URL differs from the register's** --- only switch if the
+  register URL is a better, working statement page.
+- **register lists an agency not in `agencies.toml`** --- the register grows as
+  more bodies publish, including voluntary statements from corporate
+  Commonwealth entities and other bodies outside the APSC list. Policy: track
+  any such body once it has a real statement. Fetch the link to confirm it's a
+  genuine transparency statement (not a stub or 404), then add it to
+  `agencies.toml` --- a unique abbr and a best-guess `size` --- so the next
+  scrape picks up its first revision. Corporate/voluntary entities are in scope;
+  add them, don't just report them. Note each addition in the run report.
+
+### Source B --- targeted per-agency web search
+
+For every agency still `url = ""` after the register pass, search the open web
+--- it catches statements the register omits or links indirectly. Launch
+subagents in parallel (batches of 5--6) with the Agent tool. Each subagent
+should:
+
+- WebSearch with several query shapes:
+  - `"[agency name]" AI transparency statement site:[domain].gov.au`
+  - `"[agency abbreviation]" AI transparency statement`
+  - `site:[domain].gov.au artificial intelligence transparency`
+- also try the common pattern directly:
+  `https://[domain].gov.au/.../ai-transparency-statement`
+- WebFetch any plausible hit to confirm it's an actual transparency statement
+  (not a general AI-policy page), then return the verified URL or "not found".
+
+### Reconcile and act
+
+Combine the results from both sources, de-duplicated. For each verified
+statement, set the `url` field in `agencies.toml`.
+
+Some agencies legitimately stay `url = ""`: the policy excludes the defence
+portfolio, the national intelligence community, and (mandatorily) corporate
+Commonwealth entities, so DEFENCE, ASA, ACIC, ONI, NDIA, AHRC, AIATSIS and the
+like keep coming back not-found --- that's expected, not a discovery failure.
+
+If any URLs were added, re-run the scraper (the full pipeline picks up the new
+URLs), review the diff, discard spurious changes, then commit and push:
+
+```
+git add agencies.toml statements/
+git commit -m "add N new transparency statement URLs ([ABBR1], [ABBR2])"
+git push
+```
+
+Report which agencies were checked, which source found what, and the outcome for
+each: added / already-tracked / not-found / untracked-in-toml.
 
 ## Error handling
 
