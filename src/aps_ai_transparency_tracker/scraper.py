@@ -232,6 +232,12 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         "#header",
         "#footer",
         "#sidebar",
+        # "Related content" / "you might also like" CTA card blocks (e.g. MoAD's
+        # Drupal "loosely-related-auto" block). These rotate which tiles they show
+        # on every render, so they churn the diff without being real edits.
+        "[class*='loosely-related']",
+        "[class*='related-content']",
+        "[class*='related-links']",
     ]
 
     for selector in boilerplate_selectors:

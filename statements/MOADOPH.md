@@ -83,37 +83,3 @@ If you have any questions about MoAD's use of AI, please get in touch using our 
 **Corporate and enabling** – to enhance functions by automating processes, optimising resource allocation, and boosting operational efficiency. For compliance and fraud detection, it aids in recognising patterns within records to ensure adherence to laws and regulations.
 
 **Generative AI** – a type of AI that can create new content, such as text, images, videos, music, and code
-
-### [Learn](https://moadoph.gov.au/learn)
-
-Driven by an inquiry approach and critical reflection, we empower young people to become active citizens.
-
-![Board of Old Parliament House](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/Old-Parliament-House-Tom-Ferguson2021-0731_1.jpg.webp?h=6d0d811d&itok=nn84wyHm)
-
-### [Board of Old Parliament House](https://moadoph.gov.au/about/board-old-parliament-house)
-
-The Board directs the objectives, strategies and policies followed by Old Parliament House.
-
-![APS Census](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-### [APS Census](https://moadoph.gov.au/about/policies-and-plans/policies/APS-census)
-
-The APS Census reports reflect how staff feel about working at MoAD.
-
-![Careers](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-06/careers-APS-census-MoAD-reopening.jpg.webp?h=b5dc55f7&itok=XJNPnfyS)
-
-### [Careers](https://moadoph.gov.au/about/careers)
-
-Join our team and help us tell the story of Australian democracy.
-
-![Contact us](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-01/Statement-Jack-Greens-paintings-MoAD-exhibition.jpg.webp?itok=TOI8cfOZ)
-
-### [Contact us](https://moadoph.gov.au/about/contact)
-
-Do you have questions or feedback for us?
-
-![Volunteer](https://moadoph.gov.au/sites/default/files/styles/cropped_square/public/2023-03/Volunteer-MoAD-Ben-Appleton.jpg.webp?h=3f01fd34&itok=whepK3BN)
-
-### [Volunteer](https://moadoph.gov.au/support/volunteer)
-
-Our volunteers are ambassadors for MoAD, sharing the stories of Old Parliament House.
