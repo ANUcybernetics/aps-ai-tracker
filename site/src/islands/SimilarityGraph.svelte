@@ -18,6 +18,10 @@
   type GNode = GraphNode & SimulationNodeDatum;
   type GLink = SimulationLinkDatum<GNode> & { score: number };
 
+  // Full agency names keyed by abbreviation, passed from the page so the node
+  // tooltip can spell out the acronym a newcomer won't recognise.
+  let { names = {} }: { names?: Record<string, string> } = $props();
+
   let container: HTMLDivElement;
   let status = $state<"loading" | "empty" | "ready">("loading");
 
@@ -46,12 +50,14 @@
       score: e.score,
     }));
 
-    // Originality → colour, matching the site-wide language: warm ochre =
-    // heavily templated/borrowed, cool teal = bespoke, neutral in between. Mid
-    // lightness so nodes stay legible on both the light and dark canvas.
+    // Originality → colour, matching the site-wide language exactly: saturated
+    // ochre = heavily templated/borrowed, deep ink = bespoke, the same ends as
+    // the originality bars and the agency wall. The wide lightness span (light
+    // ochre → dark ink) is what makes neighbouring nodes legibly different —
+    // the old teal/grey ramp left almost every node reading as one colour.
     const colour = scaleLinear<string>()
       .domain([0, 0.5, 1])
-      .range(["#c6862f", "#9aa1ab", "#3f8f9c"])
+      .range(["#bd7714", "#9c8f7c", "#373d4b"])
       .clamp(true);
 
     const svg = select(container)
@@ -99,7 +105,11 @@
       .attr("font-size", "0.7rem")
       .attr("fill", "currentColor");
 
-    node.append("title").text((d) => `${d.abbr} — ${Math.round(d.originality * 100)}% bespoke`);
+    node.append("title").text((d) => {
+      const full = names[d.abbr];
+      const who = full ? `${full} (${d.abbr})` : d.abbr;
+      return `${who} — ${Math.round(d.originality * 100)}% bespoke`;
+    });
 
     const reduceMotion =
       typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
