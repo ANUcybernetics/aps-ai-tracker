@@ -194,6 +194,87 @@ hr {
   text-underline-offset: 0.3em;
 }
 
+/* --- mobile nav: a CSS-only disclosure (no JS in the static header) ---
+   The checkbox is the control; the burger label toggles it; :has() reveals the
+   nav. On wide screens the burger is hidden and the nav is always shown. */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  inline-size: 1px;
+  block-size: 1px;
+}
+
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  margin-inline-start: auto;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+}
+
+/* three-bar glyph drawn from one element + its before/after */
+.nav-burger__bars,
+.nav-burger__bars::before,
+.nav-burger__bars::after {
+  content: "";
+  display: block;
+  inline-size: 1.25rem;
+  block-size: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.nav-burger__bars {
+  position: relative;
+}
+
+.nav-burger__bars::before {
+  position: absolute;
+  inset-block-start: -6px;
+}
+
+.nav-burger__bars::after {
+  position: absolute;
+  inset-block-start: 6px;
+}
+
+.nav-toggle:focus-visible + .nav-burger {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+@media (width < 48rem) {
+  .brand {
+    margin-inline-end: 0;
+  }
+
+  .nav-burger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-block: var(--space-2);
+    font-size: 1rem;
+  }
+
+  .site-header:has(#nav-toggle:checked) .nav {
+    display: flex;
+  }
+
+  .nav a {
+    padding-block: var(--space-2);
+  }
+}
+
 main {
   padding-block: var(--space-8);
   min-height: 60vh;
