@@ -83,7 +83,8 @@
                 <a
                   href={statementPath(c.firstObserved.abbr)}
                   title={names[c.firstObserved.abbr] ?? c.firstObserved.abbr}
-                >{c.firstObserved.abbr}</a>,
+                  >{c.firstObserved.abbr}</a
+                >,
                 {formatDate(c.firstObserved.date)}{#if tierLabel(c.firstObserved.tier)}
                   <span class="muted">· {tierLabel(c.firstObserved.tier)}</span>{/if}
               {:else}

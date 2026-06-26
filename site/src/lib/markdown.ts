@@ -44,12 +44,10 @@ export function inlineMarkdownToHtml(text: string): string {
   });
 
   // Links: [label](url). The label may itself carry emphasis, handled below.
-  html = html.replace(
-    /\[([^\]]+)\]\(([^)\s]+)\)/g,
-    (whole, label: string, url: string) =>
-      isSafeUrl(url)
-        ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
-        : whole,
+  html = html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (whole, label: string, url: string) =>
+    isSafeUrl(url)
+      ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
+      : whole,
   );
 
   // Emphasis. Bold before italic so ** isn't eaten as two single *.
@@ -58,10 +56,7 @@ export function inlineMarkdownToHtml(text: string): string {
   html = html.replace(/(^|[^\w])_([^_\n]+)_(?=[^\w]|$)/g, "$1<em>$2</em>");
 
   // Restore the protected code spans.
-  html = html.replace(
-    new RegExp(`${NUL}(\\d+)${NUL}`, "g"),
-    (_m, i: string) => code[Number(i)]!,
-  );
+  html = html.replace(new RegExp(`${NUL}(\\d+)${NUL}`, "g"), (_m, i: string) => code[Number(i)]!);
 
   return html;
 }
