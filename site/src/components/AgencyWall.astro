@@ -82,6 +82,14 @@ const cells = agencies.toSorted(byName).map((a) => ({
     gap: 0.32rem;
   }
 
+  /* On touch, widen the tracks so each published cell is a ≥24px tap target
+     (WCAG 2.5.8); on the narrowest screens the cells otherwise hit their min. */
+  @media (pointer: coarse) {
+    .wall__grid {
+      grid-template-columns: repeat(auto-fill, minmax(1.6rem, 1fr));
+    }
+  }
+
   .wall__cell {
     display: block;
     aspect-ratio: 1;

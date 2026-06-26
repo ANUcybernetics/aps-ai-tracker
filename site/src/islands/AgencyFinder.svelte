@@ -90,9 +90,6 @@
     type="search"
     {placeholder}
     autocomplete="off"
-    role="combobox"
-    aria-expanded={matches.length > 0}
-    aria-controls="agency-finder-results"
   />
 
   <p class="visually-hidden" aria-live="polite">
@@ -108,12 +105,7 @@
       <p class="finder__empty">No agency matches “{query.trim()}”.</p>
     {:else}
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-      <ul
-        class="finder__results"
-        id="agency-finder-results"
-        bind:this={listEl}
-        onkeydown={onListKeydown}
-      >
+      <ul class="finder__results" bind:this={listEl} onkeydown={onListKeydown}>
         {#each matches as a (a.abbr)}
           <li class="finder__row" data-status={a.status}>
             {#if a.status === "published"}
