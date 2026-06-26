@@ -12,6 +12,7 @@
     "test": "vitest run",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "format": "oxfmt .",
     "format:check": "oxfmt --check ."
   },

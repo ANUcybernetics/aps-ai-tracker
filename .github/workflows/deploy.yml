@@ -80,6 +80,10 @@ jobs:
         run: pnpm run lint
         working-directory: site
 
+      - name: Lint CSS
+        run: pnpm run lint:css
+        working-directory: site
+
       - name: Typecheck
         run: pnpm run typecheck
         working-directory: site
