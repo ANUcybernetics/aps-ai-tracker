@@ -20,7 +20,6 @@ body {
   line-height: 1.6;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
 }
 
 ::selection {
@@ -485,10 +484,12 @@ main {
   }
 }
 
+/* The site's only keyframe animations are already gated behind no-preference,
+   so we just neutralise the ungated hover/state transitions and smooth scroll
+   here — not animation-duration globally, which the guidance flags as able to
+   make some animations more jarring rather than calmer. */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
