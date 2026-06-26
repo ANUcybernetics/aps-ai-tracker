@@ -48,6 +48,8 @@ For enquiries, please [ _contact us_](https://www.ipea.gov.au/about-ipea/contact
 
 **Review and updates**
 
+It will be reviewed and updated annually or when significant changes occur.
+
 Authorised by Beth Pahl\
 Acting Chief Information Officer\
 Acting Chief Operating Officer\

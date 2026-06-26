@@ -12,8 +12,6 @@ Facebook X Email
 
 Print
 
-### Go to section
-
 # Corporate governance
 
 Our corporate governance reflects the legislative requirements we have to handle data, privacy, freedom of information and other policies and procedures.

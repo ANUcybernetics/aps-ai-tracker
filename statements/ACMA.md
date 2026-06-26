@@ -126,6 +126,8 @@ ACMA will use AI where it helps us do our work better, safely and lawfully. We w
 
 ACMA does not currently deploy AI in direct interactions with the public.
 
+We will review and update it at least annually, as our AI use matures or when a significant change is made to the agencies or the Government’s approach to AI.
+
 ### Contact
 
 For questions about this statement or further information on our use of AI, please contact [info@acma.gov.au](mailto:info@acma.gov.au).

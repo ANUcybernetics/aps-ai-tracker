@@ -65,6 +65,8 @@ For enquiries regarding NEMA’s use of AI, please contact us at [contact@nema.g
 
 ### Review and Updates
 
+It will be reviewed and updated annually or when significant changes occur.
+
 Copyright, trade marks and disclaimer
 
 Intellectual property rights protection is an important aspect of our website content. You should keep copyright protection and trademark integrity in mind when using our website.

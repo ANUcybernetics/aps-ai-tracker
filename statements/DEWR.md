@@ -76,3 +76,5 @@ DEWR safeguards against risks and ensures responsible AI use through a range of 
 For inquiries or feedback regarding DEWR’s use of AI, please contact us at [data@dewr.gov.au](mailto:data@dewr.gov.au).
 
 ## Review and updates
+
+It will be reviewed and updated annually or when significant changes occur.

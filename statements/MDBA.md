@@ -59,6 +59,8 @@ Senior responsible officials and accountable officials report to the MDBA Execut
 
 ## Last updated
 
+It will be updated as our approach to AI evolves, and at least every 12 months.
+
 ## Contact
 
 For more information or enquiries about our adoption of AI, please [contact us](https://www.mdba.gov.au/about-us/contact-us/got-question-use-our-form "Got a question? Use our form").

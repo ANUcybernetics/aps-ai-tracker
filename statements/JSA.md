@@ -74,3 +74,5 @@ JSA safeguards against risks and ensures responsible AI use through a range of g
 For inquiries or feedback regarding JSA’s use of AI, please contact us at [datagovernance@jobsandskills.gov.au](mailto:datagovernance@jobsandskills.gov.au).
 
 ## Review and Updates
+
+It will be reviewed and updated annually or when significant changes occur.

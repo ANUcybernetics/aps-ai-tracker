@@ -91,6 +91,8 @@ The DTA currently uses AI in the following system use cases as defined by the St
 
 - By integrating Microsoft 365 Copilot, the DTA is enhancing staff productivity and collaboration across teams. Copilot leverages generative AI to help automate repetitive tasks, summarise documents, generate emails and reports, and assist with data analysis. This enables staff to focus on higher-value work, make more informed decisions, and reduce time spent on manual processes.
 
+It will be updated as our approach to AI changes, and at least every twelve months.
+
 **Update Publication Date** | **Update Comment**\
 ---|---\
 1 November 2024 |

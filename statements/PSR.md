@@ -41,6 +41,8 @@ PSR currently applies its use of AI within Corporate and Enabling functions for 
 
 ## Review
 
+It will be updated annually and following any event that may significantly influence PSR’s use of AI or materially impact the accuracy of this statement.
+
 ## Contact
 
 For further information about this statement or PSR’s usage of AI, please contact [feedback@psr.gov.au](mailto:feedback@psr.gov.au).

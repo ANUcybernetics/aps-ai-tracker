@@ -92,6 +92,8 @@ Any proposed AI solutions must be reviewed and considered by Austrade’s AI Wor
 
 ### Updates to this Statement
 
+It will be updated when making a significant change to the agency's approach to AI and when any new factor materially impacts the existing statement's accuracy and at least every twelve months.
+
 Update publication date| Description\
 ---|---\
 18/02/2025| AI Transparency Statement approved and published\
