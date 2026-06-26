@@ -26,6 +26,8 @@ The Chief Information Officer is designated as the NCA’s accountable official.
 
 **AI Transparency Statement**
 
+It will be reviewed annually, or when we make any significant change to our approach to AI, as outlined above.
+
 Should the NCA approve the use of AI, this statement will be updated to include measures to monitor effectiveness of deployed AI systems and efforts to protect the public against negative impacts.
 
 **Contact Us**

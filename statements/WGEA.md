@@ -51,6 +51,8 @@ For enquiries or feedback regarding WGEA’s use of AI, please contact: [wgea@wg
 
 ## Review and updates
 
+It will be reviewed and updated annually or when significant changes occur.
+
 ## More WGEA policies
 
 ### [ WGEA privacy policy ](https://www.wgea.gov.au/about/governance/privacy-policy)

@@ -45,6 +45,8 @@ For inquires or feedback regarding this statement, please contact us at [info@ig
 
 ##### Review and Updates
 
+It will be reviewed and updated annually or when significant changes occur.
+
 ## Financial Statements
 
 The Office’s financial statements are available in the [annual report](https://www.igis.gov.au/resources/publications).

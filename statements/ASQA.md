@@ -47,4 +47,6 @@ For enquiries or feedback regarding ASQA's use of AI, please contact us at [digi
 
 ## Review and updates
 
+It will be reviewed and updated annually or when significant changes occur.
+
 On this page
