@@ -154,12 +154,43 @@ def clean_html_to_markdown(html_content: str, base_url: str) -> str:
 # Date-stamp lines, in two flavours: an absolute date ("last reviewed 15 January
 # 2025") or a relative counter ("Page last reviewed: 1 months ago"). The relative
 # form ticks over on every scrape even when the statement text is unchanged, so it
-# must be stripped here rather than surfacing as a spurious content diff.
+# must be stripped here rather than surfacing as a spurious content diff. This
+# whole-line form clears lines that are *only* a date stamp (standalone, or a
+# metadata row with links).
+_DATE_VALUE = (
+    r"(?:\d{1,2}.*\d{4}|"
+    r"\d+\s*(?:second|minute|hour|day|week|month|year)s?\s+ago|just now|yesterday|today)"
+)
 _LAST_REVIEWED_RE = re.compile(
     r"(?mi)^.*(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated)"
-    r".*(?:\d{1,2}.*\d{4}|"
-    r"\d+\s*(?:second|minute|hour|day|week|month|year)s?\s+ago|just now|yesterday|today"
-    r").*$\n?",
+    rf".*{_DATE_VALUE}.*$\n?",
+)
+
+# A date stamp that *trails* real prose on the same line, e.g. ACSQHC ended a
+# content paragraph with "… implement AI technology. This statement was last
+# updated on 20 February 2026." The whole-line form above would delete the real
+# sentence too, so trim only the trailing stamp here, before it runs. Kept
+# deliberately strict — a single clean sentence (no full stops, so no dotted
+# URLs) following a full stop — so it never truncates a metadata/link row.
+_INLINE_DATE_TAIL_RE = re.compile(
+    r"(?im)(?<=[.])[ \t]+"
+    r"[^.\n]*?(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated)"
+    r"[^.\n]*?"
+    r"(?:\d{1,2}[^.\n]*?\d{4}|"
+    r"\d+\s*(?:second|minute|hour|day|week|month|year)s?\s+ago|just now|yesterday|today)"
+    r"[^.\n]*?\.?[ \t]*$"
+)
+
+# The mirror image: a stamp that *leads* the line, with real prose after it, e.g.
+# DEWR's "This statement was last updated on 27 February 2026. It will be reviewed
+# and updated annually…". Strip the leading stamp sentence (clean, full-stop
+# terminated) and keep what follows.
+_INLINE_DATE_HEAD_RE = re.compile(
+    r"(?im)^[^.\n]*?(?:last (?:reviewed|updated|modified)|date (?:published|modified)|page updated)"
+    r"[^.\n]*?"
+    r"(?:\d{1,2}[^.\n]*?\d{4}|"
+    r"\d+\s*(?:second|minute|hour|day|week|month|year)s?\s+ago|just now|yesterday|today)"
+    r"[^.\n]*?\.[ \t]+"
 )
 
 _TRAILING_BOILERPLATE_RE = re.compile(
@@ -180,6 +211,10 @@ _ALSO_INTERESTED_RE = re.compile(
 
 def clean_markdown(text: str) -> str:
     """Strip date stamps, classification markers, and trailing boilerplate."""
+    # Trim inline stamps that share a line with prose (trailing, then leading),
+    # keeping the prose, then clear any line that is wholly a date stamp.
+    text = _INLINE_DATE_TAIL_RE.sub("", text)
+    text = _INLINE_DATE_HEAD_RE.sub("", text)
     text = _LAST_REVIEWED_RE.sub("", text)
     text = _TRAILING_BOILERPLATE_RE.sub("", text)
     text = _OFFICIAL_MARKER_RE.sub("", text)
@@ -238,6 +273,12 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         "[class*='loosely-related']",
         "[class*='related-content']",
         "[class*='related-links']",
+        # In-page "jump to section" / "on this page" anchor menus. The desktop
+        # copy usually sits in <nav>/<aside> (already stripped), but a duplicate
+        # mobile menu (e.g. ACSQHC's "Go to section" toggle) often sits loose in
+        # the content and leaks its heading as nav chrome.
+        "[class*='anchor-nav']",
+        "[class*='anchor-toggle']",
         # Carousels / sliders are decorative nav-card strips in these statements,
         # never the transparency text itself. They rotate their tiles per render,
         # so strip them directly — not only when wrapped in a "related" block (as

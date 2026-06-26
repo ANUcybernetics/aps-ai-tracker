@@ -820,6 +820,24 @@ def test_remove_boilerplate_strips_bare_carousel():
     assert "inquiry approach" not in content
 
 
+def test_remove_boilerplate_strips_anchor_jump_menu():
+    """A loose mobile 'jump to section' anchor menu leaks its heading as nav
+    chrome; strip it (ACSQHC's 'Go to section' toggle)."""
+    html = """
+    <html><body><main>
+        <p>AI transparency content</p>
+        <div class="mobile-anchor-nav-container">
+            <button class="mobile-anchor-toggle"><h3>Go to section</h3></button>
+        </div>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "AI transparency content" in content
+    assert "Go to section" not in content
+
+
 def test_remove_boilerplate_strips_script_style():
     """Test that script, style, and noscript tags are stripped."""
     html = """
@@ -889,6 +907,51 @@ def test_clean_markdown_strips_relative_date_counters():
         assert "ago" not in result and "yesterday" not in result, (
             f"Relative date line not stripped: {line!r}"
         )
+
+
+def test_clean_markdown_strips_inline_date_keeps_preceding_sentence():
+    """An inline date stamp sharing a paragraph with real prose must lose only
+    the stamp sentence, not the sentence before it (ACSQHC regression)."""
+    text = (
+        "We will update this transparency statement as the Commission develops "
+        "policies. This transparency statement was last updated on 20 February 2026."
+    )
+    result = clean_markdown(text)
+
+    assert "We will update this transparency statement as the Commission develops policies." in result
+    assert "20 February 2026" not in result
+    assert "last updated" not in result
+
+
+def test_clean_markdown_strips_leading_date_keeps_following_sentence():
+    """A date stamp that leads a line, with real prose after, must lose only the
+    stamp (DEWR regression)."""
+    text = (
+        "This AI Transparency Statement was last updated on 27 February 2026. "
+        "It will be reviewed and updated annually or when significant changes occur."
+    )
+    result = clean_markdown(text)
+
+    assert "It will be reviewed and updated annually or when significant changes occur." in result
+    assert "27 February 2026" not in result
+    assert "last updated" not in result
+
+
+def test_clean_markdown_does_not_truncate_metadata_link_row():
+    """A whole-line metadata row with links must be cleared entirely, not cut
+    mid-URL (ATSB regression)."""
+    text = (
+        "Real AI statement content.\n\n"
+        "**First published:** [March 2025](https://www.example.gov.au/a) "
+        "**Last updated:** [20 February 2026](https://www.example.gov.au/b)\n\n"
+        "More content."
+    )
+    result = clean_markdown(text)
+
+    assert "Real AI statement content" in result
+    assert "More content" in result
+    assert "First published" not in result
+    assert "example.gov.au/a" not in result, "metadata row truncated mid-URL"
 
 
 def test_clean_markdown_strips_trailing_widgets():
