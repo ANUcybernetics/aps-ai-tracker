@@ -7,7 +7,7 @@ import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { allStatements } from "@/lib/statements";
-import { propagation } from "@/lib/load";
+import { propagation, agencies } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import type { StatementDoc } from "@/types/exporter";
 
@@ -27,6 +27,17 @@ const firstSeen = doc.timeline[0]?.date;
 const realChanges = doc.timeline.filter((t) => t.kind === "updated" && !t.isNoise);
 const changes = realChanges.length;
 const lastUpdated = realChanges.at(-1)?.date;
+
+// For each shared passage, the other agencies that carry it (matched by normKey
+// to a propagation cluster), so a highlighted passage can name its company.
+const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
+const sharedBy: Record<string, { abbr: string; name: string }[]> = {};
+for (const cluster of propagation.clusters) {
+  const others = cluster.memberAbbrs
+    .filter((abbr) => abbr !== doc.abbr)
+    .map((abbr) => ({ abbr, name: nameByAbbr.get(abbr) ?? abbr }));
+  if (others.length) sharedBy[cluster.normKey] = others;
+}
 
 const legend = [
   { heat: 1, label: "a few" },
@@ -67,7 +78,7 @@ const legend = [
           </div>
           <ReadingLink anchor="reuse" />
         </div>
-        <StatementBody passages={doc.passages} />
+        <StatementBody passages={doc.passages} sharedBy={sharedBy} />
         <p class="muted stmt__attribution">
           Statement text &copy; {doc.agency}, reproduced for transparency tracking
           (most agency content is CC BY 4.0 &mdash; check the original for specifics).
