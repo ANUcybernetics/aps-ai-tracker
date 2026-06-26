@@ -61,4 +61,12 @@ const total = originality.shared + originality.unique;
     font-size: 0.85rem;
     margin: 0;
   }
+
+  /* ink-fill / ochre-track encodes the bespoke share; preserve it in forced colours */
+  @media (forced-colors: active) {
+    .orig__bar,
+    .orig__bar span {
+      forced-color-adjust: none;
+    }
+  }
 </style>

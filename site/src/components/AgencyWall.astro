@@ -188,4 +188,13 @@ const cells = agencies.toSorted(byName).map((a) => ({
     background: var(--surface);
     opacity: 0.6;
   }
+
+  /* The cell colour is the data (bespoke ink → borrowed ochre); keep it under
+     forced colours instead of letting every cell flatten to one system colour. */
+  @media (forced-colors: active) {
+    .wall__cell,
+    .wall__key {
+      forced-color-adjust: none;
+    }
+  }
 </style>

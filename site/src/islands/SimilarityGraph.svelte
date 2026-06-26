@@ -202,6 +202,13 @@
     color: var(--muted);
   }
 
+  /* node fill encodes originality (ochre → ink); keep it in forced colours */
+  @media (forced-colors: active) {
+    .graph :global(svg) {
+      forced-color-adjust: none;
+    }
+  }
+
   .graph__msg {
     position: absolute;
     inset: 0;

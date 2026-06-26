@@ -470,6 +470,21 @@ main {
   vertical-align: -0.2em;
 }
 
+/* Forced Colors Mode (Windows High Contrast): the UA replaces author colours
+   with system keywords, which would flatten the parts of this site where colour
+   IS the data — the reuse heat ramp, the diff add/remove, the legend swatches.
+   Opt those out so the encoding survives (the documented forced-color-adjust
+   exception for charts/swatches, not aesthetics). Everything else keeps the
+   system palette. */
+@media (forced-colors: active) {
+  .heat,
+  .heat-legend__swatch,
+  .diff ins,
+  .diff del {
+    forced-color-adjust: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
