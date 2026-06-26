@@ -798,6 +798,28 @@ def test_remove_boilerplate_strips_related_content_blocks():
     assert "inquiry approach" not in content
 
 
+def test_remove_boilerplate_strips_bare_carousel():
+    """Decorative card carousels churn their tiles per render; strip them even
+    when not wrapped in a 'related content' block (cf. MoAD's, which are)."""
+    html = """
+    <html><body><main>
+        <p>AI transparency content</p>
+        <div class="carousel-wrapper carousel-exhibitions">
+            <div class="carousel-cell"><h3><a href="/venue-hire">Venue hire</a></h3>
+                <p>Plan your next event at Old Parliament House.</p></div>
+            <div class="carousel-cell"><h3><a href="/learn">Learn</a></h3>
+                <p>Driven by an inquiry approach.</p></div>
+        </div>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "AI transparency content" in content
+    assert "Venue hire" not in content
+    assert "inquiry approach" not in content
+
+
 def test_remove_boilerplate_strips_script_style():
     """Test that script, style, and noscript tags are stripped."""
     html = """
