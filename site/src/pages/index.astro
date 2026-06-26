@@ -2,7 +2,8 @@
 import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
-import { timeline, meta, propagation } from "@/lib/load";
+import AgencyFinder from "@/islands/AgencyFinder.svelte";
+import { timeline, meta, propagation, agencies } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { withBase, statementPath } from "@/lib/paths";
 
@@ -15,6 +16,11 @@ const recent = timeline
   .slice(0, 10);
 
 const c = meta.counts;
+const finderAgencies = agencies.map((a) => ({
+  abbr: a.abbr,
+  name: a.name,
+  status: a.status,
+}));
 const explorers = [
   {
     href: withBase("/timeline"),
@@ -55,6 +61,10 @@ const explorers = [
         the template language that spreads between them.
       </p>
     </header>
+
+    <div class="home__finder">
+      <AgencyFinder client:load agencies={finderAgencies} />
+    </div>
 
     <div class="home__wall">
       <p class="home__wall-caption">
@@ -150,6 +160,10 @@ const explorers = [
   .hero__lede {
     margin: 0;
     max-width: 54ch;
+  }
+
+  .home__finder {
+    margin-block-start: calc(-1 * var(--space-6));
   }
 
   .home__wall {
@@ -299,6 +313,7 @@ const explorers = [
     .hero__dateline,
     .hero__title,
     .hero__lede,
+    .home__finder,
     .home__wall {
       animation: rise var(--dur-slow) var(--ease-out-expo) both;
     }
@@ -309,8 +324,11 @@ const explorers = [
     .hero__lede {
       animation-delay: 0.12s;
     }
-    .home__wall {
+    .home__finder {
       animation-delay: 0.18s;
+    }
+    .home__wall {
+      animation-delay: 0.24s;
     }
   }
 
