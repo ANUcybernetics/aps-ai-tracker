@@ -1,6 +1,9 @@
 ---
 import "@fontsource-variable/archivo/standard.css";
 import "@fontsource-variable/jetbrains-mono/wght.css";
+// The hero headline (Archivo 800) is the LCP element; preload just its latin
+// subset so the masthead doesn't paint in a fallback and reflow on swap.
+import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2?url";
 import "@/styles/global.css";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
@@ -30,6 +33,7 @@ const ogImage = new URL(withBase("/og.png"), origin).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
+    <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossorigin />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
