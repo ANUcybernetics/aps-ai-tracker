@@ -19,7 +19,7 @@ View our [annual work program](https://www.acma.gov.au/acma-2025-26-annual-work-
 
 ## Compliance priorities
 
-Our [compliance priorities](https://www.acma.gov.au/compliance-priorities "Compliance and enforcement priorities 2025–26") outline our key areas of focus for the year. They will guide our efforts to deliver effective compliance and, where necessary, targeted enforcement action.
+Our [compliance priorities](https://www.acma.gov.au/compliance-priorities "Compliance and enforcement priorities 2026–27") outline our key areas of focus for the year. They will guide our efforts to deliver effective compliance and, where necessary, targeted enforcement action.
 
 ## Data strategy
 
@@ -132,4 +132,4 @@ We will review and update it at least annually, as our AI use matures or when a 
 
 For questions about this statement or further information on our use of AI, please contact [info@acma.gov.au](mailto:info@acma.gov.au).
 
-[ Next up: Compliance and enforcement priorities 2025–26 chevron_right ](https://www.acma.gov.au/compliance-priorities)
+[ Next up: Compliance and enforcement priorities 2026–27 chevron_right ](https://www.acma.gov.au/compliance-priorities)
