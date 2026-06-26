@@ -15,6 +15,7 @@ const templateClusters = clusters.filter((c) => c.alsoInDta).length;
 // Spell out the template source on first mention — a newcomer won't know "DTA".
 const ursource = propagation.ursource;
 const ursourceName = nameByAbbr.get(ursource) ?? ursource;
+const ursourceLabel = ursourceName === ursource ? ursource : `${ursourceName} (${ursource})`;
 
 const mostBespoke = board.slice(0, 8);
 const mostTemplated = board.slice(-8).reverse();
@@ -33,10 +34,10 @@ const columns = [
     <header class="stack">
       <h1>The template effect</h1>
       <p class="lede">
-        Many agencies start from the same template, published by the {ursourceName}
-        ({ursource}), then edit. This shows how much each statement is bespoke versus
-        shared, and lets you browse the exact passages that recur &mdash; {templateClusters}
-        of them also appear in the {ursource}&rsquo;s own statement.
+        Many agencies start from the same template, published by the {ursourceLabel},
+        then edit. This shows how much each statement is bespoke versus shared, and
+        lets you browse the exact passages that recur &mdash; {templateClusters} of them
+        also appear in the {ursource}&rsquo;s own statement.
       </p>
     </header>
 
@@ -81,8 +82,8 @@ const columns = [
         </span>
       </div>
       <p class="muted shared-note">
-        Passages that recur across statements, widest reach first. {propagation.ursource}
-        publishes the canonical template, so passages also found there are marked.
+        Passages that recur across statements, widest reach first. The {ursource} publishes
+        the canonical template, so passages also found there are marked.
       </p>
       <PassageBrowser client:idle names={names} />
     </section>
