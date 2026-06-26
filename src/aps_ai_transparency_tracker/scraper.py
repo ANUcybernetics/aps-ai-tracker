@@ -238,6 +238,13 @@ def remove_boilerplate(element: BeautifulSoup) -> None:
         "[class*='loosely-related']",
         "[class*='related-content']",
         "[class*='related-links']",
+        # Carousels / sliders are decorative nav-card strips in these statements,
+        # never the transparency text itself. They rotate their tiles per render,
+        # so strip them directly — not only when wrapped in a "related" block (as
+        # MoAD's happen to be). Covers slick, swiper and generic carousel markup.
+        "[class*='carousel']",
+        "[class*='slick']",
+        "[class*='swiper']",
     ]
 
     for selector in boilerplate_selectors:
