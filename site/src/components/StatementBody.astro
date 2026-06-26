@@ -1,19 +1,27 @@
 ---
 import { marked } from "marked";
 import { heatLevel } from "@/lib/format";
+import ReuseChip from "@/components/ReuseChip.astro";
 import type { PassageRow } from "@/types/exporter";
+
+interface Member {
+  abbr: string;
+  name: string;
+}
 
 interface Props {
   passages: PassageRow[];
+  // Other agencies sharing each passage, keyed by normKey (excludes this one).
+  sharedBy?: Record<string, Member[]>;
 }
 
-const { passages } = Astro.props;
+const { passages, sharedBy = {} } = Astro.props;
 
-type Item = { html: string; heat: number; tip: string };
+type Item = { html: string; heat: number; tip: string; share: Member[] };
 type Block =
   | { kind: "list"; items: Item[] }
-  | { kind: "heading"; level: number; html: string; heat: number; tip: string }
-  | { kind: "para"; html: string; heat: number; tip: string };
+  | { kind: "heading"; level: number; html: string; heat: number; tip: string; share: Member[] }
+  | { kind: "para"; html: string; heat: number; tip: string; share: Member[] };
 
 function stripMarker(raw: string): string {
   return raw.replace(/^\s*(?:[-*+]|\d+\.|#{1,6})\s*/, "");
@@ -45,7 +53,7 @@ function tip(p: PassageRow): string {
 }
 
 function item(p: PassageRow): Item {
-  return { html: inline(p.rawText), heat: heat(p), tip: tip(p) };
+  return { html: inline(p.rawText), heat: heat(p), tip: tip(p), share: sharedBy[p.normKey] ?? [] };
 }
 
 // Demote statement headings to sit under the page <h1>, normalising so the
@@ -71,10 +79,23 @@ while (i < passages.length) {
     const hashes = /^(#{1,6})/.exec(p.rawText);
     const raw = hashes ? hashes[1].length : 1;
     const level = Math.min(Math.max(raw + headingOffset, 2), 6);
-    blocks.push({ kind: "heading", level, html: inline(p.rawText), heat: heat(p), tip: tip(p) });
+    blocks.push({
+      kind: "heading",
+      level,
+      html: inline(p.rawText),
+      heat: heat(p),
+      tip: tip(p),
+      share: sharedBy[p.normKey] ?? [],
+    });
     i++;
   } else {
-    blocks.push({ kind: "para", html: inline(p.rawText), heat: heat(p), tip: tip(p) });
+    blocks.push({
+      kind: "para",
+      html: inline(p.rawText),
+      heat: heat(p),
+      tip: tip(p),
+      share: sharedBy[p.normKey] ?? [],
+    });
     i++;
   }
 }
@@ -87,9 +108,13 @@ while (i < passages.length) {
         return (
           <ul>
             {b.items.map((it) => (
-              <li class="heat" data-heat={it.heat} title={it.tip}>
+              <li class="heat" data-heat={it.heat} title={it.share.length ? undefined : it.tip}>
                 <span set:html={it.html} />
-                {it.heat >= 1 && <span class="visually-hidden"> ({it.tip})</span>}
+                {it.share.length ? (
+                  <ReuseChip members={it.share} />
+                ) : (
+                  it.heat >= 1 && <span class="visually-hidden"> ({it.tip})</span>
+                )}
               </li>
             ))}
           </ul>
@@ -98,16 +123,24 @@ while (i < passages.length) {
       if (b.kind === "heading") {
         const Tag = `h${b.level}` as "h2";
         return (
-          <Tag class="heat" data-heat={b.heat} title={b.tip}>
+          <Tag class="heat" data-heat={b.heat} title={b.share.length ? undefined : b.tip}>
             <span set:html={b.html} />
-            {b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>}
+            {b.share.length ? (
+              <ReuseChip members={b.share} />
+            ) : (
+              b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>
+            )}
           </Tag>
         );
       }
       return (
-        <p class="heat" data-heat={b.heat} title={b.tip}>
+        <p class="heat" data-heat={b.heat} title={b.share.length ? undefined : b.tip}>
           <span set:html={b.html} />
-          {b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>}
+          {b.share.length ? (
+            <ReuseChip members={b.share} />
+          ) : (
+            b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>
+          )}
         </p>
       );
     })
