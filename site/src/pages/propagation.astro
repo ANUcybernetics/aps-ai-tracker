@@ -151,6 +151,14 @@ const columns = [
     border-radius: 999px;
   }
 
+  /* ink-fill / ochre-track encodes the bespoke share; preserve it in forced colours */
+  @media (forced-colors: active) {
+    .board__bar,
+    .board__bar span {
+      forced-color-adjust: none;
+    }
+  }
+
   .board__pct {
     font-size: 0.8rem;
     color: var(--muted);

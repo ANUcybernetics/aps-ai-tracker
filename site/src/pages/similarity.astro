@@ -98,6 +98,13 @@ const rows = similarity.abbrs.map((abbr) => ({
     background: linear-gradient(to right, #bd7714, #9c8f7c, #373d4b);
   }
 
+  /* the gradient IS the legend; keep it instead of letting forced colours strip it */
+  @media (forced-colors: active) {
+    .sim-legend__bar {
+      forced-color-adjust: none;
+    }
+  }
+
   .sim-legend__ends {
     display: flex;
     justify-content: space-between;
