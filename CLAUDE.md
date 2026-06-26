@@ -89,7 +89,10 @@ Inspect runs with `journalctl --user -u aps-scrape.service -n 50`.
 
 ## Managing agency URLs
 
-- `agencies.toml` contains 126 Australian Government agencies
+- `agencies.toml` lists the Australian Government bodies we track: the APSC-list
+  agencies plus any corporate/voluntary entities discovered with a real
+  statement (see the scrape skill's discovery step). The list grows over time,
+  so don't assume a fixed count
 - Each agency has a `url` field for their AI transparency statement
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
 - **Tests fail for agencies with `None` URLs** - this is intentional
