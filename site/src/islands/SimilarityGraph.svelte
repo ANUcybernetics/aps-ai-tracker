@@ -64,7 +64,10 @@
       .append("svg")
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("role", "img")
-      .attr("aria-label", "Force-directed map of statement similarity");
+      .attr(
+        "aria-label",
+        "Force-directed map of statement similarity. The same data is available as a table below.",
+      );
 
     const root = svg.append("g");
 
