@@ -1,6 +1,7 @@
 ---
 import Layout from "@/components/Layout.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
+import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { agencies } from "@/lib/load";
 import { SIZE_LABEL, originalityPercent } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
@@ -9,6 +10,7 @@ const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompar
 const published = agencies.filter((a) => a.status === "published").toSorted(byName);
 const notYet = agencies.filter((a) => a.status === "not-yet").toSorted(byName);
 const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
+const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status: a.status }));
 ---
 
 <Layout
@@ -24,6 +26,8 @@ const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
         sit outside the mandate.
       </p>
     </header>
+
+    <AgencyFinder client:load agencies={finderAgencies} label="Jump to an agency" />
 
     <AgencyWall />
 
