@@ -2,6 +2,11 @@
   import type { PassageCluster } from "@/types/exporter";
   import { statementPath, dataUrl, withBase } from "@/lib/paths";
   import { formatDate } from "@/lib/format";
+  import { inlineMarkdownToHtml } from "@/lib/markdown";
+
+  // Full agency names keyed by abbreviation, so the member pills and the
+  // first-observed link can name the acronym on hover.
+  let { names = {} }: { names?: Record<string, string> } = $props();
 
   // Short gloss for a first-observed tier (see the Reading page for the full
   // explanation); the "tied" case is handled separately in the markup.
@@ -40,7 +45,16 @@
 
 <div class="pb">
   {#if status === "loading"}
-    <p class="muted">Loading shared passages…</p>
+    <ul class="pb__skeleton" aria-hidden="true">
+      {#each Array(6) as _, i (i)}
+        <li>
+          <span class="pb__sk-line pb__sk-meta"></span>
+          <span class="pb__sk-line"></span>
+          <span class="pb__sk-line pb__sk-short"></span>
+        </li>
+      {/each}
+    </ul>
+    <p class="visually-hidden">Loading shared passages…</p>
   {:else if status === "empty"}
     <p class="muted">No shared passages have been computed yet.</p>
   {:else}
@@ -60,12 +74,16 @@
             {#if c.alsoInDta}<span class="pill pill--pdf">in DTA template</span>{/if}
             <span class="muted">{c.kind}</span>
           </div>
-          <p class="pb__text">{c.canonicalText}</p>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked in inlineMarkdownToHtml -->
+          <p class="pb__text">{@html inlineMarkdownToHtml(c.canonicalText)}</p>
           {#if c.firstObserved}
             <p class="pb__first">
               {#if c.firstObserved.abbr}
                 <span class="muted">First observed:</span>
-                <a href={statementPath(c.firstObserved.abbr)}>{c.firstObserved.abbr}</a>,
+                <a
+                  href={statementPath(c.firstObserved.abbr)}
+                  title={names[c.firstObserved.abbr] ?? c.firstObserved.abbr}
+                >{c.firstObserved.abbr}</a>,
                 {formatDate(c.firstObserved.date)}{#if tierLabel(c.firstObserved.tier)}
                   <span class="muted">· {tierLabel(c.firstObserved.tier)}</span>{/if}
               {:else}
@@ -80,7 +98,7 @@
             <summary>Which agencies</summary>
             <div class="cluster">
               {#each c.memberAbbrs as a (a)}
-                <a class="pill" href={statementPath(a)}>{a}</a>
+                <a class="pill" href={statementPath(a)} title={names[a] ?? a}>{a}</a>
               {/each}
             </div>
           </details>
@@ -191,5 +209,71 @@
   .pb__members a.pill {
     text-decoration: none;
     color: var(--accent);
+  }
+
+  /* Links rendered from the passage Markdown: ink with an ochre underline, like
+     body links, but constrained so a long URL-y label still wraps. */
+  .pb__text :global(a) {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    overflow-wrap: anywhere;
+  }
+
+  .pb__text :global(a):hover {
+    color: var(--accent-ink);
+  }
+
+  .pb__text :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+
+  /* Loading skeleton: stand-ins shaped like the real cluster rows so the section
+     has weight before the data lands, instead of a bare line of text. */
+  .pb__skeleton {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .pb__skeleton li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--border);
+  }
+
+  .pb__sk-line {
+    block-size: 0.8rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    inline-size: 100%;
+  }
+
+  .pb__sk-meta {
+    inline-size: 8rem;
+    block-size: 1rem;
+  }
+
+  .pb__sk-short {
+    inline-size: 60%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pb__sk-line {
+      animation: pb-shimmer 1.2s var(--ease-out-quart) infinite alternate;
+    }
+  }
+
+  @keyframes pb-shimmer {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
