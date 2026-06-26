@@ -179,7 +179,7 @@
   }
 
   .pb__first a {
-    color: var(--accent);
+    color: var(--accent-ink);
     text-decoration: none;
   }
 
@@ -209,7 +209,7 @@
 
   .pb__members a.pill {
     text-decoration: none;
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   /* Links rendered from the passage Markdown: ink with an ochre underline, like
