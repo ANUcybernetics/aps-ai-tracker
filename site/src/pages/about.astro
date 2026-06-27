@@ -127,6 +127,49 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       >.
     </p>
 
+    <h2>Citation and referencing</h2>
+    <p>
+      This tracker is archived on Zenodo with a permanent DOI, and Ben Swift is its
+      sole creator and maintainer. If the project, its data or its analysis is
+      useful to you, a citation or credit is appreciated &mdash; it also helps
+      others find the source and check it for themselves.
+    </p>
+    <p>
+      The DOI <a href="https://doi.org/10.5281/zenodo.20842437"
+        ><code>10.5281/zenodo.20842437</code></a
+      > is a <em>concept</em> DOI: it always resolves to the latest archived
+      version, so a citation never goes stale as this living work gains new
+      releases.
+    </p>
+    <p><strong>In scholarly work</strong>, cite it as:</p>
+    <blockquote class="about__cite">
+      Swift, B. (2025). <cite>Australian Government AI Transparency Tracker</cite>
+      [Software]. ANU School of Cybernetics. <a
+        href="https://doi.org/10.5281/zenodo.20842437"
+        >https://doi.org/10.5281/zenodo.20842437</a
+      >
+    </blockquote>
+    <p>
+      A machine-readable <a
+        href="https://github.com/ANUcybernetics/aps-ai-transparency-tracker/blob/main/CITATION.cff"
+        ><code>CITATION.cff</code></a
+      > in the repository can generate the equivalent BibTeX or other formats, and
+      the Zenodo record exports them directly.
+    </p>
+    <p>
+      <strong>In a newspaper, blog or other non-academic piece</strong>, a plain
+      credit with a link is all that&rsquo;s needed &mdash; for example:
+    </p>
+    <blockquote class="about__cite">
+      Data from the <a href={withBase("/")}>Australian Government AI Transparency
+        Tracker</a>, a project by Dr Ben Swift at the ANU School of Cybernetics.
+    </blockquote>
+    <p>
+      Please link to this site rather than only naming it, so readers can reach the
+      underlying record. When you quote a figure, a date is worth including: the
+      corpus is updated daily, so the numbers move.
+    </p>
+
     <h2>Licensing</h2>
     <p>
       The scraper and this site are released under the MIT License. The statement
@@ -144,6 +187,17 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
 <style>
   .about {
     max-width: 46rem;
+  }
+
+  .about__cite {
+    margin-block: var(--space-3);
+    padding-inline-start: var(--space-3);
+    border-inline-start: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .about__cite cite {
+    font-style: italic;
   }
 
   .about__build {
