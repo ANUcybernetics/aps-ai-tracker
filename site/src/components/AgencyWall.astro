@@ -38,23 +38,24 @@ const cells = agencies.toSorted(byName).map((a) => ({
   <ul class="wall__grid" role="list">
     {
       cells.map((c) => (
-        <li>
+        <li data-label={c.label}>
           {c.href ? (
-            <a
-              class="wall__cell"
-              data-status={c.status}
-              data-heat={c.heat}
-              href={c.href}
-              title={c.label}
-              aria-label={c.label}
-            />
+            <a class="wall__cell" data-status={c.status} data-heat={c.heat} href={c.href} aria-label={c.label} />
           ) : (
-            <span class="wall__cell" data-status={c.status} title={c.label} aria-label={c.label} role="img" />
+            <span class="wall__cell" data-status={c.status} aria-label={c.label} role="img" />
           )}
         </li>
       ))
     }
   </ul>
+
+  <p
+    class="wall__readout"
+    aria-hidden="true"
+    data-hint="Point at, focus, or tap a square to name its agency"
+  >
+    Point at, focus, or tap a square to name its agency
+  </p>
 
   <figcaption class="wall__legend">
     <span class="wall__scale">
@@ -147,6 +148,68 @@ const cells = agencies.toSorted(byName).map((a) => ({
     z-index: 1;
   }
 
+  /* Desktop locality: a floating label tethered to the hovered/focused cell.
+     The pseudo-element lives on the <li> (not the cell) so the cell's scale
+     transform doesn't drag it; :has() lifts the whole li above its neighbours
+     while the label is up. Touch devices get the readout below instead. */
+  .wall__grid > li {
+    position: relative;
+  }
+
+  .wall__grid > li:has(.wall__cell:hover),
+  .wall__grid > li:has(.wall__cell:focus-visible) {
+    z-index: 2;
+  }
+
+  .wall__grid > li::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 0.45rem);
+    left: 50%;
+    width: max-content;
+    max-width: 14rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--text);
+    color: var(--surface);
+    font-size: var(--text-sm);
+    line-height: 1.3;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateX(-50%) translateY(0.2rem);
+    transition:
+      opacity var(--dur-fast) var(--ease-out-quart),
+      transform var(--dur-fast) var(--ease-out-quart);
+    pointer-events: none;
+  }
+
+  .wall__grid > li:has(.wall__cell:hover)::after,
+  .wall__grid > li:has(.wall__cell:focus-visible)::after {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+
+  /* No hover label on touch — it can't be dismissed and the readout covers it. */
+  @media (hover: none) {
+    .wall__grid > li::after {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wall__grid > li::after {
+      transition: none;
+    }
+  }
+
+  .wall__readout {
+    margin: var(--space-3) 0 0;
+    min-height: 1.4em;
+    font-size: var(--text-sm);
+    color: var(--text);
+  }
+
   .wall__legend {
     display: flex;
     flex-wrap: wrap;
@@ -207,3 +270,36 @@ const cells = agencies.toSorted(byName).map((a) => ({
     }
   }
 </style>
+
+<script>
+  // Live readout: name the agency under the pointer / focus / finger. This is the
+  // touch story (native title is invisible on touch) and the keyboard story; the
+  // CSS ::after label handles desktop pointer locality on top.
+  for (const wall of document.querySelectorAll<HTMLElement>(".wall")) {
+    const grid = wall.querySelector<HTMLElement>(".wall__grid");
+    const readout = wall.querySelector<HTMLElement>(".wall__readout");
+    if (!grid || !readout) continue;
+
+    const hint = readout.dataset.hint ?? readout.textContent ?? "";
+    const name = (target: EventTarget | null) =>
+      (target instanceof Element ? target.closest<HTMLElement>("li[data-label]") : null)?.dataset.label;
+
+    const show = (target: EventTarget | null) => {
+      const label = name(target);
+      if (label) readout.textContent = label;
+    };
+
+    grid.addEventListener("pointerover", (e) => show(e.target));
+    grid.addEventListener("focusin", (e) => show(e.target));
+
+    // Mouse leaving the wall restores the hint; a lifted finger keeps the last
+    // name visible (touch has nowhere else to read it). Keyboard restores only
+    // when focus genuinely leaves the grid, so tabbing between cells won't flicker.
+    grid.addEventListener("pointerleave", (e) => {
+      if (e.pointerType !== "touch") readout.textContent = hint;
+    });
+    grid.addEventListener("focusout", (e) => {
+      if (!grid.contains(e.relatedTarget as Node | null)) readout.textContent = hint;
+    });
+  }
+</script>
