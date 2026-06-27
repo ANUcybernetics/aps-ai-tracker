@@ -19,5 +19,10 @@
     "web scraping",
     "longitudinal corpus",
     "Australian Public Service"
+  ],
+  "communities": [
+    {
+      "identifier": "cybernetic-studio"
+    }
   ]
 }
