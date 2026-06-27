@@ -1,6 +1,6 @@
 ---
 import { statementPath } from "@/lib/paths";
-import { statements } from "@/lib/statements";
+import { getStatements } from "@/lib/statements";
 import type { Neighbour } from "@/types/exporter";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { neighbours } = Astro.props;
+const statements = await getStatements();
 ---
 
 {

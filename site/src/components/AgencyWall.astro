@@ -3,11 +3,12 @@
 // its statement is borrowed from the DTA template (deep ochre) versus bespoke
 // (ink). Published cells link through; gaps and exemptions read as absences. The
 // agencies table is the accessible canonical list — this is the overview on top.
-import { agencies } from "@/lib/load";
+import { getAgencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
 import ReadingLink from "@/components/ReadingLink.astro";
 
+const agencies = await getAgencies();
 const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
 
 // Templated-ness (1 − originality) → a 0–4 ochre step, matching the passage heat.

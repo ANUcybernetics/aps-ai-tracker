@@ -2,9 +2,10 @@
 import Layout from "@/components/Layout.astro";
 import SimilarityGraph from "@/islands/SimilarityGraph.svelte";
 import ReadingLink from "@/components/ReadingLink.astro";
-import { similarity, agencies } from "@/lib/load";
+import { similarity, getAgencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
 
+const agencies = await getAgencies();
 const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
 const names = Object.fromEntries(nameByAbbr);
 const rows = similarity.abbrs.map((abbr) => ({
