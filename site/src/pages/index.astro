@@ -3,9 +3,12 @@ import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
-import { timeline, meta, propagation, agencies } from "@/lib/load";
+import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { withBase, statementPath } from "@/lib/paths";
+
+const timeline = await getTimeline();
+const agencies = await getAgencies();
 
 // One row per agency (their most recent genuine change) so a single daily-churning
 // statement doesn't crowd out the feed.

@@ -2,9 +2,12 @@
 import Layout from "@/components/Layout.astro";
 import ChangeFeedItem from "@/components/ChangeFeedItem.astro";
 import TimelineFilter from "@/islands/TimelineFilter.svelte";
-import { timeline } from "@/lib/load";
-import { statements } from "@/lib/statements";
+import { getTimeline } from "@/lib/load";
+import { getStatements } from "@/lib/statements";
 import type { TimelineEvent } from "@/types/exporter";
+
+const timeline = await getTimeline();
+const statements = await getStatements();
 
 // Join each event to its statement's revision history to compute the diff
 // against the previous revision (build-time; only rendered diff HTML ships).

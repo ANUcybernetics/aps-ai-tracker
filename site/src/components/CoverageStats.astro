@@ -1,8 +1,9 @@
 ---
-import { meta, agencies, propagation } from "@/lib/load";
+import { meta, getAgencies, propagation } from "@/lib/load";
 import { formatDate, originalityPercent } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
 
+const agencies = await getAgencies();
 const c = meta.counts;
 const published = agencies.filter((a) => a.statementId);
 const mostRevised = [...published].sort((a, b) => b.revisionCount - a.revisionCount)[0];

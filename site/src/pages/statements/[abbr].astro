@@ -6,12 +6,13 @@ import OriginalityBadge from "@/components/OriginalityBadge.astro";
 import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
-import { allStatements } from "@/lib/statements";
-import { propagation, agencies } from "@/lib/load";
+import { getAllStatements } from "@/lib/statements";
+import { propagation, getAgencies } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import type { StatementDoc } from "@/types/exporter";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const allStatements = await getAllStatements();
   return allStatements.map((doc) => ({ params: { abbr: doc.abbr }, props: { doc } }));
 }
 
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const { doc } = Astro.props;
+const agencies = await getAgencies();
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
 // "Changes" and "last change" count only genuine edits, not scrape noise

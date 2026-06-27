@@ -2,10 +2,11 @@
 import Layout from "@/components/Layout.astro";
 import PassageBrowser from "@/islands/PassageBrowser.svelte";
 import ReadingLink from "@/components/ReadingLink.astro";
-import { propagation, agencies } from "@/lib/load";
+import { propagation, getAgencies } from "@/lib/load";
 import { statementPath, withBase } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
 
+const agencies = await getAgencies();
 const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
 const names = Object.fromEntries(nameByAbbr);
 const board = propagation.originality;
