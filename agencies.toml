@@ -772,3 +772,31 @@ name = "AgriFutures Australia"
 abbr = "AFA"
 size = "small"
 url = "https://agrifutures.com.au/legal/ai-transparency-statement/"
+
+# Found via the DTA register cross-check (2026-06-28). The three parliamentary
+# departments are Parliamentary Service bodies outside the APSC executive list;
+# NAIF is a corporate Commonwealth entity that published voluntarily. We track
+# any body with a real statement. Each links to a dedicated statement page/PDF.
+[[agencies]]
+name = "Department of Parliamentary Services"
+abbr = "DPS"
+size = "medium"
+url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_Parliamentary_Services/Publications/AI_Transparency_Statement"
+
+[[agencies]]
+name = "Department of the Senate"
+abbr = "SENATE"
+size = "small"
+url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_Senate/Accountability_and_reporting/AI_transparency_statement"
+
+[[agencies]]
+name = "Department of the House of Representatives"
+abbr = "HOUSEREPS"
+size = "small"
+url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_House_of_Representatives/AI_transparency_statement"
+
+[[agencies]]
+name = "Northern Australia Infrastructure Facility"
+abbr = "NAIF"
+size = "extra-small"
+url = "https://cdn.naif.gov.au/media/yxmpums3/naif-ai-transparency-statement.pdf"
