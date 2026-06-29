@@ -61,4 +61,4 @@ Screen Australia’s designated accountable official who is responsible for impl
 - engaging with whole-of-government AI forums and processes
 - keeping up to date with changing requirements.
 
-For enquiries about Screen Australia’s adoption and usage of AI, please contact [communications@www.screenaustralia.gov.au](mailto:communications@www.screenaustralia.gov.au).
+For enquiries about Screen Australia’s adoption and usage of AI, please contact [communications@screenaustralia.gov.au](mailto:communications@screenaustralia.gov.au).
