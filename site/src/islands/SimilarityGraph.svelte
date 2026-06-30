@@ -23,18 +23,24 @@
   let { names = {} }: { names?: Record<string, string> } = $props();
 
   let container: HTMLDivElement;
-  let status = $state<"loading" | "empty" | "ready">("loading");
+  let status = $state<"loading" | "empty" | "ready" | "error">("loading");
 
   $effect(() => {
     let stop = () => {};
     void (async () => {
-      const data: GraphData = await (await fetch(dataUrl("similarity.graph.json"))).json();
-      if (!data.nodes.length) {
-        status = "empty";
-        return;
+      try {
+        const res = await fetch(dataUrl("similarity.graph.json"));
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data: GraphData = await res.json();
+        if (!data.nodes.length) {
+          status = "empty";
+          return;
+        }
+        status = "ready";
+        stop = render(data);
+      } catch {
+        status = "error";
       }
-      status = "ready";
-      stop = render(data);
     })();
     return () => stop();
   });
@@ -184,6 +190,11 @@
     <p class="graph__msg muted">
       Similarity isn&rsquo;t computed yet (the build had no embedding key). The table below still
       lists each statement&rsquo;s nearest matches once available.
+    </p>
+  {:else if status === "error"}
+    <p class="graph__msg muted">
+      The similarity map couldn&rsquo;t be loaded. Reload the page to try again — the table below
+      still lists each statement&rsquo;s nearest matches.
     </p>
   {/if}
 </div>

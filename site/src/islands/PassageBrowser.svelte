@@ -17,18 +17,22 @@
   }
 
   let clusters = $state<PassageCluster[]>([]);
-  let status = $state<"loading" | "empty" | "ready">("loading");
+  let status = $state<"loading" | "empty" | "ready" | "error">("loading");
   let query = $state("");
   let onlyDta = $state(false);
 
   // Fetch the (largish) cluster list rather than inlining it into the page HTML.
   $effect(() => {
     void (async () => {
-      const data: { clusters: PassageCluster[] } = await (
-        await fetch(dataUrl("passages.json"))
-      ).json();
-      clusters = data.clusters ?? [];
-      status = clusters.length ? "ready" : "empty";
+      try {
+        const res = await fetch(dataUrl("passages.json"));
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data: { clusters: PassageCluster[] } = await res.json();
+        clusters = data.clusters ?? [];
+        status = clusters.length ? "ready" : "empty";
+      } catch {
+        status = "error";
+      }
     })();
   });
 
@@ -57,13 +61,16 @@
     <p class="visually-hidden">Loading shared passages…</p>
   {:else if status === "empty"}
     <p class="muted">No shared passages have been computed yet.</p>
+  {:else if status === "error"}
+    <p class="muted">Shared passages couldn&rsquo;t be loaded. Reload the page to try again.</p>
   {:else}
     <div class="pb__controls">
-      <input type="search" placeholder="Search shared text…" bind:value={query} />
+      <label class="visually-hidden" for="pb-search">Search shared text</label>
+      <input id="pb-search" type="search" placeholder="Search shared text…" bind:value={query} />
       <label>
         <input type="checkbox" bind:checked={onlyDta} /> Only DTA-template passages
       </label>
-      <span class="pb__count mono">{filtered.length} shown</span>
+      <span class="pb__count mono" aria-live="polite">{filtered.length} shown</span>
     </div>
 
     <ul class="pb__list">
