@@ -51,7 +51,7 @@
     Show noise
   </label>
 
-  <span class="tl-filter__count mono">{shown ?? total} shown</span>
+  <span class="tl-filter__count mono" aria-live="polite">{shown ?? total} shown</span>
 </div>
 
 <style>
