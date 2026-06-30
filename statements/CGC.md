@@ -7,15 +7,15 @@ title: Artificial Intelligence Transparency Statement | Commonwealth Grants Comm
 
 # Artificial Intelligence Transparency Statement
 
-The CGC follows the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/ai/ai-in-government-policy/accountability), and [transparency statements](https://www.digital.gov.au/policy/ai/list-of-transparency-statements). This page provides details of the CGC’s implementation of these policy requirements.
+The Commonwealth Grants Commission (CGC) follows the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) which provides mandatory requirements for departments and agencies relating to [accountable officials](https://www.digital.gov.au/ai/ai-in-government-policy/accountability), and [transparency statements](https://www.digital.gov.au/policy/ai/list-of-transparency-statements). This page provides details of the CGC’s implementation of these policy requirements.
 
 The CGC’s commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy(Opens in a new tab/window)](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan(Opens in a new tab/window)](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
 
 ### Key roles
 
-The CGC has designated the Chief Operating Officer as the accountable official for artificial intelligence (AI) use within the agency. Accountable Officials are responsible for implementing the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+The CGC has an Accountable Official for Artificial Intelligence (AI) who is responsible for overseeing the implementation of the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-A Chief AI Officer (CAIO) will be appointed by July 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at the CGC.
+The CGC has a Chief AI Officer who, working with the AI Accountable Official, is responsible for championing and driving AI adoption in the CGC.
 
 ### AI Adoption
 
@@ -31,7 +31,7 @@ Appropriate governance arrangements have been established to support AI within t
 
 The Australian Public Service Commission’s AI in Government Fundamentals course is available for all staff and is mandatory under the APS AI plan. As a prerequisite to utilising AI tools, staff are required to complete internal training on the use of AI.
 
-The CGC complies with all applicable legislation and regulations, including the Protective Security Policy Framework (PSPF) and Information Security Manual (ISM).
+The CGC complies with all applicable legislation and regulations, including the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au/) (PSPF) and [Information Security Manual](https://www.cyber.gov.au/business-government/asds-cyber-security-frameworks/ism) (ISM).
 
 The CGC have robust processes, regular reviews and audits, and proactive risk management strategies, including staff training programs, to ensure the responsible and effective use of AI.
 
@@ -39,6 +39,4 @@ The use of AI is governed by our IT Acceptable Use Policy, Treasury’s Informat
 
 ### Update Frequency
 
-This transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was made in March 2026.
-
-For further enquiries, please contact the Chief Operating Officer at [services@cgc.gov.au](mailto:ISBCoord@treasury.gov.au?subject=AI%20transparency%20statement%20enquiry).
+This transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was made in June 2026.
