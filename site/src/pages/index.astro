@@ -314,16 +314,19 @@ const explorers = [
      via the global rule that collapses animation duration) --- */
   @media (prefers-reduced-motion: no-preference) {
     .hero__dateline,
-    .hero__title,
     .hero__lede,
     .home__finder,
     .home__wall {
       animation: rise var(--dur-slow) var(--ease-out-expo) both;
     }
 
+    /* The title is the LCP element: animate its transform only, leaving opacity
+       at 1, so the browser records LCP on the first paint rather than after the
+       fade-in completes. No delay, for the same reason. */
     .hero__title {
-      animation-delay: 0.06s;
+      animation: rise-solid var(--dur-slow) var(--ease-out-expo) both;
     }
+
     .hero__lede {
       animation-delay: 0.12s;
     }
@@ -342,6 +345,15 @@ const explorers = [
     }
     to {
       opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes rise-solid {
+    from {
+      transform: translateY(0.7rem);
+    }
+    to {
       transform: none;
     }
   }
