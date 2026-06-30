@@ -10,6 +10,14 @@ export default defineConfig({
   base: "/aps-ai-transparency-tracker",
   trailingSlash: "ignore",
   output: "static",
+  // Static MPA with cross-document view transitions: prefetch internal links as
+  // they enter the viewport so navigations feel instant. Astro emits
+  // <link rel="prefetch">, which degrades cleanly where the Speculation Rules
+  // API isn't supported.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
   integrations: [
     svelte(),
     // Exclude the JSON data endpoint; it isn't a navigable page.
