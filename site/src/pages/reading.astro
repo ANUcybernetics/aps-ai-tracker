@@ -51,8 +51,9 @@ for (const c of propagation.clusters) {
     <h2 id="reuse">Shared passages and the reuse heat-map</h2>
     <p>
       Agencies reuse one another&rsquo;s wording heavily. On each statement page,
-      every passage is tinted by how widely the same words appear across all the
-      statements we track:
+      passages carry two different tints. An <em>amber</em> tint means the same
+      passage appears in other agencies&rsquo; statements; the deeper the amber, the
+      more widely it is shared:
     </p>
     <ul>
       <li><strong>uncoloured</strong>: unique to that statement;</li>
@@ -62,10 +63,15 @@ for (const c of propagation.clusters) {
       <li><strong>most</strong>: shared with twenty-five or more.</li>
     </ul>
     <p>
-      Wording lifted straight from the Policy is always tinted at least lightly. A
-      passage that also appears in the Digital Transformation Agency&rsquo;s own
-      statement is marked <em>in DTA template</em>, because the DTA publishes the
-      wording most other agencies start from.
+      An amber passage also carries a small count &mdash; open it to see exactly which
+      other agencies use the same words, each linked to its statement.
+    </p>
+    <p>
+      A separate <em>cool grey</em> tint marks <em>template wording</em>: phrasing
+      lifted straight from the Policy or the Digital Transformation Agency&rsquo;s
+      template, the scaffolding most agencies start from. It gets its own colour, not
+      a faint amber, because it is boilerplate rather than a passage we can trace to
+      particular agencies &mdash; so it has no count to open.
     </p>
     <h3 id="first-observed">First observed in our corpus</h3>
     <p>

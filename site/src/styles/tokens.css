@@ -98,6 +98,11 @@
   --heat-3: oklch(85% 0.14 72);
   --heat-4: oklch(78.5% 0.155 58);
 
+  /* template wording: a cool, quiet wash kept off the warm amber ramp, so
+     "standard template language" reads as its own category rather than a
+     faint version of cross-agency reuse. */
+  --template-wash: oklch(94% 0.017 250);
+
   /* node ink for the similarity map: bespoke statements read as deep ink, the
      same end of the scale as the originality bars (see SimilarityGraph). */
   --node-ink: oklch(34% 0.03 264);
