@@ -19,7 +19,12 @@ export const propagation = propagationSchema.parse(propagationJson);
 export const similarity = similaritySchema.parse(similarityJson);
 
 export async function getAgencies() {
-  return (await getCollection("agencies")).map((entry) => entry.data);
+  // getCollection orders by `id` (the abbr), which currently matches the
+  // exporter's own abbr sort — but sort explicitly so we don't silently depend
+  // on that coincidence (see the ordering note on getTimeline below).
+  return (await getCollection("agencies"))
+    .map((entry) => entry.data)
+    .toSorted((a, b) => a.abbr.localeCompare(b.abbr));
 }
 
 export async function getTimeline() {
