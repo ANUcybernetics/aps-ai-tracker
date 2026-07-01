@@ -20,7 +20,7 @@ export const agencySizeSchema = z.enum([
 
 export const coverageStatusSchema = z.enum(["published", "not-yet", "exempt"]);
 export const sourceTypeSchema = z.enum(["html", "pdf"]);
-export const eventKindSchema = z.enum(["published", "tracked-since", "updated"]);
+export const eventKindSchema = z.enum(["added", "tracked-since", "updated"]);
 
 export const neighbourSchema = z.object({
   abbr: z.string(),

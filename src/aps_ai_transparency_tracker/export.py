@@ -260,15 +260,18 @@ def _is_noise(rev: Revision) -> bool:
 
 
 def _event_kind(index: int, rev: Revision) -> str:
-    """First-seen events: 'tracked-since' if bulk-imported, else 'published'.
+    """First-seen events: 'tracked-since' if bulk-imported, else 'added'.
 
-    A statement first seen in a bulk-migration commit has no real publication date,
-    so it is "tracked since" rather than "published". Every later change is an
-    'updated' event (even if it rode in on a mass re-scrape — that is still real
-    content change, so it is NOT marked tracked-since).
+    A first sighting only tells us when the statement entered the tracker, not
+    when the agency published it (which we can't know), so neither first-seen
+    kind claims a publication date: a statement from the day-one bulk-migration
+    commit is 'tracked-since', one we began tracking later is 'added'. Every
+    subsequent change is an 'updated' event (even if it rode in on a mass
+    re-scrape — that is still real content change, so it is NOT marked
+    tracked-since).
     """
     if index == 0:
-        return "tracked-since" if rev.bulk else "published"
+        return "tracked-since" if rev.bulk else "added"
     return "updated"
 
 
