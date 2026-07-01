@@ -17,11 +17,19 @@ interface Props {
 
 const { passages, sharedBy = {} } = Astro.props;
 
-type Item = { html: string; heat: number; tip: string; share: Member[] };
+type Item = { html: string; heat: number; tip: string; share: Member[]; template: boolean };
 type Block =
   | { kind: "list"; items: Item[] }
-  | { kind: "heading"; level: number; html: string; heat: number; tip: string; share: Member[] }
-  | { kind: "para"; html: string; heat: number; tip: string; share: Member[] };
+  | {
+      kind: "heading";
+      level: number;
+      html: string;
+      heat: number;
+      tip: string;
+      share: Member[];
+      template: boolean;
+    }
+  | { kind: "para"; html: string; heat: number; tip: string; share: Member[]; template: boolean };
 
 function stripMarker(raw: string): string {
   return raw.replace(/^\s*(?:[-*+]|\d+\.|#{1,6})\s*/, "");
@@ -40,10 +48,6 @@ function inline(raw: string): string {
   return html.replace(/\b(href|src)\s*=\s*(["'])\s*(?:javascript|data|vbscript):/gi, "$1=$2#");
 }
 
-function heat(p: PassageRow): number {
-  return heatLevel(p.sharedCount, p.containsCanonicalPhrase);
-}
-
 function tip(p: PassageRow): string {
   if (p.sharedCount >= 2) {
     const others = p.sharedCount - 1;
@@ -52,8 +56,15 @@ function tip(p: PassageRow): string {
   return p.containsCanonicalPhrase ? "Template language" : "Unique to this statement";
 }
 
-function item(p: PassageRow): Item {
-  return { html: inline(p.rawText), heat: heat(p), tip: tip(p), share: sharedBy[p.normKey] ?? [] };
+// A passage is "template wording" when it carries canonical phrasing but isn't
+// otherwise tied to named agencies or a shared count — the tip() fallthrough
+// case. Those get the cool template wash (heat 0, off the amber ramp) so the
+// popover-less match reads as its own kind rather than faint cross-agency reuse.
+function classify(p: PassageRow): Item {
+  const share = sharedBy[p.normKey] ?? [];
+  const template = !share.length && p.sharedCount < 2 && p.containsCanonicalPhrase;
+  const heat = template ? 0 : heatLevel(p.sharedCount, p.containsCanonicalPhrase);
+  return { html: inline(p.rawText), heat, tip: tip(p), share, template };
 }
 
 // Demote statement headings to sit under the page <h1>, normalising so the
@@ -71,7 +82,7 @@ while (i < passages.length) {
   if (p.kind === "list_item") {
     const items: Item[] = [];
     while (i < passages.length && passages[i].kind === "list_item") {
-      items.push(item(passages[i]));
+      items.push(classify(passages[i]));
       i++;
     }
     blocks.push({ kind: "list", items });
@@ -79,23 +90,10 @@ while (i < passages.length) {
     const hashes = /^(#{1,6})/.exec(p.rawText);
     const raw = hashes ? hashes[1].length : 1;
     const level = Math.min(Math.max(raw + headingOffset, 2), 6);
-    blocks.push({
-      kind: "heading",
-      level,
-      html: inline(p.rawText),
-      heat: heat(p),
-      tip: tip(p),
-      share: sharedBy[p.normKey] ?? [],
-    });
+    blocks.push({ kind: "heading", level, ...classify(p) });
     i++;
   } else {
-    blocks.push({
-      kind: "para",
-      html: inline(p.rawText),
-      heat: heat(p),
-      tip: tip(p),
-      share: sharedBy[p.normKey] ?? [],
-    });
+    blocks.push({ kind: "para", ...classify(p) });
     i++;
   }
 }
@@ -108,12 +106,19 @@ while (i < passages.length) {
         return (
           <ul>
             {b.items.map((it) => (
-              <li class="heat" data-heat={it.heat} title={it.share.length ? undefined : it.tip}>
+              <li
+                class="heat"
+                data-heat={it.heat}
+                data-variant={it.template ? "template" : undefined}
+                title={it.share.length ? undefined : it.tip}
+              >
                 <span set:html={it.html} />
                 {it.share.length ? (
                   <ReuseChip members={it.share} />
                 ) : (
-                  it.heat >= 1 && <span class="visually-hidden"> ({it.tip})</span>
+                  (it.heat >= 1 || it.template) && (
+                    <span class="visually-hidden"> ({it.tip})</span>
+                  )
                 )}
               </li>
             ))}
@@ -123,23 +128,33 @@ while (i < passages.length) {
       if (b.kind === "heading") {
         const Tag = `h${b.level}` as "h2";
         return (
-          <Tag class="heat" data-heat={b.heat} title={b.share.length ? undefined : b.tip}>
+          <Tag
+            class="heat"
+            data-heat={b.heat}
+            data-variant={b.template ? "template" : undefined}
+            title={b.share.length ? undefined : b.tip}
+          >
             <span set:html={b.html} />
             {b.share.length ? (
               <ReuseChip members={b.share} />
             ) : (
-              b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>
+              (b.heat >= 1 || b.template) && <span class="visually-hidden"> ({b.tip})</span>
             )}
           </Tag>
         );
       }
       return (
-        <p class="heat" data-heat={b.heat} title={b.share.length ? undefined : b.tip}>
+        <p
+          class="heat"
+          data-heat={b.heat}
+          data-variant={b.template ? "template" : undefined}
+          title={b.share.length ? undefined : b.tip}
+        >
           <span set:html={b.html} />
           {b.share.length ? (
             <ReuseChip members={b.share} />
           ) : (
-            b.heat >= 1 && <span class="visually-hidden"> ({b.tip})</span>
+            (b.heat >= 1 || b.template) && <span class="visually-hidden"> ({b.tip})</span>
           )}
         </p>
       );

@@ -69,7 +69,7 @@ const legend = [
       <article class="stmt__main">
         <div class="heat-legend">
           <div class="heat-legend__items" aria-hidden="true">
-            <span>Text reuse:</span>
+            <span>Reused by agencies:</span>
             {
               legend.map((l) => (
                 <span>
@@ -77,6 +77,9 @@ const legend = [
                 </span>
               ))
             }
+            <span class="heat-legend__sep">
+              <span class="heat-legend__swatch" data-variant="template" /> template wording
+            </span>
           </div>
           <ReadingLink anchor="reuse" />
         </div>
@@ -154,6 +157,15 @@ const legend = [
   }
   .heat-legend [data-heat="4"] {
     background: var(--heat-4);
+  }
+  .heat-legend [data-variant="template"] {
+    background: var(--template-wash);
+  }
+
+  /* set the template swatch apart from the amber-ramp items */
+  .heat-legend__sep {
+    padding-inline-start: var(--space-3);
+    border-inline-start: 1px solid var(--border);
   }
 
   .heat-legend {

@@ -444,6 +444,14 @@ main {
   background: var(--heat-4);
 }
 
+/* Standard template wording: a distinct cool wash, deliberately unlike the warm
+   amber reuse ramp. It carries no popover (the exact passage isn't traced to
+   named agencies), so a different colour — not a fainter amber — signals a
+   different kind of match. */
+.heat[data-variant="template"] {
+  background: var(--template-wash);
+}
+
 /* Links inside a highlighted passage: the ochre underline would vanish against
    the ochre mark, so carry colour + underline in the ink instead. */
 .heat:not([data-heat="0"]) a {
