@@ -23,5 +23,15 @@ export async function getAgencies() {
 }
 
 export async function getTimeline() {
-  return (await getCollection("timeline")).map((entry) => entry.data);
+  // The `file` loader does NOT preserve the JSON array order: getCollection
+  // returns entries keyed and ordered by `id` (`abbr:sha`), which groups the
+  // feed by agency rather than by date. Re-sort here to restore the exporter's
+  // newest-first order, mirroring its `sorted(key=(date, id), reverse=True)`
+  // (raw string compare, matching Python's tuple ordering) so same-second
+  // events keep a stable, deterministic tiebreak.
+  return (await getCollection("timeline"))
+    .map((entry) => entry.data)
+    .toSorted((a, b) =>
+      a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? 1 : a.id > b.id ? -1 : 0,
+    );
 }

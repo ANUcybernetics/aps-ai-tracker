@@ -26,9 +26,10 @@ const agencies = defineCollection({
 });
 
 // timeline.json wraps events under `events`; each already carries a unique `id`.
-// The file loader preserves array order, so getCollection returns them in the
-// exporter's newest-first order (which the timeline relies on — same-second
-// events can't be re-sorted by date without losing that ordering).
+// NOTE: the file loader does NOT preserve array order — getCollection returns
+// entries ordered by `id` (`abbr:sha`), i.e. grouped by agency, not the
+// exporter's newest-first order. getTimeline() in src/lib/load.ts re-sorts by
+// (date, id) desc to restore it; don't rely on the array order here.
 const timeline = defineCollection({
   loader: file("src/generated/timeline.json", {
     parser: (text) => JSON.parse(text).events,
