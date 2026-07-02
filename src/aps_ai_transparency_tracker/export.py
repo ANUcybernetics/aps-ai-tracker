@@ -1,9 +1,9 @@
 """Export the statement corpus + git history as JSON for the static site.
 
 Reads `agencies.toml`, the `statements/*.md` corpus, and the git history, and
-writes a set of JSON artifacts under `site/src/generated/` (plus a slim
-`site/public/data/` file for the client-fetched similarity graph) that the Astro
-site consumes at build time.
+writes a set of JSON artifacts under `site/src/generated/` that the Astro site
+consumes at build time (the client-fetched similarity graph is served by an
+Astro endpoint built from these artifacts).
 
 The artifacts are fully derivable from the repo, so they are gitignored and
 regenerated in CI; only the embeddings cache (`.cache/embeddings.json`) is
@@ -23,18 +23,17 @@ import json
 import re
 import subprocess
 import sys
-import tomllib
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-import yaml
-
 from .scraper import (
-    extract_frontmatter,
-    extract_markdown_from_statement,
+    REPO_ROOT,
+    Agency,
+    load_agencies,
     logger,
+    split_frontmatter_body,
 )
 
 # Agencies with an empty `url` in agencies.toml that are within the AI Policy's
@@ -44,11 +43,8 @@ from .scraper import (
 # empty-url-agencies-triage note for the full reasoning.
 NOT_YET_ABBRS = frozenset({"AIATSIS", "APVMA"})
 
-REPO_ROOT = Path.cwd()
 STATEMENTS_DIR = REPO_ROOT / "statements"
-AGENCIES_TOML = REPO_ROOT / "agencies.toml"
 GENERATED_DIR = REPO_ROOT / "site" / "src" / "generated"
-PUBLIC_DATA_DIR = REPO_ROOT / "site" / "public" / "data"
 
 
 # --- small shared helpers ---------------------------------------------------
@@ -71,27 +67,6 @@ def git(*args: str) -> str:
     return result.stdout.strip("\n")
 
 
-def split_frontmatter_body(content: str) -> tuple[dict, str]:
-    """Split a statement file's text into (frontmatter dict, markdown body).
-
-    Mirrors the `---\\n` splitting used by scraper.extract_frontmatter and
-    scraper.extract_markdown_from_statement, but operates on a string so it can
-    be reused for `git show` output (which never touches the filesystem).
-
-    Historical revisions occasionally carry non-safe frontmatter (e.g. a PDF
-    title serialised as a pypdf object tag); since callers walking history only
-    need the body, an unparseable frontmatter degrades to {} rather than failing.
-    """
-    parts = content.split("---\n", 2)
-    if len(parts) >= 3:
-        try:
-            frontmatter = yaml.safe_load(parts[1]) or {}
-        except yaml.YAMLError:
-            frontmatter = {}
-        return (frontmatter, parts[2].strip())
-    return ({}, content.strip())
-
-
 def write_json(path: Path, obj: object) -> None:
     """Write `obj` as deterministic, human-diffable JSON."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -102,26 +77,6 @@ def write_json(path: Path, obj: object) -> None:
 
 
 # --- loading ----------------------------------------------------------------
-
-
-def load_agency_records() -> list[dict]:
-    """Load all agency rows from agencies.toml, preserving `size`.
-
-    scraper.load_agencies() drops the `size` field, which the coverage view
-    needs, so the exporter reads the toml directly.
-    """
-    with open(AGENCIES_TOML, "rb") as f:
-        data = tomllib.load(f)
-    return [
-        {
-            "name": d["name"],
-            "abbr": d["abbr"],
-            "url": d["url"] or None,
-            "size": d.get("size", "unknown"),
-            "manual": d.get("manual", False),
-        }
-        for d in data["agencies"]
-    ]
 
 
 def statement_status(abbr: str, url: str | None, has_statement: bool) -> str:
@@ -556,9 +511,7 @@ def build_clusters(
                 "alsoInDta": dta_abbr in members,
                 "containsCanonicalPhrase": True,
                 "firstObserved": (
-                    _first_observed(
-                        members, first_seen_phrase, phrase_id, corpus_start
-                    )
+                    _first_observed(members, first_seen_phrase, phrase_id, corpus_start)
                     if first_seen_phrase is not None
                     else None
                 ),
@@ -759,37 +712,28 @@ def cosine_neighbours(
     return neighbours, edges
 
 
-def compute_similarity(
-    bodies: dict[str, str], sizes: dict[str, str], originalities: dict[str, dict]
-) -> tuple[dict, dict, dict[str, list]]:
-    """Build similarity.json, the slim graph, and per-statement neighbour lists."""
+def compute_similarity(bodies: dict[str, str]) -> tuple[dict, dict[str, list]]:
+    """Build similarity.json and per-statement neighbour lists."""
     cache = load_embedding_cache(CACHE_PATH)
     vectors, api_called = embed_statements(bodies, cache)
-    if api_called:
-        save_embedding_cache(CACHE_PATH, cache)
+
+    # Prune superseded entries so the committed cache stays proportional to the
+    # corpus rather than accreting every historical content-hash. A pruned entry
+    # costs at most one re-embed if a statement ever reverts.
+    current = {content_hash(body) for body in bodies.values()}
+    pruned = {key: value for key, value in cache.items() if key in current}
+    if api_called or len(pruned) != len(cache):
+        save_embedding_cache(CACHE_PATH, pruned)
 
     neighbours, edges = cosine_neighbours(vectors)
-    abbrs = sorted(vectors)
     similarity = {
         "model": EMBED_MODEL,
         "k": _NEIGHBOURS,
-        "abbrs": abbrs,
+        "abbrs": sorted(vectors),
         "neighbours": neighbours,
         "edges": edges,
     }
-    graph = {
-        "nodes": [
-            {
-                "id": abbr,
-                "abbr": abbr,
-                "size": sizes.get(abbr, "unknown"),
-                "originality": originalities[abbr]["score"],
-            }
-            for abbr in abbrs
-        ],
-        "edges": edges,
-    }
-    return similarity, graph, neighbours
+    return similarity, neighbours
 
 
 # --- artifact builders ------------------------------------------------------
@@ -824,27 +768,26 @@ def build_statement_doc(
 
 
 def build_agency_index(
-    records: list[dict],
+    agencies: list[Agency],
     statements: dict[str, dict],
     timelines: dict[str, list[Revision]],
     originalities: dict[str, dict],
 ) -> list[dict]:
     """Index of every agency with coverage status + revision summary, sorted by abbr."""
     index = []
-    for rec in records:
-        abbr = rec["abbr"]
+    for agency in agencies:
+        abbr = agency.abbr
         has_statement = abbr in statements
         revs = timelines.get(abbr, [])
         index.append(
             {
                 "abbr": abbr,
-                "name": rec["name"],
-                "size": rec["size"],
-                "url": rec["url"],
-                "status": statement_status(abbr, rec["url"], has_statement),
+                "name": agency.name,
+                "size": agency.size,
+                "url": agency.url,
+                "status": statement_status(abbr, agency.url, has_statement),
                 "statementId": abbr if has_statement else None,
                 "firstSeen": revs[0].date if revs else None,
-                "firstSeenIsBulkImport": revs[0].bulk if revs else None,
                 "lastUpdated": revs[-1].date if revs else None,
                 "revisionCount": len(revs),
                 "originality": originalities[abbr]["score"] if has_statement else None,
@@ -855,11 +798,11 @@ def build_agency_index(
 
 def build_timeline(
     timelines: dict[str, list[Revision]],
-    records: list[dict],
+    agencies: list[Agency],
     statements: dict[str, dict],
 ) -> list[dict]:
     """Flat, reverse-chronological feed of every change event (no bodies)."""
-    sizes = {r["abbr"]: r["size"] for r in records}
+    sizes = {a.abbr: a.size for a in agencies}
     events = []
     for abbr, revs in timelines.items():
         agency = statements[abbr]["frontmatter"].get("agency", abbr)
@@ -882,16 +825,17 @@ def build_timeline(
 
 
 def load_statements() -> dict[str, dict]:
-    """Read every statements/*.md into {abbr: {frontmatter, body}}."""
+    """Read every statements/*.md into {abbr: {frontmatter, body}}.
+
+    A statement that can't be parsed is an error, not a skip: silently dropping
+    it would flip the agency to "not-yet" on the site and assert something false.
+    """
     statements: dict[str, dict] = {}
     for path in sorted(STATEMENTS_DIR.glob("*.md")):
-        abbr = path.stem
-        frontmatter = extract_frontmatter(path)
-        body = extract_markdown_from_statement(path)
-        if frontmatter is None or body is None:
-            logger.warning("Could not parse %s; skipping", path.name)
-            continue
-        statements[abbr] = {"frontmatter": frontmatter, "body": body}
+        frontmatter, body = split_frontmatter_body(path.read_text(encoding="utf-8"))
+        if frontmatter is None or not body:
+            raise ValueError(f"Could not parse statement file {path}")
+        statements[path.stem] = {"frontmatter": frontmatter, "body": body}
     return statements
 
 
@@ -903,9 +847,9 @@ def main() -> int:
 
     logger.info("Starting export at %s", datetime.now(UTC).isoformat())
 
-    records = load_agency_records()
+    agencies = load_agencies()
     statements = load_statements()
-    logger.info("Loaded %d agencies, %d statements", len(records), len(statements))
+    logger.info("Loaded %d agencies, %d statements", len(agencies), len(statements))
 
     logger.info("Walking git history for %d statements...", len(statements))
     bulk = bulk_import_shas()
@@ -914,7 +858,7 @@ def main() -> int:
     }
     total_revisions = sum(len(r) for r in timelines.values())
 
-    timeline = build_timeline(timelines, records, statements)
+    timeline = build_timeline(timelines, agencies, statements)
 
     first_seen_key, first_seen_phrase, corpus_start = first_seen_passages(timelines)
 
@@ -937,11 +881,10 @@ def main() -> int:
     )
 
     logger.info("Computing statement similarity...")
-    sizes = {r["abbr"]: r["size"] for r in records}
     bodies = {abbr: data["body"] for abbr, data in statements.items()}
-    similarity, graph, neighbours = compute_similarity(bodies, sizes, originalities)
+    similarity, neighbours = compute_similarity(bodies)
 
-    agency_index = build_agency_index(records, statements, timelines, originalities)
+    agency_index = build_agency_index(agencies, statements, timelines, originalities)
     statuses = [a["status"] for a in agency_index]
 
     statement_docs = {
@@ -963,9 +906,8 @@ def main() -> int:
         "builtAt": datetime.now(UTC).isoformat(),
         "firstCommit": first_commit.splitlines()[0] if first_commit else None,
         "corpusStart": corpus_start,
-        "apiUsed": bool(similarity["abbrs"]),
         "counts": {
-            "agencies": len(records),
+            "agencies": len(agencies),
             "published": statuses.count("published"),
             "notYet": statuses.count("not-yet"),
             "exempt": statuses.count("exempt"),
@@ -982,7 +924,6 @@ def main() -> int:
         {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
     write_json(GENERATED_DIR / "similarity.json", similarity)
-    write_json(PUBLIC_DATA_DIR / "similarity.graph.json", graph)
     for abbr, doc in statement_docs.items():
         write_json(GENERATED_DIR / "statements" / f"{abbr}.json", doc)
     write_json(GENERATED_DIR / "meta.json", meta)

@@ -40,7 +40,6 @@ export const metaSchema = z.object({
   builtAt: z.string(),
   firstCommit: z.string().nullable(),
   corpusStart: z.string().nullable(),
-  apiUsed: z.boolean(),
   counts: z.object({
     agencies: z.number(),
     published: z.number(),
@@ -60,7 +59,6 @@ export const agencyRowSchema = z.object({
   status: coverageStatusSchema,
   statementId: z.string().nullable(),
   firstSeen: z.string().nullable(),
-  firstSeenIsBulkImport: z.boolean().nullable(),
   lastUpdated: z.string().nullable(),
   revisionCount: z.number(),
   originality: z.number().nullable(),
