@@ -1,0 +1,29 @@
+---
+import ReuseChip from "@/components/ReuseChip.astro";
+
+// The inner rendering shared by every passage element in StatementBody: the
+// passage HTML, then either the reuse chip (when we can name the company) or a
+// screen-reader-only rendering of the tooltip text.
+interface Member {
+  abbr: string;
+  name: string;
+}
+
+interface Props {
+  html: string;
+  tip: string;
+  heat: number;
+  template: boolean;
+  share: Member[];
+}
+
+const { html, tip, heat, template, share } = Astro.props;
+---
+
+<span set:html={html} />{
+  share.length ? (
+    <ReuseChip members={share} />
+  ) : (
+    (heat >= 1 || template) && <span class="visually-hidden"> ({tip})</span>
+  )
+}

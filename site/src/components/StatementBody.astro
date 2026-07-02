@@ -1,7 +1,7 @@
 ---
-import { marked } from "marked";
+import { passageToHtml } from "@/lib/markdown";
 import { heatLevel } from "@/lib/format";
-import ReuseChip from "@/components/ReuseChip.astro";
+import PassageText from "@/components/PassageText.astro";
 import type { PassageRow } from "@/types/exporter";
 
 interface Member {
@@ -20,33 +20,8 @@ const { passages, sharedBy = {} } = Astro.props;
 type Item = { html: string; heat: number; tip: string; share: Member[]; template: boolean };
 type Block =
   | { kind: "list"; items: Item[] }
-  | {
-      kind: "heading";
-      level: number;
-      html: string;
-      heat: number;
-      tip: string;
-      share: Member[];
-      template: boolean;
-    }
-  | { kind: "para"; html: string; heat: number; tip: string; share: Member[]; template: boolean };
-
-function stripMarker(raw: string): string {
-  return raw.replace(/^\s*(?:[-*+]|\d+\.|#{1,6})\s*/, "");
-}
-
-// Statement text is scraped from agency sites, so harden the markdown → HTML
-// step before it reaches set:html: drop any raw HTML tags from the source (the
-// pattern skips `<https://…>` autolinks), then neutralise non-http(s) link
-// schemes that marked might still emit from a markdown link.
-function stripTags(raw: string): string {
-  return raw.replace(/<\/?[a-z][a-z0-9]*(?:\s[^>]*)?\/?>/gi, "");
-}
-
-function inline(raw: string): string {
-  const html = marked.parseInline(stripMarker(stripTags(raw))) as string;
-  return html.replace(/\b(href|src)\s*=\s*(["'])\s*(?:javascript|data|vbscript):/gi, "$1=$2#");
-}
+  | ({ kind: "heading"; level: number } & Item)
+  | ({ kind: "para" } & Item);
 
 function tip(p: PassageRow): string {
   if (p.sharedCount >= 2) {
@@ -60,12 +35,23 @@ function tip(p: PassageRow): string {
 // otherwise tied to named agencies or a shared count — the tip() fallthrough
 // case. Those get the cool template wash (heat 0, off the amber ramp) so the
 // popover-less match reads as its own kind rather than faint cross-agency reuse.
+// Passage text renders through the same escape-first pipeline as the passage
+// browser (lib/markdown.ts), so scraped text is safe for set:html.
 function classify(p: PassageRow): Item {
   const share = sharedBy[p.normKey] ?? [];
   const template = !share.length && p.sharedCount < 2 && p.containsCanonicalPhrase;
   const heat = template ? 0 : heatLevel(p.sharedCount, p.containsCanonicalPhrase);
-  return { html: inline(p.rawText), heat, tip: tip(p), share, template };
+  return { html: passageToHtml(p.rawText), heat, tip: tip(p), share, template };
 }
+
+// Wrapper attributes shared by every passage element (heat wash + tooltip; the
+// title is dropped when a ReuseChip carries the same information).
+const heatAttrs = (x: Item) => ({
+  class: "heat",
+  "data-heat": x.heat,
+  "data-variant": x.template ? "template" : undefined,
+  title: x.share.length ? undefined : x.tip,
+});
 
 // Demote statement headings to sit under the page <h1>, normalising so the
 // shallowest heading becomes <h2> — avoids an h1 → h3 jump when a scraped
@@ -106,20 +92,8 @@ while (i < passages.length) {
         return (
           <ul>
             {b.items.map((it) => (
-              <li
-                class="heat"
-                data-heat={it.heat}
-                data-variant={it.template ? "template" : undefined}
-                title={it.share.length ? undefined : it.tip}
-              >
-                <span set:html={it.html} />
-                {it.share.length ? (
-                  <ReuseChip members={it.share} />
-                ) : (
-                  (it.heat >= 1 || it.template) && (
-                    <span class="visually-hidden"> ({it.tip})</span>
-                  )
-                )}
+              <li {...heatAttrs(it)}>
+                <PassageText {...it} />
               </li>
             ))}
           </ul>
@@ -128,34 +102,14 @@ while (i < passages.length) {
       if (b.kind === "heading") {
         const Tag = `h${b.level}` as "h2";
         return (
-          <Tag
-            class="heat"
-            data-heat={b.heat}
-            data-variant={b.template ? "template" : undefined}
-            title={b.share.length ? undefined : b.tip}
-          >
-            <span set:html={b.html} />
-            {b.share.length ? (
-              <ReuseChip members={b.share} />
-            ) : (
-              (b.heat >= 1 || b.template) && <span class="visually-hidden"> ({b.tip})</span>
-            )}
+          <Tag {...heatAttrs(b)}>
+            <PassageText {...b} />
           </Tag>
         );
       }
       return (
-        <p
-          class="heat"
-          data-heat={b.heat}
-          data-variant={b.template ? "template" : undefined}
-          title={b.share.length ? undefined : b.tip}
-        >
-          <span set:html={b.html} />
-          {b.share.length ? (
-            <ReuseChip members={b.share} />
-          ) : (
-            (b.heat >= 1 || b.template) && <span class="visually-hidden"> ({b.tip})</span>
-          )}
+        <p {...heatAttrs(b)}>
+          <PassageText {...b} />
         </p>
       );
     })
