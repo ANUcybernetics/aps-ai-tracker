@@ -7,7 +7,7 @@ import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { getAllStatements } from "@/lib/statements";
-import { propagation, getAgencies } from "@/lib/load";
+import { propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import type { StatementDoc } from "@/types/exporter";
 
@@ -21,7 +21,7 @@ interface Props {
 }
 
 const { doc } = Astro.props;
-const agencies = await getAgencies();
+const names = await getAgencyNames();
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
 // "Changes" and "last change" count only genuine edits, not scrape noise
@@ -32,12 +32,11 @@ const lastUpdated = realChanges.at(-1)?.date;
 
 // For each shared passage, the other agencies that carry it (matched by normKey
 // to a propagation cluster), so a highlighted passage can name its company.
-const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
 const sharedBy: Record<string, { abbr: string; name: string }[]> = {};
 for (const cluster of propagation.clusters) {
   const others = cluster.memberAbbrs
     .filter((abbr) => abbr !== doc.abbr)
-    .map((abbr) => ({ abbr, name: nameByAbbr.get(abbr) ?? abbr }));
+    .map((abbr) => ({ abbr, name: names[abbr] ?? abbr }));
   if (others.length) sharedBy[cluster.normKey] = others;
 }
 

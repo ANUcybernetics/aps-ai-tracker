@@ -8,7 +8,10 @@ const c = meta.counts;
 const published = agencies.filter((a) => a.statementId);
 const mostRevised = [...published].sort((a, b) => b.revisionCount - a.revisionCount)[0];
 const board = propagation.originality;
-const leastOriginal = board[board.length - 1];
+const leastOriginal = board.at(-1);
+if (!mostRevised || !leastOriginal) {
+  throw new Error("CoverageStats: exported data has no published statements — re-run `export`");
+}
 const since = meta.firstCommit ? formatDate(meta.firstCommit) : "launch";
 
 const facts = [

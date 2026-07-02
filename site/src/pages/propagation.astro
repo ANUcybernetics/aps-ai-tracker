@@ -2,20 +2,18 @@
 import Layout from "@/components/Layout.astro";
 import PassageBrowser from "@/islands/PassageBrowser.svelte";
 import ReadingLink from "@/components/ReadingLink.astro";
-import { propagation, getAgencies } from "@/lib/load";
+import { propagation, getAgencyNames } from "@/lib/load";
 import { statementPath, withBase } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
 
-const agencies = await getAgencies();
-const nameByAbbr = new Map(agencies.map((a) => [a.abbr, a.name]));
-const names = Object.fromEntries(nameByAbbr);
+const names = await getAgencyNames();
 const board = propagation.originality;
 const clusters = propagation.clusters;
 const templateClusters = clusters.filter((c) => c.alsoInDta).length;
 
 // Spell out the template source on first mention — a newcomer won't know "DTA".
 const ursource = propagation.ursource;
-const ursourceName = nameByAbbr.get(ursource) ?? ursource;
+const ursourceName = names[ursource] ?? ursource;
 const ursourceLabel = ursourceName === ursource ? ursource : `${ursourceName} (${ursource})`;
 
 const mostBespoke = board.slice(0, 8);
@@ -59,7 +57,7 @@ const columns = [
                 {col.rows.map((e) => (
                   <li class="board__row">
                     <a class="board__name" href={statementPath(e.abbr)}>
-                      {nameByAbbr.get(e.abbr) ?? e.abbr}
+                      {names[e.abbr] ?? e.abbr}
                     </a>
                     <span class="board__bar" role="presentation">
                       <span style={`inline-size:${originalityPercent(e.score)}%`} />
