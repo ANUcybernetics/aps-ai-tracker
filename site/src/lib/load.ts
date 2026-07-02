@@ -15,8 +15,18 @@ import propagationJson from "../generated/propagation.json";
 import similarityJson from "../generated/similarity.json";
 
 export const meta = metaSchema.parse(metaJson);
-export const propagation = propagationSchema.parse(propagationJson);
 export const similarity = similaritySchema.parse(similarityJson);
+
+// Sort the originality board explicitly (best score first, abbr tiebreak,
+// mirroring the exporter) rather than silently depending on the JSON's array
+// order — the leaderboard slices and "most templated" lookups read off it.
+const parsedPropagation = propagationSchema.parse(propagationJson);
+export const propagation = {
+  ...parsedPropagation,
+  originality: parsedPropagation.originality.toSorted(
+    (a, b) => b.score - a.score || a.abbr.localeCompare(b.abbr),
+  ),
+};
 
 export async function getAgencies() {
   // getCollection orders by `id` (the abbr), which currently matches the
@@ -25,6 +35,12 @@ export async function getAgencies() {
   return (await getCollection("agencies"))
     .map((entry) => entry.data)
     .toSorted((a, b) => a.abbr.localeCompare(b.abbr));
+}
+
+// Full agency names keyed by abbr — the join several pages and components need
+// for spelling out an acronym.
+export async function getAgencyNames(): Promise<Record<string, string>> {
+  return Object.fromEntries((await getAgencies()).map((a) => [a.abbr, a.name]));
 }
 
 export async function getTimeline() {
