@@ -3,6 +3,11 @@
 // with this repo's deliberate choices turned off, so stylelint stays a useful
 // *semantic* CSS linter without fighting oxfmt (which owns formatting) or this
 // project's design system.
+//
+// Known limitation: this only lints plain .css files (src/styles/). The scoped
+// <style> blocks in .astro/.svelte components — where most styling lives — are
+// invisible to stylelint without a customSyntax parser, which isn't worth the
+// lift here.
 export default {
   extends: ["stylelint-config-standard"],
   rules: {
