@@ -2,15 +2,14 @@
 
 import sys
 from datetime import UTC, datetime
-from pathlib import Path
 
-from .scraper import load_agencies, logger, process_raw, save_statement
+from .scraper import REPO_ROOT, load_agencies, logger, process_raw, save_statement
 
 
 def main() -> int:
     """Process all existing raw files into statements without fetching."""
-    raw_dir = Path.cwd() / "raw"
-    output_dir = Path.cwd() / "statements"
+    raw_dir = REPO_ROOT / "raw"
+    output_dir = REPO_ROOT / "statements"
 
     if not raw_dir.exists():
         logger.error(f"Error: {raw_dir} directory not found")
