@@ -26,8 +26,9 @@ export type {
 
 import type { AgencySize, Edge } from "@/lib/schemas";
 
-// Built client-side from the similarity data (not part of the JSON load
-// boundary), so these stay hand-written rather than schema-inferred.
+// Assembled by the /data/similarity.graph.json endpoint from the validated
+// similarity + agency data, so these stay hand-written rather than
+// schema-inferred.
 export interface GraphNode {
   id: string;
   abbr: string;

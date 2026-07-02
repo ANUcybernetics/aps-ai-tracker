@@ -52,9 +52,10 @@ site is light-only (no dark mode); design tokens live in
   `mise exec -- pnpm run {build,lint,format,typecheck,test}`
 - Site unit tests use Vitest (`pnpm run test`); pure-TS helpers under `src/lib/`
   (e.g. `markdown.ts`) carry `*.test.ts` files. The exporter still uses pytest.
-- The exporter writes gitignored JSON into `site/src/generated/` (+ the slim
-  `site/public/data/similarity.graph.json`); only `.cache/embeddings.json` is
-  committed. Run `export` before building the site locally.
+- The exporter writes gitignored JSON into `site/src/generated/`; only
+  `.cache/embeddings.json` is committed. Run `export` before building the site
+  locally. The client-fetched similarity graph is served by a build-time
+  endpoint (`src/pages/data/similarity.graph.json.ts`) from the validated data.
 - **Deploy**: live at
   <https://anucybernetics.github.io/aps-ai-transparency-tracker/>.
   `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
