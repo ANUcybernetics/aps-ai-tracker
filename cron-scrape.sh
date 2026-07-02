@@ -7,6 +7,9 @@ LOG_FILE="${LOG_DIR}/scrape-$(date +%Y-%m-%d).log"
 
 mkdir -p "$LOG_DIR"
 
+# Keep two months of run logs; they grow without bound otherwise.
+find "$LOG_DIR" -name 'scrape-*.log' -mtime +60 -delete
+
 # mise activates tool shims into PATH (jj, uv, node, etc.)
 eval "$(/home/ben/.local/bin/mise activate bash)"
 
@@ -14,11 +17,13 @@ cd "$PROJECT_DIR"
 
 echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
+# A failed scrape shouldn't abort the run: the export below is a no-op on an
+# unchanged corpus and the push still redeploys anything already committed.
 /home/ben/.local/bin/claude \
   --dangerously-skip-permissions \
   --effort max \
   -p "/scrape" \
-  >> "$LOG_FILE" 2>&1
+  >> "$LOG_FILE" 2>&1 || echo "scrape failed (continuing)" >> "$LOG_FILE"
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
