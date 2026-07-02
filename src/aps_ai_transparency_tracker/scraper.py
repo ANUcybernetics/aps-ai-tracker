@@ -23,6 +23,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# The repo root, resolved from the package location rather than the working
+# directory, so every entry point (scrape/process/status/export) reads and
+# writes the same tree no matter where it is invoked from. This package is a
+# repo-coupled tool (installed editable via uv), so the anchor is reliable.
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+
 # Threshold for content shrinkage warning (as a ratio)
 # If new content is less than this fraction of old content, warn about possible scraping failure
 CONTENT_SHRINKAGE_THRESHOLD = 0.5
@@ -65,6 +71,7 @@ class Agency:
     name: str
     abbr: str
     url: str | None
+    size: str = "unknown"
     manual: bool = False
     selector: str | None = None
 
@@ -92,14 +99,14 @@ class RawFetchResult(TypedDict):
 
 def load_agencies() -> list[Agency]:
     """Load agency data from agencies.toml file."""
-    toml_path = Path(__file__).parent.parent.parent / "agencies.toml"
-    with open(toml_path, "rb") as f:
+    with open(REPO_ROOT / "agencies.toml", "rb") as f:
         data = tomllib.load(f)
     return [
         Agency(
             name=d["name"],
             abbr=d["abbr"],
             url=d["url"] if d["url"] else None,
+            size=d.get("size", "unknown"),
             manual=d.get("manual", False),
             selector=d.get("selector"),
         )
@@ -107,39 +114,45 @@ def load_agencies() -> list[Agency]:
     ]
 
 
+def split_frontmatter_body(content: str) -> tuple[dict | None, str]:
+    """Split a statement file's text into (frontmatter dict, markdown body).
+
+    Format is: ---\\nyaml\\n---\\n\\nmarkdown. Returns (None, whole text) when the
+    text has no frontmatter block. Historical revisions occasionally carry
+    non-safe frontmatter (e.g. a PDF title serialised as a pypdf object tag);
+    since callers walking history only need the body, an unparseable frontmatter
+    degrades to {} rather than failing.
+    """
+    parts = content.split("---\n", 2)
+    if len(parts) >= 3:
+        try:
+            frontmatter = yaml.safe_load(parts[1]) or {}
+        except yaml.YAMLError:
+            frontmatter = {}
+        return (frontmatter, parts[2].strip())
+    return (None, content.strip())
+
+
 def extract_markdown_from_statement(filepath: Path) -> str | None:
     """Extract just the markdown content from a statement file (excluding frontmatter).
 
-    Returns None if file doesn't exist or can't be parsed.
+    Returns None if the file doesn't exist or has no frontmatter block.
     """
     if not filepath.exists():
         return None
-
-    try:
-        content = filepath.read_text(encoding="utf-8")
-        # Split on frontmatter delimiters (---)
-        # Format is: ---\nyaml\n---\n\nmarkdown
-        parts = content.split("---\n", 2)
-        if len(parts) >= 3:
-            # parts[0] is empty (before first ---), parts[1] is yaml, parts[2] is markdown
-            return parts[2].strip()
-        return None
-    except Exception:
-        return None
+    frontmatter, body = split_frontmatter_body(filepath.read_text(encoding="utf-8"))
+    return body if frontmatter is not None else None
 
 
 def extract_frontmatter(filepath: Path) -> dict | None:
-    """Parse the YAML frontmatter from a statement file."""
+    """Parse the YAML frontmatter from a statement file.
+
+    Returns None if the file doesn't exist or has no frontmatter block.
+    """
     if not filepath.exists():
         return None
-    try:
-        content = filepath.read_text(encoding="utf-8")
-        parts = content.split("---\n", 2)
-        if len(parts) >= 3:
-            return yaml.safe_load(parts[1]) or {}
-        return None
-    except Exception:
-        return None
+    frontmatter, _ = split_frontmatter_body(filepath.read_text(encoding="utf-8"))
+    return frontmatter
 
 
 def clean_html_to_markdown(html_content: str, base_url: str) -> str:
@@ -310,8 +323,8 @@ def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> st
             remove_boilerplate(main_content)
             return str(main_content)
     else:
-        for selector in ["main", "article", ".content", "#content", ".main-content"]:
-            if main_content := soup.select_one(selector):
+        for candidate in ["main", "article", ".content", "#content", ".main-content"]:
+            if main_content := soup.select_one(candidate):
                 remove_boilerplate(main_content)
                 return str(main_content)
 
@@ -450,7 +463,11 @@ def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
 
     raw_dir.mkdir(parents=True, exist_ok=True)
 
-    is_pdf = "application/pdf" in (data["content_type"] or "")
+    # Trust the Content-Type header, but fall back to the file magic: some
+    # servers label PDFs application/octet-stream.
+    is_pdf = "application/pdf" in (data["content_type"] or "") or data[
+        "content"
+    ].startswith(b"%PDF-")
     extension = "pdf" if is_pdf else "html"
     filepath = raw_dir / f"{agency.abbr}.{extension}"
     stale = raw_dir / f"{agency.abbr}.{'html' if is_pdf else 'pdf'}"
@@ -471,7 +488,11 @@ def _load_raw_meta(agency: Agency, raw_dir: Path) -> dict[str, str | None]:
     """Load metadata saved alongside a raw file."""
     meta_path = raw_dir / f"{agency.abbr}.meta.json"
     if meta_path.exists():
-        return json.loads(meta_path.read_text(encoding="utf-8"))
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        return {
+            "final_url": meta.get("final_url", agency.url),
+            "content_type": meta.get("content_type"),
+        }
     return {"final_url": agency.url, "content_type": None}
 
 

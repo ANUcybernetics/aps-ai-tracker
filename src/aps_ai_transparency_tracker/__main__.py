@@ -3,9 +3,9 @@
 import asyncio
 import sys
 from datetime import UTC, datetime
-from pathlib import Path
 
 from .scraper import (
+    REPO_ROOT,
     fetch_all_raw,
     load_agencies,
     logger,
@@ -17,8 +17,8 @@ from .scraper import (
 
 def main() -> int:
     """Main execution function using two-stage pipeline: fetch raw -> process."""
-    raw_dir = Path.cwd() / "raw"
-    output_dir = Path.cwd() / "statements"
+    raw_dir = REPO_ROOT / "raw"
+    output_dir = REPO_ROOT / "statements"
     agencies = load_agencies()
 
     logger.info(
@@ -34,7 +34,9 @@ def main() -> int:
     skipped_count = sum(1 for a in agencies if a.url is None)
 
     if manual_count > 0:
-        logger.info(f"Skipping {manual_count} manual agencies (use process_manual)")
+        logger.info(
+            f"Skipping {manual_count} manual agencies (maintained via the scrape skill)"
+        )
     if skipped_count > 0:
         logger.info(f"Skipping {skipped_count} agencies without URLs")
 
