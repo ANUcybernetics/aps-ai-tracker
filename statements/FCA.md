@@ -7,7 +7,7 @@ title: AI statement
 
 # AI Transparency Statement
 
-7 April 2026
+3 July 2026
 
 The Federal Court of Australia Listed Entity1 (the Entity) is committed to safety and transparency in its adoption of technological innovations, including the use of AI. The Entity proactively monitors advancements in AI, including in relation to potential applications, ethics, regulation and risk. In recognition of the utmost importance of ensuring the security of public sector data and responsible handling of personal information, we are taking a cautious approach to the adoption of AI while recognising its potential to deliver benefits for Australians.
 
@@ -17,7 +17,7 @@ This Statement applies to the Federal Court of Australia Listed Entity, the corp
 
 The Entity is committed to the safe, ethical and responsible use of AI in accordance with the [AI Plan for the Australian Public Service](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025) (the Plan) and the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) (the Policy). Our AI use is planned, undertaken and monitored in accordance with relevant legislation and policies including the [ _Privacy Act 1988_ (Cth)](https://www.legislation.gov.au/C2004A03712/latest/text), the [Protective Security Policy Framework](https://www.protectivesecurity.gov.au/), [Australia's AI Ethics Principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles), and the Entity's own policies relating to privacy, data and information technology.
 
-As required by the Plan, a Chief AI Officer will be appointed by July 2026.
+A Chief AI Officer was appointed in June 2026 and has responsibility for championing strategic change and driving adoption and engagement with AI.
 
 Two Accountable Officials are nominated under the Policy and have responsibility for:
 
