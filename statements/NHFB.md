@@ -94,9 +94,3 @@ CANBERRA ACT 2601\
 Email: [nhfb.enquiries@nhfb.gov.au](mailto:nhfb.enquiries@nhfb.gov.au)
 
 Wed, 2026-05-06 12:00
-
-Acknowledgement of Country
-
-The NHFB acknowledges the Traditional Owners of Country throughout Australia, and their continuing connection to land, water and community. We pay our respects to them and their cultures and to Elders both past and present.
-
-![Acknowledgement of Country banner](https://www.publichospitalfunding.gov.au/sites/default/files/images/2026-06/ack.png)
