@@ -6,15 +6,8 @@ import {
   type Diff,
 } from "diff-match-patch";
 
-const ESCAPE: Record<string, string> = {
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-};
-
-function escapeHtml(text: string): string {
-  return text.replace(/[&<>]/g, (c) => ESCAPE[c]);
-}
+// Relative so vitest resolves it without the `@/` alias (same as the tests).
+import { escapeHtml } from "./markdown";
 
 // Character-level diff with semantic cleanup: diff_cleanupSemantic coalesces the
 // incidental short matches ("the", "AI", spaces) that a raw word-level diff pins

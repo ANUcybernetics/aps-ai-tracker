@@ -26,6 +26,10 @@ const rows = timeline.map((event) => ({ event, diff: diffFor(event) }));
 const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries()]
   .map(([abbr, name]) => ({ abbr, name }))
   .sort((a, b) => a.name.localeCompare(b.name));
+
+// Noise and first-tracked rows ship hidden, so the SSR/no-JS "shown" count must
+// match what's actually visible before the filter island hydrates.
+const initiallyShown = timeline.filter((e) => !e.isNoise && e.kind !== "tracked-since").length;
 ---
 
 <Layout
@@ -45,7 +49,7 @@ const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries(
       </p>
     </header>
 
-    <TimelineFilter client:load agencies={agencyOpts} total={timeline.length} />
+    <TimelineFilter client:load agencies={agencyOpts} total={initiallyShown} />
 
     <ul class="tl-feed" id="tl-feed">
       {rows.map(({ event, diff }) => <ChangeFeedItem event={event} diff={diff} />)}

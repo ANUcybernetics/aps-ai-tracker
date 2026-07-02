@@ -16,7 +16,7 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
 
 <Layout
   title="Agencies"
-  description="Which of the 126 tracked Australian Government agencies have published an AI transparency statement, which haven't, and which are exempt."
+  description={`Which of the ${agencies.length} tracked Australian Government agencies have published an AI transparency statement, which haven't, and which are exempt.`}
 >
   <div class="page stack">
     <header class="stack">

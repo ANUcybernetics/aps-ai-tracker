@@ -1,4 +1,4 @@
-import type { AgencySize, CoverageStatus } from "@/types/exporter";
+import type { AgencySize, EventKind } from "@/types/exporter";
 
 const DATE = new Intl.DateTimeFormat("en-AU", {
   day: "numeric",
@@ -16,6 +16,8 @@ export function originalityPercent(score: number): number {
 
 // Map a passage's reuse count to a 0–4 heat step (unique → ubiquitous). Template
 // language that isn't verbatim-shared still reads as at least lightly shared.
+// The thresholds are described in prose in reading.astro ("two or three", "four
+// to nine"…) and echoed by the statement-page legend — change them together.
 export function heatLevel(sharedCount: number, canonical = false): number {
   const base =
     sharedCount < 2 ? 0 : sharedCount < 4 ? 1 : sharedCount < 10 ? 2 : sharedCount < 25 ? 3 : 4;
@@ -36,8 +38,8 @@ export const SIZE_LABEL: Record<AgencySize, string> = {
   unknown: "Unknown",
 };
 
-export const STATUS_LABEL: Record<CoverageStatus, string> = {
-  published: "Published",
-  "not-yet": "Not yet published",
-  exempt: "Exempt / out of scope",
+export const KIND_LABEL: Record<EventKind, string> = {
+  updated: "updated",
+  added: "added",
+  "tracked-since": "first tracked",
 };

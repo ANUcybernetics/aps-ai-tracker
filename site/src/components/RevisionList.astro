@@ -1,6 +1,6 @@
 ---
 import DiffView from "@/components/DiffView.astro";
-import { formatDate, signedDelta } from "@/lib/format";
+import { KIND_LABEL, formatDate, signedDelta } from "@/lib/format";
 import type { TimelineRevision } from "@/types/exporter";
 
 interface Props {
@@ -15,12 +15,6 @@ const revs = timeline
   .reverse();
 
 const noiseCount = timeline.filter((t) => t.isNoise).length;
-
-const KIND_LABEL: Record<string, string> = {
-  updated: "updated",
-  added: "added",
-  "tracked-since": "first tracked",
-};
 ---
 
 <div class="revs-wrap">
@@ -42,7 +36,7 @@ const KIND_LABEL: Record<string, string> = {
           <time class="mono muted" datetime={rev.date}>
             {formatDate(rev.date)}
           </time>
-          <span class="pill">{KIND_LABEL[rev.kind] ?? rev.kind}</span>
+          <span class="pill">{KIND_LABEL[rev.kind]}</span>
           {rev.isNoise && <span class="pill pill--warn">noise</span>}
           <span class="rev__delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
             {signedDelta(rev.charDelta)}
@@ -140,16 +134,5 @@ const KIND_LABEL: Record<string, string> = {
     color: var(--muted);
     font-size: 0.85rem;
     width: max-content;
-  }
-
-  .rev__diff .diff {
-    margin-block-start: var(--space-2);
-    padding: var(--space-3);
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
   }
 </style>
