@@ -83,14 +83,21 @@
         .on("zoom", (event) => root.attr("transform", event.transform)),
     );
 
+    // Edge emphasis scales with the data's own score range rather than a fixed
+    // anchor: k-nearest-neighbour edges can score well below any hardcoded
+    // floor, which previously produced negative (invisible) opacity/width.
+    const scores = links.map((l) => l.score);
+    const lo = Math.min(...scores);
+    const hi = Math.max(...scores);
+    const strength = (score: number) => (hi > lo ? (score - lo) / (hi - lo) : 1);
     const link = root
       .append("g")
       .attr("stroke", "currentColor")
       .selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke-opacity", (d) => 0.1 + (d.score - 0.8) * 1.5)
-      .attr("stroke-width", (d) => 0.5 + (d.score - 0.8) * 6);
+      .attr("stroke-opacity", (d) => 0.15 + strength(d.score) * 0.35)
+      .attr("stroke-width", (d) => 0.5 + strength(d.score) * 1.5);
 
     const node = root
       .append("g")

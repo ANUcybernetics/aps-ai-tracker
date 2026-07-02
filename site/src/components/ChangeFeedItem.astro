@@ -1,6 +1,6 @@
 ---
 import DiffView from "@/components/DiffView.astro";
-import { formatDate, signedDelta } from "@/lib/format";
+import { KIND_LABEL, formatDate, signedDelta } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -10,12 +10,6 @@ interface Props {
 }
 
 const { event, diff } = Astro.props;
-
-const KIND_LABEL: Record<string, string> = {
-  updated: "updated",
-  added: "added",
-  "tracked-since": "first tracked",
-};
 ---
 
 <li
@@ -30,7 +24,7 @@ const KIND_LABEL: Record<string, string> = {
       {formatDate(event.date)}
     </time>
     <a class="tl-row__agency" href={statementPath(event.abbr)}>{event.agency}</a>
-    <span class="pill">{KIND_LABEL[event.kind] ?? event.kind}</span>
+    <span class="pill">{KIND_LABEL[event.kind]}</span>
     {event.isNoise && <span class="pill pill--warn">noise</span>}
     {
       diff && (
@@ -116,17 +110,5 @@ const KIND_LABEL: Record<string, string> = {
     color: var(--muted);
     font-size: 0.85rem;
     width: max-content;
-  }
-
-  /* .diff is rendered by DiffView, so it needs :global to cross the scope. */
-  .tl-row__diff :global(.diff) {
-    margin-block-start: var(--space-2);
-    padding: var(--space-3);
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
   }
 </style>
