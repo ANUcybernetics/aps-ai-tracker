@@ -35,7 +35,7 @@ from aps_ai_transparency_tracker import (
 
 
 def fetch_statement(agency: Agency) -> StatementResult:
-    """Helper function for tests: fetch and process a single agency statement."""
+    """Helper for the might_fail integration tests: fetch + process one agency."""
     with TemporaryDirectory() as tmpdir:
         raw_dir = Path(tmpdir)
         raw_results = asyncio.run(fetch_all_raw([agency]))
@@ -49,7 +49,25 @@ def fetch_statement(agency: Agency) -> StatementResult:
             "status_code": None,
             "final_url": agency.url,
             "error": "Fetch failed",
+            "source_type": None,
         }
+
+
+def process_fixture_statement() -> StatementResult:
+    """Process a local HTML fixture through the raw pipeline (no network)."""
+    agency = Agency(
+        name="Fixture Agency", abbr="FIXTURE", url="https://example.com/statement"
+    )
+    html = """
+    <html>
+        <head><title>Fixture Statement</title></head>
+        <body><main><h1>AI use</h1><p>We use AI carefully.</p></main></body>
+    </html>
+    """
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir)
+        (raw_dir / "FIXTURE.html").write_text(html, encoding="utf-8")
+        return process_raw(agency, raw_dir)
 
 
 def test_agencies_list_structure():
@@ -151,11 +169,9 @@ def test_extract_main_content_removes_boilerplate_from_main():
     assert "Footer content" not in content
 
 
-def test_fetch_statement_returns_required_fields():
-    """Test fetch_statement returns dict with all required fields."""
-    agencies = load_agencies()
-    agency = agencies[0]
-    result = fetch_statement(agency)
+def test_statement_result_returns_required_fields():
+    """The StatementResult contract: exactly the expected keys, no network."""
+    result = process_fixture_statement()
 
     required_fields = {
         "title",
@@ -168,29 +184,20 @@ def test_fetch_statement_returns_required_fields():
     assert set(result.keys()) == required_fields
 
 
-def test_fetch_statement_handles_success():
-    """Test successful fetch has expected characteristics."""
-    agencies = load_agencies()
-    agency = agencies[0]
-    result = fetch_statement(agency)
+def test_statement_result_success_shape():
+    """A successful processing run carries the full result payload."""
+    result = process_fixture_statement()
 
-    # Either successful or has error
-    if result["error"] is None:
-        assert result["status_code"] == 200
-        assert result["markdown"] is not None
-        markdown_content = result["markdown"]
-        assert isinstance(markdown_content, str) and len(markdown_content) > 0
-        assert result["final_url"] is not None
-    else:
-        # If there's an error, status_code might be None or error code
-        assert isinstance(result["error"], str)
+    assert result["error"] is None
+    assert result["status_code"] == 200
+    markdown_content = result["markdown"]
+    assert isinstance(markdown_content, str) and len(markdown_content) > 0
+    assert result["final_url"] is not None
 
 
-def test_fetch_statement_type_consistency():
-    """Test fetch_statement returns consistent types."""
-    agencies = load_agencies()
-    agency = agencies[0]
-    result = fetch_statement(agency)
+def test_statement_result_type_consistency():
+    """StatementResult fields carry consistent types."""
+    result = process_fixture_statement()
 
     assert result["title"] is None or isinstance(result["title"], str)
     assert result["markdown"] is None or isinstance(result["markdown"], str)
@@ -482,39 +489,6 @@ def test_process_raw_invalid_html():
         # Should handle gracefully, though result may vary
         assert isinstance(result, dict)
         assert "error" in result
-
-
-@pytest.mark.might_fail
-@pytest.mark.parametrize(
-    "agency",
-    [a for a in load_agencies() if a.url is not None],
-    ids=lambda a: a.abbr,
-)
-def test_known_agency_statements_can_be_fetched(agency):
-    """Integration test: verify agencies with known URLs can be fetched and parsed.
-
-    Skipped by default. Run with: pytest -m might_fail
-    """
-    result = fetch_statement(agency)
-
-    # Verify result structure
-    assert isinstance(result, dict), f"{agency.abbr}: result is not a dict"
-    assert "error" in result, f"{agency.abbr}: missing 'error' field"
-
-    # If there's an error, fail with descriptive message
-    if result["error"] is not None:
-        pytest.fail(
-            f"{agency.name} ({agency.abbr}): {result['error']} "
-            f"(status: {result['status_code']}, url: {agency.url})"
-        )
-
-    # Verify successful fetch has required content
-    assert result["status_code"] == 200, f"{agency.abbr}: status code not 200"
-    assert result["markdown"], f"{agency.abbr}: no markdown content"
-    markdown_content = result["markdown"]
-    assert isinstance(markdown_content, str) and len(markdown_content) > 0, (
-        f"{agency.abbr}: empty markdown"
-    )
 
 
 @pytest.mark.might_fail
@@ -918,7 +892,10 @@ def test_clean_markdown_strips_inline_date_keeps_preceding_sentence():
     )
     result = clean_markdown(text)
 
-    assert "We will update this transparency statement as the Commission develops policies." in result
+    assert (
+        "We will update this transparency statement as the Commission develops policies."
+        in result
+    )
     assert "20 February 2026" not in result
     assert "last updated" not in result
 
@@ -932,7 +909,10 @@ def test_clean_markdown_strips_leading_date_keeps_following_sentence():
     )
     result = clean_markdown(text)
 
-    assert "It will be reviewed and updated annually or when significant changes occur." in result
+    assert (
+        "It will be reviewed and updated annually or when significant changes occur."
+        in result
+    )
     assert "27 February 2026" not in result
     assert "last updated" not in result
 
