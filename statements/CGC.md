@@ -39,4 +39,6 @@ The use of AI is governed by our IT Acceptable Use Policy, Treasury’s Informat
 
 ### Update Frequency
 
-This transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was made in June 2026.
+This transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was made in July 2026.
+
+For enquiries, please [contact us](https://www.cgc.gov.au/contact-us).
