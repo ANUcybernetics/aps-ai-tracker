@@ -73,6 +73,17 @@ describe("spreadOut", () => {
     expect(spreadOut([])).toEqual([]);
     expect(spreadOut([42])).toEqual([42]);
   });
+
+  it("keeps every dot on the track even when they cannot all fit at minGap", () => {
+    const out = spreadOut(Array.from({ length: 200 }, () => 50));
+    for (const p of out) {
+      expect(p).toBeGreaterThanOrEqual(0);
+      expect(p).toBeLessThanOrEqual(100);
+    }
+    for (let i = 1; i < out.length; i++) {
+      expect(out[i]).toBeGreaterThanOrEqual(out[i - 1]);
+    }
+  });
 });
 
 describe("buildScrubberDots", () => {

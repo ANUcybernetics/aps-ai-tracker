@@ -56,7 +56,10 @@ export function spreadOut(pcts: number[], minGap = MIN_GAP): number[] {
       out[i] = Math.min(out[i], out[i + 1] - minGap);
     }
   }
-  return out;
+  // If there are more dots than the track can hold at minGap, the backward
+  // pass runs off the left end; keep every dot on the track and accept the
+  // overlap rather than rendering at negative offsets.
+  return out.map((p) => Math.min(100, Math.max(0, p)));
 }
 
 const EDGE_ZONE = 6;
