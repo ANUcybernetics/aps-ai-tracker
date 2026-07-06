@@ -7,6 +7,7 @@ description:
   "scrape", "run the scraper", "update statements", or "fetch transparency
   statements".
 disable-model-invocation: true
+model: sonnet
 allowed-tools: Read, Grep, Glob, Bash, Edit, Agent, WebSearch, WebFetch
 ---
 
@@ -237,8 +238,9 @@ against `agencies.toml` **both ways**:
 
 For every agency still `url = ""` after the register pass, search the open web
 --- it catches statements the register omits or links indirectly. Launch
-subagents in parallel (batches of 5--6) with the Agent tool. Each subagent
-should:
+subagents in parallel (batches of 5--6) with the Agent tool, each with
+`model: "sonnet"` (Sonnet 5) --- targeted web search has a strict output shape,
+so it doesn't need a stronger model. Each subagent should:
 
 - WebSearch with several query shapes:
   - `"[agency name]" AI transparency statement site:[domain].gov.au`

@@ -21,7 +21,6 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 # unchanged corpus and the push still redeploys anything already committed.
 /home/ben/.local/bin/claude \
   --dangerously-skip-permissions \
-  --effort max \
   -p "/scrape" \
   >> "$LOG_FILE" 2>&1 || echo "scrape failed (continuing)" >> "$LOG_FILE"
 
