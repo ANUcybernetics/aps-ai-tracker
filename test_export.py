@@ -129,7 +129,7 @@ def test_originality_canonical_phrase_counts_as_shared():
     ("abbr", "url", "has", "expected"),
     [
         ("ABS", "http://x", True, "published"),
-        ("AIATSIS", None, False, "not-yet"),
+        ("AIATSIS", None, False, "exempt"),
         ("ACIC", None, False, "exempt"),
         ("FOO", "http://x", False, "not-yet"),
     ],
