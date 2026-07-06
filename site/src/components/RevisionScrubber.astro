@@ -1,0 +1,353 @@
+---
+// A time-proportional scrubber for a statement's revision history: one dot per
+// revision on an axis from the corpus start to the build date. Hovering a dot
+// shows date/kind/delta; clicking swaps the statement body below for that
+// revision (script in this component). Without JS the dots are plain fragment
+// links into the revision-history list, so navigation still works.
+import { KIND_LABEL, formatDate, signedDelta } from "@/lib/format";
+import type { ScrubberDot } from "@/lib/scrubber";
+
+interface Props {
+  dots: ScrubberDot[];
+  axisStart: string;
+  // Where the agency's tracked region begins, as a 0–100 percent of the axis.
+  firstSeenPct: number;
+}
+
+const { dots, axisStart, firstSeenPct } = Astro.props;
+
+function tipText(d: ScrubberDot): string {
+  const parts = [KIND_LABEL[d.kind]];
+  if (d.isNoise) parts.push("noise");
+  if (d.kind === "updated") parts.push(`${signedDelta(d.charDelta)} chars`);
+  if (d.isCurrent) parts.push("current");
+  return parts.join(" · ");
+}
+---
+
+<nav class="scrubber" data-scrubber aria-label="Revision timeline">
+  <div class="scrubber__track">
+    <div class="scrubber__rail" aria-hidden="true"></div>
+    <div
+      class="scrubber__tracked"
+      style={`left: ${firstSeenPct}%`}
+      aria-hidden="true"
+    >
+    </div>
+    {
+      dots.map((d) => (
+        <a
+          class="scrubber__dot"
+          href={`#${d.anchor}`}
+          style={`left: ${d.pct}%`}
+          data-anchor={d.anchor}
+          data-kind={d.kind}
+          data-noise={d.isNoise ? "" : undefined}
+          data-current={d.isCurrent ? "" : undefined}
+          data-edge={d.edge ?? undefined}
+          data-date-label={formatDate(d.date)}
+          aria-label={`${formatDate(d.date)} — ${tipText(d)}`}
+          aria-current={d.isCurrent ? "true" : "false"}
+        >
+          <span class="scrubber__tip" aria-hidden="true">
+            <span class="mono">{formatDate(d.date)}</span> · {tipText(d)}
+          </span>
+        </a>
+      ))
+    }
+  </div>
+  <div class="scrubber__axis mono muted" aria-hidden="true">
+    <span>{formatDate(axisStart)}</span>
+    <span>today</span>
+  </div>
+  <p class="scrubber__banner" data-banner hidden>
+    <span>
+      Viewing the revision of <strong class="mono" data-banner-date></strong>
+      {" "}(<span data-banner-pos></span> of {dots.length}) — passage highlighting applies only to
+      the current version.
+    </span>
+    <span class="scrubber__banner-nav">
+      <button type="button" data-nav="prev">&larr; older</button>
+      <button type="button" data-nav="next">newer &rarr;</button>
+      <button type="button" data-nav="current">back to current</button>
+    </span>
+  </p>
+</nav>
+
+<script>
+  // Time-travel: swap the current statement body for a pre-rendered historical
+  // revision. All bodies are in the page already (hidden), so this only
+  // toggles visibility and keeps the URL hash shareable.
+  const root = document.querySelector<HTMLElement>("[data-scrubber]");
+  const currentView = document.querySelector<HTMLElement>("[data-rev-current]");
+
+  if (root && currentView) {
+    const dots = [...root.querySelectorAll<HTMLAnchorElement>("a[data-anchor]")];
+    const banner = root.querySelector<HTMLElement>("[data-banner]");
+    const bannerDate = root.querySelector<HTMLElement>("[data-banner-date]");
+    const bannerPos = root.querySelector<HTMLElement>("[data-banner-pos]");
+    const bodies = new Map(
+      [...document.querySelectorAll<HTMLElement>("[data-rev-body]")].map((el) => [
+        el.dataset.revBody!,
+        el,
+      ]),
+    );
+
+    let active = dots.length - 1;
+
+    // Cross-fade the swap where the browser supports view transitions and the
+    // user hasn't asked for reduced motion; otherwise swap instantly.
+    const swap = (update: () => void) => {
+      if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.startViewTransition(update);
+      } else {
+        update();
+      }
+    };
+
+    const show = (idx: number, updateHash = true) => {
+      const dot = dots[idx];
+      if (!dot) return;
+      active = idx;
+      const isCurrent = dot.dataset.current !== undefined;
+      swap(() => {
+        for (const el of bodies.values()) el.hidden = true;
+        if (!isCurrent) {
+          const body = bodies.get(dot.dataset.anchor!);
+          if (body) body.hidden = false;
+        }
+        currentView.hidden = !isCurrent;
+        if (banner) banner.hidden = isCurrent;
+        if (!isCurrent && bannerDate && bannerPos) {
+          bannerDate.textContent = dot.dataset.dateLabel ?? "";
+          bannerPos.textContent = String(idx + 1);
+        }
+      });
+      for (const [i, d] of dots.entries()) {
+        d.setAttribute("aria-current", i === idx ? "true" : "false");
+      }
+      if (updateHash) {
+        history.replaceState(
+          null,
+          "",
+          isCurrent
+            ? location.pathname + location.search
+            : `#${dot.dataset.anchor}`,
+        );
+      }
+    };
+
+    root.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      const dot = target.closest<HTMLAnchorElement>("a[data-anchor]");
+      if (dot) {
+        e.preventDefault();
+        show(dots.indexOf(dot));
+        return;
+      }
+      const nav = target.closest<HTMLButtonElement>("button[data-nav]");
+      if (!nav) return;
+      if (nav.dataset.nav === "prev") show(Math.max(0, active - 1));
+      else if (nav.dataset.nav === "next") show(Math.min(dots.length - 1, active + 1));
+      else show(dots.length - 1);
+    });
+
+    // Arrow keys walk the dots chronologically when one is focused.
+    root.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const i = dots.indexOf(document.activeElement as HTMLAnchorElement);
+      if (i === -1) return;
+      const j = Math.min(dots.length - 1, Math.max(0, i + (e.key === "ArrowRight" ? 1 : -1)));
+      dots[j].focus();
+      e.preventDefault();
+    });
+
+    // Deep link: #rev-<sha> shows that revision. The fragment also matches the
+    // revision-history entry (the no-JS target), so after the browser's own
+    // anchor scroll (which lands there just before `load`), come back up to
+    // the statement.
+    const dotForHash = () =>
+      location.hash ? dots.findIndex((d) => d.dataset.anchor === location.hash.slice(1)) : -1;
+
+    const scrollToStatement = () => {
+      requestAnimationFrame(() => document.getElementById("statement")?.scrollIntoView());
+    };
+
+    const linked = dotForHash();
+    if (linked !== -1 && !dots[linked].dataset.current) {
+      show(linked, false);
+      if (document.readyState === "complete") scrollToStatement();
+      else window.addEventListener("load", scrollToStatement, { once: true });
+    }
+
+    // Same-document hash navigation (e.g. a pasted #rev-… URL on an already
+    // loaded page) should time-travel too, not just scroll.
+    window.addEventListener("hashchange", () => {
+      const i = dotForHash();
+      if (i !== -1) show(i, false);
+    });
+  }
+</script>
+
+<style>
+  .scrubber {
+    margin-block-start: var(--space-2);
+  }
+
+  .scrubber__track {
+    position: relative;
+    height: 2.25rem;
+  }
+
+  .scrubber__rail,
+  .scrubber__tracked {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+
+  /* Full axis in faint border; the region since the agency was first tracked
+     overlays it in stronger ink. */
+  .scrubber__rail {
+    left: 0;
+    right: 0;
+    background: var(--border);
+  }
+
+  .scrubber__tracked {
+    right: 0;
+    background: var(--border-strong);
+  }
+
+  .scrubber__dot {
+    position: absolute;
+    top: 50%;
+    translate: -50% -50%;
+    /* generous invisible hit area around a small visible dot */
+    width: 1.5rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+  }
+
+  .scrubber__dot::before {
+    content: "";
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--node-ink);
+    border: 2px solid var(--node-ink);
+    transition:
+      scale var(--dur-fast) var(--ease-out-quart),
+      background var(--dur-fast) var(--ease-out-quart);
+  }
+
+  /* first-tracked reads as a ring: the statement existed, we started watching */
+  .scrubber__dot[data-kind="tracked-since"]::before,
+  .scrubber__dot[data-kind="added"]::before {
+    background: var(--bg);
+  }
+
+  .scrubber__dot[data-noise]::before {
+    opacity: 0.35;
+    scale: 0.75;
+  }
+
+  .scrubber__dot[data-current]::before {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+    scale: 1.15;
+  }
+
+  .scrubber__dot[aria-current="true"]::before {
+    box-shadow: 0 0 0 3px var(--accent-wash), 0 0 0 4px var(--accent-strong);
+  }
+
+  .scrubber__dot:hover,
+  .scrubber__dot:focus-visible {
+    z-index: 2;
+  }
+
+  .scrubber__dot:hover::before,
+  .scrubber__dot:focus-visible::before {
+    scale: 1.3;
+  }
+
+  .scrubber__tip {
+    position: absolute;
+    bottom: calc(100% - 0.1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: var(--text-xs);
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.5rem;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-fast) var(--ease-out-quart);
+  }
+
+  /* clamp tooltips at the track ends so they don't overflow the page */
+  .scrubber__dot[data-edge="start"] .scrubber__tip {
+    left: 0;
+    transform: none;
+  }
+
+  .scrubber__dot[data-edge="end"] .scrubber__tip {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  .scrubber__dot:hover .scrubber__tip,
+  .scrubber__dot:focus-visible .scrubber__tip {
+    opacity: 1;
+  }
+
+  .scrubber__axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-xs);
+    margin-block-start: var(--space-1);
+  }
+
+  /* the display: flex below would otherwise defeat the hidden attribute */
+  .scrubber__banner[hidden] {
+    display: none;
+  }
+
+  .scrubber__banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    margin-block: var(--space-4) 0;
+    padding: var(--space-2) var(--space-3);
+    background: var(--accent-wash);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--border));
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+  }
+
+  .scrubber__banner-nav {
+    display: inline-flex;
+    gap: var(--space-3);
+  }
+
+  .scrubber__banner-nav button {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+  }
+</style>

@@ -5,10 +5,13 @@ import StatementBody from "@/components/StatementBody.astro";
 import OriginalityBadge from "@/components/OriginalityBadge.astro";
 import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
+import RevisionScrubber from "@/components/RevisionScrubber.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { getAllStatements } from "@/lib/statements";
-import { propagation, getAgencyNames } from "@/lib/load";
+import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
+import { revisionBodyToHtml } from "@/lib/revision-html";
+import { buildScrubberDots, revAnchor, timePercent } from "@/lib/scrubber";
 import type { StatementDoc } from "@/types/exporter";
 
 export async function getStaticPaths() {
@@ -40,6 +43,20 @@ for (const cluster of propagation.clusters) {
   if (others.length) sharedBy[cluster.normKey] = others;
 }
 
+// Scrubber axis: corpus start → build date, shared by every statement page so
+// agencies are visually comparable; the pre-tracking region renders faint.
+const axisStart = meta.corpusStart ?? firstSeen ?? meta.builtAt;
+const axisEnd = meta.builtAt;
+const dots = buildScrubberDots(doc.timeline, axisStart, axisEnd);
+const firstSeenPct = firstSeen ? timePercent(firstSeen, axisStart, axisEnd) : 0;
+
+// Historical revisions, pre-rendered at build time for the scrubber's
+// time-travel (the newest revision is the current statement above).
+const historical = doc.timeline.slice(0, -1).map((rev) => ({
+  anchor: revAnchor(rev.sha),
+  html: revisionBodyToHtml(rev.body),
+}));
+
 const legend = [
   { heat: 1, label: "a few" },
   { heat: 2, label: "several" },
@@ -62,11 +79,13 @@ const legend = [
         {" · "}{doc.timeline.length} revisions ({changes} changes)
         {lastUpdated && <> · last change {formatDate(lastUpdated)}</>}
       </p>
+      <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
     </header>
 
     <div class="stmt__grid">
-      <article class="stmt__main">
-        <div class="heat-legend">
+      <article class="stmt__main" id="statement">
+        <div data-rev-current>
+          <div class="heat-legend">
           <div class="heat-legend__items" aria-hidden="true">
             <span>Reused by agencies:</span>
             {
@@ -82,7 +101,18 @@ const legend = [
           </div>
           <ReadingLink anchor="reuse" />
         </div>
-        <StatementBody passages={doc.passages} sharedBy={sharedBy} />
+          <StatementBody passages={doc.passages} sharedBy={sharedBy} />
+        </div>
+        {
+          historical.map((rev) => (
+            <section
+              class="prose rev-body"
+              data-rev-body={rev.anchor}
+              hidden
+              set:html={rev.html}
+            />
+          ))
+        }
         <p class="muted stmt__attribution">
           Statement text &copy; {doc.agency}, reproduced for transparency tracking
           (most agency content is CC BY 4.0 &mdash; check the original for specifics).

@@ -22,7 +22,7 @@ export function escapeHtml(text: string): string {
 
 // Allow only links a public document would legitimately use; anything else
 // (notably javascript:) renders as plain bracketed text rather than a link.
-function isSafeUrl(url: string): boolean {
+export function isSafeUrl(url: string): boolean {
   if (/^(https?:|mailto:)/i.test(url)) return true;
   // Relative, root-relative or fragment links are fine; a bare "scheme:" is not.
   return /^[/#.]/.test(url) || !/^[a-z][a-z0-9+.-]*:/i.test(url);
