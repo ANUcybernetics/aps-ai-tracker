@@ -28,6 +28,7 @@
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
     "diff-match-patch": "^1.0.5",
+    "marked": "^18.0.5",
     "svelte": "^5.56.4"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 ---
 import DiffView from "@/components/DiffView.astro";
 import { KIND_LABEL, formatDate, signedDelta } from "@/lib/format";
+import { revAnchor } from "@/lib/scrubber";
 import type { TimelineRevision } from "@/types/exporter";
 
 interface Props {
@@ -31,7 +32,7 @@ const noiseCount = timeline.filter((t) => t.isNoise).length;
   <ol class="revs">
   {
     revs.map(({ rev, prev }) => (
-      <li class="rev" data-noise={rev.isNoise ? "" : undefined}>
+      <li class="rev" id={revAnchor(rev.sha)} data-noise={rev.isNoise ? "" : undefined}>
         <div class="rev__head">
           <time class="mono muted" datetime={rev.date}>
             {formatDate(rev.date)}
