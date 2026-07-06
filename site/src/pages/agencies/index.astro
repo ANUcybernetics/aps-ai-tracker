@@ -22,9 +22,15 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
     <header class="stack">
       <h1>Agencies</h1>
       <p class="lede">
-        All {agencies.length} agencies on the APSC list. Most are required to publish
-        an AI transparency statement; intelligence, defence and corporate entities
-        sit outside the mandate.
+        All {agencies.length} agencies on the APSC list. The Policy for the responsible
+        use of AI in government <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy#need-to-know"
+          >applies to non-corporate Commonwealth entities</a
+        >, which must publish an <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
+          >AI transparency statement</a
+        >; the intelligence and defence portfolios and corporate entities sit outside
+        that mandate.
       </p>
     </header>
 
@@ -90,6 +96,15 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
         <h2>Exempt or out of scope</h2>
         <span class="muted">{exempt.length}</span>
       </div>
+      <p class="section-note">
+        These agencies fall outside the Policy&rsquo;s mandatory scope &mdash; the
+        intelligence and defence portfolios, and corporate Commonwealth entities. Some
+        publish a statement voluntarily anyway; where they do, they appear under
+        Published above and among the DTA&rsquo;s <a
+          href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements"
+          >voluntary statements</a
+        >.
+      </p>
       <ul class="agency-list">
         {
           exempt.map((a) => (
@@ -130,6 +145,13 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
   .agencies .num {
     text-align: end;
     font-variant-numeric: tabular-nums;
+  }
+
+  .section-note {
+    color: var(--muted);
+    max-width: 44rem;
+    margin-block: calc(-1 * var(--space-2)) var(--space-4);
+    font-size: 0.92rem;
   }
 
   .agency-list {
