@@ -12,11 +12,10 @@ Print
 
 18 June 2026
 
-**On this page**
+**On this page:**
 
-The **strategic position** sets our overall direction for AI adoption.
-
-The **AI transparency statement** explains how AI is used.
+- The **strategic position** sets our overall direction for AI adoption.
+- The **AI transparency statement** explains how AI is used.
 
 # Strategic position on AI adoption
 
