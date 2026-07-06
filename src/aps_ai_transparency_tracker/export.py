@@ -36,16 +36,6 @@ from .scraper import (
     split_frontmatter_body,
 )
 
-# Empty-url agencies that are non-corporate Commonwealth entities within the AI
-# Policy's mandate but simply have not published yet (highest likelihood of a
-# future statement). Every other empty-url agency is treated as exempt /
-# out-of-scope: the intelligence & defence portfolio, or corporate Commonwealth
-# entities (which the Policy encourages but does not require to publish). AIATSIS
-# and APVMA are both corporate Commonwealth entities (per the PGPA Act / Finance
-# flipchart), so they are exempt, not not-yet. See the empty-url-agencies-triage
-# note for the full reasoning.
-NOT_YET_ABBRS: frozenset[str] = frozenset()
-
 STATEMENTS_DIR = REPO_ROOT / "statements"
 GENERATED_DIR = REPO_ROOT / "site" / "src" / "generated"
 
@@ -82,12 +72,18 @@ def write_json(path: Path, obj: object) -> None:
 # --- loading ----------------------------------------------------------------
 
 
-def statement_status(abbr: str, url: str | None, has_statement: bool) -> str:
-    """Classify an agency as published / not-yet / exempt."""
+def statement_status(url: str | None, has_statement: bool) -> str:
+    """Classify an agency as published / not-yet / exempt.
+
+    An empty `url` in agencies.toml (parsed to None) marks an agency with no
+    known statement URL: either exempt (intelligence & defence portfolio) or a
+    corporate Commonwealth entity, which the Policy for the responsible use of AI
+    in government encourages but does not require to publish. Those read as
+    exempt. An agency with a URL but no current statement file is expected to
+    publish (or has a transient scrape gap), so it reads as not-yet.
+    """
     if has_statement:
         return "published"
-    if abbr in NOT_YET_ABBRS:
-        return "not-yet"
     if url is None:
         return "exempt"
     return "not-yet"
@@ -788,7 +784,7 @@ def build_agency_index(
                 "name": agency.name,
                 "size": agency.size,
                 "url": agency.url,
-                "status": statement_status(abbr, agency.url, has_statement),
+                "status": statement_status(agency.url, has_statement),
                 "statementId": abbr if has_statement else None,
                 "firstSeen": revs[0].date if revs else None,
                 "lastUpdated": revs[-1].date if revs else None,

@@ -126,16 +126,15 @@ def test_originality_canonical_phrase_counts_as_shared():
 
 
 @pytest.mark.parametrize(
-    ("abbr", "url", "has", "expected"),
+    ("url", "has", "expected"),
     [
-        ("ABS", "http://x", True, "published"),
-        ("AIATSIS", None, False, "exempt"),
-        ("ACIC", None, False, "exempt"),
-        ("FOO", "http://x", False, "not-yet"),
+        ("http://x", True, "published"),
+        (None, False, "exempt"),
+        ("http://x", False, "not-yet"),
     ],
 )
-def test_statement_status(abbr, url, has, expected):
-    assert statement_status(abbr, url, has) == expected
+def test_statement_status(url, has, expected):
+    assert statement_status(url, has) == expected
 
 
 def test_source_type_detects_pdf():
