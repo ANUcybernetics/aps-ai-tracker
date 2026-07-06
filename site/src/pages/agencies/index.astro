@@ -67,21 +67,23 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
       </table>
     </section>
 
-    <section>
-      <div class="section-title">
-        <h2>Not yet published</h2>
-        <span class="muted">{notYet.length}</span>
-      </div>
-      <ul class="agency-list">
-        {
-          notYet.map((a) => (
-            <li>
-              {a.name} <span class="muted mono">{a.abbr}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    {
+      notYet.length > 0 && (
+        <section>
+          <div class="section-title">
+            <h2>Not yet published</h2>
+            <span class="muted">{notYet.length}</span>
+          </div>
+          <ul class="agency-list">
+            {notYet.map((a) => (
+              <li>
+                {a.name} <span class="muted mono">{a.abbr}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <section>
       <div class="section-title">

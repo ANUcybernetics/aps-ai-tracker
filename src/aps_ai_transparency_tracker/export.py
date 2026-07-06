@@ -36,12 +36,15 @@ from .scraper import (
     split_frontmatter_body,
 )
 
-# Agencies with an empty `url` in agencies.toml that are within the AI Policy's
-# mandate but simply have not published yet (highest likelihood of a future
-# statement). Every other empty-url agency is treated as exempt / out-of-scope
-# (intelligence & defence portfolio, or corporate Commonwealth entities). See the
-# empty-url-agencies-triage note for the full reasoning.
-NOT_YET_ABBRS = frozenset({"AIATSIS", "APVMA"})
+# Empty-url agencies that are non-corporate Commonwealth entities within the AI
+# Policy's mandate but simply have not published yet (highest likelihood of a
+# future statement). Every other empty-url agency is treated as exempt /
+# out-of-scope: the intelligence & defence portfolio, or corporate Commonwealth
+# entities (which the Policy encourages but does not require to publish). AIATSIS
+# and APVMA are both corporate Commonwealth entities (per the PGPA Act / Finance
+# flipchart), so they are exempt, not not-yet. See the empty-url-agencies-triage
+# note for the full reasoning.
+NOT_YET_ABBRS: frozenset[str] = frozenset()
 
 STATEMENTS_DIR = REPO_ROOT / "statements"
 GENERATED_DIR = REPO_ROOT / "site" / "src" / "generated"
