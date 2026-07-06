@@ -2,7 +2,10 @@
   import type { PassageCluster } from "@/types/exporter";
   import { statementPath, dataUrl, withBase } from "@/lib/paths";
   import { formatDate } from "@/lib/format";
-  import { passageToHtml } from "@/lib/markdown";
+
+  // What the passages.json endpoint serves: the cluster plus its passage text
+  // pre-rendered to safe HTML at build time (see src/pages/data/passages.json.ts).
+  type BrowserCluster = PassageCluster & { html: string };
 
   // Full agency names keyed by abbreviation, so the member pills and the
   // first-observed link can name the acronym on hover.
@@ -16,7 +19,7 @@
     return "";
   }
 
-  let clusters = $state<PassageCluster[]>([]);
+  let clusters = $state<BrowserCluster[]>([]);
   let status = $state<"loading" | "empty" | "ready" | "error">("loading");
   let query = $state("");
   let onlyDta = $state(false);
@@ -27,7 +30,7 @@
       try {
         const res = await fetch(dataUrl("passages.json"));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data: { clusters: PassageCluster[] } = await res.json();
+        const data: { clusters: BrowserCluster[] } = await res.json();
         clusters = data.clusters ?? [];
         status = clusters.length ? "ready" : "empty";
       } catch {
@@ -81,8 +84,8 @@
             {#if c.alsoInDta}<span class="pill pill--pdf">in DTA template</span>{/if}
             <span class="muted">{c.kind}</span>
           </div>
-          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked in passageToHtml -->
-          <p class="pb__text">{@html passageToHtml(c.canonicalText)}</p>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint) -->
+          <p class="pb__text">{@html c.html}</p>
           {#if c.firstObserved}
             <p class="pb__first">
               {#if c.firstObserved.abbr}

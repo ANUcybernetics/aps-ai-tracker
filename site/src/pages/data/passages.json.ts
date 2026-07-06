@@ -1,11 +1,16 @@
 import type { APIRoute } from "astro";
 import { propagation } from "@/lib/load";
+import { passageToHtml } from "@/lib/markdown";
 
 // The propagation page's passage browser needs every cluster (so its search
 // covers them all), but that's ~55 KB — too much to inline into the page HTML.
 // Emit it as a static JSON file the island fetches on demand instead, mirroring
-// how the similarity graph loads its data.
+// how the similarity graph loads its data. Passage text is rendered to HTML
+// here at build time, so the island ships no markdown pipeline of its own.
 export const GET: APIRoute = () =>
-  new Response(JSON.stringify({ clusters: propagation.clusters }), {
-    headers: { "content-type": "application/json" },
-  });
+  new Response(
+    JSON.stringify({
+      clusters: propagation.clusters.map((c) => ({ ...c, html: passageToHtml(c.canonicalText) })),
+    }),
+    { headers: { "content-type": "application/json" } },
+  );
