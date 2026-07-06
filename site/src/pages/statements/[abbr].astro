@@ -10,7 +10,7 @@ import ReadingLink from "@/components/ReadingLink.astro";
 import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
-import { revisionBodyToHtml } from "@/lib/revision-html";
+import { revisionBodyToHtml } from "@/lib/markdown";
 import { buildScrubberDots, revAnchor, timePercent } from "@/lib/scrubber";
 import type { StatementDoc } from "@/types/exporter";
 
@@ -56,6 +56,20 @@ const historical = doc.timeline.slice(0, -1).map((rev) => ({
   anchor: revAnchor(rev.sha),
   html: revisionBodyToHtml(rev.body),
 }));
+
+// The scrubber treats the newest timeline revision as "the current statement"
+// (rendered via StatementBody with passage heat, not a hidden body). The
+// exporter's revert collapsing is whitespace-loose (_body_key in export.py) —
+// a whitespace-only reformat commit is dropped from the timeline — so compare
+// the same way, and fail the build loudly on real drift.
+const collapseWs = (s: string) => s.replace(/\s+/g, " ").trim();
+const newest = doc.timeline.at(-1);
+if (!newest || collapseWs(newest.body) !== collapseWs(doc.body)) {
+  throw new Error(
+    `${doc.abbr}: newest timeline revision does not match the current statement body — ` +
+      "the scrubber's current-revision dot would misrepresent it",
+  );
+}
 
 const legend = [
   { heat: 1, label: "a few" },

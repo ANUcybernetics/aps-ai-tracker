@@ -1,12 +1,12 @@
-// Render the small slice of inline Markdown that survives in scraped passage
-// text — links and basic emphasis — to safe HTML. Shared passages are stored as
-// normalised Markdown, so without this the browser shows raw `[label](url)`
-// syntax, which reads as broken formatting to a newcomer.
+// All Markdown → HTML rendering for the site, as one hardened build-time
+// pipeline (marked never ships to the client: passages arrive pre-rendered,
+// via StatementBody at build or the passages.json endpoint).
 //
-// This is deliberately tiny rather than pulling `marked` into the client bundle:
-// passages only ever contain links, bold, italic and inline code. Everything is
-// HTML-escaped first and link URLs are scheme-checked, so the result is safe to
-// inject with Svelte's {@html}.
+// Scraped markdown is treated as untrusted everywhere: raw HTML is escaped
+// rather than passed through, link URLs are scheme-checked, and images render
+// as an alt-text placeholder (hotlinking an agency's image URL would show
+// today's image in a historical revision, which is misleading).
+import { Marked, type Token } from "marked";
 
 const ESCAPES: Record<string, string> = {
   "&": "&amp;",
@@ -21,44 +21,36 @@ export function escapeHtml(text: string): string {
 }
 
 // Allow only links a public document would legitimately use; anything else
-// (notably javascript:) renders as plain bracketed text rather than a link.
+// (notably javascript:) renders as its label text rather than a link.
 export function isSafeUrl(url: string): boolean {
   if (/^(https?:|mailto:)/i.test(url)) return true;
   // Relative, root-relative or fragment links are fine; a bare "scheme:" is not.
   return /^[/#.]/.test(url) || !/^[a-z][a-z0-9+.-]*:/i.test(url);
 }
 
-// Null byte: can't occur in the source text, so it's a collision-proof sentinel
-// for protecting code spans from later passes.
-const NUL = String.fromCharCode(0);
+const marked = new Marked({ gfm: true });
 
+marked.use({
+  renderer: {
+    html({ text }) {
+      return escapeHtml(text);
+    },
+    image({ text }) {
+      const alt = text.trim();
+      return alt ? `<em class="rev-img">[image: ${escapeHtml(alt)}]</em>` : "";
+    },
+    link({ href, tokens }) {
+      const inner = this.parser.parseInline(tokens);
+      if (!isSafeUrl(href)) return inner;
+      return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${inner}</a>`;
+    },
+  },
+});
+
+// Render the inline slice of Markdown (links, emphasis, code) that survives in
+// a stored passage.
 export function inlineMarkdownToHtml(text: string): string {
-  let html = escapeHtml(text);
-
-  // Pull inline code out into placeholders first, so link/emphasis markers
-  // inside it stay literal and aren't reprocessed; spliced back in at the end.
-  const code: string[] = [];
-  html = html.replace(/`([^`]+)`/g, (_m, inner: string) => {
-    code.push(`<code>${inner}</code>`);
-    return `${NUL}${code.length - 1}${NUL}`;
-  });
-
-  // Links: [label](url). The label may itself carry emphasis, handled below.
-  html = html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (whole, label: string, url: string) =>
-    isSafeUrl(url)
-      ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
-      : whole,
-  );
-
-  // Emphasis. Bold before italic so ** isn't eaten as two single *.
-  html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
-  html = html.replace(/(^|[^\w])_([^_\n]+)_(?=[^\w]|$)/g, "$1<em>$2</em>");
-
-  // Restore the protected code spans.
-  html = html.replace(new RegExp(`${NUL}(\\d+)${NUL}`, "g"), (_m, i: string) => code[Number(i)]!);
-
-  return html;
+  return marked.parseInline(text, { async: false });
 }
 
 // Strip the leading block-level Markdown scaffolding that prefixes a stored
@@ -75,4 +67,22 @@ export function stripBlockMarkers(text: string): string {
 // inline links/emphasis rendered.
 export function passageToHtml(text: string): string {
   return inlineMarkdownToHtml(stripBlockMarkers(text));
+}
+
+// Render a full historical revision body for the statement page's revision
+// time-travel, demoting headings so the shallowest becomes <h2> under the page
+// <h1> (matching StatementBody's normalisation for the current revision).
+export function revisionBodyToHtml(md: string): string {
+  const tokens: Token[] = marked.lexer(md);
+  const depths: number[] = [];
+  for (const t of tokens) {
+    if (t.type === "heading") depths.push(t.depth);
+  }
+  const offset = depths.length ? 2 - Math.min(...depths) : 0;
+  if (offset !== 0) {
+    for (const t of tokens) {
+      if (t.type === "heading") t.depth = Math.min(Math.max(t.depth + offset, 2), 6);
+    }
+  }
+  return marked.parser(tokens);
 }
