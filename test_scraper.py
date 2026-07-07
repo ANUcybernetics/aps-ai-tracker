@@ -9,6 +9,7 @@ Usage:
 """
 
 import asyncio
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -254,6 +255,42 @@ def test_save_statement_creates_valid_file():
 
         # Markdown content should be present
         assert "# Test Content" in content
+
+
+def test_save_statement_cleans_pdf_body_but_hashes_raw():
+    """PDF bodies get the deterministic clean_markdown pass (OFFICIAL markers, nav
+    chrome), while raw_hash stays keyed on the raw text so PDF-change detection is
+    unaffected."""
+    agency = Agency(
+        name="Test Agency", abbr="TEST-PDF", url="https://example.com/s.pdf"
+    )
+    raw = (
+        "Classification: OFFICIAL\n\n"
+        "# AI Statement\n\n"
+        "We use AI responsibly.\n\n"
+        "Back to top\n"
+    )
+    data: StatementResult = {
+        "title": "PDF Statement",
+        "markdown": raw,
+        "status_code": 200,
+        "final_url": "https://example.com/s.pdf",
+        "error": None,
+        "source_type": "pdf",
+    }
+
+    with TemporaryDirectory() as tmpdir:
+        output_dir = Path(tmpdir)
+        assert save_statement(agency, data, output_dir) is True
+        content = (output_dir / "TEST-PDF.md").read_text()
+        metadata = yaml.safe_load(content.split("---\n")[1])
+
+        # Chrome and classification markers are stripped from the written body.
+        assert "OFFICIAL" not in content
+        assert "Back to top" not in content
+        assert "We use AI responsibly." in content
+        # raw_hash keys on the RAW extracted text, not the cleaned body.
+        assert metadata["raw_hash"] == hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def test_save_statement_handles_error_case():
