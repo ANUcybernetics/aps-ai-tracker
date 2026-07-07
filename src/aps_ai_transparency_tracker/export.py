@@ -110,7 +110,7 @@ _BULK_IMPORT_THRESHOLD = 20
 # regressions). Surviving events matching these are flagged so the timeline feed
 # can hide them by default.
 _NOISE_RE = re.compile(
-    r"(?i)spurious|nav-tile|nav-card|related-pages|download-widget|"
+    r"(?i)spurious|nav-tile|nav-card|nav-chrome|related-pages|download-widget|"
     r"cleanup-pipeline|leaked into the diff|go to section"
 )
 
