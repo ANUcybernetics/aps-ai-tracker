@@ -10,6 +10,7 @@ Usage:
 
 import asyncio
 import json
+import re
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -947,6 +948,80 @@ def test_clean_markdown_strips_trailing_widgets():
     assert "AI content here" in result
     assert "Did you find this helpful" not in result
     assert "Facebook Twitter LinkedIn" not in result
+
+
+def test_clean_markdown_strips_on_this_page_toc_labels():
+    """Orphan 'on this page' table-of-contents labels (in any wrapper) are nav,
+    not content, and must be stripped — but prose that merely contains the phrase
+    must survive (MOADOPH regression)."""
+    labels = [
+        "## On this page",
+        "### On this page:",
+        "##### On this page",
+        "**On this page:**",
+        "On this page",
+        "- ## On this page",
+    ]
+    for label in labels:
+        result = clean_markdown(
+            f"# AI use\n\n{label}\n\n## How we use AI\n\nWe use AI."
+        )
+        assert "On this page" not in result, f"label not stripped: {label!r}"
+        assert "How we use AI" in result
+
+    prose = "The content on this page aligns with the DTA policy on AI use."
+    assert clean_markdown(prose) == prose
+
+
+def test_clean_markdown_strips_on_this_page_with_jump_list():
+    """When the 'on this page' jump-link list survives html2text, the whole
+    table of contents (label + list) is stripped, not just the label — otherwise
+    mdformat mangles the orphan list (AUSTRAC regression)."""
+    text = (
+        "# Our AI statement\n\n"
+        "## On this page\n\n"
+        "- Introduction\n"
+        "- How we use AI\n"
+        "- Contact information\n\n"
+        "## Introduction\n\n"
+        "We use AI to detect financial crime.\n"
+    )
+    result = clean_markdown(text)
+    assert "On this page" not in result
+    assert "- Introduction" not in result
+    assert "- How we use AI" not in result
+    assert "## Introduction" in result
+    assert "We use AI to detect financial crime." in result
+
+
+def test_clean_markdown_strips_back_to_top_and_skip_links():
+    """'Back to top' (repeated per section) and 'skip to' links are navigation."""
+    nav_lines = [
+        "Back to top",
+        "BACK TO TOP",
+        "Go back to top",
+        "Back to top of the page",
+        "[Back to top](https://example.gov.au/statement)",
+        "Skip to content or footer",
+        "Skip to the content",
+        "Skip to page navigation",
+    ]
+    for line in nav_lines:
+        result = clean_markdown(f"AI content before.\n\n{line}\n\nAI content after.")
+        assert "AI content before" in result
+        assert "AI content after" in result
+        assert "top" not in result.lower() and "skip to" not in result.lower(), (
+            f"nav line not stripped: {line!r}"
+        )
+
+
+def test_clean_markdown_strips_empty_headings():
+    """A heading emptied of its text (icon/link stripped upstream) is noise."""
+    text = "# AI use\n\n### \n\nWe use AI responsibly.\n\n## \n\nMore detail."
+    result = clean_markdown(text)
+    assert "We use AI responsibly" in result
+    assert "More detail" in result
+    assert not re.search(r"(?m)^#{1,6}\s*$", result), "empty heading survived"
 
 
 def test_clean_markdown_preserves_clean_content():
