@@ -221,9 +221,37 @@ _ALSO_INTERESTED_RE = re.compile(
     r"(?ims)^#{1,6}\s*you may also be interested in.*?(?=^#{1,6}\s|\Z)"
 )
 
+# In-page navigation chrome that survives html2text as loose lines. None of it is
+# statement content, and it either churns the diff or just clutters it. The
+# leading `[ \t>*#-]*` (and optional `[`) lets each pattern reach the label
+# through whatever heading/bullet/bold/quote markers html2text wrapped it in,
+# while the `$` anchor keeps it from ever matching prose that merely contains the
+# phrase (e.g. "The content on this page aligns with…").
+#
+# "On this page" table-of-contents label, plus the jump-link list it introduces
+# when that list survives html2text (it is always a same-page anchor menu, never
+# statement content). Where the list was already stripped upstream, only the
+# orphan label remains and is removed on its own.
+_ON_THIS_PAGE_RE = re.compile(
+    r"(?mi)^[ \t>*#-]*on this page\**:?\**[ \t]*$\n"  # the label line
+    r"(?:[ \t]*\n)*"  # blank lines
+    r"(?:[ \t]*[*+-][ \t]+.*(?:\n|$))*"  # the jump-link list, if present
+)
+# "Back to top" / "Skip to content" affordances (the former repeated per section).
+_BACK_TO_TOP_RE = re.compile(
+    r"(?mi)^[ \t>*#-]*\[?[ \t]*(?:go )?back to top(?: of (?:the )?page)?"
+    r"[ \t]*(?:\][ \t]*\([^)]*\))?[ \t]*$\n?"
+)
+_SKIP_LINK_RE = re.compile(
+    r"(?mi)^[ \t>*#-]*\[?[ \t]*skip to [a-z][a-z ]*?"
+    r"[ \t]*(?:\][ \t]*\([^)]*\))?[ \t]*$\n?"
+)
+# Headings emptied of their text (an icon or bare link stripped upstream).
+_EMPTY_HEADING_RE = re.compile(r"(?m)^[ \t]*#{1,6}[ \t]*$\n?")
+
 
 def clean_markdown(text: str) -> str:
-    """Strip date stamps, classification markers, and trailing boilerplate."""
+    """Strip date stamps, classification markers, and navigation boilerplate."""
     # Trim inline stamps that share a line with prose (trailing, then leading),
     # keeping the prose, then clear any line that is wholly a date stamp.
     text = _INLINE_DATE_TAIL_RE.sub("", text)
@@ -232,6 +260,10 @@ def clean_markdown(text: str) -> str:
     text = _TRAILING_BOILERPLATE_RE.sub("", text)
     text = _OFFICIAL_MARKER_RE.sub("", text)
     text = _ALSO_INTERESTED_RE.sub("", text)
+    text = _ON_THIS_PAGE_RE.sub("", text)
+    text = _BACK_TO_TOP_RE.sub("", text)
+    text = _SKIP_LINK_RE.sub("", text)
+    text = _EMPTY_HEADING_RE.sub("", text)
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
