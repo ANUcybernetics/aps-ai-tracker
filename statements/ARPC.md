@@ -5,8 +5,6 @@ source_url: https://arpc.gov.au/about/corporate-governance/ai-transparency-state
 title: Artificial Intelligence (AI) Transparency Statement - ARPC
 ---
 
-Skip to the content
-
 # About ARPC
 
 [Home](https://arpc.gov.au) [About us](https://arpc.gov.au/about/) [Our governance](https://arpc.gov.au/about/corporate-governance/) Artificial Intelligence (AI) Transparency Statement

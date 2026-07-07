@@ -15,8 +15,6 @@ We are using AI in a way that prioritises human rights, the protection of person
 
 Our intent is to leverage AI to drive innovation, enhance productivity and elevate service delivery to support the broader goal of enabling people to have safe, secure, and well-paid work with the skills for a sustainable future.
 
-## On this page:
-
 DEWR use of AI is transparent, responsible, and aligned with legislative and regulatory requirements, including the [Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/policy/ai/policy), [APS AI Plan](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025) and the [Voluntary AI Safety Standard](https://www.industry.gov.au/publications/voluntary-ai-safety-standard).
 
 As defined in the Policy for Responsible Use of AI in Government, an AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.

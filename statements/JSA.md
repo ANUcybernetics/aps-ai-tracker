@@ -7,8 +7,6 @@ title: Artificial Intelligence Transparency Statement | Jobs and Skills Australi
 
 # Artificial Intelligence Transparency Statement
 
-##### On this page
-
 ## Introduction
 
 Jobs and Skills Australia (JSA) recognises the transformative potential of artificial intelligence (AI) and is committed to adopting AI in a way that remains responsible, ethical, and aligned with public trust and expectations.

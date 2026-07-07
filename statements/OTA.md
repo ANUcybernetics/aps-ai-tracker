@@ -22,5 +22,3 @@ The Chief Operating Officer is designated as the accountable official.
 This AI transparency statement was first published to our website in February 2025. This statement will be reviewed annually, or when we make any significant change to our approach to AI as outlined above.
 
 If you have questions about this statement, please [contact us](https://www.donatelife.gov.au/contact-us).
-
-Back to top

@@ -16,8 +16,6 @@ The ARC is a non-corporate Commonwealth entity, as defined by the [_Public Gover
 
 The ARC is committed to capturing the opportunity of Artificial Intelligence (AI) across the organisation, while ensuring that the use of AI is appropriate, responsible and ethical. The ARC complies with the [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/policy/ai/policy), and other relevant guidance regarding government standards of AI use. The ARC has a separate policy to outline its expectations for the use of AI by grant applicants and ARC assessors.
 
-## 
-
 Use of generative artificial intelligence in ARC grant programs
 
 - applies to all ARC grant programs

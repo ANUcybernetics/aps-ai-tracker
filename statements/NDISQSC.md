@@ -6,8 +6,6 @@ title: Artificial intelligence (AI) transparency statement - February 2026 | NDI
   Quality and Safeguards Commission
 ---
 
-On this page:
-
 The NDIS Quality and Safeguards Commission’s commitment to the safe and responsible use of Artificial Intelligence (AI) supports our vision to uphold the rights of people with disability and ensure safe, high-quality services across Australia, now and into the future.
 
 The NDIS Commission applies the Organisation for Economic Co-operation and Development (OECD) definition of AI in line with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) by the Digital Transformation Agency (DTA) to ensure our AI use is safe, ethical, and transparent.

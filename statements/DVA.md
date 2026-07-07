@@ -12,8 +12,6 @@ Last updated
 
 2 April 2026
 
-## On this page
-
 1. Our Approach to AI
 1. Robust AI Governance
 1. Consultation with the Veteran Community
@@ -24,15 +22,11 @@ Last updated
 
 This statement sets out the Department of Veterans’ Affairs (DVA) approach to the safe, responsible and ethical adoption of artificial intelligence (AI) technology in accordance with the Digital Transformation Agency’s (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
-Back to top
-
 ## Our Approach to AI
 
 DVA is modernising its technology systems to ensure veterans and their families receive timely, accessible and high‑quality services. This includes exploring opportunities to improve and streamline services through the safe and transparent adoption of AI technologies.
 
 We recognise that AI is a rapidly evolving technology with the potential to enhance operations and service delivery. We will engage with AI carefully, transparently, and in ways that build trust across the veteran community and our workforce.
-
-Back to top
 
 ## Robust AI Governance
 
@@ -47,8 +41,6 @@ Under the DTA [Policy for the Responsible use of AI in Government](https://www.d
 - maintains stakeholder trust, particularly within the veteran community
 
 DVA has established an AI Advisory Board, comprising government representatives, technical experts and a representative from veterans’ organisations, to support consultation, safety and oversight of AI initiatives and this transparency statement.
-
-Back to top
 
 ## Consultation with the Veteran Community
 
@@ -68,8 +60,6 @@ DVA is committed to transparent engagement with the veteran community about how 
   - Younger Veterans - Contemporary Needs Forum (YVF).
 
 This engagement ensures that AI initiatives reflect community expectations and contribute to improved outcomes and services for veterans and their families.
-
-Back to top
 
 ## Adoption of AI in DVA
 
@@ -95,8 +85,6 @@ DVA has commenced a trial of a voluntary, consent based, Proof of Concept Claims
 
 For more information about the usage of AI in government and the domains in which they apply, please see [Artificial intelligence in government](http://digital.gov.au/ai/resources/use-classification).
 
-Back to top
-
 ## Simpler forms of basic computer validation and task automation
 
 DVA computer systems also support employees and decision-makers with basic validation and task management, which can include some basic automation. These types of activities are governed by other arrangements and are outside the scope of the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
@@ -105,20 +93,14 @@ DVA **does** make use of basic computer-assisted task management to support the 
 
 DVA **does not** and **will not** use AI to make decisions without appropriate human oversight - ‘human in the loop’ is a guiding principle.
 
-Back to top
-
 ## Compliance
 
 As part of our adoption of AI technology, DVA ensures compliance with relevant legislation, including the _Archives Act_ 1983 (Cth), _Freedom of Information Act_ 1982 (Cth), and the _Privacy Act_ 1988 (Cth), DVA’s Privacy Policy, and compliance with relevant Veterans’ Affairs law.
 
 For more information about the laws relevant to support for veterans and their families, please visit [the DVA website](https://www.dva.gov.au/financial-support/compensation-claims/laws-cover-claims). For additional detail about all legislation administered by the department, please visit the [Federal Register of Legislation](https://www.legislation.gov.au/).
 
-Back to top
-
 ## Review and Contact
 
 DVA meets mandatory requirements of the Policy for the responsible use of AI in government and has designated an AI Accountable Official (October 2024). DVA has appointed a Chief AI Officer.
 
 For enquiries about the DVA AI Transparency Statement or about our adoption and usage of AI, please contact us at [AI@dva.gov.au](mailto:AI@dva.gov.au).
-
-Back to top

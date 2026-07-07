@@ -74,8 +74,6 @@ External services | $1,300,575\
 Internal services | $1,551,921\
 **Total** | **$2,852,496**
 
-## 
-
 ## Ministerial Statement of Expectations and Regulator Statement of Intent
 
 This Ministerial Statement of Expectations has been issued to IP Australia by our responsible Minister, Senator the Hon Tim Ayres, to provide greater clarity about the relevant government policies, objectives and priorities the Minister expects us to reflect in our work.
@@ -103,8 +101,6 @@ IP Australia welcomes a diverse workforce and is committed to inclusive practice
 Download
 
 [ WGEA Employer Statement PDF | 267KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/Employer-Statement-WGEA.pdf?rev=832ed8cd1df74be695d4125790a3493b)
-
-## 
 
 Other governance frameworks
 

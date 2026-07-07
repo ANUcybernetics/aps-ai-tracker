@@ -12,8 +12,6 @@ title: Artificial Intelligence (AI) Transparency Statement - Department of Educa
 
 Learn how the Department of Education uses artificial intelligence safely and responsibly to improve services, inform policy, and support quality education.
 
-## On this page:
-
 The Department of Education recognises the opportunities artificial intelligence (AI) presents to transform the way we work and how we deliver our services. We are committed to using AI safely, responsibly and transparently to support our mission to ensure all Australians can access quality education.
 
 Our use of AI is considered and purposeful. We are maturing our understanding and use through trialling and experimentation to better inform our policy development, unlock internal efficiencies and uplift our capabilities.

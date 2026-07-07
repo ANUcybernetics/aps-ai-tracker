@@ -11,13 +11,6 @@ title: Automation and Artificial Intelligence Transparency Statement - About us 
 
 Our transparency statement explains our current approach to using automation and Artificial Intelligence (AI).
 
-## on this page
-
-- How we use automation and AI safely and responsibly
-- What we use automation and AI for
-- Our accountable official
-- Who to contact
-
 We’ll review it at least once a year and update it if we make any major changes to how we use AI, or if anything new needs to be included.
 
 We’re committed to ensuring that our use of automation and AI is human-centric, safe, responsible, transparent, fair, ethical and legal. We comply with relevant legislation and regulations.

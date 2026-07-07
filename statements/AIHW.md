@@ -59,6 +59,4 @@ This AI transparency statement is reviewed annually or when significant changes 
 For questions or feedback regarding AIHW’s AI transparency statement, please contact:\
 AI Accountable Official – [email protected]
 
-Go back to top
-
 Feedback

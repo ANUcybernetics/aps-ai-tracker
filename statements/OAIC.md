@@ -102,8 +102,6 @@ title: OAIC AI transparency statement | OAIC
   - [ Privacy management plan ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/privacy-management-plan)
   - [ Communicating with the OAIC for members of the public ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/policy-on-communicating-with-the-oaic-for-members-of-the-public)
 
-- ## On this page
-
 # Our AI transparency statement
 
 \_\_ Published: 20 February 2025

@@ -94,5 +94,3 @@ GitHub| We use GitHub Copilot for software development.| February 2026
 The Chief Information Officer is our AI Accountable Official for the NBA.
 
 For questions or concerns about this statement or the NBA’s use of AI, you can email [ai@blood.gov.au](mailto:ai@blood.gov.au) or see the details on the contact us page of the NBA website.
-
-Back to top

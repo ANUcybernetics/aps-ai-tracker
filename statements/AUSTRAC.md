@@ -6,16 +6,6 @@ source_url: https://www.austrac.gov.au/about-us/corporate-information-and-govern
 title: Our AI transparency statement | AUSTRAC
 ---
 
-## On this page
-
-- Introduction
-- How we use AI
-- Usage patterns and domains
-- Data privacy and security
-- AI safety and governance
-- Compliance with AI in Government Policy
-- Contact information
-
 ## Introduction
 
 AUSTRAC performs a dual role as Australia’s anti-money laundering and counter-terrorism financing (AML/CTF) regulator and financial intelligence unit. This dual role helps to build resilience in the financial system and enables AUSTRAC to use financial intelligence and regulation to disrupt money laundering, terrorism financing and other serious crime.

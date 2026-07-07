@@ -5,10 +5,6 @@ source_url: https://www.art.gov.au/ai-transparency-statement
 title: AI transparency statement | Administrative Review Tribunal
 ---
 
-### On this page
-
-### 
-
 The Administrative Review Tribunal (The Tribunal) is committed to identifying ethical, responsible and meaningful use of Artificial Intelligence (AI) as part of its support functions. We will be transparent as we explore, adopt and integrate AI technology to benefit staff, members, applicants and external stakeholders.
 
 - The Tribunal does not, and has no intention of, utilising AI services for the purposes of undertaking its [review decision-making function](https://www.legislation.gov.au/C2024A00040/latest/text) exercised under the [_Administrative Review Tribunal Act 2024_](https://www.legislation.gov.au/C2024A00040).

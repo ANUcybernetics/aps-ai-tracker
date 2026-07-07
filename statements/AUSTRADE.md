@@ -5,8 +5,6 @@ source_url: https://www.austrade.gov.au/en/site-information/ai-transparency
 title: Artificial intelligence transparency | Austrade
 ---
 
-Skip to content or footer
-
 close
 
 info

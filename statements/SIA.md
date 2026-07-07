@@ -9,8 +9,6 @@ The Digital Transformation Agency sets out the Australian Government approach to
 
 - [_Policy for the responsible use of AI in government [PDF 587 KB]_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf)
 
-**On this page**
-
 ## Artificial Intelligence (AI) Transparency Statement
 
 Transparency is critical to building public trust and supports the Australian Government’s commitment to safe, responsible and ethical adoption of artificial intelligence (AI) technologies.

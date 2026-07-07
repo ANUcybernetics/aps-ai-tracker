@@ -7,8 +7,6 @@ title: Privacy and disclosures | NEMA
 
 # Privacy and disclosures
 
-On this page
-
 # Privacy and disclosures
 
 We are committed to treating complaints seriously. This page provides information on our Agency’s obligations for handling personal information under the _Privacy Act 1988_ , how to raise concerns of wrongdoing under the provisions of the _Public Interest Disclosure Act 2013_ and procurements that are not in the public interest if suspended while a complaint is investigated.
@@ -45,8 +43,6 @@ NEMA knows AI is growing at speed, however any potential AI implementation will 
 Usage pattern | Description | Examples\
 ---|---|---\
 Workplace productivity Microsoft 365 CoPilot | Automates routine tasks, manage workflows and facilitate communication. | Virtual assistants, automated scheduling, document summary, content creation and basic secretariat support.
-
-#### 
 
 #### Our _potential_ usage patterns are outlined below:
 

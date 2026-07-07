@@ -62,8 +62,6 @@ This AI Transparency Statement was published on 10 April 2026 and will be review
 
 Page published: 27 Feb 2025
 
-## 
-
 Need help?
 
 Our librarians are here to guide you.

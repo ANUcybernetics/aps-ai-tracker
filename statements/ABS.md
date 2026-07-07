@@ -54,5 +54,3 @@ We comply with the Policy for responsible use of AI in government and have:
 This transparency statement was published to our website on 16th July 2025, and will be updated every 12 months or as our approach to AI changes.
 
 For further information or enquiries about our adoption of AI please use our [general enquiry form](https://www.abs.gov.au/about/general-enquiry-form).
-
-Back to top of the page

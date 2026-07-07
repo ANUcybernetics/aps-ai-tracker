@@ -12,11 +12,6 @@ Print
 
 18 June 2026
 
-**On this page:**
-
-- The **strategic position** sets our overall direction for AI adoption.
-- The **AI transparency statement** explains how AI is used.
-
 # Strategic position on AI adoption
 
 The PBO’s strategic position on AI adoption sets a clear, organisation-wide approach to how we use AI to support our work. It reflects our role in a high‑trust parliamentary environment, balancing the opportunities of AI with the need to maintain quality, confidentiality and accountability.

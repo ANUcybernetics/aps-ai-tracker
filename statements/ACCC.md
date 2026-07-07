@@ -5,8 +5,6 @@ source_url: https://www.accc.gov.au/about-us/accc-role-and-structure/governance-
 title: Artificial intelligence (AI) transparency statement | ACCC
 ---
 
-## On this page
-
 ## How we intend to use AI
 
 The ACCC uses artificial intelligence (AI) in a safe and responsible way. We believe it will contribute to the effective and efficient delivery of our objectives to benefit the Australian community.

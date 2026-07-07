@@ -5,8 +5,6 @@ source_url: https://www.dcceew.gov.au/about/commitment/information-public-data/a
 title: Artificial Intelligence Transparency Statement - DCCEEW
 ---
 
-Skip to page navigation
-
 # Artificial Intelligence Transparency Statement
 
 This page explains how we are using Artificial Intelligence, in line with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
