@@ -613,10 +613,13 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     """Save statement as markdown file with YAML frontmatter.
 
     For HTML sources, applies markdown cleanup + mdformat and writes the result.
-    For PDF sources, writes the raw extracted text plus a `raw_hash` field; the
-    actual cleanup is performed by the scrape skill in a separate step. If the
-    PDF's raw text is unchanged from the last save (matching `raw_hash`), the
-    write is skipped entirely so cleaned bodies aren't clobbered.
+    For PDF sources, applies the deterministic `clean_markdown` pass (date stamps,
+    OFFICIAL markers, nav chrome) but not mdformat — PDF extraction is too ragged
+    to reflow safely, so richer cleanup is left to the scrape skill in a separate
+    step. The `raw_hash` field keys on the *raw* extracted text, so PDF-change
+    detection is unaffected: if the raw text is unchanged from the last save
+    (matching `raw_hash`), the write is skipped entirely so skill-cleaned bodies
+    aren't clobbered.
     """
     if data["error"] or not data["markdown"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
@@ -627,12 +630,14 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     is_pdf = data["source_type"] == "pdf"
 
     if is_pdf:
-        new_body = data["markdown"]
-        new_raw_hash = hashlib.sha256(new_body.encode("utf-8")).hexdigest()
+        # Hash the raw extracted text (not the cleaned body) so change detection
+        # stays keyed on the PDF itself; clean the body only if we don't skip.
+        new_raw_hash = hashlib.sha256(data["markdown"].encode("utf-8")).hexdigest()
         existing = extract_frontmatter(filepath) or {}
         if existing.get("raw_hash") == new_raw_hash:
             logger.info(f"Skipping {agency.abbr}: PDF unchanged (raw_hash match)")
             return True
+        new_body = clean_markdown(data["markdown"])
     else:
         new_body = format_markdown(data["markdown"])
         new_raw_hash = None
