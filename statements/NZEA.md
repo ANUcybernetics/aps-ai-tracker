@@ -8,41 +8,47 @@ title: Artificial Intelligence Transparency Statement | Net Zero Economy Authori
 
 # Artificial Intelligence Transparency Statement
 
-The Net Zero Economy Authority (NZEA) recognises the potential of Artificial Intelligence (AI) to enhance efficiency, improve decision-making and service delivery.
+The Net Zero Economy Authority (NZEA) recognises the potential of Artificial Intelligence (AI) to enhance efficiency, improve decision-making, and service delivery.
 
-As the NZEA is currently operating on the Department of the Prime Minister and Cabinet’s (PM&C) ICT systems and policies, our use of and approach to AI aligns with [PM&C’s AI Transparency Statement](https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement) and [_Australia’s AI Ethics Principles_](https://architecture.digital.gov.au/australias-artificial-intelligence-ethics-principles). These have been adapted below.
+The NZEA has aligned to the Digital Transformation Agency’s [ _Policy for the responsible use of AI in government._ ](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf)The policy has mandatory requirements about accountable officials and transparency statements.
 
-Our approach to AI transparency:
+This statement details our implementation of the policy requirements.
+
+## Our approach to AI transparency
+
+The NZEA’s AI policy sets out the principles we have adopted, informed by Australia’s AI Ethics Principles.
 
 - **Human, societal and environmental wellbeing:** AI systems should benefit individuals, society and the environment.
-- **Human-centred values:** AI systems should respect human rights, diversity and the autonomy of individuals.
+- **Human-centred values:** AI systems should respect human rights, diversity, and the autonomy of individuals.
 - **Fairness:** AI systems should be inclusive and accessible and should not involve or result in unfair discrimination against individuals, communities or groups.
 - **Privacy protection and security:** AI systems should respect and uphold privacy rights and data protection and ensure the security of data.
 - **Reliability and safety:** AI systems should reliably operate in accordance with their intended purpose.
 - **Transparency and explainability:** There should be transparency and responsible disclosure so people can understand when they are being significantly impacted by AI and can find out when an AI system is engaging with them.
 - **Contestability:** When an AI system significantly impacts a person, community, group or environment, there should be a timely process to allow people to challenge the use or outcomes of the AI system.
-- **Accountability:** Human oversight of AI systems should be enabled, and people responsible for the different phases of the AI system lifecycle should be identifiable and accountable for the outcomes of the AI systems.
+- **Accountability:** Human oversight of AI systems should be enabled.
 
-The NZEA has committed to the Digital Information Agency’s [ _Policy for the responsible use of AI in government._](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) We use AI in a manner consistent with the [APS Values, Code of Conduct and Employment Principles.](https://www.apsc.gov.au/working-aps/integrity/integrity-resources/aps-values-code-conduct-and-employment-principles)
+## How we use AI
 
-In addition to _Australia’s AI Ethics Principles_ , the NZEA has adopted the following 6 AI principles:
+The NZEA’s AI policy sets out the acceptable use of AI.
 
-1. Only AI tools that are authorised for access and use within PM&C’s ICT systems are to be deployed.
+Across platforms and systems, AI must be used in a manner consistent with the [APS Values, Code of Conduct and Employment Principles.](https://www.apsc.gov.au/working-aps/integrity/integrity-resources/aps-values-code-conduct-and-employment-principles)
 
-1. Users must critically examine AI outputs and ensure they can justify their decisions.
+The NZEA measures AI usage against AI Usage Patterns as set out by the DTA. The NZEA’s implementation of AI is limited to web search, and an internal data and insights capability.
 
-1. AI input must not include or reveal classified, sensitive, or personal information.
+Staff review all AI tool outputs and treat them as drafts or starting points for further research, not for decision-making.
 
-1. AI must not be the final decision-maker on government advice and services.
+The NZEA provides guidance to staff, including training in AI fundamentals, to ensure an understanding of compliance and governance arrangements and requirements.
 
-1. AI must be used in a manner consistent with the APS Values, Employment Principals and Code of Conduct.
+## AI accountable official
 
-1. The NZEA will not use AI in any way that members of the public may directly interact with, or be significantly impacted by, without a human intermediary or intervention.
+Our Chief Information Officer is the accountable official responsible for carrying out the policy. The IT and Security team and the Executive Team support the accountable official.
 
-The NZEA provides guidance to staff, including training in AI fundamentals to help understand compliance and governance arrangements and the requirement to adhere to both internal and external policies.
+## Our commitment
 
-We are dedicated to fostering public trust by ensuring AI-driven processes remain **ethical, responsible, and aligned with the interests of the Australian Government** while still being able to harness AI benefits.
+The NZEA will continuously refine and enhance our AI capabilities. We do this by ensuring centralised oversight and evaluation of AI tools through the Accountable Official and Executive Team.
 
-For further information on PM&C’s AI governance and transparency please contact [Help-ITServiceDesk@pmc.gov.au](mailto:Help-ITServiceDesk@pmc.gov.au).
+This statement will evolve to align with technology changes, legislation, policy and governance best practices. We will review at least every 12 months and update it if our AI approach changes, or if anything materially impacts its accuracy.
+
+For further information on the NZEA’s AI governance and transparency please contact the NZEA at [itservicedesk@nzea.gov.au](mailto:itservicedesk@nzea.gov.au).
 
 ## Search
