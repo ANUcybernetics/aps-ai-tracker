@@ -5,7 +5,7 @@ source_url: https://www.publichospitalfunding.gov.au/about-us/corporate-governan
 title: AI transparency statement | National Health Funding Body
 ---
 
-[Digital Transformation Agency policy(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy) for responsible AI use sets mandatory requirements for the National Health Funding Body's accountable official and transparency statement.
+[Digital Transformation Agency policy(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy) for responsible Artificial Intelligence (AI) use sets mandatory requirements for the National Health Funding Body's accountable official and transparency statement.
 
 - Background
 
