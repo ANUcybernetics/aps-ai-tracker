@@ -7,6 +7,7 @@ import NeighbourList from "@/components/NeighbourList.astro";
 import RevisionList from "@/components/RevisionList.astro";
 import RevisionScrubber from "@/components/RevisionScrubber.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
+import { documentUri } from "@/lib/atproto";
 import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
@@ -82,6 +83,7 @@ const legend = [
 <Layout
   title={doc.agency}
   description={`How ${doc.agency} describes its use of AI — the current statement, how original it is, and every tracked change.`}
+  atUri={documentUri(doc.abbr)}
 >
   <div class="page stmt stack">
     <header class="stmt__header stack">

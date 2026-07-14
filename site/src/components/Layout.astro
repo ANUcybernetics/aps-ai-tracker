@@ -7,16 +7,20 @@ import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-stand
 import "@/styles/global.css";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import { PUBLICATION_URI } from "@/lib/atproto";
 import { withBase } from "@/lib/paths";
 
 interface Props {
   title: string;
   description?: string;
+  /** AT-URI of this page's site.standard.document record (statement pages only). */
+  atUri?: string;
 }
 
 const {
   title,
   description = "Tracking how Australian Government agencies describe their use of AI — a timeline of every change, and an explorer for how statements resemble each other.",
+  atUri,
 } = Astro.props;
 
 const suffix = "AI Transparency Tracker";
@@ -53,6 +57,16 @@ const ogImage = new URL(withBase("/og.png"), origin).href;
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
     <link rel="sitemap" type="application/xml" href={withBase("/sitemap-index.xml")} />
+    {
+      /* atproto backing records for this page; consumers (e.g. Bluesky link
+         cards) verify the document against both, so they travel together. */
+      atUri && (
+        <>
+          <link rel="site.standard.document" href={atUri} />
+          <link rel="site.standard.publication" href={PUBLICATION_URI} />
+        </>
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

@@ -14,11 +14,14 @@
     "lint:fix": "oxlint --fix",
     "lint:css": "stylelint \"src/**/*.css\"",
     "format": "oxfmt .",
-    "format:check": "oxfmt --check ."
+    "format:check": "oxfmt --check .",
+    "atproto:publish": "tsx scripts/atproto-publish.ts",
+    "atproto:lexicon": "tsx scripts/publish-lexicon.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/svelte": "^9.0.0",
+    "@atproto/api": "^0.20.28",
     "@fontsource-variable/archivo": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "astro": "^7.0.4",
@@ -45,6 +48,7 @@
     "stylelint": "^17.14.0",
     "stylelint-config-standard": "^40.0.0",
     "svelte-check": "^4.7.1",
+    "tsx": "^4.23.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   },
