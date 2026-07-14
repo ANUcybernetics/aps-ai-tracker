@@ -41,16 +41,17 @@ if ! git diff --cached --quiet -- .cache/embeddings.json; then
 fi
 
 # Sync the corpus to the atproto network (the apsaitracker account; app
-# password comes from APSAITRACKER_BSKY_TOKEN in the mise env). Reads the
-# export's generated JSON, so it must run after the export step; on an
-# unchanged corpus it puts nothing.
+# password comes from APSAITRACKER_BSKY_TOKEN in the mise env) and announce
+# substantive changes as skeets. Reads the export's generated JSON, so it must
+# run after the export step; on an unchanged corpus it puts nothing.
 echo "=== atproto publish at $(date -Iseconds) ===" >> "$LOG_FILE"
-(cd site && pnpm run atproto:publish -- --write) >> "$LOG_FILE" 2>&1 \
+(cd site && pnpm run atproto:publish -- --write --crosspost) >> "$LOG_FILE" 2>&1 \
   || echo "atproto publish failed (continuing)" >> "$LOG_FILE"
 
-# Commit the publish state (record hashes) alongside the embeddings cache.
-git add -- atproto-state.json 2>/dev/null || true
-if ! git diff --cached --quiet -- atproto-state.json; then
+# Commit the publish state (record hashes) and syndication ledger (announced
+# skeets) alongside the embeddings cache.
+git add -- atproto-state.json atproto-syndication.json 2>/dev/null || true
+if ! git diff --cached --quiet -- atproto-state.json atproto-syndication.json; then
   git commit -m "atproto: update publish state after scrape" >> "$LOG_FILE" 2>&1
 fi
 

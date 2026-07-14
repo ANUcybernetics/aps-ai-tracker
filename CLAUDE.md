@@ -99,9 +99,16 @@ data records live in the tracker account.
 - Statement pages emit `site.standard.document`/`publication` `<link>` tags and
   the site serves `/.well-known/site.standard.publication` (kept by
   `include-hidden-files: true` in the Pages workflow).
-- Not yet implemented: announcement skeets on detected changes (needs the
-  separate syndication-ledger pattern from benswift-me so backfills never
-  re-announce).
+- With `--crosspost` (the cron passes it), new substantive revisions are
+  announced as skeets: one per agency per run (newest wins), capped at 25, noise
+  never announced. Announced skeets are recorded in the committed
+  `atproto-syndication.json` ledger — deliberately separate from the state file,
+  so a state reset/backfill can never re-announce the back catalogue (`--seed`
+  marks the whole corpus as already announced). Each skeet carries an external
+  card with `associatedRefs` to the backing records, and the agency's document
+  record is re-put with `bskyPostRef` pointing at its latest announcement.
+- Bot profile (name/bio/avatar): `mise exec -- pnpm run atproto:profile`
+  (idempotent; edit constants in `site/scripts/atproto-profile.ts`).
 
 ## Scheduled scrape
 

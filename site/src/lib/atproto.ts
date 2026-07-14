@@ -150,7 +150,10 @@ function lastChanged(statement: StatementInput): string | undefined {
   return real ? utcIso(real.date) : undefined;
 }
 
-export function buildDocumentRecord(statement: StatementInput): Record<string, unknown> {
+export function buildDocumentRecord(
+  statement: StatementInput,
+  bskyPostRef?: StrongRef,
+): Record<string, unknown> {
   const firstObserved = statement.timeline[0]!.date;
   const record: Record<string, unknown> = {
     $type: DOCUMENT_COLLECTION,
@@ -166,6 +169,7 @@ export function buildDocumentRecord(statement: StatementInput): Record<string, u
   };
   const updated = lastChanged(statement);
   if (updated && updated !== utcIso(firstObserved)) record.updatedAt = updated;
+  if (bskyPostRef) record.bskyPostRef = { uri: bskyPostRef.uri, cid: bskyPostRef.cid };
   return record;
 }
 
@@ -210,4 +214,94 @@ export function buildRevisionRecord(
   record.commitSha = revision.sha;
   if (prev) record.prev = revisionUri(abbr, prev.date);
   return record;
+}
+
+// --- change announcements (Bluesky cross-posting) ---------------------------
+
+/** A record's AT-URI paired with the CID of its exact contents. */
+export interface StrongRef {
+  uri: string;
+  cid: string;
+}
+
+/** One entry per announced (or deliberately skipped) revision rkey. */
+export type LedgerEntry = { seeded: true } | (StrongRef & { syndicatedAt: string });
+
+export type Ledger = Record<string, LedgerEntry>;
+
+export interface Announcement {
+  abbr: string;
+  agency: string;
+  rkey: string;
+  revision: RevisionInput;
+}
+
+/** Only substantive events get announced; scrape noise never does. */
+function announceable(rev: RevisionInput): boolean {
+  return !rev.isNoise && ["added", "tracked-since", "updated"].includes(rev.kind);
+}
+
+/**
+ * Decide which revisions to announce this run: any announceable revision with
+ * no ledger entry, at most one per agency (the newest — catching up on a gap
+ * shouldn't spam one skeet per missed revision), capped overall as a guard
+ * against mass-change events. Everything passed over is returned in autoSeed
+ * so the caller marks it seeded and it never resurfaces.
+ */
+export function planAnnouncements(
+  statements: StatementInput[],
+  ledger: Ledger,
+  cap = 25,
+): { announce: Announcement[]; autoSeed: string[] } {
+  const announce: Announcement[] = [];
+  const autoSeed: string[] = [];
+  for (const st of statements) {
+    const fresh = st.timeline.filter(
+      (rev) => announceable(rev) && !(revisionRkey(st.abbr, rev.date) in ledger),
+    );
+    if (!fresh.length) continue;
+    const newest = fresh.at(-1)!;
+    announce.push({
+      abbr: st.abbr,
+      agency: st.agency,
+      rkey: revisionRkey(st.abbr, newest.date),
+      revision: newest,
+    });
+    for (const rev of fresh.slice(0, -1)) autoSeed.push(revisionRkey(st.abbr, rev.date));
+  }
+  announce.sort((a, b) => (a.revision.date < b.revision.date ? -1 : 1));
+  const capped = announce.slice(0, cap);
+  for (const a of announce.slice(cap)) autoSeed.push(a.rkey);
+  return { announce: capped, autoSeed };
+}
+
+/** Skeet text for one announcement. Factual, agency-first, under 300 graphemes. */
+export function announcementText(a: Announcement): string {
+  let text: string;
+  if (a.revision.kind === "updated") {
+    const delta = a.revision.charDelta;
+    const phrase =
+      delta === 0
+        ? "wording changes"
+        : `${delta > 0 ? "+" : "−"}${Math.abs(delta).toLocaleString("en-AU")} characters`;
+    text = `${a.agency} has updated its AI transparency statement (${phrase}).`;
+  } else if (a.revision.kind === "added") {
+    text = `${a.agency} has published an AI transparency statement.`;
+  } else {
+    text = `Now tracking the AI transparency statement of ${a.agency}.`;
+  }
+  return text.length > 300 ? `${text.slice(0, 299)}…` : text;
+}
+
+/**
+ * The most recent announcement skeet for an agency, from the ledger — used as
+ * the document record's bskyPostRef. Revision rkeys sort chronologically
+ * within an agency, so the lexicographic max is the newest.
+ */
+export function latestPostRef(ledger: Ledger, abbr: string): StrongRef | undefined {
+  const rkeys = Object.keys(ledger)
+    .filter((k) => k.startsWith(`${abbr}-`) && "uri" in ledger[k]!)
+    .toSorted();
+  const newest = rkeys.at(-1);
+  return newest ? (ledger[newest] as StrongRef) : undefined;
 }

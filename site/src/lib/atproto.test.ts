@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  announcementText,
   buildDocumentRecord,
+  latestPostRef,
+  planAnnouncements,
+  type Ledger,
   buildPublicationRecord,
   buildRevisionRecord,
   buildStatementRecord,
@@ -150,5 +154,98 @@ describe("record builders", () => {
     const a = JSON.stringify(buildRevisionRecord("ABS", rev(), "h", undefined));
     const b = JSON.stringify(buildRevisionRecord("ABS", rev(), "h", undefined));
     expect(a).toBe(b);
+  });
+
+  it("document record carries bskyPostRef when the ledger has an announcement", () => {
+    const ref = { uri: "at://did:plc:x/app.bsky.feed.post/3k", cid: "bafy123" };
+    expect(buildDocumentRecord(statement(), ref).bskyPostRef).toEqual(ref);
+    expect(buildDocumentRecord(statement()).bskyPostRef).toBeUndefined();
+  });
+});
+
+describe("announcements", () => {
+  const updated = (date: string, over: Partial<RevisionInput> = {}) =>
+    rev({ kind: "updated", date, ...over });
+
+  it("announces only unledgered, substantive revisions", () => {
+    const sts = [
+      statement({ timeline: [rev(), updated("2026-07-01T10:00:00+10:00")] }),
+      statement({
+        abbr: "XYZ",
+        agency: "Xyz Authority",
+        timeline: [rev(), updated("2026-07-02T10:00:00+10:00", { isNoise: true })],
+      }),
+    ];
+    const ledger: Ledger = { "ABS-20251111T061258Z": { seeded: true } };
+    const { announce, autoSeed } = planAnnouncements(sts, ledger);
+    // ABS's first revision is seeded and XYZ's update is noise; XYZ's initial
+    // tracked-since revision IS announceable (it has no ledger entry).
+    expect(announce.map((a) => a.rkey)).toEqual(["XYZ-20251111T061258Z", "ABS-20260701T000000Z"]);
+    expect(autoSeed).toEqual([]);
+  });
+
+  it("announces at most the newest revision per agency, auto-seeding the rest", () => {
+    const sts = [
+      statement({
+        timeline: [
+          rev(),
+          updated("2026-07-01T10:00:00+10:00"),
+          updated("2026-07-03T10:00:00+10:00"),
+        ],
+      }),
+    ];
+    const ledger: Ledger = { "ABS-20251111T061258Z": { seeded: true } };
+    const { announce, autoSeed } = planAnnouncements(sts, ledger);
+    expect(announce.map((a) => a.rkey)).toEqual(["ABS-20260703T000000Z"]);
+    expect(autoSeed).toEqual(["ABS-20260701T000000Z"]);
+  });
+
+  it("caps a mass-change run, auto-seeding the overflow", () => {
+    const sts = Array.from({ length: 30 }, (_, i) =>
+      statement({
+        abbr: `AG${i}`,
+        timeline: [rev(), updated("2026-07-01T10:00:00+10:00")],
+      }),
+    );
+    const ledger: Ledger = Object.fromEntries(
+      sts.map((st) => [`${st.abbr}-20251111T061258Z`, { seeded: true }]),
+    );
+    const { announce, autoSeed } = planAnnouncements(sts, ledger, 25);
+    expect(announce).toHaveLength(25);
+    expect(autoSeed).toHaveLength(5);
+  });
+
+  it("phrases each kind factually", () => {
+    const base = { abbr: "ABS", agency: "Australian Bureau of Statistics", rkey: "x" };
+    expect(
+      announcementText({ ...base, revision: updated("2026-07-01", { charDelta: -214 }) }),
+    ).toBe(
+      "Australian Bureau of Statistics has updated its AI transparency statement (−214 characters).",
+    );
+    expect(
+      announcementText({ ...base, revision: updated("2026-07-01", { charDelta: 1234 }) }),
+    ).toBe(
+      "Australian Bureau of Statistics has updated its AI transparency statement (+1,234 characters).",
+    );
+    expect(announcementText({ ...base, revision: updated("2026-07-01", { charDelta: 0 }) })).toBe(
+      "Australian Bureau of Statistics has updated its AI transparency statement (wording changes).",
+    );
+    expect(announcementText({ ...base, revision: rev({ kind: "added" }) })).toBe(
+      "Australian Bureau of Statistics has published an AI transparency statement.",
+    );
+    expect(announcementText({ ...base, revision: rev() })).toBe(
+      "Now tracking the AI transparency statement of Australian Bureau of Statistics.",
+    );
+  });
+
+  it("finds the newest announced skeet for an agency, ignoring lookalike abbrs", () => {
+    const ledger: Ledger = {
+      "ABS-20251111T061258Z": { seeded: true },
+      "ABS-20260501T002837Z": { uri: "at://x/post/old", cid: "c1", syndicatedAt: "t" },
+      "ABS-20260601T002837Z": { uri: "at://x/post/new", cid: "c2", syndicatedAt: "t" },
+      "ABSA-20260701T002837Z": { uri: "at://x/post/other", cid: "c3", syndicatedAt: "t" },
+    };
+    expect(latestPostRef(ledger, "ABS")?.uri).toBe("at://x/post/new");
+    expect(latestPostRef(ledger, "AASB")).toBeUndefined();
   });
 });
