@@ -71,14 +71,47 @@ site is light-only (no dark mode); design tokens live in
   `.cache/embeddings.json`, and pushes. Statements are only re-embedded when
   their text changes, so most runs make zero API calls.
 
+## atproto
+
+The corpus is mirrored to the AT Protocol network under the project's own
+account, `apsaitracker.bsky.social` (`did:plc:yhnshyrc2iev6z65u3uraon4`, PDS
+bsky.social): a `site.standard.publication` for the site, one
+`site.standard.document` per statement (full plaintext), and custom
+`me.benswift.transparencyStatement` / `...StatementRevision` records --- one
+mutable metadata record per agency plus an immutable record per observed
+revision, chained via `prev`. Lexicon schemas live in `lexicons/` and are
+published from Ben's personal DID (authority is `_lexicon.benswift.me`); the
+data records live in the tracker account.
+
+- All rkeys are deterministic (agency abbr; `{abbr}-{compact UTC observedAt}`
+  for revisions) so AT-URIs are computable, never stored. Shared constants and
+  record builders: `site/src/lib/atproto.ts` (pure, env-free, vitest-covered).
+- Sync: `cd site && mise exec -- pnpm run atproto:publish -- --write` (dry run
+  without `--write`). Runs after `export` (reads `site/src/generated/`).
+  Idempotent via record hashes in the committed `atproto-state.json`; deleting
+  that file forces a safe full re-put. Auth: `APSAITRACKER_BSKY_TOKEN` in
+  weddle's mise `config.local.toml`; the script refuses to write to any DID but
+  the tracker's. The cron scrape runs this automatically and commits the state
+  file.
+- Schema changes: edit `lexicons/`, then
+  `mise exec -- pnpm run atproto:lexicon -- --write` (uses the personal
+  `ATP_IDENTIFIER`/`ATP_APP_PASSWORD`).
+- Statement pages emit `site.standard.document`/`publication` `<link>` tags and
+  the site serves `/.well-known/site.standard.publication` (kept by
+  `include-hidden-files: true` in the Pages workflow).
+- Not yet implemented: announcement skeets on detected changes (needs the
+  separate syndication-ledger pattern from benswift-me so backfills never
+  re-announce).
+
 ## Scheduled scrape
 
 `cron-scrape.sh` runs daily at 03:00 local from `aps-scrape.timer`, a systemd
-user unit on weddle. It scrapes (`claude -p "/scrape"`), then refreshes the
-embeddings cache (`export`) and `git push`es so the Pages site redeploys. weddle
-pushes to `origin` (credentials confirmed working) and reads `OPENAI_API_KEY`
-from its global `~/.config/mise/config.local.toml`. Canonical unit files live in
-`ops/systemd/`. Install with:
+user unit on weddle. It scrapes (`claude -p "/scrape"`), refreshes the
+embeddings cache (`export`), syncs the corpus to atproto (see above), and
+`git push`es so the Pages site redeploys. weddle pushes to `origin` (credentials
+confirmed working) and reads `OPENAI_API_KEY` from its global
+`~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.
+Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/

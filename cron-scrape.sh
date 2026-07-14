@@ -40,6 +40,20 @@ if ! git diff --cached --quiet -- .cache/embeddings.json; then
   git commit -m "embeddings: refresh cache after scrape" >> "$LOG_FILE" 2>&1
 fi
 
+# Sync the corpus to the atproto network (the apsaitracker account; app
+# password comes from APSAITRACKER_BSKY_TOKEN in the mise env). Reads the
+# export's generated JSON, so it must run after the export step; on an
+# unchanged corpus it puts nothing.
+echo "=== atproto publish at $(date -Iseconds) ===" >> "$LOG_FILE"
+(cd site && pnpm run atproto:publish -- --write) >> "$LOG_FILE" 2>&1 \
+  || echo "atproto publish failed (continuing)" >> "$LOG_FILE"
+
+# Commit the publish state (record hashes) alongside the embeddings cache.
+git add -- atproto-state.json 2>/dev/null || true
+if ! git diff --cached --quiet -- atproto-state.json; then
+  git commit -m "atproto: update publish state after scrape" >> "$LOG_FILE" 2>&1
+fi
+
 # Publish: push so the GitHub Pages workflow rebuilds and deploys the site.
 # (Overrides the global manual-push default for this repo; weddle needs push
 # credentials for origin.)
