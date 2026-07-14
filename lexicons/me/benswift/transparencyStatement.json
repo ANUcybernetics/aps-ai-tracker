@@ -1,0 +1,66 @@
+{
+  "lexicon": 1,
+  "id": "me.benswift.transparencyStatement",
+  "description": "An Australian Government agency's AI transparency statement, as tracked by the APS AI Transparency Tracker (https://anucybernetics.github.io/aps-ai-transparency-tracker/). One record per agency, updated in place as the agency revises its statement; the change history lives in the companion me.benswift.transparencyStatementRevision records.",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "The current state of one agency's AI transparency statement. The record key is the tracker's agency abbreviation (e.g. ABS, ACCC), matching the tracker's /statements/{abbr} page.",
+      "key": "any",
+      "record": {
+        "type": "object",
+        "required": [
+          "abbr",
+          "name",
+          "sourceUrl",
+          "document",
+          "firstObservedAt",
+          "contentHash",
+          "revisionCount"
+        ],
+        "properties": {
+          "abbr": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "The tracker's abbreviation for the agency (also this record's key)."
+          },
+          "name": {
+            "type": "string",
+            "maxGraphemes": 300,
+            "maxLength": 3000,
+            "description": "Full name of the agency."
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical URL of the statement on the agency's own website."
+          },
+          "document": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "AT-URI of the site.standard.document carrying the statement's current full text."
+          },
+          "firstObservedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When the tracker first captured this statement (not when the agency first published it)."
+          },
+          "lastChangedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When the tracker last observed a substantive change (scrape noise excluded)."
+          },
+          "contentHash": {
+            "type": "string",
+            "description": "sha256 (hex) of the statement's current markdown body."
+          },
+          "revisionCount": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of revisions the tracker has recorded, including the initial capture."
+          }
+        }
+      }
+    }
+  }
+}

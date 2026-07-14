@@ -1,0 +1,70 @@
+{
+  "lexicon": 1,
+  "id": "me.benswift.transparencyStatementRevision",
+  "description": "One observed revision of an Australian Government agency's AI transparency statement, as captured by the APS AI Transparency Tracker's daily scrape. Records are immutable observations: together they form the statement's full change history, walkable via prev links and subscribable in real time via the firehose.",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A single observed revision. The record key is {abbr}-{observedAt as compact UTC} (e.g. ABS-20251111T061258Z), deterministic so AT-URIs are computable from the tracker's public git history.",
+      "key": "any",
+      "record": {
+        "type": "object",
+        "required": ["statement", "abbr", "observedAt", "kind", "text", "contentHash"],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "AT-URI of the me.benswift.transparencyStatement record this revision belongs to."
+          },
+          "abbr": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "The tracker's agency abbreviation, denormalised for convenient firehose filtering."
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When the tracker captured this revision."
+          },
+          "kind": {
+            "type": "string",
+            "knownValues": ["added", "tracked-since", "updated"],
+            "description": "tracked-since for statements already live when tracking began, added for statements first published after that, updated for every subsequent change."
+          },
+          "isNoise": {
+            "type": "boolean",
+            "default": false,
+            "description": "True when the change is scrape noise (reverted churn, reformatting, nav-chrome cleanup) rather than a substantive edit by the agency."
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 400000,
+            "description": "Full markdown body of the statement at this revision."
+          },
+          "contentHash": {
+            "type": "string",
+            "description": "sha256 (hex) of text."
+          },
+          "charDelta": {
+            "type": "integer",
+            "description": "Change in body length (characters) relative to the previous revision."
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 10000,
+            "description": "Human context for the change, from the tracker's commit message."
+          },
+          "commitSha": {
+            "type": "string",
+            "description": "Git commit in the tracker repository that captured this revision (provenance; may drift if history is ever rewritten, unlike the record key)."
+          },
+          "prev": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "AT-URI of the previous revision of the same statement; absent on the initial capture."
+          }
+        }
+      }
+    }
+  }
+}
