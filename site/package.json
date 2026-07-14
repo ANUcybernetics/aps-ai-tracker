@@ -16,7 +16,8 @@
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "atproto:publish": "tsx scripts/atproto-publish.ts",
-    "atproto:lexicon": "tsx scripts/publish-lexicon.ts"
+    "atproto:lexicon": "tsx scripts/publish-lexicon.ts",
+    "atproto:profile": "tsx scripts/atproto-profile.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
