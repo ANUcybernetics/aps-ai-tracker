@@ -800,3 +800,15 @@ name = "Northern Australia Infrastructure Facility"
 abbr = "NAIF"
 size = "extra-small"
 url = "https://cdn.naif.gov.au/media/yxmpums3/naif-ai-transparency-statement.pdf"
+
+[[agencies]]
+name = "National Competition Council"
+abbr = "NCC"
+size = "extra-small"
+url = "https://ncc.gov.au/about/statutory_and_required_reporting"
+
+[[agencies]]
+name = "Office of the Official Secretary to the Governor-General"
+abbr = "OSGG"
+size = "small"
+url = "https://www.gg.gov.au/sites/default/files/2026-05/OOSGG%20AI%20Transparency%20Sstatement%20-%20May%202026.pdf"
