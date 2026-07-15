@@ -16,8 +16,8 @@ export const TRACKER_DID = "did:plc:yhnshyrc2iev6z65u3uraon4";
 export const TRACKER_HANDLE = "apsaitracker.bsky.social";
 export const ATPROTO_SERVICE = "https://bsky.social";
 
-export const SITE_URL = "https://anucybernetics.github.io/aps-ai-tracker/";
-export const BASE_PATH = "/aps-ai-tracker";
+export const SITE_URL = "https://apsaitracker.app/";
+export const BASE_PATH = "";
 
 export const PUBLICATION_COLLECTION = "site.standard.publication";
 export const DOCUMENT_COLLECTION = "site.standard.document";
