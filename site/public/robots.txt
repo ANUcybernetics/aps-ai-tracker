@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anucybernetics.github.io/aps-ai-tracker/sitemap-index.xml
+Sitemap: https://apsaitracker.app/sitemap-index.xml

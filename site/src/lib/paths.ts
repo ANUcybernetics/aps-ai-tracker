@@ -1,7 +1,6 @@
-// Centralised base-aware URL construction. The site is served from a non-root
-// base on GitHub Pages (/aps-ai-tracker/), so EVERY internal link,
-// asset and island fetch must go through here — a raw "/timeline" works in
-// `astro dev` but 404s in production.
+// Centralised base-aware URL construction. The site is served from the root of
+// the apsaitracker.app custom domain, but EVERY internal link, asset and island
+// fetch still goes through here so links stay correct if the base ever changes.
 
 const BASE = import.meta.env.BASE_URL; // Astro guarantees a trailing slash.
 

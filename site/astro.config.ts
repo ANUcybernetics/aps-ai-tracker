@@ -2,12 +2,13 @@ import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 
-// GitHub Pages PROJECT page: served from /aps-ai-tracker/ (no custom
-// domain). Every internal href/asset/fetch must go through withBase() in
-// src/lib/paths.ts — a raw "/timeline" works in `astro dev` but 404s in prod.
+// Served from the apex custom domain apsaitracker.app (CNAME in public/), so the
+// base is root. Every internal href/asset/fetch still goes through withBase() in
+// src/lib/paths.ts — a raw "/timeline" works in `astro dev` but this keeps links
+// robust if the base ever changes again.
 export default defineConfig({
-  site: "https://anucybernetics.github.io",
-  base: "/aps-ai-tracker",
+  site: "https://apsaitracker.app",
+  base: "/",
   trailingSlash: "ignore",
   output: "static",
   // Static MPA with cross-document view transitions: prefetch internal links as
