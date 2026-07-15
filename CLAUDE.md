@@ -77,14 +77,14 @@ site is light-only (no dark mode); design tokens live in
 ## atproto
 
 The corpus is mirrored to the AT Protocol network under the project's own
-account, `apsaitracker.bsky.social` (`did:plc:yhnshyrc2iev6z65u3uraon4`, PDS
-bsky.social): a `site.standard.publication` for the site, one
-`site.standard.document` per statement (full plaintext), and custom
-`me.benswift.transparencyStatement` / `...StatementRevision` records --- one
-mutable metadata record per agency plus an immutable record per observed
-revision, chained via `prev`. Lexicon schemas live in `lexicons/` and are
-published from Ben's personal DID (authority is `_lexicon.benswift.me`); the
-data records live in the tracker account.
+account, handle `apsaitracker.app` (a domain handle verified via the `_atproto`
+TXT record; `did:plc:yhnshyrc2iev6z65u3uraon4`, PDS bsky.social): a
+`site.standard.publication` for the site, one `site.standard.document` per
+statement (full plaintext), and custom `me.benswift.transparencyStatement` /
+`...StatementRevision` records --- one mutable metadata record per agency plus
+an immutable record per observed revision, chained via `prev`. Lexicon schemas
+live in `lexicons/` and are published from Ben's personal DID (authority is
+`_lexicon.benswift.me`); the data records live in the tracker account.
 
 - All rkeys are deterministic (agency abbr; `{abbr}-{compact UTC observedAt}`
   for revisions) so AT-URIs are computable, never stored. Shared constants and

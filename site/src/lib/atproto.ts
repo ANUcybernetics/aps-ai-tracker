@@ -9,11 +9,12 @@
 //   me.benswift.transparencyStatement/{abbr}            tracked-statement metadata
 //   me.benswift.transparencyStatementRevision/{abbr}-{compact UTC observedAt}
 //
-// The handle (apsaitracker.bsky.social) is cosmetic and swappable; the DID is
-// the durable identity every AT-URI hangs off.
+// The handle (apsaitracker.app, a domain handle verified via the _atproto TXT
+// record) is cosmetic and swappable; the DID is the durable identity every
+// AT-URI hangs off.
 
 export const TRACKER_DID = "did:plc:yhnshyrc2iev6z65u3uraon4";
-export const TRACKER_HANDLE = "apsaitracker.bsky.social";
+export const TRACKER_HANDLE = "apsaitracker.app";
 export const ATPROTO_SERVICE = "https://bsky.social";
 
 export const SITE_URL = "https://apsaitracker.app/";
