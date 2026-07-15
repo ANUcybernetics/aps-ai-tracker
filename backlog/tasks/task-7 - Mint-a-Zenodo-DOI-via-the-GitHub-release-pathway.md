@@ -20,7 +20,7 @@ Rationale: a DOI must resolve to a frozen, archived artefact. The release pathwa
 
 Mechanics to remember: the DOI is minted on a published GitHub Release, NOT by the presence of a metadata file. Metadata precedence is .zenodo.json > CITATION.cff > LICENSE > repo/release info; if both .zenodo.json and CITATION.cff exist the .cff is ignored, so use one. CITATION.cff also gives GitHub's 'Cite this repository' widget. You can't preview/reserve the DOI before the release.
 
-Order of operations: add CITATION.cff at repo root (title; Ben Swift sole author + ORCID; description; type: software; MIT; repo URL) -> publish one deliberate tagged release (e.g. v2026.06; cut more only when a new citable snapshot is wanted) -> read the minted DOI off the Zenodo record -> use the CONCEPT ('all versions') DOI, since the tracker is a living daily-rescraped artefact -> paste it into the benswift-cv.typ APS AI Transparency Tracker plate (the doi: TODO, promotion repo TASK-37 AC#1) and rebuild.
+Order of operations: add CITATION.cff at repo root (title; Ben Swift sole author + ORCID; description; type: software; MIT; repo URL) -> publish one deliberate tagged release (e.g. v2026.06; cut more only when a new citable snapshot is wanted) -> read the minted DOI off the Zenodo record -> use the CONCEPT ('all versions') DOI, since the tracker is a living daily-rescraped artefact -> paste it into the benswift-cv.typ APS AI Tracker plate (the doi: TODO, promotion repo TASK-37 AC#1) and rebuild.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
@@ -38,5 +38,5 @@ Done via Zenodo GitHub-release pathway.
 - Published release v2026.06 (target main @5bd80ae). Zenodo minted: version DOI 10.5281/zenodo.20842438, CONCEPT DOI 10.5281/zenodo.20842437.
 - Concept DOI wired into benswift-cv.typ n-aps-tracker plate (promotion repo commit 49ba64f, TASK-37 AC#1) and CV recompiles clean.
 
-CAVEAT: Zenodo ignored CITATION.cff and used bare GitHub metadata on the v2026.06 record -- no ORCID, generic title 'ANUcybernetics/aps-ai-transparency-tracker: v2026.06', affiliation '@ANUcybernetics'. DOI is unaffected. Fix the current record's metadata in the Zenodo web UI (DOI persists); add a .zenodo.json to the repo so future releases archive with correct metadata.
+CAVEAT: Zenodo ignored CITATION.cff and used bare GitHub metadata on the v2026.06 record -- no ORCID, generic title 'ANUcybernetics/aps-ai-tracker: v2026.06', affiliation '@ANUcybernetics'. DOI is unaffected. Fix the current record's metadata in the Zenodo web UI (DOI persists); add a .zenodo.json to the repo so future releases archive with correct metadata.
 <!-- SECTION:NOTES:END -->

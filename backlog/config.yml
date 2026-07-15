@@ -1,4 +1,4 @@
-project_name: "aps-ai-transparency-tracker"
+project_name: "aps-ai-tracker"
 default_status: "To Do"
 statuses: ["To Do", "In Progress", "Done"]
 labels: []

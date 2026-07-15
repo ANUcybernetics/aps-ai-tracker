@@ -7,7 +7,7 @@ without touching git or the OpenAI API.
 
 import pytest
 
-from aps_ai_transparency_tracker.export import (
+from aps_ai_tracker.export import (
     Passage,
     Revision,
     build_clusters,

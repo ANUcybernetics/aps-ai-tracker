@@ -15,7 +15,7 @@ import { ATPROTO_SERVICE, SITE_URL, TRACKER_DID, TRACKER_HANDLE } from "../src/l
 net.setDefaultAutoSelectFamily(true);
 net.setDefaultAutoSelectFamilyAttemptTimeout(500);
 
-const DISPLAY_NAME = "APS AI Transparency Tracker";
+const DISPLAY_NAME = "APS AI Tracker";
 // Bluesky caps bios at 256 graphemes; keep well under.
 const DESCRIPTION = `Tracking how Australian Government agencies describe their use of AI — full text + change history of every AI transparency statement, updated daily.
 

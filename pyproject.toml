@@ -1,5 +1,5 @@
 [project]
-name = "aps-ai-transparency-tracker"
+name = "aps-ai-tracker"
 version = "0.1.0"
 description = "Scrape and track Australian Government AI transparency statements over time"
 authors = [
@@ -21,10 +21,10 @@ requires = ["uv_build"]
 build-backend = "uv_build"
 
 [project.scripts]
-scrape = "aps_ai_transparency_tracker.__main__:main"
-process = "aps_ai_transparency_tracker.process:main"
-status = "aps_ai_transparency_tracker.status:main"
-export = "aps_ai_transparency_tracker.export:main"
+scrape = "aps_ai_tracker.__main__:main"
+process = "aps_ai_tracker.process:main"
+status = "aps_ai_tracker.status:main"
+export = "aps_ai_tracker.export:main"
 
 [dependency-groups]
 dev = [

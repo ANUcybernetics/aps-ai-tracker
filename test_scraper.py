@@ -19,7 +19,7 @@ import pytest
 import yaml
 from bs4 import BeautifulSoup
 
-from aps_ai_transparency_tracker import (
+from aps_ai_tracker import (
     CONTENT_SHRINKAGE_THRESHOLD,
     Agency,
     RawFetchResult,
@@ -709,7 +709,7 @@ This is some content that will be replaced with similar-length content."""
         from unittest.mock import patch
 
         # Capture log output
-        with patch("aps_ai_transparency_tracker.scraper.logger") as mock_logger:
+        with patch("aps_ai_tracker.scraper.logger") as mock_logger:
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully
@@ -743,7 +743,7 @@ def test_save_statement_no_warning_on_new_file():
 
         from unittest.mock import patch
 
-        with patch("aps_ai_transparency_tracker.scraper.logger") as mock_logger:
+        with patch("aps_ai_tracker.scraper.logger") as mock_logger:
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully

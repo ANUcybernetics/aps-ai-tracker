@@ -67,7 +67,7 @@ describe("deterministic identifiers", () => {
   });
 
   it("statement pages live under the Pages base path", () => {
-    expect(documentPath("ABS")).toBe("/aps-ai-transparency-tracker/statements/ABS");
+    expect(documentPath("ABS")).toBe("/aps-ai-tracker/statements/ABS");
   });
 });
 
@@ -86,7 +86,7 @@ describe("record builders", () => {
   it("publication record targets the Pages site and opts into discovery", () => {
     const record = buildPublicationRecord();
     expect(record.$type).toBe("site.standard.publication");
-    expect(record.url).toBe("https://anucybernetics.github.io/aps-ai-transparency-tracker/");
+    expect(record.url).toBe("https://anucybernetics.github.io/aps-ai-tracker/");
     expect(record.preferences).toEqual({ showInDiscover: true });
     expect(record.icon).toBeUndefined();
   });
@@ -94,7 +94,7 @@ describe("record builders", () => {
   it("document record carries plaintext, path and publishedAt from first observation", () => {
     const record = buildDocumentRecord(statement());
     expect(record.site).toBe(PUBLICATION_URI);
-    expect(record.path).toBe("/aps-ai-transparency-tracker/statements/ABS");
+    expect(record.path).toBe("/aps-ai-tracker/statements/ABS");
     expect(record.textContent).toBe("AI transparency statement Current body.");
     expect(record.publishedAt).toBe("2025-11-11T06:12:58Z");
     expect(record.updatedAt).toBeUndefined();

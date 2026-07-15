@@ -1,4 +1,4 @@
-# Australian Government AI Transparency Tracker
+# Australian Government AI Tracker
 
 This repository tracks **AI Transparency Statements** from Australian Government
 agencies.
@@ -7,7 +7,7 @@ A _Cybernetic Studio_ project by [Ben Swift](https://benswift.me).
 
 ## How does it work?
 
-The [script](./src/aps_ai_transparency_tracker/scraper.py):
+The [script](./src/aps_ai_tracker/scraper.py):
 
 - loops over all the APS agencies defined in [`agencies.toml`](./agencies.toml)
 - hits the specified URL for each agency's AI Transparency Statement
@@ -37,7 +37,7 @@ In the [spirit](https://github.com/unitedstates/congress) of
 [version](https://github.com/aclu-national/tracking-ll144-bias-audits)
 [control](https://github.com/Cybersoft82/Privacy-Policy-Change-Detection-and-History-Tracking-Service)
 tools,
-[this project](https://github.com/ANUcybernetics/aps-ai-transparency-tracker)
+[this project](https://github.com/ANUcybernetics/aps-ai-tracker)
 automatically scrapes these statements and stores them as markdown files with
 YAML frontmatter, allowing changes to be tracked over time through git. The list
 of agencies is from

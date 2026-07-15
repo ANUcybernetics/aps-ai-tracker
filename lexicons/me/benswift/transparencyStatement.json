@@ -1,7 +1,7 @@
 {
   "lexicon": 1,
   "id": "me.benswift.transparencyStatement",
-  "description": "An Australian Government agency's AI transparency statement, as tracked by the APS AI Transparency Tracker (https://anucybernetics.github.io/aps-ai-transparency-tracker/). One record per agency, updated in place as the agency revises its statement; the change history lives in the companion me.benswift.transparencyStatementRevision records.",
+  "description": "An Australian Government agency's AI transparency statement, as tracked by the APS AI Tracker (https://anucybernetics.github.io/aps-ai-tracker/). One record per agency, updated in place as the agency revises its statement; the change history lives in the companion me.benswift.transparencyStatementRevision records.",
   "defs": {
     "main": {
       "type": "record",
