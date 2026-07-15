@@ -14,8 +14,8 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Working on this project
 
-- Run scraper: `mise exec -- uv run --module aps_ai_tracker` (or
-  the `scrape` entry point: `mise exec -- uv run scrape`)
+- Run scraper: `mise exec -- uv run --module aps_ai_tracker` (or the `scrape`
+  entry point: `mise exec -- uv run scrape`)
 - Reprocess cached `raw/` files into statements without refetching:
   `mise exec -- uv run process`
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
@@ -56,15 +56,18 @@ site is light-only (no dark mode); design tokens live in
   `.cache/embeddings.json` is committed. Run `export` before building the site
   locally. The client-fetched similarity graph is served by a build-time
   endpoint (`src/pages/data/similarity.graph.json.ts`) from the validated data.
-- **Deploy**: live at
-  <https://anucybernetics.github.io/aps-ai-tracker/>.
-  `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
-  `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI runs
-  `export` **without** an OpenAI key (it reuses the committed embeddings cache),
-  so no GitHub secret is needed. Pages is already configured (Settings → Pages →
-  Source: GitHub Actions); only re-set that if it's ever reset. It serves from
-  `/aps-ai-tracker/`, so all internal links go through `withBase()`
-  in `site/src/lib/paths.ts`.
+- **Deploy**: live at <https://apsaitracker.app/> (apex custom domain; the
+  `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it, and
+  the old `aps-ai-transparency-tracker` repo is a redirect stub for pre-rename
+  links). The domain is pinned by `site/public/CNAME` **and** the Pages config
+  `cname` (both needed: workflow deploys don't adopt the artifact CNAME on their
+  own). `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
+  push to `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI
+  runs `export` **without** an OpenAI key (it reuses the committed embeddings
+  cache), so no GitHub secret is needed. Pages is already configured (Settings →
+  Pages → Source: GitHub Actions); only re-set that if it's ever reset. It
+  serves from the domain root, so all internal links still go through
+  `withBase()` in `site/src/lib/paths.ts`.
 - **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape (with `OPENAI_API_KEY` from weddle's global
   `~/.config/mise/config.local.toml`), commits the refreshed
