@@ -16,8 +16,8 @@ export const TRACKER_DID = "did:plc:yhnshyrc2iev6z65u3uraon4";
 export const TRACKER_HANDLE = "apsaitracker.bsky.social";
 export const ATPROTO_SERVICE = "https://bsky.social";
 
-export const SITE_URL = "https://anucybernetics.github.io/aps-ai-transparency-tracker/";
-export const BASE_PATH = "/aps-ai-transparency-tracker";
+export const SITE_URL = "https://anucybernetics.github.io/aps-ai-tracker/";
+export const BASE_PATH = "/aps-ai-tracker";
 
 export const PUBLICATION_COLLECTION = "site.standard.publication";
 export const DOCUMENT_COLLECTION = "site.standard.document";
@@ -127,7 +127,7 @@ export function buildPublicationRecord(iconBlob?: unknown): Record<string, unkno
   const record: Record<string, unknown> = {
     $type: PUBLICATION_COLLECTION,
     url: SITE_URL,
-    name: "APS AI Transparency Tracker",
+    name: "APS AI Tracker",
     description:
       "Tracking how Australian Government agencies describe their use of AI — " +
       "the full text of every AI transparency statement, a timeline of every change, " +
@@ -164,7 +164,7 @@ export function buildDocumentRecord(
     publishedAt: utcIso(firstObserved),
     description:
       `The AI transparency statement of ${statement.agency}, captured from the agency's ` +
-      `website and tracked for changes by the APS AI Transparency Tracker.`,
+      `website and tracked for changes by the APS AI Tracker.`,
     tags: ["ai-transparency", "australian-government"],
   };
   const updated = lastChanged(statement);

@@ -14,7 +14,7 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Working on this project
 
-- Run scraper: `mise exec -- uv run --module aps_ai_transparency_tracker` (or
+- Run scraper: `mise exec -- uv run --module aps_ai_tracker` (or
   the `scrape` entry point: `mise exec -- uv run scrape`)
 - Reprocess cached `raw/` files into statements without refetching:
   `mise exec -- uv run process`
@@ -28,7 +28,7 @@ This is a Python web scraping project using uv for dependency management.
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
-  - `src/aps_ai_transparency_tracker/` contains the package
+  - `src/aps_ai_tracker/` contains the package
   - `scraper.py` has core functionality
   - `__main__.py` provides CLI entry point (the `scrape` command)
   - `process.py` reprocesses cached `raw/` files into statements without
@@ -57,13 +57,13 @@ site is light-only (no dark mode); design tokens live in
   locally. The client-fetched similarity graph is served by a build-time
   endpoint (`src/pages/data/similarity.graph.json.ts`) from the validated data.
 - **Deploy**: live at
-  <https://anucybernetics.github.io/aps-ai-transparency-tracker/>.
+  <https://anucybernetics.github.io/aps-ai-tracker/>.
   `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
   `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI runs
   `export` **without** an OpenAI key (it reuses the committed embeddings cache),
   so no GitHub secret is needed. Pages is already configured (Settings → Pages →
   Source: GitHub Actions); only re-set that if it's ever reset. It serves from
-  `/aps-ai-transparency-tracker/`, so all internal links go through `withBase()`
+  `/aps-ai-tracker/`, so all internal links go through `withBase()`
   in `site/src/lib/paths.ts`.
 - **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape (with `OPENAI_API_KEY` from weddle's global

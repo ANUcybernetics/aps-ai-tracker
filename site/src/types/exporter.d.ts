@@ -2,7 +2,7 @@
 // The data types are inferred from the zod schemas in src/lib/schemas.ts (the
 // single source of truth, validated at build time); this barrel re-exports them
 // under their historical names so consumers keep importing from "@/types/exporter".
-// Keep schemas in sync with src/aps_ai_transparency_tracker/export.py.
+// Keep schemas in sync with src/aps_ai_tracker/export.py.
 
 export type {
   AgencySize,

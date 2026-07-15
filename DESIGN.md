@@ -1,6 +1,6 @@
 # Design
 
-Visual system for the AI Transparency Tracker site (`site/`). Strategy lives in
+Visual system for the AI Tracker site (`site/`). Strategy lives in
 [PRODUCT.md](PRODUCT.md); this captures how it looks. Tokens are defined in
 `site/src/styles/tokens.css` and applied in `site/src/styles/global.css`.
 

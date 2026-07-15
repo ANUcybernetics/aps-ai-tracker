@@ -24,7 +24,7 @@ wheels = [
 ]
 
 [[package]]
-name = "aps-ai-transparency-tracker"
+name = "aps-ai-tracker"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

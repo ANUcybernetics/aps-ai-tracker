@@ -5,7 +5,7 @@
 // at build time, so a drift between this file and export.py fails the build
 // loudly rather than surfacing as `undefined` deep inside a component.
 //
-// Keep in sync with src/aps_ai_transparency_tracker/export.py.
+// Keep in sync with src/aps_ai_tracker/export.py.
 import { z } from "astro/zod";
 
 export const agencySizeSchema = z.enum([

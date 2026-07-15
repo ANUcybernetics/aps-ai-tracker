@@ -1,7 +1,7 @@
 {
   "lexicon": 1,
   "id": "me.benswift.transparencyStatementRevision",
-  "description": "One observed revision of an Australian Government agency's AI transparency statement, as captured by the APS AI Transparency Tracker's daily scrape. Records are immutable observations: together they form the statement's full change history, walkable via prev links and subscribable in real time via the firehose.",
+  "description": "One observed revision of an Australian Government agency's AI transparency statement, as captured by the APS AI Tracker's daily scrape. Records are immutable observations: together they form the statement's full change history, walkable via prev links and subscribable in real time via the firehose.",
   "defs": {
     "main": {
       "type": "record",

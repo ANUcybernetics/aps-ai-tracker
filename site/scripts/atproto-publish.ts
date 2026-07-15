@@ -342,7 +342,7 @@ async function main() {
         const external: Record<string, unknown> = {
           uri: `${origin}${documentPath(a.abbr)}`,
           title: `${a.agency} — AI transparency statement`,
-          description: `Full text and change history on the APS AI Transparency Tracker.`,
+          description: `Full text and change history on the APS AI Tracker.`,
           associatedRefs: [docRef, pubRef],
         };
         if (thumb) external.thumb = thumb;
