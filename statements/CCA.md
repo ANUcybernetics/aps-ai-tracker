@@ -5,6 +5,8 @@ source_url: https://www.climatechangeauthority.gov.au/artificial-intelligence-tr
 title: Artificial Intelligence Transparency Statement | Climate Change Authority
 ---
 
+# Artificial Intelligence Transparency Statement
+
 ## Artificial Intelligence Transparency Statement
 
 This page explains how the Authority is using artificial intelligence (AI), in line with the Australian Government’s [Policy for responsible use of AI in government(Opens in a new tab/window)](https://www.digital.gov.au/policy/ai/policy).
