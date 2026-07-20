@@ -116,7 +116,7 @@ Our customer service charter outlines our commitment to our customers.
 
 Our cost recovery implementation statement shows how we cover some of the costs of administering IP rights.
 
-[ Cost Recovery Implementation Statement 2024-25 (Budget update 2025-2026) PDF | 916KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/CRIS/Cost-Recovery-Implementation-Statement-2024-25---WCAG.pdf?rev=058690d01eff49a7b88094cb788b9569)
+[ Cost Recovery Implementation Statement 2024–25 (Budget update 2026–27) PDF | 819KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/CRIS/cost-recovery-implementation-statement-2024-25-budget-update-2026-27.pdf?rev=f13fbbb67e7e476496275d0620910adf)
 
 ##### Regulator performance framework
 
