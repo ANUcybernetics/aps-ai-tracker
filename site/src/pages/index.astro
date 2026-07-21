@@ -2,13 +2,30 @@
 import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
+import DiffView from "@/components/DiffView.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
+import { getStatements } from "@/lib/statements";
 import { formatDate } from "@/lib/format";
 import { withBase, statementPath } from "@/lib/paths";
+import type { TimelineEvent } from "@/types/exporter";
 
 const timeline = await getTimeline();
 const agencies = await getAgencies();
+const statements = await getStatements();
+
+// Join an event to its statement's revision history to diff against the previous
+// revision (build-time; only the rendered diff HTML ships). Same join as the
+// timeline page's diffFor.
+function diffFor(event: TimelineEvent) {
+  const stmt = statements[event.statementId];
+  if (!stmt) return null;
+  const idx = stmt.timeline.findIndex((t) => t.sha === event.sha);
+  if (idx <= 0) return null; // first-seen events have nothing to diff against
+  const prev = stmt.timeline[idx - 1];
+  const curr = stmt.timeline[idx];
+  return { before: prev.body, after: curr.body, delta: curr.charDelta };
+}
 
 // One row per agency (their most recent genuine change) so a single daily-churning
 // statement doesn't crowd out the feed.
@@ -16,7 +33,8 @@ const seen = new Set<string>();
 const recent = timeline
   .filter((e) => e.kind === "updated" && !e.isNoise)
   .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
-  .slice(0, 10);
+  .slice(0, 10)
+  .map((event) => ({ event, diff: diffFor(event) }));
 
 const c = meta.counts;
 const finderAgencies = agencies.map((a) => ({
@@ -95,15 +113,23 @@ const explorers = [
       </div>
       <ul class="feed">
         {
-          recent.map((e) => (
+          recent.map(({ event: e, diff }) => (
             <li class="feed__row">
-              <time class="feed__date mono" datetime={e.date}>
-                {formatDate(e.date)}
-              </time>
-              <a class="feed__agency" href={statementPath(e.abbr)}>
-                {e.agency}
-              </a>
-              <span class="feed__abbr mono">{e.abbr}</span>
+              <div class="feed__head">
+                <time class="feed__date mono" datetime={e.date}>
+                  {formatDate(e.date)}
+                </time>
+                <a class="feed__agency" href={statementPath(e.abbr)}>
+                  {e.agency}
+                </a>
+                <span class="feed__abbr mono">{e.abbr}</span>
+              </div>
+              {diff && (
+                <details class="feed__diff">
+                  <summary>What changed</summary>
+                  <DiffView before={diff.before} after={diff.after} compact />
+                </details>
+              )}
             </li>
           ))
         }
@@ -202,10 +228,6 @@ const explorers = [
   }
 
   .feed__row {
-    display: grid;
-    grid-template-columns: 7rem 1fr auto;
-    align-items: baseline;
-    gap: var(--space-3);
     padding: var(--space-3);
     margin-inline: calc(-1 * var(--space-3));
     border-block-end: 1px solid var(--border);
@@ -214,6 +236,24 @@ const explorers = [
 
   .feed__row:hover {
     background: var(--surface);
+  }
+
+  .feed__head {
+    display: grid;
+    grid-template-columns: 7rem 1fr auto;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .feed__diff {
+    margin-block-start: var(--space-2);
+  }
+
+  .feed__diff summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    width: max-content;
   }
 
   .feed__date {
@@ -309,7 +349,7 @@ const explorers = [
   }
 
   @media (width < 34rem) {
-    .feed__row {
+    .feed__head {
       grid-template-columns: 1fr auto;
     }
 
