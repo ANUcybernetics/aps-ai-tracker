@@ -240,7 +240,7 @@ Our customer service charter outlines what our customers can expect when interac
 
 Gift register
 
-Our agency heads and staff occasionally accept gifts and benefits while undertaking official duties. To ensure transparency, we document them in a gift register.
+Our gift register lists the gifts and benefits our staff receive while undertaking official duties. It includes those valued above the disclosure threshold.
 
 [Read more](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/gift-register)
 
