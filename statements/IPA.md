@@ -217,11 +217,13 @@ Our Director General decides how the PID scheme operates in our agency. Read det
 
 [ IP Australia public disclosure procedure January 2024 PDF | 5MB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip_australia_public_interest_disclosure_procedure_january_2024.pdf?rev=59a7a2c9c4de42c5b7675b4cba6c856f)
 
-##### Breaches of the code of conduct
+##### Breaches of the Code of Conduct
 
-As per [section 13 of the Public Service Act 1999](http://classic.austlii.edu.au/au/legis/cth/consol_act/psa1999152/s13.html#:~:text=%281%29%20An%20APS%20employee%20must,in%20connection%20with%20APS%20employment.), everyone who works at IP Australia Is required to adhere to the APS (Australian public service) Code of Conduct. Suspected breaches will be dealt with as per our procedures for determining breaches of the Code of Conduct and for determining sanction.
+As per section 13 of the [Public Service Act 1999](https://www.legislation.gov.au/C2004A00538/latest/text), everyone who works at IP Australia Is required to adhere to the [Australian Public Service (APS) Code of Conduct](https://www.apsc.gov.au/aps-code-conduct).
 
-[ Procedures for determining breaches of code of conduct and for determining sanction PDF | 390KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Procedures_for_determining_breaches_of_code_of_conduct_and_for_determining_sanction.pdf?rev=42e18675965e4d69be7eb4f2ba70e319)
+Suspected breaches will be dealt with as per our procedure for determining breaches of the Code of Conduct and for determining sanction.
+
+[ Determining breaches of the APS Code of Conduct procedure PDF | 298KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/determining-breaches-of-the-aps-code-of-conduct-procedure.pdf?rev=929475e48c9240c7ac7a3ed7dbb4aa33)
 
 ## Related content
 
