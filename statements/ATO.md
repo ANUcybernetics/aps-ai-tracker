@@ -30,7 +30,7 @@ We also use AI to ensure we can continue to protect the tax and superannuation s
 Based on the [classification system for AIExternal Link](https://www.digital.gov.au/policy/ai/resources/use-classification) in government, we are using AI in the:
 
 - usage patterns of analytics for insights, image processing, workplace productivity and decision making and administrative action
-- domains of service delivery, compliance and fraud detection, corporate and enabling, and law enforcement, intelligence and security.
+- domains of service delivery, compliance and fraud detection, corporate and enabling, law enforcement, intelligence and security, and policy and legal.
 
 Examples of how we are applying AI in these domains:
 
@@ -48,13 +48,16 @@ Examples of how we are applying AI in these domains:
   - creating initial draft communications for review
   - summarising content
 - law enforcement, intelligence and security
-  - supporting AI-enabled analysis of data for intelligence gathering.
+  - supporting AI-enabled analysis of data for intelligence gathering
+- policy and legal
+  - creating initial draft communications to ministerial correspondence for review
+  - summarising publicly available content to support legal and policy research.
 
 Under our AI policy, AI use is limited to approved tools used for approved use cases.
 
-We are currently expanding our use of enterprise generative AI systems to responsibly explore the benefits and risks of this emerging technology for workplace productivity use.
+We are currently expanding our use of enterprise generative AI systems to responsibly explore the benefits and risks of this emerging technology in the workplace productivity and analytics for insights usage patterns.
 
-See [Examples of how we use AI](https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/ato-ai-transparency-statement#ExamplesofhowweuseAI).
+See Examples of how we use AI.
 
 ## AI governance
 
@@ -66,7 +69,7 @@ Our Chief Data Officer (CDO) oversees the development and use of data, analytics
 
 Our existing D&A (including data governance and [ethics](https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/data-and-analytics/how-we-use-data-and-analytics#ato-Howweprotectyourdataandprivacy)) and IT policies already broadly apply to AI. We continue to evolve our data governance as our D&A maturity increases, expanding our policies and guidance to reference AI more directly. Our approach adheres to all AI-related legislative, regulatory and policy frameworks, and all standard laws and frameworks.
 
-At time of publishing, the ATO is compliant with version 1.1 of the _AI in government policy_. Version 2.0 of the policy introduces new requirements from 15 December 2025, which we are committed to implementing. The ATO will soon release a standalone AI policy outlining specific obligations for staff when interacting with, using, or developing AI to support version 2.0 requirements.
+The ATO is compliant with the latest version (2.0) of the _AI in government policy_. Version 2.0 of the policy introduced new requirements from 15 December 2025, which we are committed to implementing. The ATO recently released a standalone AI policy outlining specific obligations for staff when interacting with, using, or developing AI to support version 2.0 requirements.
 
 AI is evolving rapidly in an ever-changing technology environment. Therefore, we will continue to evaluate and change our governance to ensure it remains fit for purpose. We will continue to train and develop our staff to ensure we use AI safely, responsibly and ethically.
 
@@ -84,7 +87,7 @@ We have developed AI models to help reduce taxpayer compliance costs and improve
 
 The real-time prompts ask the taxpayer to check amounts they have entered for certain tax return labels. This is when the amounts don't match what we expect when compared to other taxpayers with similar attributes or amounts entered in previous years. The taxpayer can then review and amend any mistakes before lodging, getting their tax right from the start.
 
-_Classification system for AI use: analytics for insights usage pattern, service delivery domain_
+_Classification system for AI use: analytics for insights usage pattern, service delivery domain._
 
 ### Fraud detection
 
@@ -92,7 +95,7 @@ We manage the myID digital platform, which provides an easy and secure way for i
 
 The ranked results and drivers of the risk scores are provided to digital identify fraud investigators (ATO staff) for review. The investigators review the results, with a focus on those rated high risk. They then determine if a myID should be suspended. Investigators can view all results, not just those rated high risk.
 
-_Classification system for AI use: analytics for insights usage pattern, compliance and fraud detection domain_
+_Classification system for AI use: analytics for insights usage pattern, compliance and fraud detection domain._
 
 ### Communications content
 
