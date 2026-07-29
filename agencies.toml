@@ -812,3 +812,9 @@ name = "Office of the Official Secretary to the Governor-General"
 abbr = "OSGG"
 size = "small"
 url = "https://www.gg.gov.au/sites/default/files/2026-05/OOSGG%20AI%20Transparency%20Sstatement%20-%20May%202026.pdf"
+
+[[agencies]]
+name = "Australian Energy Regulator"
+abbr = "AER"
+size = "medium"
+url = "https://www.aer.gov.au/about/policies/artificial-intelligence-transparency-statement"
