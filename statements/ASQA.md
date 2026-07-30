@@ -1,7 +1,7 @@
 ---
 abbr: ASQA
 agency: Australian Skills Quality Authority
-final_url: https://www.asqa.gov.au/about-us/governance-and-accountability/artificial-intelligence-ai-transparency-statement
+final_url: https://www.asqa.gov.au/for-providers/guidance-and-resources-providers/artificial-intelligence-ai-use-in-vocational-education-training-vet/artificial-intelligence-ai-transparency-statement
 source_url: https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | ASQA
 ---
@@ -48,5 +48,9 @@ For enquiries or feedback regarding ASQA's use of AI, please contact us at [digi
 ## Review and updates
 
 It will be reviewed and updated annually or when significant changes occur.
+
+## Useful resources
+
+- [Policy for the responsible use of AI in government - Version 2.0 | digital.gov.au](https://www.digital.gov.au/ai/ai-in-government-policy)
 
 On this page
