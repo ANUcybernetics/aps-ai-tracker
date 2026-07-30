@@ -151,9 +151,12 @@ def bulk_import_shas() -> frozenset[str]:
 def git_file_revisions(abbr: str, bulk: frozenset[str]) -> list[Revision]:
     """Chronological revisions of statements/<abbr>.md, body included per revision."""
     rel = f"statements/{abbr}.md"
+    # No --follow: statement files are never renamed (the path is the agency key),
+    # and git's copy detection happily traces a new statement back through an
+    # unrelated agency's history when the boilerplate is similar enough — which
+    # both misattributes the timeline and breaks the `git show sha:rel` below.
     raw = git(
         "log",
-        "--follow",
         "--date-order",
         f"--format=%H{_FS}%aI{_FS}%s{_FS}%b{_RS}",
         "--",
