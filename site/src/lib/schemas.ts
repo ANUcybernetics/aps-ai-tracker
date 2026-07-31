@@ -19,6 +19,10 @@ export const agencySizeSchema = z.enum([
 ]);
 
 export const coverageStatusSchema = z.enum(["published", "not-yet", "exempt"]);
+// What the AI policy asks of the body, independent of whether it has published:
+// mandatory for non-corporate Commonwealth entities, voluntary for corporate
+// entities, exempt for the defence portfolio and national intelligence community.
+export const agencyScopeSchema = z.enum(["mandatory", "voluntary", "exempt"]);
 export const sourceTypeSchema = z.enum(["html", "pdf"]);
 export const eventKindSchema = z.enum(["added", "tracked-since", "updated"]);
 
@@ -55,6 +59,7 @@ export const agencyRowSchema = z.object({
   abbr: z.string(),
   name: z.string(),
   size: agencySizeSchema,
+  scope: agencyScopeSchema,
   url: z.string().nullable(),
   status: coverageStatusSchema,
   statementId: z.string().nullable(),

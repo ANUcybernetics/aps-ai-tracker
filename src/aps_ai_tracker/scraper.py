@@ -72,6 +72,7 @@ class Agency:
     abbr: str
     url: str | None
     size: str = "unknown"
+    scope: str = "mandatory"
     manual: bool = False
     selector: str | None = None
 
@@ -107,6 +108,7 @@ def load_agencies() -> list[Agency]:
             abbr=d["abbr"],
             url=d["url"] if d["url"] else None,
             size=d.get("size", "unknown"),
+            scope=d.get("scope", "mandatory"),
             manual=d.get("manual", False),
             selector=d.get("selector"),
         )

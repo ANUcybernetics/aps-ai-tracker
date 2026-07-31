@@ -72,21 +72,22 @@ def write_json(path: Path, obj: object) -> None:
 # --- loading ----------------------------------------------------------------
 
 
-def statement_status(url: str | None, has_statement: bool) -> str:
+def statement_status(scope: str, url: str | None, has_statement: bool) -> str:
     """Classify an agency as published / not-yet / exempt.
 
-    An empty `url` in agencies.toml (parsed to None) marks an agency with no
-    known statement URL: either exempt (intelligence & defence portfolio) or a
-    corporate Commonwealth entity, which the Policy for the responsible use of AI
-    in government encourages but does not require to publish. Those read as
-    exempt. An agency with a URL but no current statement file is expected to
-    publish (or has a transient scrape gap), so it reads as not-yet.
+    `scope` comes from agencies.toml and records what the Policy for the
+    responsible use of AI in government actually asks of the body: `mandatory`
+    for non-corporate Commonwealth entities, `voluntary` for corporate entities
+    and bodies outside the PGPA list, `exempt` for the defence portfolio and the
+    national intelligence community. An agency that owes a statement and has
+    none reads as not-yet; so does one we hold a URL for but failed to capture
+    this run. Only bodies with no obligation and no statement read as exempt.
     """
     if has_statement:
         return "published"
-    if url is None:
-        return "exempt"
-    return "not-yet"
+    if scope == "mandatory" or url is not None:
+        return "not-yet"
+    return "exempt"
 
 
 def source_type(frontmatter: dict) -> str:
@@ -786,8 +787,9 @@ def build_agency_index(
                 "abbr": abbr,
                 "name": agency.name,
                 "size": agency.size,
+                "scope": agency.scope,
                 "url": agency.url,
-                "status": statement_status(agency.url, has_statement),
+                "status": statement_status(agency.scope, agency.url, has_statement),
                 "statementId": abbr if has_statement else None,
                 "firstSeen": revs[0].date if revs else None,
                 "lastUpdated": revs[-1].date if revs else None,
