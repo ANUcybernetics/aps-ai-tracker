@@ -465,13 +465,6 @@ scope = "mandatory"
 url = "https://www.dfat.gov.au/about-us/corporate/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
-name = "Department of Health, Disability and Ageing"
-abbr = "DHDA"
-size = "medium"
-scope = "mandatory"
-url = "https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement"
-
-[[agencies]]
 name = "Department of Industry, Science and Resources"
 abbr = "DISR"
 size = "medium"
