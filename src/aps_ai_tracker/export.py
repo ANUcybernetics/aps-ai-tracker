@@ -928,8 +928,15 @@ def main() -> int:
         {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
     write_json(GENERATED_DIR / "similarity.json", similarity)
+    statement_dir = GENERATED_DIR / "statements"
     for abbr, doc in statement_docs.items():
-        write_json(GENERATED_DIR / "statements" / f"{abbr}.json", doc)
+        write_json(statement_dir / f"{abbr}.json", doc)
+    # Prune statements that have left the corpus. The site globs this directory,
+    # so a stale file keeps building a page for an agency we no longer track.
+    for path in statement_dir.glob("*.json"):
+        if path.stem not in statement_docs:
+            logger.info("Pruning stale statement export: %s", path.name)
+            path.unlink()
     write_json(GENERATED_DIR / "meta.json", meta)
 
     logger.info(
