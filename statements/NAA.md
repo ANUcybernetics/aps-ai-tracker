@@ -1,6 +1,6 @@
 ---
 abbr: NAA
-agency: National Archives Australia
+agency: National Archives of Australia
 source_url: https://www.naa.gov.au/about-us/who-we-are/accountability-and-reporting/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | naa.gov.au
 ---

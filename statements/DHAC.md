@@ -1,6 +1,6 @@
 ---
 abbr: DHAC
-agency: Department of Health and Aged Care
+agency: Department of Health, Disability and Ageing
 source_url: https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement
 title: Artificial intelligence (AI) transparency statement | Australian Government
   Department of Health, Disability and Ageing
