@@ -96,6 +96,12 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
   weddle's mise `config.local.toml`; the script refuses to write to any DID but
   the tracker's. The cron scrape runs this automatically and commits the state
   file.
+- Dropping a statement from the corpus leaves its records live on the network.
+  The script warns about the orphans and deletes them with `--prune` (records
+  for any abbr in the state file but not the corpus, plus its revisions). The
+  cron does **not** pass `--prune` --- pruning is destructive and a scrape
+  glitch that loses a statement shouldn't erase its published history, so run it
+  by hand after a deliberate removal.
 - Schema changes: edit `lexicons/`, then
   `mise exec -- pnpm run atproto:lexicon -- --write` (uses the personal
   `ATP_IDENTIFIER`/`ATP_APP_PASSWORD`).
