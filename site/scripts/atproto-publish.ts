@@ -68,6 +68,7 @@ net.setDefaultAutoSelectFamily(true);
 net.setDefaultAutoSelectFamilyAttemptTimeout(500);
 
 const WRITE = process.argv.includes("--write");
+const PRUNE = process.argv.includes("--prune");
 const CROSSPOST = process.argv.includes("--crosspost");
 const SEED = process.argv.includes("--seed");
 const SERVICE = process.argv.includes("--service")
@@ -217,7 +218,14 @@ async function main() {
     });
   }
 
+  // Records for statements that have left the corpus (an agency dropped, or a
+  // duplicate removed). Revision rkeys are `{abbr}-{compact UTC}` and the
+  // timestamp never contains a dash, so the abbr is everything before the last.
   const staleStatements = Object.keys(state.statements).filter((abbr) => !byAbbr.has(abbr));
+  const staleRevisions = Object.keys(state.revisions).filter(
+    (rkey) => !byAbbr.has(rkey.slice(0, rkey.lastIndexOf("-"))),
+  );
+  const stale = staleStatements.length * 2 + staleRevisions.length;
   const plan = CROSSPOST ? planAnnouncements(statements, ledger) : { announce: [], autoSeed: [] };
 
   const publicationChanged = state.publication !== publicationHash;
@@ -242,14 +250,23 @@ async function main() {
     console.log(`  auto-seeding ${plan.autoSeed.length} passed-over revision(s)`);
   }
   for (const abbr of staleStatements) {
-    console.warn(`  ! ${abbr} is in atproto-state.json but not the corpus — clean up manually`);
+    const revs = staleRevisions.filter((rkey) => rkey.startsWith(`${abbr}-`)).length;
+    console.warn(
+      `  ! ${abbr} is in atproto-state.json but not the corpus — ` +
+        `${PRUNE ? `will delete 2 records + ${revs} revisions` : "re-run with --prune to delete"}`,
+    );
   }
 
   if (!WRITE) {
     console.log("\n(dry run — re-run with --write to publish)");
     return;
   }
-  if (total === 0 && plan.announce.length === 0 && plan.autoSeed.length === 0) {
+  if (
+    total === 0 &&
+    plan.announce.length === 0 &&
+    plan.autoSeed.length === 0 &&
+    !(PRUNE && stale > 0)
+  ) {
     console.log("nothing to do");
     return;
   }
@@ -286,6 +303,10 @@ async function main() {
     return { uri: res.data.uri, cid: res.data.cid! };
   };
 
+  const del = async (collection: string, rkey: string): Promise<void> => {
+    await agent.com.atproto.repo.deleteRecord({ repo: TRACKER_DID, collection, rkey });
+  };
+
   let done = 0;
   const progress = () => {
     done += 1;
@@ -320,6 +341,21 @@ async function main() {
       if (p.collection === DOCUMENT_COLLECTION) docRefs.set(p.rkey, ref);
       if (p.collection === STATEMENT_COLLECTION) state.statements[p.rkey] = p.hash;
       progress();
+    }
+
+    // Prune last: state entries are dropped one record at a time, so a crash
+    // mid-prune leaves the rest to be retried rather than orphaned.
+    if (PRUNE) {
+      for (const rkey of staleRevisions) {
+        await del(REVISION_COLLECTION, rkey);
+        delete state.revisions[rkey];
+      }
+      for (const abbr of staleStatements) {
+        await del(DOCUMENT_COLLECTION, abbr);
+        await del(STATEMENT_COLLECTION, abbr);
+        delete state.statements[abbr];
+      }
+      if (stale) console.log(`  pruned ${stale} stale record(s)`);
     }
 
     // Announcements: skeet with an external card pointing at the statement
