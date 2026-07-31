@@ -21,7 +21,7 @@ size = "medium"
 url = "https://www.agriculture.gov.au/about/reporting/obligations/AI-transparency-statement"
 
 [[agencies]]
-name = "Department of Health and Aged Care"
+name = "Department of Health, Disability and Ageing"
 abbr = "DHAC"
 size = "medium"
 url = "https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement"
@@ -529,7 +529,7 @@ size = "small"
 url = "https://www.jobsandskills.gov.au/ai-transparency-statement"
 
 [[agencies]]
-name = "Murray Darling Basin Authority"
+name = "Murray-Darling Basin Authority"
 abbr = "MDBA"
 size = "medium"
 url = "https://www.mdba.gov.au/about-us/accountability-and-reporting/ai-transparency-statement"
@@ -553,7 +553,7 @@ size = "small"
 url = "https://www.nacc.gov.au/ai-transparency-statement"
 
 [[agencies]]
-name = "National Archives Australia"
+name = "National Archives of Australia"
 abbr = "NAA"
 size = "medium"
 url = "https://www.naa.gov.au/about-us/who-we-are/accountability-and-reporting/artificial-intelligence-ai-transparency-statement"
@@ -818,3 +818,15 @@ name = "Australian Energy Regulator"
 abbr = "AER"
 size = "medium"
 url = "https://www.aer.gov.au/about/policies/artificial-intelligence-transparency-statement"
+
+[[agencies]]
+name = "National Environmental Protection Agency"
+abbr = "NEPA"
+size = "small"
+url = ""
+
+[[agencies]]
+name = "Australian Naval Nuclear Power Safety Regulator"
+abbr = "ANNPSR"
+size = "small"
+url = ""
