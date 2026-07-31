@@ -251,15 +251,35 @@ so it doesn't need a stronger model. Each subagent should:
 - WebFetch any plausible hit to confirm it's an actual transparency statement
   (not a general AI-policy page), then return the verified URL or "not found".
 
+### Source C --- the PGPA entity list (who exists at all)
+
+Sources A and B only find bodies someone already knows about. To catch an entity
+that was created recently and has published nothing, cross-check against
+Finance's authoritative roster --- the "List of Commonwealth Entities and
+Companies" xlsx linked from the [PGPA Act flipchart and list][pgpa] page,
+reissued each 1 July. It gives every body's title, portfolio and type
+(non-corporate entity / corporate entity / Commonwealth company).
+
+[pgpa]:
+  https://www.finance.gov.au/government/managing-commonwealth-resources/structure-australian-government-public-sector/pgpa-act-flipchart-and-list
+
+Any non-corporate entity on that list and absent from `agencies.toml` is a real
+coverage gap --- add it, with `scope = "mandatory"` and `url = ""` if it has
+published nothing yet. Run this cross-check when auditing coverage rather than
+every scrape; the roster changes a few times a year, not daily.
+
 ### Reconcile and act
 
-Combine the results from both sources, de-duplicated. For each verified
-statement, set the `url` field in `agencies.toml`.
+Combine the results from all three sources, de-duplicated. For each verified
+statement, set the `url` field in `agencies.toml`. Give every newly added body a
+`scope` (see CLAUDE.md for what the three values mean).
 
-Some agencies legitimately stay `url = ""`: the policy excludes the defence
-portfolio, the national intelligence community, and (mandatorily) corporate
-Commonwealth entities, so DEFENCE, ASA, ACIC, ONI, NDIA, AHRC, AIATSIS and the
-like keep coming back not-found --- that's expected, not a discovery failure.
+Some bodies legitimately stay `url = ""`: the policy carves out the defence
+portfolio and the national intelligence community, and only encourages corporate
+Commonwealth entities to publish. DEFENCE, ASA, ANNPSR, ACIC, ONI, AWM, NDIA,
+AHRC, APVMA, NMA, NPG, TSRA and AHL keep coming back not-found --- that's
+expected, not a discovery failure. A `scope = "mandatory"` body with no
+statement is the one case that genuinely warrants attention.
 
 If any URLs were added, re-run the scraper (the full pipeline picks up the new
 URLs), review the diff, discard spurious changes, then commit and push:
