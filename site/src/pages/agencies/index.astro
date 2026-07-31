@@ -10,27 +10,33 @@ const agencies = await getAgencies();
 const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
 const published = agencies.filter((a) => a.status === "published").toSorted(byName);
 const notYet = agencies.filter((a) => a.status === "not-yet").toSorted(byName);
-const exempt = agencies.filter((a) => a.status === "exempt").toSorted(byName);
+// Silent bodies split by what the policy asks of them: a corporate entity that
+// never published is a different thing from one the policy carves out entirely.
+const silent = agencies.filter((a) => a.status === "exempt");
+const voluntary = silent.filter((a) => a.scope === "voluntary").toSorted(byName);
+const carvedOut = silent.filter((a) => a.scope === "exempt").toSorted(byName);
+const mandatoryCount = agencies.filter((a) => a.scope === "mandatory").length;
 const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status: a.status }));
 ---
 
 <Layout
   title="Agencies"
-  description={`Which of the ${agencies.length} tracked Australian Government agencies have published an AI transparency statement, which haven't, and which are exempt.`}
+  description={`Which of the ${agencies.length} tracked Australian Government bodies have published an AI transparency statement, which haven't, and which sit outside the mandate.`}
 >
   <div class="page stack">
     <header class="stack">
       <h1>Agencies</h1>
       <p class="lede">
-        All {agencies.length} agencies on the APSC list. The Policy for the responsible
-        use of AI in government <a
-          href="https://www.digital.gov.au/ai/ai-in-government-policy#need-to-know"
+        All {agencies.length} bodies we track. The Policy for the responsible use of
+        AI in government <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
           >applies to non-corporate Commonwealth entities</a
-        >, which must publish an <a
+        > &mdash; {mandatoryCount} of these &mdash; and each must publish an <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statement</a
-        >; the intelligence and defence portfolios and corporate entities sit outside
-        that mandate.
+        >. Corporate Commonwealth entities are encouraged rather than required to,
+        and the defence portfolio and national intelligence community are carved out
+        altogether. We track the rest anyway, because plenty publish regardless.
       </p>
     </header>
 
@@ -80,6 +86,10 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
             <h2>Not yet published</h2>
             <span class="muted">{notYet.length}</span>
           </div>
+          <p class="section-note">
+            Bodies that owe a statement and have none we can find &mdash; or whose
+            statement we hold a link for but failed to capture on the latest run.
+          </p>
           <ul class="agency-list">
             {notYet.map((a) => (
               <li>
@@ -91,30 +101,61 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
       )
     }
 
-    <section>
-      <div class="section-title">
-        <h2>Exempt or out of scope</h2>
-        <span class="muted">{exempt.length}</span>
-      </div>
-      <p class="section-note">
-        These agencies fall outside the Policy&rsquo;s mandatory scope &mdash; the
-        intelligence and defence portfolios, and corporate Commonwealth entities. Some
-        publish a statement voluntarily anyway; where they do, they appear under
-        Published above and among the DTA&rsquo;s <a
-          href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements"
-          >voluntary statements</a
-        >.
-      </p>
-      <ul class="agency-list">
-        {
-          exempt.map((a) => (
-            <li>
-              {a.name} <span class="muted mono">{a.abbr}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    {
+      voluntary.length > 0 && (
+        <section>
+          <div class="section-title">
+            <h2>Publication voluntary</h2>
+            <span class="muted">{voluntary.length}</span>
+          </div>
+          <p class="section-note">
+            Corporate Commonwealth entities and bodies outside the PGPA list. The
+            policy encourages them to publish but does not require it, and these
+            ones have not. Many of their peers did publish anyway, and appear under
+            Published above and among the DTA&rsquo;s{" "}
+            <a href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements">
+              voluntary statements
+            </a>
+            .
+          </p>
+          <ul class="agency-list">
+            {voluntary.map((a) => (
+              <li>
+                {a.name} <span class="muted mono">{a.abbr}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      carvedOut.length > 0 && (
+        <section>
+          <div class="section-title">
+            <h2>Carved out of the policy</h2>
+            <span class="muted">{carvedOut.length}</span>
+          </div>
+          <p class="section-note">
+            The policy{" "}
+            <a href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation">
+              does not apply
+            </a>{" "}
+            to AI use in the defence portfolio, or to the national intelligence
+            community as defined in section 4 of the <cite>Office of National
+            Intelligence Act 2018</cite>. Carve-outs may still publish voluntarily,
+            and several have.
+          </p>
+          <ul class="agency-list">
+            {carvedOut.map((a) => (
+              <li>
+                {a.name} <span class="muted mono">{a.abbr}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
   </div>
 </Layout>
 

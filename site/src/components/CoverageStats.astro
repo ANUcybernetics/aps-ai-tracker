@@ -17,7 +17,7 @@ const since = meta.firstCommit ? formatDate(meta.firstCommit) : "launch";
 const facts = [
   { label: "Published", value: `${c.published} of ${c.agencies}`, href: null },
   { label: "Not yet", value: String(c.notYet), href: null },
-  { label: "Exempt", value: String(c.exempt), href: null },
+  { label: "Outside mandate", value: String(c.exempt), href: null },
   {
     label: "Most revised",
     value: `${mostRevised.abbr} · ${mostRevised.revisionCount}`,
@@ -36,7 +36,7 @@ const facts = [
     <span class="coverage__big mono">{c.revisions}</span>
     <span class="coverage__gloss">
       changes tracked since {since}, across <strong>{c.published}</strong> published
-      statements from {c.agencies} agencies on the APSC list.
+      statements from the {c.agencies} Australian Government bodies we track.
     </span>
   </p>
 

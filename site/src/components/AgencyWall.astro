@@ -20,7 +20,7 @@ function cellHeat(status: string, originality: number | null): number {
 
 function cellLabel(name: string, status: string, originality: number | null): string {
   if (status === "not-yet") return `${name} — not yet published`;
-  if (status === "exempt") return `${name} — exempt or out of scope`;
+  if (status === "exempt") return `${name} — outside the mandate, has not published`;
   if (originality === null) return `${name} — published`;
   return `${name} — ${originalityPercent(originality)}% bespoke`;
 }
@@ -65,7 +65,9 @@ const cells = agencies.toSorted(byName).map((a) => ({
     </span>
     <span class="wall__sep" aria-hidden="true">·</span>
     <span><span class="wall__key" data-status="not-yet" aria-hidden="true" /> not yet</span>
-    <span><span class="wall__key" data-status="exempt" aria-hidden="true" /> exempt</span>
+    <span
+      ><span class="wall__key" data-status="exempt" aria-hidden="true" /> outside mandate</span
+    >
     <ReadingLink anchor="originality" label="What is bespoke?" class="wall__how" />
   </figcaption>
 </figure>

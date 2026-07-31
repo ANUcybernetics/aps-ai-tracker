@@ -126,15 +126,22 @@ def test_originality_canonical_phrase_counts_as_shared():
 
 
 @pytest.mark.parametrize(
-    ("url", "has", "expected"),
+    ("scope", "url", "has", "expected"),
     [
-        ("http://x", True, "published"),
-        (None, False, "exempt"),
-        ("http://x", False, "not-yet"),
+        ("mandatory", "http://x", True, "published"),
+        ("exempt", None, True, "published"),
+        # obligated but nothing published: a genuine gap, not an exemption
+        ("mandatory", None, False, "not-yet"),
+        # outside the mandate and silent
+        ("voluntary", None, False, "exempt"),
+        ("exempt", None, False, "exempt"),
+        # we know of a statement but failed to capture it this run
+        ("mandatory", "http://x", False, "not-yet"),
+        ("voluntary", "http://x", False, "not-yet"),
     ],
 )
-def test_statement_status(url, has, expected):
-    assert statement_status(url, has) == expected
+def test_statement_status(scope, url, has, expected):
+    assert statement_status(scope, url, has) == expected
 
 
 def test_source_type_detects_pdf():

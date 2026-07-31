@@ -14,6 +14,11 @@ const timeline = await getTimeline();
 const agencies = await getAgencies();
 const statements = await getStatements();
 
+// Compliance among the bodies the policy actually binds, stated from the data
+// rather than hard-coded, so the claim can never drift from what we track.
+const mandatory = agencies.filter((a) => a.scope === "mandatory");
+const mandatoryPublished = mandatory.filter((a) => a.status === "published").length;
+
 // Join an event to its statement's revision history to diff against the previous
 // revision (build-time; only the rendered diff HTML ships). Same join as the
 // timeline page's diffFor.
@@ -82,12 +87,13 @@ const explorers = [
       <p class="hero__dateline mono">Tracking {c.agencies} agencies · rescraped daily</p>
       <h1 class="hero__title">How the Australian Government talks about its use of AI</h1>
       <p class="lede hero__lede">
-        Since February 2025, non-corporate Commonwealth agencies must publish <a
+        Since February 2025, non-corporate Commonwealth entities must publish <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statements</a
-        >. This tracker scrapes them every day and records every change in
-        git, so you can watch the statements evolve, see which read alike, and trace
-        the template language that spreads between them.
+        > &mdash; {mandatoryPublished} of {mandatory.length} have. This tracker scrapes
+        them every day and records every change in git, so you can watch the statements
+        evolve, see which read alike, and trace the template language that spreads
+        between them.
       </p>
     </header>
 

@@ -14,7 +14,7 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     <p class="lede">
       Under the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
         >Policy for the responsible use of AI in government</a
-      >, non-corporate Commonwealth agencies have had to <a
+      >, non-corporate Commonwealth entities have had to <a
         href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
         >publish AI transparency statements since February 2025</a
       >. This project keeps a faithful, dated record of those statements and makes
@@ -73,6 +73,24 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       data</a>. The notes here are the technical method behind them.
     </p>
     <ul>
+      <li>
+        <strong>Who we track.</strong> The list is reconciled against two
+        authoritative sources: the Department of Finance&rsquo;s <a
+          href="https://www.finance.gov.au/government/managing-commonwealth-resources/structure-australian-government-public-sector/pgpa-act-flipchart-and-list"
+          >list of Commonwealth entities</a
+        > under the PGPA Act, which fixes who is a non-corporate entity and so bound
+        by the policy, and the DTA&rsquo;s <a
+          href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements"
+          >central register</a
+        >, which records who has published. Every non-corporate entity is listed
+        here, whether or not it has published; corporate entities and other bodies
+        are added once a statement of theirs surfaces, and a handful that have never
+        published are kept on the list to show the gap. The defence portfolio and
+        the national intelligence community are <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
+          >carved out</a
+        > of the policy, though some publish anyway.
+      </li>
       <li>
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
         scrape churn that is later reverted, and pure reformatting, are collapsed
@@ -140,10 +158,11 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     <h2>Caveats</h2>
     <p>
       Scraping is imperfect: site redesigns, bot-blocks and PDF extraction can
-      introduce noise, and the coverage classification (published / not yet /
-      exempt) is a best-effort reading of each agency&rsquo;s obligations. Treat the
-      figures as indicative, and follow the source link on any statement to check
-      the original.
+      introduce noise. A body counts as not having published only when we have
+      searched and found nothing, which is weaker evidence than finding something
+      &mdash; a statement filed somewhere unusual, or behind a bot-block, can be
+      missed. Treat the figures as indicative, and follow the source link on any
+      statement to check the original.
     </p>
 
     <h2>Credits</h2>
