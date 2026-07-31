@@ -133,19 +133,38 @@ Inspect runs with `journalctl --user -u aps-scrape.service -n 50`.
 
 ## Managing agency URLs
 
-- `agencies.toml` lists the Australian Government bodies we track: the APSC-list
-  agencies plus any corporate/voluntary entities discovered with a real
-  statement (see the scrape skill's discovery step). The list grows over time,
-  so don't assume a fixed count
+- `agencies.toml` lists the Australian Government bodies we track: every
+  non-corporate Commonwealth entity (NCE), plus any corporate/voluntary entity
+  discovered with a real statement (see the scrape skill's discovery step). The
+  list grows over time, so don't assume a fixed count
 - Each agency has a `url` field for their AI transparency statement
+- Each agency also has a `scope` field recording what the policy asks of it:
+  - `mandatory` --- an NCE, bound by the policy
+  - `voluntary` --- a corporate Commonwealth entity, Commonwealth company, or
+    body outside the PGPA list; encouraged but not required to publish
+  - `exempt` --- carved out entirely: the defence portfolio (incl. Veterans'
+    Affairs) and the national intelligence community per s4 of the ONI Act (ONI,
+    ASD, ASIO, ASIS, AGO, DIO, ACIC). Note AUSTRAC, AFP and Home Affairs are
+    carved out only for their _intelligence_ functions, so as entities they are
+    `mandatory` and have all published
+- `scope` drives the site's coverage split, so it must be right: an NCE with no
+  statement is a genuine gap (`not-yet`), not an exemption. Don't infer it from
+  an empty URL
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
-- **Tests fail for agencies with `None` URLs** - this is intentional
+- **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
+  intentional, but that test is deselected by default (`-m might_fail` to run)
 - Scraper skips agencies with `None` URLs when run
 - When adding/fixing URLs:
   - Search for the agency's AI transparency statement via web search
   - Most follow pattern: `https://agency.gov.au/.../ai-transparency-statement`
   - If no statement exists, set `url = ""` (test will fail as a reminder)
-  - Some agencies are exempt (NDIA, DEFENCE) or haven't published yet
+- The authoritative roster of who exists and who is an NCE is Finance's [list of
+  Commonwealth entities and companies][pgpa] (an xlsx, reissued each 1 July).
+  Cross-check `agencies.toml` against it when auditing coverage --- it is what
+  catches a newly created entity the DTA register hasn't picked up yet
+
+[pgpa]:
+  https://www.finance.gov.au/government/managing-commonwealth-resources/structure-australian-government-public-sector/pgpa-act-flipchart-and-list
 
 ## Code patterns
 
