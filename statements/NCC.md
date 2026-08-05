@@ -39,8 +39,8 @@ From 1 July 2015, the revised Senate Order requires that only contracts formed t
 
 The National Competition Council is subject to the Senate Order but, as it has not entered into any contracts that satisfy the criteria for reporting for the following periods:
 
-- Financial years: each financial year from 1 July 2015 to 30 June 2025.
-- Calendar years: each calendar year from 1 January 2015 to 31 December 2025.
+- a listing was not been prepared for the following financial years as the NCC did not enter into any contracts that satisfy the criteria for this reporting: from 1 July 2015 to 30 June 2026.
+- a listing was not been prepared for the following calendar years as the NCC did not enter into any contracts that satisfy the criteria for this reporting: from 1 January 2015 to 31 December 2025.
 
 There is no cost associated with complying with this Senate Order.
 

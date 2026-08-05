@@ -70,7 +70,7 @@ As the accountable official, the Chief Data Officer is responsible for ensuring 
 ### Review and Updates
 
 The AI transparency statement was first published to our website on 28 February 2025, and was updated on 26 February 2026, with minor amendments to reflect the current use of AI in the Agency.\
-This statement is currently under broader internal review in alignment with the [Policy for the responsible use of AI in government (v2.0)](https://www.digital.gov.au/ai/ai-in-government-policy) and will be updated upon completion.
+This statement is currently under broader internal review in alignment with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) and will be updated upon completion.
 
 This statement will continue to be reviewed annually and updated if there are changes to the use of AI within the agency.
 
