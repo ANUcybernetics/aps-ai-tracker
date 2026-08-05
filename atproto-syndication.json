@@ -355,6 +355,11 @@
   "ASSEA-20260301T150149Z": {
     "seeded": true
   },
+  "ASSEA-20260805T173043Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mse33pbfxk2g",
+    "cid": "bafyreibtriyiicno3sblkushpqeergzve4lclfasy3m7z2oqhrx3wzemcy",
+    "syndicatedAt": "2026-08-05T17:40:10.521Z"
+  },
   "ATO-20251111T061258Z": {
     "seeded": true
   },
@@ -495,6 +500,11 @@
     "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mrxic66eez2w",
     "cid": "bafyreicah7mrpd3u3cp6ge2v3kp3ds4kvwkbeoikictst4gofy3l4dcfxe",
     "syndicatedAt": "2026-07-31T17:31:49.529Z"
+  },
+  "CGC-20260805T173043Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mse33plkuf2u",
+    "cid": "bafyreiecte433hmegfwe73yjjukyny6ldodj3vkeqrrokmtvzy4okmos7m",
+    "syndicatedAt": "2026-08-05T17:40:10.854Z"
   },
   "COMCARE-20251111T061258Z": {
     "seeded": true
@@ -917,6 +927,11 @@
     "cid": "bafyreifr643lmaz7nzraaqwba4r3dgt4zxxm6pdis6fphwbqojdbgxqwy4",
     "syndicatedAt": "2026-07-24T17:12:36.756Z"
   },
+  "IPA-20260805T173043Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mse33pvq2z2j",
+    "cid": "bafyreianmydzj4puda5ivxsigen5lhgddw6r3uymxyckehow6kkdsvjxd4",
+    "syndicatedAt": "2026-08-05T17:40:11.186Z"
+  },
   "IPEA-20260403T232236Z": {
     "seeded": true
   },
@@ -1080,6 +1095,11 @@
     "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mqo6a2otg52w",
     "cid": "bafyreicupouxsaysvgqfn4odm4atpe2jueipgnagmk4zamalotf3smwsha",
     "syndicatedAt": "2026-07-15T07:12:32.071Z"
+  },
+  "NCC-20260805T173043Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mse33q7wy62m",
+    "cid": "bafyreidjrldlmwgg2asrprgo5tcknic3tnqede5apctt3hyprrrataanv4",
+    "syndicatedAt": "2026-08-05T17:40:11.520Z"
   },
   "NDISQSC-20251111T061258Z": {
     "seeded": true
@@ -1345,6 +1365,11 @@
   },
   "SENATE-20260627T174615Z": {
     "seeded": true
+  },
+  "SENATE-20260805T173043Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mse33qk3d22v",
+    "cid": "bafyreieftvh4ql6dckjr43ligp6fcadp7hfhzdxlhse6pl75yg2cjsi4sm",
+    "syndicatedAt": "2026-08-05T17:40:11.853Z"
   },
   "SERVICESAUSTRALIA-20251111T061258Z": {
     "seeded": true
