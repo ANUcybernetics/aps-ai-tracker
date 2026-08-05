@@ -1,6 +1,7 @@
 ---
 abbr: CDC
 agency: Australian Centre for Disease Control
+final_url: https://www.cdc.gov.au/topics/about-us/legislation-and-transparency/our-commitments/artificial-intelligence-ai-transparency-statement
 source_url: https://www.cdc.gov.au/about-us/legislation-and-transparency/our-commitments/artificial-intelligence-ai-transparency-statement
 title: Artificial intelligence (AI) transparency statement | Australian Centre for
   Disease Control

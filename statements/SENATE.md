@@ -79,9 +79,9 @@ The department endorses and supports DPS' use of the Commonwealth AI assurance f
 
 We have adopted a cautious approach to the implementation of AI tools and maintain a watching brief on AI developments and the public debate around its use. Email and/or intranet updates are issued in response to AI developments that may pose a risk, such as the February 2025 requirement that DeepSeek not be used on government devices.
 
-The risks raised by AI use are also addressed in our risk matrix which is regularly updated by the executive and provided to the externAI audit committee.
+The risks raised by AI use are also addressed in our risk matrix which is regularly updated by the executive and provided to the external audit committee.
 
-We will, through the Accountable OfficiAI and the working group, work with DPS to undertake all requirements of monitoring application use, undertaking testing, assessing the effectiveness of any applications, and monitoring for unintended outcomes from application use.
+We will, through the Accountable Official and the working group, work with DPS to undertake all requirements of monitoring application use, undertaking testing, assessing the effectiveness of any applications, and monitoring for unintended outcomes from application use.
 
 ### Training and education
 

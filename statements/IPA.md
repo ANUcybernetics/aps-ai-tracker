@@ -55,13 +55,13 @@ Download
 
 [ Audit Committee Charter - 18 December 2025 PDF | 303KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/Audit-Committee-Charter---18-December-2025.pdf?rev=018fee8dd9dc41aface64f1aaa6e2e1a)
 
-## AI Transparency Statement
+## Artificial intelligence transparency statement
 
-Our AI Transparency Statement explains how we use Artificial Intelligence (AI) and how we comply with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
+Our artificial intelligence (AI) transparency statement explains how we use AI and how we comply with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
 Download
 
-[ AI Transparency Statement January 2026 PDF | 306KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ai-transparency-statement-january-2026.pdf?rev=db48c1995c124e6b9a6451d808bb02d6)
+[ AI transparency statement PDF | 327KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ai-transparency-statement.pdf?rev=986002d0cd054b96b8a918900c021a7d)
 
 ## Annual legal services expenditure
 
