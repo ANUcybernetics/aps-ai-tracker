@@ -6,6 +6,10 @@ source_url: https://www.netzero.gov.au/artificial-intelligence-transparency-stat
 title: Artificial Intelligence Transparency Statement | Net Zero Economy Authority
 ---
 
+[ Home ](https://www.netzero.gov.au/)
+
+Policies
+
 # Artificial Intelligence Transparency Statement
 
 The Net Zero Economy Authority (NZEA) recognises the potential of Artificial Intelligence (AI) to enhance efficiency, improve decision-making, and service delivery.
