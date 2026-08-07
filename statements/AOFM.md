@@ -19,7 +19,7 @@ The AOFM has designated the Manager, Data & Digital Solutions as the Accountable
 
 Accountable Officials are responsible for implementing the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-A Chief AI Officer (CAIO) will be appointed during 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at the AOFM.
+The AOFM has designated the Manager, Data & Digital Solutions as AOFM's Chief AI Officer (CAIO). As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead AI transformation at the AOFM.
 
 **AI Adoption**
 
@@ -74,6 +74,6 @@ The AOFM maintains visibility of AI use through internal oversight and reporting
 
 **Update Frequency**
 
-AOFM’s transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 12 June 2026
+AOFM’s transparency statement is reviewed and updated annually or whenever significant changes occur. The most recent update was on 7 August 2026.
 
 For further enquiries, please contact the AOFM at [enquiries@aofm.gov.au](mailto:enquiries@aofm.gov.au).
