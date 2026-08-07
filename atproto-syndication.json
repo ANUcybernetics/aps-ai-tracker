@@ -248,6 +248,11 @@
   "AOFM-20260612T100847Z": {
     "seeded": true
   },
+  "AOFM-20260807T172811Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3msj3pl5ru52g",
+    "cid": "bafyreiaoi7ryfzkgefgalib2buutzzlgsbl5maaa34upqmxgxh4r5ahovi",
+    "syndicatedAt": "2026-08-07T17:34:35.995Z"
+  },
   "APRA-20260607T062539Z": {
     "seeded": true
   },
