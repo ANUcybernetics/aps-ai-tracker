@@ -110,6 +110,8 @@ In accordance with the Order, some information in file titles is deleted, such a
 
 File lists:
 
+[January - June 2026](https://www.igis.gov.au/sites/default/files/2026-08/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20created%20January%20to%20June%202026.pdf)
+
 [July - December 2025](https://www.igis.gov.au/sites/default/files/2026-02/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20created%20July%20to%20December%202025.PDF)\
 [January - June 2025](https://www.igis.gov.au/sites/default/files/2025-08/IGIS%20Senate%20Continuing%20Order%20No%2012%20-%20Files%20created%20January%20to%20June%202025.PDF)
 
