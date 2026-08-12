@@ -1,6 +1,7 @@
 ---
 abbr: ASIC
 agency: Australian Securities and Investments Commission
+final_url: https://www.asic.gov.au/about-asic/what-we-do/how-we-operate/accountability-and-reporting/artificial-intelligence-transparency-statement
 source_url: https://www.asic.gov.au/about-asic/what-we-do/how-we-operate/accountability-and-reporting/artificial-intelligence-transparency-statement/
 title: Artificial intelligence transparency statement | ASIC
 ---
