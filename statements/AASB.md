@@ -63,7 +63,7 @@ We will only use AI in accordance with relevant legislation, frameworks and poli
 
 ### **Accountable officials**
 
-AASB‑AUASB Managing Director and AASB‑AUASB Business Services Manager are the accountable officials responsible for ensuring compliance with all AI obligations.
+AASB‑AUASB Managing Director, Chief Operating Officer and Business Services Manager are the accountable officials responsible for ensuring compliance with all AI obligations.
 
 ### **Transparency statement**
 

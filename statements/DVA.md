@@ -10,7 +10,7 @@ title: Artificial Intelligence (AI) Transparency Statement | Department of Veter
 
 Last updated
 
-2 April 2026
+13 August 2026
 
 1. Our Approach to AI
 1. Robust AI Governance
@@ -38,6 +38,7 @@ Under the DTA [Policy for the Responsible use of AI in Government](https://www.d
 
 - is appropriately governed, with arrangements that evolve as technology and policy mature
 - is intentional, safe, responsible, and promotes accountability and transparency
+- is monitored for effectiveness and protects the veteran community against potential negative impacts
 - maintains stakeholder trust, particularly within the veteran community
 
 DVA has established an AI Advisory Board, comprising government representatives, technical experts and a representative from veterans’ organisations, to support consultation, safety and oversight of AI initiatives and this transparency statement.
@@ -67,27 +68,35 @@ DVA adopts the [Organisation for Economic Co-operation and Development (OECD) de
 
 > An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their autonomy and adaptiveness after deployment.
 
+Currently, DVA’s AI use falls within the following domains and usage patterns under the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification):
+
+- Domains: service delivery, policy and legal, and corporate and enabling.
+- Usage patterns: Analytics for insights, and workplace productivity.
+
+DVA will monitor usage to assure ongoing suitability of these technologies for these purposes.
+
 DVA currently has AI technology deployed for:
 
 - Statistical modelling and horizon scanning using machine‑learning algorithms to support data analysis
 - Writing clarity tools to support spelling, grammar and punctuation checking
 - Microsoft 365 Copilot Chat for research, idea generation and writing assistance, with DVA‑specific safeguards ensuring no data is shared with public large language models
-- AI‑enabled website search, which only has access to publicly available information
-- Semantic Text Analysis (an advanced form of key word matching) to interpret unstructured MyService text responses provided by DVA clients when submitting claims, with staff always retaining responsibility for analysis and decisions relating to claim outcomes.
+- AI‑enabled website search, which only has access to published information
+- Semantic Text Analysis (an advanced form of key word matching) to interpret unstructured MyService text responses provided by DVA clients when submitting claims to support presumptive liability of certain conditions, with staff always retaining responsibility for analysis and decisions relating to claim outcomes.
 
 DVA is also trialling AI tools:
 
 - Microsoft 365 Copilot (licensed version) consistent with other Commonwealth agencies
 - GovAI platform capabilities to support claim processing, without using veteran personal data, and always with human oversight
 - CLIKChat, an internal chatbot that summarises information from three publicly available government sources - Consolidated Library of Information and Knowledge, Department of Veterans’ Affairs and Repatriation Medical Authority. It does not access veteran records or personal data and does not make decisions or recommendations.
+- Other chatbots, to assist with staff queries and information gathering.
 
-DVA has commenced a trial of a voluntary, consent based, Proof of Concept Claims Document Reader AI tool. The prototype document reader has been built by DVA within the GovAI Platform. The trial uses a clear consent model to ensure trial participants who volunteer to participate in the trial understand the purpose of the tool, what information may be used during the trial and how AI enabled technologies may interact with information. The trial will test the suitability of the tool to assist staff in processing claims. The tool does not make decisions or determine claim outcomes. Claims decisions will continue to be made by trained DVA delegates.
+DVA also expects the underpinning technology in our digital ecosystem to become increasingly sophisticated, including by leveraging AI.
 
-For more information about the usage of AI in government and the domains in which they apply, please see [Artificial intelligence in government](http://digital.gov.au/ai/resources/use-classification).
+DVA has commenced a pilot of a voluntary, consent based, Prototype Claims Document Reader AI tool. The prototype document reader has been built by DVA within the GovAI Platform. The pilot uses a clear consent model to ensure pilot participants who volunteer to participate in the pilot understand the purpose of the tool, what information may be used during the pilot and how AI enabled technologies may interact with information. The pilot will test the suitability of the tool to assist staff in processing claims. The tool does not make decisions or determine claim outcomes. Claims decisions will continue to be made by trained DVA delegates.
 
 ## Simpler forms of basic computer validation and task automation
 
-DVA computer systems also support employees and decision-makers with basic validation and task management, which can include some basic automation. These types of activities are governed by other arrangements and are outside the scope of the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
+As the community would expect, DVA computer systems also support employees and decision-makers with basic validation and task management, which can include some basic automation. These types of activities are governed by other arrangements and are outside the scope of the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
 DVA **does** make use of basic computer-assisted task management to support the efficiency of its service delivery and decision-making processes in line with general principles of administrative decision-making.
 
@@ -101,6 +110,6 @@ For more information about the laws relevant to support for veterans and their f
 
 ## Review and Contact
 
-DVA meets mandatory requirements of the Policy for the responsible use of AI in government and has designated an AI Accountable Official (October 2024). DVA has appointed a Chief AI Officer.
+DVA meets mandatory requirements of the Policy for the responsible use of AI in government and has designated an AI Accountable Official (October 2024). DVA has also appointed a Chief AI Officer (February 2026).
 
 For enquiries about the DVA AI Transparency Statement or about our adoption and usage of AI, please contact us at [AI@dva.gov.au](mailto:AI@dva.gov.au).
