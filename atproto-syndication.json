@@ -2,6 +2,11 @@
   "AASB-20260607T062539Z": {
     "seeded": true
   },
+  "AASB-20260813T170724Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3msy5ckdwyy2v",
+    "cid": "bafyreigohijiq2j6pwdo5lgsvg5jaicrf7dsamz3dxv6w7jwhkybmjptki",
+    "syndicatedAt": "2026-08-13T17:13:02.841Z"
+  },
   "ABS-20251111T061258Z": {
     "seeded": true
   },
@@ -391,6 +396,11 @@
   "AUASB-20260607T062539Z": {
     "seeded": true
   },
+  "AUASB-20260813T170724Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3msy5ckyagx2h",
+    "cid": "bafyreihkk6my4ohcotpf7irfql6txdw4ukjs36o4m5toe7zfhprtwj7yjm",
+    "syndicatedAt": "2026-08-13T17:13:03.173Z"
+  },
   "AUSTRAC-20251111T061258Z": {
     "seeded": true
   },
@@ -731,6 +741,11 @@
   },
   "DVA-20260707T070842Z": {
     "seeded": true
+  },
+  "DVA-20260813T170724Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3msy5clcgie2k",
+    "cid": "bafyreiep3md6ldvrrrksjezqk4rh3vhig7byvovjr2knmtv3niwvmiiumm",
+    "syndicatedAt": "2026-08-13T17:13:03.507Z"
   },
   "DVSC-20260607T062539Z": {
     "seeded": true
