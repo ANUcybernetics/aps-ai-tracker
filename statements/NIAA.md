@@ -10,7 +10,7 @@ title: Artificial Intelligence (AI) Transparency Statement 2026 | NIAA
 
 [\_\_**Back to** Home](https://www.niaa.gov.au/)
 
-[ Listen ](https://app-as.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement-2026 "Listen to this page using ReadSpeaker")
+[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement-2026 "Listen to this page using ReadSpeaker")
 
 ## **Purpose**
 
