@@ -147,9 +147,7 @@ function loadStatements(): StatementInput[] {
     // Parse through the exporter's zod schema — the same contract the site
     // build validates against — so a shape drift in export.py fails loudly
     // here instead of publishing records full of undefineds.
-    const doc = statementSchema.parse(
-      JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")),
-    );
+    const doc = statementSchema.parse(JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")));
     const { sourceUrl } = doc;
     if (!sourceUrl) {
       console.warn(`  ! ${doc.abbr}: no sourceUrl, skipping`);
