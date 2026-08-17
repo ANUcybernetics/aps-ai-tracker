@@ -32,6 +32,7 @@ from typing import TypedDict
 from .scraper import (
     REPO_ROOT,
     Agency,
+    atomic_write_text,
     load_agencies,
     logger,
     split_frontmatter_body,
@@ -64,9 +65,8 @@ def git(*args: str) -> str:
 def write_json(path: Path, obj: object) -> None:
     """Write `obj` as deterministic, human-diffable JSON."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
+    atomic_write_text(
+        path, json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     )
 
 
@@ -634,7 +634,7 @@ def save_embedding_cache(path: Path, cache: dict) -> None:
             f"  {json.dumps(key)}: {json.dumps(value, separators=(',', ':'))}{tail}"
         )
     lines.append("}\n")
-    path.write_text("\n".join(lines), encoding="utf-8")
+    atomic_write_text(path, "\n".join(lines))
 
 
 def embed_statements(
