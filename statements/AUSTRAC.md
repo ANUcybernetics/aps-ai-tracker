@@ -33,9 +33,9 @@ AUSTRAC makes limited use of public generative AI tools to support workplace pro
 
 AUSTRAC applies mandatory protective security controls to ensure that no sensitive or classified information is entered into public generative AI systems, in accordance with the [Protective Security Policy Framework Advisory on OFFICIAL Information Use with Generative Artificial Intelligence](https://www.protectivesecurity.gov.au/system/files/2025-10/pspf-policy-advisory-information-use-gen-ai.pdf).
 
-AUSTRAC has not yet deployed AI which directly interacts with the public or is involved in decision making and administrative action without human intervention.
+AUSTRAC has not yet deployed AI which is involved in decision making and administrative action without human intervention.
 
-AUSTRAC is currently trialling the use of enterprise generative AI systems to responsibly explore the benefits and risks of this emerging technology. This includes internal tools to improve workplace productivity and tools to support service delivery. As we continue to expand our use of AI, AUSTRAC will ensure we utilise the technology with clear human oversight, monitoring and decision making.
+AUSTRAC has limited deployment of AI tools which directly interact with the public but not without human review. This is used to assist in transcribing interviews with media entities. AUSTRAC uses enterprise generative AI systems to support workplace productivity and service delivery. As we continue to expand our use of AI, AUSTRAC will ensure we utilise the technology with clear human oversight, monitoring and decision making.
 
 AUSTRAC leverages AI internally to enhance the effectiveness of our compliance and intelligence capabilities. AUSTRAC also utilises AI-enabled analytics to help detect indicators of financial crime and support analysts to generate insights for partners.
 
@@ -47,7 +47,7 @@ The [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.
 
 AUSTRAC’s current AI usage patterns are:
 
-- **Workplace Productivity:** Used to improve process efficiencies such as supporting non-sensitive research\*\*,\*\* basic secretariat support and facilitating communications.
+- **Workplace Productivity:** Used to improve process efficiencies such as supporting non-sensitive research\*\*,\*\* basic secretariat support, creation of intelligence products and facilitating communications.
 - **Analytics for Insights:** Used to identify, produce and understand indicators of financial crime.
 
 AUSTRAC’s current AI domains are:
@@ -55,10 +55,6 @@ AUSTRAC’s current AI domains are:
 - **Corporate and Enabling:** Supports corporate functions to improve operational efficiency and productivity.
 - **Service Delivery:** Provides tailored and responsive support by assisting staff who deliver these services.
 - **Law Enforcement, Intelligence and Security:** Support law enforcement and intelligence agencies through AI-enabled analysis of data which aids intelligence gathering.
-
-AUSTRAC is currently developing and piloting uses of AI which will impact or expand\*\*\*\* the following\*\*\*\* AI usage patterns:
-
-- **Workplace Productivity:** Support the development of intelligence products to improve operational efficiency.
 - **Compliance and Fraud Detection:** Identify patterns or anomalies in data to detect indicators of fraudulent activities and ensure compliance with laws and regulations.
 - **Policy and Legal:** Support generating summaries and drafts to assist legal reviews of documents and preparation of internal documents.
 
@@ -87,16 +83,17 @@ As the use of AI within AUSTRAC expands, consideration will be given to addition
 
 ## Compliance with AI in Government Policy
 
-Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Standard%20for%20AI%20transparency%20statements%20v1.1.pdf) \_\_ we are required to report our compliance with the requirements under the policy.
+Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Standard%20for%20AI%20transparency%20statements%202.0_0.pdf) \_\_ we are required to report our compliance with the requirements under the policy.
 
-At time of publishing, this section is compliant with version 1.1 of the AI in government policy. Version 2.0 of the policy introduces new requirements from the 15th December, 2025 which AUSTRAC is committed to implementing.
+At time of publishing, this section is compliant with version 2.0 of the AI in government policy. Version 2.0 of the policy introduced new requirements on the 15th December, 2025 which AUSTRAC is committed to implementing.
 
-The following table outlines the requirements of version 1.1 of the AI in government policy and the status of compliance with those requirements:
+The following table outlines the requirements of version 2.0 of the AI in government policy and the status of compliance with those requirements:
 
-| **Requirement**           | **Status** |
-| ------------------------- | ---------- |
-| Accountable Official      | Compliant  |
-| AI Transparency Statement | Compliant  |
+| **Requirement**                   | **Status** |
+| --------------------------------- | ---------- |
+| Accountable Official              | Compliant  |
+| AI Transparency Statement         | Compliant  |
+| Strategic position on AI adoption | Compliant  |
 
 ## Contact information
 
