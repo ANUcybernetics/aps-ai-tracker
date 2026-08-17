@@ -20,7 +20,6 @@ on:
       - "cron-scrape.sh"
       - "ops/**"
       - "backlog/**"
-      - "test_*.py"
   workflow_dispatch:
 
 permissions:
@@ -42,11 +41,21 @@ jobs:
           fetch-depth: 0 # the timeline IS the full git history
 
       - name: Set up uv
-        # Full version pin: setup-uv publishes no floating v8 major tag (only
-        # v1–v7 have major aliases), so @v8 fails to resolve at job setup.
-        uses: astral-sh/setup-uv@v8.2.0
+        # Full version pin: setup-uv stopped publishing floating major tags
+        # after v7, so @v10 fails to resolve at job setup.
+        uses: astral-sh/setup-uv@v10.0.1
         with:
           python-version: "3.14"
+
+      # This is the only place the Python tests and typecheck run automatically
+      # (the nightly cron just scrapes), so keep them ahead of the export that
+      # depends on that code. ty is pinned because a new release can introduce
+      # new diagnostics; bump it deliberately alongside a local `uvx ty check`.
+      - name: Python tests
+        run: uv run python -m pytest
+
+      - name: Python typecheck
+        run: uvx ty@0.0.72 check
 
       - name: Generate site data
         run: uv run --group export export
