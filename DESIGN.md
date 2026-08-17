@@ -24,18 +24,18 @@ OKLCH throughout, defined as light/dark pairs. Strategy: **committed** — ochre
 carries the brand and the data encoding; everything else is ink, paper, and the
 conventional diff green/red.
 
-| Role | Token | Light | Dark |
-| --- | --- | --- | --- |
-| Paper (bg) | `--bg` | `oklch(98.6% 0.003 250)` | `oklch(17.5% 0.014 264)` |
-| Surface | `--surface` | `oklch(96.8% 0.004 250)` | `oklch(20.5% 0.016 264)` |
-| Surface 2 | `--surface-2` | `oklch(93.8% 0.006 250)` | `oklch(24.5% 0.018 264)` |
-| Ink (text) | `--text` | `oklch(23% 0.024 264)` | `oklch(92% 0.012 250)` |
-| Muted | `--muted` | `oklch(45% 0.022 264)` | `oklch(67% 0.016 250)` |
-| Border | `--border` | `oklch(88% 0.008 255)` | `oklch(30% 0.016 264)` |
-| Border strong | `--border-strong` | `oklch(74% 0.012 255)` | `oklch(42% 0.018 264)` |
-| Ochre (fills, marks) | `--accent` | `oklch(66% 0.142 64)` | `oklch(80% 0.14 78)` |
-| Ochre (text/links) | `--accent-ink` | `oklch(46% 0.132 54)` | `oklch(83% 0.13 80)` |
-| Ochre wash | `--accent-wash` | `oklch(95% 0.04 78)` | `oklch(27% 0.05 70)` |
+| Role                 | Token             | Light                    | Dark                     |
+| -------------------- | ----------------- | ------------------------ | ------------------------ |
+| Paper (bg)           | `--bg`            | `oklch(98.6% 0.003 250)` | `oklch(17.5% 0.014 264)` |
+| Surface              | `--surface`       | `oklch(96.8% 0.004 250)` | `oklch(20.5% 0.016 264)` |
+| Surface 2            | `--surface-2`     | `oklch(93.8% 0.006 250)` | `oklch(24.5% 0.018 264)` |
+| Ink (text)           | `--text`          | `oklch(23% 0.024 264)`   | `oklch(92% 0.012 250)`   |
+| Muted                | `--muted`         | `oklch(45% 0.022 264)`   | `oklch(67% 0.016 250)`   |
+| Border               | `--border`        | `oklch(88% 0.008 255)`   | `oklch(30% 0.016 264)`   |
+| Border strong        | `--border-strong` | `oklch(74% 0.012 255)`   | `oklch(42% 0.018 264)`   |
+| Ochre (fills, marks) | `--accent`        | `oklch(66% 0.142 64)`    | `oklch(80% 0.14 78)`     |
+| Ochre (text/links)   | `--accent-ink`    | `oklch(46% 0.132 54)`    | `oklch(83% 0.13 80)`     |
+| Ochre wash           | `--accent-wash`   | `oklch(95% 0.04 78)`     | `oklch(27% 0.05 70)`     |
 
 Plus a 4-step warm **heat ramp** (`--heat-1`…`--heat-4`, faint yellow → deep
 amber) for reuse intensity, conventional **diff** colours (`--ins-*` green,
@@ -55,9 +55,9 @@ Two families, hierarchy from width + weight rather than a font zoo.
   editorial use; pushed wide + heavy (`font-stretch` 86–112%, weight 700–800)
   for masthead headlines, normal for body. Self-hosted via
   `@fontsource-variable/archivo/standard.css` (carries both `wght` and `wdth`).
-- **JetBrains Mono Variable** (`--font-mono`) — the ledger texture: dates, commit
-  SHAs, byte deltas, key figures, labels. Mono is earned here (the project runs
-  on git), not costume.
+- **JetBrains Mono Variable** (`--font-mono`) — the ledger texture: dates,
+  commit SHAs, byte deltas, key figures, labels. Mono is earned here (the
+  project runs on git), not costume.
 
 Fluid modular scale (`--text-xs` … `--display`, clamp()ed, ≈1.25–1.3 ratio).
 Display ceiling 4.75rem. Headlines are condensed-heavy with tight tracking and
@@ -92,8 +92,8 @@ Layouts favour rules and dividers over boxes; cards are used sparingly.
 ## Motion
 
 Easing via `--ease-out-quart` / `--ease-out-expo`; durations `--dur-fast` …
-`--dur-slow`. One orchestrated entrance on the home (dateline → headline → lede →
-wall rise, staggered) rather than fade-on-scroll everywhere. Hover
+`--dur-slow`. One orchestrated entrance on the home (dateline → headline → lede
+→ wall rise, staggered) rather than fade-on-scroll everywhere. Hover
 micro-interactions: feed-row tint, directory-arrow slide, wall-cell lift.
 Cross-document view transitions for navigation. Every animation is gated on
 `prefers-reduced-motion: no-preference` and collapses to instant under reduce.
