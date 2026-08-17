@@ -98,6 +98,22 @@ class RawFetchResult(TypedDict):
     error: str | None
 
 
+# Outcome of one save_statement call. "warned" means the file was still written
+# (so the diff is reviewable) but the content shrank past
+# CONTENT_SHRINKAGE_THRESHOLD — suspicious enough that the run's exit code must
+# flag it, because the nightly cron auto-commits whatever lands on disk.
+type SaveStatus = Literal["saved", "warned", "failed"]
+
+
+@dataclass(frozen=True, slots=True)
+class ProcessCounts:
+    """Stage-2 tallies: saved cleanly / saved with a shrinkage warning / failed."""
+
+    saved: int
+    warned: int
+    failed: int
+
+
 def load_agencies() -> list[Agency]:
     """Load agency data from agencies.toml file."""
     with open(REPO_ROOT / "agencies.toml", "rb") as f:
@@ -630,7 +646,9 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
         }
 
 
-def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> bool:
+def save_statement(
+    agency: Agency, data: StatementResult, output_dir: Path
+) -> SaveStatus:
     """Save statement as markdown file with YAML frontmatter.
 
     For HTML sources, applies markdown cleanup + mdformat and writes the result.
@@ -641,10 +659,13 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     detection is unaffected: if the raw text is unchanged from the last save
     (matching `raw_hash`), the write is skipped entirely so skill-cleaned bodies
     aren't clobbered.
+
+    Returns "warned" (file still written) when the new content shrank past
+    CONTENT_SHRINKAGE_THRESHOLD, so callers can surface it in the exit code.
     """
     if data["error"] or not data["markdown"]:
         logger.warning(f"Skipping {agency.abbr} due to fetch error")
-        return False
+        return "failed"
 
     output_dir.mkdir(parents=True, exist_ok=True)
     filepath = output_dir / f"{agency.abbr}.md"
@@ -657,17 +678,19 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
         existing = extract_frontmatter(filepath) or {}
         if existing.get("raw_hash") == new_raw_hash:
             logger.info(f"Skipping {agency.abbr}: PDF unchanged (raw_hash match)")
-            return True
+            return "saved"
         new_body = clean_markdown(data["markdown"])
     else:
         new_body = format_markdown(data["markdown"])
         new_raw_hash = None
 
+    shrunk = False
     existing_markdown = extract_markdown_from_statement(filepath)
     if existing_markdown is not None and not is_pdf:
         old_len = len(existing_markdown)
         new_len = len(new_body)
         if old_len > 0 and new_len < old_len * CONTENT_SHRINKAGE_THRESHOLD:
+            shrunk = True
             shrinkage_pct = (1 - new_len / old_len) * 100
             logger.warning(
                 f"CONTENT SHRINKAGE DETECTED for {agency.abbr}: "
@@ -676,6 +699,8 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
                 f"This may indicate a scraping failure."
             )
 
+    # Log-only, never in the exit code: terseness is a persistent property of a
+    # statement, so gating on it would fail every nightly run for that agency.
     if len(AI_KEYWORD_RE.findall(new_body)) < AI_KEYWORD_MIN_COUNT:
         logger.warning(
             f"LOW AI KEYWORD DENSITY for {agency.abbr}: "
@@ -704,7 +729,32 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
 
     atomic_write_text(filepath, content)
     logger.info(f"Saved {agency.abbr}.md")
-    return True
+    return "warned" if shrunk else "saved"
+
+
+def process_statements(
+    agencies: list[Agency], raw_dir: Path, output_dir: Path
+) -> ProcessCounts:
+    """Process each agency's raw file into a statement, isolating failures.
+
+    One agency's unexpected exception (an mdformat edge case, malformed
+    frontmatter) is logged and counted as a failure rather than aborting the
+    remaining batch — the same per-agency isolation every other stage has.
+    """
+    saved = warned = failed = 0
+    for agency in agencies:
+        try:
+            status = save_statement(agency, process_raw(agency, raw_dir), output_dir)
+        except Exception:
+            logger.exception(f"Unexpected error processing {agency.abbr}")
+            status = "failed"
+        if status == "saved":
+            saved += 1
+        elif status == "warned":
+            warned += 1
+        else:
+            failed += 1
+    return ProcessCounts(saved=saved, warned=warned, failed=failed)
 
 
 async def fetch_all_raw(

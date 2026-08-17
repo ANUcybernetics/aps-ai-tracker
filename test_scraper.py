@@ -22,6 +22,7 @@ from bs4 import BeautifulSoup
 from aps_ai_tracker import (
     CONTENT_SHRINKAGE_THRESHOLD,
     Agency,
+    ProcessCounts,
     RawFetchResult,
     StatementResult,
     atomic_write_text,
@@ -32,6 +33,7 @@ from aps_ai_tracker import (
     fetch_all_raw,
     load_agencies,
     process_raw,
+    process_statements,
     save_raw,
     save_statement,
 )
@@ -226,7 +228,7 @@ def test_save_statement_creates_valid_file():
         output_dir = Path(tmpdir)
         result = save_statement(dept, data, output_dir)
 
-        assert result is True
+        assert result == "saved"
         filepath = output_dir / "TEST.md"
         assert filepath.exists()
 
@@ -282,7 +284,7 @@ def test_save_statement_cleans_pdf_body_but_hashes_raw():
 
     with TemporaryDirectory() as tmpdir:
         output_dir = Path(tmpdir)
-        assert save_statement(agency, data, output_dir) is True
+        assert save_statement(agency, data, output_dir) == "saved"
         content = (output_dir / "TEST-PDF.md").read_text()
         metadata = yaml.safe_load(content.split("---\n")[1])
 
@@ -311,8 +313,8 @@ def test_save_statement_handles_error_case():
         output_dir = Path(tmpdir)
         result = save_statement(dept, data, output_dir)
 
-        # Should return False and not create file
-        assert result is False
+        # Should report failure and not create the file
+        assert result == "failed"
         filepath = output_dir / "TEST-ERROR.md"
         assert not filepath.exists()
 
@@ -334,8 +336,8 @@ def test_save_statement_handles_no_content():
         output_dir = Path(tmpdir)
         result = save_statement(dept, data, output_dir)
 
-        # Should return False and not create file
-        assert result is False
+        # Should report failure and not create the file
+        assert result == "failed"
         filepath = output_dir / "TEST-EMPTY.md"
         assert not filepath.exists()
 
@@ -359,7 +361,7 @@ def test_save_statement_includes_final_url_on_redirect():
         output_dir = Path(tmpdir)
         result = save_statement(dept, data, output_dir)
 
-        assert result is True
+        assert result == "saved"
         filepath = output_dir / "TEST-REDIRECT.md"
         content = filepath.read_text()
 
@@ -666,8 +668,10 @@ nisi ut aliquip ex ea commodo consequat."""
         with caplog.at_level(logging.WARNING):
             result = save_statement(agency, small_data, output_dir)
 
-        # Should still save the file
-        assert result is True
+        # Still writes the file (so the diff is reviewable), but reports the
+        # shrinkage so the pipeline exit code can flag it.
+        assert result == "warned"
+        assert (output_dir / "TEST-SHRINK.md").exists()
 
         # Should have logged a warning about content shrinkage
         assert any(
@@ -714,7 +718,7 @@ This is some content that will be replaced with similar-length content."""
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully
-        assert result is True
+        assert result == "saved"
 
         # Should NOT have logged a warning (only info)
         warning_calls = [
@@ -748,7 +752,7 @@ def test_save_statement_no_warning_on_new_file():
             result = save_statement(agency, new_data, output_dir)
 
         # Should save successfully
-        assert result is True
+        assert result == "saved"
 
         # Should NOT have logged a shrinkage warning
         warning_calls = [
@@ -779,6 +783,73 @@ def test_atomic_write_text_writes_and_cleans_up():
         assert target.read_text(encoding="utf-8") == "new content"
         # The staging file must not survive a successful write.
         assert list(Path(tmpdir).iterdir()) == [target]
+
+
+def test_process_statements_isolates_unexpected_exceptions(monkeypatch):
+    """A save that raises unexpectedly is counted as failed, not batch-fatal."""
+    from aps_ai_tracker import scraper as scraper_mod
+
+    bad = Agency(name="Bad Agency", abbr="BAD", url="https://example.com/bad")
+    good = Agency(name="Good Agency", abbr="GOOD", url="https://example.com/good")
+    html = (
+        "<html><body><main><h1>AI use</h1>"
+        "<p>We use AI carefully. Our AI systems are reviewed.</p>"
+        "</main></body></html>"
+    )
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir) / "raw"
+        output_dir = Path(tmpdir) / "statements"
+        raw_dir.mkdir()
+        for agency in (bad, good):
+            (raw_dir / f"{agency.abbr}.html").write_text(html, encoding="utf-8")
+
+        real_save = scraper_mod.save_statement
+
+        def exploding_save(agency, data, output_dir):
+            if agency.abbr == "BAD":
+                raise RuntimeError("mdformat edge case")
+            return real_save(agency, data, output_dir)
+
+        monkeypatch.setattr(scraper_mod, "save_statement", exploding_save)
+        # BAD comes first, so a batch-aborting exception would also lose GOOD.
+        counts = process_statements([bad, good], raw_dir, output_dir)
+
+        assert counts == ProcessCounts(saved=1, warned=0, failed=1)
+        assert (output_dir / "GOOD.md").exists()
+        assert not (output_dir / "BAD.md").exists()
+
+
+def test_process_statements_counts_shrinkage_as_warned():
+    """A statement that shrinks past the threshold lands in the warned tally."""
+    agency = Agency(name="Test Agency", abbr="SHRINKY", url="https://example.com")
+    existing = "\n".join(
+        [
+            "---",
+            "agency: Test Agency",
+            "abbr: SHRINKY",
+            "source_url: https://example.com",
+            "title: Original",
+            "---",
+            "",
+            "# Original content",
+            "",
+            "A substantial statement about AI use. " * 20,
+        ]
+    )
+    html = "<html><body><main><p>AI. AI.</p></main></body></html>"
+
+    with TemporaryDirectory() as tmpdir:
+        raw_dir = Path(tmpdir) / "raw"
+        output_dir = Path(tmpdir) / "statements"
+        raw_dir.mkdir()
+        output_dir.mkdir()
+        (output_dir / "SHRINKY.md").write_text(existing, encoding="utf-8")
+        (raw_dir / "SHRINKY.html").write_text(html, encoding="utf-8")
+
+        counts = process_statements([agency], raw_dir, output_dir)
+
+        assert counts == ProcessCounts(saved=0, warned=1, failed=0)
 
 
 # Tests for expanded boilerplate removal

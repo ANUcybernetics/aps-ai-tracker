@@ -3,7 +3,13 @@
 import sys
 from datetime import UTC, datetime
 
-from .scraper import REPO_ROOT, load_agencies, logger, process_raw, save_statement
+from .scraper import (
+    REPO_ROOT,
+    Agency,
+    load_agencies,
+    logger,
+    process_statements,
+)
 
 
 def main() -> int:
@@ -21,36 +27,33 @@ def main() -> int:
     logger.info(f"Raw directory: {raw_dir}")
     logger.info(f"Output directory: {output_dir}")
 
-    success_count = 0
-    error_count = 0
+    present: list[Agency] = []
     missing_count = 0
-
     for agency in agencies:
         html_path = raw_dir / f"{agency.abbr}.html"
         pdf_path = raw_dir / f"{agency.abbr}.pdf"
-
-        if not html_path.exists() and not pdf_path.exists():
+        if html_path.exists() or pdf_path.exists():
+            present.append(agency)
+        else:
             logger.debug(
                 f"No raw file found for {agency.abbr} "
                 f"(expected {html_path.name} or {pdf_path.name})"
             )
             missing_count += 1
-            continue
 
-        logger.info(f"Processing {agency.abbr}...")
-        result = process_raw(agency, raw_dir)
-
-        if save_statement(agency, result, output_dir):
-            success_count += 1
-        else:
-            error_count += 1
+    counts = process_statements(present, raw_dir, output_dir)
 
     logger.info(
-        f"Completed: {success_count} successful, "
-        f"{error_count} errors, {missing_count} missing raw files"
+        f"Completed: {counts.saved + counts.warned} successful, "
+        f"{counts.failed} errors, {missing_count} missing raw files"
     )
+    if counts.warned:
+        logger.warning(
+            f"{counts.warned} statement(s) shrank past the threshold; "
+            "review the diffs before committing"
+        )
 
-    return 0 if error_count == 0 else 1
+    return 0 if counts.failed == 0 and counts.warned == 0 else 1
 
 
 if __name__ == "__main__":
