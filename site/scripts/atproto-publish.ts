@@ -95,6 +95,16 @@ function sha256(data: string | Buffer): string {
   return crypto.createHash("sha256").update(data).digest("hex");
 }
 
+// Write-to-temp-then-rename: a hard kill (systemd timeout, OOM, power loss)
+// mid-write can therefore never leave a truncated state/ledger file. That
+// matters because loadState/loadLedger JSON.parse these bare — a torn file
+// would fail every subsequent nightly run until someone repaired it by hand.
+function writeFileAtomic(filePath: string, data: string) {
+  const tmp = `${filePath}.tmp`;
+  fs.writeFileSync(tmp, data);
+  fs.renameSync(tmp, filePath);
+}
+
 function loadState(): State {
   if (!fs.existsSync(STATE_PATH)) {
     return { did: TRACKER_DID, handle: TRACKER_HANDLE, statements: {}, revisions: {} };
@@ -110,7 +120,7 @@ function saveState(state: State) {
     statements: Object.fromEntries(Object.entries(state.statements).toSorted()),
     revisions: Object.fromEntries(Object.entries(state.revisions).toSorted()),
   };
-  fs.writeFileSync(STATE_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
+  writeFileAtomic(STATE_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
 }
 
 function loadLedger(): Ledger {
@@ -120,7 +130,7 @@ function loadLedger(): Ledger {
 
 function saveLedger(ledger: Ledger) {
   const sorted = Object.fromEntries(Object.entries(ledger).toSorted());
-  fs.writeFileSync(LEDGER_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
+  writeFileAtomic(LEDGER_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
 }
 
 function loadStatements(): StatementInput[] {
@@ -361,8 +371,10 @@ async function main() {
     // Announcements: skeet with an external card pointing at the statement
     // page, associatedRefs to the backing records (Bluesky's enhanced link
     // cards), then re-put the document with bskyPostRef closing the loop —
-    // same two-write dance as benswift-me. Ledger entries land immediately
-    // after each skeet, so a crash can never double-announce.
+    // same two-write dance as benswift-me. The ledger is persisted to disk
+    // straight after every skeet (not just mutated in memory for the finally
+    // block, which a hard kill would skip), so the double-announce window is
+    // only the instant between the createRecord response and that write.
     for (const a of plan.autoSeed) ledger[a] = { seeded: true };
     if (plan.announce.length) {
       pubRef ??= await getRef(PUBLICATION_COLLECTION, "self");
@@ -396,6 +408,7 @@ async function main() {
         });
         const skeetRef: StrongRef = { uri: res.data.uri, cid: res.data.cid };
         ledger[a.rkey] = { ...skeetRef, syndicatedAt: new Date().toISOString() };
+        saveLedger(ledger);
         console.log(`  ☁ ${skeetRef.uri}`);
 
         // Close the reference cycle and keep the state hash honest: the next
