@@ -495,7 +495,9 @@ async def fetch_raw_async(
             )
             continue
         except Exception as e:
-            logger.error(f"Error fetching {agency.name}: {type(e).__name__}: {e}")
+            # logger.exception: an unexpected error here may be a programming
+            # bug, so keep the traceback rather than a one-line summary.
+            logger.exception(f"Error fetching {agency.name}")
             return {
                 "content": None,
                 "content_type": None,
@@ -593,7 +595,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "source_type": "pdf",
             }
         except Exception as e:
-            logger.error(f"Error processing PDF for {agency.name}: {e}")
+            logger.exception(f"Error processing PDF for {agency.name}")
             return {
                 "title": None,
                 "markdown": None,
@@ -626,7 +628,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "source_type": "html",
             }
         except Exception as e:
-            logger.error(f"Error processing HTML for {agency.name}: {e}")
+            logger.exception(f"Error processing HTML for {agency.name}")
             return {
                 "title": None,
                 "markdown": None,
@@ -725,7 +727,7 @@ def save_statement(
     yaml_str = yaml.dump(
         frontmatter, default_flow_style=False, allow_unicode=True
     ).strip()
-    content = "\n".join(["---", yaml_str, "---", "", new_body])
+    content = f"---\n{yaml_str}\n---\n\n{new_body}"
 
     atomic_write_text(filepath, content)
     logger.info(f"Saved {agency.abbr}.md")
