@@ -9,9 +9,8 @@ from .scraper import (
     fetch_all_raw,
     load_agencies,
     logger,
-    process_raw,
+    process_statements,
     save_raw,
-    save_statement,
 )
 
 
@@ -55,26 +54,27 @@ def main() -> int:
 
     # Stage 2: Process raw content into statements
     logger.info("Stage 2: Processing raw content into statements...")
-    process_success = 0
-    process_error = 0
-
-    for agency in auto_agencies:
-        result = process_raw(agency, raw_dir)
-        if save_statement(agency, result, output_dir):
-            process_success += 1
-        else:
-            process_error += 1
+    counts = process_statements(auto_agencies, raw_dir, output_dir)
 
     logger.info(
-        f"Stage 2 complete: {process_success} successful, {process_error} errors"
+        f"Stage 2 complete: {counts.saved + counts.warned} successful, "
+        f"{counts.failed} errors"
     )
+    if counts.warned:
+        logger.warning(
+            f"{counts.warned} statement(s) shrank past the threshold; "
+            "review the diffs before committing"
+        )
     logger.info(
-        f"Overall: {process_success} statements updated, "
+        f"Overall: {counts.saved + counts.warned} statements updated, "
         f"{manual_count} manual, {skipped_count} skipped"
     )
 
     fetch_failures = len(auto_agencies) - fetch_success
-    return 0 if fetch_failures == 0 and process_error == 0 else 1
+    # Shrinkage joins genuine failures in the exit code: the nightly run
+    # auto-commits, so a suspicious diff must surface where the cron agent looks.
+    ok = fetch_failures == 0 and counts.failed == 0 and counts.warned == 0
+    return 0 if ok else 1
 
 
 if __name__ == "__main__":

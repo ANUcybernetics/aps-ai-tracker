@@ -30,7 +30,10 @@ mise exec -- uv run --module aps_ai_tracker
 Capture both stdout/stderr. The scraper logs to stderr. Note:
 
 - exit code 0 means all agencies fetched and processed successfully
-- exit code 1 means some agencies failed (check logs for details)
+- exit code 1 means some agencies failed OR a statement's content shrank past
+  the shrinkage threshold (look for `CONTENT SHRINKAGE DETECTED` in the logs;
+  the shrunken file is still written so you can review its diff in Step 4 and
+  discard it if it's a scraping failure)
 - a non-zero exit code does NOT mean no useful work was done --- many agencies
   may have succeeded
 - HTML-sourced statements are extracted, cleaned, mdformatted and saved
