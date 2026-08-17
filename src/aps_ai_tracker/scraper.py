@@ -553,24 +553,24 @@ def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
     return True
 
 
-def _load_raw_meta(agency: Agency, raw_dir: Path) -> dict[str, str | None]:
-    """Load metadata saved alongside a raw file."""
+def _load_final_url(agency: Agency, raw_dir: Path) -> str | None:
+    """Final URL recorded at fetch time, falling back to the agency's URL.
+
+    meta.json also records the response content_type, but that is debugging
+    breadcrumb only — nothing downstream consumes it.
+    """
     meta_path = raw_dir / f"{agency.abbr}.meta.json"
     if meta_path.exists():
         meta = json.loads(meta_path.read_text(encoding="utf-8"))
-        return {
-            "final_url": meta.get("final_url", agency.url),
-            "content_type": meta.get("content_type"),
-        }
-    return {"final_url": agency.url, "content_type": None}
+        return meta.get("final_url") or agency.url
+    return agency.url
 
 
 def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
     """Process raw content from file into markdown."""
     logger.info(f"Processing raw content for {agency.name}...")
 
-    meta = _load_raw_meta(agency, raw_dir)
-    final_url = meta["final_url"] or agency.url
+    final_url = _load_final_url(agency, raw_dir)
 
     pdf_path = raw_dir / f"{agency.abbr}.pdf"
     html_path = raw_dir / f"{agency.abbr}.html"
