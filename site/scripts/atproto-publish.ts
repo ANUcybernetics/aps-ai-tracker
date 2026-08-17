@@ -62,6 +62,7 @@ import {
   type StatementInput,
   type StrongRef,
 } from "../src/lib/atproto";
+import { statementSchema } from "../src/lib/schemas";
 
 // Work around node's IPv6-first happy-eyeballs stalls against bsky.social.
 net.setDefaultAutoSelectFamily(true);
@@ -143,10 +144,14 @@ function loadStatements(): StatementInput[] {
     .readdirSync(dir)
     .filter((f) => f.endsWith(".json"))
     .toSorted()) {
-    const doc = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")) as StatementInput & {
-      sourceUrl: string | null;
-    };
-    if (!doc.sourceUrl) {
+    // Parse through the exporter's zod schema — the same contract the site
+    // build validates against — so a shape drift in export.py fails loudly
+    // here instead of publishing records full of undefineds.
+    const doc = statementSchema.parse(
+      JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")),
+    );
+    const { sourceUrl } = doc;
+    if (!sourceUrl) {
       console.warn(`  ! ${doc.abbr}: no sourceUrl, skipping`);
       continue;
     }
@@ -154,7 +159,7 @@ function loadStatements(): StatementInput[] {
       console.warn(`  ! ${doc.abbr}: empty timeline, skipping`);
       continue;
     }
-    statements.push(doc as StatementInput);
+    statements.push({ ...doc, sourceUrl });
   }
   return statements;
 }

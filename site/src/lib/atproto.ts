@@ -13,6 +13,8 @@
 // record) is cosmetic and swappable; the DID is the durable identity every
 // AT-URI hangs off.
 
+import type { StatementDoc, TimelineRevision } from "./schemas";
+
 export const TRACKER_DID = "did:plc:yhnshyrc2iev6z65u3uraon4";
 export const TRACKER_HANDLE = "apsaitracker.app";
 export const ATPROTO_SERVICE = "https://bsky.social";
@@ -85,25 +87,26 @@ export function toPlainText(markdown: string): string {
     .trim();
 }
 
-/** The slice of the exporter's per-statement JSON the record builders need. */
-export interface StatementInput {
-  abbr: string;
-  agency: string;
-  sourceUrl: string;
-  body: string;
-  timeline: RevisionInput[];
-}
+// Both input types are derived from the zod schemas in schemas.ts (type-only
+// imports, so this module stays runtime-pure), keeping the exporter contract in
+// exactly one place: a field renamed in export.py fails schema validation and
+// type-checking here, rather than silently publishing records full of
+// undefineds.
 
-export interface RevisionInput {
-  sha: string;
-  date: string;
-  subject: string;
-  message: string;
-  kind: string;
-  isNoise: boolean;
-  charDelta: number;
-  body: string;
-}
+/** The slice of a timeline revision the record builders need. */
+export type RevisionInput = Pick<
+  TimelineRevision,
+  "sha" | "date" | "subject" | "message" | "kind" | "isNoise" | "charDelta" | "body"
+>;
+
+/**
+ * The slice of the exporter's per-statement JSON the record builders need,
+ * with sourceUrl narrowed to non-null (the publisher skips URL-less statements).
+ */
+export type StatementInput = Pick<StatementDoc, "abbr" | "agency" | "body"> & {
+  sourceUrl: string;
+  timeline: RevisionInput[];
+};
 
 interface RgbColor {
   r: number;
