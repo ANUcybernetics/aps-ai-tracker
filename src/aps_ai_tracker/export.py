@@ -45,6 +45,13 @@ GENERATED_DIR = REPO_ROOT / "site" / "src" / "generated"
 # --- small shared helpers ---------------------------------------------------
 
 
+# Generous for a local repo (the slowest call here is a full-history --name-only
+# log, well under a second). The point is that a hung git — lock contention, a
+# network-mounted repo — fails the nightly export loudly instead of stalling it
+# until the systemd TimeoutStartSec kills the whole run.
+_GIT_TIMEOUT_SECONDS = 120
+
+
 def git(*args: str) -> str:
     """Run a git command at the repo root and return stdout with newlines trimmed.
 
@@ -58,6 +65,7 @@ def git(*args: str) -> str:
         text=True,
         check=True,
         encoding="utf-8",
+        timeout=_GIT_TIMEOUT_SECONDS,
     )
     return result.stdout.strip("\n")
 
