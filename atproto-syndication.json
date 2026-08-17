@@ -422,6 +422,11 @@
   "AUSTRAC-20260707T070842Z": {
     "seeded": true
   },
+  "AUSTRAC-20260817T170339Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mtc74dqxpg2r",
+    "cid": "bafyreiensyfenqiyts3crt736f63hirwhyaxmvrt3yl7o2tml7ar5gudje",
+    "syndicatedAt": "2026-08-17T17:11:59.127Z"
+  },
   "AUSTRADE-20251111T061258Z": {
     "seeded": true
   },
@@ -1203,6 +1208,11 @@
   },
   "NIAA-20260327T110138Z": {
     "seeded": true
+  },
+  "NIAA-20260817T170339Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mtc74e3cxs2w",
+    "cid": "bafyreigtmz72ladhanrafcshkqmvnjpljw6imdgu4lro5e5sd6wtb6zmga",
+    "syndicatedAt": "2026-08-17T17:11:59.464Z"
   },
   "NLA-20260226T005742Z": {
     "seeded": true
