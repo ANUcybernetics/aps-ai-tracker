@@ -24,7 +24,7 @@ point.
 Run the full two-stage pipeline:
 
 ```
-mise exec -- uv run --module aps_ai_transparency_tracker
+mise exec -- uv run --module aps_ai_tracker
 ```
 
 Capture both stdout/stderr. The scraper logs to stderr. Note:
