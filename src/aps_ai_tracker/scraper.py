@@ -15,7 +15,7 @@ import html2text
 import httpx
 import mdformat
 import yaml
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 from pypdf import PdfReader
 
 logging.basicConfig(
@@ -274,7 +274,7 @@ def format_markdown(text: str) -> str:
     return mdformat.text(text).strip()
 
 
-def remove_boilerplate(element: BeautifulSoup) -> None:
+def remove_boilerplate(element: Tag) -> None:
     """Remove common boilerplate elements from HTML."""
     boilerplate_selectors = [
         "nav",
