@@ -97,6 +97,7 @@ making it easy to typo field names.
 ```python
 from typing import TypedDict
 
+
 class StatementResult(TypedDict):
     title: str | None
     markdown: str | None
@@ -104,8 +105,8 @@ class StatementResult(TypedDict):
     final_url: str
     error: str | None
 
-def fetch_statement(agency: Agency) -> StatementResult:
-    ...
+
+def fetch_statement(agency: Agency) -> StatementResult: ...
 ```
 
 **Benefits:** Better type checking, IDE autocomplete, self-documenting
@@ -157,6 +158,7 @@ logging setups if this is ever used as a library.
 
 ```python
 from dataclasses import dataclass
+
 
 @dataclass(frozen=True, slots=True)
 class Agency:

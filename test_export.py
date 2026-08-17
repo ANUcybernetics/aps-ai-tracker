@@ -23,7 +23,6 @@ from aps_ai_tracker.export import (
     statement_status,
 )
 
-
 # --- normalise_passage ------------------------------------------------------
 
 
@@ -161,7 +160,7 @@ def test_build_clusters_finds_exact_and_phrase_reuse():
         ),
         "DTA": segment_passages("We appoint an accountable official always.", "DTA"),
     }
-    clusters, shared_count = build_clusters(by_abbr)
+    clusters, _shared_count = build_clusters(by_abbr)
     exact = [c for c in clusters if c["mergeMethod"] == "exact"]
     phrase = [c for c in clusters if c["mergeMethod"] == "phrase"]
     # The identical sentence is shared by A and B.
