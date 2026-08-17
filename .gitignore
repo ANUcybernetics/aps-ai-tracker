@@ -46,6 +46,9 @@ env/
 mise.local.toml
 .mise.local.toml
 
+# Atomic-write staging files (write-to-temp-then-rename; only survive a crash)
+*.tmp
+
 # Raw scraped content
 raw/
 

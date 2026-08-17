@@ -24,6 +24,7 @@ from aps_ai_tracker import (
     Agency,
     RawFetchResult,
     StatementResult,
+    atomic_write_text,
     clean_html_to_markdown,
     clean_markdown,
     extract_main_content,
@@ -765,6 +766,19 @@ def test_content_shrinkage_threshold_is_reasonable():
 
     # Default of 0.5 means warn if content drops below 50% of original
     assert CONTENT_SHRINKAGE_THRESHOLD == 0.5
+
+
+def test_atomic_write_text_writes_and_cleans_up():
+    """atomic_write_text replaces the target in place and leaves no temp file."""
+    with TemporaryDirectory() as tmpdir:
+        target = Path(tmpdir) / "STATE.md"
+        target.write_text("old content", encoding="utf-8")
+
+        atomic_write_text(target, "new content")
+
+        assert target.read_text(encoding="utf-8") == "new content"
+        # The staging file must not survive a successful write.
+        assert list(Path(tmpdir).iterdir()) == [target]
 
 
 # Tests for expanded boilerplate removal

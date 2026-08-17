@@ -157,6 +157,27 @@ def extract_frontmatter(filepath: Path) -> dict | None:
     return frontmatter
 
 
+def atomic_write_text(path: Path, text: str) -> None:
+    """Write text via a same-directory temp file + rename.
+
+    Every artifact this pipeline persists (statements, raw content, caches,
+    generated JSON) is written through this, so a process killed mid-write (cron
+    timeout, OOM, power loss) can never leave a truncated file. That matters
+    because the exporter deliberately treats an unparseable statement as fatal —
+    a torn write would otherwise break every subsequent nightly run.
+    """
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    tmp.replace(path)
+
+
+def atomic_write_bytes(path: Path, data: bytes) -> None:
+    """Byte-content twin of atomic_write_text."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_bytes(data)
+    tmp.replace(path)
+
+
 def clean_html_to_markdown(html_content: str, base_url: str) -> str:
     """Convert HTML content to clean markdown."""
     h = html2text.HTML2Text()
@@ -507,12 +528,10 @@ def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
     stale = raw_dir / f"{agency.abbr}.{'html' if is_pdf else 'pdf'}"
     stale.unlink(missing_ok=True)
 
-    filepath.write_bytes(data["content"])
+    atomic_write_bytes(filepath, data["content"])
 
     meta = {"final_url": data["final_url"], "content_type": data["content_type"]}
-    (raw_dir / f"{agency.abbr}.meta.json").write_text(
-        json.dumps(meta), encoding="utf-8"
-    )
+    atomic_write_text(raw_dir / f"{agency.abbr}.meta.json", json.dumps(meta))
 
     logger.info(f"Saved raw content to {agency.abbr}.{extension}")
     return True
@@ -683,7 +702,7 @@ def save_statement(agency: Agency, data: StatementResult, output_dir: Path) -> b
     ).strip()
     content = "\n".join(["---", yaml_str, "---", "", new_body])
 
-    filepath.write_text(content, encoding="utf-8")
+    atomic_write_text(filepath, content)
     logger.info(f"Saved {agency.abbr}.md")
     return True
 
