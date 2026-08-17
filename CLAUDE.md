@@ -23,8 +23,11 @@ This is a Python web scraping project using uv for dependency management.
   `mise exec -- uv run --group export export` (needs the `export` dependency
   group: numpy + openai)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
-  console-script form does not resolve; invoke pytest as a module). Exporter
-  tests live in `test_export.py`; run with `--group export` so numpy is present.
+  console-script form does not resolve; invoke pytest as a module). Scraper
+  tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
+  latter with `--group export` so numpy is present.
+- Typecheck: `mise exec -- uvx ty check` (CI pins the ty version in
+  `deploy.yml`; bump it there deliberately after a clean local run)
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
@@ -62,12 +65,13 @@ site is light-only (no dark mode); design tokens live in
   links). The domain is pinned by `site/public/CNAME` **and** the Pages config
   `cname` (both needed: workflow deploys don't adopt the artifact CNAME on their
   own). `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
-  push to `main` (doc/ops/test-only pushes are skipped via `paths-ignore`). CI
-  runs `export` **without** an OpenAI key (it reuses the committed embeddings
-  cache), so no GitHub secret is needed. Pages is already configured (Settings →
-  Pages → Source: GitHub Actions); only re-set that if it's ever reset. It
-  serves from the domain root, so all internal links still go through
-  `withBase()` in `site/src/lib/paths.ts`.
+  push to `main` (doc/ops-only pushes are skipped via `paths-ignore`). CI is
+  also the only place the Python tests and `ty` typecheck run automatically,
+  ahead of the export step. CI runs `export` **without** an OpenAI key (it
+  reuses the committed embeddings cache), so no GitHub secret is needed. Pages
+  is already configured (Settings → Pages → Source: GitHub Actions); only re-set
+  that if it's ever reset. It serves from the domain root, so all internal links
+  still go through `withBase()` in `site/src/lib/paths.ts`.
 - **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape (with `OPENAI_API_KEY` from weddle's global
   `~/.config/mise/config.local.toml`), commits the refreshed
@@ -135,7 +139,9 @@ systemctl --user daemon-reload
 systemctl --user enable --now aps-scrape.timer
 ```
 
-Inspect runs with `journalctl --user -u aps-scrape.service -n 50`.
+The real run detail lives in `logs/scrape-YYYY-MM-DD.log` (gitignored, pruned
+after 60 days) — the script redirects nearly all of its output there, so
+`journalctl --user -u aps-scrape.service` only shows unit start/stop/exit.
 
 ## Managing agency URLs
 

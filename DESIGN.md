@@ -16,36 +16,37 @@ dramatised figures, and visualisations that all speak one language.
 heat-map, the agency "register wall", the originality bars, and the similarity
 graph, so a reader learns it once and reads it everywhere.
 
-Light and dark are both first-class, via `color-scheme` + `light-dark()`.
+The site is light-only (`color-scheme: light`). The design was always
+light-first; committing to one context lets the palette be tuned properly rather
+than compromised across two.
 
 ## Color
 
-OKLCH throughout, defined as light/dark pairs. Strategy: **committed** — ochre
-carries the brand and the data encoding; everything else is ink, paper, and the
-conventional diff green/red.
+OKLCH throughout. Strategy: **committed** — ochre carries the brand and the data
+encoding; everything else is ink, paper, and the conventional diff green/red.
 
-| Role                 | Token             | Light                    | Dark                     |
-| -------------------- | ----------------- | ------------------------ | ------------------------ |
-| Paper (bg)           | `--bg`            | `oklch(98.6% 0.003 250)` | `oklch(17.5% 0.014 264)` |
-| Surface              | `--surface`       | `oklch(96.8% 0.004 250)` | `oklch(20.5% 0.016 264)` |
-| Surface 2            | `--surface-2`     | `oklch(93.8% 0.006 250)` | `oklch(24.5% 0.018 264)` |
-| Ink (text)           | `--text`          | `oklch(23% 0.024 264)`   | `oklch(92% 0.012 250)`   |
-| Muted                | `--muted`         | `oklch(45% 0.022 264)`   | `oklch(67% 0.016 250)`   |
-| Border               | `--border`        | `oklch(88% 0.008 255)`   | `oklch(30% 0.016 264)`   |
-| Border strong        | `--border-strong` | `oklch(74% 0.012 255)`   | `oklch(42% 0.018 264)`   |
-| Ochre (fills, marks) | `--accent`        | `oklch(66% 0.142 64)`    | `oklch(80% 0.14 78)`     |
-| Ochre (text/links)   | `--accent-ink`    | `oklch(46% 0.132 54)`    | `oklch(83% 0.13 80)`     |
-| Ochre wash           | `--accent-wash`   | `oklch(95% 0.04 78)`     | `oklch(27% 0.05 70)`     |
+| Role                 | Token             | Value                    |
+| -------------------- | ----------------- | ------------------------ |
+| Paper (bg)           | `--bg`            | `oklch(98.6% 0.003 250)` |
+| Surface              | `--surface`       | `oklch(96.8% 0.004 250)` |
+| Surface 2            | `--surface-2`     | `oklch(93.8% 0.006 250)` |
+| Ink (text)           | `--text`          | `oklch(23% 0.024 264)`   |
+| Muted                | `--muted`         | `oklch(45% 0.022 264)`   |
+| Border               | `--border`        | `oklch(88% 0.008 255)`   |
+| Border strong        | `--border-strong` | `oklch(74% 0.012 255)`   |
+| Ochre (fills, marks) | `--accent`        | `oklch(66% 0.142 64)`    |
+| Ochre (text/links)   | `--accent-ink`    | `oklch(46% 0.132 54)`    |
+| Ochre wash           | `--accent-wash`   | `oklch(95% 0.04 78)`     |
 
 Plus a 4-step warm **heat ramp** (`--heat-1`…`--heat-4`, faint yellow → deep
 amber) for reuse intensity, conventional **diff** colours (`--ins-*` green,
 `--del-*` red), and `--ok` green for positive deltas. The similarity graph
-encodes originality on a hardcoded ochre → neutral → teal scale (mid-lightness
-so nodes read on both canvases) in `SimilarityGraph.svelte`.
+encodes originality on a hardcoded ochre → neutral → teal scale in
+`SimilarityGraph.svelte`.
 
-**Contrast:** every text/background pair clears WCAG AA in both schemes,
-including ink on every heat step (≥6.3:1) and ochre links (≥7:1). Verified by
-rendering the real tokens through a canvas and computing ratios.
+**Contrast:** every text/background pair clears WCAG AA, including ink on every
+heat step (≥6.3:1) and ochre links (≥7:1). Verified by rendering the real tokens
+through a canvas and computing ratios.
 
 ## Typography
 
