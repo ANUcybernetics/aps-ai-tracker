@@ -54,8 +54,10 @@ jobs:
       - name: Python tests
         run: uv run python -m pytest
 
+      # Through the project env with the export group, so the lazy openai/numpy
+      # imports in export.py resolve (bare `uvx ty` sees no project packages).
       - name: Python typecheck
-        run: uvx ty@0.0.72 check
+        run: uv run --group export --with ty==0.0.72 ty check
 
       - name: Generate site data
         run: uv run --group export export

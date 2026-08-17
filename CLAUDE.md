@@ -26,8 +26,9 @@ This is a Python web scraping project using uv for dependency management.
   console-script form does not resolve; invoke pytest as a module). Scraper
   tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
   latter with `--group export` so numpy is present.
-- Typecheck: `mise exec -- uvx ty check` (CI pins the ty version in
-  `deploy.yml`; bump it there deliberately after a clean local run)
+- Typecheck: `mise exec -- uv run --group export --with ty ty check` (the export
+  group so the lazy numpy/openai imports in `export.py` resolve; CI pins the ty
+  version in `deploy.yml` — bump it there deliberately after a clean local run)
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
