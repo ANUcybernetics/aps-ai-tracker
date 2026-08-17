@@ -27,6 +27,7 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import TypedDict
 
 from .scraper import (
     REPO_ROOT,
@@ -681,9 +682,24 @@ def embed_statements(
     return vectors, api_called
 
 
+class Neighbour(TypedDict):
+    """One nearest-neighbour entry: the other statement and its cosine score."""
+
+    abbr: str
+    score: float
+
+
+class Edge(TypedDict):
+    """One deduped similarity-graph edge (a < b lexicographically)."""
+
+    a: str
+    b: str
+    score: float
+
+
 def cosine_neighbours(
     vectors: dict[str, list], k: int = _NEIGHBOURS
-) -> tuple[dict[str, list], list[dict]]:
+) -> tuple[dict[str, list[Neighbour]], list[Edge]]:
     """Top-k nearest neighbours per statement + a thresholded, deduped edge list."""
     if not vectors:
         return {}, []
@@ -695,7 +711,7 @@ def cosine_neighbours(
     sims = matrix @ matrix.T
     np.fill_diagonal(sims, -np.inf)
 
-    neighbours = {}
+    neighbours: dict[str, list[Neighbour]] = {}
     for i, abbr in enumerate(abbrs):
         top = np.argsort(-sims[i])[:k]
         neighbours[abbr] = [
@@ -703,7 +719,7 @@ def cosine_neighbours(
         ]
 
     seen: set[tuple[str, str]] = set()
-    edges = []
+    edges: list[Edge] = []
     for abbr, neighs in neighbours.items():
         for n in neighs[:_GRAPH_NEIGHBOURS]:
             key = (abbr, n["abbr"]) if abbr < n["abbr"] else (n["abbr"], abbr)
@@ -715,7 +731,9 @@ def cosine_neighbours(
     return neighbours, edges
 
 
-def compute_similarity(bodies: dict[str, str]) -> tuple[dict, dict[str, list]]:
+def compute_similarity(
+    bodies: dict[str, str],
+) -> tuple[dict, dict[str, list[Neighbour]]]:
     """Build similarity.json and per-statement neighbour lists."""
     cache = load_embedding_cache(CACHE_PATH)
     vectors, api_called = embed_statements(bodies, cache)
@@ -749,7 +767,7 @@ def build_statement_doc(
     timeline: list[dict],
     passages: list[dict],
     originality: dict,
-    neighbours: list[dict],
+    neighbours: list[Neighbour],
 ) -> dict:
     """Per-statement document consumed by the statement page."""
     doc: dict = {
