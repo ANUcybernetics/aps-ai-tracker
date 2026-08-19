@@ -99,7 +99,7 @@ We will update this transparency statement as we continue to develop policies on
 
 ## Accountable Official
 
-The Australia Centre for Disease Control **Chief Operating Officer** and **Chief Data & Analytics Officer** are our AI Accountable Officials. They are responsible for ensuring the safe implementation and use of AI across our systems and data sets.
+The Australia Centre for Disease Control **Chief Operating Officer** is our AI Accountable Official. They are responsible for ensuring the safe implementation and use of AI across our systems and data sets.
 
 ## Contact
 

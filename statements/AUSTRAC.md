@@ -81,18 +81,18 @@ To further support these efforts, AUSTRAC has established governance practices, 
 
 As the use of AI within AUSTRAC expands, consideration will be given to additional governance processes and practices which will ensure the appropriate, ethical and safe use of AI.
 
-## Compliance with AI in Government Policy
+## Compliance with AI in government policy
 
-Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) (AI in government Policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Standard%20for%20AI%20transparency%20statements%202.0_0.pdf) \_\_ we are required to report our compliance with the requirements under the policy.
+Under the [ _Policy for Responsible Use of AI in Government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) (AI in government policy) and the [ _standards for transparency statements_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Standard%20for%20AI%20transparency%20statements%202.0_0.pdf) \_\_ we are required to report our compliance with the requirements under the policy.
 
-At time of publishing, this section is compliant with version 2.0 of the AI in government policy. Version 2.0 of the policy introduced new requirements on the 15th December, 2025 which AUSTRAC is committed to implementing.
+At time of publishing, this section is compliant with version 2.0 of the AI in government policy. Version 2.0 of the policy introduced new requirements on 15 December 2025 which AUSTRAC is committed to implementing.
 
 The following table outlines the requirements of version 2.0 of the AI in government policy and the status of compliance with those requirements:
 
 **Requirement** | **Status**\
 ---|---\
 Accountable Official | Compliant\
-AI Transparency Statement | Compliant\
+AI transparency statement | Compliant\
 Strategic position on AI adoption | Compliant
 
 ## Contact information

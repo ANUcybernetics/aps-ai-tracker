@@ -31,7 +31,6 @@ While we do not use AI across all our services, this Transparency Statement cove
   - health alert lines
 - Digital services
   - healthdirect website
-  - healthdirect mobile app
   - Pregnancy, Birth and Baby website
 - Digital products (available in some of our digital services)
   - User account
