@@ -208,6 +208,11 @@
   "AIHW-20260707T070842Z": {
     "seeded": true
   },
+  "AIHW-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbeztui72k",
+    "cid": "bafyreifo4xkcd76vunaogs52gqwbwzj6br356zszkucgfqdfpquwnlwkkq",
+    "syndicatedAt": "2026-08-19T17:35:56.905Z"
+  },
   "ALRC-20260226T005742Z": {
     "seeded": true
   },
@@ -427,6 +432,11 @@
     "cid": "bafyreiensyfenqiyts3crt736f63hirwhyaxmvrt3yl7o2tml7ar5gudje",
     "syndicatedAt": "2026-08-17T17:11:59.127Z"
   },
+  "AUSTRAC-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbf265jn2j",
+    "cid": "bafyreiczhs6276lfrytsg7ukdycyiddk33za7z5fnkwhqsfqqgvtlx5ek4",
+    "syndicatedAt": "2026-08-19T17:35:57.241Z"
+  },
   "AUSTRADE-20251111T061258Z": {
     "seeded": true
   },
@@ -482,6 +492,11 @@
   },
   "CDC-20260607T062539Z": {
     "seeded": true
+  },
+  "CDC-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbf2ie4h2r",
+    "cid": "bafyreiad3ao3whqcxwjwzvh5gybxzeaqnjei5vfjajx6btvrd3d73wauna",
+    "syndicatedAt": "2026-08-19T17:35:57.575Z"
   },
   "CDPP-20251111T061258Z": {
     "seeded": true
@@ -694,6 +709,11 @@
   "DPS-20260627T174615Z": {
     "seeded": true
   },
+  "DPS-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbf2sjd52m",
+    "cid": "bafyreif5xehxg4z4tjnqn5pwf37abo5362fwhq5n6ml2skfee7xicnrdg4",
+    "syndicatedAt": "2026-08-19T17:35:57.909Z"
+  },
   "DSS-20251111T061258Z": {
     "seeded": true
   },
@@ -863,6 +883,11 @@
   "HEALTHDIRECT-20260707T070842Z": {
     "seeded": true
   },
+  "HEALTHDIRECT-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbf34p4j2n",
+    "cid": "bafyreigegxe7gjvt73hr3iatredasodv6madw5bxoma5npqpqxtnkgbsyi",
+    "syndicatedAt": "2026-08-19T17:35:58.245Z"
+  },
   "HOMEAFFAIRS-20251111T061258Z": {
     "seeded": true
   },
@@ -874,6 +899,11 @@
   },
   "HOUSEREPS-20260627T174615Z": {
     "seeded": true
+  },
+  "HOUSEREPS-20260819T173006Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mthbf3gzkp2r",
+    "cid": "bafyreicwunm34zilgalqmywqnan6hnghetlt6zl6vxwa6vrcxoi7q37q3e",
+    "syndicatedAt": "2026-08-19T17:35:58.608Z"
   },
   "HSRA-20260226T005742Z": {
     "seeded": true
