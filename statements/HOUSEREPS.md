@@ -11,7 +11,7 @@ title: "AI transparency statement\n        \n     – Parliament of Australia"
 
 ## _This statement is produced in accordance with the_[ _Digital Transformation Agency's Policy for the responsible use of AI in government_](https://www.digital.gov.au/ai/ai-in-government-policy) _and the_[ _Standard for AI transparency statements_](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements) _._<br /> _It should be read alongside the_[ _Department of Parliamentary Services (DPS) AI Transparency Statement_](https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_Parliamentary_Services/Publications/AI_Transparency_Statement) _._
 
-[Transparency Statement ](https://www.aph.gov.au/-/media/05_About_Parliament/54_Parliamentary_Depts/542_Dept_of_House_of_Reps/Documents/DHR_AI_Transparency_Statement_2026.pdf)(PDF Version)
+[Transparency Statement ](https://static.aph.gov.au/-/media/05_About_Parliament/54_Parliamentary_Depts/542_Dept_of_House_of_Reps/Documents/DHR_AI_Transparency_Statement_2026.pdf?rev=70047e1a4fdf4a4ebff0a781e483fd0c&hash=76FFE52EF4B8A418ABD1FCEF6CD9A66A)(PDF Version)
 
 ## Introduction
 

@@ -7,7 +7,7 @@ title: "DPS AI Transparency Statement\n        \n     – Parliament of Australi
 
 # DPS AI Transparency Statement
 
-- [DPS AI transparency statement (PDF, 286 KB)](https://www.aph.gov.au/-/media/05_About_Parliament/54_Parliamentary_Depts/543_DPS/Publication/DPS_AI_transparency_statement.pdf)
+- [DPS AI transparency statement (PDF, 286 KB)](https://static.aph.gov.au/-/media/05_About_Parliament/54_Parliamentary_Depts/543_DPS/Publication/DPS_AI_transparency_statement.pdf?rev=4a9c12ddaf0c4a22bf25cbd44a4b7726&hash=C5A61F6A24BC1C8C8066957C9F8BBE9F)
 
 ## Introduction
 
