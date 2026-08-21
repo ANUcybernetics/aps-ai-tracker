@@ -27,25 +27,6 @@ function changeHtml(op: number, text: string): string {
   return text;
 }
 
-// The homepage is a digest of what agencies *said*, rather than every URL their
-// CMS happened to emit. Replace inline-link destinations with an empty target
-// while preserving the label and all other Markdown. This deliberately does not
-// classify the revision as scrape noise: the full timeline and statement history
-// still retain the event and its exact URL diff.
-function withoutLinkDestinations(markdown: string): string {
-  return markdown
-    .replaceAll(/^\s*(?:[-*+]\s+)?!?\[[^\]]*\]\((?:[^()\\]|\\.|\([^)]*\))*\)\s*$/gm, "")
-    .replaceAll(/(!?)\[([^\]]*)\]\((?:[^()\\]|\\.|\([^)]*\))*\)/g, "$1[$2]()")
-    .replaceAll(/^(\s*\[[^\]]+\]:)\s*\S+.*$/gm, "$1")
-    .replaceAll(/\s+/g, " ")
-    .trim();
-}
-
-/** Whether a revision changes anything besides link targets or standalone links. */
-export function hasStatementTextChange(before: string, after: string): boolean {
-  return withoutLinkDestinations(before) !== withoutLinkDestinations(after);
-}
-
 // Full diff rendered to HTML. Used for revision time-travel.
 export function wordDiffHtml(before: string, after: string): string {
   return semanticDiff(before, after)

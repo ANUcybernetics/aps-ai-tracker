@@ -14,6 +14,7 @@ from aps_ai_tracker.export import (
     collapse_reverts,
     content_hash,
     cosine_neighbours,
+    is_noise_revision,
     load_embedding_cache,
     normalise_passage,
     originality_score,
@@ -72,6 +73,63 @@ def _rev(key: str, sha: str = "s", bulk: bool = False) -> Revision:
         body_key=key,
         bulk=bulk,
     )
+
+
+def _body_rev(body: str, subject: str = "update") -> Revision:
+    return Revision(
+        sha="s",
+        date="2026-01-01T00:00:00+00:00",
+        subject=subject,
+        message="",
+        body=body,
+        body_key=body,
+        bulk=False,
+    )
+
+
+def test_noise_revision_detects_destination_only_link_change():
+    before = _body_rev(
+        "[DPS AI statement](https://www.aph.gov.au/-/media/statement.pdf)"
+    )
+    after = _body_rev(
+        "[DPS AI statement](https://static.aph.gov.au/-/media/statement.pdf?rev=2)"
+    )
+    assert is_noise_revision(after, before)
+
+
+def test_noise_revision_handles_parentheses_in_link_destinations():
+    before = _body_rev("Download [here](https://example.gov.au/file%20(old).pdf).")
+    after = _body_rev("Download [here](https://example.gov.au/file%20(new).pdf).")
+    assert is_noise_revision(after, before)
+
+
+def test_noise_revision_detects_standalone_link_churn():
+    before = _body_rev("## Contact\n\nEmail the accountable official.")
+    after = _body_rev(
+        "## Contact\n\nEmail the accountable official.\n\n"
+        "[January–June 2026](https://example.gov.au/register.pdf)"
+    )
+    assert is_noise_revision(after, before)
+
+
+def test_noise_revision_preserves_changed_link_label():
+    before = _body_rev("See the [2025 policy](https://example.gov.au/policy).")
+    after = _body_rev("See the [2026 policy](https://example.gov.au/policy).")
+    assert not is_noise_revision(after, before)
+
+
+def test_noise_revision_does_not_mask_prose_change_alongside_url_churn():
+    before = _body_rev(
+        "We are trialling AI. Read the [policy](https://example.gov.au/old)."
+    )
+    after = _body_rev(
+        "We are deploying AI. Read the [policy](https://example.gov.au/new)."
+    )
+    assert not is_noise_revision(after, before)
+
+
+def test_noise_revision_preserves_commit_message_annotations():
+    assert is_noise_revision(_body_rev("Changed body", "strip nav-chrome"))
 
 
 def test_collapse_drops_revert_excursion():

@@ -94,7 +94,8 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       <li>
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
         scrape churn that is later reverted, and pure reformatting, are collapsed
-        out; commits the maintainer flagged as noise are hidden by default. A
+        out; known scrape churn and link-only changes are marked as noise and
+        hidden by default. A
         first sighting is labelled &ldquo;first tracked&rdquo; (the day-one bulk
         import) or &ldquo;added&rdquo; (an agency we began tracking later), never
         &ldquo;published&rdquo;: we record when a statement entered the tracker,

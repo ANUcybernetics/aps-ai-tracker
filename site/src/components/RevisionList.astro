@@ -1,6 +1,5 @@
 ---
 import DiffView from "@/components/DiffView.astro";
-import { hasStatementTextChange } from "@/lib/diff";
 import { KIND_LABEL, formatDate, signedDelta } from "@/lib/format";
 import { revAnchor } from "@/lib/scrubber";
 import type { TimelineRevision } from "@/types/exporter";
@@ -13,17 +12,10 @@ const { timeline } = Astro.props;
 
 // Pair each revision with its predecessor, then show newest first.
 const revs = timeline
-  .map((rev, idx) => {
-    const prev = idx > 0 ? timeline[idx - 1] : null;
-    const linkOnly = Boolean(
-      prev && !rev.isNoise && !hasStatementTextChange(prev.body, rev.body),
-    );
-    return { rev, prev, linkOnly };
-  })
+  .map((rev, idx) => ({ rev, prev: idx > 0 ? timeline[idx - 1] : null }))
   .reverse();
 
 const noiseCount = revs.filter((r) => r.rev.isNoise).length;
-const linkOnlyCount = revs.filter((r) => r.linkOnly).length;
 ---
 
 <div class="revs-wrap">
@@ -32,37 +24,21 @@ const linkOnlyCount = revs.filter((r) => r.linkOnly).length;
       <div class="revs-toggle">
         <input type="checkbox" id="show-noise-revs" />
         <label for="show-noise-revs">
-          Include {noiseCount} scrape-noise {noiseCount === 1 ? "revision" : "revisions"}
-        </label>
-      </div>
-    )
-  }
-  {
-    linkOnlyCount > 0 && (
-      <div class="revs-toggle">
-        <input type="checkbox" id="show-link-revs" />
-        <label for="show-link-revs">
-          Include {linkOnlyCount} link {linkOnlyCount === 1 ? "change" : "changes"}
+          Include {noiseCount} noise {noiseCount === 1 ? "revision" : "revisions"}
         </label>
       </div>
     )
   }
   <ol class="revs">
   {
-    revs.map(({ rev, prev, linkOnly }) => (
-      <li
-        class="rev"
-        id={revAnchor(rev.sha)}
-        data-noise={rev.isNoise ? "" : undefined}
-        data-link-only={linkOnly ? "" : undefined}
-      >
+    revs.map(({ rev, prev }) => (
+      <li class="rev" id={revAnchor(rev.sha)} data-noise={rev.isNoise ? "" : undefined}>
         <div class="rev__head">
           <time class="mono muted" datetime={rev.date}>
             {formatDate(rev.date)}
           </time>
           <span class="pill">{KIND_LABEL[rev.kind]}</span>
           {rev.isNoise && <span class="pill pill--warn">noise</span>}
-          {linkOnly && <span class="pill pill--warn">link-only</span>}
           <span class="rev__delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
             {signedDelta(rev.charDelta)}
           </span>
@@ -113,16 +89,14 @@ const linkOnlyCount = revs.filter((r) => r.linkOnly).length;
     padding-block: var(--space-3);
   }
 
-  /* Scrape noise and link-only churn are hidden by default so the real edit
-     history reads clean; the independent checkboxes reveal either category.
-     :has() keeps this CSS-only and independent of DOM order. */
-  .rev[data-noise],
-  .rev[data-link-only] {
+  /* Scrape noise (including link-only churn) is hidden by default so the real
+     edit history reads clean; the checkbox reveals it. :has() keeps this
+     CSS-only and independent of DOM order. */
+  .rev[data-noise] {
     display: none;
   }
 
-  .revs-wrap:has(#show-noise-revs:checked) .rev[data-noise],
-  .revs-wrap:has(#show-link-revs:checked) .rev[data-link-only] {
+  .revs-wrap:has(#show-noise-revs:checked) .rev[data-noise] {
     display: list-item;
   }
 
