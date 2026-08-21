@@ -8,6 +8,7 @@ import RevisionList from "@/components/RevisionList.astro";
 import RevisionScrubber from "@/components/RevisionScrubber.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { documentUri } from "@/lib/atproto";
+import { hasStatementTextChange } from "@/lib/diff";
 import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
@@ -28,9 +29,17 @@ const { doc } = Astro.props;
 const names = await getAgencyNames();
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
-// "Changes" and "last change" count only genuine edits, not scrape noise
-// (reverted churn, reformatting), so the header isn't dominated by junk.
-const realChanges = doc.timeline.filter((t) => t.kind === "updated" && !t.isNoise);
+// "Changes" and "last change" count only genuine textual edits, not known
+// scrape noise or link-only churn, so the header matches the revision list.
+const realChanges = doc.timeline.filter((t, idx) => {
+  const prev = idx > 0 ? doc.timeline[idx - 1] : null;
+  return (
+    t.kind === "updated" &&
+    !t.isNoise &&
+    prev !== null &&
+    hasStatementTextChange(prev.body, t.body)
+  );
+});
 const changes = realChanges.length;
 const lastUpdated = realChanges.at(-1)?.date;
 
@@ -92,7 +101,7 @@ const legend = [
       <StatementMeta doc={doc} />
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
-        {" · "}{doc.timeline.length} revisions ({changes} changes)
+        {" · "}{doc.timeline.length} revisions ({changes} text {changes === 1 ? "change" : "changes"})
         {lastUpdated && <> · last change {formatDate(lastUpdated)}</>}
       </p>
       <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
