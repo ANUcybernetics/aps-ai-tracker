@@ -125,6 +125,11 @@ _NOISE_RE = re.compile(
 )
 
 _WS_RE = re.compile(r"\s+")
+_INLINE_LINK_RE = re.compile(r"(!?)\[([^]]*)\]\((?:[^()\\]|\\.|\([^)]*\))*\)")
+_STANDALONE_LINK_RE = re.compile(
+    r"(?m)^\s*(?:[-*+]\s+)?!?\[[^]]*\]\((?:[^()\\]|\\.|\([^)]*\))*\)\s*$"
+)
+_REFERENCE_LINK_RE = re.compile(r"(?m)^(\s*\[[^]]+\]:)\s*\S+.*$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -222,8 +227,21 @@ def collapse_reverts(revisions: list[Revision]) -> list[Revision]:
     return kept
 
 
-def _is_noise(rev: Revision) -> bool:
-    return bool(_NOISE_RE.search(rev.subject) or _NOISE_RE.search(rev.message))
+def _without_link_changes(body: str) -> str:
+    """Project Markdown to statement text, ignoring link-only page churn."""
+    body = _STANDALONE_LINK_RE.sub("", body)
+    body = _INLINE_LINK_RE.sub(lambda match: f"{match[1]}[{match[2]}]()", body)
+    body = _REFERENCE_LINK_RE.sub(r"\1", body)
+    return _WS_RE.sub(" ", body).strip()
+
+
+def is_noise_revision(rev: Revision, previous: Revision | None = None) -> bool:
+    """Whether a revision is annotated noise or changes only Markdown links."""
+    annotated = bool(_NOISE_RE.search(rev.subject) or _NOISE_RE.search(rev.message))
+    link_only = previous is not None and _without_link_changes(
+        previous.body
+    ) == _without_link_changes(rev.body)
+    return annotated or link_only
 
 
 def _event_kind(index: int, rev: Revision) -> str:
@@ -255,7 +273,9 @@ def timeline_entries(revisions: list[Revision]) -> list[dict]:
                 "subject": rev.subject,
                 "message": rev.message,
                 "kind": _event_kind(i, rev),
-                "isNoise": _is_noise(rev),
+                "isNoise": is_noise_revision(
+                    rev, revisions[i - 1] if i > 0 else None
+                ),
                 "chars": chars,
                 "charDelta": chars - prev_chars,
                 "body": rev.body,
@@ -848,7 +868,7 @@ def build_timeline(
                     "size": sizes.get(abbr, "unknown"),
                     "summary": rev.subject,
                     "kind": _event_kind(i, rev),
-                    "isNoise": _is_noise(rev),
+                    "isNoise": is_noise_revision(rev, revs[i - 1] if i > 0 else None),
                 }
             )
     return sorted(events, key=lambda e: (e["date"], e["id"]), reverse=True)
