@@ -6,6 +6,7 @@ import DiffView from "@/components/DiffView.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
 import { getStatements } from "@/lib/statements";
+import { hasStatementTextChange } from "@/lib/diff";
 import { formatDate } from "@/lib/format";
 import { withBase, statementPath } from "@/lib/paths";
 import type { TimelineEvent } from "@/types/exporter";
@@ -32,14 +33,19 @@ function diffFor(event: TimelineEvent) {
   return { before: prev.body, after: curr.body, delta: curr.charDelta };
 }
 
-// One row per agency (their most recent genuine change) so a single daily-churning
-// statement doesn't crowd out the feed.
+// One row per agency (their most recent genuine textual change) so a single
+// daily-churning statement doesn't crowd out the feed. Destination-only link
+// edits remain in the full timeline and revision history, but do not displace a
+// change to what an agency actually said from this homepage digest.
 const seen = new Set<string>();
 const recent = timeline
   .filter((e) => e.kind === "updated" && !e.isNoise)
-  .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
-  .slice(0, 10)
-  .map((event) => ({ event, diff: diffFor(event) }));
+  .map((event) => ({ event, diff: diffFor(event) }))
+  .filter(
+    ({ diff }) => diff && hasStatementTextChange(diff.before, diff.after),
+  )
+  .filter(({ event }) => !seen.has(event.abbr) && seen.add(event.abbr))
+  .slice(0, 10);
 
 const c = meta.counts;
 const finderAgencies = agencies.map((a) => ({
