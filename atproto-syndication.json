@@ -703,6 +703,11 @@
   "DISR-20260508T100249Z": {
     "seeded": true
   },
+  "DISR-20260825T172350Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mtwdxfb5td2j",
+    "cid": "bafyreigmapxtghcmfcvrsvb5lvipanvazrp7gmhjw6gfgmk3diypykefcy",
+    "syndicatedAt": "2026-08-25T17:31:56.398Z"
+  },
   "DITRDCA-20260226T005742Z": {
     "seeded": true
   },
