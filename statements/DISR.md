@@ -14,7 +14,7 @@ Date published:
 
 Date updated:
 
-7 April 2026
+25 August 2026
 
 \[\_\_Share this page\](javascript:;)
 
@@ -30,63 +30,179 @@ Date updated:
 
 Our department is supporting Australia to become a leader in developing and adopting trusted, secure and responsible artificial intelligence (AI).
 
-Our own adoption of AI aligns to the Guidance for AI Adoption, which consists of [6 essential practices](https://www.industry.gov.au/node/95254 "Guidance for AI Adoption") for industry to adopt AI responsibly. This includes transparency and accountability practices for developers and deployers of AI systems.
+We use AI to support staff in their work. We do not use AI to make decisions that affect people or organisations without human oversight.
 
-The Digital Transformation Agency’s [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy) sets the requirements for Australian Government agencies to engage with AI in a safe and responsible way.
+This statement explains how we use AI and the safeguards we have in place.
 
-The policy has mandatory requirements about accountable officials and transparency statements. This statement details our implementation of the policy requirements.
+We review this statement at least annually and update it when our use of AI changes.
 
-## Governance
+## Our use of AI
 
-In January 2024, we formed an AI Governance Committee (AIGC) to have central oversight for AI use in the department. The committee’s members represent a range of perspectives from across the department and have involvement in developing AI policy or projects. The AIGC ensures:
+We use AI to support staff to work more effectively and efficiently, and to deliver better outcomes. Most departmental use supports internal business activities such as drafting, summarising, analysis and information retrieval.
 
-- we find ways to use AI to improve efficiency, capability and innovate
-- appropriate governance of AI use and adherence with relevant legislation, policies and best practice
-- opportunities involving the use of AI are considered, safe and responsible
-- we identify and address all potential AI related risks
-- appropriate training and usage policies are available.
+Some areas of the department use AI for more technical purposes. For example, Australia’s AI Safety Institute has specialised AI uses it deploys as part of its remit. These include research and testing of frontier AI capabilities in secure environments to inform government on AI capabilities, risks and harms.
 
-## AI accountable official
+The department provides advice, delivers programs and makes decisions that can affect people and businesses. Staff remain responsible for decisions and advice. They review AI-generated content before it is used and treat AI outputs as drafts or starting points for further research – not for decision-making.
 
-Our Chief Information Officer is the accountable official responsible for carrying out the policy. The AIGC supports the accountable official.
+Our approach aligns with the [Guidance for AI Adoption](https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices/guidance-ai-adoption-implementation-guidance). This guidance sets out 6 essential practices for safe and responsible AI use. We also align with the Digital Transformation Agency’s [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy).
 
-## How we use AI
+Across the department, we use approved AI tools for targeted purposes, including routine business tasks, information analysis and specialist technical work. This helps staff focus on more complex, high-value work.
 
-Our approach uses a number of AI tools to deliver efficiencies and augment processes. These help staff focus on more complex and meaningful work.
+## Our role in supporting AI adoption in Australia
 
-The AIGC maintains visibility of AI use and classifies AI use according to the following [usage patterns and domains](https://www.digital.gov.au/policy/ai/resources/use-classification):
+In addition to our internal use of AI, we support the safe and responsible adoption of AI across Australia. This national role is separate from how we use AI in departmental operations.
 
-- **Usage patterns** : supporting human decision-making and administrative action, giving insights through analytics and improving workplace productivity so staff can focus on more complex work.
-- **Domains** : service delivery, compliance and fraud detection, policy and legal, and corporate and enabling domains.
+### National AI Centre (NAIC)
 
-We have a policy that guides all staff on:
+The [National AI Centre (NAIC)](https://www.industry.gov.au/science-technology-and-innovation/technology/artificial-intelligence/national-ai-centre) supports practical adoption of AI across Australia’s economy, including businesses, not-for-profits and social enterprises. It provides guidance, tools and resources to help organisations understand where AI can add value and how to use it responsibly.
 
-- acceptable use of AI in our department
-- ethical considerations
-- freedom of information considerations
-- record keeping
-- privacy
-- roles and responsibilities when using AI.
+### Australia’s AI Safety Institute (AISI)
 
-We do not use AI in any instance where the public directly interacts with or feels a significant impact from AI without a human agent.
+[Australia’s AI Safety Institute (AISI)](https://www.industry.gov.au/science-technology-and-innovation/technology/artificial-intelligence/ai-safety-institute) researches, analyses and tests the capabilities of frontier AI models and applications, supports regulators and agencies to respond to existing and emerging risks and harms, and shapes safe AI development, deployment and international governance in Australia’s interests.
 
-Staff review all AI tool outputs and treat them as drafts or starting points for further research, not for decision-making.
+## Why we use AI
 
-## Australian AI Safety Institute
+We use AI to improve how we deliver policy, information, services and outcomes for Australians.
 
-We are responsible for the Australian AI Safety Institute, a key action to achieve the goals set out in the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan "National AI Plan"). The institute is being established to monitor and test frontier AI technologies and share insights on emerging capabilities and risks. It will support ministers, agencies and regulators to protect people and businesses in relation to AI safety issues by sharing information, connecting relevant bodies and facilitating understanding of emerging AI risks.
+It helps us:
+
+- increase efficiency and reduce manual effort
+- support evidence-based policy and decision making
+- improve consistency and quality across our work.
+
+Our use of AI complements our broader role in supporting Australia’s adoption of AI across industry and the economy.
+
+## How AI supports our work
+
+Our current approach focuses on keeping staff in control of AI-assisted work. AI supports tasks such as drafting, summarising, research and analysis, and information retrieval, but staff remain accountable for how they use these outputs.
+
+When we use AI:
+
+- a person reviews and validates AI-generated content
+- AI supports, but does not replace, human judgement
+- staff remain accountable for decisions and advice.
+
+Our use of AI aligns with the [Australian Government classification system](https://www.digital.gov.au/policy/ai/resources/use-classification). The system groups AI by:
+
+- how it is used (called ‘usage patterns’)
+- where it is used (called ‘domains’).
+
+### How we use AI
+
+In line with the Australian Government classification system, we use AI in the following ways:
+
+#### Workplace productivity
+
+We use AI to help staff complete routine tasks and manage information. This includes:
+
+- drafting and summarising documents
+- improving clarity and accessibility of content
+- organising and searching information.
+
+#### Analytics and insights
+
+We use AI to analyse information and generate insights. This includes:
+
+- identifying patterns and trends
+- analysing information to support policy development and advice
+- highlighting key themes and findings.
+
+#### Decision making and administrative action
+
+We use AI to support, not replace, human decision making. This includes:
+
+- reviewing and summarising information
+- preparing draft advice or recommendations for human consideration
+- researching and analysing.
+
+These categories describe how we use AI across the department at a high level. Some specialist activities, including frontier AI research, measurement, testing and evaluation by Australia’s AI Safety Institute, may involve more technical uses of AI within these broader categories.
+
+### Where we use AI
+
+We use AI across different parts of the department. Some approved AI tools are available across multiple parts of the department. Others are limited to specific teams, functions or types of work.
+
+In line with the Australian Government classification system, we use AI in the following domains:
+
+#### Corporate and enabling
+
+We use AI to support internal operations and corporate services. This includes communication, administration and workforce productivity.
+
+#### Policy and legal
+
+We use AI to support policy analysis, briefing preparation, and advice to government.
+
+#### Service delivery
+
+We use AI to support the management and delivery of grants, programs and other departmental services.
+
+## Use of AI that affects the public
+
+Members of the public do not currently interact directly with our AI systems. We do not use AI to make decisions or take actions that directly affect individuals or businesses without human review.
+
+Where we use AI, it:
+
+- provides insights to support staff
+- is reviewed and validated by a person before it informs decisions or advice.
+
+We use AI in limited cases to support consultation and engagement processes. For example, AI assists with analysing submissions received through our [Consultation Hub](https://consult.industry.gov.au/), including identifying themes and insights for human review.
+
+In these cases:
+
+- individuals are informed through the privacy collection statement
+- consent is obtained before AI is used
+- a person reviews and validates all outputs
+- AI supports analysis only and does not make decisions about individuals or businesses.
+
+We will update this statement if our use of AI changes, including if AI directly interacts with the public.
+
+## Governance and oversight
+
+We have governance arrangements to support the safe and responsible use of AI. These arrangements help us monitor, review and oversee AI use.
+
+### AI Governance Committee
+
+Our AI Governance Committee (AIGC) provides central oversight for AI use across the department. The committee is made up of senior departmental executives who:
+
+- oversee how we use AI
+- ensure alignment with legislation, policy and best practice
+- identify and manage risks
+- support safe and responsible adoption.
+
+### AI Accountable Official
+
+Our Chief Information Officer is the AI Accountable Official. This role implements the [Policy for the responsible use of AI in government (Version 2.0)](https://www.digital.gov.au/policy/ai/policy) and ensures appropriate governance, oversight and risk management.
+
+### Chief AI Officer
+
+We have appointed a Chief AI Officer in line with the [APS AI Plan](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025). This role provides strategic leadership for safe and effective AI adoption. The Chief AI Officer works with the accountable official to support appropriate safeguards. The role is held by the Head of Technology and Digital Policy Division.
+
+## Managing risks and safeguards
+
+We assess new uses of AI before they are introduced. This includes considering risks and impacts. AI can produce inaccurate, incomplete or biased information. We manage these risks through governance, staff training and guidance, and human review of AI-generated content.
+
+We also consider cyber security, privacy, records management and information access requirements when using AI. This includes our obligations under the [Privacy Act 1988](https://www.legislation.gov.au/C2004A03712/latest/text), [Archives Act 1983](https://www.legislation.gov.au/C2004A02796/latest/text) and [Freedom of Information Act 1982](https://www.legislation.gov.au/C2004A02562/latest/text).
+
+## Monitoring and review
+
+We monitor how AI tools are used across the department. This includes whether they continue to meet business needs, staff feedback, and issues that may affect safe and effective use.
+
+We review changes to government policy and updates to AI tools.
+
+Where needed, we update guidance, safeguards and approved uses of AI.
+
+We will update this statement when our use of AI changes.
 
 ## Our commitment
 
-We will continuously refine and enhance our AI capabilities. We do this by ensuring centralised oversight and evaluation of AI tools through the AIGC.
-
-This statement will evolve to align with technology changes, legislation, policy and governance best practices. We will review at least every 12 months and update it if our AI approach changes, or if anything materially impacts its accuracy.
+We are committed to using AI safely, responsibly and transparently.
 
 ## More information
 
 [Learn more about our corporate governance and integrity controls \_\_](https://www.industry.gov.au/corporate-governance)
 
-[Read the Voluntary AI Safety Standard \_\_](https://www.industry.gov.au/publications/voluntary-ai-safety-standard)
+[Read NAIC's Guidance for AI Adoption \_\_](https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices)
+
+[Read Australia's AI Ethics Principles \_\_](https://www.industry.gov.au/publications/australias-ai-ethics-principles)
 
 ## Contact us
 
