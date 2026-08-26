@@ -35,7 +35,7 @@ National Archives has processes to ensure that our:
 
 ## AI use by National Archives according to usage patterns and domains
 
-National Archives is using AI only in the corporate and enabling domain, focussing on refining ways of working and trialling AI functionality that enhances archival processes. We do not use AI in any decision-making processes or public interaction, and all possible efforts are taken to protect the public against negative impacts.
+National Archives is using AI only in the corporate and enabling domain, focusing on refining ways of working and trialling AI functionality that enhances archival processes. We do not use AI in any decision-making processes or public interaction, and all possible efforts are taken to protect the public against negative impacts.
 
 The primary use cases for internal AI relate to:
 
