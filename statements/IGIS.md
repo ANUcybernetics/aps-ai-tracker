@@ -75,11 +75,11 @@ Use of the Australian Government Solicitor for national security matters is a re
 
 ##### IGIS Legal Services Expenditure
 
-| **Expenditure Type**           | **2020-21** | **2021-22** | **2022-23** | **2023-24** | **2024-25** |
-| ------------------------------ | ----------- | ----------- | ----------- | ----------- | ----------- |
-| **External Legal Expenditure** | $19,329     | $15,329     | $56,888     | $32,812     | $129,034    |
-| **Internal Legal Expenditure** | $681,199    | $863,219    | $1,070,294  | $1,090,320  | $919,340    |
-| **Total Legal Expenditure**    | $700,528    | $878,548    | $1,127,182  | $1,123,132  | $1,048,374  |
+| **Expenditure Type**           | **2020-21** | **2021-22** | **2022-23** | **2023-24** | **2024-25** | **2025-26** |
+| ------------------------------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| **External Legal Expenditure** | $19,329     | $15,329     | $56,888     | $32,812     | $129,034    | $62,374     |
+| **Internal Legal Expenditure** | $681,199    | $863,219    | $1,070,294  | $1,090,320  | $919,340    | $734,231    |
+| **Total Legal Expenditure**    | $700,528    | $878,548    | $1,127,182  | $1,123,132  | $1,048,374  | $796,605    |
 
 ## Gifts and Benefits Register
 
@@ -87,7 +87,7 @@ In accordance with the Australian Public Service Commission's [_guidelines on gi
 
 Agency heads must publish a register of gifts and benefits they accept, and all gifts or benefits accepted (valued at over AU$100 ex GST) must be publicly disclosed. The register is updated quarterly.
 
-[View the Gifts and Benefits Register](https://www.igis.gov.au/sites/default/files/2026-06/IGIS%20Gifts%20and%20Benefits%20Register%20Q3%202025-26.pdf)
+[View the Gifts and Benefits Register](https://www.igis.gov.au/sites/default/files/2026-08/2025_2026%20Q4%20Gifts%20and%20Benefits%20Register.PDF)
 
 ## Consultant Services Expenditure
 
