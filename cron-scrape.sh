@@ -12,6 +12,9 @@ find "$LOG_DIR" -name 'scrape-*.log' -mtime +60 -delete
 
 # mise activates tool shims into PATH (jj, uv, node, etc.)
 eval "$(/home/ben/.local/bin/mise activate bash)"
+# The export step shells out to `claude -p` (found via PATH, unlike the
+# absolute-path invocation below), so make sure the user-local bin is on it.
+export PATH="/home/ben/.local/bin:$PATH"
 
 cd "$PROJECT_DIR"
 
