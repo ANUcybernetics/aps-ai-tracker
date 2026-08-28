@@ -26,18 +26,19 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
-# Refresh embeddings for any changed statements. This is the one place the
-# OpenAI key is used (from the environment); CI rebuilds the site from the
-# committed cache without a key. Unchanged statements are cache hits, so a
-# typical run makes zero API calls.
+# Classify today's changed revisions and profile the changed statements. This
+# is the one place a model is called: the export shells out to `claude -p`
+# under the same subscription the /scrape skill uses, and CI rebuilds the site
+# from the committed caches without any model. Unchanged statements are cache
+# hits, so a typical run makes a handful of calls or none.
 echo "=== export started at $(date -Iseconds) ===" >> "$LOG_FILE"
 uv run --group export export >> "$LOG_FILE" 2>&1 || echo "export failed (continuing)" >> "$LOG_FILE"
 
-# Commit the refreshed embeddings cache (the only derived artifact we track);
+# Commit the refreshed extraction caches (the only derived artifacts we track);
 # generated site JSON is rebuilt in CI.
-git add -- .cache/embeddings.json 2>/dev/null || true
-if ! git diff --cached --quiet -- .cache/embeddings.json; then
-  git commit -m "embeddings: refresh cache after scrape" >> "$LOG_FILE" 2>&1
+git add -- .cache/changes.json .cache/profiles.json 2>/dev/null || true
+if ! git diff --cached --quiet -- .cache/changes.json .cache/profiles.json; then
+  git commit -m "analysis: refresh extraction caches after scrape" >> "$LOG_FILE" 2>&1
 fi
 
 # Sync the corpus to the atproto network (the apsaitracker account; app

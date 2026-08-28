@@ -13,8 +13,10 @@ dramatised figures, and visualisations that all speak one language.
 
 **The unifying idea:** warm ochre = borrowed / templated / reused; ink = bespoke
 (an agency's own words). This single semantic runs through the passage-reuse
-heat-map, the agency "register wall", the originality bars, and the similarity
-graph, so a reader learns it once and reads it everywhere.
+heat-map, the agency "register wall", and the originality bars, so a reader
+learns it once and reads it everywhere. A second, conventional pair carries
+change: diff green for additions and diff red for removals, reused by the
+profile-delta chips and the commitments-dropped ledger.
 
 The site is light-only (`color-scheme: light`). The design was always
 light-first; committing to one context lets the palette be tuned properly rather
@@ -40,9 +42,9 @@ encoding; everything else is ink, paper, and the conventional diff green/red.
 
 Plus a 4-step warm **heat ramp** (`--heat-1`…`--heat-4`, faint yellow → deep
 amber) for reuse intensity, conventional **diff** colours (`--ins-*` green,
-`--del-*` red), and `--ok` green for positive deltas. The similarity graph
-encodes originality on a hardcoded ochre → neutral → teal scale in
-`SimilarityGraph.svelte`.
+`--del-*` red), and `--ok` green for positive deltas. The adoption charts on
+the policy page draw in ochre ink over the ochre wash, with the policy's own
+milestones as dashed neutral rules.
 
 **Contrast:** every text/background pair clears WCAG AA, including ink on every
 heat step (≥6.3:1) and ochre links (≥7:1). Verified by rendering the real tokens

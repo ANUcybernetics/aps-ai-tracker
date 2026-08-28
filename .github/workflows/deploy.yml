@@ -1,15 +1,16 @@
 name: Build and deploy site
 
 # Rebuilds on every push to main, so each daily scrape that weddle pushes
-# republishes the site. The Python exporter runs WITHOUT an OpenAI key here: it
-# regenerates the gitignored JSON from the repo and the committed embeddings
-# cache (weddle does the embedding when it scrapes). No secrets needed.
+# republishes the site. The Python exporter makes NO model calls here: it
+# regenerates the gitignored JSON from the repo and the committed extraction
+# caches under .cache/ (weddle runs the Claude classification and profiling
+# when it scrapes). No secrets needed.
 
 on:
   push:
     branches: [main]
     # Skip rebuilds for pushes that can't change the built site. Everything else
-    # — statements/, agencies.toml, the embeddings cache, the exporter, site/ —
+    # — statements/, agencies.toml, the extraction caches, the exporter, site/ —
     # still triggers a deploy. (paths-ignore skips only when EVERY changed file
     # matches, so a mixed commit still builds.) workflow_dispatch always runs.
     paths-ignore:
@@ -54,8 +55,9 @@ jobs:
       - name: Python tests
         run: uv run python -m pytest
 
-      # Through the project env with the export group, so the lazy openai/numpy
-      # imports in export.py resolve (bare `uvx ty` sees no project packages).
+      # Through the project env with the export group, so the pydantic/anthropic
+      # imports in the analysis modules resolve (bare `uvx ty` sees no project
+      # packages).
       - name: Python typecheck
         run: uv run --group export --with ty==0.0.75 ty check
 

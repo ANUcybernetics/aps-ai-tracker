@@ -21,14 +21,21 @@ This is a Python web scraping project using uv for dependency management.
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
 - Export site data (JSON for the Astro site):
   `mise exec -- uv run --group export export` (needs the `export` dependency
-  group: numpy + openai)
+  group: pydantic + anthropic). Revision pairs and statement bodies not already
+  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude; the
+  default backend shells out to `claude -p --json-schema` (the logged-in Claude
+  Code subscription), `APS_LLM_BACKEND=api` uses the SDK with
+  `ANTHROPIC_API_KEY` instead. With neither available the export degrades to
+  the caches (unclassified pairs fall back to the commit-message noise
+  heuristic; unprofiled bodies get `profile: null`)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
   console-script form does not resolve; invoke pytest as a module). Scraper
   tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
-  latter with `--group export` so numpy is present.
+  latter, plus `test_changes.py` and `test_profiles.py`, with `--group export`
+  so pydantic is present.
 - Typecheck: `mise exec -- uv run --group export --with ty ty check` (the export
-  group so the lazy numpy/openai imports in `export.py` resolve; CI pins the ty
-  version in `deploy.yml` — bump it there deliberately after a clean local run)
+  group so the pydantic/anthropic imports resolve; CI pins the ty version in
+  `deploy.yml` — bump it there deliberately after a clean local run)
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:
@@ -39,14 +46,31 @@ This is a Python web scraping project using uv for dependency management.
     fetching
   - `status.py` reports collection status
   - `export.py` turns the corpus + git history into JSON for the site (timeline
-    with revert/noise collapse, lexical passage propagation, originality scores,
-    OpenAI similarity with a committed content-hash cache)
+    with revert collapse, lexical passage propagation, originality scores,
+    concept adoption, statement currency)
+  - `changes.py` classifies every consecutive revision pair from its diff:
+    deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
+    Claude for the rest (kind + one-sentence summary + noteworthy points);
+    cached by body-hash pair in `.cache/changes.json`
+  - `profiles.py` reads each readable revision into a closed-vocabulary
+    `Profile` (pydantic) aligned to the DTA Standard's minimum content and the
+    policy v2.0 obligations, diffs consecutive profiles into labelled deltas,
+    and derives the Standard report card and concept flags; cached by body
+    hash in `.cache/profiles.json`
+  - `adoption.py` builds the monthly concept-adoption series and per-statement
+    currency (updated since policy v2.0, annual review overdue)
+  - `llm.py` is the shared structured-extraction layer (backend selection,
+    caches, concurrency). Bump a module's `SCHEMA_VERSION` after changing its
+    prompt or schema; stale cache entries are ignored and pruned
 
 ## Static site (`site/`)
 
-An Astro static site presents the data: a timeline of every change, agency and
-per-statement pages (with a passage-reuse heat-map and revision time-travel), a
-D3 similarity map, and a propagation explorer. Toolchain mirrors the benswift-me
+An Astro static site presents the data: a timeline of every change of substance
+(each with its model-written summary), per-statement pages ("the story so far",
+a profile report card against the Standard and policy v2.0, the text with a
+passage-reuse heat-map, and every revision with time-travel), a "policy in
+practice" page (adoption charts, commitments dropped, who is in charge, staleness),
+and a propagation explorer. Toolchain mirrors the benswift-me
 repo: pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The
 site is light-only (no dark mode); design tokens live in
 `src/styles/tokens.css`.
@@ -56,10 +80,10 @@ site is light-only (no dark mode); design tokens live in
   `mise exec -- pnpm run {build,lint,format,typecheck,test}`
 - Site unit tests use Vitest (`pnpm run test`); pure-TS helpers under `src/lib/`
   (e.g. `markdown.ts`) carry `*.test.ts` files. The exporter still uses pytest.
-- The exporter writes gitignored JSON into `site/src/generated/`; only
-  `.cache/embeddings.json` is committed. Run `export` before building the site
-  locally. The client-fetched similarity graph is served by a build-time
-  endpoint (`src/pages/data/similarity.graph.json.ts`) from the validated data.
+- The exporter writes gitignored JSON into `site/src/generated/`; only the
+  `.cache/*.json` extraction caches are committed. Run `export` before building
+  the site locally. Vocabulary labels for the profile fields live in
+  `src/lib/profile-labels.ts`; keep them in step with `profiles.py`.
 - **Deploy**: live at <https://apsaitracker.app/> (apex custom domain; the
   `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it, and
   the old `aps-ai-transparency-tracker` repo is a redirect stub for pre-rename
@@ -68,16 +92,18 @@ site is light-only (no dark mode); design tokens live in
   own). `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
   push to `main` (doc/ops-only pushes are skipped via `paths-ignore`). CI is
   also the only place the Python tests and `ty` typecheck run automatically,
-  ahead of the export step. CI runs `export` **without** an OpenAI key (it
-  reuses the committed embeddings cache), so no GitHub secret is needed. Pages
+  ahead of the export step. CI runs `export` **without** any model access (it
+  reuses the committed extraction caches), so no GitHub secret is needed. Pages
   is already configured (Settings → Pages → Source: GitHub Actions); only re-set
   that if it's ever reset. It serves from the domain root, so all internal links
   still go through `withBase()` in `site/src/lib/paths.ts`.
-- **Embeddings happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
-  after the scrape (with `OPENAI_API_KEY` from weddle's global
-  `~/.config/mise/config.local.toml`), commits the refreshed
-  `.cache/embeddings.json`, and pushes. Statements are only re-embedded when
-  their text changes, so most runs make zero API calls.
+- **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
+  after the scrape, which classifies the day's new revision pairs and profiles
+  the changed bodies through `claude -p` (the logged-in subscription, same as
+  the `/scrape` skill), commits the refreshed `.cache/changes.json` and
+  `.cache/profiles.json`, and pushes. Unchanged statements are cache hits, so
+  most runs make a handful of calls or none. A gitignored `mise.local.toml`
+  also holds an `ANTHROPIC_API_KEY` for the `api` backend.
 
 ## atproto
 
@@ -128,7 +154,7 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
 
 `cron-scrape.sh` runs daily at 03:00 local from `aps-scrape.timer`, a systemd
 user unit on weddle. It scrapes (`claude -p "/scrape"`), refreshes the
-embeddings cache (`export`), syncs the corpus to atproto (see above), and
+extraction caches (`export`), syncs the corpus to atproto (see above), and
 `git push`es so the Pages site redeploys. weddle pushes to `origin` (credentials
 confirmed working) and reads `OPENAI_API_KEY` from its global
 `~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.
@@ -163,6 +189,10 @@ after 60 days) — the script redirects nearly all of its output there, so
 - `scope` drives the site's coverage split, so it must be right: an NCE with no
   statement is a genuine gap (`not-yet`), not an exemption. Don't infer it from
   an empty URL
+- Each agency also has a `portfolio` field (the portfolio per the
+  Administrative Arrangements Order, short conventional name, "Parliament" for
+  the parliamentary departments) used to group agencies on the site; keep the
+  spelling consistent so identical portfolios collapse together
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
 - **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
   intentional, but that test is deselected by default (`-m might_fail` to run)
