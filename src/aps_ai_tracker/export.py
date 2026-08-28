@@ -29,6 +29,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import TypedDict
 
+from .changes import UNCLASSIFIED, Classification, classify_pairs
 from .scraper import (
     REPO_ROOT,
     Agency,
@@ -260,8 +261,65 @@ def _event_kind(index: int, rev: Revision) -> str:
     return "updated"
 
 
-def timeline_entries(revisions: list[Revision]) -> list[dict]:
+def classify_timelines(
+    timelines: dict[str, list[Revision]], names: dict[str, str]
+) -> dict[str, dict[str, Classification]]:
+    """Content-based change classification for every consecutive revision pair.
+
+    Returns {abbr: {sha: Classification}} for every revision after the first.
+    """
+    pairs = {
+        f"{abbr}:{rev.sha}": (names.get(abbr, abbr), revs[i - 1].body, rev.body)
+        for abbr, revs in timelines.items()
+        for i, rev in enumerate(revs)
+        if i > 0
+    }
+    classified = classify_pairs(pairs)
+    out: dict[str, dict[str, Classification]] = defaultdict(dict)
+    for pair_id, classification in classified.items():
+        abbr, sha = pair_id.split(":", 1)
+        out[abbr][sha] = classification
+    return out
+
+
+def _change_fields(
+    index: int,
+    rev: Revision,
+    revisions: list[Revision],
+    classes: dict[str, Classification],
+) -> dict:
+    """Change-kind fields shared by the per-statement and site-wide timelines.
+
+    `isNoise` prefers the content-based classification; an unclassified pair
+    (no API key and no cache entry) falls back to the commit-message heuristic.
+    """
+    if index == 0:
+        return {
+            "changeKind": "first-seen",
+            "changeMethod": "rule",
+            "summary": None,
+            "noteworthy": [],
+            "isNoise": False,
+        }
+    c = classes.get(rev.sha, Classification(kind=UNCLASSIFIED, method="uncached"))
+    return {
+        "changeKind": c.kind,
+        "changeMethod": c.method,
+        "summary": c.summary,
+        "noteworthy": c.noteworthy,
+        "isNoise": (
+            c.is_noise
+            if c.kind != UNCLASSIFIED
+            else is_noise_revision(rev, revisions[index - 1])
+        ),
+    }
+
+
+def timeline_entries(
+    revisions: list[Revision], classes: dict[str, Classification] | None = None
+) -> list[dict]:
     """Per-statement timeline rows (full body included for build-time diffing)."""
+    classes = classes or {}
     entries: list[dict] = []
     prev_chars = 0
     for i, rev in enumerate(revisions):
@@ -273,9 +331,7 @@ def timeline_entries(revisions: list[Revision]) -> list[dict]:
                 "subject": rev.subject,
                 "message": rev.message,
                 "kind": _event_kind(i, rev),
-                "isNoise": is_noise_revision(
-                    rev, revisions[i - 1] if i > 0 else None
-                ),
+                **_change_fields(i, rev, revisions, classes),
                 "chars": chars,
                 "charDelta": chars - prev_chars,
                 "body": rev.body,
@@ -850,9 +906,11 @@ def build_timeline(
     timelines: dict[str, list[Revision]],
     agencies: list[Agency],
     statements: dict[str, dict],
+    classes: dict[str, dict[str, Classification]] | None = None,
 ) -> list[dict]:
     """Flat, reverse-chronological feed of every change event (no bodies)."""
     sizes = {a.abbr: a.size for a in agencies}
+    classes = classes or {}
     events = []
     for abbr, revs in timelines.items():
         agency = statements[abbr]["frontmatter"].get("agency", abbr)
@@ -866,9 +924,9 @@ def build_timeline(
                     "abbr": abbr,
                     "agency": agency,
                     "size": sizes.get(abbr, "unknown"),
-                    "summary": rev.subject,
+                    "commitSubject": rev.subject,
                     "kind": _event_kind(i, rev),
-                    "isNoise": is_noise_revision(rev, revs[i - 1] if i > 0 else None),
+                    **_change_fields(i, rev, revs, classes.get(abbr, {})),
                 }
             )
     return sorted(events, key=lambda e: (e["date"], e["id"]), reverse=True)
@@ -908,7 +966,12 @@ def main() -> int:
     }
     total_revisions = sum(len(r) for r in timelines.values())
 
-    timeline = build_timeline(timelines, agencies, statements)
+    names = {
+        abbr: d["frontmatter"].get("agency", abbr) for abbr, d in statements.items()
+    }
+    logger.info("Classifying revision changes...")
+    classes = classify_timelines(timelines, names)
+    timeline = build_timeline(timelines, agencies, statements, classes)
 
     first_seen_key, first_seen_phrase, corpus_start = first_seen_passages(timelines)
 
@@ -942,7 +1005,7 @@ def main() -> int:
             abbr,
             data["frontmatter"],
             data["body"],
-            timeline_entries(timelines[abbr]),
+            timeline_entries(timelines[abbr], classes.get(abbr, {})),
             statement_passages(passages_by_abbr[abbr], shared_count),
             originalities[abbr],
             neighbours.get(abbr, []),

@@ -35,8 +35,10 @@ dev = [
 # Heavier deps only the `export` command needs; kept out of the default install
 # so the scraper stays lean. Run with `uv run --group export export`.
 export = [
+    "anthropic>=1.2.0",
     "numpy>=2.0",
     "openai>=1.0",
+    "pydantic>=2.13.4",
 ]
 
 [tool.pytest.ini_options]

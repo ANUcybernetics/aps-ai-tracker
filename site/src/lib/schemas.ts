@@ -26,6 +26,49 @@ export const agencyScopeSchema = z.enum(["mandatory", "voluntary", "exempt"]);
 export const sourceTypeSchema = z.enum(["html", "pdf"]);
 export const eventKindSchema = z.enum(["added", "tracked-since", "updated"]);
 
+// Content-based classification of what a revision changed (see changes.py).
+// Noise kinds mean nothing the agency wrote changed; cosmetic kinds are edits
+// with no change of substance; content kinds are the ones worth reading.
+export const changeKindSchema = z.enum([
+  "first-seen",
+  // noise
+  "formatting",
+  "link-churn",
+  "chrome",
+  "date-stamp",
+  "scrape-noise",
+  // cosmetic
+  "reordering",
+  "cosmetic",
+  // content
+  "expansion",
+  "restructure",
+  "substantive",
+  // no rule matched, no cache entry and no model available
+  "unclassified",
+]);
+export const changeMethodSchema = z.enum(["rule", "llm", "uncached"]);
+
+export const NOISE_KINDS: ReadonlySet<ChangeKind> = new Set([
+  "formatting",
+  "link-churn",
+  "chrome",
+  "date-stamp",
+  "scrape-noise",
+]);
+export const CONTENT_KINDS: ReadonlySet<ChangeKind> = new Set([
+  "expansion",
+  "restructure",
+  "substantive",
+]);
+
+const changeFields = {
+  changeKind: changeKindSchema,
+  changeMethod: changeMethodSchema,
+  summary: z.string().nullable(), // plain-English one-liner, model-written
+  noteworthy: z.array(z.string()), // substantive additions/removals, removals first
+};
+
 export const neighbourSchema = z.object({
   abbr: z.string(),
   score: z.number(),
@@ -75,6 +118,7 @@ export const timelineRevisionSchema = z.object({
   subject: z.string(),
   message: z.string(),
   kind: eventKindSchema,
+  ...changeFields,
   isNoise: z.boolean(),
   chars: z.number(),
   charDelta: z.number(),
@@ -113,8 +157,9 @@ export const timelineEventSchema = z.object({
   abbr: z.string(),
   agency: z.string(),
   size: agencySizeSchema,
-  summary: z.string(),
+  commitSubject: z.string(),
   kind: eventKindSchema,
+  ...changeFields,
   isNoise: z.boolean(),
 });
 
@@ -164,6 +209,7 @@ export type AgencySize = z.infer<typeof agencySizeSchema>;
 export type CoverageStatus = z.infer<typeof coverageStatusSchema>;
 export type SourceType = z.infer<typeof sourceTypeSchema>;
 export type EventKind = z.infer<typeof eventKindSchema>;
+export type ChangeKind = z.infer<typeof changeKindSchema>;
 export type Neighbour = z.infer<typeof neighbourSchema>;
 export type Originality = z.infer<typeof originalitySchema>;
 export type Meta = z.infer<typeof metaSchema>;

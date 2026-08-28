@@ -9,6 +9,7 @@ export type {
   CoverageStatus,
   SourceType,
   EventKind,
+  ChangeKind,
   Meta,
   AgencyRow,
   TimelineRevision,
