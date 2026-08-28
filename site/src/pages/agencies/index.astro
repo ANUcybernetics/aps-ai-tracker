@@ -56,7 +56,8 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
             <th scope="col">Agency</th>
             <th scope="col">Size</th>
             <th scope="col" class="num">Bespoke</th>
-            <th scope="col" class="num">Revisions</th>
+            <th scope="col" class="num">Changes</th>
+            <th scope="col">Since policy 2.0</th>
           </tr>
         </thead>
         <tbody>
@@ -72,6 +73,13 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
                   {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
                 </td>
                 <td class="num">{a.revisionCount}</td>
+                <td>
+                  {a.currency?.updatedSincePolicyV2 ? (
+                    <span class="pill pill--ok">updated</span>
+                  ) : (
+                    <span class="muted">no sign</span>
+                  )}
+                </td>
               </tr>
             ))
           }

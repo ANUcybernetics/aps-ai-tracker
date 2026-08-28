@@ -2,11 +2,48 @@
 import Layout from "@/components/Layout.astro";
 import PassageBrowser from "@/islands/PassageBrowser.svelte";
 import ReadingLink from "@/components/ReadingLink.astro";
-import { propagation, getAgencyNames } from "@/lib/load";
+import { propagation, getAgencies, getAgencyNames } from "@/lib/load";
 import { statementPath, withBase } from "@/lib/paths";
 import { originalityPercent } from "@/lib/format";
 
 const names = await getAgencyNames();
+const agencies = await getAgencies();
+const portfolioOf = Object.fromEntries(agencies.map((a) => [a.abbr, a.portfolio]));
+
+// Reuse that is not the DTA template: does it run along portfolio lines?
+// For every non-template cluster, count the pairs of member agencies that
+// share a portfolio versus those that don't, and tally per portfolio the
+// passages its members share with one another.
+const nonTemplate = propagation.clusters.filter((c) => !c.alsoInDta && c.kind !== "phrase");
+let samePortfolioPairs = 0;
+let crossPortfolioPairs = 0;
+const families = new Map<string, { passages: number; members: Set<string> }>();
+for (const c of nonTemplate) {
+  const members = c.memberAbbrs.filter((a) => portfolioOf[a]);
+  for (let i = 0; i < members.length; i++) {
+    for (let j = i + 1; j < members.length; j++) {
+      if (portfolioOf[members[i]] === portfolioOf[members[j]]) samePortfolioPairs++;
+      else crossPortfolioPairs++;
+    }
+  }
+  const byPortfolio = new Map<string, string[]>();
+  for (const a of members) {
+    const key = portfolioOf[a]!;
+    byPortfolio.set(key, [...(byPortfolio.get(key) ?? []), a]);
+  }
+  for (const [portfolio, abbrs] of byPortfolio) {
+    if (abbrs.length < 2) continue;
+    const fam = families.get(portfolio) ?? { passages: 0, members: new Set<string>() };
+    fam.passages += 1;
+    for (const a of abbrs) fam.members.add(a);
+    families.set(portfolio, fam);
+  }
+}
+const familyRows = [...families.entries()]
+  .map(([portfolio, f]) => ({ portfolio, passages: f.passages, members: [...f.members].toSorted() }))
+  .toSorted((a, b) => b.passages - a.passages || a.portfolio.localeCompare(b.portfolio));
+const hasPortfolios = agencies.some((a) => a.portfolio);
+const pairTotal = samePortfolioPairs + crossPortfolioPairs;
 const board = propagation.originality;
 const clusters = propagation.clusters;
 const templateClusters = clusters.filter((c) => c.alsoInDta).length;
@@ -72,6 +109,42 @@ const columns = [
       </div>
     </section>
 
+    {
+      hasPortfolios && familyRows.length > 0 && (
+        <section>
+          <div class="section-title">
+            <h2>Reuse within portfolios</h2>
+            <span class="muted">{familyRows.length} portfolios</span>
+          </div>
+          <p class="muted shared-note">
+            Set the {ursource} template aside and look at the passages agencies share
+            with each other. Of the {pairTotal} pairs of agencies that share such a passage,{" "}
+            {samePortfolioPairs} sit in the same portfolio. Shared corporate services, a shared
+            ICT provider, or one departmental statement used as the model for its portfolio
+            all leave this mark. Passages here, agencies in each family.
+          </p>
+          <ul class="families">
+            {familyRows.map((f) => (
+              <li class="family">
+                <span class="family__name">{f.portfolio}</span>
+                <span class="family__n mono">{f.passages}</span>
+                <span class="family__members">
+                  {f.members.map((a, i) => (
+                    <>
+                      {i > 0 && ", "}
+                      <a href={statementPath(a)} title={names[a] ?? a}>
+                        {a}
+                      </a>
+                    </>
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
     <section>
       <div class="section-title">
         <h2>Shared passages</h2>
@@ -90,6 +163,54 @@ const columns = [
 </Layout>
 
 <style>
+  .families {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .family {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.4fr) 3rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding-block: var(--space-2);
+    border-block-end: 1px solid var(--border);
+    font-size: var(--text-sm);
+  }
+
+  .family__name {
+    font-weight: 600;
+  }
+
+  .family__n {
+    color: var(--accent-ink);
+    text-align: end;
+  }
+
+  .family__members a {
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .family__members a:hover {
+    color: var(--accent-ink);
+    text-decoration: underline;
+  }
+
+  @media (width < 40rem) {
+    .family {
+      grid-template-columns: 1fr auto;
+    }
+
+    .family__members {
+      grid-column: 1 / -1;
+    }
+  }
+
   .section-title__links {
     display: inline-flex;
     align-items: baseline;

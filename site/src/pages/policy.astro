@@ -1,0 +1,484 @@
+---
+// Policy in practice: what the corpus of statements shows about the policy
+// landing — adoption of each v2.0 obligation over time, the commitments
+// agencies have quietly dropped, who has been put in charge, and whose
+// statement has gone stale. Everything here is aggregated from the
+// per-revision profiles (profiles.py) and the change classifications
+// (changes.py); every figure links back to the statement it came from.
+import Layout from "@/components/Layout.astro";
+import AdoptionChart from "@/components/AdoptionChart.astro";
+import ReadingLink from "@/components/ReadingLink.astro";
+import { adoption, meta } from "@/lib/load";
+import { getAllStatements } from "@/lib/statements";
+import { formatDate } from "@/lib/format";
+import { STANDARD_ELEMENTS, changeTier, formatStatedDate } from "@/lib/profile-labels";
+import { statementPath, withBase } from "@/lib/paths";
+import { revAnchor } from "@/lib/scrubber";
+
+const statements = await getAllStatements();
+const profiled = statements.filter((s) => s.profile && s.standard);
+
+const concept = (id: string) => adoption.concepts.find((c) => c.id === id);
+const charted = [
+  "chief-ai-officer",
+  "chief-ai-officer-planned",
+  "strategic-position",
+  "use-case-register",
+  "mandatory-training",
+  "policy-v2",
+  "annual-review",
+  "public-interaction-commitment",
+]
+  .map(concept)
+  .filter((c): c is NonNullable<typeof c> => c !== undefined);
+
+// Dropped commitments and other significant removals, newest first, each
+// pointing at the revision it happened in.
+const removals = statements
+  .flatMap((s) =>
+    s.timeline.flatMap((rev) =>
+      rev.profileDeltas
+        .filter((d) => d.direction === "removed" && d.significance === "significant")
+        .map((d) => ({ abbr: s.abbr, agency: s.agency, date: rev.date, sha: rev.sha, label: d.label })),
+    ),
+  )
+  .toSorted((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.abbr.localeCompare(b.abbr)));
+
+// Who is in charge: the roles agencies name for the two accountable posts.
+function roleCounts(pick: (p: NonNullable<(typeof profiled)[number]["profile"]>) => string | null) {
+  const counts = new Map<string, number>();
+  for (const s of profiled) {
+    const role = pick(s.profile!)?.trim();
+    if (!role) continue;
+    const key = role.replace(/\s+/g, " ");
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return [...counts.entries()].toSorted((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+const aoRoles = roleCounts((p) => (p.accountable_official === "designated" ? p.accountable_official_role : null));
+const caioRoles = roleCounts((p) => (p.chief_ai_officer === "in-place" ? p.chief_ai_officer_role : null));
+const caioInPlace = profiled.filter((s) => s.profile!.chief_ai_officer === "in-place").length;
+const caioPlanned = profiled.filter((s) => s.profile!.chief_ai_officer === "planned").length;
+
+// Currency: who shows no sign of a post-v2.0 update, and who is overdue by
+// their own stated date.
+const notSinceV2 = statements
+  .filter((s) => !s.currency.updatedSincePolicyV2)
+  .toSorted((a, b) => a.agency.localeCompare(b.agency));
+const overdue = statements
+  .filter((s) => s.currency.annualReviewOverdue === true)
+  .toSorted((a, b) => (a.currency.statedLastUpdated ?? "").localeCompare(b.currency.statedLastUpdated ?? ""));
+const undated = statements.filter((s) => s.profile && !s.currency.statedLastUpdated).length;
+
+// The Standard's elements: how many statements show each.
+const elementCounts = STANDARD_ELEMENTS.map((e) => ({
+  ...e,
+  count: profiled.filter((s) => s.standard![e.key]).length,
+}));
+const fullMarks = profiled.filter((s) => STANDARD_ELEMENTS.every((e) => s.standard![e.key])).length;
+
+// Public-facing AI: the headline split.
+const pf = { none: 0, "with-human-review": 0, "without-human-review": 0, "not-addressed": 0, unclear: 0 };
+for (const s of profiled) pf[s.profile!.public_facing] += 1;
+const withCommitment = profiled.filter((s) => s.profile!.public_interaction_commitment).length;
+
+const contentChanges = statements.flatMap((s) => s.timeline).filter((r) => changeTier(r.changeKind) === "content").length;
+const pct = (n: number) => `${Math.round((100 * n) / Math.max(profiled.length, 1))}%`;
+const built = formatDate(meta.builtAt);
+---
+
+<Layout
+  title="Policy in practice"
+  description="What the statements show about the Australian Government's AI policy landing: adoption of each obligation over time, commitments dropped, who is in charge, and which statements have gone stale."
+>
+  <div class="page policy stack">
+    <header class="stack">
+      <h1>Policy in practice</h1>
+      <p class="lede">
+        Version 2.0 of the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
+          >Policy for the responsible use of AI in government</a
+        > took effect on 15 December 2025. It asks every agency to name a Chief AI Officer,
+        set a strategic position on AI within six months, and stand up a use-case register
+        and mandatory staff training within twelve. The statements are where agencies say
+        how far they have got. This page reads all {profiled.length} of them together, as of {built}.
+      </p>
+      <ReadingLink anchor="adoption" label="How these figures are made" />
+    </header>
+
+    <section class="stack" aria-labelledby="adoption-heading">
+      <div class="section-title">
+        <h2 id="adoption-heading">What the statements have taken up</h2>
+      </div>
+      <p class="section-note">
+        Share of tracked statements whose text reports each item, month by month.
+        Dashed rules mark the policy&rsquo;s own dates: v2.0 commencement, the six-month
+        and twelve-month deadlines. A statement counts from the month we first saw it, so
+        the early denominators are small.
+      </p>
+      <div class="charts">
+        {
+          charted.map((c) => (
+            <AdoptionChart
+              id={`adopt-${c.id}`}
+              label={c.label}
+              months={adoption.months}
+              counts={c.counts}
+              tracked={adoption.tracked}
+              milestones={adoption.milestones}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="removals-heading">
+      <div class="section-title">
+        <h2 id="removals-heading">Commitments dropped</h2>
+        <span class="muted">{removals.length}</span>
+      </div>
+      <p class="section-note">
+        A statement that says less than it used to is the change most worth noticing. These
+        are the safeguards, promises and disclosures that disappeared between one revision
+        and the next, newest first. Each links to the revision, where the exact words are
+        shown.
+      </p>
+      {
+        removals.length === 0 ? (
+          <p class="muted">None recorded.</p>
+        ) : (
+          <ul class="ledger">
+            {removals.map((r) => (
+              <li class="ledger__row">
+                <time class="mono muted" datetime={r.date}>
+                  {formatDate(r.date)}
+                </time>
+                <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+                  {r.agency}
+                </a>
+                <span class="ledger__what">{r.label}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="stack" aria-labelledby="charge-heading">
+      <div class="section-title">
+        <h2 id="charge-heading">Who is in charge</h2>
+      </div>
+      <p class="section-note">
+        {caioInPlace} statements say a Chief AI Officer is in place and {caioPlanned} say one
+        is coming. Where a role is named, this is who holds each post. Job titles only;
+        the statements name people, this site does not.
+      </p>
+      <div class="roles">
+        <div>
+          <h3>Accountable official</h3>
+          <ol class="roles__list">
+            {aoRoles.slice(0, 8).map(([role, n]) => (
+              <li>
+                <span class="mono roles__n">{n}</span> {role}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div>
+          <h3>Chief AI Officer</h3>
+          {
+            caioRoles.length === 0 ? (
+              <p class="muted">No roles named yet.</p>
+            ) : (
+              <ol class="roles__list">
+                {caioRoles.slice(0, 8).map(([role, n]) => (
+                  <li>
+                    <span class="mono roles__n">{n}</span> {role}
+                  </li>
+                ))}
+              </ol>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="public-heading">
+      <div class="section-title">
+        <h2 id="public-heading">AI and the public</h2>
+      </div>
+      <p class="section-note">
+        The Standard asks each agency to say whether the public may interact with, or be
+        significantly affected by, its AI without a human in the loop.
+      </p>
+      <dl class="facts">
+        <div><dt>Say they use no public-facing AI</dt><dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd></div>
+        <div><dt>Use it with human review</dt><dd>{pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span></dd></div>
+        <div><dt>Use it without stating human review</dt><dd>{pf["without-human-review"]} <span class="muted">({pct(pf["without-human-review"])})</span></dd></div>
+        <div><dt>Do not address it</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
+        <div><dt>Explicitly commit to a human intermediary</dt><dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="stack" aria-labelledby="standard-heading">
+      <div class="section-title">
+        <h2 id="standard-heading">Against the Standard</h2>
+      </div>
+      <p class="section-note">
+        The DTA&rsquo;s <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
+          >Standard for AI transparency statements</a
+        > lists what every statement must contain. {fullMarks} of {profiled.length} show all
+        eight; this is how many show each.
+      </p>
+      <ul class="bars">
+        {
+          elementCounts.map((e) => (
+            <li class="bar">
+              <span class="bar__label">{e.label}</span>
+              <span class="bar__track" role="presentation">
+                <span class="bar__fill" style={`inline-size:${(100 * e.count) / Math.max(profiled.length, 1)}%`} />
+              </span>
+              <span class="bar__n mono">
+                {e.count} <span class="muted">({pct(e.count)})</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="stack" aria-labelledby="stale-heading">
+      <div class="section-title">
+        <h2 id="stale-heading">Going stale</h2>
+      </div>
+      <p class="section-note">
+        The Standard requires review at least once a year and whenever the approach to AI
+        changes, and it requires the statement to say when it was last updated. {undated}{" "}
+        statements give no date at all.
+      </p>
+      <div class="stale">
+        <div>
+          <h3>No sign of an update since policy 2.0 <span class="muted">{notSinceV2.length}</span></h3>
+          <p class="muted stale__note">
+            Neither the statement&rsquo;s own date nor any change we observed falls after
+            15 December 2025.
+          </p>
+          <ul class="agency-list">
+            {notSinceV2.map((s) => (
+              <li>
+                <a href={statementPath(s.abbr)}>{s.agency}</a>
+                {s.currency.statedLastUpdated && (
+                  <span class="muted"> · says {formatStatedDate(s.currency.statedLastUpdated)}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3>Overdue by their own date <span class="muted">{overdue.length}</span></h3>
+          <p class="muted stale__note">
+            The statement&rsquo;s stated last-updated date is more than a year before {built}.
+          </p>
+          {
+            overdue.length === 0 ? (
+              <p class="muted">None.</p>
+            ) : (
+              <ul class="agency-list">
+                {overdue.map((s) => (
+                  <li>
+                    <a href={statementPath(s.abbr)}>{s.agency}</a>
+                    <span class="muted"> · says {formatStatedDate(s.currency.statedLastUpdated!)}</span>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <p class="muted policy__foot">
+      {contentChanges} changes of substance across {statements.length} statements feed these
+      figures. For the full change record see the <a href={withBase("/timeline")}>timeline</a>;
+      for how any single agency got here, its statement page tells the story.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .section-note {
+    margin: 0;
+    max-inline-size: var(--measure);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    text-wrap: pretty;
+  }
+
+  .charts {
+    display: grid;
+    gap: var(--space-6) var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+
+  .ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .ledger__row {
+    display: grid;
+    grid-template-columns: 7rem minmax(10rem, 0.5fr) 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding-block: var(--space-2);
+    border-block-end: 1px solid var(--border);
+    font-size: var(--text-sm);
+  }
+
+  .ledger__row time {
+    font-size: var(--text-xs);
+  }
+
+  .ledger__agency {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .ledger__agency:hover {
+    color: var(--accent-ink);
+  }
+
+  .ledger__what {
+    color: var(--del-text);
+  }
+
+  .roles,
+  .stale {
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .roles h3,
+  .stale h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .roles__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+  }
+
+  .roles__list li {
+    display: flex;
+    gap: var(--space-3);
+    padding-block: 0.2rem;
+    border-block-end: 1px solid var(--border);
+  }
+
+  .roles__n {
+    inline-size: 2rem;
+    text-align: end;
+    color: var(--accent-ink);
+  }
+
+  .facts {
+    margin: 0;
+    display: grid;
+    gap: var(--space-2) var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    border-block-end: 1px solid var(--border);
+    padding-block: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .facts dt {
+    color: var(--text);
+  }
+
+  .facts dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .bars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-inline-size: 46rem;
+  }
+
+  .bar {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.6fr) 1fr 6rem;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: 0.3rem;
+    font-size: var(--text-sm);
+  }
+
+  .bar__track {
+    display: block;
+    block-size: 0.55rem;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar__fill {
+    display: block;
+    block-size: 100%;
+    background: var(--text);
+    border-radius: 999px;
+  }
+
+  .bar__n {
+    text-align: end;
+    font-size: var(--text-xs);
+  }
+
+  .stale__note {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  .agency-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-sm);
+    columns: 2 16rem;
+    column-gap: var(--space-5);
+  }
+
+  .agency-list li {
+    break-inside: avoid;
+    padding-block: 0.15rem;
+  }
+
+  .policy__foot {
+    font-size: var(--text-sm);
+    max-inline-size: var(--measure);
+  }
+
+  @media (width < 40rem) {
+    .ledger__row,
+    .bar {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

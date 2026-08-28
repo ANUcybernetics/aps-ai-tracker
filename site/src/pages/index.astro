@@ -7,6 +7,7 @@ import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
 import { getStatements } from "@/lib/statements";
 import { formatDate } from "@/lib/format";
+import { changeTier } from "@/lib/profile-labels";
 import { withBase, statementPath } from "@/lib/paths";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -32,17 +33,18 @@ function diffFor(event: TimelineEvent) {
   return { before: prev.body, after: curr.body, delta: curr.charDelta };
 }
 
-// One row per agency (their most recent genuine change) so a single daily-churning
-// statement doesn't crowd out the feed. The exporter classifies both known scrape
-// churn and link-only revisions as noise.
+// One row per agency (their most recent change of substance) so a single
+// daily-churning statement doesn't crowd out the feed. The exporter classifies
+// every revision from its diff; only content changes qualify here.
 const seen = new Set<string>();
 const recent = timeline
-  .filter((e) => e.kind === "updated" && !e.isNoise)
+  .filter((e) => changeTier(e.changeKind) === "content")
   .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
   .slice(0, 10)
   .map((event) => ({ event, diff: diffFor(event) }));
 
 const c = meta.counts;
+const contentChangeCount = timeline.filter((e) => changeTier(e.changeKind) === "content").length;
 const finderAgencies = agencies.map((a) => ({
   abbr: a.abbr,
   name: a.name,
@@ -52,8 +54,8 @@ const explorers = [
   {
     href: withBase("/timeline"),
     title: "Timeline",
-    hint: `${c.revisions} changes`,
-    body: "Every change to every statement, newest first, down to the words that moved.",
+    hint: `${contentChangeCount} changes`,
+    body: "Every change of substance, newest first, each summarised in a sentence and traceable to the words that moved.",
   },
   {
     href: withBase("/agencies"),
@@ -62,10 +64,10 @@ const explorers = [
     body: "Who has published, who hasn't, and who sits outside the mandate.",
   },
   {
-    href: withBase("/similarity"),
-    title: "Similarity",
-    hint: `${c.embedded} mapped`,
-    body: "A map of which statements read alike, from sentence-embedding distances.",
+    href: withBase("/policy"),
+    title: "Policy in practice",
+    hint: `${c.profiled} profiled`,
+    body: "How far the AI policy has landed: what agencies have taken up, what they have dropped, and who is in charge.",
   },
   {
     href: withBase("/propagation"),
@@ -92,9 +94,9 @@ const explorers = [
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statements</a
         > &mdash; {mandatoryPublished} of {mandatory.length} have. This tracker scrapes
-        them every day and records every change in git, so you can watch the statements
-        evolve, see which read alike, and trace the template language that spreads
-        between them.
+        them every day and records every change in git, then reads each change: what an
+        agency now says it does with AI, what it has promised, and what it has quietly
+        stopped saying.
       </p>
     </header>
 
@@ -131,9 +133,10 @@ const explorers = [
                 </a>
                 <span class="feed__abbr mono">{e.abbr}</span>
               </div>
+              {e.summary && <p class="feed__summary">{e.summary}</p>}
               {diff && (
                 <details class="feed__diff">
-                  <summary>What changed</summary>
+                  <summary>The words that changed</summary>
                   <DiffView before={diff.before} after={diff.after} compact />
                 </details>
               )}
@@ -250,6 +253,12 @@ const explorers = [
     grid-template-columns: 7rem 1fr auto;
     align-items: baseline;
     gap: var(--space-3);
+  }
+
+  .feed__summary {
+    margin: var(--space-2) 0 0;
+    max-inline-size: var(--measure);
+    text-wrap: pretty;
   }
 
   .feed__diff {

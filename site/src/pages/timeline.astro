@@ -1,8 +1,10 @@
 ---
 import Layout from "@/components/Layout.astro";
 import ChangeFeedItem from "@/components/ChangeFeedItem.astro";
+import ReadingLink from "@/components/ReadingLink.astro";
 import TimelineFilter from "@/islands/TimelineFilter.svelte";
 import { getTimeline } from "@/lib/load";
+import { changeTier } from "@/lib/profile-labels";
 import { getStatements } from "@/lib/statements";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -27,29 +29,32 @@ const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries(
   .map(([abbr, name]) => ({ abbr, name }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
-// Noise and first-tracked rows ship hidden, so the SSR/no-JS "shown" count must
-// match what's actually visible before the filter island hydrates.
-const initiallyShown = timeline.filter((e) => !e.isNoise && e.kind !== "tracked-since").length;
+const tiers = timeline.map((e) => changeTier(e.changeKind));
+const counts = {
+  content: tiers.filter((t) => t === "content").length,
+  cosmetic: tiers.filter((t) => t === "cosmetic").length,
+  noise: tiers.filter((t) => t === "noise").length,
+  first: tiers.filter((t) => t === "first").length,
+};
 ---
 
 <Layout
   title="Timeline"
-  description="Every recorded change to every Australian Government AI transparency statement, newest first."
+  description="Every change of substance to every Australian Government AI transparency statement, newest first, each summarised in a sentence."
 >
   <div class="page stack">
     <header class="stack">
       <h1>Timeline</h1>
       <p class="lede">
-        Every change the daily scrape has recorded, newest first. First-tracked
-        imports and noise (known scrape churn or link-only changes) are hidden by
-        default — reveal them with the toggles. Open a row to see exactly which words changed. Because each
-        statement is read straight from the agency's web page, some highlighted
-        changes are cosmetic — a page redesign, or its formatting tidied up —
-        rather than a genuine change to what the statement says.
+        Every change of substance the daily scrape has recorded, newest first, each
+        read from the diff and summarised in a sentence. Cosmetic edits ({counts.cosmetic}),
+        scrape noise ({counts.noise}) and first-tracked imports ({counts.first}) are hidden
+        until you ask for them. Open a row to see the words that moved.
       </p>
+      <ReadingLink anchor="changes" label="How changes are classified" />
     </header>
 
-    <TimelineFilter client:load agencies={agencyOpts} total={initiallyShown} />
+    <TimelineFilter client:load agencies={agencyOpts} total={counts.content} />
 
     <ul class="tl-feed" id="tl-feed">
       {rows.map(({ event, diff }) => <ChangeFeedItem event={event} diff={diff} />)}

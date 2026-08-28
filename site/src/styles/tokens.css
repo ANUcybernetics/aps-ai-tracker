@@ -103,8 +103,8 @@
      faint version of cross-agency reuse. */
   --template-wash: oklch(94% 0.017 250);
 
-  /* node ink for the similarity map: bespoke statements read as deep ink, the
-     same end of the scale as the originality bars (see SimilarityGraph). */
+  /* deep ink for the revision scrubber's current dot: the same end of the
+     scale as the originality bars (bespoke = ink). */
   --node-ink: oklch(34% 0.03 264);
 
   --shadow: 0 1px 2px oklch(0% 0 0 / 6%), 0 4px 16px oklch(0% 0 0 / 4%);

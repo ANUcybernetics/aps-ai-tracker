@@ -1,7 +1,8 @@
 <script lang="ts">
   // Filters the server-rendered timeline feed by toggling row visibility — the
   // rows (and their build-time diffs) stay in the Astro HTML; this island only
-  // owns the controls and the show/hide logic. No-JS users see the full feed.
+  // owns the controls and the show/hide logic. No-JS users see the default
+  // view (content changes only).
   interface AgencyOpt {
     abbr: string;
     name: string;
@@ -10,8 +11,9 @@
   let { agencies, total }: { agencies: AgencyOpt[]; total: number } = $props();
 
   let agency = $state("");
-  let showTracked = $state(false);
+  let showCosmetic = $state(false);
   let showNoise = $state(false);
+  let showFirst = $state(false);
   // Counted from the DOM after hydration; falls back to `total` for SSR/no-JS.
   let shown: number | undefined = $state();
 
@@ -19,10 +21,14 @@
     const rows = document.querySelectorAll<HTMLElement>(".tl-row");
     let count = 0;
     for (const row of rows) {
+      const tier = row.dataset.tier;
       const matchesAgency = !agency || row.dataset.abbr === agency;
-      const trackedOk = row.dataset.kind !== "tracked-since" || showTracked;
-      const noiseOk = row.dataset.noise !== "true" || showNoise;
-      const visible = matchesAgency && trackedOk && noiseOk;
+      const tierOk =
+        tier === "content" ||
+        (tier === "cosmetic" && showCosmetic) ||
+        (tier === "noise" && showNoise) ||
+        (tier === "first" && showFirst);
+      const visible = matchesAgency && tierOk;
       row.hidden = !visible;
       if (visible) count++;
     }
@@ -42,13 +48,18 @@
   </label>
 
   <label class="tl-filter__toggle">
-    <input type="checkbox" bind:checked={showTracked} />
-    Show first-tracked
+    <input type="checkbox" bind:checked={showCosmetic} />
+    Cosmetic edits
   </label>
 
   <label class="tl-filter__toggle">
     <input type="checkbox" bind:checked={showNoise} />
-    Show noise
+    Scrape noise
+  </label>
+
+  <label class="tl-filter__toggle">
+    <input type="checkbox" bind:checked={showFirst} />
+    First tracked
   </label>
 
   <span class="tl-filter__count mono" aria-live="polite">{shown ?? total} shown</span>

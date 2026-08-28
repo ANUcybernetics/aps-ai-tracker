@@ -19,15 +19,16 @@ for (const c of propagation.clusters) {
 
 <Layout
   title="Reading the data"
-  description="How to read the similarity scores, originality figures, reuse heat-map and passage provenance on this site — and what each of them does not claim."
+  description="How to read the change summaries, statement profiles, adoption charts, originality figures and reuse heat-map on this site — and what each of them does not claim."
 >
   <div class="page reading prose stack">
     <h1>Reading the data</h1>
     <p class="lede">
-      This site turns a stack of government web pages into numbers and colours:
-      similarity scores, originality figures, a reuse heat-map, and a record of
-      which statement we saw a passage in first. This page explains what each one
-      means, and what it does not claim.
+      This site turns a stack of government web pages into summaries, profiles,
+      charts and colours: a one-line reading of every change, a report card for
+      every statement, adoption curves for the policy&rsquo;s obligations, originality
+      figures, a reuse heat-map, and a record of which statement we saw a passage in
+      first. This page explains what each one means, and what it does not claim.
     </p>
 
     <h2 id="corpus">When the record starts</h2>
@@ -123,30 +124,103 @@ for (const c of propagation.clusters) {
       reading its low score as a lack of effort.
     </p>
 
-    <h2 id="similarity">Similarity</h2>
+    <h2 id="changes">How changes are read</h2>
     <p>
-      Similarity is a different measurement from reuse. Reuse is literal: the same
-      words, matched exactly. Similarity is about meaning. Each statement becomes a
-      numeric fingerprint, an embedding, set beside every other one. Two statements can
-      then read as similar even when they share no identical passages, simply because
-      they cover the same ground. The similarity map and the &ldquo;reads most
-      like&rdquo; lists use this measure. Scores run from 0 to 1, where closer to 1
-      means more alike.
+      The scrape records every time a statement&rsquo;s text changes, and most of
+      those changes are not the agency saying anything new: a rotating sidebar, a
+      &ldquo;last reviewed 3 days ago&rdquo; counter ticking over, a page rebuilt with
+      the same words. So every revision is classified from its diff. Mechanical
+      rules settle the obvious cases (formatting only, links only, page chrome, a
+      date stamp, passages reordered). Everything else is read by a language model
+      (Claude) that is shown the diff and asked to sort it into one of five kinds and
+      to write a one-sentence summary in plain English:
+    </p>
+    <ul>
+      <li><strong>scrape noise</strong>: nothing the agency wrote changed;</li>
+      <li><strong>cosmetic</strong>: wording, typos, formatting, link targets, a date;</li>
+      <li>
+        <strong>expanded</strong>: the same substance at more length &mdash; a bullet
+        grown into a paragraph, an example added to an existing claim;
+      </li>
+      <li>
+        <strong>restructured</strong>: reorganised or reworded, claims and commitments
+        substantially the same;
+      </li>
+      <li>
+        <strong>substantive</strong>: a claim, commitment, fact or disclosure added,
+        removed or altered.
+      </li>
+    </ul>
+    <p>
+      Only the last three count as changes on the timeline and in the story on each
+      statement page. The model is told that a dropped commitment or safeguard is
+      always substantive and always worth listing, and that an expansion which keeps
+      the same substance never is. Its summary is shown next to the raw diff, so you
+      can check its reading against the words.
+    </p>
+
+    <h2 id="profiles">Statement profiles</h2>
+    <p>
+      Each revision of each statement is also read into a <em>profile</em>: a fixed
+      set of questions with fixed vocabularies, drawn from what the DTA&rsquo;s <a
+        href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
+        >Standard</a
+      > says a statement must contain and what version 2.0 of the policy asks agencies
+      to stand up. Which DTA usage patterns and domains does it say are in use? Does it
+      address public-facing AI, and does it commit to a human intermediary? Is an
+      accountable official named, and a Chief AI Officer &mdash; in place, planned, or
+      not mentioned? A use-case register? Mandatory training? How often does it
+      promise to be reviewed, and when does it say it was last updated? What does it
+      explicitly promise not to do?
+    </p>
+    <p>
+      Because the vocabularies are closed, two agencies&rsquo; profiles compare
+      directly, and two revisions of one agency&rsquo;s profile can be diffed: that is
+      where the &ldquo;commitment dropped&rdquo; and &ldquo;Chief AI Officer: planned
+      &rarr; in place&rdquo; markers come from. A bullet point expanded into a paragraph
+      about the same thing produces no profile change at all, which is the point. The
+      profile records only what the statement itself says, never what is typical, and
+      it records job titles, never people&rsquo;s names.
+    </p>
+    <p>
+      The reading is a model&rsquo;s, and it can be wrong in the ways a careful but
+      hurried reader is wrong: a commitment paraphrased two ways across revisions may
+      read as dropped and re-added; a role described vaguely may land in the wrong
+      box. Every profile is shown beside the statement it came from, and every change
+      beside its diff, so the check is always one scroll away.
+    </p>
+
+    <h2 id="adoption">Adoption over time</h2>
+    <p>
+      The <a href={withBase("/policy")}>policy in practice</a> page counts, for each
+      month since tracking began, how many tracked statements&rsquo; profiles report each
+      item &mdash; a Chief AI Officer, a register, mandatory training, a reference to
+      version 2.0 &mdash; and shows that as a share of the statements tracked that
+      month. Two cautions. Early months have small denominators: only {meta.counts.statements} statements
+      are tracked now, and fewer were on day one. And a statement that mentions a
+      register is not proof the register exists; the charts show what agencies
+      <em>say</em>, which is what a transparency statement is for.
+    </p>
+    <p>
+      &ldquo;Updated since policy 2.0&rdquo; is true when either the statement&rsquo;s
+      own last-updated date or a change we observed falls on or after 15 December 2025.
+      &ldquo;Overdue&rdquo; uses only the statement&rsquo;s own date: the Standard requires
+      review at least yearly, and a self-declared date more than a year old is the
+      agency&rsquo;s own admission. A statement with no date is neither.
     </p>
 
     <h2 id="more">The fine print</h2>
     <p>
       The <a href={withBase("/about")}>About page</a> covers how all of this is
       computed: how spurious scrape churn is collapsed out, the exact passage-matching
-      rules, and the embedding model. It also sets out the limits of the scraping
-      itself.
+      rules, and which model does the reading. It also sets out the limits of the
+      scraping itself.
     </p>
     <p>
-      One limit is worth keeping in mind when you read a change on the timeline.
-      Because we read each statement straight from a live web page, the odd
-      highlighted change is just the page being rebuilt or its formatting tidied up,
-      not the agency rewriting what it says. The wording shifts, but the meaning does
-      not. Follow the source link on any statement to check the original.
+      One limit is worth keeping in mind. Because we read each statement straight
+      from a live web page, what we capture is sometimes the page rather than the
+      statement, and the classifier&rsquo;s job is to tell the two apart. It is good at
+      it, not perfect. Follow the source link on any statement to check the original.
     </p>
   </div>
 </Layout>

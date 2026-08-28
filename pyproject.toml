@@ -32,12 +32,12 @@ dev = [
     "pytest-xdist>=3.6.1",
     "ruff>=0.14.4",
 ]
-# Heavier deps only the `export` command needs; kept out of the default install
-# so the scraper stays lean. Run with `uv run --group export export`.
+# Deps only the `export` command needs; kept out of the default install so the
+# scraper stays lean. Run with `uv run --group export export`. The anthropic SDK
+# is only used with APS_LLM_BACKEND=api; the default backend shells out to
+# `claude -p`.
 export = [
     "anthropic>=1.2.0",
-    "numpy>=2.0",
-    "openai>=1.0",
     "pydantic>=2.13.4",
 ]
 

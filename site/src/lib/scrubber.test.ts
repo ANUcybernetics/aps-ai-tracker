@@ -16,6 +16,7 @@ function rev(overrides: Partial<TimelineRevision>): TimelineRevision {
     changeMethod: "llm",
     summary: null,
     noteworthy: [],
+    profileDeltas: [],
     isNoise: false,
     chars: 1000,
     charDelta: 10,

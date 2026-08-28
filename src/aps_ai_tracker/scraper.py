@@ -73,6 +73,7 @@ class Agency:
     url: str | None
     size: str = "unknown"
     scope: str = "mandatory"
+    portfolio: str | None = None
     manual: bool = False
     selector: str | None = None
 
@@ -125,6 +126,7 @@ def load_agencies() -> list[Agency]:
             url=d["url"] if d["url"] else None,
             size=d.get("size", "unknown"),
             scope=d.get("scope", "mandatory"),
+            portfolio=d.get("portfolio"),
             manual=d.get("manual", False),
             selector=d.get("selector"),
         )

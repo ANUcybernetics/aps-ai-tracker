@@ -69,11 +69,6 @@ const changeFields = {
   noteworthy: z.array(z.string()), // substantive additions/removals, removals first
 };
 
-export const neighbourSchema = z.object({
-  abbr: z.string(),
-  score: z.number(),
-});
-
 export const originalitySchema = z.object({
   score: z.number(),
   sharedChars: z.number(),
@@ -94,8 +89,19 @@ export const metaSchema = z.object({
     exempt: z.number(),
     statements: z.number(),
     revisions: z.number(),
-    embedded: z.number(),
+    profiled: z.number(),
   }),
+});
+
+// What a statement says about its own currency, against the policy's rules
+// (see adoption.py). Stated dates are the agency's own; observed ones are ours.
+export const currencySchema = z.object({
+  statedLastUpdated: z.string().nullable(),
+  statedFirstPublished: z.string().nullable(),
+  lastContentChange: z.string().nullable(),
+  firstSeen: z.string(),
+  updatedSincePolicyV2: z.boolean(),
+  annualReviewOverdue: z.boolean().nullable(),
 });
 
 export const agencyRowSchema = z.object({
@@ -103,6 +109,8 @@ export const agencyRowSchema = z.object({
   name: z.string(),
   size: agencySizeSchema,
   scope: agencyScopeSchema,
+  // Portfolio per the Administrative Arrangements Order; null when not recorded.
+  portfolio: z.string().nullable(),
   url: z.string().nullable(),
   status: coverageStatusSchema,
   statementId: z.string().nullable(),
@@ -110,6 +118,83 @@ export const agencyRowSchema = z.object({
   lastUpdated: z.string().nullable(),
   revisionCount: z.number(),
   originality: z.number().nullable(),
+  currency: currencySchema.nullable(),
+});
+
+// A statement's profile: what it claims, in the closed vocabularies of
+// profiles.py (mirrors the pydantic `Profile`). Roles only, never names.
+export const usagePatternSchema = z.enum([
+  "decision-making-and-administrative-action",
+  "analytics-for-insights",
+  "workplace-productivity",
+  "image-processing",
+]);
+export const domainSchema = z.enum([
+  "service-delivery",
+  "compliance-and-fraud-detection",
+  "law-enforcement-intelligence-and-security",
+  "policy-and-legal",
+  "scientific",
+  "corporate-and-enabling",
+]);
+export const presenceSchema = z.enum(["not-mentioned", "planned", "in-place"]);
+export const measureSchema = z.enum([
+  "risk-assessment",
+  "human-review-of-outputs",
+  "audit-or-assurance",
+  "staff-training",
+  "use-case-register",
+  "incident-or-concern-reporting",
+  "testing-or-evaluation",
+  "privacy-or-security-controls",
+  "governance-body",
+  "acceptable-use-policy",
+]);
+export const commitmentSchema = z.object({
+  text: z.string(),
+  kind: z.enum(["will-not", "will", "human-oversight"]),
+});
+export const profileSchema = z.object({
+  summary: z.string(),
+  intentions_stated: z.boolean(),
+  usage_patterns: z.array(usagePatternSchema),
+  domains: z.array(domainSchema),
+  public_facing: z.enum([
+    "not-addressed",
+    "none",
+    "with-human-review",
+    "without-human-review",
+    "unclear",
+  ]),
+  public_interaction_commitment: z.boolean(),
+  monitoring_measures_stated: z.boolean(),
+  measures: z.array(measureSchema),
+  accountable_official: z.enum(["not-mentioned", "designated"]),
+  accountable_official_role: z.string().nullable(),
+  chief_ai_officer: presenceSchema,
+  chief_ai_officer_role: z.string().nullable(),
+  use_case_register: presenceSchema,
+  staff_training: z.enum(["not-mentioned", "available", "mandatory"]),
+  strategic_position: presenceSchema,
+  review_cadence: z.enum(["not-stated", "annual", "on-change", "annual-and-on-change", "other"]),
+  first_published_stated: z.string().nullable(),
+  last_updated_stated: z.string().nullable(),
+  contact_provided: z.boolean(),
+  named_tools: z.array(z.string()),
+  policy_version: z.enum(["not-referenced", "v1", "v2", "unspecified"]),
+  policy_compliance_stated: z.boolean(),
+  legislation_compliance_stated: z.boolean(),
+  commitments: z.array(commitmentSchema),
+});
+
+// One field-level change between two consecutive profiles.
+export const profileDeltaSchema = z.object({
+  field: z.string(),
+  label: z.string(),
+  direction: z.enum(["added", "removed", "changed"]),
+  significance: z.enum(["minor", "notable", "significant"]),
+  before: z.string().nullable(),
+  after: z.string().nullable(),
 });
 
 export const timelineRevisionSchema = z.object({
@@ -119,6 +204,7 @@ export const timelineRevisionSchema = z.object({
   message: z.string(),
   kind: eventKindSchema,
   ...changeFields,
+  profileDeltas: z.array(profileDeltaSchema),
   isNoise: z.boolean(),
   chars: z.number(),
   charDelta: z.number(),
@@ -146,7 +232,10 @@ export const statementSchema = z.object({
   timeline: z.array(timelineRevisionSchema),
   passages: z.array(passageRowSchema),
   originality: originalitySchema,
-  neighbours: z.array(neighbourSchema),
+  profile: profileSchema.nullable(),
+  // Which of the Standard's minimum elements the profile shows as present.
+  standard: z.record(z.string(), z.boolean()).nullable(),
+  currency: currencySchema,
 });
 
 export const timelineEventSchema = z.object({
@@ -191,18 +280,22 @@ export const propagationSchema = z.object({
   ursource: z.string(),
 });
 
-export const edgeSchema = z.object({
-  a: z.string(),
-  b: z.string(),
-  score: z.number(),
-});
-
-export const similaritySchema = z.object({
-  model: z.string(),
-  k: z.number(),
-  abbrs: z.array(z.string()),
-  neighbours: z.record(z.string(), z.array(neighbourSchema)),
-  edges: z.array(edgeSchema),
+// Monthly adoption of policy concepts across the corpus, plus every agency-level
+// transition, from adoption.py.
+export const adoptionSchema = z.object({
+  months: z.array(z.string()),
+  tracked: z.array(z.number()),
+  concepts: z.array(z.object({ id: z.string(), label: z.string(), counts: z.array(z.number()) })),
+  transitions: z.array(
+    z.object({
+      concept: z.string(),
+      abbr: z.string(),
+      date: z.string(),
+      sha: z.string(),
+      direction: z.enum(["added", "removed"]),
+    }),
+  ),
+  milestones: z.array(z.object({ date: z.string(), label: z.string() })),
 });
 
 export type AgencySize = z.infer<typeof agencySizeSchema>;
@@ -210,7 +303,6 @@ export type CoverageStatus = z.infer<typeof coverageStatusSchema>;
 export type SourceType = z.infer<typeof sourceTypeSchema>;
 export type EventKind = z.infer<typeof eventKindSchema>;
 export type ChangeKind = z.infer<typeof changeKindSchema>;
-export type Neighbour = z.infer<typeof neighbourSchema>;
 export type Originality = z.infer<typeof originalitySchema>;
 export type Meta = z.infer<typeof metaSchema>;
 export type AgencyRow = z.infer<typeof agencyRowSchema>;
@@ -221,5 +313,7 @@ export type TimelineEvent = z.infer<typeof timelineEventSchema>;
 export type FirstObserved = z.infer<typeof firstObservedSchema>;
 export type PassageCluster = z.infer<typeof passageClusterSchema>;
 export type Propagation = z.infer<typeof propagationSchema>;
-export type Edge = z.infer<typeof edgeSchema>;
-export type Similarity = z.infer<typeof similaritySchema>;
+export type Profile = z.infer<typeof profileSchema>;
+export type ProfileDelta = z.infer<typeof profileDeltaSchema>;
+export type Currency = z.infer<typeof currencySchema>;
+export type Adoption = z.infer<typeof adoptionSchema>;

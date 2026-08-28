@@ -94,8 +94,13 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       <li>
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
         scrape churn that is later reverted, and pure reformatting, are collapsed
-        out; known scrape churn and link-only changes are marked as noise and
-        hidden by default. A
+        out. Every remaining revision is classified from its diff: deterministic
+        rules catch formatting-only, link-only, page-chrome, date-stamp and
+        reordering churn, and the rest is read by Claude (<code>claude-opus-5</code>),
+        which assigns one of five kinds, writes a one-sentence summary, and lists
+        the noteworthy additions and removals. Results are cached by content
+        hash in the repository, so each revision is read once and the site
+        rebuilds without model calls. A
         first sighting is labelled &ldquo;first tracked&rdquo; (the day-one bulk
         import) or &ldquo;added&rdquo; (an agency we began tracking later), never
         &ldquo;published&rdquo;: we record when a statement entered the tracker,
@@ -115,9 +120,13 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         it is labelled accordingly.
       </li>
       <li>
-        <strong>Similarity</strong> uses OpenAI <code>text-embedding-3-small</code>
-        vectors and cosine distance. Embeddings are cached by content hash, so a
-        statement is only re-embedded when its text changes.
+        <strong>Profiles.</strong> Each readable revision is read by the same model
+        into a fixed-vocabulary profile (pydantic-validated JSON) aligned to the
+        Standard&rsquo;s minimum content and the policy 2.0 obligations; noise
+        revisions inherit their predecessor&rsquo;s profile. Consecutive profiles are
+        diffed field by field to produce the structured change markers; commitments
+        are matched across revisions by word overlap. Adoption curves count, per
+        month, the tracked statements whose profile reports each item.
       </li>
     </ul>
 
@@ -227,7 +236,7 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     </p>
 
     <p class="muted about__build">
-      {c.statements} statements, {c.revisions} tracked changes, {c.embedded} embedded.
+      {c.statements} statements, {c.revisions} tracked changes, {c.profiled} profiled.
       Built {formatDate(meta.builtAt)} from {meta.headSha.slice(0, 7)}.
     </p>
   </div>

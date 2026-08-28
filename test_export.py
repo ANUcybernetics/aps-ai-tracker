@@ -1,8 +1,8 @@
 """Unit tests for the JSON exporter's pure functions.
 
 These cover the tricky, behaviour-bearing logic — passage normalisation, the
-revert/no-net-change collapse, originality scoring, clustering and similarity —
-without touching git or the OpenAI API.
+revert/no-net-change collapse, originality scoring and clustering — without
+touching git or a model.
 """
 
 import pytest
@@ -12,13 +12,9 @@ from aps_ai_tracker.export import (
     Revision,
     build_clusters,
     collapse_reverts,
-    content_hash,
-    cosine_neighbours,
     is_noise_revision,
-    load_embedding_cache,
     normalise_passage,
     originality_score,
-    save_embedding_cache,
     segment_passages,
     source_type,
     statement_status,
@@ -227,28 +223,3 @@ def test_build_clusters_finds_exact_and_phrase_reuse():
     acc = next(c for c in phrase if c["normKey"] == "phrase:accountable-official")
     assert acc["alsoInDta"] is True
     assert set(acc["memberAbbrs"]) == {"A", "DTA"}
-
-
-# --- embeddings cache + similarity -----------------------------------------
-
-
-def test_content_hash_is_stable_and_prefixed():
-    assert content_hash("abc") == content_hash("abc")
-    assert content_hash("abc").startswith("sha256:")
-    assert content_hash("abc") != content_hash("abd")
-
-
-def test_embedding_cache_roundtrip(tmp_path):
-    path = tmp_path / "embeddings.json"
-    cache = {"sha256:b": {"model": "m", "dim": 2, "vector": [0.1, 0.2]}, "sha256:a": {}}
-    save_embedding_cache(path, cache)
-    assert load_embedding_cache(path) == cache
-
-
-def test_cosine_neighbours_ranks_and_builds_knn_edges():
-    pytest.importorskip("numpy")
-    vectors = {"A": [1.0, 0.0], "B": [0.0, 1.0], "C": [1.0, 0.05]}
-    neighbours, edges = cosine_neighbours(vectors, k=1)
-    assert neighbours["A"][0]["abbr"] == "C"  # A is closest to C, not B
-    assert any({e["a"], e["b"]} == {"A", "C"} for e in edges)  # nearest-neighbour edge
-    assert all(e["a"] < e["b"] for e in edges)  # deduped, ordered

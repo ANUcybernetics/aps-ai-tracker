@@ -15,29 +15,13 @@ export type {
   TimelineRevision,
   PassageRow,
   Originality,
-  Neighbour,
+  Profile,
+  ProfileDelta,
+  Currency,
+  Adoption,
   StatementDoc,
   TimelineEvent,
   FirstObserved,
   PassageCluster,
   Propagation,
-  Edge,
-  Similarity,
 } from "@/lib/schemas";
-
-import type { AgencySize, Edge } from "@/lib/schemas";
-
-// Assembled by the /data/similarity.graph.json endpoint from the validated
-// similarity + agency data, so these stay hand-written rather than
-// schema-inferred.
-export interface GraphNode {
-  id: string;
-  abbr: string;
-  size: AgencySize;
-  originality: number;
-}
-
-export interface GraphData {
-  nodes: GraphNode[];
-  edges: Edge[];
-}

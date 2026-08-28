@@ -32,7 +32,7 @@ MODEL = "claude-opus-5"
 CACHE_DIR = REPO_ROOT / ".cache"
 # A handful of concurrent requests is plenty: the backfill is a few hundred calls
 # once, and a daily run is one or two. Keeps well inside rate limits.
-_WORKERS = 4
+WORKERS = 4
 # One statement, one structured answer. Generous because a `claude -p` process
 # also pays the CLI's start-up cost; a hang still fails loudly inside the
 # systemd timeout instead of stalling the nightly run.
@@ -194,7 +194,7 @@ def extract_many[T: BaseModel](
             logger.warning("Extraction failed for %s: %s", key, exc)
             return key, None
 
-    with ThreadPoolExecutor(max_workers=_WORKERS) as pool:
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         for key, value in pool.map(run, sorted(jobs.items())):
             if value is not None:
                 results[key] = value

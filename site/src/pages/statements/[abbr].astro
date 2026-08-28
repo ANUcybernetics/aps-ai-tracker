@@ -3,7 +3,8 @@ import Layout from "@/components/Layout.astro";
 import StatementMeta from "@/components/StatementMeta.astro";
 import StatementBody from "@/components/StatementBody.astro";
 import OriginalityBadge from "@/components/OriginalityBadge.astro";
-import NeighbourList from "@/components/NeighbourList.astro";
+import ProfileCard from "@/components/ProfileCard.astro";
+import StoryList from "@/components/StoryList.astro";
 import RevisionList from "@/components/RevisionList.astro";
 import RevisionScrubber from "@/components/RevisionScrubber.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
@@ -12,6 +13,7 @@ import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { revisionBodyToHtml } from "@/lib/markdown";
+import { changeTier } from "@/lib/profile-labels";
 import { buildScrubberDots, revAnchor, timePercent } from "@/lib/scrubber";
 import type { StatementDoc } from "@/types/exporter";
 
@@ -28,11 +30,12 @@ const { doc } = Astro.props;
 const names = await getAgencyNames();
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
-// "Changes" and "last change" count only genuine edits. The exporter marks
-// both known scrape churn and link-only revisions as noise.
-const realChanges = doc.timeline.filter((t) => t.kind === "updated" && !t.isNoise);
-const changes = realChanges.length;
-const lastUpdated = realChanges.at(-1)?.date;
+// "Changes" counts only changes of substance: the exporter classifies every
+// revision from its diff, and noise and cosmetic edits are not changes to what
+// the statement says.
+const contentChanges = doc.timeline.filter((t) => changeTier(t.changeKind) === "content");
+const changes = contentChanges.length;
+const lastUpdated = contentChanges.at(-1)?.date;
 
 // For each shared passage, the other agencies that carry it (matched by normKey
 // to a propagation cluster), so a highlighted passage can name its company.
@@ -82,7 +85,7 @@ const legend = [
 
 <Layout
   title={doc.agency}
-  description={`How ${doc.agency} describes its use of AI — the current statement, how original it is, and every tracked change.`}
+  description={`How ${doc.agency} describes its use of AI — what its statement commits to, how that has changed, and the text itself.`}
   atUri={documentUri(doc.abbr)}
 >
   <div class="page stmt stack">
@@ -92,31 +95,54 @@ const legend = [
       <StatementMeta doc={doc} />
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
-        {" · "}{doc.timeline.length} revisions ({changes} text {changes === 1 ? "change" : "changes"})
-        {lastUpdated && <> · last change {formatDate(lastUpdated)}</>}
+        {" · "}{changes} {changes === 1 ? "change" : "changes"} of substance in {doc.timeline.length}{" "}
+        {doc.timeline.length === 1 ? "revision" : "revisions"}
+        {lastUpdated && <> · last changed {formatDate(lastUpdated)}</>}
       </p>
-      <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
     </header>
+
+    <section class="stmt__section" aria-labelledby="story-heading">
+      <div class="section-title">
+        <h2 id="story-heading">The story so far</h2>
+        <ReadingLink anchor="changes" />
+      </div>
+      <StoryList timeline={doc.timeline} currency={doc.currency} agency={doc.agency} />
+    </section>
+
+    {
+      doc.profile && doc.standard && (
+        <section class="stmt__section" aria-labelledby="profile-heading">
+          <div class="section-title">
+            <h2 id="profile-heading">What the statement says</h2>
+            <ReadingLink anchor="profiles" />
+          </div>
+          <ProfileCard profile={doc.profile} standard={doc.standard} currency={doc.currency} />
+        </section>
+      )
+    }
 
     <div class="stmt__grid">
       <article class="stmt__main" id="statement">
+        <div class="section-title">
+          <h2>The statement</h2>
+        </div>
         <div data-rev-current>
           <div class="heat-legend">
-          <div class="heat-legend__items" aria-hidden="true">
-            <span>Reused by agencies:</span>
-            {
-              legend.map((l) => (
-                <span>
-                  <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
-                </span>
-              ))
-            }
-            <span class="heat-legend__sep">
-              <span class="heat-legend__swatch" data-variant="template" /> template wording
-            </span>
+            <div class="heat-legend__items" aria-hidden="true">
+              <span>Reused by agencies:</span>
+              {
+                legend.map((l) => (
+                  <span>
+                    <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
+                  </span>
+                ))
+              }
+              <span class="heat-legend__sep">
+                <span class="heat-legend__swatch" data-variant="template" /> template wording
+              </span>
+            </div>
+            <ReadingLink anchor="reuse" />
           </div>
-          <ReadingLink anchor="reuse" />
-        </div>
           <StatementBody passages={doc.passages} sharedBy={sharedBy} />
         </div>
         {
@@ -141,18 +167,18 @@ const legend = [
           <OriginalityBadge originality={doc.originality} isUrsource={isUrsource} />
           <ReadingLink anchor="originality" class="card__how" />
         </section>
-        <section class="card">
-          <h2>Reads most like</h2>
-          <NeighbourList neighbours={doc.neighbours} />
-          <ReadingLink anchor="similarity" class="card__how" />
-        </section>
       </aside>
     </div>
 
     <section class="stmt__history">
       <div class="section-title">
-        <h2>Revision history</h2>
+        <h2>Every revision</h2>
       </div>
+      <p class="muted stmt__history-note">
+        Everything the daily scrape recorded, including edits with no change of
+        substance. Pick a dot to view the statement as it stood at that revision.
+      </p>
+      <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
       <RevisionList timeline={doc.timeline} />
     </section>
   </div>
@@ -173,11 +199,16 @@ const legend = [
     font-size: 0.9rem;
   }
 
+  .stmt__section {
+    margin-block-start: var(--space-4);
+  }
+
   .stmt__grid {
     display: grid;
     gap: var(--space-6);
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
+    margin-block-start: var(--space-4);
   }
 
   @media (width >= 60rem) {
@@ -188,6 +219,8 @@ const legend = [
     .stmt__aside {
       position: sticky;
       top: 4.5rem;
+      /* clear the section heading in the main column */
+      margin-block-start: 3.2rem;
     }
   }
 
@@ -244,5 +277,15 @@ const legend = [
     font-size: 0.8rem;
     border-top: 1px solid var(--border);
     padding-block-start: var(--space-3);
+  }
+
+  .stmt__history {
+    margin-block-start: var(--space-4);
+  }
+
+  .stmt__history-note {
+    margin: 0 0 var(--space-4);
+    font-size: var(--text-sm);
+    max-inline-size: var(--measure);
   }
 </style>

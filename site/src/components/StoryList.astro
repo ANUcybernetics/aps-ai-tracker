@@ -1,0 +1,315 @@
+---
+// "The story so far": a statement's history as a reader would tell it —
+// every content change in order, each with its plain-English summary, the
+// noteworthy points the model pulled out, and the structured profile deltas
+// (a commitment dropped, an officer appointed). Noise never appears here;
+// cosmetic edits are folded into one quiet line so the story stays readable.
+import { formatDate } from "@/lib/format";
+import { CHANGE_KIND_LABEL, changeTier, formatStatedDate } from "@/lib/profile-labels";
+import { revAnchor } from "@/lib/scrubber";
+import type { Currency, TimelineRevision } from "@/types/exporter";
+
+interface Props {
+  timeline: TimelineRevision[];
+  currency: Currency;
+  agency: string;
+}
+
+const { timeline, currency, agency } = Astro.props;
+
+type Chapter =
+  | { type: "first"; rev: TimelineRevision }
+  | { type: "content"; rev: TimelineRevision }
+  | { type: "cosmetic"; revs: TimelineRevision[] };
+
+// Walk oldest → newest, grouping runs of cosmetic edits between content changes.
+const chapters: Chapter[] = [];
+for (const rev of timeline) {
+  const tier = changeTier(rev.changeKind);
+  if (tier === "first") chapters.push({ type: "first", rev });
+  else if (tier === "content") chapters.push({ type: "content", rev });
+  else if (tier === "cosmetic") {
+    const last = chapters.at(-1);
+    if (last?.type === "cosmetic") last.revs.push(rev);
+    else chapters.push({ type: "cosmetic", revs: [rev] });
+  }
+}
+
+const contentCount = chapters.filter((c) => c.type === "content").length;
+const stated = currency.statedFirstPublished;
+---
+
+<ol class="story">
+  {
+    chapters.map((chapter) => {
+      if (chapter.type === "first") {
+        const bulk = chapter.rev.kind === "tracked-since";
+        return (
+          <li class="story__item story__item--first">
+            <time class="story__date mono" datetime={chapter.rev.date}>
+              {formatDate(chapter.rev.date)}
+            </time>
+            <div class="story__body">
+              <p class="story__summary">
+                {bulk ? "Tracking begins." : "First captured by the tracker."}
+                {stated && (
+                  <>
+                    {" "}
+                    The statement itself says it was first published {formatStatedDate(stated)}.
+                  </>
+                )}
+                {!stated && bulk && (
+                  <> The statement already existed; when {agency} first published it is not recorded.</>
+                )}
+              </p>
+            </div>
+          </li>
+        );
+      }
+      if (chapter.type === "cosmetic") {
+        const n = chapter.revs.length;
+        return (
+          <li class="story__item story__item--quiet">
+            <time class="story__date mono" datetime={chapter.revs[0].date}>
+              {formatDate(chapter.revs[0].date)}
+              {n > 1 && <> &ndash; {formatDate(chapter.revs[n - 1].date)}</>}
+            </time>
+            <div class="story__body">
+              <p class="story__summary muted">
+                {n === 1 ? "One cosmetic edit" : `${n} cosmetic edits`} with no change of substance
+                {n === 1 && chapter.revs[0].summary && <>: {chapter.revs[0].summary}</>}
+              </p>
+            </div>
+          </li>
+        );
+      }
+      const { rev } = chapter;
+      const removed = rev.profileDeltas.filter((d) => d.direction === "removed");
+      const added = rev.profileDeltas.filter((d) => d.direction === "added");
+      const changed = rev.profileDeltas.filter((d) => d.direction === "changed");
+      const kindLabel = CHANGE_KIND_LABEL[rev.changeKind];
+      return (
+        <li class="story__item">
+          <time class="story__date mono" datetime={rev.date}>
+            {formatDate(rev.date)}
+          </time>
+          <div class="story__body">
+            <p class="story__summary">
+              <span class="pill" data-kind={rev.changeKind}>
+                {kindLabel}
+              </span>{" "}
+              {rev.summary ?? "The statement's substance changed."}
+            </p>
+            {rev.noteworthy.length > 0 && (
+              <ul class="story__points">
+                {rev.noteworthy.map((point) => (
+                  <li data-removal={point.toLowerCase().startsWith("removed") ? "" : undefined}>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {(removed.length > 0 || added.length > 0 || changed.length > 0) && (
+              <ul class="story__deltas" aria-label="What changed in the profile">
+                {removed.map((d) => (
+                  <li class="delta delta--removed" data-sig={d.significance}>
+                    <span class="delta__sign" aria-hidden="true">
+                      &minus;
+                    </span>
+                    <span class="visually-hidden">Removed: </span>
+                    {d.label}
+                  </li>
+                ))}
+                {added.map((d) => (
+                  <li class="delta delta--added" data-sig={d.significance}>
+                    <span class="delta__sign" aria-hidden="true">
+                      +
+                    </span>
+                    <span class="visually-hidden">Added: </span>
+                    {d.label}
+                  </li>
+                ))}
+                {changed.map((d) => (
+                  <li class="delta delta--changed" data-sig={d.significance}>
+                    <span class="delta__sign" aria-hidden="true">
+                      ~
+                    </span>
+                    <span class="visually-hidden">Changed: </span>
+                    {d.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <a class="story__diff" href={`#${revAnchor(rev.sha)}`}>
+              Show the words that changed &darr;
+            </a>
+          </div>
+        </li>
+      );
+    })
+  }
+  {
+    contentCount === 0 && (
+      <li class="story__item story__item--quiet">
+        <span class="story__date mono" aria-hidden="true">
+          &mdash;
+        </span>
+        <div class="story__body">
+          <p class="story__summary muted">
+            No change of substance since tracking began.
+          </p>
+        </div>
+      </li>
+    )
+  }
+</ol>
+
+<style>
+  .story {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-inline-start: 2px solid var(--border-strong);
+  }
+
+  .story__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-3) 0 var(--space-4) var(--space-5);
+  }
+
+  /* the timeline dot on the rule */
+  .story__item::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(-0.5rem - 1px);
+    top: calc(var(--space-3) + 0.35rem);
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .story__item--first::before {
+    background: var(--bg);
+    border: 2px solid var(--border-strong);
+  }
+
+  .story__item--quiet::before {
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+    inset-inline-start: calc(-0.35rem - 1px);
+    top: calc(var(--space-3) + 0.5rem);
+    background: var(--border-strong);
+    border-color: var(--bg);
+  }
+
+  .story__date {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    padding-block-start: 0.15rem;
+  }
+
+  .story__body {
+    min-width: 0;
+    max-inline-size: var(--measure);
+  }
+
+  .story__summary {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .story__summary .pill {
+    margin-inline-end: var(--space-1);
+    vertical-align: 0.1em;
+  }
+
+  .pill[data-kind="substantive"] {
+    background: var(--accent-wash);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+  }
+
+  .story__points {
+    margin: var(--space-2) 0 0;
+    padding-inline-start: 1.1rem;
+    font-size: var(--text-sm);
+    color: var(--text);
+  }
+
+  .story__points li {
+    margin-block: 0.15rem;
+  }
+
+  .story__points li[data-removal] {
+    color: var(--del-text);
+  }
+
+  .story__deltas {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .delta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .delta__sign {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .delta--removed {
+    background: var(--del-bg);
+    color: var(--del-text);
+    border-color: transparent;
+  }
+
+  .delta--added {
+    background: var(--ins-bg);
+    color: var(--ins-text);
+    border-color: transparent;
+  }
+
+  .delta[data-sig="significant"] {
+    font-weight: 600;
+  }
+
+  .story__diff {
+    display: inline-block;
+    margin-block-start: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .story__diff:hover,
+  .story__diff:focus-visible {
+    color: var(--accent-ink);
+    text-decoration: underline;
+  }
+
+  @media (width < 40rem) {
+    .story__item {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

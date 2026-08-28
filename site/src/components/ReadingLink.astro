@@ -1,12 +1,12 @@
 ---
 // A small, consistent "how to read this" affordance. Every place that shows a
-// similarity score, originality figure, reuse colour or propagation marking
+// change kind, profile, originality figure, reuse colour or propagation marking
 // links back to the canonical explainer (the Reading page) through this, so the
 // wording and destination stay identical everywhere.
 import { withBase } from "@/lib/paths";
 
 interface Props {
-  anchor?: "corpus" | "reuse" | "originality" | "similarity";
+  anchor?: "corpus" | "reuse" | "originality" | "changes" | "profiles" | "adoption";
   label?: string;
   class?: string;
 }

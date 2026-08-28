@@ -2,12 +2,11 @@
 
 Reads `agencies.toml`, the `statements/*.md` corpus, and the git history, and
 writes a set of JSON artifacts under `site/src/generated/` that the Astro site
-consumes at build time (the client-fetched similarity graph is served by an
-Astro endpoint built from these artifacts).
+consumes at build time.
 
-The artifacts are fully derivable from the repo, so they are gitignored and
-regenerated in CI; only the embeddings cache (`.cache/embeddings.json`) is
-committed. All JSON is written deterministically (sorted keys, rounded floats)
+The artifacts are fully derivable from the repo plus the committed Claude
+extraction caches (`.cache/changes.json`, `.cache/profiles.json`), so they are
+gitignored and regenerated in CI without any model calls. All JSON is written deterministically (sorted keys, rounded floats)
 so CI output is byte-reproducible and diffs stay clean.
 
 This module asserts text *co-occurrence* between statements; it never claims a
@@ -27,9 +26,17 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import TypedDict
 
+from .adoption import build_adoption, staleness
 from .changes import UNCLASSIFIED, Classification, classify_pairs
+from .profiles import (
+    Profile,
+    Step,
+    delta_dict,
+    diff_profiles,
+    extract_profiles,
+    standard_report,
+)
 from .scraper import (
     REPO_ROOT,
     Agency,
@@ -282,6 +289,59 @@ def classify_timelines(
     return out
 
 
+def profile_timelines(
+    timelines: dict[str, list[Revision]],
+    classes: dict[str, dict[str, Classification]],
+    names: dict[str, str],
+) -> dict[str, list[Profile | None]]:
+    """One profile per revision: read for readable revisions, inherited across noise.
+
+    The first revision and every non-noise revision are read (each anchored on
+    the previous profile); a noise revision (nothing the agency wrote changed)
+    carries its predecessor's profile forward.
+    """
+    chains = {
+        abbr: (
+            names.get(abbr, abbr),
+            [
+                Step(
+                    body=rev.body,
+                    readable=i == 0
+                    or (c := classes.get(abbr, {}).get(rev.sha)) is None
+                    or not c.is_noise,
+                )
+                for i, rev in enumerate(revs)
+            ],
+        )
+        for abbr, revs in timelines.items()
+    }
+    return extract_profiles(chains)
+
+
+def _profile_deltas(
+    index: int,
+    rev: Revision,
+    classes: dict[str, Classification],
+    profiles: list[Profile | None],
+) -> list[dict]:
+    """Structured field-level changes for a revision that changed the substance.
+
+    Deltas are reported only where the diff-based classification agrees the
+    substance changed (content kinds, or an unclassified pair); a cosmetic or
+    noise revision's profile may still move (a stated date, say) but is not
+    shown as a change of substance.
+    """
+    if index == 0 or not profiles:
+        return []
+    c = classes.get(rev.sha)
+    if c is None or not (c.is_content or c.kind == UNCLASSIFIED):
+        return []
+    before, after = profiles[index - 1], profiles[index]
+    if before is None or after is None:
+        return []
+    return [delta_dict(d) for d in diff_profiles(before, after)]
+
+
 def _change_fields(
     index: int,
     rev: Revision,
@@ -316,10 +376,13 @@ def _change_fields(
 
 
 def timeline_entries(
-    revisions: list[Revision], classes: dict[str, Classification] | None = None
+    revisions: list[Revision],
+    classes: dict[str, Classification] | None = None,
+    profiles: list[Profile | None] | None = None,
 ) -> list[dict]:
     """Per-statement timeline rows (full body included for build-time diffing)."""
     classes = classes or {}
+    profiles = profiles or []
     entries: list[dict] = []
     prev_chars = 0
     for i, rev in enumerate(revisions):
@@ -332,6 +395,7 @@ def timeline_entries(
                 "message": rev.message,
                 "kind": _event_kind(i, rev),
                 **_change_fields(i, rev, revisions, classes),
+                "profileDeltas": _profile_deltas(i, rev, classes, profiles),
                 "chars": chars,
                 "charDelta": chars - prev_chars,
                 "body": rev.body,
@@ -681,166 +745,6 @@ def originality_score(passages: list[Passage], shared_count: dict[str, int]) -> 
     }
 
 
-# --- embeddings + similarity (OpenAI) ---------------------------------------
-
-EMBED_MODEL = "text-embedding-3-small"
-CACHE_PATH = REPO_ROOT / ".cache" / "embeddings.json"
-_NEIGHBOURS = 8
-# Graph edges come from each node's top few neighbours, not a global cosine
-# threshold: government statements share so much vocabulary that any fixed floor
-# produces a hairball. A k-nearest-neighbour graph stays legible.
-_GRAPH_NEIGHBOURS = 3
-# The embedding endpoint caps inputs at 8192 tokens, and one bad input fails the
-# whole batch. Truncate to a safe char budget (~3.5 chars/token); the opening of
-# a statement is plenty to characterise it for similarity. The cache key is still
-# the full-body hash, so a statement re-embeds only when its real text changes.
-_MAX_EMBED_CHARS = 24000
-# numpy/openai live in the optional `export` group, so they are imported lazily:
-# the timeline/passage/originality artifacts must still build without them.
-
-
-def content_hash(body: str) -> str:
-    return "sha256:" + hashlib.sha256(body.encode("utf-8")).hexdigest()
-
-
-def load_embedding_cache(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-
-
-def save_embedding_cache(path: Path, cache: dict) -> None:
-    """Write one statement per line so a changed statement is a one-line git diff."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    items = sorted(cache.items())
-    lines = ["{"]
-    for i, (key, value) in enumerate(items):
-        tail = "," if i < len(items) - 1 else ""
-        lines.append(
-            f"  {json.dumps(key)}: {json.dumps(value, separators=(',', ':'))}{tail}"
-        )
-    lines.append("}\n")
-    atomic_write_text(path, "\n".join(lines))
-
-
-def embed_statements(
-    bodies: dict[str, str], cache: dict
-) -> tuple[dict[str, list], bool]:
-    """Return {abbr: vector} for whatever can be embedded; (vectors, api_called).
-
-    Only cache misses hit the API, so the typical daily build makes zero calls.
-    Missing key or API failure degrades to the cache rather than failing the build.
-    """
-    import os
-
-    need = {abbr: b for abbr, b in bodies.items() if content_hash(b) not in cache}
-    api_called = False
-    if need and not os.environ.get("OPENAI_API_KEY"):
-        logger.warning(
-            "OPENAI_API_KEY absent; %d statements have no embedding (cache covers %d)",
-            len(need),
-            len(bodies) - len(need),
-        )
-    elif need:
-        try:
-            from openai import OpenAI, OpenAIError
-
-            client = OpenAI()
-            items = sorted(need.items())
-            response = client.embeddings.create(
-                model=EMBED_MODEL, input=[body[:_MAX_EMBED_CHARS] for _, body in items]
-            )
-            for (_, body), datum in zip(items, response.data, strict=True):
-                cache[content_hash(body)] = {
-                    "model": EMBED_MODEL,
-                    "dim": len(datum.embedding),
-                    "vector": [float(f"{x:.7g}") for x in datum.embedding],
-                }
-            api_called = True
-            logger.info("Embedded %d new statements via %s", len(items), EMBED_MODEL)
-        except OpenAIError as exc:
-            logger.warning("Embedding API failed (%s); falling back to cache", exc)
-    vectors = {
-        abbr: cache[content_hash(body)]["vector"]
-        for abbr, body in bodies.items()
-        if content_hash(body) in cache
-    }
-    return vectors, api_called
-
-
-class Neighbour(TypedDict):
-    """One nearest-neighbour entry: the other statement and its cosine score."""
-
-    abbr: str
-    score: float
-
-
-class Edge(TypedDict):
-    """One deduped similarity-graph edge (a < b lexicographically)."""
-
-    a: str
-    b: str
-    score: float
-
-
-def cosine_neighbours(
-    vectors: dict[str, list], k: int = _NEIGHBOURS
-) -> tuple[dict[str, list[Neighbour]], list[Edge]]:
-    """Top-k nearest neighbours per statement + a thresholded, deduped edge list."""
-    if not vectors:
-        return {}, []
-    import numpy as np
-
-    abbrs = sorted(vectors)
-    matrix = np.asarray([vectors[a] for a in abbrs], dtype=np.float64)
-    matrix /= np.linalg.norm(matrix, axis=1, keepdims=True)
-    sims = matrix @ matrix.T
-    np.fill_diagonal(sims, -np.inf)
-
-    neighbours: dict[str, list[Neighbour]] = {}
-    for i, abbr in enumerate(abbrs):
-        top = np.argsort(-sims[i])[:k]
-        neighbours[abbr] = [
-            {"abbr": abbrs[j], "score": round(float(sims[i, j]), 4)} for j in top
-        ]
-
-    seen: set[tuple[str, str]] = set()
-    edges: list[Edge] = []
-    for abbr, neighs in neighbours.items():
-        for n in neighs[:_GRAPH_NEIGHBOURS]:
-            key = (abbr, n["abbr"]) if abbr < n["abbr"] else (n["abbr"], abbr)
-            if key in seen:
-                continue
-            seen.add(key)
-            edges.append({"a": key[0], "b": key[1], "score": n["score"]})
-    edges.sort(key=lambda e: (-e["score"], e["a"], e["b"]))
-    return neighbours, edges
-
-
-def compute_similarity(
-    bodies: dict[str, str],
-) -> tuple[dict, dict[str, list[Neighbour]]]:
-    """Build similarity.json and per-statement neighbour lists."""
-    cache = load_embedding_cache(CACHE_PATH)
-    vectors, api_called = embed_statements(bodies, cache)
-
-    # Prune superseded entries so the committed cache stays proportional to the
-    # corpus rather than accreting every historical content-hash. A pruned entry
-    # costs at most one re-embed if a statement ever reverts.
-    current = {content_hash(body) for body in bodies.values()}
-    pruned = {key: value for key, value in cache.items() if key in current}
-    if api_called or len(pruned) != len(cache):
-        save_embedding_cache(CACHE_PATH, pruned)
-
-    neighbours, edges = cosine_neighbours(vectors)
-    similarity = {
-        "model": EMBED_MODEL,
-        "k": _NEIGHBOURS,
-        "abbrs": sorted(vectors),
-        "neighbours": neighbours,
-        "edges": edges,
-    }
-    return similarity, neighbours
-
-
 # --- artifact builders ------------------------------------------------------
 
 
@@ -851,7 +755,8 @@ def build_statement_doc(
     timeline: list[dict],
     passages: list[dict],
     originality: dict,
-    neighbours: list[Neighbour],
+    profile: Profile | None = None,
+    currency: dict | None = None,
 ) -> dict:
     """Per-statement document consumed by the statement page."""
     doc: dict = {
@@ -865,7 +770,9 @@ def build_statement_doc(
         "timeline": timeline,
         "passages": passages,
         "originality": originality,
-        "neighbours": neighbours,
+        "profile": profile.model_dump(mode="json") if profile else None,
+        "standard": standard_report(profile) if profile else None,
+        "currency": currency,
     }
     if frontmatter.get("final_url"):
         doc["finalUrl"] = frontmatter["final_url"]
@@ -877,8 +784,10 @@ def build_agency_index(
     statements: dict[str, dict],
     timelines: dict[str, list[Revision]],
     originalities: dict[str, dict],
+    currencies: dict[str, dict] | None = None,
 ) -> list[dict]:
     """Index of every agency with coverage status + revision summary, sorted by abbr."""
+    currencies = currencies or {}
     index = []
     for agency in agencies:
         abbr = agency.abbr
@@ -890,6 +799,7 @@ def build_agency_index(
                 "name": agency.name,
                 "size": agency.size,
                 "scope": agency.scope,
+                "portfolio": agency.portfolio,
                 "url": agency.url,
                 "status": statement_status(agency.scope, agency.url, has_statement),
                 "statementId": abbr if has_statement else None,
@@ -897,6 +807,7 @@ def build_agency_index(
                 "lastUpdated": revs[-1].date if revs else None,
                 "revisionCount": len(revs),
                 "originality": originalities[abbr]["score"] if has_statement else None,
+                "currency": currencies.get(abbr),
             }
         )
     return sorted(index, key=lambda a: a["abbr"])
@@ -993,11 +904,43 @@ def main() -> int:
         key=lambda e: (-e["score"], e["abbr"]),
     )
 
-    logger.info("Computing statement similarity...")
-    bodies = {abbr: data["body"] for abbr, data in statements.items()}
-    similarity, neighbours = compute_similarity(bodies)
+    built_at = datetime.now(UTC).isoformat()
+    logger.info("Extracting statement profiles...")
+    profiles = profile_timelines(timelines, classes, names)
+    currencies = {}
+    for abbr, revs in timelines.items():
+        content_dates = [
+            rev.date
+            for rev in revs
+            if (c := classes.get(abbr, {}).get(rev.sha)) is not None and c.is_content
+        ]
+        currencies[abbr] = staleness(
+            profiles[abbr][-1] if profiles[abbr] else None,
+            content_dates[-1] if content_dates else None,
+            revs[0].date,
+            built_at,
+        )
+    adoption = build_adoption(
+        {
+            abbr: [
+                (
+                    rev.date,
+                    rev.sha,
+                    (c := classes.get(abbr, {}).get(rev.sha)) is not None
+                    and c.is_noise,
+                    profiles[abbr][i],
+                )
+                for i, rev in enumerate(revs)
+            ]
+            for abbr, revs in timelines.items()
+        },
+        corpus_start or built_at,
+        built_at,
+    )
 
-    agency_index = build_agency_index(agencies, statements, timelines, originalities)
+    agency_index = build_agency_index(
+        agencies, statements, timelines, originalities, currencies
+    )
     statuses = [a["status"] for a in agency_index]
 
     statement_docs = {
@@ -1005,10 +948,11 @@ def main() -> int:
             abbr,
             data["frontmatter"],
             data["body"],
-            timeline_entries(timelines[abbr], classes.get(abbr, {})),
+            timeline_entries(timelines[abbr], classes.get(abbr, {}), profiles[abbr]),
             statement_passages(passages_by_abbr[abbr], shared_count),
             originalities[abbr],
-            neighbours.get(abbr, []),
+            profiles[abbr][-1] if profiles[abbr] else None,
+            currencies[abbr],
         )
         for abbr, data in statements.items()
     }
@@ -1016,7 +960,7 @@ def main() -> int:
     first_commit = git("log", "--reverse", "--format=%aI", "--max-parents=0")
     meta = {
         "headSha": git("rev-parse", "HEAD"),
-        "builtAt": datetime.now(UTC).isoformat(),
+        "builtAt": built_at,
         "firstCommit": first_commit.splitlines()[0] if first_commit else None,
         "corpusStart": corpus_start,
         "counts": {
@@ -1026,7 +970,7 @@ def main() -> int:
             "exempt": statuses.count("exempt"),
             "statements": len(statements),
             "revisions": total_revisions,
-            "embedded": len(similarity["abbrs"]),
+            "profiled": sum(1 for p in profiles.values() if p and p[-1] is not None),
         },
     }
 
@@ -1036,7 +980,10 @@ def main() -> int:
         GENERATED_DIR / "propagation.json",
         {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
-    write_json(GENERATED_DIR / "similarity.json", similarity)
+    write_json(GENERATED_DIR / "adoption.json", adoption)
+    # Superseded artifact from the retired embeddings layer; a stale copy would
+    # keep validating against nothing.
+    (GENERATED_DIR / "similarity.json").unlink(missing_ok=True)
     statement_dir = GENERATED_DIR / "statements"
     for abbr, doc in statement_docs.items():
         write_json(statement_dir / f"{abbr}.json", doc)
@@ -1050,7 +997,7 @@ def main() -> int:
 
     logger.info(
         "Exported: %d agencies (%d published, %d not-yet, %d exempt), "
-        "%d statements, %d timeline events, %d clusters, %d embedded",
+        "%d statements, %d timeline events, %d clusters, %d profiled",
         meta["counts"]["agencies"],
         meta["counts"]["published"],
         meta["counts"]["notYet"],
@@ -1058,7 +1005,7 @@ def main() -> int:
         meta["counts"]["statements"],
         len(timeline),
         len(clusters),
-        len(similarity["abbrs"]),
+        meta["counts"]["profiled"],
     )
     return 0
 

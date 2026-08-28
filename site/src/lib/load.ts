@@ -8,14 +8,14 @@
 // build instead of surfacing as undefined inside a component.
 import { getCollection } from "astro:content";
 
-import { metaSchema, propagationSchema, similaritySchema } from "@/lib/schemas";
+import { adoptionSchema, metaSchema, propagationSchema } from "@/lib/schemas";
 
+import adoptionJson from "../generated/adoption.json";
 import metaJson from "../generated/meta.json";
 import propagationJson from "../generated/propagation.json";
-import similarityJson from "../generated/similarity.json";
 
 export const meta = metaSchema.parse(metaJson);
-export const similarity = similaritySchema.parse(similarityJson);
+export const adoption = adoptionSchema.parse(adoptionJson);
 
 // Sort the originality board explicitly (best score first, abbr tiebreak,
 // mirroring the exporter) rather than silently depending on the JSON's array

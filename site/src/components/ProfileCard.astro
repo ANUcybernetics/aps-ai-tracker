@@ -1,0 +1,371 @@
+---
+// The statement's report card: what it says, read against what the DTA's
+// Standard requires and what policy v2.0 asks agencies to stand up. Every
+// value here comes from the closed-vocabulary profile in profiles.py, so two
+// agencies' cards are directly comparable.
+import {
+  COMMITMENT_KIND_LABEL,
+  DOMAIN_LABEL,
+  MEASURE_LABEL,
+  POLICY_VERSION_LABEL,
+  PRESENCE_LABEL,
+  PUBLIC_FACING_LABEL,
+  REVIEW_LABEL,
+  STANDARD_ELEMENTS,
+  TRAINING_LABEL,
+  USAGE_PATTERN_LABEL,
+  formatStatedDate,
+} from "@/lib/profile-labels";
+import { formatDate } from "@/lib/format";
+import type { Currency, Profile } from "@/types/exporter";
+
+interface Props {
+  profile: Profile;
+  standard: Record<string, boolean>;
+  currency: Currency;
+}
+
+const { profile: p, standard, currency } = Astro.props;
+
+const metCount = STANDARD_ELEMENTS.filter((e) => standard[e.key]).length;
+
+// Policy v2.0 obligations, each with a tone: "on" reads as done, "part" as
+// under way, "off" as not mentioned.
+type Tone = "on" | "part" | "off";
+const presenceTone = (v: Profile["chief_ai_officer"]): Tone =>
+  v === "in-place" ? "on" : v === "planned" ? "part" : "off";
+const v2: { label: string; value: string; tone: Tone }[] = [
+  {
+    label: "Accountable official",
+    value:
+      p.accountable_official === "designated"
+        ? (p.accountable_official_role ?? "designated")
+        : "not mentioned",
+    tone: p.accountable_official === "designated" ? "on" : "off",
+  },
+  {
+    label: "Chief AI Officer",
+    value:
+      p.chief_ai_officer === "not-mentioned"
+        ? "not mentioned"
+        : `${PRESENCE_LABEL[p.chief_ai_officer]}${p.chief_ai_officer_role ? ` (${p.chief_ai_officer_role})` : ""}`,
+    tone: presenceTone(p.chief_ai_officer),
+  },
+  {
+    label: "Strategic position on AI",
+    value: PRESENCE_LABEL[p.strategic_position],
+    tone: presenceTone(p.strategic_position),
+  },
+  {
+    label: "AI use-case register",
+    value: PRESENCE_LABEL[p.use_case_register],
+    tone: presenceTone(p.use_case_register),
+  },
+  {
+    label: "Staff training",
+    value: TRAINING_LABEL[p.staff_training],
+    tone: p.staff_training === "mandatory" ? "on" : p.staff_training === "available" ? "part" : "off",
+  },
+  {
+    label: "Policy referenced",
+    value: POLICY_VERSION_LABEL[p.policy_version],
+    tone: p.policy_version === "v2" ? "on" : p.policy_version === "not-referenced" ? "off" : "part",
+  },
+];
+
+const willNot = p.commitments.filter((c) => c.kind === "will-not");
+const oversight = p.commitments.filter((c) => c.kind === "human-oversight");
+const will = p.commitments.filter((c) => c.kind === "will");
+---
+
+<div class="rc stack">
+  <p class="rc__summary">{p.summary}</p>
+
+  <div class="rc__grid">
+    <section class="rc__block">
+      <h3>What it says AI is used for</h3>
+      {
+        p.usage_patterns.length + p.domains.length === 0 ? (
+          <p class="muted rc__none">No use classified by DTA usage pattern or domain.</p>
+        ) : (
+          <ul class="chips">
+            {p.usage_patterns.map((u) => (
+              <li class="chip">{USAGE_PATTERN_LABEL[u]}</li>
+            ))}
+            {p.domains.map((d) => (
+              <li class="chip chip--domain">{DOMAIN_LABEL[d]}</li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        p.named_tools.length > 0 && (
+          <p class="rc__line">
+            <span class="muted">Named tools:</span> {p.named_tools.join(", ")}
+          </p>
+        )
+      }
+      <p class="rc__line">
+        <span class="muted">Public-facing AI:</span> {PUBLIC_FACING_LABEL[p.public_facing]}
+        {p.public_interaction_commitment && (
+          <span class="pill pill--ok">commits to a human intermediary</span>
+        )}
+      </p>
+      {
+        p.measures.length > 0 && (
+          <p class="rc__line">
+            <span class="muted">Safeguards named:</span>{" "}
+            {p.measures.map((m) => MEASURE_LABEL[m]).join(", ")}
+          </p>
+        )
+      }
+    </section>
+
+    <section class="rc__block">
+      <h3>Against the Standard <span class="rc__score mono">{metCount}/{STANDARD_ELEMENTS.length}</span></h3>
+      <ul class="checks">
+        {
+          STANDARD_ELEMENTS.map((e) => (
+            <li data-met={standard[e.key] ? "yes" : "no"}>
+              <span class="checks__mark mono" aria-hidden="true">
+                {standard[e.key] ? "✓" : "–"}
+              </span>
+              <span class="visually-hidden">{standard[e.key] ? "Present:" : "Missing:"}</span>
+              {e.label}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="rc__block">
+      <h3>Policy 2.0 obligations</h3>
+      <dl class="kv">
+        {
+          v2.map((row) => (
+            <div class="kv__row" data-tone={row.tone}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="rc__block">
+      <h3>Currency</h3>
+      <dl class="kv">
+        <div class="kv__row">
+          <dt>Review cadence</dt>
+          <dd>{REVIEW_LABEL[p.review_cadence]}</dd>
+        </div>
+        <div class="kv__row">
+          <dt>Says it was last updated</dt>
+          <dd>{currency.statedLastUpdated ? formatStatedDate(currency.statedLastUpdated) : <span class="muted">no date given</span>}</dd>
+        </div>
+        <div class="kv__row">
+          <dt>Last change we observed</dt>
+          <dd>
+            {currency.lastContentChange ? formatDate(currency.lastContentChange) : <span class="muted">none since tracking began</span>}
+          </dd>
+        </div>
+        <div class="kv__row" data-tone={currency.updatedSincePolicyV2 ? "on" : "off"}>
+          <dt>Updated since policy 2.0</dt>
+          <dd>{currency.updatedSincePolicyV2 ? "yes" : "no sign of it"}</dd>
+        </div>
+        {
+          currency.annualReviewOverdue !== null && (
+            <div class="kv__row" data-tone={currency.annualReviewOverdue ? "off" : "on"}>
+              <dt>Annual review</dt>
+              <dd>{currency.annualReviewOverdue ? "overdue by its own date" : "within a year of its own date"}</dd>
+            </div>
+          )
+        }
+      </dl>
+    </section>
+  </div>
+
+  {
+    p.commitments.length > 0 && (
+      <section class="rc__block rc__commitments">
+        <h3>Commitments</h3>
+        <ul class="commitments">
+          {[...willNot, ...oversight, ...will].map((c) => (
+            <li data-kind={c.kind}>
+              <span class="commitments__kind mono">{COMMITMENT_KIND_LABEL[c.kind]}</span>
+              {c.text}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</div>
+
+<style>
+  .rc__summary {
+    margin: 0;
+    max-inline-size: var(--measure);
+    font-size: var(--text-lg);
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .rc__grid {
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+
+  .rc__block h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+
+  .rc__score {
+    font-size: var(--text-sm);
+    color: var(--text);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .rc__line,
+  .rc__none {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+  }
+
+  .rc__line .pill {
+    margin-inline-start: var(--space-1);
+  }
+
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .chip {
+    font-size: var(--text-xs);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .chip--domain {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+
+  .checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-sm);
+  }
+
+  .checks li {
+    display: flex;
+    gap: var(--space-2);
+    padding-block: 0.15rem;
+  }
+
+  .checks li[data-met="no"] {
+    color: var(--muted);
+  }
+
+  .checks__mark {
+    inline-size: 1.1em;
+    color: var(--ok);
+    font-weight: 700;
+  }
+
+  .checks li[data-met="no"] .checks__mark {
+    color: var(--muted);
+  }
+
+  .kv {
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+
+  .kv__row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.5fr) 1fr;
+    gap: var(--space-3);
+    padding-block: 0.25rem;
+    border-block-end: 1px solid var(--border);
+  }
+
+  .kv__row:last-child {
+    border-block-end: none;
+  }
+
+  .kv dt {
+    color: var(--muted);
+  }
+
+  .kv dd {
+    margin: 0;
+  }
+
+  .kv__row[data-tone="on"] dd {
+    color: var(--ins-text);
+    font-weight: 600;
+  }
+
+  .kv__row[data-tone="part"] dd {
+    color: var(--accent-ink);
+  }
+
+  .kv__row[data-tone="off"] dd {
+    color: var(--muted);
+  }
+
+  .commitments {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-sm);
+    columns: 2 22rem;
+    column-gap: var(--space-6);
+  }
+
+  .commitments li {
+    break-inside: avoid;
+    padding-block: 0.25rem;
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
+  .commitments__kind {
+    flex: 0 0 auto;
+    font-size: var(--text-xs);
+    padding: 0.05rem 0.4rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .commitments li[data-kind="will-not"] .commitments__kind {
+    background: var(--del-bg);
+    color: var(--del-text);
+  }
+
+  .commitments li[data-kind="human-oversight"] .commitments__kind {
+    background: var(--template-wash);
+    color: var(--text);
+  }
+</style>
