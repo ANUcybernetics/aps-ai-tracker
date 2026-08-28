@@ -95,10 +95,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
         scrape churn that is later reverted, and pure reformatting, are collapsed
         out. Captures known to be failures are listed in the repository
-        (<code>captures.toml</code>) and dropped before anything reads them; a
-        fresh capture that lost more than half its text is held back until
-        confirmed; and a revision our own pipeline caused is marked as noise
-        whatever its diff looks like. Every remaining revision is classified from
+        (<code>captures.toml</code>) and dropped before anything reads them, and
+        a fresh capture that lost more than half its text is held back until
+        confirmed. Every remaining revision is classified from
         its diff: deterministic rules catch formatting-only, link-only,
         page-chrome, date-stamp and reordering churn, and the rest is read by
         Claude (Opus 5 for the back catalogue and Sonnet 5 for the nightly run;

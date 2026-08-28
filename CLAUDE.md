@@ -57,9 +57,10 @@ This is a Python web scraping project using uv for dependency management.
     shrank past `CONTENT_SHRINKAGE_THRESHOLD` is held off the site (the doc
     shows the last good body with `latestCaptureSuspect`) until listed under
     `[[confirmed]]` or the scraper is fixed --- the export log names it every
-    run. A commit whose message matches `_NOISE_RE` (our own pipeline churn) is
-    noise whatever the model said. Never "fix" a false change by editing the
-    cache; quarantine the capture
+    run. Commit messages are never consulted (a scrape commit describes the
+    whole batch, not one file). Never "fix" a false change by editing the cache;
+    quarantine the capture, accepting that a genuine change in a quarantined
+    capture is then observed at the next good one
   - `changes.py` classifies every consecutive revision pair from its diff:
     deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
     Claude for the rest (kind + one-sentence summary + noteworthy points);

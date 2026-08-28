@@ -13,7 +13,6 @@ from aps_ai_tracker.export import (
     FirstSeen,
     Passage,
     Revision,
-    annotated_noise,
     build_clusters,
     classify_timelines,
     collapse_reverts,
@@ -88,32 +87,25 @@ def _body_rev(body: str, subject: str = "update", sha: str = "s") -> Revision:
     )
 
 
-def test_annotated_noise_reads_commit_message():
-    assert annotated_noise(_body_rev("Changed body", "strip nav-chrome"))
-    assert not annotated_noise(_body_rev("Changed body", "update 3 statements"))
+def test_classify_timelines_pairs_consecutive_revisions(monkeypatch):
+    seen: dict[str, tuple[str, str, str]] = {}
 
+    def fake(pairs):
+        seen.update(pairs)
+        return {pid: Classification(kind="cosmetic", method="llm") for pid in pairs}
 
-def test_annotation_outranks_model_classification(monkeypatch):
-    # The model called the diff substantive, but the commit says it was our
-    # own cleanup: the annotation wins so the change is never shown as the
-    # agency's.
-    monkeypatch.setattr(
-        "aps_ai_tracker.export.classify_pairs",
-        lambda pairs: {
-            pid: Classification(kind="substantive", method="llm", summary="Drops X")
-            for pid in pairs
-        },
-    )
+    monkeypatch.setattr("aps_ai_tracker.export.classify_pairs", fake)
     revs = [
-        _body_rev("A long statement.", sha="a1"),
-        _body_rev(
-            "A statement.", "statements: strip nav-chrome across the corpus", "b2"
-        ),
+        _body_rev("one", sha="a1"),
+        _body_rev("two", sha="b2"),
+        _body_rev("three", sha="c3"),
     ]
     classes = classify_timelines({"X": revs}, {"X": "Agency X"})
-    assert classes["X"]["b2"].kind == "scrape-noise"
-    assert classes["X"]["b2"].method == "rule"
-    assert classes["X"]["b2"].summary == "Drops X"
+    assert seen == {
+        "X:b2": ("Agency X", "one", "two"),
+        "X:c3": ("Agency X", "two", "three"),
+    }
+    assert set(classes["X"]) == {"b2", "c3"}
 
 
 # --- quarantine_revisions ---------------------------------------------------

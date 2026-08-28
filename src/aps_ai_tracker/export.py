@@ -128,14 +128,6 @@ _RS = "\x1d"
 # the site labels it "tracked since" instead.
 _BULK_IMPORT_THRESHOLD = 20
 
-# Commit messages self-annotate churn caused by our own pipeline (nav chrome,
-# cleanup regressions). A revision so annotated is never an agency change,
-# whatever the diff looks like, so the annotation outranks the model's reading.
-_NOISE_RE = re.compile(
-    r"(?i)spurious|nav-tile|nav-card|nav-chrome|related-pages|download-widget|"
-    r"cleanup-pipeline|leaked into the diff|go to section"
-)
-
 _WS_RE = re.compile(r"\s+")
 
 
@@ -308,11 +300,6 @@ def quarantine_revisions(
     return kept, newest_dropped
 
 
-def annotated_noise(rev: Revision) -> bool:
-    """Whether the commit message marks this revision as our own pipeline churn."""
-    return bool(_NOISE_RE.search(rev.subject) or _NOISE_RE.search(rev.message))
-
-
 def _event_kind(index: int, rev: Revision) -> str:
     """First-seen events: 'tracked-since' if bulk-imported, else 'added'.
 
@@ -335,8 +322,11 @@ def classify_timelines(
     """Content-based change classification for every consecutive revision pair.
 
     Returns {abbr: {sha: Classification}} for every revision after the first.
-    A revision whose commit message annotates it as pipeline churn is noise
-    regardless of what the model made of the diff.
+    The diff is the only evidence: commit messages are not consulted, because
+    a scrape commit's message describes the whole batch, not any one file
+    (the nightly agent notes a noise regression in one statement's diff in a
+    commit that also carries another agency's rewrite). A capture that is
+    wrong belongs in `captures.toml`, not in a commit-message heuristic.
     """
     pairs = {
         f"{abbr}:{rev.sha}": (names.get(abbr, abbr), revs[i - 1].body, rev.body)
@@ -344,17 +334,9 @@ def classify_timelines(
         for i, rev in enumerate(revs)
         if i > 0
     }
-    classified = classify_pairs(pairs)
-    annotated = {
-        rev.sha for revs in timelines.values() for rev in revs if annotated_noise(rev)
-    }
     out: dict[str, dict[str, Classification]] = defaultdict(dict)
-    for pair_id, classification in classified.items():
+    for pair_id, classification in classify_pairs(pairs).items():
         abbr, sha = pair_id.split(":", 1)
-        if sha in annotated:
-            classification = Classification(
-                kind="scrape-noise", method="rule", summary=classification.summary
-            )
         out[abbr][sha] = classification
     return out
 

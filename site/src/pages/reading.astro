@@ -171,13 +171,13 @@ for (const c of propagation.clusters) {
       can check its reading against the words.
     </p>
     <p>
-      Two further guards sit outside the model. A capture we know to be broken (a page
+      One further guard sits outside the model. A capture we know to be broken (a page
       whose body is rendered by a script the scraper cannot run, a sentence our own
       cleanup once ate) is listed in the repository and dropped before anything reads
-      it; a fresh capture that lost more than half its text is held off the site until
-      it is confirmed or the scraper is fixed. And a revision our own pipeline caused,
-      such as a change to how page navigation is stripped, is marked as noise whatever
-      the diff looks like. We would rather show a gap than a false change.
+      it, and a fresh capture that lost more than half its text is held off the site
+      until it is confirmed or the scraper is fixed. Dropping a capture can shift the
+      date we observed a genuine change by a few weeks; we would rather that than a
+      false change.
     </p>
 
     <h2 id="profiles">Statement profiles</h2>

@@ -30,6 +30,43 @@ abbr = "NCA"
 sha = "49130251fd"
 reason = "scraper regex ate the publication-date and 'reviewed annually' sentences (fixed 2026-06-26)"
 
+# The same regression persisted through every IGIS capture until the fix, so
+# the whole run is quarantined; the genuine 10 June disclosure (limited testing
+# of one AI tool) is therefore observed on 26 June, with the restored line.
+[[quarantine]]
+abbr = "IGIS"
+sha = "31e410a956"
+reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26)"
+
+[[quarantine]]
+abbr = "IGIS"
+sha = "5c0831fd39"
+reason = "same regression, still in effect (link-only capture)"
+
+[[quarantine]]
+abbr = "IGIS"
+sha = "a07889ffda"
+reason = "same regression, still in effect; its genuine change is carried by the 26 June capture"
+
+[[quarantine]]
+abbr = "IGIS"
+sha = "fd1e488f6d"
+reason = "same regression, still in effect (unrelated register link)"
+
+# Rewrites in which the regression also ate the review sentence: quarantined so
+# the rewrite is read against the 26 June capture that carries the whole text.
+# Observed dates shift by a fortnight; the alternative is a false 'dropped its
+# annual review' followed by a false 'adds an annual review'.
+[[quarantine]]
+abbr = "ACMA"
+sha = "b0cd20fced"
+reason = "policy 2.0 rewrite captured with the 'reviewed annually' sentence eaten (fixed 2026-06-26)"
+
+[[quarantine]]
+abbr = "WGEA"
+sha = "9ff836078b"
+reason = "rewrite captured with the review sentence eaten (fixed 2026-06-26)"
+
 [[confirmed]]
 abbr = "AEC"
 sha = "0acfd541cd"
