@@ -66,6 +66,8 @@ if ! git diff --cached --quiet -- atproto-state.json atproto-syndication.json; t
 fi
 
 # Publish: push so the GitHub Pages workflow rebuilds and deploys the site.
+# This is the run's only push: the scrape skill commits but does not push, so
+# the day's statements and their classifications always deploy together.
 # (Overrides the global manual-push default for this repo; weddle needs push
 # credentials for origin.)
 echo "=== push at $(date -Iseconds) ===" >> "$LOG_FILE"

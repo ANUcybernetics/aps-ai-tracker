@@ -51,16 +51,30 @@ This is a Python web scraping project using uv for dependency management.
   - `status.py` reports collection status
   - `export.py` turns the corpus + git history into JSON for the site (timeline
     with revert collapse, lexical passage propagation, originality scores,
-    concept adoption, statement currency)
+    concept adoption, statement currency). Before anything reads a revision it
+    applies `captures.toml`: `[[quarantine]]` entries (abbr + sha prefix) are
+    failed captures dropped from history outright; a **newest** capture that
+    shrank past `CONTENT_SHRINKAGE_THRESHOLD` is held off the site (the doc
+    shows the last good body with `latestCaptureSuspect`) until listed under
+    `[[confirmed]]` or the scraper is fixed --- the export log names it every
+    run. A commit whose message matches `_NOISE_RE` (our own pipeline churn) is
+    noise whatever the model said. Never "fix" a false change by editing the
+    cache; quarantine the capture
   - `changes.py` classifies every consecutive revision pair from its diff:
     deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
     Claude for the rest (kind + one-sentence summary + noteworthy points);
     cached by body-hash pair in `.cache/changes.json`
   - `profiles.py` reads each readable revision into a closed-vocabulary
-    `Profile` (pydantic) aligned to the DTA Standard's minimum content and the
-    policy v2.0 obligations, diffs consecutive profiles into labelled deltas,
-    and derives the Standard report card and concept flags; cached by body hash
-    in `.cache/profiles.json`
+    `Profile` (pydantic) whose questions come from the DTA Standard's minimum
+    content, the policy v2.0 mandatory requirements and the APS AI Plan (the
+    Chief AI Officer is the Plan's, **not** the policy's --- `FIELD_SOURCE`
+    records each field's instrument and the site shows it), diffs consecutive
+    profiles into labelled deltas, and derives the Standard report card and
+    concept flags; cached by body hash in `.cache/profiles.json`, each entry
+    recording the model (`Reading.model`) so the site can say who read it. The
+    page's own last-updated date is not the model's job: the scraper captures it
+    into frontmatter as `last_updated_text` before stripping the stamp, and
+    `adoption.parse_stated_date` normalises it
   - `adoption.py` builds the monthly concept-adoption series and per-statement
     currency (updated since policy v2.0, annual review overdue)
   - `llm.py` is the shared structured-extraction layer (backend selection,

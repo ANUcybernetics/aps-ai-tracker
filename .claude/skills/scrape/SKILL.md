@@ -70,8 +70,28 @@ for p in sorted(Path('statements').glob('*.md')):
 "
 ```
 
-For each file in the list, read it and rewrite the body in place. Apply these
-transformations and **only** these transformations:
+The `raw_hash` check is the deterministic gate: a PDF whose extracted text is
+byte-identical to last time is never rewritten, so this step only ever runs on a
+PDF that actually changed (or a new one).
+
+**For a PDF that has been cleaned before** (the file at `HEAD` has a
+`cleaned_hash`), do not re-clean from scratch: a fresh reflow of the whole
+document would differ from the last one in a hundred incidental ways and every
+one of them would show up on the site as the agency changing its statement.
+Instead:
+
+1. Read the previously cleaned body: `git show HEAD:statements/<ABBR>.md`
+2. Read the new raw text (the body now on disk)
+3. Work out what the agency actually changed --- the sentences, list items and
+   sections that differ in substance between the old raw text (reconstructable
+   from the old cleaned body) and the new raw text
+4. Write the new body by applying **only** those changes onto the previously
+   cleaned body, keeping every unchanged sentence byte-identical to `HEAD`, in
+   the same order and with the same headings and formatting
+
+**For a PDF being cleaned for the first time** (no `cleaned_hash` at `HEAD`),
+rewrite the body in place. Apply these transformations and **only** these
+transformations:
 
 - Remove repeated `OFFICIAL`, `OFFICIAL: Sensitive`, `Classification: ...`
   markers (they're page watermarks, not content)
@@ -86,7 +106,7 @@ transformations and **only** these transformations:
 - Convert obvious bullet lists (lines starting with `•`, `-`, `*`, or numbered)
   to markdown lists with `-`
 
-Do NOT:
+In both cases, do NOT:
 
 - Add, remove, or rephrase any factual content
 - Add commentary, headers, or footers of your own
@@ -130,9 +150,15 @@ Classify each changed file as **good** or **spurious**:
 
 - link URL parameter changes (tracking params, session IDs, cache busters)
 - changes where only the YAML frontmatter order changed but values are identical
-- trivially small changes (a single character or punctuation mark)
-- content shrinkage --- if the scraper warned about CONTENT SHRINKAGE DETECTED,
-  the new content is likely a scraping failure; discard that file's changes
+
+Content shrinkage is **not** yours to judge. If the scraper warned about CONTENT
+SHRINKAGE DETECTED, keep the file and commit it as normal: the exporter holds a
+newest capture that lost more than half its text off the site until a human
+confirms it in `captures.toml`, and a wrongly discarded capture is a missing
+revision that nobody notices. Mention the warning in the commit description so
+it is on the record. Likewise never discard a change for being small: a single
+word can be a change of substance, and the exporter's rules already classify
+formatting-only and link-only diffs as noise.
 
 Most other "noise" categories (whitespace-only diffs, date stamps, Cloudflare
 email hashes, classification markers, "print this page" / social widgets, "you
@@ -158,14 +184,15 @@ git checkout HEAD -- <path>
 After restoring all spurious files, run `git diff --stat` again to confirm only
 good changes remain.
 
-If ALL changes are spurious, restore everything and report that there were no
-substantive updates:
+If ALL changes are spurious, restore the statements and report that there were
+no substantive updates (scoped to `statements/` --- never `.`, which would also
+throw away any `agencies.toml` edits or uncommitted work in the tree):
 
 ```
-git checkout HEAD -- .
+git checkout HEAD -- statements/
 ```
 
-## Step 5: commit and push
+## Step 5: commit
 
 If there are good changes remaining:
 
@@ -177,12 +204,13 @@ If there are good changes remaining:
    - For mixed changes: `update N transparency statements, add M new`
    - Include a blank line then a brief list of notable changes if any agencies
      had warnings or interesting updates
-3. Stage, commit, and push:
+3. Stage and commit (do **not** push: `cron-scrape.sh` pushes once, after the
+   export has classified the day's changes, so the site never deploys with
+   unclassified revisions):
 
 ```
 git add statements/
 git commit -m "<message>"
-git push
 ```
 
 If there are no good changes, skip the commit and report that the scrape
@@ -285,12 +313,12 @@ expected, not a discovery failure. A `scope = "mandatory"` body with no
 statement is the one case that genuinely warrants attention.
 
 If any URLs were added, re-run the scraper (the full pipeline picks up the new
-URLs), review the diff, discard spurious changes, then commit and push:
+URLs), review the diff, discard spurious changes, then commit (no push; see Step
+5):
 
 ```
 git add agencies.toml statements/
 git commit -m "add N new transparency statement URLs ([ABBR1], [ABBR2])"
-git push
 ```
 
 Report which agencies were checked, which source found what, and the outcome for
