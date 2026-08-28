@@ -384,6 +384,48 @@ def remove_boilerplate(element: Tag) -> None:
         link.replace_with(link.get_text())
 
 
+# SharePoint "page schema" pages (Home Affairs) ship the statement body as JSON
+# in a hidden form field and render its tabs client-side, so the served HTML
+# holds only the introduction. The field's value is {"content": [{"text":
+# <heading>, "block": <html>}, …]}; inline those blocks as sections so the
+# statement is captured whole.
+_PAGE_SCHEMA_FIELD_SUFFIX = "PageSchemaHiddenField$Input"
+
+
+def inline_page_schema(soup: BeautifulSoup) -> int:
+    """Append hidden page-schema content blocks to the page's main element.
+
+    Returns the number of blocks inlined (0 when the page has no such field).
+    """
+    fields = [
+        el
+        for el in soup.find_all("input", attrs={"type": "hidden"})
+        if str(el.get("name", "")).endswith(_PAGE_SCHEMA_FIELD_SUFFIX)
+    ]
+    if not fields:
+        return 0
+    host = soup.find("main") or soup.find("body") or soup
+    count = 0
+    for field in fields:
+        try:
+            data = json.loads(str(field.get("value", "")))
+        except json.JSONDecodeError:
+            continue
+        for item in data.get("content", []) if isinstance(data, dict) else []:
+            block = item.get("block") if isinstance(item, dict) else None
+            if not block:
+                continue
+            section = soup.new_tag("section")
+            if heading := item.get("text"):
+                h2 = soup.new_tag("h2")
+                h2.string = str(heading)
+                section.append(h2)
+            section.append(BeautifulSoup(str(block), "lxml"))
+            host.append(section)
+            count += 1
+    return count
+
+
 def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> str:
     """Extract the main content from the page, removing navigation and footers.
 
@@ -391,6 +433,7 @@ def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> st
         soup: BeautifulSoup object of the page
         selector: Optional CSS selector to use instead of default list
     """
+    inline_page_schema(soup)
     if selector:
         if main_content := soup.select_one(selector):
             remove_boilerplate(main_content)

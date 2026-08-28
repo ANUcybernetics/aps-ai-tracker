@@ -12,6 +12,7 @@ import asyncio
 import hashlib
 import json
 import re
+from html import escape
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -1203,3 +1204,36 @@ def test_save_statement_no_warning_with_sufficient_ai_keywords(caplog):
             save_statement(agency, data, Path(tmpdir))
 
         assert not any("LOW AI KEYWORD DENSITY" in r.message for r in caplog.records)
+
+
+def test_inline_page_schema_recovers_client_rendered_sections():
+    """SharePoint page-schema pages hold the statement body in a hidden field."""
+    from aps_ai_tracker.scraper import extract_main_content, inline_page_schema
+
+    payload = json.dumps(
+        {
+            "content": [
+                {
+                    "text": "AI governance",
+                    "block": "<p>The CDO is the Accountable Official.</p>",
+                },
+                {"text": "", "block": "<ul><li>no heading</li></ul>"},
+            ]
+        }
+    )
+    html = (
+        "<html><body><main><h1>AI Transparency Statement</h1><p>Intro.</p>"
+        f'<input type="hidden" name="ctl00$PlaceHolderMain$PageSchemaHiddenField$Input" value="{escape(payload)}">'
+        "</main></body></html>"
+    )
+    soup = BeautifulSoup(html, "lxml")
+    assert inline_page_schema(soup) == 2
+    content = extract_main_content(soup)
+    assert "<h2>AI governance</h2>" in content
+    assert "Accountable Official" in content
+    assert "no heading" in content
+    # no such field: nothing inlined, content untouched
+    plain = BeautifulSoup(
+        "<html><body><main><p>Just intro.</p></main></body></html>", "lxml"
+    )
+    assert inline_page_schema(plain) == 0
