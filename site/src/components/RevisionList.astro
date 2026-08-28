@@ -1,5 +1,6 @@
 ---
 import DiffView from "@/components/DiffView.astro";
+import ModelNote from "@/components/ModelNote.astro";
 import { formatDate, signedDelta } from "@/lib/format";
 import { CHANGE_KIND_LABEL, changeTier } from "@/lib/profile-labels";
 import { revAnchor } from "@/lib/scrubber";
@@ -54,6 +55,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
             </span>
           </div>
           {rev.summary && <p class="rev__summary">{rev.summary}</p>}
+          {rev.summary && <ModelNote model={rev.model} />}
           {prev ? (
             <details class="rev__diff">
               <summary>View diff</summary>
@@ -62,7 +64,14 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
           ) : (
             <p class="muted rev__first">First tracked revision.</p>
           )}
-          <span class="rev__sha mono muted">{rev.sha.slice(0, 7)}</span>
+          <a
+            class="rev__sha mono muted"
+            href={`https://github.com/ANUcybernetics/aps-ai-tracker/commit/${rev.sha}`}
+            rel="noopener"
+            aria-label="View this capture's commit on GitHub"
+          >
+            {rev.sha.slice(0, 7)}
+          </a>
         </li>
       );
     })
@@ -174,5 +183,12 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
     inset-inline-end: 0;
     inset-block-end: var(--space-3);
     font-size: var(--text-xs);
+    text-decoration: none;
+  }
+
+  .rev__sha:hover,
+  .rev__sha:focus-visible {
+    color: var(--accent-ink);
+    text-decoration: underline;
   }
 </style>

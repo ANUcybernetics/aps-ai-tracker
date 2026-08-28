@@ -49,42 +49,53 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
         <h2>Published</h2>
         <span class="muted">{published.length}</span>
       </div>
-      <table class="agencies">
-        <caption class="visually-hidden">Agencies with a published AI transparency statement</caption>
-        <thead>
-          <tr>
-            <th scope="col">Agency</th>
-            <th scope="col">Size</th>
-            <th scope="col" class="num">Bespoke</th>
-            <th scope="col" class="num">Changes</th>
-            <th scope="col">Since policy 2.0</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            published.map((a) => (
-              <tr>
-                <td>
-                  <a href={statementPath(a.abbr)}>{a.name}</a>
-                  <span class="muted mono"> {a.abbr}</span>
-                </td>
-                <td>{SIZE_LABEL[a.size]}</td>
-                <td class="num">
-                  {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
-                </td>
-                <td class="num">{a.revisionCount}</td>
-                <td>
-                  {a.currency?.updatedSincePolicyV2 ? (
-                    <span class="pill pill--ok">updated</span>
-                  ) : (
-                    <span class="muted">no sign</span>
-                  )}
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table class="agencies">
+          <caption class="visually-hidden">Agencies with a published AI transparency statement</caption>
+          <thead>
+            <tr>
+              <th scope="col">Agency</th>
+              <th scope="col">Size</th>
+              <th scope="col" class="num">Bespoke</th>
+              <th scope="col" class="num">Changes</th>
+              <th scope="col" class="num">Captures</th>
+              <th scope="col">Since policy 2.0</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              published.map((a) => (
+                <tr>
+                  <td>
+                    <a href={statementPath(a.abbr)}>{a.name}</a>
+                    <span class="muted mono"> {a.abbr}</span>
+                  </td>
+                  <td>{SIZE_LABEL[a.size]}</td>
+                  <td class="num">
+                    {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
+                  </td>
+                  <td class="num">{a.changeCount}</td>
+                  <td class="num">{a.revisionCount}</td>
+                  <td>
+                    {a.currency?.updatedSincePolicyV2 === true ? (
+                      <span class="pill pill--ok">updated</span>
+                    ) : a.currency?.updatedSincePolicyV2 === false ? (
+                      <span class="muted">no sign</span>
+                    ) : (
+                      <span
+                        class="muted"
+                        title="First tracked after 15 December 2025 and gives no date, so we cannot know"
+                      >
+                        can&rsquo;t tell
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     </section>
 
     {

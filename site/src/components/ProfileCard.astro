@@ -6,6 +6,7 @@
 import {
   COMMITMENT_KIND_LABEL,
   DOMAIN_LABEL,
+  FIELD_SOURCE_LABEL,
   MEASURE_LABEL,
   POLICY_VERSION_LABEL,
   PRESENCE_LABEL,
@@ -16,6 +17,7 @@ import {
   USAGE_PATTERN_LABEL,
   formatStatedDate,
 } from "@/lib/profile-labels";
+import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
 import type { Currency, Profile } from "@/types/exporter";
 
@@ -23,18 +25,22 @@ interface Props {
   profile: Profile;
   standard: Record<string, boolean>;
   currency: Currency;
+  model: string | null;
 }
 
-const { profile: p, standard, currency } = Astro.props;
+const { profile: p, standard, currency, model } = Astro.props;
 
 const metCount = STANDARD_ELEMENTS.filter((e) => standard[e.key]).length;
 
-// Policy v2.0 obligations, each with a tone: "on" reads as done, "part" as
-// under way, "off" as not mentioned.
+// Agency-level obligations, each with a tone: "on" reads as done, "part" as
+// under way, "off" as not mentioned. Grouped by the instrument that asks for
+// them: the policy's mandatory requirements, and the APS AI Plan's Chief AI
+// Officer, which is not in the policy at all.
 type Tone = "on" | "part" | "off";
+type Row = { label: string; value: string; tone: Tone };
 const presenceTone = (v: Profile["chief_ai_officer"]): Tone =>
   v === "in-place" ? "on" : v === "planned" ? "part" : "off";
-const v2: { label: string; value: string; tone: Tone }[] = [
+const policyRows: Row[] = [
   {
     label: "Accountable official",
     value:
@@ -42,14 +48,6 @@ const v2: { label: string; value: string; tone: Tone }[] = [
         ? (p.accountable_official_role ?? "designated")
         : "not mentioned",
     tone: p.accountable_official === "designated" ? "on" : "off",
-  },
-  {
-    label: "Chief AI Officer",
-    value:
-      p.chief_ai_officer === "not-mentioned"
-        ? "not mentioned"
-        : `${PRESENCE_LABEL[p.chief_ai_officer]}${p.chief_ai_officer_role ? ` (${p.chief_ai_officer_role})` : ""}`,
-    tone: presenceTone(p.chief_ai_officer),
   },
   {
     label: "Strategic position on AI",
@@ -67,11 +65,27 @@ const v2: { label: string; value: string; tone: Tone }[] = [
     tone: p.staff_training === "mandatory" ? "on" : p.staff_training === "available" ? "part" : "off",
   },
   {
-    label: "Policy referenced",
+    label: "Policy version referenced",
     value: POLICY_VERSION_LABEL[p.policy_version],
     tone: p.policy_version === "v2" ? "on" : p.policy_version === "not-referenced" ? "off" : "part",
   },
 ];
+const aiPlanRows: Row[] = [
+  {
+    label: "Chief AI Officer",
+    value:
+      p.chief_ai_officer === "not-mentioned"
+        ? "not mentioned"
+        : `${PRESENCE_LABEL[p.chief_ai_officer]}${p.chief_ai_officer_role ? ` (${p.chief_ai_officer_role})` : ""}`,
+    tone: presenceTone(p.chief_ai_officer),
+  },
+];
+const sinceV2 =
+  currency.updatedSincePolicyV2 === null
+    ? { text: "can't tell", tone: undefined, title: "First tracked after 15 December 2025 and gives no date of its own" }
+    : currency.updatedSincePolicyV2
+      ? { text: "yes", tone: "on" as Tone, title: undefined }
+      : { text: "no sign of it", tone: "off" as Tone, title: undefined };
 
 const willNot = p.commitments.filter((c) => c.kind === "will-not");
 const oversight = p.commitments.filter((c) => c.kind === "human-oversight");
@@ -79,7 +93,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
 ---
 
 <div class="rc stack">
-  <p class="rc__summary">{p.summary}</p>
+  <p class="rc__summary">{p.summary} <ModelNote model={model} /></p>
 
   <div class="rc__grid">
     <section class="rc__block">
@@ -139,10 +153,31 @@ const will = p.commitments.filter((c) => c.kind === "will");
     </section>
 
     <section class="rc__block">
-      <h3>Policy 2.0 obligations</h3>
+      <h3>
+        What the policy requires
+        <a class="rc__source" href={FIELD_SOURCE_LABEL.policy.href} title={FIELD_SOURCE_LABEL.policy.long}
+          >{FIELD_SOURCE_LABEL.policy.short}</a
+        >
+      </h3>
       <dl class="kv">
         {
-          v2.map((row) => (
+          policyRows.map((row) => (
+            <div class="kv__row" data-tone={row.tone}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <h3>
+        What the AI Plan asks
+        <a class="rc__source" href={FIELD_SOURCE_LABEL["ai-plan"].href} title={FIELD_SOURCE_LABEL["ai-plan"].long}
+          >{FIELD_SOURCE_LABEL["ai-plan"].short}</a
+        >
+      </h3>
+      <dl class="kv">
+        {
+          aiPlanRows.map((row) => (
             <div class="kv__row" data-tone={row.tone}>
               <dt>{row.label}</dt>
               <dd>{row.value}</dd>
@@ -153,7 +188,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
     </section>
 
     <section class="rc__block">
-      <h3>Currency</h3>
+      <h3>Currency <span class="muted rc__asof">as of {formatStatedDate(currency.evaluatedAt)}</span></h3>
       <dl class="kv">
         <div class="kv__row">
           <dt>Review cadence</dt>
@@ -169,9 +204,9 @@ const will = p.commitments.filter((c) => c.kind === "will");
             {currency.lastContentChange ? formatDate(currency.lastContentChange) : <span class="muted">none since tracking began</span>}
           </dd>
         </div>
-        <div class="kv__row" data-tone={currency.updatedSincePolicyV2 ? "on" : "off"}>
+        <div class="kv__row" data-tone={sinceV2.tone}>
           <dt>Updated since policy 2.0</dt>
-          <dd>{currency.updatedSincePolicyV2 ? "yes" : "no sign of it"}</dd>
+          <dd title={sinceV2.title}>{sinceV2.text}</dd>
         </div>
         {
           currency.annualReviewOverdue !== null && (
@@ -233,6 +268,24 @@ const will = p.commitments.filter((c) => c.kind === "will");
     color: var(--text);
     letter-spacing: 0;
     text-transform: none;
+  }
+
+  /* which instrument a group of questions comes from */
+  .rc__source,
+  .rc__asof {
+    font-size: var(--text-xs);
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .rc__source {
+    margin-inline-start: auto;
+    color: var(--accent-ink);
+  }
+
+  .rc__block .kv + h3 {
+    margin-block-start: var(--space-4);
   }
 
   .rc__line,

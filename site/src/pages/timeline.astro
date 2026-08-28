@@ -48,8 +48,12 @@ const counts = {
       <p class="lede">
         Every change of substance the daily scrape has recorded, newest first, each
         read from the diff and summarised in a sentence. Cosmetic edits ({counts.cosmetic}),
-        scrape noise ({counts.noise}) and first-tracked imports ({counts.first}) are hidden
+        scrape noise ({counts.noise}) and first-tracked captures ({counts.first}) are hidden
         until you ask for them. Open a row to see the words that moved.
+      </p>
+      <p class="muted">
+        Summaries are written by a language model from the diff; each row shows which
+        one, and &ldquo;the words that changed&rdquo; is always the primary source.
       </p>
       <ReadingLink anchor="changes" label="How changes are classified" />
     </header>

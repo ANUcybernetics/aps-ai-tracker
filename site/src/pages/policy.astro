@@ -32,17 +32,33 @@ const charted = [
   .map(concept)
   .filter((c): c is NonNullable<typeof c> => c !== undefined);
 
-// Dropped commitments and other significant removals, newest first, each
-// pointing at the revision it happened in.
+// Things a later revision no longer says, newest first, each pointing at the
+// revision it happened in. Split by what was lost: a commitment or safeguard
+// the agency made (promises, the public-facing pledge, a weakened
+// public-facing position), versus a disclosure it no longer makes (a use, a
+// domain, a named tool, a training claim). Only significant removals qualify;
+// a fulfilled time-bound "will" (an officer to be appointed by July) is
+// notable, not significant, and stays on the statement page.
+const COMMITMENT_FIELDS = new Set(["commitments", "public_interaction_commitment", "public_facing"]);
 const removals = statements
   .flatMap((s) =>
     s.timeline.flatMap((rev) =>
       rev.profileDeltas
         .filter((d) => d.direction === "removed" && d.significance === "significant")
-        .map((d) => ({ abbr: s.abbr, agency: s.agency, date: rev.date, sha: rev.sha, label: d.label })),
+        .map((d) => ({
+          abbr: s.abbr,
+          agency: s.agency,
+          date: rev.date,
+          sha: rev.sha,
+          label: d.label,
+          model: rev.model,
+          commitment: COMMITMENT_FIELDS.has(d.field),
+        })),
     ),
   )
   .toSorted((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.abbr.localeCompare(b.abbr)));
+const droppedCommitments = removals.filter((r) => r.commitment);
+const droppedDisclosures = removals.filter((r) => !r.commitment);
 
 // Who is in charge: the roles agencies name for the two accountable posts.
 function roleCounts(pick: (p: NonNullable<(typeof profiled)[number]["profile"]>) => string | null) {
@@ -61,10 +77,12 @@ const caioInPlace = profiled.filter((s) => s.profile!.chief_ai_officer === "in-p
 const caioPlanned = profiled.filter((s) => s.profile!.chief_ai_officer === "planned").length;
 
 // Currency: who shows no sign of a post-v2.0 update, and who is overdue by
-// their own stated date.
+// their own stated date. A null verdict means we cannot tell (first tracked
+// after v2.0 took effect, no date of its own) and is not a sign of anything.
 const notSinceV2 = statements
-  .filter((s) => !s.currency.updatedSincePolicyV2)
+  .filter((s) => s.currency.updatedSincePolicyV2 === false)
   .toSorted((a, b) => a.agency.localeCompare(b.agency));
+const cannotTell = statements.filter((s) => s.currency.updatedSincePolicyV2 === null).length;
 const overdue = statements
   .filter((s) => s.currency.annualReviewOverdue === true)
   .toSorted((a, b) => (a.currency.statedLastUpdated ?? "").localeCompare(b.currency.statedLastUpdated ?? ""));
@@ -97,10 +115,15 @@ const built = formatDate(meta.builtAt);
       <p class="lede">
         Version 2.0 of the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
           >Policy for the responsible use of AI in government</a
-        > took effect on 15 December 2025. It asks every agency to name a Chief AI Officer,
-        set a strategic position on AI within six months, and stand up a use-case register
-        and mandatory staff training within twelve. The statements are where agencies say
-        how far they have got. This page reads all {profiled.length} of them together, as of {built}.
+        > took effect on 15 December 2025. It requires every agency to set a strategic
+        position on AI within six months, and to stand up a use-case register and mandatory
+        staff training within twelve. Separately, the <a
+          href="https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps"
+          >APS AI Plan</a
+        > asked each agency to name a Chief AI Officer by July 2026. The statements are where
+        agencies say how far they have got. This page reads all {profiled.length} of them
+        together, as of {built}. Every figure here is a count of what a language model read
+        in each statement; each links to the statement so the reading can be checked.
       </p>
       <ReadingLink anchor="adoption" label="How these figures are made" />
     </header>
@@ -111,9 +134,11 @@ const built = formatDate(meta.builtAt);
       </div>
       <p class="section-note">
         Share of tracked statements whose text reports each item, month by month.
-        Dashed rules mark the policy&rsquo;s own dates: v2.0 commencement, the six-month
-        and twelve-month deadlines. A statement counts from the month we first saw it, so
-        the early denominators are small.
+        Dashed rules mark the instruments&rsquo; own dates: v2.0 commencement, the policy&rsquo;s
+        six-month and twelve-month deadlines, and the AI Plan&rsquo;s July 2026 date for Chief AI
+        Officers. A statement counts from the month we first saw it, and agencies joined the
+        tracker in waves (61 in November 2025, 24 more in June 2026), so a month-on-month move
+        can be new entrants as much as new text; open a chart&rsquo;s figures for the denominator.
       </p>
       <div class="charts">
         {
@@ -133,20 +158,55 @@ const built = formatDate(meta.builtAt);
 
     <section class="stack" aria-labelledby="removals-heading">
       <div class="section-title">
-        <h2 id="removals-heading">Commitments dropped</h2>
-        <span class="muted">{removals.length}</span>
+        <h2 id="removals-heading">Commitments no longer made</h2>
+        <span class="muted">{droppedCommitments.length}</span>
+        <ReadingLink anchor="profiles" />
       </div>
       <p class="section-note">
-        A statement that says less than it used to is easy to miss. These are the
-        safeguards, promises and disclosures that disappeared between one revision and the
-        next, newest first. Each links to the revision, where the exact words are shown.
+        A statement that promises less than it used to is easy to miss. These are the
+        promises, self-imposed limits and public-facing safeguards that a later revision no
+        longer makes, newest first, as read by a language model comparing the two
+        revisions&rsquo; profiles. A promise reworded rather than withdrawn can land here, so each
+        links to the revision, where the exact words are shown.
       </p>
       {
-        removals.length === 0 ? (
+        droppedCommitments.length === 0 ? (
           <p class="muted">None recorded.</p>
         ) : (
           <ul class="ledger">
-            {removals.map((r) => (
+            {droppedCommitments.map((r) => (
+              <li class="ledger__row">
+                <time class="mono muted" datetime={r.date}>
+                  {formatDate(r.date)}
+                </time>
+                <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+                  {r.agency}
+                </a>
+                <span class="ledger__what">{r.label}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="stack" aria-labelledby="disclosures-heading">
+      <div class="section-title">
+        <h2 id="disclosures-heading">Disclosures no longer made</h2>
+        <span class="muted">{droppedDisclosures.length}</span>
+      </div>
+      <p class="section-note">
+        Uses, domains, named tools and training claims that a later revision no longer
+        mentions. A tool that drops out of a statement may simply have been renamed or
+        folded into a broader description; a use that drops out may still be happening.
+        These are changes in what the agency says, not in what it does.
+      </p>
+      {
+        droppedDisclosures.length === 0 ? (
+          <p class="muted">None recorded.</p>
+        ) : (
+          <ul class="ledger">
+            {droppedDisclosures.map((r) => (
               <li class="ledger__row">
                 <time class="mono muted" datetime={r.date}>
                   {formatDate(r.date)}
@@ -168,8 +228,9 @@ const built = formatDate(meta.builtAt);
       </div>
       <p class="section-note">
         {caioInPlace} statements say a Chief AI Officer is in place and {caioPlanned} say one
-        is coming. Where a role is named, this is who holds each post. Job titles only;
-        the statements name people, this site does not.
+        is coming. Most statements name the post without saying which job holds it; where
+        they do, this is who holds it (job titles only, never people). The counts below are
+        therefore smaller than the counts above.
       </p>
       <div class="roles">
         <div>
@@ -227,7 +288,8 @@ const built = formatDate(meta.builtAt);
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >Standard for AI transparency statements</a
         > lists what every statement must contain. {fullMarks} of {profiled.length} show all
-        eight; this is how many show each.
+        eight; this is how many show each. &ldquo;Date last updated&rdquo; counts a date the
+        page itself carries as well as one in the statement&rsquo;s prose.
       </p>
       <ul class="bars">
         {
@@ -251,16 +313,21 @@ const built = formatDate(meta.builtAt);
         <h2 id="stale-heading">Going stale</h2>
       </div>
       <p class="section-note">
-        The Standard requires review at least once a year and whenever the approach to AI
-        changes, and it requires the statement to say when it was last updated. {undated}{" "}
+        The <a
+          href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
+          >Standard</a
+        > requires statements to be &ldquo;reviewed and updated&rdquo; at least once a year and
+        whenever the approach to AI changes, and to say when they were last updated. {undated}{" "}
         statements give no date at all.
       </p>
       <div class="stale">
         <div>
           <h3>No sign of an update since policy 2.0 <span class="muted">{notSinceV2.length}</span></h3>
           <p class="muted stale__note">
-            Neither the statement&rsquo;s own date nor any change we observed falls after
-            15 December 2025.
+            Statements we have watched since before 15 December 2025 where neither the
+            statement&rsquo;s own date nor any change we observed falls after it. A further{" "}
+            {cannotTell} entered the tracker after that date and give no date of their own, so
+            we cannot tell either way; they are not listed.
           </p>
           <ul class="agency-list">
             {notSinceV2.map((s) => (
@@ -298,7 +365,8 @@ const built = formatDate(meta.builtAt);
 
     <p class="muted policy__foot">
       {contentChanges} changes of substance across {statements.length} statements feed these
-      figures. For the full change record see the <a href={withBase("/timeline")}>timeline</a>;
+      figures, each read by a language model and each checkable against the words that changed.
+      For the full change record see the <a href={withBase("/timeline")}>timeline</a>;
       for how any single agency got here, its statement page tells the story.
     </p>
   </div>

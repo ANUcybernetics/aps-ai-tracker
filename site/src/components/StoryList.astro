@@ -4,6 +4,7 @@
 // noteworthy points the model pulled out, and the structured profile deltas
 // (a commitment dropped, an officer appointed). Noise never appears here;
 // cosmetic edits are folded into one quiet line so the story stays readable.
+import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
 import { CHANGE_KIND_LABEL, changeTier, formatStatedDate } from "@/lib/profile-labels";
 import { revAnchor } from "@/lib/scrubber";
@@ -100,6 +101,7 @@ const stated = currency.statedFirstPublished;
               </span>{" "}
               {rev.summary ?? "The statement's substance changed."}
             </p>
+            <ModelNote model={rev.model} />
             {rev.noteworthy.length > 0 && (
               <ul class="story__points">
                 {rev.noteworthy.map((point) => (

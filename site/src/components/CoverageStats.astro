@@ -6,22 +6,32 @@ import { statementPath } from "@/lib/paths";
 const agencies = await getAgencies();
 const c = meta.counts;
 const published = agencies.filter((a) => a.statementId);
-const mostRevised = [...published].sort((a, b) => b.revisionCount - a.revisionCount)[0];
+const mostChanged = [...published].sort((a, b) => b.changeCount - a.changeCount)[0];
 const board = propagation.originality;
 const leastOriginal = board.at(-1);
-if (!mostRevised || !leastOriginal) {
+if (!mostChanged || !leastOriginal) {
   throw new Error("CoverageStats: exported data has no published statements — re-run `export`");
 }
 const since = meta.firstCommit ? formatDate(meta.firstCommit) : "launch";
 
+// Silent bodies split by what the policy asks of them: a corporate entity that
+// never published is a different thing from one the policy carves out entirely.
+const voluntaryCount = agencies.filter(
+  (a) => a.scope === "voluntary" && a.status !== "published",
+).length;
+const carvedOutCount = agencies.filter(
+  (a) => a.scope === "exempt" && a.status !== "published",
+).length;
+
 const facts = [
   { label: "Published", value: `${c.published} of ${c.agencies}`, href: null },
   { label: "Not yet", value: String(c.notYet), href: null },
-  { label: "Outside mandate", value: String(c.exempt), href: null },
+  { label: "Publication voluntary", value: String(voluntaryCount), href: null },
+  { label: "Carved out", value: String(carvedOutCount), href: null },
   {
-    label: "Most revised",
-    value: `${mostRevised.abbr} · ${mostRevised.revisionCount}`,
-    href: statementPath(mostRevised.abbr),
+    label: "Most changed",
+    value: `${mostChanged.abbr} · ${mostChanged.changeCount} changes`,
+    href: statementPath(mostChanged.abbr),
   },
   {
     label: "Most templated",
@@ -33,10 +43,11 @@ const facts = [
 
 <section class="coverage" aria-label="Coverage at a glance">
   <p class="coverage__lead">
-    <span class="coverage__big mono">{c.revisions}</span>
+    <span class="coverage__big mono">{c.changes}</span>
     <span class="coverage__gloss">
-      changes tracked since {since}, across <strong>{c.published}</strong> published
-      statements from the {c.agencies} Australian Government bodies we track.
+      changes of substance tracked since {since}, across <strong>{c.published}</strong> published
+      statements from the {c.agencies} Australian Government bodies we track ({c.revisions} captures
+      in all).
     </span>
   </p>
 

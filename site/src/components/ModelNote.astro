@@ -1,0 +1,28 @@
+---
+// Muted inline provenance note for a model-written sentence: which Claude
+// model read the diff and wrote the summary next to it. Renders nothing when
+// no model is recorded (e.g. a cache entry classified by rule, not by Claude).
+interface Props {
+  model: string | null;
+}
+
+const { model } = Astro.props;
+
+const MODEL_LABEL: Record<string, string> = {
+  "claude-opus-5": "Claude Opus 5",
+  "claude-sonnet-5": "Claude Sonnet 5",
+};
+
+const label = model ? (MODEL_LABEL[model] ?? model) : null;
+---
+
+{
+  label && (
+    <span
+      class="model-note"
+      title="Summary written by a language model from the diff; check it against the words that changed"
+    >
+      read by {label}
+    </span>
+  )
+}

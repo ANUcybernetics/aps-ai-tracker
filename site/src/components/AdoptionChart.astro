@@ -63,6 +63,15 @@ const monthLabel = (m: string) =>
   });
 const titleId = `${id}-title`;
 const descId = `${id}-desc`;
+
+const startPct = Math.round(pct[0] ?? 0);
+const endPct = Math.round(latest);
+const trend =
+  endPct === startPct
+    ? `Unchanged at ${startPct}% from ${monthLabel(first)} to ${monthLabel(last)}`
+    : endPct > startPct
+      ? `Rises from ${startPct}% in ${monthLabel(first)} to ${endPct}% in ${monthLabel(last)}`
+      : `Falls from ${startPct}% in ${monthLabel(first)} to ${endPct}% in ${monthLabel(last)}`;
 ---
 
 <figure class="adopt">
@@ -84,10 +93,7 @@ const descId = `${id}-desc`;
     aria-describedby={descId}
   >
     <title id={titleId}>{label}, share of tracked statements by month</title>
-    <desc id={descId}>
-      Rises from {Math.round(pct[0] ?? 0)}% in {monthLabel(first)} to {Math.round(latest)}% in{" "}
-      {monthLabel(last)}. Figures in the table below.
-    </desc>
+    <desc id={descId}>{trend}. Figures in the table below.</desc>
     {
       [0, 50, 100].map((v) => (
         <g>

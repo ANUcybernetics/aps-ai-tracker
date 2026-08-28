@@ -95,10 +95,19 @@ const legend = [
       <StatementMeta doc={doc} />
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
-        {" · "}{changes} {changes === 1 ? "change" : "changes"} of substance in {doc.timeline.length}{" "}
-        {doc.timeline.length === 1 ? "revision" : "revisions"}
+        {" · "}{changes} {changes === 1 ? "change" : "changes"} of substance across {doc.timeline.length}{" "}
+        {doc.timeline.length === 1 ? "capture" : "captures"}
         {lastUpdated && <> · last changed {formatDate(lastUpdated)}</>}
       </p>
+      {
+        doc.latestCaptureSuspect && (
+          <p class="stmt__notice">
+            Our latest capture of this page lost most of its text and has been held back as a
+            likely scraping failure, so the statement shown here is the last complete capture.{" "}
+            <a href={doc.finalUrl ?? doc.sourceUrl ?? "#"}>Check the agency&rsquo;s page</a> for the current text.
+          </p>
+        )
+      }
     </header>
 
     <section class="stmt__section" aria-labelledby="story-heading">
@@ -116,7 +125,12 @@ const legend = [
             <h2 id="profile-heading">What the statement says</h2>
             <ReadingLink anchor="profiles" />
           </div>
-          <ProfileCard profile={doc.profile} standard={doc.standard} currency={doc.currency} />
+          <ProfileCard
+            profile={doc.profile}
+            standard={doc.standard}
+            currency={doc.currency}
+            model={doc.profileModel}
+          />
         </section>
       )
     }
@@ -175,8 +189,9 @@ const legend = [
         <h2>Every revision</h2>
       </div>
       <p class="muted stmt__history-note">
-        Everything the daily scrape recorded, including edits with no change of
-        substance. Pick a dot to view the statement as it stood at that revision.
+        Every capture the daily scrape recorded that differed from the last, including
+        edits with no change of substance. Pick a dot to view the statement as it stood
+        at that capture.
       </p>
       <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
       <RevisionList timeline={doc.timeline} />
@@ -197,6 +212,15 @@ const legend = [
 
   .stmt__dates {
     font-size: 0.9rem;
+  }
+
+  .stmt__notice {
+    margin: 0;
+    max-inline-size: var(--measure);
+    padding: var(--space-3);
+    border-inline-start: 3px solid var(--accent);
+    background: var(--accent-wash);
+    font-size: var(--text-sm);
   }
 
   .stmt__section {

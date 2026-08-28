@@ -84,8 +84,15 @@
             {#if c.alsoInDta}<span class="pill pill--pdf">in DTA template</span>{/if}
             <span class="muted">{c.kind}</span>
           </div>
-          <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint) -->
-          <p class="pb__text">{@html c.html}</p>
+          {#if c.kind === "phrase"}
+            <p class="pb__text pb__text--phrase">the phrase &ldquo;{c.canonicalText}&rdquo;</p>
+            <p class="pb__phrase-note muted">
+              matched wherever this phrase appears, however the sentence around it is worded
+            </p>
+          {:else}
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint) -->
+            <p class="pb__text">{@html c.html}</p>
+          {/if}
           {#if c.firstObserved}
             <p class="pb__first">
               {#if c.firstObserved.abbr}
@@ -181,6 +188,18 @@
     line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .pb__text--phrase {
+    font-style: italic;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .pb__phrase-note {
+    margin: var(--space-1) 0 0;
+    font-size: 0.85rem;
   }
 
   .pb__first {

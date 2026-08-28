@@ -362,6 +362,17 @@ main {
   color: var(--muted);
 }
 
+.model-note {
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+/* Lets a wide table (or other overflow-prone block) scroll on its own axis
+   instead of pushing the page into horizontal scroll at narrow widths. */
+.table-wrap {
+  overflow-x: auto;
+}
+
 /* Screen-reader-only text: present in the accessibility tree, out of the visual
    layout. The :focus-within/:active exception lets focusable hidden content
    reveal itself. */
@@ -387,7 +398,9 @@ main {
 .diff ins {
   background: var(--ins-bg);
   color: var(--ins-text);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
   border-radius: 2px;
   padding: 0 1px;
 }

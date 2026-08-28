@@ -94,16 +94,20 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       <li>
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
         scrape churn that is later reverted, and pure reformatting, are collapsed
-        out. Every remaining revision is classified from its diff: deterministic
-        rules catch formatting-only, link-only, page-chrome, date-stamp and
-        reordering churn, and the rest is read by Claude (Sonnet 5 for the nightly
-        run; the back catalogue was read with Opus 5), which assigns one of five
-        kinds, writes a one-sentence summary, and lists
-        the noteworthy additions and removals. Results are cached by content
-        hash in the repository, so each revision is read once and the site
-        rebuilds without model calls. A
-        first sighting is labelled &ldquo;first tracked&rdquo; (the day-one bulk
-        import) or &ldquo;added&rdquo; (an agency we began tracking later), never
+        out. Captures known to be failures are listed in the repository
+        (<code>captures.toml</code>) and dropped before anything reads them; a
+        fresh capture that lost more than half its text is held back until
+        confirmed; and a revision our own pipeline caused is marked as noise
+        whatever its diff looks like. Every remaining revision is classified from
+        its diff: deterministic rules catch formatting-only, link-only,
+        page-chrome, date-stamp and reordering churn, and the rest is read by
+        Claude (Opus 5 for the back catalogue and Sonnet 5 for the nightly run;
+        every summary says which), which assigns one of five kinds, writes a
+        one-sentence summary, and lists the noteworthy additions and removals.
+        Results are cached by content hash in the repository, so each revision is
+        read once and the site rebuilds without model calls. A first sighting is
+        labelled &ldquo;first tracked&rdquo; (the day-one bulk import) or
+        &ldquo;added&rdquo; (an agency we began tracking later), never
         &ldquo;published&rdquo;: we record when a statement entered the tracker,
         not the agency&rsquo;s true publication date, which we can&rsquo;t know.
       </li>
@@ -122,12 +126,16 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       </li>
       <li>
         <strong>Profiles.</strong> Each readable revision is read by the same model
-        into a fixed-vocabulary profile (pydantic-validated JSON) aligned to the
-        Standard&rsquo;s minimum content and the policy 2.0 obligations; noise
-        revisions inherit their predecessor&rsquo;s profile. Consecutive profiles are
-        diffed field by field to produce the structured change markers; commitments
-        are matched across revisions by word overlap. Adoption curves count, per
-        month, the tracked statements whose profile reports each item.
+        into a fixed-vocabulary profile (pydantic-validated JSON) whose questions
+        come from the Standard&rsquo;s minimum content, the policy 2.0 mandatory
+        requirements and the APS AI Plan, with each question&rsquo;s source recorded
+        (see <a href={withBase("/reading#schema")}>where the questions come
+        from</a>); noise revisions inherit their predecessor&rsquo;s profile. A
+        page&rsquo;s own last-updated date is captured by the scraper, not the
+        model. Consecutive profiles are diffed field by field to produce the
+        structured change markers; commitments are matched across revisions by
+        word overlap. Adoption curves count, per month, the tracked statements
+        whose profile reports each item.
       </li>
     </ul>
 
@@ -154,8 +162,8 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         corpus</a
       > &mdash; and terms-of-service trackers have long committed each snapshot
       to git and diffed it; we point the same technique at government AI
-      transparency statements. The nearest efforts abroad track AI <em>use</em>
-      rather than the statements themselves &mdash; registers like the
+      transparency statements. The nearest efforts abroad track AI <em>use</em> rather
+      than the statements themselves &mdash; registers like the
       UK&rsquo;s <a
         href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub"
         >Algorithmic Transparency Recording Standard</a
@@ -237,8 +245,11 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     </p>
 
     <p class="muted about__build">
-      {c.statements} statements, {c.revisions} tracked changes, {c.profiled} profiled.
-      Built {formatDate(meta.builtAt)} from {meta.headSha.slice(0, 7)}.
+      {c.statements} statements, {c.changes} changes of substance across {c.revisions}{" "}
+      captures, {c.profiled} profiled. Built {formatDate(meta.builtAt)} from commit{" "}
+      <a href={`https://github.com/ANUcybernetics/aps-ai-tracker/commit/${meta.headSha}`}
+        >{meta.headSha.slice(0, 7)}</a
+      >.
     </p>
   </div>
 </Layout>

@@ -3,6 +3,7 @@ import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
 import DiffView from "@/components/DiffView.astro";
+import ModelNote from "@/components/ModelNote.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
 import { getStatements } from "@/lib/statements";
@@ -44,7 +45,6 @@ const recent = timeline
   .map((event) => ({ event, diff: diffFor(event) }));
 
 const c = meta.counts;
-const contentChangeCount = timeline.filter((e) => changeTier(e.changeKind) === "content").length;
 const finderAgencies = agencies.map((a) => ({
   abbr: a.abbr,
   name: a.name,
@@ -54,7 +54,7 @@ const explorers = [
   {
     href: withBase("/timeline"),
     title: "Timeline",
-    hint: `${contentChangeCount} changes`,
+    hint: `${c.changes} changes`,
     body: "Every change of substance, newest first, each summarised in a sentence and traceable to the words that moved.",
   },
   {
@@ -134,6 +134,7 @@ const explorers = [
                 <span class="feed__abbr mono">{e.abbr}</span>
               </div>
               {e.summary && <p class="feed__summary">{e.summary}</p>}
+              {e.summary && <ModelNote model={e.model} />}
               {diff && (
                 <details class="feed__diff">
                   <summary>The words that changed</summary>

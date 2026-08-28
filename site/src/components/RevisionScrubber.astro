@@ -26,6 +26,7 @@ function tipText(d: ScrubberDot): string {
 ---
 
 <nav class="scrubber" data-scrubber aria-label="Revision timeline">
+  <div class="scrubber__viewport">
   <div class="scrubber__track">
     <div class="scrubber__rail" aria-hidden="true"></div>
     <div
@@ -55,6 +56,7 @@ function tipText(d: ScrubberDot): string {
         </a>
       ))
     }
+  </div>
   </div>
   <div class="scrubber__axis mono muted" aria-hidden="true">
     <span>{formatDate(axisStart)}</span>
@@ -194,6 +196,17 @@ function tipText(d: ScrubberDot): string {
     margin-block-start: var(--space-2);
   }
 
+  /* Clips the hover tooltip so it can never push the page into horizontal
+     scroll at narrow widths. The padding/negative-margin pair reserves
+     headroom above the track for the tooltip (which pops up above its dot)
+     without shifting the track's own visible position — so nothing is
+     clipped vertically, only anything that would still overflow sideways. */
+  .scrubber__viewport {
+    overflow: clip;
+    padding-block-start: 1.75rem;
+    margin-block-start: -1.75rem;
+  }
+
   .scrubber__track {
     position: relative;
     height: 2.25rem;
@@ -279,7 +292,11 @@ function tipText(d: ScrubberDot): string {
     bottom: calc(100% - 0.1rem);
     left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap;
+    /* wraps rather than getting clipped mid-word if the viewport is too
+       narrow to fit it flat */
+    white-space: normal;
+    max-inline-size: min(80vw, 14rem);
+    width: max-content;
     font-size: var(--text-xs);
     color: var(--text);
     background: var(--bg);

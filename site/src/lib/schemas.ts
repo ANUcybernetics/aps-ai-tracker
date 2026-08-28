@@ -65,6 +65,7 @@ export const CONTENT_KINDS: ReadonlySet<ChangeKind> = new Set([
 const changeFields = {
   changeKind: changeKindSchema,
   changeMethod: changeMethodSchema,
+  model: z.string().nullable(), // which Claude model read the diff, when one did
   summary: z.string().nullable(), // plain-English one-liner, model-written
   noteworthy: z.array(z.string()), // substantive additions/removals, removals first
 };
@@ -88,20 +89,24 @@ export const metaSchema = z.object({
     notYet: z.number(),
     exempt: z.number(),
     statements: z.number(),
-    revisions: z.number(),
+    revisions: z.number(), // every capture that differed from the last
+    changes: z.number(), // only the revisions whose substance changed
     profiled: z.number(),
   }),
 });
 
 // What a statement says about its own currency, against the policy's rules
 // (see adoption.py). Stated dates are the agency's own; observed ones are ours.
+// `updatedSincePolicyV2` is null when we cannot tell: the statement was first
+// tracked after v2.0 took effect and gives no date of its own.
 export const currencySchema = z.object({
   statedLastUpdated: z.string().nullable(),
   statedFirstPublished: z.string().nullable(),
   lastContentChange: z.string().nullable(),
   firstSeen: z.string(),
-  updatedSincePolicyV2: z.boolean(),
+  updatedSincePolicyV2: z.boolean().nullable(),
   annualReviewOverdue: z.boolean().nullable(),
+  evaluatedAt: z.string(), // the build date the verdicts were computed against
 });
 
 export const agencyRowSchema = z.object({
@@ -116,7 +121,8 @@ export const agencyRowSchema = z.object({
   statementId: z.string().nullable(),
   firstSeen: z.string().nullable(),
   lastUpdated: z.string().nullable(),
-  revisionCount: z.number(),
+  revisionCount: z.number(), // captures that differed
+  changeCount: z.number(), // changes of substance
   originality: z.number().nullable(),
   currency: currencySchema.nullable(),
 });
@@ -233,9 +239,12 @@ export const statementSchema = z.object({
   passages: z.array(passageRowSchema),
   originality: originalitySchema,
   profile: profileSchema.nullable(),
+  profileModel: z.string().nullable(), // which Claude model read the current profile
   // Which of the Standard's minimum elements the profile shows as present.
   standard: z.record(z.string(), z.boolean()).nullable(),
   currency: currencySchema,
+  // The newest capture failed and was quarantined; `body` is the last good one.
+  latestCaptureSuspect: z.boolean(),
 });
 
 export const timelineEventSchema = z.object({

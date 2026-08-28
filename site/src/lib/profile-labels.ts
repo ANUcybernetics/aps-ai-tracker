@@ -112,6 +112,67 @@ export const STANDARD_ELEMENTS: { key: string; label: string }[] = [
   { key: "contact", label: "Public contact" },
 ];
 
+// Where each question the profile asks comes from. Mirrors FIELD_SOURCES /
+// FIELD_SOURCE in profiles.py; the report card and the reading page show it so
+// the schema is never mistaken for the policy itself.
+export type FieldSource = "standard" | "policy" | "ai-plan" | "tracker";
+
+export const FIELD_SOURCE_LABEL: Record<
+  FieldSource,
+  { short: string; long: string; href: string | null }
+> = {
+  standard: {
+    short: "Standard",
+    long: "DTA Standard for AI transparency statements v2.0 (minimum content)",
+    href: "https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements",
+  },
+  policy: {
+    short: "Policy v2.0",
+    long: "Policy for the responsible use of AI in government v2.0 (mandatory requirements)",
+    href: "https://www.digital.gov.au/ai/ai-in-government-policy/strategy-and-oversight",
+  },
+  "ai-plan": {
+    short: "AI Plan",
+    long: "AI Plan for the Australian Public Service 2025 (Department of Finance)",
+    href: "https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps",
+  },
+  tracker: {
+    short: "This tracker",
+    long: "This tracker's own reading, not required by any instrument",
+    href: null,
+  },
+};
+
+// Every question the profile asks, grouped by source, for the reading page.
+export const PROFILE_QUESTIONS: { source: FieldSource; label: string }[] = [
+  { source: "standard", label: "Intentions behind AI use" },
+  { source: "standard", label: "Usage patterns and domains in use (Attachment A classification)" },
+  {
+    source: "standard",
+    label: "Whether the public interacts with or is affected by AI without human review",
+  },
+  { source: "standard", label: "Measures to monitor effectiveness and protect the public" },
+  { source: "standard", label: "Compliance with the policy" },
+  { source: "standard", label: "Compliance with legislation" },
+  { source: "standard", label: "When the statement was last updated" },
+  { source: "standard", label: "A public contact" },
+  { source: "policy", label: "Review cadence (annually, or sooner on a significant change)" },
+  { source: "policy", label: "Accountable official designated" },
+  { source: "policy", label: "Strategic position on AI (due within 6 months of v2.0)" },
+  { source: "policy", label: "Internal AI use-case register (due within 12 months)" },
+  { source: "policy", label: "Mandatory staff training (due within 12 months)" },
+  { source: "ai-plan", label: "Chief AI Officer (due July 2026)" },
+  {
+    source: "tracker",
+    label: "An explicit commitment to a human intermediary for public-facing AI",
+  },
+  { source: "tracker", label: "Named safeguards, named tools, explicit commitments" },
+  {
+    source: "tracker",
+    label: "Which policy version the statement refers to; a stated first-published date",
+  },
+];
+
 // A stated date (YYYY-MM or YYYY-MM-DD) in the site's date style.
 export function formatStatedDate(stated: string): string {
   const [y, m, d] = stated.split("-");

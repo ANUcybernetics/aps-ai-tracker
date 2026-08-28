@@ -1,5 +1,6 @@
 ---
 import DiffView from "@/components/DiffView.astro";
+import ModelNote from "@/components/ModelNote.astro";
 import { formatDate, signedDelta } from "@/lib/format";
 import { CHANGE_KIND_LABEL, changeTier } from "@/lib/profile-labels";
 import { statementPath } from "@/lib/paths";
@@ -39,6 +40,7 @@ const hiddenByDefault = tier !== "content";
     }
   </div>
   {event.summary && <p class="tl-row__summary">{event.summary}</p>}
+  {event.summary && <ModelNote model={event.model} />}
   {
     event.noteworthy.length > 0 && (
       <ul class="tl-row__points">
