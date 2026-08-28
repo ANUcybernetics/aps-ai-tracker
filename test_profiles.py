@@ -4,11 +4,14 @@ Extraction itself is model-backed and exercised only through the cache; these
 tests cover the deterministic logic layered on top of a profile.
 """
 
+import pytest
+
 from aps_ai_tracker import llm, profiles
-from aps_ai_tracker.adoption import build_adoption, staleness
+from aps_ai_tracker.adoption import build_adoption, parse_stated_date, staleness
 from aps_ai_tracker.profiles import (
     Commitment,
     Profile,
+    Reading,
     Step,
     concept_flags,
     diff_profiles,
@@ -183,13 +186,15 @@ def test_build_adoption_counts_and_transitions():
 def test_staleness_uses_stated_and_observed_dates():
     built = "2026-08-28T00:00:00+00:00"
     old = staleness(
-        make_profile(last_updated_stated="2025-03-01"), None, "2025-11-11", built
+        make_profile(last_updated_stated="2025-03-01"), None, None, "2025-11-11", built
     )
     assert old["updatedSincePolicyV2"] is False
     assert old["annualReviewOverdue"] is True
+    assert old["evaluatedAt"] == "2026-08-28"
 
     observed = staleness(
         make_profile(last_updated_stated="2025-03-01"),
+        None,
         "2026-04-02T00:00:00+11:00",
         "2025-11-11",
         built,
@@ -197,21 +202,71 @@ def test_staleness_uses_stated_and_observed_dates():
     assert observed["updatedSincePolicyV2"] is True
 
     month_only = staleness(
-        make_profile(last_updated_stated="2025-12"), None, "2025-11-11", built
+        make_profile(last_updated_stated="2025-12"), None, None, "2025-11-11", built
     )
     assert month_only["updatedSincePolicyV2"] is True  # end of month ≥ 15 Dec
     assert month_only["annualReviewOverdue"] is False
 
     undated = staleness(
-        make_profile(last_updated_stated=None), None, "2025-11-11", built
+        make_profile(last_updated_stated=None), None, None, "2025-11-11", built
     )
     assert undated["annualReviewOverdue"] is None
+    assert undated["updatedSincePolicyV2"] is False  # watched since before v2.0
 
     malformed = staleness(
-        make_profile(last_updated_stated="2025"), None, "2025-11-11", built
+        make_profile(last_updated_stated="2025"), None, None, "2025-11-11", built
     )
     assert malformed["annualReviewOverdue"] is None
     assert malformed["statedLastUpdated"] == "2025"
+
+
+def test_staleness_cannot_tell_for_undated_statements_tracked_after_v2():
+    built = "2026-08-28T00:00:00+00:00"
+    late = staleness(
+        make_profile(last_updated_stated=None), None, None, "2026-06-07", built
+    )
+    assert late["updatedSincePolicyV2"] is None
+    dated = staleness(
+        make_profile(last_updated_stated="2025-02-28"), None, None, "2026-06-07", built
+    )
+    assert dated["updatedSincePolicyV2"] is False
+
+
+def test_staleness_prefers_the_page_date_over_the_model_reading():
+    built = "2026-08-28T00:00:00+00:00"
+    out = staleness(
+        make_profile(last_updated_stated="2025-02-28"),
+        "25 February 2026",
+        None,
+        "2025-11-11",
+        built,
+    )
+    assert out["statedLastUpdated"] == "2026-02-25"
+    assert out["updatedSincePolicyV2"] is True
+    assert out["annualReviewOverdue"] is False
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("25 February 2026", "2026-02-25"),
+        ("1st March 2026", "2026-03-01"),
+        ("3 Mar 2025", "2025-03-03"),
+        ("February 2026", "2026-02"),
+        ("25/02/2026", "2026-02-25"),
+        ("2026-02-25", "2026-02-25"),
+        ("yesterday", None),
+        (None, None),
+    ],
+)
+def test_parse_stated_date(text, expected):
+    assert parse_stated_date(text) == expected
+
+
+def test_standard_report_counts_the_page_date():
+    profile = make_profile(last_updated_stated=None)
+    assert standard_report(profile)["last-updated"] is False
+    assert standard_report(profile, "2026-02-25")["last-updated"] is True
 
 
 def test_extract_profiles_inherits_across_noise_and_anchors_on_previous(
@@ -228,10 +283,12 @@ def test_extract_profiles_inherits_across_noise_and_anchors_on_previous(
         {
             profiles._chain_key("v1", None): {
                 "v": profiles.SCHEMA_VERSION,
+                "model": "opus",
                 "profile": p0.model_dump(mode="json"),
             },
             profiles._chain_key("v3", p0): {
                 "v": profiles.SCHEMA_VERSION,
+                "model": "sonnet",
                 "profile": p1.model_dump(mode="json"),
             },
             "stale": {"v": profiles.SCHEMA_VERSION - 1, "profile": {}},
@@ -243,6 +300,8 @@ def test_extract_profiles_inherits_across_noise_and_anchors_on_previous(
             "B": ("Agency B", [Step("new", True)]),
         }
     )
-    assert out["A"] == [p0, p0, p1]  # v2 is noise: inherits v1's profile
-    assert out["B"] == [None]  # uncached and no backend
+    # v2 is noise: inherits v1's reading, model included
+    assert [r.profile for r in out["A"]] == [p0, p0, p1]
+    assert [r.model for r in out["A"]] == ["opus", "opus", "sonnet"]
+    assert out["B"] == [Reading(None)]  # uncached and no backend
     assert "stale" not in llm.load_cache(profiles.CACHE_PATH)

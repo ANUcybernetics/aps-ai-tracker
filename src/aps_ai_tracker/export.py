@@ -22,6 +22,7 @@ import json
 import re
 import subprocess
 import sys
+import tomllib
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -31,6 +32,7 @@ from .adoption import build_adoption, staleness
 from .changes import UNCLASSIFIED, Classification, classify_pairs
 from .profiles import (
     Profile,
+    Reading,
     Step,
     delta_dict,
     diff_profiles,
@@ -38,6 +40,7 @@ from .profiles import (
     standard_report,
 )
 from .scraper import (
+    CONTENT_SHRINKAGE_THRESHOLD,
     REPO_ROOT,
     Agency,
     atomic_write_text,
@@ -48,6 +51,7 @@ from .scraper import (
 
 STATEMENTS_DIR = REPO_ROOT / "statements"
 GENERATED_DIR = REPO_ROOT / "site" / "src" / "generated"
+CAPTURES_PATH = REPO_ROOT / "captures.toml"
 
 
 # --- small shared helpers ---------------------------------------------------
@@ -124,20 +128,51 @@ _RS = "\x1d"
 # the site labels it "tracked since" instead.
 _BULK_IMPORT_THRESHOLD = 20
 
-# Commit messages self-annotate spurious scrape churn (nav chrome, formatting
-# regressions). Surviving events matching these are flagged so the timeline feed
-# can hide them by default.
+# Commit messages self-annotate churn caused by our own pipeline (nav chrome,
+# cleanup regressions). A revision so annotated is never an agency change,
+# whatever the diff looks like, so the annotation outranks the model's reading.
 _NOISE_RE = re.compile(
     r"(?i)spurious|nav-tile|nav-card|nav-chrome|related-pages|download-widget|"
     r"cleanup-pipeline|leaked into the diff|go to section"
 )
 
 _WS_RE = re.compile(r"\s+")
-_INLINE_LINK_RE = re.compile(r"(!?)\[([^]]*)\]\((?:[^()\\]|\\.|\([^)]*\))*\)")
-_STANDALONE_LINK_RE = re.compile(
-    r"(?m)^\s*(?:[-*+]\s+)?!?\[[^]]*\]\((?:[^()\\]|\\.|\([^)]*\))*\)\s*$"
-)
-_REFERENCE_LINK_RE = re.compile(r"(?m)^(\s*\[[^]]+\]:)\s*\S+.*$")
+
+
+@dataclass(frozen=True, slots=True)
+class Captures:
+    """Operator verdicts on individual captures, from `captures.toml`.
+
+    `quarantine` lists (abbr, sha) revisions that are failed captures — a page
+    rendered client-side, a scraper regression — and must never be read as the
+    agency changing its statement. `confirmed` lists revisions that shrank by
+    more than half and are genuine, so the automatic shrink check lets them
+    through. SHAs may be abbreviated prefixes.
+    """
+
+    quarantine: tuple[tuple[str, str], ...] = ()
+    confirmed: tuple[tuple[str, str], ...] = ()
+
+    @staticmethod
+    def _listed(entries: tuple[tuple[str, str], ...], abbr: str, sha: str) -> bool:
+        return any(a == abbr and sha.startswith(s) for a, s in entries)
+
+    def is_quarantined(self, abbr: str, sha: str) -> bool:
+        return self._listed(self.quarantine, abbr, sha)
+
+    def is_confirmed(self, abbr: str, sha: str) -> bool:
+        return self._listed(self.confirmed, abbr, sha)
+
+
+def load_captures(path: Path = CAPTURES_PATH) -> Captures:
+    if not path.exists():
+        return Captures()
+    with open(path, "rb") as f:
+        data = tomllib.load(f)
+    return Captures(
+        quarantine=tuple((d["abbr"], d["sha"]) for d in data.get("quarantine", [])),
+        confirmed=tuple((d["abbr"], d["sha"]) for d in data.get("confirmed", [])),
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -235,21 +270,46 @@ def collapse_reverts(revisions: list[Revision]) -> list[Revision]:
     return kept
 
 
-def _without_link_changes(body: str) -> str:
-    """Project Markdown to statement text, ignoring link-only page churn."""
-    body = _STANDALONE_LINK_RE.sub("", body)
-    body = _INLINE_LINK_RE.sub(lambda match: f"{match[1]}[{match[2]}]()", body)
-    body = _REFERENCE_LINK_RE.sub(r"\1", body)
-    return _WS_RE.sub(" ", body).strip()
+def quarantine_revisions(
+    abbr: str, revisions: list[Revision], captures: Captures
+) -> tuple[list[Revision], bool]:
+    """Drop failed captures from a statement's history.
+
+    Listed quarantine entries go first. Then any revision whose body is less
+    than half its predecessor's (`CONTENT_SHRINKAGE_THRESHOLD`) and is not
+    confirmed genuine is dropped too, with a warning naming it: a capture that
+    lost most of the page is far more often a scraper failure than an agency
+    deleting most of its statement, and an unread revision is a missing entry,
+    not a false claim. Returns the surviving revisions and whether the newest
+    one was dropped (so the site can show the last good body instead).
+    """
+    kept: list[Revision] = []
+    for rev in revisions:
+        if captures.is_quarantined(abbr, rev.sha):
+            continue
+        if (
+            kept
+            and len(rev.body) < len(kept[-1].body) * CONTENT_SHRINKAGE_THRESHOLD
+            and not captures.is_confirmed(abbr, rev.sha)
+        ):
+            logger.warning(
+                "%s %s shrank from %d to %d chars; treated as a failed capture. "
+                "Add it to captures.toml under [[confirmed]] if it is genuine, "
+                "or [[quarantine]] to silence this warning.",
+                abbr,
+                rev.sha[:10],
+                len(kept[-1].body),
+                len(rev.body),
+            )
+            continue
+        kept.append(rev)
+    newest_dropped = bool(revisions) and (not kept or kept[-1] is not revisions[-1])
+    return kept, newest_dropped
 
 
-def is_noise_revision(rev: Revision, previous: Revision | None = None) -> bool:
-    """Whether a revision is annotated noise or changes only Markdown links."""
-    annotated = bool(_NOISE_RE.search(rev.subject) or _NOISE_RE.search(rev.message))
-    link_only = previous is not None and _without_link_changes(
-        previous.body
-    ) == _without_link_changes(rev.body)
-    return annotated or link_only
+def annotated_noise(rev: Revision) -> bool:
+    """Whether the commit message marks this revision as our own pipeline churn."""
+    return bool(_NOISE_RE.search(rev.subject) or _NOISE_RE.search(rev.message))
 
 
 def _event_kind(index: int, rev: Revision) -> str:
@@ -274,6 +334,8 @@ def classify_timelines(
     """Content-based change classification for every consecutive revision pair.
 
     Returns {abbr: {sha: Classification}} for every revision after the first.
+    A revision whose commit message annotates it as pipeline churn is noise
+    regardless of what the model made of the diff.
     """
     pairs = {
         f"{abbr}:{rev.sha}": (names.get(abbr, abbr), revs[i - 1].body, rev.body)
@@ -282,9 +344,16 @@ def classify_timelines(
         if i > 0
     }
     classified = classify_pairs(pairs)
+    annotated = {
+        rev.sha for revs in timelines.values() for rev in revs if annotated_noise(rev)
+    }
     out: dict[str, dict[str, Classification]] = defaultdict(dict)
     for pair_id, classification in classified.items():
         abbr, sha = pair_id.split(":", 1)
+        if sha in annotated:
+            classification = Classification(
+                kind="scrape-noise", method="rule", summary=classification.summary
+            )
         out[abbr][sha] = classification
     return out
 
@@ -293,7 +362,7 @@ def profile_timelines(
     timelines: dict[str, list[Revision]],
     classes: dict[str, dict[str, Classification]],
     names: dict[str, str],
-) -> dict[str, list[Profile | None]]:
+) -> dict[str, list[Reading]]:
     """One profile per revision: read for readable revisions, inherited across noise.
 
     The first revision and every non-noise revision are read (each anchored on
@@ -343,20 +412,14 @@ def _profile_deltas(
 
 
 def _change_fields(
-    index: int,
-    rev: Revision,
-    revisions: list[Revision],
-    classes: dict[str, Classification],
+    index: int, rev: Revision, classes: dict[str, Classification]
 ) -> dict:
-    """Change-kind fields shared by the per-statement and site-wide timelines.
-
-    `isNoise` prefers the content-based classification; an unclassified pair
-    (no API key and no cache entry) falls back to the commit-message heuristic.
-    """
+    """Change-kind fields shared by the per-statement and site-wide timelines."""
     if index == 0:
         return {
             "changeKind": "first-seen",
             "changeMethod": "rule",
+            "model": None,
             "summary": None,
             "noteworthy": [],
             "isNoise": False,
@@ -365,13 +428,10 @@ def _change_fields(
     return {
         "changeKind": c.kind,
         "changeMethod": c.method,
+        "model": c.model,
         "summary": c.summary,
         "noteworthy": c.noteworthy,
-        "isNoise": (
-            c.is_noise
-            if c.kind != UNCLASSIFIED
-            else is_noise_revision(rev, revisions[index - 1])
-        ),
+        "isNoise": c.is_noise,
     }
 
 
@@ -394,7 +454,7 @@ def timeline_entries(
                 "subject": rev.subject,
                 "message": rev.message,
                 "kind": _event_kind(i, rev),
-                **_change_fields(i, rev, revisions, classes),
+                **_change_fields(i, rev, classes),
                 "profileDeltas": _profile_deltas(i, rev, classes, profiles),
                 "chars": chars,
                 "charDelta": chars - prev_chars,
@@ -506,33 +566,44 @@ def _modal(values: list[str]) -> str:
     return min(counts, key=lambda v: (-counts[v], v))
 
 
-def first_seen_passages(
-    timelines: dict[str, list[Revision]],
-) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]], str | None]:
+@dataclass(frozen=True, slots=True)
+class FirstSeen:
+    """Earliest dates in each agency's history, for passage provenance.
+
+    `keys` and `phrases` map abbr → {norm_key / phrase id → first date observed};
+    `tracked` maps abbr → the date its first revision entered the tracker.
+    """
+
+    keys: dict[str, dict[str, str]]
+    phrases: dict[str, dict[str, str]]
+    tracked: dict[str, str]
+
+    @property
+    def corpus_start(self) -> str | None:
+        """The earliest first-tracked date: when continuous tracking began."""
+        return min(self.tracked.values(), key=datetime.fromisoformat, default=None)
+
+
+def first_seen_passages(timelines: dict[str, list[Revision]]) -> FirstSeen:
     """Earliest date each agency's history shows a given passage / template phrase.
 
     Walks every de-noised revision oldest-first, recording for each agency the
     first date a passage's `norm_key` — and each canonical phrase — is observed.
     These feed every shared-passage cluster's "first observed in our corpus"
-    provenance. Also returns the corpus start: the earliest first-tracked date
-    across all statements (the moment continuous tracking begins).
+    provenance.
 
     This is "first observed by us", never "authored first": a passage present at
     an agency's first tracked revision may predate the corpus entirely.
     """
     by_key: dict[str, dict[str, str]] = {}
     by_phrase: dict[str, dict[str, str]] = {}
-    corpus_start: str | None = None
+    tracked: dict[str, str] = {}
     for abbr, revisions in timelines.items():
         keys: dict[str, str] = {}
         phrases: dict[str, str] = {}
         for index, rev in enumerate(revisions):
-            if index == 0 and (
-                corpus_start is None
-                or datetime.fromisoformat(rev.date)
-                < datetime.fromisoformat(corpus_start)
-            ):
-                corpus_start = rev.date
+            if index == 0:
+                tracked[abbr] = rev.date
             passages = segment_passages(rev.body, abbr)
             for passage in passages:
                 keys.setdefault(passage.norm_key, rev.date)
@@ -542,12 +613,14 @@ def first_seen_passages(
                     phrases.setdefault(phrase_id, rev.date)
         by_key[abbr] = keys
         by_phrase[abbr] = phrases
-    return by_key, by_phrase, corpus_start
+    return FirstSeen(by_key, by_phrase, tracked)
 
 
-# How far past the corpus start a passage's earliest sighting must fall before we
-# treat that agency as having genuinely *added* it (rather than carrying it in at
-# tracking start, which says nothing about who came first).
+# How far past an agency's own first tracked revision a passage's earliest
+# sighting must fall before we treat that agency as having genuinely *added* it
+# (rather than carrying it in at tracking start, which says nothing about who
+# came first). Agencies join the corpus in waves, so this is measured from each
+# agency's own start, never the corpus's.
 _FIRST_OBSERVED_GRACE_DAYS = 2
 
 
@@ -555,17 +628,18 @@ def _first_observed(
     members: list[str],
     first_seen: dict[str, dict[str, str]],
     key: str,
-    corpus_start: str | None,
+    tracked: dict[str, str],
 ) -> dict | None:
     """First-observed provenance for one cluster: who carried the passage earliest.
 
     Returns the per-member first-seen dates (oldest first), the single earliest
     agency, and a tier describing how much weight the ordering bears:
 
-    - ``added``: the earliest agency first showed the passage well after the
-      corpus opened, so we watched it enter — the strongest signal.
-    - ``present-at-start``: the earliest agency already had it when tracking
-      began; others adopted it later, but its own origin may predate the corpus.
+    - ``added``: the earliest agency first showed the passage well after it was
+      itself first tracked, so we watched it enter — the strongest signal.
+    - ``present-at-start``: the earliest agency already had it when we began
+      tracking that agency; others adopted it later, but its own origin may
+      predate the corpus.
     - ``tied``: several agencies share the earliest date, so we cannot order them.
 
     Still only "first observed by us", never proof of authorship.
@@ -581,8 +655,8 @@ def _first_observed(
     if len(winners) > 1:
         tier = "tied"
     elif (
-        corpus_start
-        and (earliest - datetime.fromisoformat(corpus_start)).days
+        winners[0] in tracked
+        and (earliest - datetime.fromisoformat(tracked[winners[0]])).days
         > _FIRST_OBSERVED_GRACE_DAYS
     ):
         tier = "added"
@@ -599,9 +673,7 @@ def _first_observed(
 def build_clusters(
     passages_by_abbr: dict[str, list[Passage]],
     dta_abbr: str = "DTA",
-    first_seen_key: dict[str, dict[str, str]] | None = None,
-    first_seen_phrase: dict[str, dict[str, str]] | None = None,
-    corpus_start: str | None = None,
+    first_seen: FirstSeen | None = None,
 ) -> tuple[list[dict], dict[str, int]]:
     """Cluster shared passages and return (clusters, sharedCount-by-norm_key).
 
@@ -633,8 +705,8 @@ def build_clusters(
                     group[0].normalised
                 ),
                 "firstObserved": (
-                    _first_observed(members, first_seen_key, key, corpus_start)
-                    if first_seen_key is not None
+                    _first_observed(members, first_seen.keys, key, first_seen.tracked)
+                    if first_seen is not None
                     else None
                 ),
                 "mergeMethod": "exact",
@@ -642,7 +714,8 @@ def build_clusters(
         )
 
     # Canonical-phrase clusters: agencies whose text contains a template phrase,
-    # however it is worded. Recovers the policy sentence exact matching misses.
+    # however it is worded. The shared text is the phrase itself — showing a
+    # host sentence would claim more than the match supports.
     for phrase_id, phrase in CANONICAL_PHRASES.items():
         members = sorted(
             abbr
@@ -654,17 +727,17 @@ def build_clusters(
         clusters.append(
             {
                 "normKey": f"phrase:{phrase_id}",
-                "canonicalText": _phrase_example(
-                    passages_by_abbr, members, phrase, dta_abbr
-                ),
+                "canonicalText": phrase,
                 "kind": "phrase",
                 "memberAbbrs": members,
                 "count": len(members),
                 "alsoInDta": dta_abbr in members,
                 "containsCanonicalPhrase": True,
                 "firstObserved": (
-                    _first_observed(members, first_seen_phrase, phrase_id, corpus_start)
-                    if first_seen_phrase is not None
+                    _first_observed(
+                        members, first_seen.phrases, phrase_id, first_seen.tracked
+                    )
+                    if first_seen is not None
                     else None
                 ),
                 "mergeMethod": "phrase",
@@ -673,21 +746,6 @@ def build_clusters(
 
     clusters.sort(key=lambda c: (-c["count"], c["normKey"]))
     return clusters, shared_count
-
-
-def _phrase_example(
-    passages_by_abbr: dict[str, list[Passage]],
-    members: list[str],
-    phrase: str,
-    dta_abbr: str,
-) -> str:
-    """A representative raw passage containing `phrase`, preferring the DTA template."""
-    order = [dta_abbr, *members] if dta_abbr in members else members
-    for abbr in order:
-        for passage in passages_by_abbr.get(abbr, []):
-            if phrase in passage.normalised:
-                return passage.raw_text
-    return phrase
 
 
 def statement_passages(
@@ -756,7 +814,9 @@ def build_statement_doc(
     passages: list[dict],
     originality: dict,
     profile: Profile | None = None,
+    profile_model: str | None = None,
     currency: dict | None = None,
+    latest_capture_suspect: bool = False,
 ) -> dict:
     """Per-statement document consumed by the statement page."""
     doc: dict = {
@@ -771,8 +831,16 @@ def build_statement_doc(
         "passages": passages,
         "originality": originality,
         "profile": profile.model_dump(mode="json") if profile else None,
-        "standard": standard_report(profile) if profile else None,
+        "profileModel": profile_model,
+        "standard": (
+            standard_report(profile, (currency or {}).get("statedLastUpdated"))
+            if profile
+            else None
+        ),
         "currency": currency,
+        # The newest capture failed (quarantined), so `body` is the last good
+        # revision rather than what the scraper holds today.
+        "latestCaptureSuspect": latest_capture_suspect,
     }
     if frontmatter.get("final_url"):
         doc["finalUrl"] = frontmatter["final_url"]
@@ -785,9 +853,15 @@ def build_agency_index(
     timelines: dict[str, list[Revision]],
     originalities: dict[str, dict],
     currencies: dict[str, dict] | None = None,
+    classes: dict[str, dict[str, Classification]] | None = None,
 ) -> list[dict]:
-    """Index of every agency with coverage status + revision summary, sorted by abbr."""
+    """Index of every agency with coverage status + revision summary, sorted by abbr.
+
+    `revisionCount` counts every capture that differed; `changeCount` only the
+    revisions whose substance changed. The site headlines the latter.
+    """
     currencies = currencies or {}
+    classes = classes or {}
     index = []
     for agency in agencies:
         abbr = agency.abbr
@@ -806,11 +880,24 @@ def build_agency_index(
                 "firstSeen": revs[0].date if revs else None,
                 "lastUpdated": revs[-1].date if revs else None,
                 "revisionCount": len(revs),
+                "changeCount": content_change_count(revs, classes.get(abbr, {})),
                 "originality": originalities[abbr]["score"] if has_statement else None,
                 "currency": currencies.get(abbr),
             }
         )
     return sorted(index, key=lambda a: a["abbr"])
+
+
+def content_change_count(
+    revs: list[Revision], classes: dict[str, Classification]
+) -> int:
+    """Revisions classified as a change of substance (an unclassified pair counts)."""
+    return sum(
+        1
+        for rev in revs
+        if (c := classes.get(rev.sha)) is not None
+        and (c.is_content or c.kind == UNCLASSIFIED)
+    )
 
 
 def build_timeline(
@@ -837,7 +924,7 @@ def build_timeline(
                     "size": sizes.get(abbr, "unknown"),
                     "commitSubject": rev.subject,
                     "kind": _event_kind(i, rev),
-                    **_change_fields(i, rev, revs, classes.get(abbr, {})),
+                    **_change_fields(i, rev, classes.get(abbr, {})),
                 }
             )
     return sorted(events, key=lambda e: (e["date"], e["id"]), reverse=True)
@@ -868,13 +955,22 @@ def main() -> int:
 
     agencies = load_agencies()
     statements = load_statements()
+    captures = load_captures()
     logger.info("Loaded %d agencies, %d statements", len(agencies), len(statements))
 
     logger.info("Walking git history for %d statements...", len(statements))
     bulk = bulk_import_shas()
-    timelines = {
-        abbr: collapse_reverts(git_file_revisions(abbr, bulk)) for abbr in statements
-    }
+    timelines: dict[str, list[Revision]] = {}
+    suspect: dict[str, bool] = {}
+    for abbr in statements:
+        revs, newest_dropped = quarantine_revisions(
+            abbr, git_file_revisions(abbr, bulk), captures
+        )
+        timelines[abbr] = collapse_reverts(revs)
+        suspect[abbr] = newest_dropped
+        if newest_dropped:
+            # Show the last good capture as the statement, not the failed one.
+            statements[abbr]["body"] = timelines[abbr][-1].body
     total_revisions = sum(len(r) for r in timelines.values())
 
     names = {
@@ -884,17 +980,13 @@ def main() -> int:
     classes = classify_timelines(timelines, names)
     timeline = build_timeline(timelines, agencies, statements, classes)
 
-    first_seen_key, first_seen_phrase, corpus_start = first_seen_passages(timelines)
+    first_seen = first_seen_passages(timelines)
+    corpus_start = first_seen.corpus_start
 
     passages_by_abbr = {
         abbr: segment_passages(data["body"], abbr) for abbr, data in statements.items()
     }
-    clusters, shared_count = build_clusters(
-        passages_by_abbr,
-        first_seen_key=first_seen_key,
-        first_seen_phrase=first_seen_phrase,
-        corpus_start=corpus_start,
-    )
+    clusters, shared_count = build_clusters(passages_by_abbr, first_seen=first_seen)
     originalities = {
         abbr: originality_score(passages, shared_count)
         for abbr, passages in passages_by_abbr.items()
@@ -906,7 +998,12 @@ def main() -> int:
 
     built_at = datetime.now(UTC).isoformat()
     logger.info("Extracting statement profiles...")
-    profiles = profile_timelines(timelines, classes, names)
+    readings = profile_timelines(timelines, classes, names)
+    profiles = {abbr: [r.profile for r in rs] for abbr, rs in readings.items()}
+    profile_models = {
+        abbr: next((r.model for r in reversed(rs) if r.profile is not None), None)
+        for abbr, rs in readings.items()
+    }
     currencies = {}
     for abbr, revs in timelines.items():
         content_dates = [
@@ -916,6 +1013,7 @@ def main() -> int:
         ]
         currencies[abbr] = staleness(
             profiles[abbr][-1] if profiles[abbr] else None,
+            statements[abbr]["frontmatter"].get("last_updated_text"),
             content_dates[-1] if content_dates else None,
             revs[0].date,
             built_at,
@@ -939,7 +1037,7 @@ def main() -> int:
     )
 
     agency_index = build_agency_index(
-        agencies, statements, timelines, originalities, currencies
+        agencies, statements, timelines, originalities, currencies, classes
     )
     statuses = [a["status"] for a in agency_index]
 
@@ -952,7 +1050,9 @@ def main() -> int:
             statement_passages(passages_by_abbr[abbr], shared_count),
             originalities[abbr],
             profiles[abbr][-1] if profiles[abbr] else None,
+            profile_models[abbr],
             currencies[abbr],
+            suspect[abbr],
         )
         for abbr, data in statements.items()
     }
@@ -970,6 +1070,7 @@ def main() -> int:
             "exempt": statuses.count("exempt"),
             "statements": len(statements),
             "revisions": total_revisions,
+            "changes": sum(a["changeCount"] for a in agency_index),
             "profiled": sum(1 for p in profiles.values() if p and p[-1] is not None),
         },
     }
@@ -981,9 +1082,6 @@ def main() -> int:
         {"clusters": clusters, "originality": leaderboard, "ursource": "DTA"},
     )
     write_json(GENERATED_DIR / "adoption.json", adoption)
-    # Superseded artifact from the retired embeddings layer; a stale copy would
-    # keep validating against nothing.
-    (GENERATED_DIR / "similarity.json").unlink(missing_ok=True)
     statement_dir = GENERATED_DIR / "statements"
     for abbr, doc in statement_docs.items():
         write_json(statement_dir / f"{abbr}.json", doc)

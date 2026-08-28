@@ -2,13 +2,15 @@
 
 The DTA's Standard for AI transparency statements lists what a statement must
 contain (intentions, usage classification, public-facing use, monitoring
-measures, policy and legislative compliance, a last-updated date, a contact),
-and version 2.0 of the policy (effective 15 December 2025) adds agency-level
-obligations that statements have started to report on: a Chief AI Officer, a
-strategic position on AI, an internal use-case register, mandatory staff
-training. A profile records, per revision, which of those the statement
-addresses and what it commits to, using closed vocabularies so profiles compare
-cleanly across agencies and across time.
+measures, policy and legislative compliance, a last-updated date, a contact);
+version 2.0 of the policy (effective 15 December 2025) adds agency-level
+obligations that statements have started to report on (a strategic position on
+AI, an internal use-case register, mandatory staff training); and the APS AI
+Plan (Finance, November 2025) separately asked each agency to name a Chief AI
+Officer by July 2026. A profile records, per revision, which of those the
+statement addresses and what it commits to, using closed vocabularies so
+profiles compare cleanly across agencies and across time. Each field's source
+instrument is recorded in `FIELD_SOURCES` and shown on the site.
 
 Diffing two profiles gives the structured, interpretable version of "what
 changed": a commitment dropped, an officer appointed, a use disclosed. A bullet
@@ -33,10 +35,10 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 CACHE_PATH = llm.CACHE_DIR / "profiles.json"
 
-# The policy's own dates, used for the staleness and adoption views.
+# The instruments' own dates, used for the staleness and adoption views.
 POLICY_V2_EFFECTIVE = "2025-12-15"
 POLICY_V2_MILESTONES = [
     {
@@ -44,12 +46,45 @@ POLICY_V2_MILESTONES = [
         "label": "Transparency statements first required (policy v1.1)",
     },
     {"date": "2025-12-15", "label": "Policy v2.0 takes effect"},
-    {"date": "2026-06-15", "label": "Strategic position on AI due (6 months)"},
+    {"date": "2026-06-15", "label": "Strategic position on AI due (policy, 6 months)"},
+    {"date": "2026-07-01", "label": "Chief AI Officers due (APS AI Plan, July 2026)"},
     {
         "date": "2026-12-15",
-        "label": "Use-case register, mandatory training and use-case owners due (12 months)",
+        "label": "Use-case register, mandatory training and use-case owners due (policy, 12 months)",
     },
 ]
+
+# Which instrument each profile field is read against, so the site can say
+# where a question comes from rather than presenting the schema as the policy.
+FIELD_SOURCES = {
+    "standard": "DTA Standard for AI transparency statements v2.0 (minimum content)",
+    "policy": "Policy for the responsible use of AI in government v2.0 (mandatory requirements)",
+    "ai-plan": "APS AI Plan 2025 (Department of Finance)",
+    "tracker": "This tracker's own reading",
+}
+FIELD_SOURCE = {
+    "intentions_stated": "standard",
+    "usage_patterns": "standard",
+    "domains": "standard",
+    "public_facing": "standard",
+    "monitoring_measures_stated": "standard",
+    "policy_compliance_stated": "standard",
+    "legislation_compliance_stated": "standard",
+    "last_updated_stated": "standard",
+    "contact_provided": "standard",
+    "review_cadence": "policy",
+    "accountable_official": "policy",
+    "strategic_position": "policy",
+    "use_case_register": "policy",
+    "staff_training": "policy",
+    "chief_ai_officer": "ai-plan",
+    "public_interaction_commitment": "tracker",
+    "measures": "tracker",
+    "named_tools": "tracker",
+    "commitments": "tracker",
+    "policy_version": "tracker",
+    "first_published_stated": "tracker",
+}
 
 UsagePattern = Literal[
     "decision-making-and-administrative-action",
@@ -173,8 +208,10 @@ significantly impacted by, AI without human review; measures to monitor
 effectiveness and protect the public from negative impacts; compliance with the
 policy and with legislation; and when the statement was last updated. It must
 also give a contact. Version 2.0 of the policy (effective 15 December 2025) adds
-a Chief AI Officer, a strategic position on AI, an internal AI use-case register
-and mandatory staff training, and statements increasingly report on these.
+a strategic position on AI, an internal AI use-case register and mandatory
+staff training; the APS AI Plan (Department of Finance, November 2025)
+separately asked each agency to name a Chief AI Officer by July 2026. Statements
+increasingly report on all of these.
 
 Rules:
 - Record only what the statement itself says. Do not infer from what is typical.
@@ -259,6 +296,19 @@ class Step:
     readable: bool
 
 
+@dataclass(frozen=True, slots=True)
+class Reading:
+    """A revision's profile and the model that read it.
+
+    A noise revision inherits its predecessor's reading wholesale, model
+    included; a revision with no profile (nothing cached, no backend) has
+    neither.
+    """
+
+    profile: Profile | None
+    model: str | None = None
+
+
 def _walk_chain(
     agency: str,
     steps: list[Step],
@@ -266,50 +316,55 @@ def _walk_chain(
     live: set[str],
     lock: threading.Lock,
     can_call: bool,
-) -> list[Profile | None]:
+) -> list[Reading]:
     """Profiles for one statement's revisions, oldest first, anchored in sequence."""
-    out: list[Profile | None] = []
-    prev: Profile | None = None
+    out: list[Reading] = []
+    prev: Reading = Reading(None)
     for step in steps:
-        if not step.readable and prev is not None:
+        if not step.readable and prev.profile is not None:
             out.append(prev)
             continue
-        key = _chain_key(step.body, prev)
+        key = _chain_key(step.body, prev.profile)
         with lock:
             live.add(key)
             entry = cache.get(key)
-        profile: Profile | None = None
+        reading = Reading(None)
         if entry and entry.get("v") == SCHEMA_VERSION:
-            profile = Profile.model_validate(entry["profile"])
+            reading = Reading(
+                Profile.model_validate(entry["profile"]), entry.get("model")
+            )
         elif can_call:
             try:
                 profile = llm.extract(
-                    SYSTEM_PROMPT, _user_prompt(agency, step.body, prev), Profile
+                    SYSTEM_PROMPT,
+                    _user_prompt(agency, step.body, prev.profile),
+                    Profile,
                 )
             except Exception as exc:  # noqa: BLE001 - logged, retried next run
                 logger.warning("Profile extraction failed for %s: %s", agency, exc)
-            if profile is not None:
+            else:
+                reading = Reading(profile, llm.MODEL)
                 with lock:
                     cache[key] = {
                         "v": SCHEMA_VERSION,
                         "model": llm.MODEL,
                         "profile": profile.model_dump(mode="json"),
                     }
-        out.append(profile)
+        out.append(reading)
         # A missing profile breaks the anchor; the next readable revision is
         # read unanchored rather than against a stale baseline.
-        prev = profile
+        prev = reading
     return out
 
 
 def extract_profiles(
     chains: dict[str, tuple[str, list[Step]]],
-) -> dict[str, list[Profile | None]]:
+) -> dict[str, list[Reading]]:
     """Profiles per revision for {abbr: (agency, steps)}; chains run in parallel.
 
     Within a statement extraction is sequential (each revision is anchored on
     the last); across statements it is concurrent. Cached entries never cost a
-    call; without a backend, uncached revisions come back None.
+    call; without a backend, uncached revisions come back with no profile.
     """
     cache = llm.load_cache(CACHE_PATH)
     on_disk = dict(cache)
@@ -319,13 +374,11 @@ def extract_profiles(
     if not can_call:
         logger.warning("No Claude backend available; uncached revisions get no profile")
 
-    def run(
-        item: tuple[str, tuple[str, list[Step]]],
-    ) -> tuple[str, list[Profile | None]]:
+    def run(item: tuple[str, tuple[str, list[Step]]]) -> tuple[str, list[Reading]]:
         abbr, (agency, steps) = item
         return abbr, _walk_chain(agency, steps, cache, live, lock, can_call)
 
-    results: dict[str, list[Profile | None]] = {}
+    results: dict[str, list[Reading]] = {}
     with ThreadPoolExecutor(max_workers=llm.WORKERS) as pool:
         for abbr, profiles in pool.map(run, sorted(chains.items())):
             results[abbr] = profiles
@@ -666,8 +719,15 @@ STANDARD_ELEMENTS = [
 ]
 
 
-def standard_report(profile: Profile) -> dict[str, bool]:
-    """Which of the Standard's minimum elements the profile shows as present."""
+def standard_report(
+    profile: Profile, stated_last_updated: str | None = None
+) -> dict[str, bool]:
+    """Which of the Standard's minimum elements the profile shows as present.
+
+    `stated_last_updated` is the date the page itself carries (captured by the
+    scraper, which strips it from the body before the model reads it); the
+    model's own reading of a date inside the prose is the fallback.
+    """
     return {
         "intentions": profile.intentions_stated,
         "classification": bool(profile.usage_patterns or profile.domains),
@@ -675,7 +735,8 @@ def standard_report(profile: Profile) -> dict[str, bool]:
         "monitoring": profile.monitoring_measures_stated,
         "policy-compliance": profile.policy_compliance_stated,
         "legislation": profile.legislation_compliance_stated,
-        "last-updated": profile.last_updated_stated is not None,
+        "last-updated": (stated_last_updated or profile.last_updated_stated)
+        is not None,
         "contact": profile.contact_provided,
     }
 

@@ -7,14 +7,19 @@ touching git or a model.
 
 import pytest
 
+from aps_ai_tracker.changes import Classification
 from aps_ai_tracker.export import (
+    Captures,
+    FirstSeen,
     Passage,
     Revision,
+    annotated_noise,
     build_clusters,
+    classify_timelines,
     collapse_reverts,
-    is_noise_revision,
     normalise_passage,
     originality_score,
+    quarantine_revisions,
     segment_passages,
     source_type,
     statement_status,
@@ -71,9 +76,9 @@ def _rev(key: str, sha: str = "s", bulk: bool = False) -> Revision:
     )
 
 
-def _body_rev(body: str, subject: str = "update") -> Revision:
+def _body_rev(body: str, subject: str = "update", sha: str = "s") -> Revision:
     return Revision(
-        sha="s",
+        sha=sha,
         date="2026-01-01T00:00:00+00:00",
         subject=subject,
         message="",
@@ -83,49 +88,70 @@ def _body_rev(body: str, subject: str = "update") -> Revision:
     )
 
 
-def test_noise_revision_detects_destination_only_link_change():
-    before = _body_rev(
-        "[DPS AI statement](https://www.aph.gov.au/-/media/statement.pdf)"
+def test_annotated_noise_reads_commit_message():
+    assert annotated_noise(_body_rev("Changed body", "strip nav-chrome"))
+    assert not annotated_noise(_body_rev("Changed body", "update 3 statements"))
+
+
+def test_annotation_outranks_model_classification(monkeypatch):
+    # The model called the diff substantive, but the commit says it was our
+    # own cleanup: the annotation wins so the change is never shown as the
+    # agency's.
+    monkeypatch.setattr(
+        "aps_ai_tracker.export.classify_pairs",
+        lambda pairs: {
+            pid: Classification(kind="substantive", method="llm", summary="Drops X")
+            for pid in pairs
+        },
     )
-    after = _body_rev(
-        "[DPS AI statement](https://static.aph.gov.au/-/media/statement.pdf?rev=2)"
+    revs = [
+        _body_rev("A long statement.", sha="a1"),
+        _body_rev(
+            "A statement.", "statements: strip nav-chrome across the corpus", "b2"
+        ),
+    ]
+    classes = classify_timelines({"X": revs}, {"X": "Agency X"})
+    assert classes["X"]["b2"].kind == "scrape-noise"
+    assert classes["X"]["b2"].method == "rule"
+    assert classes["X"]["b2"].summary == "Drops X"
+
+
+# --- quarantine_revisions ---------------------------------------------------
+
+
+def test_quarantine_drops_listed_revision():
+    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("intro", sha="bbb2")]
+    kept, newest_dropped = quarantine_revisions(
+        "X", revs, Captures(quarantine=(("X", "bbb"),))
     )
-    assert is_noise_revision(after, before)
+    assert [r.sha for r in kept] == ["aaa1"]
+    assert newest_dropped
 
 
-def test_noise_revision_handles_parentheses_in_link_destinations():
-    before = _body_rev("Download [here](https://example.gov.au/file%20(old).pdf).")
-    after = _body_rev("Download [here](https://example.gov.au/file%20(new).pdf).")
-    assert is_noise_revision(after, before)
+def test_quarantine_drops_unconfirmed_large_shrink():
+    revs = [
+        _body_rev("full " * 100, sha="aaa1"),
+        _body_rev("intro only", sha="bbb2"),
+        _body_rev("full " * 101, sha="ccc3"),
+    ]
+    kept, newest_dropped = quarantine_revisions("X", revs, Captures())
+    assert [r.sha for r in kept] == ["aaa1", "ccc3"]
+    assert not newest_dropped
 
 
-def test_noise_revision_detects_standalone_link_churn():
-    before = _body_rev("## Contact\n\nEmail the accountable official.")
-    after = _body_rev(
-        "## Contact\n\nEmail the accountable official.\n\n"
-        "[January–June 2026](https://example.gov.au/register.pdf)"
+def test_quarantine_keeps_confirmed_shrink():
+    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("short now", sha="bbb2")]
+    kept, newest_dropped = quarantine_revisions(
+        "X", revs, Captures(confirmed=(("X", "bbb2"),))
     )
-    assert is_noise_revision(after, before)
+    assert [r.sha for r in kept] == ["aaa1", "bbb2"]
+    assert not newest_dropped
 
 
-def test_noise_revision_preserves_changed_link_label():
-    before = _body_rev("See the [2025 policy](https://example.gov.au/policy).")
-    after = _body_rev("See the [2026 policy](https://example.gov.au/policy).")
-    assert not is_noise_revision(after, before)
-
-
-def test_noise_revision_does_not_mask_prose_change_alongside_url_churn():
-    before = _body_rev(
-        "We are trialling AI. Read the [policy](https://example.gov.au/old)."
-    )
-    after = _body_rev(
-        "We are deploying AI. Read the [policy](https://example.gov.au/new)."
-    )
-    assert not is_noise_revision(after, before)
-
-
-def test_noise_revision_preserves_commit_message_annotations():
-    assert is_noise_revision(_body_rev("Changed body", "strip nav-chrome"))
+def test_quarantine_only_matches_the_named_agency():
+    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("full " * 99, sha="bbb2")]
+    kept, _ = quarantine_revisions("X", revs, Captures(quarantine=(("Y", "bbb2"),)))
+    assert len(kept) == 2
 
 
 def test_collapse_drops_revert_excursion():
@@ -223,3 +249,42 @@ def test_build_clusters_finds_exact_and_phrase_reuse():
     acc = next(c for c in phrase if c["normKey"] == "phrase:accountable-official")
     assert acc["alsoInDta"] is True
     assert set(acc["memberAbbrs"]) == {"A", "DTA"}
+    # The shared text is the phrase, never a host sentence from one agency.
+    assert acc["canonicalText"] == "accountable official"
+
+
+def test_first_observed_grace_is_measured_from_each_agencys_own_start():
+    shared = "we comply with all applicable legislation and policy"
+    by_abbr = {
+        "A": segment_passages(shared, "A"),
+        "B": segment_passages(shared, "B"),
+    }
+    key = by_abbr["A"][0].norm_key
+    # A carried the passage from its first tracked day; B joined the corpus
+    # months later and also carried it from day one. Nobody watched it enter.
+    first_seen = FirstSeen(
+        keys={
+            "A": {key: "2026-06-07T00:00:00+10:00"},
+            "B": {key: "2026-06-07T00:00:00+10:00"},
+        },
+        phrases={"A": {}, "B": {}},
+        tracked={"A": "2026-06-07T00:00:00+10:00", "B": "2026-06-07T00:00:00+10:00"},
+    )
+    clusters, _ = build_clusters(by_abbr, first_seen=first_seen)
+    assert clusters[0]["firstObserved"]["tier"] == "tied"
+
+    first_seen = FirstSeen(
+        keys={
+            "A": {key: "2026-06-07T00:00:00+10:00"},
+            "B": {key: "2026-07-07T00:00:00+10:00"},
+        },
+        phrases={"A": {}, "B": {}},
+        tracked={"A": "2026-06-07T00:00:00+10:00", "B": "2025-11-11T00:00:00+11:00"},
+    )
+    clusters, _ = build_clusters(by_abbr, first_seen=first_seen)
+    observed = clusters[0]["firstObserved"]
+    assert observed["abbr"] == "A"
+    # A had it on its own first day, long after the corpus opened: still only
+    # "present at start" for A, not something we watched it add.
+    assert observed["tier"] == "present-at-start"
+    assert first_seen.corpus_start == "2025-11-11T00:00:00+11:00"

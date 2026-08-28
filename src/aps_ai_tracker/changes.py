@@ -31,7 +31,7 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 CACHE_PATH = llm.CACHE_DIR / "changes.json"
 
 NOISE_KINDS = frozenset(
@@ -79,6 +79,7 @@ class Classification:
     method: str  # rule | llm | uncached
     summary: str | None = None
     noteworthy: list[str] = field(default_factory=list)
+    model: str | None = None  # which Claude model read the diff, when one did
 
     @property
     def is_noise(self) -> bool:
@@ -171,15 +172,20 @@ Kinds:
   with it without a human" added or removed; a tool named or dropped; the review
   cadence changed; a contact point changed; a whole rewrite.
 
-Removals matter more than additions. A dropped commitment, safeguard, or
-disclosure is always substantive and always belongs in `noteworthy`, prefixed
-"Removed:". An expansion that keeps the same substance is never substantive.
+Report removals and additions alike. A dropped commitment, safeguard or
+disclosure belongs in `noteworthy` prefixed "Removed:"; a new one belongs there
+too. An expansion that keeps the same substance is never substantive. Before
+calling a removal substantive, check that the text really was edited out: if
+what disappeared is consistent with a partial or failed capture rather than an
+edit (the page ends mid-way, a whole section is gone with nothing in its place,
+navigation or page chrome appears where the body was), the kind is scrape-noise
+and `noteworthy` stays empty.
 
 Write `summary` as one sentence of at most 30 words, in plain Australian
 English, naming the agency's action ("Names a Chief AI Officer and drops its
 commitment to keep AI away from public-facing decisions."). No preamble, no
-hedging, no "the diff shows". Use `noteworthy` for the specific substantive
-points, one short phrase each, most important first.
+"the diff shows". Use `noteworthy` for the specific substantive points, one
+short phrase each, most important first.
 """
 
 
@@ -216,6 +222,7 @@ def _from_cache(entry: dict) -> Classification:
         method="llm",
         summary=entry["summary"],
         noteworthy=list(entry["noteworthy"]),
+        model=entry.get("model"),
     )
 
 

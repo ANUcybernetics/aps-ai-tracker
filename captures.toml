@@ -1,0 +1,51 @@
+# Operator verdicts on individual captures, read by `export`.
+#
+# [[quarantine]]: revisions that are failed captures, not the agency changing its
+# statement. The exporter drops them from the timeline before anything reads
+# them, so no summary, profile delta or announcement is ever built on one.
+#
+# [[confirmed]]: revisions that shrank by more than half and are genuine. Any
+# other revision that shrinks past CONTENT_SHRINKAGE_THRESHOLD is dropped
+# automatically with a warning naming it; add it here (or above) to settle it.
+#
+# `sha` may be an abbreviated prefix of the statement commit.
+
+[[quarantine]]
+abbr = "HOMEAFFAIRS"
+sha = "e21d30e749"
+reason = "SharePoint page body rendered client-side; only the introduction was captured (scraper fixed 2026-08-28)"
+
+[[quarantine]]
+abbr = "IGIS"
+sha = "50fae366b5"
+reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
+
+[[quarantine]]
+abbr = "PSR"
+sha = "50fae366b5"
+reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
+
+[[quarantine]]
+abbr = "NCA"
+sha = "49130251fd"
+reason = "scraper regex ate the publication-date and 'reviewed annually' sentences (fixed 2026-06-26)"
+
+[[confirmed]]
+abbr = "AEC"
+sha = "0acfd541cd"
+reason = "tracked document switched from the AEC's public explainer page to its statement PDF"
+
+[[confirmed]]
+abbr = "AUSTRAC"
+sha = "078058e23f"
+reason = "rewrite of a very long statement"
+
+[[confirmed]]
+abbr = "DFSVC"
+sha = "832b504516"
+reason = "statement replaced by a referral to the Department of Social Services' statement"
+
+[[confirmed]]
+abbr = "SWA"
+sha = "3ae7455c98"
+reason = "rewrite"
