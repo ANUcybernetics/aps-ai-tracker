@@ -857,6 +857,7 @@ def build_agency_index(
                 "size": agency.size,
                 "scope": agency.scope,
                 "portfolio": agency.portfolio,
+                "established": agency.established,
                 "url": agency.url,
                 "status": statement_status(agency.scope, agency.url, has_statement),
                 "statementId": abbr if has_statement else None,

@@ -3,7 +3,7 @@ import Layout from "@/components/Layout.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
 import { getAgencies } from "@/lib/load";
-import { SIZE_LABEL, originalityPercent } from "@/lib/format";
+import { SIZE_LABEL, originalityPercent, formatDate } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
 
 const agencies = await getAgencies();
@@ -107,12 +107,16 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
           </div>
           <p class="section-note">
             Bodies that owe a statement and have none we can find &mdash; or whose
-            statement we hold a link for but failed to capture on the latest run.
+            statement we hold a link for but failed to capture on the latest run. A
+            body created after the policy took effect is dated.
           </p>
           <ul class="agency-list">
             {notYet.map((a) => (
               <li>
                 {a.name} <span class="muted mono">{a.abbr}</span>
+                {a.established && (
+                  <span class="muted"> &mdash; established {formatDate(a.established)}</span>
+                )}
               </li>
             ))}
           </ul>

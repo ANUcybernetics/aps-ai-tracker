@@ -116,6 +116,9 @@ export const agencyRowSchema = z.object({
   scope: agencyScopeSchema,
   // Portfolio per the Administrative Arrangements Order; null when not recorded.
   portfolio: z.string().nullable(),
+  // ISO date the body was created; set only for bodies newer than the policy,
+  // so a missing statement can be read as newness rather than neglect.
+  established: z.string().nullable(),
   url: z.string().nullable(),
   status: coverageStatusSchema,
   statementId: z.string().nullable(),

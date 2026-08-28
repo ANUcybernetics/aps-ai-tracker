@@ -82,7 +82,9 @@ url = "https://example.gov.au/ai-transparency-statement"
 ```
 
 If the AI Transparency Statement URL is unknown or doesn't exist, set
-`url = ""`. The scraper will skip agencies with empty URLs, but tests will fail
+`url = ""`. For a body created after the policy took effect, add
+`established = "YYYY-MM-DD"` so the site can say its missing statement is
+newness rather than neglect. The scraper will skip agencies with empty URLs, but tests will fail
 as a reminder to either find the URL or confirm none exists.
 
 ## Requirements

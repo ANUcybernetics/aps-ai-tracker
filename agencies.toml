@@ -1087,6 +1087,7 @@ size = "small"
 scope = "mandatory"
 portfolio = "Climate Change, Energy, the Environment and Water"
 url = ""
+established = "2026-07-01"
 
 [[agencies]]
 name = "Australian Naval Nuclear Power Safety Regulator"

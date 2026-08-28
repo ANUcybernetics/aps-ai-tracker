@@ -74,6 +74,10 @@ class Agency:
     size: str = "unknown"
     scope: str = "mandatory"
     portfolio: str | None = None
+    # ISO date the body came into existence, recorded only for bodies created
+    # after the policy took effect, so the site can say a gap is newness rather
+    # than neglect.
+    established: str | None = None
     manual: bool = False
     selector: str | None = None
 
@@ -129,6 +133,7 @@ def load_agencies() -> list[Agency]:
             size=d.get("size", "unknown"),
             scope=d.get("scope", "mandatory"),
             portfolio=d.get("portfolio"),
+            established=d.get("established"),
             manual=d.get("manual", False),
             selector=d.get("selector"),
         )

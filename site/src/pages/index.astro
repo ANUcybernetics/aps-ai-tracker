@@ -20,6 +20,12 @@ const statements = await getStatements();
 // rather than hard-coded, so the claim can never drift from what we track.
 const mandatory = agencies.filter((a) => a.scope === "mandatory");
 const mandatoryPublished = mandatory.filter((a) => a.status === "published").length;
+// Name the gap when every outstanding body is newer than the policy, so the
+// shortfall reads as newness rather than neglect.
+const outstanding = mandatory.filter((a) => a.status !== "published");
+const newlyCreated = outstanding.every((a) => a.established)
+  ? outstanding.map((a) => `${a.abbr} (${formatDate(a.established as string)})`)
+  : [];
 
 // Join an event to its statement's revision history to diff against the previous
 // revision (build-time; only the rendered diff HTML ships). Same join as the
@@ -93,7 +99,15 @@ const explorers = [
         Since February 2025, non-corporate Commonwealth entities must publish <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statements</a
-        > &mdash; {mandatoryPublished} of {mandatory.length} have. This tracker scrapes
+        > &mdash; {mandatoryPublished} of {mandatory.length} have{
+          newlyCreated.length > 0 && (
+            <>
+              ; the {newlyCreated.length === 1 ? "one" : newlyCreated.length} still to
+              publish {newlyCreated.length === 1 ? "is" : "are"} newly created:{" "}
+              {newlyCreated.join(", ")}
+            </>
+          )
+        }. This tracker scrapes
         them every day and records every change in git, then reads each change: what an
         agency now says it does with AI, what it has promised, and what it no longer
         says.

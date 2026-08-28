@@ -5,7 +5,7 @@
 // agencies table is the accessible canonical list — this is the overview on top.
 import { getAgencies } from "@/lib/load";
 import { statementPath } from "@/lib/paths";
-import { originalityPercent } from "@/lib/format";
+import { originalityPercent, formatDate } from "@/lib/format";
 import ReadingLink from "@/components/ReadingLink.astro";
 
 const agencies = await getAgencies();
@@ -18,7 +18,14 @@ function cellHeat(status: string, originality: number | null): number {
   return t < 0.3 ? 0 : t < 0.55 ? 1 : t < 0.75 ? 2 : t < 0.9 ? 3 : 4;
 }
 
-function cellLabel(name: string, status: string, originality: number | null): string {
+function cellLabel(
+  name: string,
+  status: string,
+  originality: number | null,
+  established: string | null,
+): string {
+  if (status === "not-yet" && established)
+    return `${name} — not yet published (established ${formatDate(established)})`;
   if (status === "not-yet") return `${name} — not yet published`;
   if (status === "exempt") return `${name} — outside the mandate, has not published`;
   if (originality === null) return `${name} — published`;
@@ -29,7 +36,7 @@ const cells = agencies.toSorted(byName).map((a) => ({
   abbr: a.abbr,
   status: a.status,
   heat: cellHeat(a.status, a.originality),
-  label: cellLabel(a.name, a.status, a.originality),
+  label: cellLabel(a.name, a.status, a.originality, a.established),
   href: a.status === "published" ? statementPath(a.abbr) : null,
 }));
 ---
