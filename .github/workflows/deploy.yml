@@ -52,8 +52,10 @@ jobs:
       # (the nightly cron just scrapes), so keep them ahead of the export that
       # depends on that code. ty is pinned because a new release can introduce
       # new diagnostics; bump it deliberately alongside a local `uvx ty check`.
+      # With the export group: the analysis modules the exporter tests import
+      # need pydantic.
       - name: Python tests
-        run: uv run python -m pytest
+        run: uv run --group export python -m pytest
 
       # Through the project env with the export group, so the pydantic/anthropic
       # imports in the analysis modules resolve (bare `uvx ty` sees no project
