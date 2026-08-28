@@ -275,35 +275,36 @@ def quarantine_revisions(
 ) -> tuple[list[Revision], bool]:
     """Drop failed captures from a statement's history.
 
-    Listed quarantine entries go first. Then any revision whose body is less
-    than half its predecessor's (`CONTENT_SHRINKAGE_THRESHOLD`) and is not
-    confirmed genuine is dropped too, with a warning naming it: a capture that
-    lost most of the page is far more often a scraper failure than an agency
-    deleting most of its statement, and an unread revision is a missing entry,
-    not a false claim. Returns the surviving revisions and whether the newest
-    one was dropped (so the site can show the last good body instead).
+    Listed quarantine entries are dropped outright. The newest revision is also
+    held back when its body is less than half its predecessor's
+    (`CONTENT_SHRINKAGE_THRESHOLD`) and it is not confirmed genuine: a fresh
+    capture that lost most of the page is far more often a scraper failure
+    than an agency deleting most of its statement, and an unread revision is
+    a missing entry, not a false claim. It stays held, with a warning each
+    run, until the scraper is fixed or the shrink is confirmed. Older shrinks
+    are left alone: the classifier has already read them (our own chrome
+    stripping is a common, harmless cause) and the operator has had the
+    warning. Returns the surviving revisions and whether the newest one was
+    dropped (so the site can show the last good body instead).
     """
-    kept: list[Revision] = []
-    for rev in revisions:
-        if captures.is_quarantined(abbr, rev.sha):
-            continue
-        if (
-            kept
-            and len(rev.body) < len(kept[-1].body) * CONTENT_SHRINKAGE_THRESHOLD
-            and not captures.is_confirmed(abbr, rev.sha)
-        ):
-            logger.warning(
-                "%s %s shrank from %d to %d chars; treated as a failed capture. "
-                "Add it to captures.toml under [[confirmed]] if it is genuine, "
-                "or [[quarantine]] to silence this warning.",
-                abbr,
-                rev.sha[:10],
-                len(kept[-1].body),
-                len(rev.body),
-            )
-            continue
-        kept.append(rev)
+    kept = [r for r in revisions if not captures.is_quarantined(abbr, r.sha)]
     newest_dropped = bool(revisions) and (not kept or kept[-1] is not revisions[-1])
+    if len(kept) >= 2:
+        prev, newest = kept[-2], kept[-1]
+        if len(newest.body) < len(
+            prev.body
+        ) * CONTENT_SHRINKAGE_THRESHOLD and not captures.is_confirmed(abbr, newest.sha):
+            logger.warning(
+                "%s %s shrank from %d to %d chars; held back as a failed capture. "
+                "Add it to captures.toml under [[confirmed]] if it is genuine, "
+                "or [[quarantine]] to settle it.",
+                abbr,
+                newest.sha[:10],
+                len(prev.body),
+                len(newest.body),
+            )
+            kept.pop()
+            newest_dropped = True
     return kept, newest_dropped
 
 

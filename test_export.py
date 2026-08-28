@@ -128,14 +128,23 @@ def test_quarantine_drops_listed_revision():
     assert newest_dropped
 
 
-def test_quarantine_drops_unconfirmed_large_shrink():
+def test_quarantine_holds_back_an_unconfirmed_shrunken_newest_capture():
+    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("intro only", sha="bbb2")]
+    kept, newest_dropped = quarantine_revisions("X", revs, Captures())
+    assert [r.sha for r in kept] == ["aaa1"]
+    assert newest_dropped
+
+
+def test_quarantine_leaves_historical_shrinks_to_the_classifier():
+    # Our own chrome stripping halves a body all the time; once a later capture
+    # exists the classifier has read the pair and the operator has been warned.
     revs = [
         _body_rev("full " * 100, sha="aaa1"),
         _body_rev("intro only", sha="bbb2"),
         _body_rev("full " * 101, sha="ccc3"),
     ]
     kept, newest_dropped = quarantine_revisions("X", revs, Captures())
-    assert [r.sha for r in kept] == ["aaa1", "ccc3"]
+    assert [r.sha for r in kept] == ["aaa1", "bbb2", "ccc3"]
     assert not newest_dropped
 
 
