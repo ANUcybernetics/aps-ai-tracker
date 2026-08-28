@@ -22,12 +22,16 @@ This is a Python web scraping project using uv for dependency management.
 - Export site data (JSON for the Astro site):
   `mise exec -- uv run --group export export` (needs the `export` dependency
   group: pydantic + anthropic). Revision pairs and statement bodies not already
-  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude; the
-  default backend shells out to `claude -p --json-schema` (the logged-in Claude
-  Code subscription), `APS_LLM_BACKEND=api` uses the SDK with
-  `ANTHROPIC_API_KEY` instead. With neither available the export degrades to
-  the caches (unclassified pairs fall back to the commit-message noise
-  heuristic; unprofiled bodies get `profile: null`)
+  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude (Sonnet
+  by default; `APS_LLM_MODEL` overrides). The default backend shells out to
+  `claude -p --json-schema` under the logged-in Claude Code subscription, with
+  `ANTHROPIC_*` scrubbed from the child environment because Claude Code
+  prefers an API key over the login; `APS_LLM_BACKEND=api` uses the SDK with an
+  `ANTHROPIC_API_KEY` you pass explicitly for that run. **Never put an
+  `ANTHROPIC_API_KEY` in this project's mise env**: every `claude` started in
+  the repo, including the nightly `/scrape`, would silently bill it. With no
+  backend the export degrades to the caches (unclassified pairs fall back to
+  the commit-message noise heuristic; unprofiled bodies get `profile: null`)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
   console-script form does not resolve; invoke pytest as a module). Scraper
   tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
@@ -99,11 +103,11 @@ site is light-only (no dark mode); design tokens live in
   still go through `withBase()` in `site/src/lib/paths.ts`.
 - **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape, which classifies the day's new revision pairs and profiles
-  the changed bodies through `claude -p` (the logged-in subscription, same as
-  the `/scrape` skill), commits the refreshed `.cache/changes.json` and
-  `.cache/profiles.json`, and pushes. Unchanged statements are cache hits, so
-  most runs make a handful of calls or none. A gitignored `mise.local.toml`
-  also holds an `ANTHROPIC_API_KEY` for the `api` backend.
+  the changed bodies through `claude -p` (Sonnet, subscription), commits the
+  refreshed `.cache/changes.json` and `.cache/profiles.json`, and pushes.
+  Unchanged statements are cache hits, so most runs make a handful of calls or
+  none. The history was backfilled with Opus 5; the cache records the model per
+  entry.
 
 ## atproto
 
@@ -153,8 +157,10 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
 ## Scheduled scrape
 
 `cron-scrape.sh` runs daily at 03:00 local from `aps-scrape.timer`, a systemd
-user unit on weddle. It scrapes (`claude -p "/scrape"`), refreshes the
-extraction caches (`export`), syncs the corpus to atproto (see above), and
+user unit on weddle. It scrapes (`/scrape` on Sonnet via
+`~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
+subscription route), refreshes the extraction caches (`export`), syncs the
+corpus to atproto (see above), and
 `git push`es so the Pages site redeploys. weddle pushes to `origin` (credentials
 confirmed working) and reads `OPENAI_API_KEY` from its global
 `~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.

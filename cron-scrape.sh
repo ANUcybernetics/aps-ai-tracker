@@ -22,18 +22,24 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 # A failed scrape shouldn't abort the run: the export below is a no-op on an
 # unchanged corpus and the push still redeploys anything already committed.
-/home/ben/.local/bin/claude \
-  --dangerously-skip-permissions \
-  -p "/scrape" \
-  >> "$LOG_FILE" 2>&1 || echo "scrape failed (continuing)" >> "$LOG_FILE"
+# Through agent-run's claude-sub profile, which scrubs ANTHROPIC_* from the
+# environment so the run can only ever bill the subscription, and on Sonnet.
+/home/ben/.dotfiles/bin/agent-run \
+  --profile claude-sub \
+  --model sonnet \
+  --bypass-permissions \
+  --cwd "$PROJECT_DIR" \
+  "/scrape" \
+  < /dev/null >> "$LOG_FILE" 2>&1 || echo "scrape failed (continuing)" >> "$LOG_FILE"
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 # Classify today's changed revisions and profile the changed statements. This
 # is the one place a model is called: the export shells out to `claude -p`
-# under the same subscription the /scrape skill uses, and CI rebuilds the site
-# from the committed caches without any model. Unchanged statements are cache
-# hits, so a typical run makes a handful of calls or none.
+# (Sonnet, subscription — llm.py scrubs API credentials from the child
+# environment), and CI rebuilds the site from the committed caches without any
+# model. Unchanged statements are cache hits, so a typical run makes a handful
+# of calls or none.
 echo "=== export started at $(date -Iseconds) ===" >> "$LOG_FILE"
 uv run --group export export >> "$LOG_FILE" 2>&1 || echo "export failed (continuing)" >> "$LOG_FILE"
 

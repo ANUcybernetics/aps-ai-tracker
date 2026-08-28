@@ -96,8 +96,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         scrape churn that is later reverted, and pure reformatting, are collapsed
         out. Every remaining revision is classified from its diff: deterministic
         rules catch formatting-only, link-only, page-chrome, date-stamp and
-        reordering churn, and the rest is read by Claude (<code>claude-opus-5</code>),
-        which assigns one of five kinds, writes a one-sentence summary, and lists
+        reordering churn, and the rest is read by Claude (Sonnet 5 for the nightly
+        run; the back catalogue was read with Opus 5), which assigns one of five
+        kinds, writes a one-sentence summary, and lists
         the noteworthy additions and removals. Results are cached by content
         hash in the repository, so each revision is read once and the site
         rebuilds without model calls. A

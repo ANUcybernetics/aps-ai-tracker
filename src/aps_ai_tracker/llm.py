@@ -11,9 +11,15 @@ Two interchangeable backends, chosen with `APS_LLM_BACKEND`:
 
 - `cli` (default): shells out to `claude -p --json-schema …`, so the nightly
   run uses the same Claude Code subscription as the `/scrape` skill and no
-  metered key is involved
+  metered key is involved. Claude Code prefers an `ANTHROPIC_API_KEY` in the
+  environment over the subscription login, so the child environment is
+  scrubbed of API credentials first (the same guard as the `claude-sub`
+  profile in `agent-run`).
 - `api`: the Anthropic SDK against `ANTHROPIC_API_KEY`, for environments
   without a logged-in Claude Code
+
+The model defaults to Sonnet (`APS_LLM_MODEL` overrides); the cache records
+which model produced each entry.
 """
 
 import json
@@ -28,7 +34,7 @@ from pydantic import BaseModel
 
 from .scraper import REPO_ROOT, atomic_write_text, logger
 
-MODEL = "claude-opus-5"
+MODEL = os.environ.get("APS_LLM_MODEL", "claude-sonnet-5")
 CACHE_DIR = REPO_ROOT / ".cache"
 # A handful of concurrent requests is plenty: the backfill is a few hundred calls
 # once, and a daily run is one or two. Keeps well inside rate limits.
@@ -37,6 +43,17 @@ WORKERS = 4
 # also pays the CLI's start-up cost; a hang still fails loudly inside the
 # systemd timeout instead of stalling the nightly run.
 _CLI_TIMEOUT_SECONDS = 600
+# Anything that would switch Claude Code from the subscription login to API
+# billing or another endpoint. Mirrors the claude-sub profile in agent-run.
+_CLI_SCRUB_ENV = (
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_AUTH_TOKEN",
+    "ANTHROPIC_BASE_URL",
+    "ANTHROPIC_MODEL",
+    "ANTHROPIC_SMALL_FAST_MODEL",
+    "API_TIMEOUT_MS",
+    "CLAUDECODE",
+)
 
 
 def backend() -> str:
@@ -98,6 +115,7 @@ def _extract_cli[T: BaseModel](
         "--json-schema",
         json.dumps(schema.model_json_schema()),
     ]
+    env = {k: v for k, v in os.environ.items() if k not in _CLI_SCRUB_ENV}
     result = subprocess.run(
         cmd,
         input=user,
@@ -107,6 +125,7 @@ def _extract_cli[T: BaseModel](
         timeout=_CLI_TIMEOUT_SECONDS,
         check=False,
         cwd=REPO_ROOT,
+        env=env,
     )
     if result.returncode != 0:
         raise RuntimeError(
