@@ -1,6 +1,7 @@
 ---
 abbr: CDPP
 agency: Commonwealth Director of Public Prosecutions
+last_updated_text: 25 February 2026
 source_url: https://www.cdpp.gov.au/about-us/ai-transparency-statement
 title: AI Transparency Statement | Commonwealth Director of Public Prosecutions
 ---

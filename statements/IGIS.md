@@ -1,6 +1,7 @@
 ---
 abbr: IGIS
 agency: Office of the Inspector-General of Intelligence and Security
+last_updated_text: 15 May 2026
 source_url: https://www.igis.gov.au/resources/reporting-and-accountability
 title: Reporting and Accountability | IGIS
 ---

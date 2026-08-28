@@ -1,6 +1,7 @@
 ---
 abbr: APRA
 agency: Australian Prudential Regulation Authority
+last_updated_text: 25 February 2026
 source_url: https://www.apra.gov.au/apras-ai-transparency-statement
 title: APRA's AI Transparency Statement | APRA
 ---

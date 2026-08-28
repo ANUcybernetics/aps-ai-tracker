@@ -1,6 +1,7 @@
 ---
 abbr: GA
 agency: Geoscience Australia
+last_updated_text: 15 May 2026
 source_url: https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement
 title: AI transparency statement | Geoscience Australia
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: AUSTRADE
 agency: Australian Trade and Investment Commission
+last_updated_text: 2 June 2026
 source_url: https://www.austrade.gov.au/en/site-information/ai-transparency
 title: Artificial intelligence transparency | Austrade
 ---

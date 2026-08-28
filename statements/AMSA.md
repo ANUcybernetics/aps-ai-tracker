@@ -1,6 +1,7 @@
 ---
 abbr: AMSA
 agency: Australian Maritime Safety Authority
+last_updated_text: 4 August 2025
 source_url: https://www.amsa.gov.au/about-us/who-we-are/ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | Australian Maritime Safety
   Authority

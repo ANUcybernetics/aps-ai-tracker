@@ -1,6 +1,7 @@
 ---
 abbr: EDUCATION
 agency: Department of Education
+last_updated_text: 05/05/2026
 source_url: https://www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement - Department of Education,
   Australian Government

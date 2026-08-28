@@ -1,6 +1,7 @@
 ---
 abbr: FSANZ
 agency: Food Standards Australia New Zealand
+last_updated_text: 27 March 2025
 source_url: https://www.foodstandards.gov.au/about-us/corporate-information/ai-transparency-statement
 title: AI transparency statement | Food Standards Australia New Zealand
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: AGD
 agency: Attorney-General's Department
+last_updated_text: 1 May 2026
 source_url: https://www.ag.gov.au/about-us/accountability-and-reporting/attorney-generals-department-artificial-intelligence-transparency-statement
 title: Attorney-General’s Department Artificial Intelligence Transparency Statement
   | Attorney-General's Department

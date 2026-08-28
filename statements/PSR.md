@@ -1,6 +1,7 @@
 ---
 abbr: PSR
 agency: Professional Services Review
+last_updated_text: February 2026
 source_url: https://www.psr.gov.au/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | Professional Services
   Review (PSR)

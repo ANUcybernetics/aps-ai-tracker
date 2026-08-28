@@ -1,6 +1,7 @@
 ---
 abbr: ARPC
 agency: Australian Reinsurance Pool Corporation
+last_updated_text: 03 November 2025
 source_url: https://arpc.gov.au/about/corporate-governance/ai-transparency-statement/
 title: Artificial Intelligence (AI) Transparency Statement - ARPC
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: HOUSEREPS
 agency: Department of the House of Representatives
+last_updated_text: 10 March 2026
 source_url: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_House_of_Representatives/AI_transparency_statement
 title: "AI transparency statement\n        \n     – Parliament of Australia"
 ---

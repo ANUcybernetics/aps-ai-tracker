@@ -1,6 +1,7 @@
 ---
 abbr: IPEA
 agency: Independent Parliamentary Expenses Authority
+last_updated_text: 12 March 2026
 source_url: https://www.ipea.gov.au/about-ipea/accountability/ipea-artificial-intelligence-ai-transparency-statement
 title: IPEA Artificial Intelligence (AI) Transparency Statement | Independent Parliamentary
   Expenses Authority

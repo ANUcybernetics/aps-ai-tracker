@@ -1,6 +1,7 @@
 ---
 abbr: HEALTHDIRECT
 agency: Healthdirect Australia
+last_updated_text: June 2026
 source_url: https://www.healthdirect.gov.au/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | healthdirect
 ---

@@ -2,6 +2,7 @@
 abbr: DHA
 agency: Defence Housing Australia
 final_url: https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-transparency
+last_updated_text: 4 February 2026
 source_url: https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement
 title: Artificial intelligence transparency | dha
 ---

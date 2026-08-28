@@ -2,6 +2,7 @@
 abbr: ASQA
 agency: Australian Skills Quality Authority
 final_url: https://www.asqa.gov.au/for-providers/guidance-and-resources-providers/artificial-intelligence-ai-use-in-vocational-education-training-vet/artificial-intelligence-ai-transparency-statement
+last_updated_text: 18 March 2026
 source_url: https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | ASQA
 ---

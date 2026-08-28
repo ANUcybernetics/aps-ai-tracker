@@ -2,6 +2,7 @@
 abbr: AFSA
 agency: Australian Financial Security Authority
 final_url: https://www.afsa.gov.au/about-us/accountability-and-reporting/artificial-intelligence-ai-transparency-statement
+last_updated_text: 6/03/2026
 source_url: https://www.afsa.gov.au/about-us/accountability-and-reporting/ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | Australian Financial
   Security Authority

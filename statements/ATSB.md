@@ -1,6 +1,7 @@
 ---
 abbr: ATSB
 agency: Australian Transport Safety Bureau
+last_updated_text: 12 May 2026
 source_url: https://www.atsb.gov.au/ai-transparency-statement
 title: AI transparency statement | ATSB
 ---

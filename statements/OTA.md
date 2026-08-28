@@ -1,6 +1,7 @@
 ---
 abbr: OTA
 agency: Organ and Tissue Authority
+last_updated_text: 23 February 2026
 source_url: https://www.donatelife.gov.au/ai-transparency-statement
 title: AI transparency statement | DonateLife
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: ALRC
 agency: Australian Law Reform Commission
+last_updated_text: 10 June 2026
 source_url: https://www.alrc.gov.au/about/corporate-information/ai-transparency-statement/
 title: AI Transparency Statement | ALRC
 ---

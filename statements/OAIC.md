@@ -1,6 +1,7 @@
 ---
 abbr: OAIC
 agency: Office of the Australian Information Commissioner
+last_updated_text: 24 January 2026
 source_url: https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement
 title: OAIC AI transparency statement | OAIC
 ---

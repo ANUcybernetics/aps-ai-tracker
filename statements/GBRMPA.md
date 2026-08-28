@@ -2,6 +2,7 @@
 abbr: GBRMPA
 agency: Great Barrier Reef Marine Park Authority
 final_url: https://www.gbrmpa.gov.au/artificial-intelligence-ai-transparency-statement
+last_updated_text: November 2025
 source_url: https://www2.gbrmpa.gov.au/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Reef Authority
 ---

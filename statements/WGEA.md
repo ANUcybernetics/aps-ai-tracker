@@ -1,6 +1,7 @@
 ---
 abbr: WGEA
 agency: Workplace Gender Equality Agency
+last_updated_text: 5 May 2026
 source_url: https://www.wgea.gov.au/about/governance/AI-transparency-statement
 title: AI transparency statement | WGEA
 ---

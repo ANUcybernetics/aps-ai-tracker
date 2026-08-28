@@ -1,6 +1,7 @@
 ---
 abbr: ARPANSA
 agency: Australian Radiation Protection and Nuclear Safety Agency
+last_updated_text: March 2026
 source_url: https://www.arpansa.gov.au/about-us/corporate-publications/arpansas-artificial-intelligence-transparency-statement
 title: ARPANSA's artificial intelligence transparency statement | ARPANSA
 ---

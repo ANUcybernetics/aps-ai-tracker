@@ -1,6 +1,7 @@
 ---
 abbr: IA
 agency: Infrastructure Australia
+last_updated_text: 15 December 2025
 source_url: https://www.infrastructureaustralia.gov.au/transparency-statement-use-artificial-intelligence-ai
 title: Transparency Statement on the use of Artificial Intelligence (AI) | Infrastructure
   Australia

@@ -1,6 +1,7 @@
 ---
 abbr: NCA
 agency: National Capital Authority
+last_updated_text: 28 April 2026
 source_url: https://www.nca.gov.au/nca-artificial-intelligence-ai-transparency-statement
 title: NCA Artificial Intelligence (AI) Transparency Statement | National Capital
   Authority

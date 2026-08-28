@@ -1,6 +1,7 @@
 ---
 abbr: MDBA
 agency: Murray-Darling Basin Authority
+last_updated_text: 16 February 2026
 source_url: https://www.mdba.gov.au/about-us/accountability-and-reporting/ai-transparency-statement
 title: AI transparency statement | Murray–Darling Basin Authority
 ---

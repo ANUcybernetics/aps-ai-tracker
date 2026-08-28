@@ -1,6 +1,7 @@
 ---
 abbr: NEMA
 agency: National Emergency Management Agency
+last_updated_text: 18 September 2025
 source_url: https://www.nema.gov.au/about-us/privacy-disclosures
 title: Privacy and disclosures | NEMA
 ---

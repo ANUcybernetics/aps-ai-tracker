@@ -2,6 +2,7 @@
 abbr: NBA
 agency: National Blood Authority
 final_url: https://www.blood.gov.au/artificial-intelligence-ai-transparency-statement
+last_updated_text: 13 Feb 2026
 source_url: https://www.blood.gov.au/nbas-ai-transparency-statement
 title: Artificial Intelligence (AI) transparency statement | National Blood Authority
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: NOPSEMA
 agency: National Offshore Petroleum Safety and Environmental Management Authority
+last_updated_text: 21 April 2026
 source_url: https://www.nopsema.gov.au/about/ai-transparency-statement
 title: AI transparency statement | NOPSEMA
 ---

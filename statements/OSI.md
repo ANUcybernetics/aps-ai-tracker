@@ -1,6 +1,7 @@
 ---
 abbr: OSI
 agency: Office of the Special Investigator
+last_updated_text: 18 June 2026
 source_url: https://www.osi.gov.au/policy-responsible-use-ai-government-ai-transparency-statement
 title: Policy for the responsible use of AI in government – AI Transparency Statement
   | Office of the Special Investigator

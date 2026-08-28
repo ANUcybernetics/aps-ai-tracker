@@ -1,6 +1,7 @@
 ---
 abbr: ACMA
 agency: Australian Communications and Media Authority
+last_updated_text: June 2026
 source_url: https://www.acma.gov.au/planning-and-priorities
 title: Planning and priorities | ACMA
 ---

@@ -1,6 +1,7 @@
 ---
 abbr: AFMA
 agency: Australian Fisheries Management Authority
+last_updated_text: 13/03/2026
 source_url: https://www.afma.gov.au/reporting-and-accountability/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | Australian Fisheries Management
   Authority

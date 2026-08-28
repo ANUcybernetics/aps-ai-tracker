@@ -1,6 +1,7 @@
 ---
 abbr: SA
 agency: Screen Australia
+last_updated_text: 10 March 2026
 source_url: https://www.screenaustralia.gov.au/corporate-documents/policies/ai-transparency-statement/
 title: AI Transparency Statement - Screen Australia
 ---

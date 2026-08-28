@@ -1,6 +1,7 @@
 ---
 abbr: AFA
 agency: AgriFutures Australia
+last_updated_text: 12 June 2026
 source_url: https://agrifutures.com.au/legal/ai-transparency-statement/
 title: AI Transparency Statement | AgriFutures Australia
 ---

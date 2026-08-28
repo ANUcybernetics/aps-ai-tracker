@@ -2,6 +2,7 @@
 abbr: DITRDCA
 agency: Department of Infrastructure, Transport, Regional Development, Communications,
   Sport and the Arts
+last_updated_text: February 2026
 source_url: https://www.infrastructure.gov.au/about-us/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | Department of Infrastructure,
   Transport, Regional Development, Communications, Sport and the Arts

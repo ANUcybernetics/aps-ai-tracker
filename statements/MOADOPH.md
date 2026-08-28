@@ -1,6 +1,7 @@
 ---
 abbr: MOADOPH
 agency: Museum of Australian Democracy at Old Parliament House
+last_updated_text: 21/04/2026
 source_url: https://moadoph.gov.au/about/reports-policies-and-plans/policies-and-plans/ai-transparency-statement
 title: AI Transparency Statement
 ---

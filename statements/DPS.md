@@ -1,6 +1,7 @@
 ---
 abbr: DPS
 agency: Department of Parliamentary Services
+last_updated_text: 13 February 2026
 source_url: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_Parliamentary_Services/Publications/AI_Transparency_Statement
 title: "DPS AI Transparency Statement\n        \n     – Parliament of Australia"
 ---

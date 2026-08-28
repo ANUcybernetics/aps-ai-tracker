@@ -1,6 +1,7 @@
 ---
 abbr: ACSQHC
 agency: Australian Commission on Safety and Quality in Health Care
+last_updated_text: 20 February 2026
 source_url: https://www.safetyandquality.gov.au/about-us/corporate-governance
 title: Corporate governance | Australian Commission on Safety and Quality in Health
   Care

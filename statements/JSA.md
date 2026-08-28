@@ -1,6 +1,7 @@
 ---
 abbr: JSA
 agency: Jobs and Skills Australia
+last_updated_text: 30/03/2026
 source_url: https://www.jobsandskills.gov.au/ai-transparency-statement
 title: Artificial Intelligence Transparency Statement | Jobs and Skills Australia
 ---

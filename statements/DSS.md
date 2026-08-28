@@ -1,6 +1,7 @@
 ---
 abbr: DSS
 agency: Department of Social Services
+last_updated_text: 22 July 2026
 source_url: https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Social
   Services

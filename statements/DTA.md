@@ -1,6 +1,7 @@
 ---
 abbr: DTA
 agency: Digital Transformation Agency
+last_updated_text: 17 June 2026
 source_url: https://www.dta.gov.au/ai-transparency-statement
 title: AI transparency statement | Digital Transformation Agency
 ---

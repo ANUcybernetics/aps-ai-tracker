@@ -1,6 +1,7 @@
 ---
 abbr: SENATE
 agency: Department of the Senate
+last_updated_text: 8 May 2026
 source_url: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_Senate/Accountability_and_reporting/AI_transparency_statement
 title: "AI transparency statement\n        \n     – Parliament of Australia"
 ---

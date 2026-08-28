@@ -2,6 +2,7 @@
 abbr: PBO
 agency: Parliamentary Budget Office
 final_url: https://www.pbo.gov.au/about-the-pbo/performance-and-reporting/information-and-privacy/ai-pbo
+last_updated_text: 18 June 2026
 source_url: https://www.pbo.gov.au/about-the-pbo/performance-and-reporting/information-and-privacy/ai-transparency-statement
 title: AI at the PBO | Parliamentary Budget Office
 ---

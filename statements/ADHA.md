@@ -1,6 +1,7 @@
 ---
 abbr: ADHA
 agency: Australian Digital Health Agency
+last_updated_text: February 2025
 source_url: https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement
 ---
