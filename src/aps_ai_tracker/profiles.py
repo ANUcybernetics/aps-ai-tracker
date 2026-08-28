@@ -400,6 +400,29 @@ _BOOL_FIELDS = (
 )
 _LIST_FIELDS = ("usage_patterns", "domains", "measures", "named_tools")
 _WORD_RE = re.compile(r"[a-z0-9]+")
+# Vendor and edition words that vary between mentions of the same product
+# ("Microsoft Copilot", "Microsoft 365 Copilot Chat", "M365 Copilot").
+_TOOL_NOISE = frozenset(
+    [
+        "microsoft",
+        "ms",
+        "m365",
+        "365",
+        "office",
+        "google",
+        "azure",
+        "openai",
+        "anthropic",
+        "amazon",
+        "aws",
+        "chat",
+        "enterprise",
+        "edition",
+        "licence",
+        "license",
+        "ai",
+    ]
+)
 _STOP = frozenset(
     [
         "a",
@@ -437,6 +460,18 @@ _STOP = frozenset(
 
 def _tokens(text: str) -> set[str]:
     return {w for w in _WORD_RE.findall(text.lower()) if w not in _STOP}
+
+
+def tool_family(name: str) -> str:
+    """Collapse a product name to its distinguishing words for cross-revision matching."""
+    words = [w for w in _WORD_RE.findall(name.lower()) if w not in _TOOL_NOISE]
+    return " ".join(words) or name.strip().lower()
+
+
+def _keys(profile: Profile, name: str) -> set[str]:
+    """Comparable keys for a list field (product families for named tools)."""
+    values = getattr(profile, name)
+    return {tool_family(v) for v in values} if name == "named_tools" else set(values)
 
 
 def _same_commitment(a: Commitment, b: Commitment) -> bool:
@@ -516,15 +551,28 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
         )
 
     for name in _LIST_FIELDS:
-        b, a = set(getattr(before, name)), set(getattr(after, name))
+        if name == "named_tools":
+            # Compare product families so an edition or vendor-prefix change
+            # ("Microsoft Copilot" → "Microsoft 365 Copilot Chat") is not a drop.
+            display = {
+                tool_family(t): t for t in [*before.named_tools, *after.named_tools]
+            }
+        else:
+            display = {
+                v: _pretty(v) for v in [*getattr(before, name), *getattr(after, name)]
+            }
+        b, a = (
+            set(display) & {k for k in display if k in _keys(before, name)},
+            set(display) & {k for k in display if k in _keys(after, name)},
+        )
         for item in sorted(a - b):
             deltas.append(
                 Delta(
                     name,
-                    f"{_LABELS[name]} added: {_pretty(item)}",
+                    f"{_LABELS[name]} added: {display[item]}",
                     "added",
                     "notable",
-                    after=item,
+                    after=display[item],
                 )
             )
         for item in sorted(b - a):
@@ -534,10 +582,10 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
             deltas.append(
                 Delta(
                     name,
-                    f"{_LABELS[name]} dropped: {_pretty(item)}",
+                    f"{_LABELS[name]} dropped: {display[item]}",
                     "removed",
                     "notable" if name == "measures" else "significant",
-                    before=item,
+                    before=display[item],
                 )
             )
 

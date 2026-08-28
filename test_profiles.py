@@ -123,6 +123,13 @@ def test_list_fields_report_added_and_dropped_items():
     assert deltas[0].direction == "removed"
 
 
+def test_named_tool_edition_change_is_not_a_drop():
+    before = make_profile(named_tools=["Microsoft Copilot", "ChatGPT"])
+    after = make_profile(named_tools=["Microsoft 365 Copilot Chat", "Claude"])
+    labels = [d.label for d in diff_profiles(before, after)]
+    assert labels == ["Named tool dropped: ChatGPT", "Named tool added: Claude"]
+
+
 def test_standard_report_reflects_profile():
     report = standard_report(make_profile(legislation_compliance_stated=False))
     assert report["legislation"] is False
