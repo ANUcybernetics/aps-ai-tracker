@@ -20,10 +20,32 @@ from .profiles import (
 
 ANNUAL_REVIEW_DAYS = 365
 _STATED_DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
+_ORDINAL_RE = re.compile(r"(?<=\d)(st|nd|rd|th)\b")
+# The shapes a "last updated" stamp takes on agency pages, most to least common.
+_STATED_FORMATS = ("%d %B %Y", "%d %b %Y", "%B %Y", "%b %Y", "%d/%m/%Y", "%Y-%m-%d")
+
+
+def parse_stated_date(text: str | None) -> str | None:
+    """Normalise a page's own last-updated stamp to YYYY-MM-DD or YYYY-MM.
+
+    Accepts "25 February 2026", "1st March 2026", "February 2026", "25/02/2026"
+    and ISO dates; anything else is None rather than a guess.
+    """
+    if not text:
+        return None
+    cleaned = _ORDINAL_RE.sub("", text.strip())
+    for fmt in _STATED_FORMATS:
+        try:
+            # A calendar date on a page has no zone; naive is the honest parse.
+            parsed = datetime.strptime(cleaned, fmt)  # noqa: DTZ007
+        except ValueError:
+            continue
+        return parsed.strftime("%Y-%m-%d" if "%d" in fmt else "%Y-%m")
+    return None
 
 
 def _stated_stamp(stated: str | None) -> str | None:
-    """A model-extracted date as YYYY-MM-DD, or None when absent or malformed.
+    """A stated date as YYYY-MM-DD, or None when absent or malformed.
 
     A month-only date counts from the end of that month, giving the agency the
     benefit of the doubt in both the v2.0 and annual-review comparisons.
@@ -113,24 +135,34 @@ def build_adoption(
 
 def staleness(
     profile: Profile | None,
+    page_last_updated: str | None,
     last_content_change: str | None,
     first_seen: str,
     built_at: str,
 ) -> dict:
     """What we can say about a statement's currency.
 
-    `updatedSincePolicyV2` is true when either the statement's own last-updated
-    date or an observed content change falls on or after 15 December 2025.
-    `annualReviewOverdue` uses the statement's own date only: the Standard
-    requires review at least yearly, and a self-declared date more than a year
-    old is the agency's own admission. Null when no date is stated.
+    The stated date is the page's own stamp (`page_last_updated`, captured by
+    the scraper) when it carries one, else the model's reading of a date in the
+    prose. `updatedSincePolicyV2` is true when either that date or an observed
+    content change falls on or after 15 December 2025, false when we have been
+    watching since before then and have seen neither, and null when we cannot
+    tell: the statement was first tracked after v2.0 took effect and gives no
+    date. `annualReviewOverdue` uses the stated date only: the Standard requires
+    review at least yearly, and a self-declared date more than a year old is the
+    agency's own admission. Null when no date is stated. `evaluatedAt` dates the
+    verdicts, which move with the calendar.
     """
-    stated = profile.last_updated_stated if profile else None
+    stated = parse_stated_date(page_last_updated) or (
+        profile.last_updated_stated if profile else None
+    )
     stamp = _stated_stamp(stated)
     observed = last_content_change[:10] if last_content_change else None
-    since_v2 = any(
+    since_v2: bool | None = any(
         d is not None and d >= POLICY_V2_EFFECTIVE for d in (stamp, observed)
     )
+    if not since_v2 and stamp is None and first_seen[:10] >= POLICY_V2_EFFECTIVE:
+        since_v2 = None
     overdue: bool | None = None
     if stamp:
         cutoff = datetime.fromisoformat(built_at) - timedelta(days=ANNUAL_REVIEW_DAYS)
@@ -142,4 +174,5 @@ def staleness(
         "firstSeen": first_seen,
         "updatedSincePolicyV2": since_v2,
         "annualReviewOverdue": overdue,
+        "evaluatedAt": built_at[:10],
     }

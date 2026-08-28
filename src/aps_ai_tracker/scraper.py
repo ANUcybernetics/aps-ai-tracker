@@ -9,7 +9,7 @@ import re
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal, TypedDict
+from typing import Literal, NotRequired, TypedDict
 
 import html2text
 import httpx
@@ -87,6 +87,8 @@ class StatementResult(TypedDict):
     final_url: str | None
     error: str | None
     source_type: Literal["html", "pdf"] | None
+    # The page's own last-updated stamp, read before cleanup strips it.
+    last_updated: NotRequired[str | None]
 
 
 class RawFetchResult(TypedDict):
@@ -289,6 +291,22 @@ _SKIP_LINK_RE = re.compile(
 )
 # Headings emptied of their text (an icon or bare link stripped upstream).
 _EMPTY_HEADING_RE = re.compile(r"(?m)^[ \t]*#{1,6}[ \t]*$\n?")
+
+
+# The date a page says it was last updated, read before the stamp is stripped
+# from the body. Kept verbatim in frontmatter (`last_updated_text`) so the site
+# can report the agency's own date without a model having to find it in prose.
+_LAST_UPDATED_VALUE_RE = re.compile(
+    r"(?i)last (?:reviewed|updated|modified)\b[^\n\d]{0,40}?"
+    r"(\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4}|[A-Za-z]+\s+\d{4}|"
+    r"\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{2}-\d{2})"
+)
+
+
+def extract_last_updated(text: str) -> str | None:
+    """The page's own last-updated/reviewed date text, or None if it gives none."""
+    match = _LAST_UPDATED_VALUE_RE.search(text)
+    return match.group(1) if match else None
 
 
 def clean_markdown(text: str) -> str:
@@ -638,6 +656,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "final_url": final_url,
                 "error": None,
                 "source_type": "pdf",
+                "last_updated": extract_last_updated(raw_text),
             }
         except Exception as e:
             logger.exception(f"Error processing PDF for {agency.name}")
@@ -658,11 +677,10 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
             )
             if not title and (h1 := soup.find("h1")):
                 title = h1.get_text(strip=True)
-            markdown = clean_markdown(
-                clean_html_to_markdown(
-                    extract_main_content(soup, agency.selector), agency.url or ""
-                )
+            raw_markdown = clean_html_to_markdown(
+                extract_main_content(soup, agency.selector), agency.url or ""
             )
+            markdown = clean_markdown(raw_markdown)
 
             return {
                 "title": title,
@@ -671,6 +689,7 @@ def process_raw(agency: Agency, raw_dir: Path) -> StatementResult:
                 "final_url": final_url,
                 "error": None,
                 "source_type": "html",
+                "last_updated": extract_last_updated(raw_markdown),
             }
         except Exception as e:
             logger.exception(f"Error processing HTML for {agency.name}")
@@ -766,6 +785,8 @@ def save_statement(
     }
     if data["final_url"] != agency.url:
         frontmatter["final_url"] = data["final_url"]
+    if last_updated := data.get("last_updated"):
+        frontmatter["last_updated_text"] = last_updated
     if is_pdf:
         frontmatter["raw_hash"] = new_raw_hash
 

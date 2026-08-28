@@ -186,6 +186,7 @@ def test_statement_result_returns_required_fields():
         "final_url",
         "error",
         "source_type",
+        "last_updated",
     }
     assert set(result.keys()) == required_fields
 
@@ -1237,3 +1238,27 @@ def test_inline_page_schema_recovers_client_rendered_sections():
         "<html><body><main><p>Just intro.</p></main></body></html>", "lxml"
     )
     assert inline_page_schema(plain) == 0
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        (
+            "This transparency statement was last updated on 25 February 2026.",
+            "25 February 2026",
+        ),
+        (
+            "**Last updated:** [20 February 2026](https://www.example.gov.au/b)",
+            "20 February 2026",
+        ),
+        ("Last reviewed: March 2026", "March 2026"),
+        ("Page last updated 1st May 2026", "1st May 2026"),
+        ("Last updated 12/03/2026", "12/03/2026"),
+        ("Page last reviewed: 3 days ago", None),
+        ("No stamp at all.", None),
+    ],
+)
+def test_extract_last_updated_reads_the_pages_own_date(text, expected):
+    from aps_ai_tracker.scraper import extract_last_updated
+
+    assert extract_last_updated(text) == expected
