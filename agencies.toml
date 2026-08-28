@@ -7,6 +7,7 @@ name = "Digital Transformation Agency"
 abbr = "DTA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.dta.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -14,6 +15,7 @@ name = "Treasury"
 abbr = "TREASURY"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://treasury.gov.au/the-department/accountability-reporting/ai-transparency-statement"
 
 [[agencies]]
@@ -21,6 +23,7 @@ name = "Department of Agriculture, Fisheries and Forestry"
 abbr = "DAFF"
 size = "medium"
 scope = "mandatory"
+portfolio = "Agriculture, Fisheries and Forestry"
 url = "https://www.agriculture.gov.au/about/reporting/obligations/AI-transparency-statement"
 
 [[agencies]]
@@ -28,6 +31,7 @@ name = "Department of Health, Disability and Ageing"
 abbr = "DHAC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.health.gov.au/about-us/corporate-reporting/our-commitments/ai-transparency-statement"
 
 [[agencies]]
@@ -35,6 +39,7 @@ name = "National Indigenous Australians Agency"
 abbr = "NIAA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -42,6 +47,7 @@ name = "Australian Institute of Criminology"
 abbr = "AIC"
 size = "unknown"
 scope = "mandatory"
+portfolio = "Home Affairs"
 url = "https://www.aic.gov.au/about-us/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -49,6 +55,7 @@ name = "Australian Securities and Investments Commission"
 abbr = "ASIC"
 size = "unknown"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.asic.gov.au/about-asic/what-we-do/how-we-operate/accountability-and-reporting/artificial-intelligence-transparency-statement/"
 
 [[agencies]]
@@ -56,6 +63,7 @@ name = "Department of Education"
 abbr = "EDUCATION"
 size = "medium"
 scope = "mandatory"
+portfolio = "Education"
 url = "https://www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -63,6 +71,7 @@ name = "Department of Home Affairs"
 abbr = "HOMEAFFAIRS"
 size = "extra-large"
 scope = "mandatory"
+portfolio = "Home Affairs"
 url = "https://www.homeaffairs.gov.au/access-and-accountability/our-commitments/plans-and-charters/our-service-charters/ai-transparency-statement"
 
 [[agencies]]
@@ -70,6 +79,7 @@ name = "Aboriginal Hostels Limited"
 abbr = "AHL"
 size = "medium"
 scope = "voluntary"
+portfolio = "Prime Minister and Cabinet"
 url = ""
 
 [[agencies]]
@@ -77,6 +87,7 @@ name = "Administrative Review Tribunal"
 abbr = "ART"
 size = "medium"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.art.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -84,6 +95,7 @@ name = "Aged Care Quality and Safety Commission"
 abbr = "ACQSC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.agedcarequality.gov.au/sites/default/files/media/acqsc_ai_transparency_statement.pdf"
 
 [[agencies]]
@@ -91,6 +103,7 @@ name = "Asbestos and Silica Safety and Eradication Agency"
 abbr = "ASSEA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.asbestossafety.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -98,6 +111,7 @@ name = "Attorney-General's Department"
 abbr = "AGD"
 size = "medium"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.ag.gov.au/about-us/accountability-and-reporting/attorney-generals-department-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -105,6 +119,7 @@ name = "Auditing and Assurance Standards Board"
 abbr = "AUASB"
 size = "micro"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.auasb.gov.au/about-auasb/artificial-intelligence-ai-transparency-statement/"
 
 [[agencies]]
@@ -112,6 +127,7 @@ name = "Australian Accounting Standards Board"
 abbr = "AASB"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://aasb.gov.au/about-the-aasb/artificial-intelligence-ai-transparency-statement/"
 
 [[agencies]]
@@ -119,6 +135,7 @@ name = "Australian Bureau of Statistics"
 abbr = "ABS"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-statement"
 
 [[agencies]]
@@ -126,6 +143,7 @@ name = "Australian Centre for Disease Control"
 abbr = "CDC"
 size = "small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.cdc.gov.au/about-us/legislation-and-transparency/our-commitments/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -133,6 +151,7 @@ name = "Australian Centre for International Agricultural Research"
 abbr = "ACIAR"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Foreign Affairs and Trade"
 url = "https://www.aciar.gov.au/artificial-intelligence"
 
 [[agencies]]
@@ -140,6 +159,7 @@ name = "Australian Commission on Safety and Quality in Health Care"
 abbr = "ACSQHC"
 size = "small"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.safetyandquality.gov.au/about-us/corporate-governance"
 
 [[agencies]]
@@ -147,6 +167,7 @@ name = "Australian Communications and Media Authority"
 abbr = "ACMA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.acma.gov.au/planning-and-priorities"
 
 [[agencies]]
@@ -154,6 +175,7 @@ name = "Australian Competition and Consumer Commission"
 abbr = "ACCC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.accc.gov.au/about-us/accc-role-and-structure/governance-and-accountability/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -161,6 +183,7 @@ name = "Australian Criminal Intelligence Commission"
 abbr = "ACIC"
 size = "medium"
 scope = "exempt"
+portfolio = "Home Affairs"
 url = ""
 
 [[agencies]]
@@ -168,6 +191,7 @@ name = "Australian Digital Health Agency"
 abbr = "ADHA"
 size = "medium"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.digitalhealth.gov.au/about-us/policies-privacy-and-reporting/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -175,6 +199,7 @@ name = "Australian Electoral Commission"
 abbr = "AEC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.aec.gov.au/About_AEC/Publications/files/AEC-AI-Transparency-Statement.pdf"
 
 [[agencies]]
@@ -182,6 +207,7 @@ name = "Australian Federal Police"
 abbr = "AFP"
 size = "large"
 scope = "mandatory"
+portfolio = "Home Affairs"
 url = "https://www.afp.gov.au/news-centre/feature/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -189,6 +215,7 @@ name = "Australian Financial Security Authority"
 abbr = "AFSA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.afsa.gov.au/about-us/accountability-and-reporting/ai-transparency-statement"
 
 [[agencies]]
@@ -196,6 +223,7 @@ name = "Australian Fisheries Management Authority"
 abbr = "AFMA"
 size = "small"
 scope = "mandatory"
+portfolio = "Agriculture, Fisheries and Forestry"
 url = "https://www.afma.gov.au/reporting-and-accountability/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -203,6 +231,7 @@ name = "Australian Human Rights Commission"
 abbr = "AHRC"
 size = "small"
 scope = "voluntary"
+portfolio = "Attorney-General's"
 url = ""
 
 [[agencies]]
@@ -210,6 +239,7 @@ name = "Australian Institute of Aboriginal and Torres Strait Islander Studies"
 abbr = "AIATSIS"
 size = "small"
 scope = "voluntary"
+portfolio = "Prime Minister and Cabinet"
 url = "https://aiatsis.gov.au/sites/default/files/2026-06/aiatsis-artificial-intelligence-transparency-statement-approved-20260622.pdf"
 
 [[agencies]]
@@ -217,6 +247,7 @@ name = "Australian Institute of Family Studies"
 abbr = "AIFS"
 size = "small"
 scope = "mandatory"
+portfolio = "Social Services"
 url = "https://aifs.gov.au/main/policies/ai-transparency-statement"
 
 [[agencies]]
@@ -224,6 +255,7 @@ name = "Australian Institute of Health and Welfare"
 abbr = "AIHW"
 size = "medium"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.aihw.gov.au/about-us/our-governance/ai-transparency-statement"
 
 [[agencies]]
@@ -231,6 +263,7 @@ name = "Australian Law Reform Commission"
 abbr = "ALRC"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.alrc.gov.au/about/corporate-information/ai-transparency-statement/"
 
 [[agencies]]
@@ -238,6 +271,7 @@ name = "Australian Maritime Safety Authority"
 abbr = "AMSA"
 size = "small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.amsa.gov.au/about-us/who-we-are/ai-transparency-statement"
 
 [[agencies]]
@@ -245,6 +279,7 @@ name = "Australian National Audit Office"
 abbr = "ANAO"
 size = "medium"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.anao.gov.au/work/corporate/anaos-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -252,6 +287,7 @@ name = "Australian National Maritime Museum"
 abbr = "ANMM"
 size = "small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://cms-web.seamuseum.net/sites/default/files/2025-06/ai-transparency-statement-april-2025.pdf"
 
 [[agencies]]
@@ -259,6 +295,7 @@ name = "Australian Office of Financial Management"
 abbr = "AOFM"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.aofm.gov.au/about/compliance-reporting/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -266,6 +303,7 @@ name = "Australian Pesticides and Veterinary Medicines Authority"
 abbr = "APVMA"
 size = "small"
 scope = "voluntary"
+portfolio = "Agriculture, Fisheries and Forestry"
 url = ""
 
 [[agencies]]
@@ -273,6 +311,7 @@ name = "Australian Prudential Regulation Authority"
 abbr = "APRA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.apra.gov.au/apras-ai-transparency-statement"
 
 [[agencies]]
@@ -280,6 +319,7 @@ name = "Australian Public Service Commission"
 abbr = "APSC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission"
 
 [[agencies]]
@@ -287,6 +327,7 @@ name = "Australian Radiation Protection and Nuclear Safety Agency"
 abbr = "ARPANSA"
 size = "small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.arpansa.gov.au/about-us/corporate-publications/arpansas-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -294,6 +335,7 @@ name = "Australian Reinsurance Pool Corporation"
 abbr = "ARPC"
 size = "extra-small"
 scope = "voluntary"
+portfolio = "Treasury"
 url = "https://arpc.gov.au/about/corporate-governance/ai-transparency-statement/"
 
 [[agencies]]
@@ -301,6 +343,7 @@ name = "Australian Research Council"
 abbr = "ARC"
 size = "small"
 scope = "mandatory"
+portfolio = "Education"
 url = "https://www.arc.gov.au/about-arc/arc-strategies-and-policies/ai-transparency"
 
 [[agencies]]
@@ -308,6 +351,7 @@ name = "Australian Security Intelligence Organisation"
 abbr = "ASIO"
 size = "medium"
 scope = "exempt"
+portfolio = "Home Affairs"
 url = "https://www.asio.gov.au/automation-and-artificial-intelligence-policy"
 
 [[agencies]]
@@ -315,6 +359,7 @@ name = "Australian Skills Quality Authority"
 abbr = "ASQA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.asqa.gov.au/about-us/reporting-and-accountability/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -322,6 +367,7 @@ name = "Australian Submarine Agency"
 abbr = "ASA"
 size = "medium"
 scope = "exempt"
+portfolio = "Defence"
 url = ""
 
 [[agencies]]
@@ -329,6 +375,7 @@ name = "Australian Taxation Office"
 abbr = "ATO"
 size = "extra-large"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.ato.gov.au/about-ato/commitments-and-reporting/information-and-privacy/ato-ai-transparency-statement"
 
 [[agencies]]
@@ -336,6 +383,7 @@ name = "Australian Trade and Investment Commission"
 abbr = "AUSTRADE"
 size = "medium"
 scope = "mandatory"
+portfolio = "Foreign Affairs and Trade"
 url = "https://www.austrade.gov.au/en/site-information/ai-transparency"
 
 [[agencies]]
@@ -343,6 +391,7 @@ name = "Australian Transaction Reports and Analysis Centre"
 abbr = "AUSTRAC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Home Affairs"
 url = "https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -350,6 +399,7 @@ name = "Australian Transport Safety Bureau"
 abbr = "ATSB"
 size = "small"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.atsb.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -357,6 +407,7 @@ name = "Australian War Memorial"
 abbr = "AWM"
 size = "medium"
 scope = "exempt"
+portfolio = "Defence"
 url = ""
 
 [[agencies]]
@@ -364,6 +415,7 @@ name = "Bureau of Meteorology"
 abbr = "BOM"
 size = "medium"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www.bom.gov.au/sites/default/files/2026-03/artificial-intelligence-ai-transparency-statement-2026.pdf"
 
 [[agencies]]
@@ -371,6 +423,7 @@ name = "Cancer Australia"
 abbr = "CA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.canceraustralia.gov.au/sites/default/files/2026-05/ai-transparency-statement-cancer-australia_2026.pdf"
 
 [[agencies]]
@@ -378,6 +431,7 @@ name = "Clean Energy Regulator"
 abbr = "CER"
 size = "medium"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://cer.gov.au/about-us/our-policies/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -385,6 +439,7 @@ name = "Climate Change Authority"
 abbr = "CCA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www.climatechangeauthority.gov.au/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -392,6 +447,7 @@ name = "Comcare"
 abbr = "COMCARE"
 size = "medium"
 scope = "voluntary"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.comcare.gov.au/about/forms-pubs/docs/pubs/corporate-publications/ai-transparency-statement"
 
 [[agencies]]
@@ -399,6 +455,7 @@ name = "Commonwealth Director of Public Prosecutions"
 abbr = "CDPP"
 size = "medium"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.cdpp.gov.au/about-us/ai-transparency-statement"
 
 [[agencies]]
@@ -406,6 +463,7 @@ name = "Commonwealth Grants Commission"
 abbr = "CGC"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.cgc.gov.au/about-us/accountability-and-reporting/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -413,6 +471,7 @@ name = "Commonwealth Scientific and Industrial Research Organisation"
 abbr = "CSIRO"
 size = "large"
 scope = "voluntary"
+portfolio = "Industry, Science and Resources"
 url = "https://www.csiro.au/en/about/Policies/Artificial-Intelligence-Statement"
 
 [[agencies]]
@@ -420,6 +479,7 @@ name = "Defence and Veterans' Service Commission"
 abbr = "DVSC"
 size = "extra-small"
 scope = "exempt"
+portfolio = "Defence"
 url = "https://www.dvsc.gov.au/about-us/accountability-and-reporting/ai-transparency-statement"
 
 [[agencies]]
@@ -427,6 +487,7 @@ name = "Defence Housing Australia"
 abbr = "DHA"
 size = "medium"
 scope = "exempt"
+portfolio = "Defence"
 url = "https://www.dha.gov.au/about-us/our-organisation/artificial-intelligence-(ai)-transparency-statement"
 
 [[agencies]]
@@ -434,6 +495,7 @@ name = "Department of Climate Change, Energy, the Environment and Water"
 abbr = "DCCEEW"
 size = "medium"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www.dcceew.gov.au/about/commitment/information-public-data/ai-transparency-statement"
 
 [[agencies]]
@@ -441,6 +503,7 @@ name = "Department of Defence"
 abbr = "DEFENCE"
 size = "extra-large"
 scope = "exempt"
+portfolio = "Defence"
 url = ""
 
 [[agencies]]
@@ -448,6 +511,7 @@ name = "Department of Employment and Workplace Relations"
 abbr = "DEWR"
 size = "medium"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.dewr.gov.au/about-department/corporate-reporting/dewr-ai-transparency-statement"
 
 [[agencies]]
@@ -455,6 +519,7 @@ name = "Department of Finance"
 abbr = "FINANCE"
 size = "medium"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.finance.gov.au/about-us/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -462,6 +527,7 @@ name = "Department of Foreign Affairs and Trade"
 abbr = "DFAT"
 size = "medium"
 scope = "mandatory"
+portfolio = "Foreign Affairs and Trade"
 url = "https://www.dfat.gov.au/about-us/corporate/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -469,6 +535,7 @@ name = "Department of Industry, Science and Resources"
 abbr = "DISR"
 size = "medium"
 scope = "mandatory"
+portfolio = "Industry, Science and Resources"
 url = "https://www.industry.gov.au/publications/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -476,6 +543,7 @@ name = "Department of Infrastructure, Transport, Regional Development, Communica
 abbr = "DITRDCA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.infrastructure.gov.au/about-us/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -483,6 +551,7 @@ name = "Department of Social Services"
 abbr = "DSS"
 size = "medium"
 scope = "mandatory"
+portfolio = "Social Services"
 url = "https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -490,6 +559,7 @@ name = "Department of Veterans' Affairs"
 abbr = "DVA"
 size = "medium"
 scope = "exempt"
+portfolio = "Defence"
 url = "https://www.dva.gov.au/about-us/corporate-governance/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -497,6 +567,7 @@ name = "Department of the Prime Minister and Cabinet"
 abbr = "PMC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement"
 manual = true
 
@@ -505,6 +576,7 @@ name = "Domestic, Family and Sexual Violence Commission"
 abbr = "DFSVC"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Social Services"
 url = "https://www.dfsvc.gov.au/resources/our-ai-transparency-statement"
 
 [[agencies]]
@@ -512,6 +584,7 @@ name = "Fair Work Commission"
 abbr = "FWC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.fwc.gov.au/about-us/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -519,6 +592,7 @@ name = "Fair Work Ombudsman"
 abbr = "FWO"
 size = "medium"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.fairwork.gov.au/sites/default/files/2025-02/fwo-ai-transparency-statement.pdf"
 
 [[agencies]]
@@ -526,6 +600,7 @@ name = "Federal Court of Australia"
 abbr = "FCA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.fedcourt.gov.au/about/corporate-information/ai-statement"
 
 [[agencies]]
@@ -533,6 +608,7 @@ name = "Food Standards Australia New Zealand"
 abbr = "FSANZ"
 size = "small"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.foodstandards.gov.au/about-us/corporate-information/ai-transparency-statement"
 
 [[agencies]]
@@ -540,6 +616,7 @@ name = "Future Fund Management Agency"
 abbr = "FFMA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.futurefund.gov.au/en/About-us/access-to-information/parliamentary-and-statutory-reporting"
 # Statement lives in one accordion panel on a multi-item reporting page; this is
 # the AI panel's stable id (the DTA register links to the same GUID).
@@ -550,6 +627,7 @@ name = "Geoscience Australia"
 abbr = "GA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Industry, Science and Resources"
 url = "https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement"
 
 [[agencies]]
@@ -557,6 +635,7 @@ name = "Great Barrier Reef Marine Park Authority"
 abbr = "GBRMPA"
 size = "small"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www2.gbrmpa.gov.au/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -564,6 +643,7 @@ name = "Healthdirect Australia"
 abbr = "HEALTHDIRECT"
 size = "small"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.healthdirect.gov.au/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -571,6 +651,7 @@ name = "High Speed Rail Authority"
 abbr = "HSRA"
 size = "extra-small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://media.caapp.com.au/uNAjYmwT1let.pdf"
 
 [[agencies]]
@@ -578,6 +659,7 @@ name = "IP Australia"
 abbr = "IPA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Industry, Science and Resources"
 url = "https://www.ipaustralia.gov.au/about-us/accountability-and-reporting"
 
 [[agencies]]
@@ -585,6 +667,7 @@ name = "Independent Parliamentary Expenses Authority"
 abbr = "IPEA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.ipea.gov.au/about-ipea/accountability/ipea-artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -592,6 +675,7 @@ name = "Infrastructure Australia"
 abbr = "IA"
 size = "small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.infrastructureaustralia.gov.au/transparency-statement-use-artificial-intelligence-ai"
 
 [[agencies]]
@@ -599,6 +683,7 @@ name = "Inspector-General of Taxation and Taxation Ombudsman"
 abbr = "IGTO"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://taxombudsman.gov.au/wp-content/uploads/2026/03/AI-transparency-statement-March-2026.pdf"
 
 [[agencies]]
@@ -606,6 +691,7 @@ name = "Jobs and Skills Australia"
 abbr = "JSA"
 size = "small"
 scope = "voluntary"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.jobsandskills.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -613,6 +699,7 @@ name = "Murray-Darling Basin Authority"
 abbr = "MDBA"
 size = "medium"
 scope = "voluntary"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www.mdba.gov.au/about-us/accountability-and-reporting/ai-transparency-statement"
 
 [[agencies]]
@@ -620,6 +707,7 @@ name = "Museum of Australian Democracy at Old Parliament House"
 abbr = "MOADOPH"
 size = "small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://moadoph.gov.au/about/reports-policies-and-plans/policies-and-plans/ai-transparency-statement"
 
 [[agencies]]
@@ -627,6 +715,7 @@ name = "NDIS Quality and Safeguards Commission"
 abbr = "NDISQSC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.ndiscommission.gov.au/about-us/corporate-reports/ai-statement"
 
 [[agencies]]
@@ -634,6 +723,7 @@ name = "National Anti-Corruption Commission"
 abbr = "NACC"
 size = "small"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.nacc.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -641,6 +731,7 @@ name = "National Archives of Australia"
 abbr = "NAA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.naa.gov.au/about-us/who-we-are/accountability-and-reporting/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -648,6 +739,7 @@ name = "National Blood Authority"
 abbr = "NBA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.blood.gov.au/nbas-ai-transparency-statement"
 
 [[agencies]]
@@ -655,6 +747,7 @@ name = "National Capital Authority"
 abbr = "NCA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.nca.gov.au/nca-artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -662,6 +755,7 @@ name = "National Commission for Aboriginal and Torres Strait Islander Children a
 abbr = "NCATSICYP"
 size = "micro"
 scope = "mandatory"
+portfolio = "Social Services"
 url = "https://www.ncatsicyp.gov.au/about-us-integrity-maintaining-our-standards/national-commission-ai-transparency-statement"
 
 [[agencies]]
@@ -669,6 +763,7 @@ name = "National Disability Insurance Agency"
 abbr = "NDIA"
 size = "extra-large"
 scope = "voluntary"
+portfolio = "Health, Disability and Ageing"
 url = ""
 
 [[agencies]]
@@ -676,6 +771,7 @@ name = "National Emergency Management Agency"
 abbr = "NEMA"
 size = "medium"
 scope = "mandatory"
+portfolio = "Home Affairs"
 url = "https://www.nema.gov.au/about-us/privacy-disclosures"
 
 [[agencies]]
@@ -683,6 +779,7 @@ name = "National Film and Sound Archive of Australia"
 abbr = "NFSA"
 size = "medium"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
 selector = ".block-field-blocknodearticlebody"
 manual = true
@@ -692,6 +789,7 @@ name = "National Health Funding Body"
 abbr = "NHFB"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.publichospitalfunding.gov.au/about-us/corporate-governance/ai-transparency-statement"
 
 [[agencies]]
@@ -699,6 +797,7 @@ name = "National Health and Medical Research Council"
 abbr = "NHMRC"
 size = "medium"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.nhmrc.gov.au/about-us/accountability-and-reporting/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -706,6 +805,7 @@ name = "National Library of Australia"
 abbr = "NLA"
 size = "medium"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.library.gov.au/visit/about-us/corporate-information/corporate-strategies/artificial-intelligence-ai-transparency"
 
 [[agencies]]
@@ -713,6 +813,7 @@ name = "National Museum of Australia"
 abbr = "NMA"
 size = "medium"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = ""
 
 [[agencies]]
@@ -720,6 +821,7 @@ name = "National Offshore Petroleum Safety and Environmental Management Authorit
 abbr = "NOPSEMA"
 size = "small"
 scope = "voluntary"
+portfolio = "Industry, Science and Resources"
 url = "https://www.nopsema.gov.au/about/ai-transparency-statement"
 
 [[agencies]]
@@ -727,6 +829,7 @@ name = "National Portrait Gallery of Australia"
 abbr = "NPG"
 size = "extra-small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = ""
 
 [[agencies]]
@@ -734,6 +837,7 @@ name = "Net Zero Economy Authority"
 abbr = "NZEA"
 size = "small"
 scope = "mandatory"
+portfolio = "Industry, Science and Resources"
 url = "https://www.netzero.gov.au/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -741,6 +845,7 @@ name = "Office of National Intelligence"
 abbr = "ONI"
 size = "medium"
 scope = "exempt"
+portfolio = "Prime Minister and Cabinet"
 url = ""
 
 [[agencies]]
@@ -748,6 +853,7 @@ name = "Office of Parliamentary Counsel"
 abbr = "OPC"
 size = "small"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.opc.gov.au/sites/default/files/2025-02/AI%20Transparency%20Statement%20OPC_0.pdf"
 
 [[agencies]]
@@ -755,6 +861,7 @@ name = "Office of the Australian Information Commissioner"
 abbr = "OAIC"
 size = "small"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement"
 
 [[agencies]]
@@ -762,6 +869,7 @@ name = "Office of the Commonwealth Ombudsman"
 abbr = "OCO"
 size = "medium"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.ombudsman.gov.au/about/ai-transparency-statement"
 
 [[agencies]]
@@ -769,6 +877,7 @@ name = "Office of the Inspector-General of Aged Care"
 abbr = "OIGAC"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.igac.gov.au/about-us/our-governance/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -776,6 +885,7 @@ name = "Office of the Inspector-General of Intelligence and Security"
 abbr = "IGIS"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.igis.gov.au/resources/reporting-and-accountability"
 
 [[agencies]]
@@ -783,6 +893,7 @@ name = "Office of the Special Investigator"
 abbr = "OSI"
 size = "micro"
 scope = "mandatory"
+portfolio = "Attorney-General's"
 url = "https://www.osi.gov.au/policy-responsible-use-ai-government-ai-transparency-statement"
 
 [[agencies]]
@@ -790,6 +901,7 @@ name = "Organ and Tissue Authority"
 abbr = "OTA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.donatelife.gov.au/ai-transparency-statement"
 
 [[agencies]]
@@ -797,6 +909,7 @@ name = "Parliamentary Budget Office"
 abbr = "PBO"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Parliament"
 url = "https://www.pbo.gov.au/about-the-pbo/performance-and-reporting/information-and-privacy/ai-transparency-statement"
 
 [[agencies]]
@@ -804,6 +917,7 @@ name = "Parliamentary Workplace Support Service"
 abbr = "PWSS"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.pwss.gov.au/resources/pwss-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -811,6 +925,7 @@ name = "Productivity Commission"
 abbr = "PC"
 size = "small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.pc.gov.au/ai-transparency"
 
 [[agencies]]
@@ -818,6 +933,7 @@ name = "Professional Services Review"
 abbr = "PSR"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Health, Disability and Ageing"
 url = "https://www.psr.gov.au/artificial-intelligence-ai-transparency-statement"
 
 [[agencies]]
@@ -825,6 +941,7 @@ name = "Royal Australian Mint"
 abbr = "RAM"
 size = "medium"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://www.ramint.gov.au/sites/default/files/2025-04/royal_australian_mint_ai_transparency_statement.pdf"
 
 [[agencies]]
@@ -832,6 +949,7 @@ name = "Safe Work Australia"
 abbr = "SWA"
 size = "small"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.safeworkaustralia.gov.au/about-us/corporate-publications-and-resources/ai-transparency-statement"
 
 [[agencies]]
@@ -839,6 +957,7 @@ name = "Screen Australia"
 abbr = "SA"
 size = "micro"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.screenaustralia.gov.au/corporate-documents/policies/ai-transparency-statement/"
 
 [[agencies]]
@@ -846,6 +965,7 @@ name = "Seacare Authority"
 abbr = "SEACARE"
 size = "micro"
 scope = "mandatory"
+portfolio = "Employment and Workplace Relations"
 url = "https://www.seacare.gov.au/about-us/forms-and-publications/documents/publications/corporate-publications/ai-transparency-statement"
 
 [[agencies]]
@@ -853,6 +973,7 @@ name = "Services Australia"
 abbr = "SERVICESAUSTRALIA"
 size = "extra-large"
 scope = "mandatory"
+portfolio = "Finance"
 url = "https://www.servicesaustralia.gov.au/automation-and-artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -860,6 +981,7 @@ name = "Sport Integrity Australia"
 abbr = "SIA"
 size = "small"
 scope = "mandatory"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.sportintegrity.gov.au/about-us/corporate/governance/ai-transparency"
 
 [[agencies]]
@@ -867,6 +989,7 @@ name = "Tertiary Education Quality and Standards Agency"
 abbr = "TEQSA"
 size = "small"
 scope = "mandatory"
+portfolio = "Education"
 url = "https://www.teqsa.gov.au/about-us/reporting-and-accountability/ai-transparency-statement"
 
 [[agencies]]
@@ -874,6 +997,7 @@ name = "Torres Strait Regional Authority"
 abbr = "TSRA"
 size = "small"
 scope = "voluntary"
+portfolio = "Prime Minister and Cabinet"
 url = ""
 
 [[agencies]]
@@ -881,6 +1005,7 @@ name = "Workplace Gender Equality Agency"
 abbr = "WGEA"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.wgea.gov.au/about/governance/AI-transparency-statement"
 
 # Corporate Commonwealth entity, outside the APSC list and the policy's mandate,
@@ -891,6 +1016,7 @@ name = "AgriFutures Australia"
 abbr = "AFA"
 size = "small"
 scope = "voluntary"
+portfolio = "Agriculture, Fisheries and Forestry"
 url = "https://agrifutures.com.au/legal/ai-transparency-statement/"
 
 # Found via the DTA register cross-check (2026-06-28). The three parliamentary
@@ -902,6 +1028,7 @@ name = "Department of Parliamentary Services"
 abbr = "DPS"
 size = "medium"
 scope = "mandatory"
+portfolio = "Parliament"
 url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_Parliamentary_Services/Publications/AI_Transparency_Statement"
 
 [[agencies]]
@@ -909,6 +1036,7 @@ name = "Department of the Senate"
 abbr = "SENATE"
 size = "small"
 scope = "mandatory"
+portfolio = "Parliament"
 url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_Senate/Accountability_and_reporting/AI_transparency_statement"
 
 [[agencies]]
@@ -916,6 +1044,7 @@ name = "Department of the House of Representatives"
 abbr = "HOUSEREPS"
 size = "small"
 scope = "mandatory"
+portfolio = "Parliament"
 url = "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Department_of_the_House_of_Representatives/AI_transparency_statement"
 
 [[agencies]]
@@ -923,6 +1052,7 @@ name = "Northern Australia Infrastructure Facility"
 abbr = "NAIF"
 size = "extra-small"
 scope = "voluntary"
+portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://cdn.naif.gov.au/media/yxmpums3/naif-ai-transparency-statement.pdf"
 
 [[agencies]]
@@ -930,6 +1060,7 @@ name = "National Competition Council"
 abbr = "NCC"
 size = "extra-small"
 scope = "mandatory"
+portfolio = "Treasury"
 url = "https://ncc.gov.au/about/statutory_and_required_reporting"
 
 [[agencies]]
@@ -937,6 +1068,7 @@ name = "Office of the Official Secretary to the Governor-General"
 abbr = "OSGG"
 size = "small"
 scope = "mandatory"
+portfolio = "Prime Minister and Cabinet"
 url = "https://www.gg.gov.au/sites/default/files/2026-05/OOSGG%20AI%20Transparency%20Sstatement%20-%20May%202026.pdf"
 
 [[agencies]]
@@ -944,6 +1076,7 @@ name = "Australian Energy Regulator"
 abbr = "AER"
 size = "medium"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = "https://www.aer.gov.au/about/policies/artificial-intelligence-transparency-statement"
 
 [[agencies]]
@@ -951,6 +1084,7 @@ name = "National Environmental Protection Agency"
 abbr = "NEPA"
 size = "small"
 scope = "mandatory"
+portfolio = "Climate Change, Energy, the Environment and Water"
 url = ""
 
 [[agencies]]
@@ -958,4 +1092,5 @@ name = "Australian Naval Nuclear Power Safety Regulator"
 abbr = "ANNPSR"
 size = "small"
 scope = "exempt"
+portfolio = "Defence"
 url = ""
