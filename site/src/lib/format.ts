@@ -1,9 +1,15 @@
 import type { AgencySize, EventKind } from "@/types/exporter";
 
+// Calendar dates are Canberra's (AEST/AEDT): the scrape runs at 03:00 local and
+// stamps events with that offset, so formatting in the build machine's zone
+// (UTC on the CI runner) would shift every nightly event to the previous day.
+export const DISPLAY_TIME_ZONE = "Australia/Sydney";
+
 const DATE = new Intl.DateTimeFormat("en-AU", {
   day: "numeric",
   month: "short",
   year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 
 export function formatDate(iso: string): string {
