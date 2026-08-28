@@ -918,7 +918,8 @@ abbr = "PWSS"
 size = "extra-small"
 scope = "mandatory"
 portfolio = "Finance"
-url = "https://www.pwss.gov.au/resources/pwss-artificial-intelligence-transparency-statement"
+# The web page is a stub that links to the PDF; the PDF is the statement.
+url = "https://www.pwss.gov.au/sites/default/files/2026-02/2026%20PWSS%20AI%20Transparency%20Statement_0.pdf"
 
 [[agencies]]
 name = "Productivity Commission"
