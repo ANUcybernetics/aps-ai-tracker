@@ -139,8 +139,8 @@ for (const c of propagation.clusters) {
       <li><strong>scrape noise</strong>: nothing the agency wrote changed;</li>
       <li><strong>cosmetic</strong>: wording, typos, formatting, link targets, a date;</li>
       <li>
-        <strong>expanded</strong>: the same substance at more length &mdash; a bullet
-        grown into a paragraph, an example added to an existing claim;
+        <strong>expanded</strong>: the same substance at more length, such as a bullet
+        grown into a paragraph or an example added to an existing claim;
       </li>
       <li>
         <strong>restructured</strong>: reorganised or reworded, claims and commitments
@@ -168,8 +168,8 @@ for (const c of propagation.clusters) {
       > says a statement must contain and what version 2.0 of the policy asks agencies
       to stand up. Which DTA usage patterns and domains does it say are in use? Does it
       address public-facing AI, and does it commit to a human intermediary? Is an
-      accountable official named, and a Chief AI Officer &mdash; in place, planned, or
-      not mentioned? A use-case register? Mandatory training? How often does it
+      accountable official named? A Chief AI Officer, in place, planned, or not
+      mentioned? A use-case register? Mandatory training? How often does it
       promise to be reviewed, and when does it say it was last updated? What does it
       explicitly promise not to do?
     </p>
@@ -178,25 +178,26 @@ for (const c of propagation.clusters) {
       directly, and two revisions of one agency&rsquo;s profile can be diffed: that is
       where the &ldquo;commitment dropped&rdquo; and &ldquo;Chief AI Officer: planned
       &rarr; in place&rdquo; markers come from. A bullet point expanded into a paragraph
-      about the same thing produces no profile change at all, which is the point. The
-      profile records only what the statement itself says, never what is typical, and
-      it records job titles, never people&rsquo;s names.
+      about the same thing produces no profile change at all. The profile records only
+      what the statement itself says, never what is typical, and it records job
+      titles, never people&rsquo;s names.
     </p>
     <p>
-      The reading is a model&rsquo;s, and it can be wrong in the ways a careful but
-      hurried reader is wrong: a commitment paraphrased two ways across revisions may
-      read as dropped and re-added; a role described vaguely may land in the wrong
-      box. Every profile is shown beside the statement it came from, and every change
-      beside its diff, so the check is always one scroll away.
+      The reading is a model&rsquo;s, and it can be wrong: a commitment paraphrased
+      two ways across revisions may read as dropped and re-added; a role described
+      vaguely may land in the wrong box. To limit the drift, each revision is read
+      with the previous revision&rsquo;s profile as its baseline, and changes are
+      reported only on revisions whose diff was judged a change of substance. Every
+      profile sits beside the statement it came from, and every change beside its
+      diff, so both can be checked.
     </p>
 
     <h2 id="adoption">Adoption over time</h2>
     <p>
       The <a href={withBase("/policy")}>policy in practice</a> page counts, for each
       month since tracking began, how many tracked statements&rsquo; profiles report each
-      item &mdash; a Chief AI Officer, a register, mandatory training, a reference to
-      version 2.0 &mdash; and shows that as a share of the statements tracked that
-      month. Two cautions. Early months have small denominators: only {meta.counts.statements} statements
+      item (a Chief AI Officer, a register, mandatory training, a reference to version
+      2.0) and shows that as a share of the statements tracked that month. Two cautions. Early months have small denominators: only {meta.counts.statements} statements
       are tracked now, and fewer were on day one. And a statement that mentions a
       register is not proof the register exists; the charts show what agencies
       <em>say</em>, which is what a transparency statement is for.
