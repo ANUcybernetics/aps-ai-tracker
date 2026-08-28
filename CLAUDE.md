@@ -25,13 +25,13 @@ This is a Python web scraping project using uv for dependency management.
   in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude (Sonnet
   by default; `APS_LLM_MODEL` overrides). The default backend shells out to
   `claude -p --json-schema` under the logged-in Claude Code subscription, with
-  `ANTHROPIC_*` scrubbed from the child environment because Claude Code
-  prefers an API key over the login; `APS_LLM_BACKEND=api` uses the SDK with an
+  `ANTHROPIC_*` scrubbed from the child environment because Claude Code prefers
+  an API key over the login; `APS_LLM_BACKEND=api` uses the SDK with an
   `ANTHROPIC_API_KEY` you pass explicitly for that run. **Never put an
   `ANTHROPIC_API_KEY` in this project's mise env**: every `claude` started in
   the repo, including the nightly `/scrape`, would silently bill it. With no
-  backend the export degrades to the caches (unclassified pairs fall back to
-  the commit-message noise heuristic; unprofiled bodies get `profile: null`)
+  backend the export degrades to the caches (unclassified pairs fall back to the
+  commit-message noise heuristic; unprofiled bodies get `profile: null`)
 - Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
   console-script form does not resolve; invoke pytest as a module). Scraper
   tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
@@ -59,8 +59,8 @@ This is a Python web scraping project using uv for dependency management.
   - `profiles.py` reads each readable revision into a closed-vocabulary
     `Profile` (pydantic) aligned to the DTA Standard's minimum content and the
     policy v2.0 obligations, diffs consecutive profiles into labelled deltas,
-    and derives the Standard report card and concept flags; cached by body
-    hash in `.cache/profiles.json`
+    and derives the Standard report card and concept flags; cached by body hash
+    in `.cache/profiles.json`
   - `adoption.py` builds the monthly concept-adoption series and per-statement
     currency (updated since policy v2.0, annual review overdue)
   - `llm.py` is the shared structured-extraction layer (backend selection,
@@ -73,11 +73,10 @@ An Astro static site presents the data: a timeline of every change of substance
 (each with its model-written summary), per-statement pages ("the story so far",
 a profile report card against the Standard and policy v2.0, the text with a
 passage-reuse heat-map, and every revision with time-travel), a "policy in
-practice" page (adoption charts, commitments dropped, who is in charge, staleness),
-and a propagation explorer. Toolchain mirrors the benswift-me
-repo: pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The
-site is light-only (no dark mode); design tokens live in
-`src/styles/tokens.css`.
+practice" page (adoption charts, commitments dropped, who is in charge,
+staleness), and a propagation explorer. Toolchain mirrors the benswift-me repo:
+pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The site is
+light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
 
 - Dev: `cd site && mise exec -- pnpm dev`
 - Build/lint/format/typecheck/test:
@@ -160,11 +159,10 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
 user unit on weddle. It scrapes (`/scrape` on Sonnet via
 `~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
 subscription route), refreshes the extraction caches (`export`), syncs the
-corpus to atproto (see above), and
-`git push`es so the Pages site redeploys. weddle pushes to `origin` (credentials
-confirmed working) and reads `OPENAI_API_KEY` from its global
-`~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.
-Install with:
+corpus to atproto (see above), and `git push`es so the Pages site redeploys.
+weddle pushes to `origin` (credentials confirmed working) and reads
+`OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
+unit files live in `ops/systemd/`. Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/
@@ -195,9 +193,9 @@ after 60 days) — the script redirects nearly all of its output there, so
 - `scope` drives the site's coverage split, so it must be right: an NCE with no
   statement is a genuine gap (`not-yet`), not an exemption. Don't infer it from
   an empty URL
-- Each agency also has a `portfolio` field (the portfolio per the
-  Administrative Arrangements Order, short conventional name, "Parliament" for
-  the parliamentary departments) used to group agencies on the site; keep the
+- Each agency also has a `portfolio` field (the portfolio per the Administrative
+  Arrangements Order, short conventional name, "Parliament" for the
+  parliamentary departments) used to group agencies on the site; keep the
   spelling consistent so identical portfolios collapse together
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
 - **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
