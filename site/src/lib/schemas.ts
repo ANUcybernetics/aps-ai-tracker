@@ -83,6 +83,9 @@ export const metaSchema = z.object({
   builtAt: z.string(),
   firstCommit: z.string().nullable(),
   corpusStart: z.string().nullable(),
+  // Versions of the extraction schemas (profiles.py / changes.py) the build's
+  // caches were made against; carried into the dataset downloads.
+  schemaVersions: z.object({ profiles: z.number(), changes: z.number() }),
   counts: z.object({
     agencies: z.number(),
     published: z.number(),

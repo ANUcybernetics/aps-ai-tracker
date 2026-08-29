@@ -29,7 +29,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from .adoption import build_adoption, staleness
+from .changes import SCHEMA_VERSION as CHANGES_SCHEMA_VERSION
 from .changes import UNCLASSIFIED, Classification, classify_pairs
+from .profiles import SCHEMA_VERSION as PROFILES_SCHEMA_VERSION
 from .profiles import (
     Profile,
     Reading,
@@ -1047,6 +1049,13 @@ def main() -> int:
         "builtAt": built_at,
         "firstCommit": first_commit.splitlines()[0] if first_commit else None,
         "corpusStart": corpus_start,
+        # Versions of the extraction schemas the caches were built against, so
+        # a downloaded dataset can say which vintage of profiles.py/changes.py
+        # produced its fields.
+        "schemaVersions": {
+            "profiles": PROFILES_SCHEMA_VERSION,
+            "changes": CHANGES_SCHEMA_VERSION,
+        },
         "counts": {
             "agencies": len(agencies),
             "published": statuses.count("published"),
