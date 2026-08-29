@@ -36,8 +36,7 @@ In the [spirit](https://github.com/unitedstates/congress) of
 [using](https://github.com/k-r-a-s-s/aus-govt-transparency)
 [version](https://github.com/aclu-national/tracking-ll144-bias-audits)
 [control](https://github.com/Cybersoft82/Privacy-Policy-Change-Detection-and-History-Tracking-Service)
-tools,
-[this project](https://github.com/ANUcybernetics/aps-ai-tracker)
+tools, [this project](https://github.com/ANUcybernetics/aps-ai-tracker)
 automatically scrapes these statements and stores them as markdown files with
 YAML frontmatter, allowing changes to be tracked over time through git. The list
 of agencies is from
@@ -84,8 +83,8 @@ url = "https://example.gov.au/ai-transparency-statement"
 If the AI Transparency Statement URL is unknown or doesn't exist, set
 `url = ""`. For a body created after the policy took effect, add
 `established = "YYYY-MM-DD"` so the site can say its missing statement is
-newness rather than neglect. The scraper will skip agencies with empty URLs, but tests will fail
-as a reminder to either find the URL or confirm none exists.
+newness rather than neglect. The scraper will skip agencies with empty URLs, but
+tests will fail as a reminder to either find the URL or confirm none exists.
 
 ## Requirements
 
