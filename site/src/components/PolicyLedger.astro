@@ -1,0 +1,115 @@
+---
+// A dated ledger of profile removals (policy page): the newest few rows
+// visible, the rest folded behind a disclosure so the page stays skimmable.
+import { formatDate } from "@/lib/format";
+import { statementPath } from "@/lib/paths";
+import { revAnchor } from "@/lib/scrubber";
+
+interface LedgerRow {
+  date: string;
+  sha: string;
+  abbr: string;
+  agency: string;
+  label: string;
+}
+
+interface Props {
+  rows: LedgerRow[];
+  limit?: number;
+}
+
+const { rows, limit = 6 } = Astro.props;
+const shown = rows.slice(0, limit);
+const rest = rows.slice(limit);
+---
+
+{rows.length === 0 && <p class="muted">None recorded.</p>}
+{
+  rows.length > 0 && (
+    <ul class="ledger">
+      {shown.map((r) => (
+        <li class="ledger__row">
+          <time class="mono muted" datetime={r.date}>
+            {formatDate(r.date)}
+          </time>
+          <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+            {r.agency}
+          </a>
+          <span class="ledger__what">{r.label}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+{
+  rest.length > 0 && (
+    <details class="ledger-more">
+      <summary>Show all {rows.length}</summary>
+      <ul class="ledger">
+        {rest.map((r) => (
+          <li class="ledger__row">
+            <time class="mono muted" datetime={r.date}>
+              {formatDate(r.date)}
+            </time>
+            <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+              {r.agency}
+            </a>
+            <span class="ledger__what">{r.label}</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )
+}
+
+<style>
+  .ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .ledger-more .ledger {
+    border-block-start: none;
+  }
+
+  .ledger__row {
+    display: grid;
+    grid-template-columns: 7rem minmax(10rem, 0.5fr) 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding-block: var(--space-2);
+    border-block-end: 1px solid var(--border);
+    font-size: var(--text-sm);
+  }
+
+  .ledger__row time {
+    font-size: var(--text-xs);
+  }
+
+  .ledger__agency {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .ledger__agency:hover {
+    color: var(--accent-ink);
+  }
+
+  .ledger__what {
+    color: var(--del-text);
+  }
+
+  .ledger-more summary {
+    cursor: pointer;
+    padding-block: var(--space-2);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .ledger-more summary:hover {
+    color: var(--accent-ink);
+  }
+</style>

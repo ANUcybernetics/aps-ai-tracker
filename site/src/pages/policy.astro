@@ -7,13 +7,13 @@
 // (changes.py); every figure links back to the statement it came from.
 import Layout from "@/components/Layout.astro";
 import AdoptionChart from "@/components/AdoptionChart.astro";
+import PolicyLedger from "@/components/PolicyLedger.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { adoption, meta } from "@/lib/load";
 import { getAllStatements } from "@/lib/statements";
 import { formatDate } from "@/lib/format";
 import { STANDARD_ELEMENTS, changeTier, formatStatedDate } from "@/lib/profile-labels";
 import { statementPath, withBase } from "@/lib/paths";
-import { revAnchor } from "@/lib/scrubber";
 
 const statements = await getAllStatements();
 const profiled = statements.filter((s) => s.profile && s.standard);
@@ -123,9 +123,36 @@ const built = formatDate(meta.builtAt);
         > asked each agency to name a Chief AI Officer by July 2026. The statements are where
         agencies say how far they have got. This page reads all {profiled.length} of them
         together, as of {built}. Every figure here is a count of what a language model read
-        in each statement; each links to the statement so the reading can be checked.
+        in each statement; each links to the statement so the reading can be checked, and
+        the full dataset behind them is <a href={withBase("/data")}>downloadable</a>.
       </p>
       <ReadingLink anchor="adoption" label="How these figures are made" />
+      <dl class="facts headline-facts">
+        <div>
+          <dt><a href="#standard-heading">Show all eight Standard elements</a></dt>
+          <dd>{fullMarks} <span class="muted">of {profiled.length}</span></dd>
+        </div>
+        <div>
+          <dt><a href="#charge-heading">Chief AI Officer in place</a></dt>
+          <dd>{caioInPlace} <span class="muted">(+{caioPlanned} planned)</span></dd>
+        </div>
+        <div>
+          <dt><a href="#public-heading">Say they use no public-facing AI</a></dt>
+          <dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd>
+        </div>
+        <div>
+          <dt><a href="#removals-heading">Commitments no longer made</a></dt>
+          <dd>{droppedCommitments.length}</dd>
+        </div>
+        <div>
+          <dt><a href="#stale-heading">No sign of an update since v2.0</a></dt>
+          <dd>{notSinceV2.length}</dd>
+        </div>
+        <div>
+          <dt><a href="#stale-heading">Overdue by their own date</a></dt>
+          <dd>{overdue.length}</dd>
+        </div>
+      </dl>
     </header>
 
     <section class="stack" aria-labelledby="adoption-heading">
@@ -169,25 +196,7 @@ const built = formatDate(meta.builtAt);
         revisions&rsquo; profiles. A promise reworded rather than withdrawn can land here, so each
         links to the revision, where the exact words are shown.
       </p>
-      {
-        droppedCommitments.length === 0 ? (
-          <p class="muted">None recorded.</p>
-        ) : (
-          <ul class="ledger">
-            {droppedCommitments.map((r) => (
-              <li class="ledger__row">
-                <time class="mono muted" datetime={r.date}>
-                  {formatDate(r.date)}
-                </time>
-                <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
-                  {r.agency}
-                </a>
-                <span class="ledger__what">{r.label}</span>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      <PolicyLedger rows={droppedCommitments} />
     </section>
 
     <section class="stack" aria-labelledby="disclosures-heading">
@@ -201,25 +210,7 @@ const built = formatDate(meta.builtAt);
         folded into a broader description; a use that drops out may still be happening.
         These are changes in what the agency says, not in what it does.
       </p>
-      {
-        droppedDisclosures.length === 0 ? (
-          <p class="muted">None recorded.</p>
-        ) : (
-          <ul class="ledger">
-            {droppedDisclosures.map((r) => (
-              <li class="ledger__row">
-                <time class="mono muted" datetime={r.date}>
-                  {formatDate(r.date)}
-                </time>
-                <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
-                  {r.agency}
-                </a>
-                <span class="ledger__what">{r.label}</span>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      <PolicyLedger rows={droppedDisclosures} />
     </section>
 
     <section class="stack" aria-labelledby="charge-heading">
@@ -387,39 +378,22 @@ const built = formatDate(meta.builtAt);
     grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
   }
 
-  .ledger {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-block-start: 1px solid var(--border);
+  .headline-facts {
+    margin-block-start: var(--space-3);
   }
 
-  .ledger__row {
-    display: grid;
-    grid-template-columns: 7rem minmax(10rem, 0.5fr) 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
-    padding-block: var(--space-2);
-    border-block-end: 1px solid var(--border);
-    font-size: var(--text-sm);
-  }
-
-  .ledger__row time {
-    font-size: var(--text-xs);
-  }
-
-  .ledger__agency {
-    color: var(--text);
-    font-weight: 600;
+  .headline-facts dt a {
+    color: inherit;
     text-decoration: none;
   }
 
-  .ledger__agency:hover {
+  .headline-facts dt a:hover {
     color: var(--accent-ink);
   }
 
-  .ledger__what {
-    color: var(--del-text);
+  .headline-facts dd {
+    margin: 0;
+    font-weight: 600;
   }
 
   .roles,
