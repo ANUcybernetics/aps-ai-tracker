@@ -1,0 +1,144 @@
+---
+import Layout from "@/components/Layout.astro";
+import { formatDate } from "@/lib/format";
+import { meta } from "@/lib/load";
+import { withBase } from "@/lib/paths";
+
+const built = formatDate(meta.builtAt);
+const files = [
+  {
+    href: withBase("/data/statements.csv"),
+    name: "statements.csv",
+    what: `One row per tracked agency (${meta.counts.agencies} rows): roster, coverage status, currency, the Standard report card, and the current profile, flattened for a spreadsheet or dataframe. Start here.`,
+  },
+  {
+    href: withBase("/data/statements.json"),
+    name: "statements.json",
+    what: `The same ${meta.counts.statements} statements with structure intact: the full current profile (including commitment texts) plus every revision's classification, model-written summary and field-level profile deltas.`,
+  },
+  {
+    href: withBase("/data/timeline.json"),
+    name: "timeline.json",
+    what: `Every observed change as a flat event list (${meta.counts.revisions} events, newest first), each with its classification and summary.`,
+  },
+  {
+    href: withBase("/data/adoption.json"),
+    name: "adoption.json",
+    what: "The monthly adoption series behind the policy page's charts, plus every agency-level concept transition with the revision it happened in.",
+  },
+];
+---
+
+<Layout
+  title="Data downloads"
+  description="Download the tracker's full dataset — every agency, statement profile, revision and classified change — as CSV and JSON, without cloning the repository."
+>
+  <div class="page data prose stack">
+    <h1>Data downloads</h1>
+    <p class="lede">
+      Everything on this site is generated from one dataset, and you can have it. These
+      files are rebuilt with every deploy (this copy: {built}), so they always match the
+      pages. No API key, no repository clone, no scraping required.
+    </p>
+
+    <h2 id="files">The files</h2>
+    <dl class="files">
+      {
+        files.map((f) => (
+          <div>
+            <dt>
+              <a class="mono" href={f.href} download>
+                {f.name}
+              </a>
+            </dt>
+            <dd>{f.what}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <h2 id="reading-csv">Reading the CSV</h2>
+    <p>
+      Columns fall into five groups. <span class="mono">abbr</span> through{" "}
+      <span class="mono">originality</span> are the roster: agency name, portfolio,
+      whether the policy binds it (<span class="mono">scope</span>), coverage status,
+      statement URL, when we first saw it, how often it has changed, and its lexical
+      originality score. <span class="mono">stated_first_published</span> through{" "}
+      <span class="mono">annual_review_overdue</span> are currency: the statement&rsquo;s
+      own dates against the policy&rsquo;s review rules. The{" "}
+      <span class="mono">standard_*</span> columns are the report card &mdash; which of the
+      Standard&rsquo;s eight minimum elements the statement shows. The remaining columns
+      are the current profile in the closed vocabularies of{" "}
+      <a href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/src/aps_ai_tracker/profiles.py"
+        >profiles.py</a
+      >, with list-valued fields (usage patterns, domains, measures, named tools) joined
+      by semicolons and <span class="mono">profile_model</span> naming the model that read
+      it. Agencies with no published statement keep their roster columns and leave the
+      rest empty &mdash; a blank profile means &ldquo;no statement&rdquo;, not
+      &ldquo;answered no&rdquo;.
+    </p>
+
+    <h2 id="caveats">What to know before you analyse</h2>
+    <p>
+      The profile fields, change classifications and summaries are a language
+      model&rsquo;s reading of each statement &mdash; convenient, mostly right, and worth
+      spot-checking against the linked text before you publish a finding. <a
+        href={withBase("/reading")}>Reading the data</a
+      > explains what each figure claims and, more importantly, what it does not. The
+      record also only starts when the tracker did: a statement&rsquo;s first tracked
+      revision is not its first published version.
+    </p>
+    <p>
+      The schemas follow the extraction code and do evolve. Each JSON file carries{" "}
+      <span class="mono">generatedAt</span>, <span class="mono">headSha</span> and{" "}
+      <span class="mono">schemaVersions</span> so you can tell which vintage produced
+      your copy; new CSV columns are appended rather than reordered.
+    </p>
+
+    <h2 id="not-here">What is not here</h2>
+    <p>
+      The statement texts themselves. Full markdown bodies for every revision live in the{" "}
+      <a href="https://github.com/ANUcybernetics/aps-ai-tracker/tree/main/statements"
+        >git repository</a
+      >, and the current corpus is mirrored to the AT Protocol network under{" "}
+      <a href="https://bsky.app/profile/apsaitracker.app">@apsaitracker.app</a> as one
+      document record per statement. The passage-reuse clusters behind the{" "}
+      <a href={withBase("/propagation")}>propagation explorer</a> are also derivable from
+      those texts.
+    </p>
+
+    <h2 id="terms">Reuse and citation</h2>
+    <p>
+      The dataset, like the scraper and this site, is MIT-licensed &mdash; use it freely
+      with attribution. The statement texts remain the work of their agencies, most
+      licensed CC BY 4.0. If the data feeds something published, cite the tracker via the
+      repository&rsquo;s <a
+        href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/CITATION.cff"
+        >CITATION.cff</a
+      >, and check the <a href={withBase("/about")}>about page</a> for the fuller
+      licensing story.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .files {
+    margin: 0;
+  }
+
+  .files div {
+    padding-block: var(--space-3);
+    border-block-end: 1px solid var(--border);
+  }
+
+  .files dt {
+    font-weight: 600;
+  }
+
+  .files dd {
+    margin: var(--space-1) 0 0;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    max-inline-size: var(--measure);
+  }
+</style>

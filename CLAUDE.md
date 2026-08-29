@@ -89,9 +89,13 @@ An Astro static site presents the data: a timeline of every change of substance
 a profile report card against the Standard and policy v2.0, the text with a
 passage-reuse heat-map, and every revision with time-travel), a "policy in
 practice" page (adoption charts, commitments dropped, who is in charge,
-staleness), and a propagation explorer. Toolchain mirrors the benswift-me repo:
-pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The site is
-light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
+staleness), a propagation explorer, and downloadable datasets at `/data/`
+(statements as CSV and JSON, timeline, adoption — static endpoints in
+`src/pages/data/` flattening the generated JSON via `src/lib/dataset.ts`, each
+stamped with provenance and the extraction `schemaVersions` from `meta.json`).
+Toolchain mirrors the benswift-me repo: pnpm + Astro 7 + Svelte 5 islands,
+oxlint/oxfmt/stylelint, node 24. The site is light-only (no dark mode); design
+tokens live in `src/styles/tokens.css`.
 
 - Dev: `cd site && mise exec -- pnpm dev`
 - Build/lint/format/typecheck/test:
