@@ -109,7 +109,9 @@ submit a pull request or email me at
 
 ## License
 
-This scraper code is licensed under the MIT License.
+This scraper code is licensed under the MIT License. The dataset — the CSV/JSON
+downloads at <https://apsaitracker.app/data/> and the derived fields in them —
+is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The scraped AI Transparency Statements themselves are copyright of their
 respective Australian Government agencies. Most agency content is licensed under

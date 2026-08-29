@@ -13,6 +13,7 @@ export function provenance(meta: Meta) {
     schemaVersions: meta.schemaVersions,
     source: "https://github.com/ANUcybernetics/aps-ai-tracker",
     docs: "https://apsaitracker.app/data/",
+    license: "CC-BY-4.0",
     note: "Profile and change fields are a language model's reading of each statement; see https://apsaitracker.app/reading/ for what each figure does and does not claim.",
   };
 }
