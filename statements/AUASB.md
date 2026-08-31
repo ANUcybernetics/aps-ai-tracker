@@ -71,6 +71,6 @@ This transparency statement will be reviewed and updated if our approach to the 
 
 ## **Contact us**
 
-If you have any questions about this statement, please contact [email protected].
+If you have any questions about this statement, please contact enquiries@auasb.gov.au.
 
 Click [here ](https://www.auasb.gov.au/media/ctenxczf/aasb-auasb_ai_transparencystatement_12-25.pdf "AASB AUASB AI Transparencystatement 12 25")to view pdf version of AI Transparency Statement.

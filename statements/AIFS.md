@@ -85,7 +85,7 @@ The AI transparency statement was first published to our website on 2 December 2
 
 ## AI contact
 
-For questions about this statement or for further information on the Institute’s usage of AI, please contact [email protected].
+For questions about this statement or for further information on the Institute’s usage of AI, please contact ai@aifs.gov.au.
 
 Change history
 

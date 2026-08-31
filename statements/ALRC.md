@@ -109,4 +109,4 @@ This statement will be updated as the ALRC’s approach to AI changes, and at le
 
 ## **Contact**
 
-For enquiries about the ALRC’s adoption of AI, contact: [email protected]
+For enquiries about the ALRC’s adoption of AI, contact: info@alrc.gov.au

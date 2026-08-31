@@ -55,6 +55,6 @@ This AI transparency statement is reviewed annually or when significant changes 
 ## Contact
 
 For questions or feedback regarding AIHW’s AI transparency statement, please contact:\
-AI Accountable Official – [email protected]
+AI Accountable Official – aiao@aihw.gov.au
 
 Feedback

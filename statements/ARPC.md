@@ -51,7 +51,7 @@ This statement is reviewed at least annually or whenever significant changes occ
 
 **Contact Information**
 
-For enquiries about ARPC’s AI use please email: [email protected]
+For enquiries about ARPC’s AI use please email: enquiries@arpc.gov.au
 
 Login
 
