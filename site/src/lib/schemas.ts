@@ -28,7 +28,9 @@ export const eventKindSchema = z.enum(["added", "tracked-since", "updated"]);
 
 // Content-based classification of what a revision changed (see changes.py).
 // Noise kinds mean nothing the agency wrote changed; cosmetic kinds are edits
-// with no change of substance; content kinds are the ones worth reading.
+// with no change of substance; substantive means the substance changed, and
+// expansion/restructure are revisions that keep it. The grouping the site
+// presents lives in profile-labels.ts (changeTier).
 export const changeKindSchema = z.enum([
   "first-seen",
   // noise
@@ -55,11 +57,6 @@ export const NOISE_KINDS: ReadonlySet<ChangeKind> = new Set([
   "chrome",
   "date-stamp",
   "scrape-noise",
-]);
-export const CONTENT_KINDS: ReadonlySet<ChangeKind> = new Set([
-  "expansion",
-  "restructure",
-  "substantive",
 ]);
 
 const changeFields = {

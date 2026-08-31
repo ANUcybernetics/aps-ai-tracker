@@ -13,7 +13,7 @@ import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { revisionBodyToHtml } from "@/lib/markdown";
-import { changeTier } from "@/lib/profile-labels";
+import { READABLE_TIERS, changeTier } from "@/lib/profile-labels";
 import { buildScrubberDots, revAnchor, timePercent } from "@/lib/scrubber";
 import type { StatementDoc } from "@/types/exporter";
 
@@ -30,12 +30,12 @@ const { doc } = Astro.props;
 const names = await getAgencyNames();
 const isUrsource = doc.abbr === propagation.ursource;
 const firstSeen = doc.timeline[0]?.date;
-// "Changes" counts only changes of substance: the exporter classifies every
-// revision from its diff, and noise and cosmetic edits are not changes to what
-// the statement says.
-const contentChanges = doc.timeline.filter((t) => changeTier(t.changeKind) === "content");
-const changes = contentChanges.length;
-const lastUpdated = contentChanges.at(-1)?.date;
+// "Changes of substance" counts exactly the substantive revisions; "last
+// changed" is the newest change worth reading (a revision that rewords without
+// changing substance still updates the statement).
+const changes = doc.timeline.filter((t) => changeTier(t.changeKind) === "substance").length;
+const lastUpdated = doc.timeline.findLast((t) => READABLE_TIERS.has(changeTier(t.changeKind)))
+  ?.date;
 
 // For each shared passage, the other agencies that carry it (matched by normKey
 // to a propagation cluster), so a highlighted passage can name its company.

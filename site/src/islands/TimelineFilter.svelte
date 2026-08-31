@@ -8,7 +8,8 @@
   // the default view (content changes only) and the full-corpus chart.
   import MonthlyChart from "@/islands/MonthlyChart.svelte";
   import { formatMonth } from "@/lib/format";
-  import type { MonthlyMixRow } from "@/lib/monthly";
+  import { STACK_TIERS, type MonthlyMixRow, type StackTier } from "@/lib/monthly";
+  import { READABLE_TIERS, type ChangeTier } from "@/lib/profile-labels";
 
   interface AgencyOpt {
     abbr: string;
@@ -27,13 +28,12 @@
     total: number;
   } = $props();
 
-  // One control for what a row must be: the three coarse tiers plus the
-  // content kinds (matched against data-changekind), plus everything.
+  // One control over the change-tier ladder: the default view is everything
+  // that changed (or may have changed) what a statement says.
   const SHOW_OPTIONS = [
-    { value: "content", label: "Changes of substance" },
-    { value: "substantive", label: "Substantive" },
-    { value: "restructure", label: "Restructured" },
-    { value: "expansion", label: "Expanded" },
+    { value: "read", label: "Changes worth reading" },
+    { value: "substance", label: "Changes of substance" },
+    { value: "revision", label: "Revisions, same substance" },
     { value: "cosmetic", label: "Cosmetic edits" },
     { value: "noise", label: "Scrape noise" },
     { value: "first", label: "First tracked" },
@@ -49,7 +49,7 @@
   let q = $state(params?.get("q") ?? "");
   let agency = $state(params?.get("agency") ?? "");
   let portfolio = $state(params?.get("portfolio") ?? "");
-  let show = $state(showValues.has(urlShow) ? urlShow : "content");
+  let show = $state(showValues.has(urlShow) ? urlShow : "read");
   let month = $state<string | null>(/^\d{4}-\d{2}$/.test(urlMonth) ? urlMonth : null);
   // Counted from the DOM after hydration; falls back to `total` for SSR/no-JS.
   let shown: number | undefined = $state();
@@ -67,7 +67,7 @@
     if (q.trim()) p.set("q", q.trim());
     if (agency) p.set("agency", agency);
     if (portfolio) p.set("portfolio", portfolio);
-    if (show !== "content") p.set("show", show);
+    if (show !== "read") p.set("show", show);
     if (month) p.set("month", month);
     const qs = p.toString();
     const url = qs ? `${location.pathname}?${qs}` : location.pathname;
@@ -81,32 +81,40 @@
       searchText = new Map();
       for (const row of rows) searchText.set(row, row.textContent?.toLowerCase() ?? "");
     }
-    const byMonth = new Map<string, { substance: number; cosmetic: number; noise: number }>();
+    const stackTiers = new Set<string>(STACK_TIERS);
+    const byMonth = new Map<string, Record<StackTier, number>>();
     let count = 0;
     for (const row of rows) {
-      const { tier = "", changekind = "", month: rowMonth = "" } = row.dataset;
+      const tier = (row.dataset.tier ?? "") as ChangeTier;
+      const rowMonth = row.dataset.month ?? "";
       const sliceOk =
         (!agency || row.dataset.abbr === agency) &&
         (!portfolio || row.dataset.portfolio === portfolio) &&
         (!query || (searchText?.get(row) ?? "").includes(query));
-      const showOk = show === "all" || show === tier || show === changekind;
+      const showOk = show === "all" || (show === "read" ? READABLE_TIERS.has(tier) : show === tier);
       const visible = sliceOk && showOk && (!month || rowMonth === month);
       if (row.hidden === visible) row.hidden = !visible;
       if (visible) count++;
       // The chart counts the slice, not the view: the tier and month controls
       // narrow the feed below it, never the overview.
-      if (sliceOk && tier !== "first") {
+      if (sliceOk && stackTiers.has(tier)) {
         let m = byMonth.get(rowMonth);
-        if (!m) byMonth.set(rowMonth, (m = { substance: 0, cosmetic: 0, noise: 0 }));
-        if (tier === "content") m.substance++;
-        else if (tier === "cosmetic") m.cosmetic++;
-        else m.noise++;
+        if (!m) {
+          m = { substance: 0, revision: 0, cosmetic: 0, noise: 0, unclassified: 0 };
+          byMonth.set(rowMonth, m);
+        }
+        m[tier as StackTier]++;
       }
     }
     shown = count;
     live = chart.map(({ month: m }) => ({
       month: m,
-      ...(byMonth.get(m) ?? { substance: 0, cosmetic: 0, noise: 0 }),
+      substance: 0,
+      revision: 0,
+      cosmetic: 0,
+      noise: 0,
+      unclassified: 0,
+      ...byMonth.get(m),
     }));
     syncUrl();
   });

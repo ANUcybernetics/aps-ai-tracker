@@ -130,13 +130,14 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
     gap: var(--space-2) var(--space-3);
   }
 
-  .rev[data-tier="content"] .pill {
+  .rev[data-tier="substance"] .pill {
     background: var(--accent-wash);
     color: var(--accent-ink);
     border-color: var(--accent);
   }
 
-  .rev[data-tier="noise"] .pill {
+  .rev[data-tier="noise"] .pill,
+  .rev[data-tier="unclassified"] .pill {
     border-style: dashed;
     color: var(--muted);
   }

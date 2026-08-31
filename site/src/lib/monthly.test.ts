@@ -9,6 +9,8 @@ describe("monthKey", () => {
   });
 });
 
+const zero = { substance: 0, revision: 0, cosmetic: 0, noise: 0, unclassified: 0 };
+
 describe("monthlyMix", () => {
   it("stacks tiers per month and zero-fills quiet months", () => {
     const rows = monthlyMix([
@@ -18,10 +20,18 @@ describe("monthlyMix", () => {
       { date: "2026-01-05T03:00:00+11:00", changeKind: "expansion" },
     ]);
     expect(rows).toEqual([
-      { month: "2025-11", substance: 1, cosmetic: 1, noise: 1 },
-      { month: "2025-12", substance: 0, cosmetic: 0, noise: 0 },
-      { month: "2026-01", substance: 1, cosmetic: 0, noise: 0 },
+      { month: "2025-11", ...zero, substance: 1, cosmetic: 1, noise: 1 },
+      { month: "2025-12", ...zero },
+      { month: "2026-01", ...zero, revision: 1 },
     ]);
+  });
+
+  it("keeps revisions and unclassified pairs out of the substance stack", () => {
+    const rows = monthlyMix([
+      { date: "2025-12-02T03:00:00+11:00", changeKind: "restructure" },
+      { date: "2025-12-03T03:00:00+11:00", changeKind: "unclassified" },
+    ]);
+    expect(rows).toEqual([{ month: "2025-12", ...zero, revision: 1, unclassified: 1 }]);
   });
 
   it("keeps a first-seen-only month on the axis but out of the stacks", () => {
@@ -30,8 +40,8 @@ describe("monthlyMix", () => {
       { date: "2025-12-02T03:00:00+11:00", changeKind: "substantive" },
     ]);
     expect(rows).toEqual([
-      { month: "2025-11", substance: 0, cosmetic: 0, noise: 0 },
-      { month: "2025-12", substance: 1, cosmetic: 0, noise: 0 },
+      { month: "2025-11", ...zero },
+      { month: "2025-12", ...zero, substance: 1 },
     ]);
   });
 

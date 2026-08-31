@@ -877,12 +877,16 @@ def build_agency_index(
 def content_change_count(
     revs: list[Revision], classes: dict[str, Classification]
 ) -> int:
-    """Revisions classified as a change of substance (an unclassified pair counts)."""
+    """Revisions whose substance changed: exactly the substantive kind.
+
+    Expansion and restructure keep the claims and commitments the same by
+    definition, and an unclassified pair is unread, so none of them count —
+    "N changes of substance" on the site must never overclaim.
+    """
     return sum(
         1
         for rev in revs
-        if (c := classes.get(rev.sha)) is not None
-        and (c.is_content or c.kind == UNCLASSIFIED)
+        if (c := classes.get(rev.sha)) is not None and c.kind == "substantive"
     )
 
 

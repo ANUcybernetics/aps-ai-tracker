@@ -99,11 +99,15 @@
   --heat-4: oklch(78.5% 0.155 58);
 
   /* change-tier ramp for the monthly-mix chart: how much highlighter a change
-     deserves — substance (deep) → cosmetic → noise (pale). Single-hue ordinal
-     ramp; steps validated for separation and ≥2:1 contrast on --bg. */
-  --tier-substance: oklch(50% 0.13 50);
-  --tier-cosmetic: oklch(64% 0.125 60);
+     deserves — substance (deep) → revision → cosmetic → noise (pale).
+     Single-hue ordinal ramp; steps validated for separation and ≥2:1 contrast
+     on --bg. Unclassified sits off the ramp in neutral grey: it isn't a grade,
+     it's "nothing has read this diff yet". */
+  --tier-substance: oklch(46% 0.135 48);
+  --tier-revision: oklch(56.5% 0.13 56);
+  --tier-cosmetic: oklch(67% 0.115 64);
   --tier-noise: oklch(77% 0.1 72);
+  --tier-unclassified: oklch(58% 0.02 255);
 
   /* template wording: a cool, quiet wash kept off the warm amber ramp, so
      "standard template language" reads as its own category rather than a

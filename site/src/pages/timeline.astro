@@ -43,28 +43,42 @@ const portfolios = [
 const chart = monthlyMix(timeline);
 
 const tiers = timeline.map((e) => changeTier(e.changeKind));
+const count = (tier: string) => tiers.filter((t) => t === tier).length;
 const counts = {
-  content: tiers.filter((t) => t === "content").length,
-  cosmetic: tiers.filter((t) => t === "cosmetic").length,
-  noise: tiers.filter((t) => t === "noise").length,
-  first: tiers.filter((t) => t === "first").length,
+  substance: count("substance"),
+  revision: count("revision"),
+  unclassified: count("unclassified"),
+  cosmetic: count("cosmetic"),
+  noise: count("noise"),
+  first: count("first"),
 };
+const readable = counts.substance + counts.revision + counts.unclassified;
 ---
 
 <Layout
   title="Timeline"
-  description="Every change of substance to every Australian Government AI transparency statement, newest first, each summarised in a sentence."
+  description="Every change worth reading across every Australian Government AI transparency statement, newest first, each summarised in a sentence."
 >
   <div class="page stack">
     <header class="stack">
       <h1>Timeline</h1>
       <p class="lede">
-        Every change of substance the daily scrape has recorded, newest first, each
-        read from the diff and summarised in a sentence. Cosmetic edits ({counts.cosmetic}),
-        scrape noise ({counts.noise}) and first-tracked captures ({counts.first}) are hidden
-        until you ask for them. Narrow the feed by agency, portfolio or kind of change,
-        click a month in the chart, or search &mdash; the search reads the words that
-        changed, not just the summaries. Open a row to see the words that moved.
+        Every change worth reading, newest first, each read from the diff and summarised
+        in a sentence: {counts.substance} changes of substance &mdash; a claim, commitment
+        or disclosure added, removed or altered{
+          counts.revision > 0 && (
+            <>
+              {" "}
+              &mdash; and {counts.revision} revisions that reword without changing the substance
+            </>
+          )
+        }{
+          counts.unclassified > 0 && <>, plus {counts.unclassified} not yet classified</>
+        }. Cosmetic edits ({counts.cosmetic}), scrape noise ({counts.noise}) and
+        first-tracked captures ({counts.first}) are hidden until you ask for them. Narrow
+        the feed by agency, portfolio or kind of change, click a month in the chart, or
+        search &mdash; the search reads the words that changed, not just the summaries.
+        Open a row to see the words that moved.
       </p>
       <p class="muted">
         Summaries are written by a language model from the diff; each row shows which
@@ -78,7 +92,7 @@ const counts = {
       agencies={agencyOpts}
       portfolios={portfolios}
       chart={chart}
-      total={counts.content}
+      total={readable}
     />
 
     <ul class="tl-feed" id="tl-feed">

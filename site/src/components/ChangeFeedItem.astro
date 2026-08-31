@@ -3,7 +3,7 @@ import DiffView from "@/components/DiffView.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate, signedDelta } from "@/lib/format";
 import { monthKey } from "@/lib/monthly";
-import { CHANGE_KIND_LABEL, changeTier } from "@/lib/profile-labels";
+import { CHANGE_KIND_LABEL, READABLE_TIERS, changeTier } from "@/lib/profile-labels";
 import { statementPath } from "@/lib/paths";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -15,16 +15,16 @@ interface Props {
 
 const { event, diff, portfolio = null } = Astro.props;
 const tier = changeTier(event.changeKind);
-// Content changes are the feed's default view; cosmetic edits, scrape noise
-// and first-tracked imports ship hidden and the filter island reveals them.
-const hiddenByDefault = tier !== "content";
+// Changes worth reading are the feed's default view; cosmetic edits, scrape
+// noise and first-tracked imports ship hidden and the filter island reveals
+// them.
+const hiddenByDefault = !READABLE_TIERS.has(tier);
 ---
 
 <li
   class="tl-row"
   data-abbr={event.abbr}
   data-kind={event.kind}
-  data-changekind={event.changeKind}
   data-tier={tier}
   data-month={monthKey(event.date)}
   data-portfolio={portfolio ?? ""}
@@ -104,13 +104,14 @@ const hiddenByDefault = tier !== "content";
     color: var(--accent-ink);
   }
 
-  .tl-row[data-tier="content"] .pill {
+  .tl-row[data-tier="substance"] .pill {
     background: var(--accent-wash);
     color: var(--accent-ink);
     border-color: var(--accent);
   }
 
-  .tl-row[data-tier="noise"] .pill {
+  .tl-row[data-tier="noise"] .pill,
+  .tl-row[data-tier="unclassified"] .pill {
     border-style: dashed;
     color: var(--muted);
   }

@@ -45,9 +45,10 @@ amber) for reuse intensity, conventional **diff** colours (`--ins-*` green,
 `--del-*` red), and `--ok` green for positive deltas. The adoption charts on the
 policy page draw in ochre ink over the ochre wash, with the policy's own
 milestones as dashed neutral rules. The monthly-mix chart (home and timeline)
-uses a 3-step **tier ramp** (`--tier-substance`…`--tier-noise`, deep → pale):
+uses a 4-step **tier ramp** (`--tier-substance`…`--tier-noise`, deep → pale):
 the same highlighter logic — the deeper the ochre, the more the change amounted
-to.
+to — plus a neutral grey (`--tier-unclassified`) for revisions nothing has read
+yet, which are unknown rather than a grade on the ramp.
 
 **Contrast:** every text/background pair clears WCAG AA, including ink on every
 heat step (≥6.3:1) and ochre links (≥7:1). Verified by rendering the real tokens

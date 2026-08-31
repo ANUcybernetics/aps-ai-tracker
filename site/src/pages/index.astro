@@ -32,7 +32,7 @@ const newlyCreated = outstanding.every((a) => a.established)
 const chart = monthlyMix(timeline);
 const seen = new Set<string>();
 const recent = timeline
-  .filter((e) => changeTier(e.changeKind) === "content")
+  .filter((e) => changeTier(e.changeKind) === "substance")
   .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
   .slice(0, 3);
 

@@ -9,7 +9,7 @@
   // band carries focus, hover and pressed state. The <details> table is the
   // accessible reading of the same numbers.
   import { formatMonth, formatMonthLong } from "@/lib/format";
-  import type { MonthlyMixRow } from "@/lib/monthly";
+  import { STACK_TIERS, type MonthlyMixRow, type StackTier } from "@/lib/monthly";
 
   let {
     data,
@@ -27,11 +27,13 @@
   const CAP_PCT = (CAP_R / PLOT_H) * 100; // the same radius as a share of plot height
   const BAR_FRAC = 0.38; // bar thickness as a share of its month band
 
-  const TIERS = [
-    { key: "substance", label: "changes of substance" },
-    { key: "cosmetic", label: "cosmetic edits" },
-    { key: "noise", label: "scrape noise" },
-  ] as const;
+  const TIER_LABEL: Record<StackTier, string> = {
+    substance: "changes of substance",
+    revision: "revisions, same substance",
+    cosmetic: "cosmetic edits",
+    noise: "scrape noise",
+    unclassified: "unclassified",
+  };
 
   function niceMax(v: number): number {
     const p = 10 ** Math.floor(Math.log10(v));
@@ -40,12 +42,16 @@
   }
 
   let n = $derived(data.length);
-  let totals = $derived(data.map((d) => d.substance + d.cosmetic + d.noise));
+  // Only tiers with any events anywhere get a series, a legend entry, and a
+  // table column — a tier the corpus has never produced stays invisible until
+  // the day it happens.
+  let activeTiers = $derived(STACK_TIERS.filter((t) => data.some((d) => d[t] > 0)));
+  let totals = $derived(data.map((d) => STACK_TIERS.reduce((sum, t) => sum + d[t], 0)));
   let yMax = $derived(niceMax(Math.max(...totals, 1)));
   let maxIdx = $derived(totals.indexOf(Math.max(...totals)));
 
   interface Seg {
-    key: (typeof TIERS)[number]["key"];
+    key: StackTier;
     label: string;
     value: number;
     top: number; // % from plot top
@@ -59,14 +65,14 @@
       const centre = ((i + 0.5) / n) * 100;
       const segs: Seg[] = [];
       let cum = 0;
-      for (const t of TIERS) {
-        const value = d[t.key];
+      for (const t of activeTiers) {
+        const value = d[t];
         if (value === 0) continue;
         const h = (value / yMax) * 100 - (segs.length > 0 ? GAP : 0);
         cum += value;
         segs.push({
-          key: t.key,
-          label: t.label,
+          key: t,
+          label: TIER_LABEL[t],
           value,
           top: (1 - cum / yMax) * 100,
           h: Math.max(h, 0.75),
@@ -84,9 +90,18 @@
       .filter(({ month, i }) => i === 0 || i === n - 1 || month.endsWith("-01")),
   );
 
+  const DESCRIBE_LABEL: Record<StackTier, string> = {
+    substance: "of substance",
+    revision: "revisions",
+    cosmetic: "cosmetic",
+    noise: "scrape noise",
+    unclassified: "unclassified",
+  };
+
   function describe(d: MonthlyMixRow): string {
-    const total = d.substance + d.cosmetic + d.noise;
-    return `${formatMonthLong(d.month)}: ${total} ${total === 1 ? "change" : "changes"} — ${d.substance} of substance, ${d.cosmetic} cosmetic, ${d.noise} scrape noise`;
+    const total = STACK_TIERS.reduce((sum, t) => sum + d[t], 0);
+    const parts = activeTiers.map((t) => `${d[t]} ${DESCRIBE_LABEL[t]}`).join(", ");
+    return `${formatMonthLong(d.month)}: ${total} ${total === 1 ? "change" : "changes"} — ${parts}`;
   }
 
   const uid = $props.id();
@@ -184,8 +199,8 @@
       </div>
     </div>
     <div class="mmx__legend">
-      {#each TIERS as t (t.key)}
-        <span class="mmx__key"><i class={`mmx__swatch mmx__seg--${t.key}`}></i>{t.label}</span>
+      {#each activeTiers as t (t)}
+        <span class="mmx__key"><i class={`mmx__swatch mmx__seg--${t}`}></i>{TIER_LABEL[t]}</span>
       {/each}
     </div>
     <details class="mmx__table">
@@ -194,18 +209,18 @@
         <thead>
           <tr>
             <th scope="col">Month</th>
-            <th scope="col">Substance</th>
-            <th scope="col">Cosmetic</th>
-            <th scope="col">Noise</th>
+            {#each activeTiers as t (t)}
+              <th scope="col">{TIER_LABEL[t]}</th>
+            {/each}
           </tr>
         </thead>
         <tbody>
           {#each data as d (d.month)}
             <tr>
               <td>{formatMonth(d.month)}</td>
-              <td>{d.substance}</td>
-              <td>{d.cosmetic}</td>
-              <td>{d.noise}</td>
+              {#each activeTiers as t (t)}
+                <td>{d[t]}</td>
+              {/each}
             </tr>
           {/each}
         </tbody>
@@ -264,6 +279,11 @@
     background: var(--tier-substance);
   }
 
+  .mmx__seg--revision {
+    fill: var(--tier-revision);
+    background: var(--tier-revision);
+  }
+
   .mmx__seg--cosmetic {
     fill: var(--tier-cosmetic);
     background: var(--tier-cosmetic);
@@ -272,6 +292,11 @@
   .mmx__seg--noise {
     fill: var(--tier-noise);
     background: var(--tier-noise);
+  }
+
+  .mmx__seg--unclassified {
+    fill: var(--tier-unclassified);
+    background: var(--tier-unclassified);
   }
 
   .mmx__ytick,

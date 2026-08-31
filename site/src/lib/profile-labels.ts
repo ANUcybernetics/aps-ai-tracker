@@ -2,7 +2,7 @@
 // by the statement report card, the story list, the timeline and the policy
 // page so a term reads the same everywhere.
 import type { ChangeKind, Profile } from "@/types/exporter";
-import { CONTENT_KINDS, NOISE_KINDS } from "@/lib/schemas";
+import { NOISE_KINDS } from "@/lib/schemas";
 
 export const CHANGE_KIND_LABEL: Record<ChangeKind, string> = {
   "first-seen": "first tracked",
@@ -19,15 +19,31 @@ export const CHANGE_KIND_LABEL: Record<ChangeKind, string> = {
   unclassified: "unclassified",
 };
 
-export type ChangeTier = "content" | "cosmetic" | "noise" | "first";
+// The ladder every view groups by, from the two questions the classification
+// answers: did the agency edit at all (noise = no), and did the substance
+// change? "Substance" means exactly the substantive kind — a claim, commitment,
+// fact or disclosure added, removed or altered. Expansion and restructure are
+// revisions: new words, same substance; never counted as substance. An
+// unclassified pair (nothing has read the diff yet) is shown fail-open but
+// counted as nothing.
+export type ChangeTier = "substance" | "revision" | "cosmetic" | "noise" | "unclassified" | "first";
 
 export function changeTier(kind: ChangeKind): ChangeTier {
   if (kind === "first-seen") return "first";
+  if (kind === "unclassified") return "unclassified";
+  if (kind === "substantive") return "substance";
+  if (kind === "expansion" || kind === "restructure") return "revision";
   if (NOISE_KINDS.has(kind)) return "noise";
-  if (CONTENT_KINDS.has(kind)) return "content";
-  // unclassified is treated as content: it could be anything, so show it
-  return kind === "unclassified" ? "content" : "cosmetic";
+  return "cosmetic"; // cosmetic, reordering
 }
+
+// What the feed shows by default and "the story so far" narrates: everything
+// that changed (or may have changed) what a statement says.
+export const READABLE_TIERS: ReadonlySet<ChangeTier> = new Set([
+  "substance",
+  "revision",
+  "unclassified",
+]);
 
 export const USAGE_PATTERN_LABEL: Record<Profile["usage_patterns"][number], string> = {
   "decision-making-and-administrative-action": "Decision making and administrative action",

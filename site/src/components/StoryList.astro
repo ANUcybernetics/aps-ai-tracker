@@ -1,12 +1,18 @@
 ---
 // "The story so far": a statement's history as a reader would tell it —
-// every content change in order, each with its plain-English summary, the
-// noteworthy points the model pulled out, and the structured profile deltas
-// (a commitment dropped, an officer appointed). Noise never appears here;
-// cosmetic edits are folded into one quiet line so the story stays readable.
+// every change worth reading in order (substance, revisions, and anything not
+// yet classified), each with its plain-English summary, the noteworthy points
+// the model pulled out, and the structured profile deltas (a commitment
+// dropped, an officer appointed). Noise never appears here; cosmetic edits are
+// folded into one quiet line so the story stays readable.
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
-import { CHANGE_KIND_LABEL, changeTier, formatStatedDate } from "@/lib/profile-labels";
+import {
+  CHANGE_KIND_LABEL,
+  READABLE_TIERS,
+  changeTier,
+  formatStatedDate,
+} from "@/lib/profile-labels";
 import { revAnchor } from "@/lib/scrubber";
 import type { Currency, TimelineRevision } from "@/types/exporter";
 
@@ -20,15 +26,16 @@ const { timeline, currency, agency } = Astro.props;
 
 type Chapter =
   | { type: "first"; rev: TimelineRevision }
-  | { type: "content"; rev: TimelineRevision }
+  | { type: "change"; rev: TimelineRevision }
   | { type: "cosmetic"; revs: TimelineRevision[] };
 
-// Walk oldest → newest, grouping runs of cosmetic edits between content changes.
+// Walk oldest → newest, grouping runs of cosmetic edits between the changes
+// worth reading.
 const chapters: Chapter[] = [];
 for (const rev of timeline) {
   const tier = changeTier(rev.changeKind);
   if (tier === "first") chapters.push({ type: "first", rev });
-  else if (tier === "content") chapters.push({ type: "content", rev });
+  else if (READABLE_TIERS.has(tier)) chapters.push({ type: "change", rev });
   else if (tier === "cosmetic") {
     const last = chapters.at(-1);
     if (last?.type === "cosmetic") last.revs.push(rev);
@@ -36,7 +43,7 @@ for (const rev of timeline) {
   }
 }
 
-const contentCount = chapters.filter((c) => c.type === "content").length;
+const changeCount = chapters.filter((c) => c.type === "change").length;
 const stated = currency.statedFirstPublished;
 ---
 
@@ -99,7 +106,7 @@ const stated = currency.statedFirstPublished;
               <span class="pill" data-kind={rev.changeKind}>
                 {kindLabel}
               </span>{" "}
-              {rev.summary ?? "The statement's substance changed."}
+              {rev.summary ?? "Not yet read; the words that changed are the record."}
             </p>
             <ModelNote model={rev.model} />
             {rev.noteworthy.length > 0 && (
@@ -151,7 +158,7 @@ const stated = currency.statedFirstPublished;
     })
   }
   {
-    contentCount === 0 && (
+    changeCount === 0 && (
       <li class="story__item story__item--quiet">
         <span class="story__date mono" aria-hidden="true">
           &mdash;

@@ -156,12 +156,19 @@ for (const c of propagation.clusters) {
       </li>
     </ul>
     <p>
-      Only the last three count as changes on the timeline and in the story on each
-      statement page. The model is told to report removals and additions alike, that an
-      expansion which keeps the same substance is never substantive, and that text which
-      vanished because the capture was cut short is scrape noise, not an edit. Every
-      summary names the model that wrote it and is shown next to the raw diff, so you
-      can check its reading against the words.
+      Only the last three appear on the timeline and in the story on each statement page
+      by default, and the site is precise about one distinction within them: a
+      <strong>change of substance</strong> is exactly the substantive kind. Expanded and
+      restructured revisions are shown alongside them &mdash; the statement now reads
+      differently, and that is worth knowing &mdash; but they are never counted as
+      changes of substance, because their definitions say the claims and commitments
+      stayed the same. A revision nothing has yet read (rare: no rule matched and no
+      model was available) is shown as <strong>unclassified</strong> rather than
+      hidden, and counted as nothing until it is read. The model is told to report
+      removals and additions alike, that an expansion which keeps the same substance is
+      never substantive, and that text which vanished because the capture was cut short
+      is scrape noise, not an edit. Every summary names the model that wrote it and is
+      shown next to the raw diff, so you can check its reading against the words.
     </p>
     <p>
       One further guard sits outside the model: a capture we know to be broken is
@@ -228,7 +235,7 @@ for (const c of propagation.clusters) {
       two ways across revisions may read as dropped and re-added; a role described
       vaguely may land in the wrong box. To limit the drift, each revision is read
       with the previous revision&rsquo;s profile as its baseline, and changes are
-      reported only on revisions whose diff was judged a change of substance. Every
+      reported only on revisions whose diff was judged worth reading. Every
       profile sits beside the statement it came from, and every change beside its
       diff, so both can be checked.
     </p>

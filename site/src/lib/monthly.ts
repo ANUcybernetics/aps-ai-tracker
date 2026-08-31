@@ -4,14 +4,17 @@
 // the stacks; their months still appear (zero-filled) so the axis is honest
 // about when tracking was active.
 import { DISPLAY_TIME_ZONE } from "@/lib/format";
-import { changeTier } from "@/lib/profile-labels";
+import { changeTier, type ChangeTier } from "@/lib/profile-labels";
 import type { ChangeKind } from "@/types/exporter";
 
-export interface MonthlyMixRow {
-  month: string; // "YYYY-MM"
-  substance: number;
-  cosmetic: number;
-  noise: number;
+// Stacking order, baseline up: the story series (substance) sits on the axis.
+export const STACK_TIERS = ["substance", "revision", "cosmetic", "noise", "unclassified"] as const;
+export type StackTier = (typeof STACK_TIERS)[number];
+
+export type MonthlyMixRow = { month: string } & Record<StackTier, number>;
+
+function emptyRow(month: string): MonthlyMixRow {
+  return { month, substance: 0, revision: 0, cosmetic: 0, noise: 0, unclassified: 0 };
 }
 
 const MONTH_KEY = new Intl.DateTimeFormat("en-CA", {
@@ -42,20 +45,18 @@ export function monthlyMix(events: { date: string; changeKind: ChangeKind }[]): 
     const month = monthKey(event.date);
     if (first === null || month < first) first = month;
     if (last === null || month > last) last = month;
-    const tier = changeTier(event.changeKind);
+    const tier: ChangeTier = changeTier(event.changeKind);
     if (tier === "first") continue;
     let row = byMonth.get(month);
     if (!row) {
-      row = { month, substance: 0, cosmetic: 0, noise: 0 };
+      row = emptyRow(month);
       byMonth.set(month, row);
     }
-    if (tier === "content") row.substance++;
-    else if (tier === "cosmetic") row.cosmetic++;
-    else row.noise++;
+    row[tier]++;
   }
   const rows: MonthlyMixRow[] = [];
   for (let m = first as string; m <= (last as string); m = nextMonth(m)) {
-    rows.push(byMonth.get(m) ?? { month: m, substance: 0, cosmetic: 0, noise: 0 });
+    rows.push(byMonth.get(m) ?? emptyRow(m));
   }
   return rows;
 }

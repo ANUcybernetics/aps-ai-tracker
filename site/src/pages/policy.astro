@@ -100,7 +100,9 @@ const pf = { none: 0, "with-human-review": 0, "without-human-review": 0, "not-ad
 for (const s of profiled) pf[s.profile!.public_facing] += 1;
 const withCommitment = profiled.filter((s) => s.profile!.public_interaction_commitment).length;
 
-const contentChanges = statements.flatMap((s) => s.timeline).filter((r) => changeTier(r.changeKind) === "content").length;
+const substanceChanges = statements
+  .flatMap((s) => s.timeline)
+  .filter((r) => changeTier(r.changeKind) === "substance").length;
 const pct = (n: number) => `${Math.round((100 * n) / Math.max(profiled.length, 1))}%`;
 const built = formatDate(meta.builtAt);
 ---
@@ -355,7 +357,7 @@ const built = formatDate(meta.builtAt);
     </section>
 
     <p class="muted policy__foot">
-      {contentChanges} changes of substance across {statements.length} statements feed these
+      {substanceChanges} changes of substance across {statements.length} statements feed these
       figures, each read by a language model and each checkable against the words that changed.
       For the full change record see the <a href={withBase("/timeline")}>timeline</a>;
       for how any single agency got here, its statement page tells the story.
