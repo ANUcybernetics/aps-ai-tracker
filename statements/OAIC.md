@@ -27,6 +27,7 @@ title: OAIC AI transparency statement | OAIC
 
 - [ Corporate plans ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
+  - [ Corporate plan 2026–27 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-202627)
   - [ Corporate plan 2025–26 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-2025-26)
   - [ Corporate plan 2024–25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-2024-25)
   - [ Corporate plan 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/corporate-plans/corporate-plan-202324)
