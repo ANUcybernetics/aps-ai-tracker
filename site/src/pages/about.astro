@@ -130,9 +130,10 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         requirements and the APS AI Plan, with each question&rsquo;s source recorded
         (see <a href={withBase("/reading#schema")}>where the questions come
         from</a>); noise revisions inherit their predecessor&rsquo;s profile. A
-        page&rsquo;s own last-updated date is captured by the scraper, not the
-        model. Consecutive profiles are diffed field by field to produce the
-        structured change markers; commitments are matched across revisions by
+        page&rsquo;s own last-updated date is read by the scraper and the line then
+        set aside, so a ticking date stamp cannot churn the diffs; failing that,
+        a date the model finds in the prose is used. Consecutive profiles are
+        diffed field by field to produce the structured change markers; commitments are matched across revisions by
         word overlap. Adoption curves count, per month, the tracked statements
         whose profile reports each item.
       </li>

@@ -28,11 +28,10 @@ for (const c of propagation.clusters) {
   <div class="page reading prose stack">
     <h1>Reading the data</h1>
     <p class="lede">
-      This site turns a stack of government web pages into summaries, profiles,
-      charts and colours: a one-line reading of every change, a report card for
-      every statement, adoption curves for the policy&rsquo;s obligations, originality
-      figures, a reuse heat-map, and a record of which statement we saw a passage in
-      first. This page explains what each one means, and what it does not claim.
+      Most Commonwealth agencies are required to publish a statement about how they
+      use AI. This site watches those statements, keeps every version, and turns the
+      changes into summaries, profiles, charts and colours. This page explains what
+      each one means, and what it does not claim.
     </p>
 
     <h2 id="corpus">When the record starts</h2>
@@ -192,11 +191,14 @@ for (const c of propagation.clusters) {
     </p>
     <h3 id="schema">Where the questions come from</h3>
     <p>
-      The questions are the instruments&rsquo; own wherever an instrument asks one, and
-      ours where none does. The usage patterns and domains are the DTA&rsquo;s
-      classification system verbatim. Nothing here is a requirement unless its source
-      says so: the Chief AI Officer, in particular, comes from the APS AI Plan, not the
-      policy.
+      Three instruments sit behind these statements: the policy that mandates them,
+      the Standard that sets their minimum content, and the APS AI Plan (the <a
+        href={withBase("/whos-who")}>who&rsquo;s who</a> page sets out how they fit
+      together). Wherever one of them asks a question, the profile asks that
+      question; where none does, the question is ours. The usage patterns and
+      domains are the DTA&rsquo;s classification system verbatim. Nothing here is a
+      requirement unless its source says so: the Chief AI Officer, in particular,
+      comes from the APS AI Plan, not the policy.
     </p>
     <dl class="sources">
       {
@@ -252,17 +254,15 @@ for (const c of propagation.clusters) {
       show what agencies <em>say</em>, which is what a transparency statement is for.
     </p>
     <p>
-      A statement&rsquo;s own date is the one its page carries (&ldquo;last updated 25
-      February 2026&rdquo;), read by the scraper before that line is set aside so it
-      cannot churn the diffs, or failing that a date the model finds in the prose.
-      &ldquo;Updated since policy 2.0&rdquo; is true when either that date or a change we
-      observed falls on or after 15 December 2025, and false when we have been watching
-      since before then and have seen neither. For a statement that entered the tracker
-      after that date and gives no date of its own we cannot tell, and say so.
-      &ldquo;Overdue&rdquo; uses only the statement&rsquo;s own date: the Standard requires
-      review at least yearly, and a self-declared date more than a year old is the
-      agency&rsquo;s own admission. A statement with no date is neither. Both verdicts are
-      dated, because they move with the calendar.
+      Two verdicts on that page rest on a statement&rsquo;s own dates.
+      &ldquo;Updated since policy 2.0&rdquo; is true when the statement&rsquo;s
+      self-declared last-updated date, or a change we observed ourselves, falls on or
+      after 15 December 2025, and false when we have been watching since before then
+      and have seen neither; where we cannot tell, we say so. &ldquo;Overdue&rdquo;
+      is simpler: the Standard requires review at least yearly, so a self-declared
+      date more than a year old is the agency&rsquo;s own admission, and a statement
+      with no date is neither current nor overdue. Both verdicts move with the
+      calendar, so both are dated.
     </p>
 
     <h2 id="more">The fine print</h2>
