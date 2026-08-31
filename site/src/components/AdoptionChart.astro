@@ -4,6 +4,8 @@
 // own milestones as vertical rules. Built at build time as inline SVG, so it
 // needs no JavaScript; the table underneath is the accessible reading of the
 // same numbers.
+import { formatMonth } from "@/lib/format";
+
 interface Props {
   id: string;
   label: string;
@@ -56,11 +58,6 @@ const latestTracked = tracked.at(-1) ?? 0;
 const xLabels = months
   .map((m, i) => ({ m, i }))
   .filter(({ m, i }) => i === 0 || i === months.length - 1 || m.endsWith("-01"));
-const monthLabel = (m: string) =>
-  new Date(Number(m.slice(0, 4)), Number(m.slice(5, 7)) - 1, 1).toLocaleString("en-AU", {
-    month: "short",
-    year: "2-digit",
-  });
 const titleId = `${id}-title`;
 const descId = `${id}-desc`;
 
@@ -68,10 +65,10 @@ const startPct = Math.round(pct[0] ?? 0);
 const endPct = Math.round(latest);
 const trend =
   endPct === startPct
-    ? `Unchanged at ${startPct}% from ${monthLabel(first)} to ${monthLabel(last)}`
+    ? `Unchanged at ${startPct}% from ${formatMonth(first)} to ${formatMonth(last)}`
     : endPct > startPct
-      ? `Rises from ${startPct}% in ${monthLabel(first)} to ${endPct}% in ${monthLabel(last)}`
-      : `Falls from ${startPct}% in ${monthLabel(first)} to ${endPct}% in ${monthLabel(last)}`;
+      ? `Rises from ${startPct}% in ${formatMonth(first)} to ${endPct}% in ${formatMonth(last)}`
+      : `Falls from ${startPct}% in ${formatMonth(first)} to ${endPct}% in ${formatMonth(last)}`;
 ---
 
 <figure class="adopt">
@@ -133,7 +130,7 @@ const trend =
           class="adopt__tick"
           text-anchor={i === 0 ? "start" : i === months.length - 1 ? "end" : "middle"}
         >
-          {monthLabel(m)}
+          {formatMonth(m)}
         </text>
       ))
     }
@@ -148,7 +145,7 @@ const trend =
         {
           months.map((m, i) => (
             <tr>
-              <td>{monthLabel(m)}</td>
+              <td>{formatMonth(m)}</td>
               <td>{counts[i]}</td>
               <td>{tracked[i]}</td>
             </tr>

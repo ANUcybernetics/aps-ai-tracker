@@ -16,6 +16,28 @@ export function formatDate(iso: string): string {
   return DATE.format(new Date(iso));
 }
 
+const MONTH_SHORT = new Intl.DateTimeFormat("en-AU", {
+  month: "short",
+  year: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+});
+
+const MONTH_LONG = new Intl.DateTimeFormat("en-AU", {
+  month: "long",
+  year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
+});
+
+// A calendar month key ("2026-08") as an axis label ("Aug 26"). Midday UTC on
+// the 1st is the same calendar month in every plausible build zone.
+export function formatMonth(month: string): string {
+  return MONTH_SHORT.format(new Date(`${month}-01T12:00:00Z`));
+}
+
+export function formatMonthLong(month: string): string {
+  return MONTH_LONG.format(new Date(`${month}-01T12:00:00Z`));
+}
+
 export function originalityPercent(score: number): number {
   return Math.round(score * 100);
 }

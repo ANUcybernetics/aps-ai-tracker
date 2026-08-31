@@ -98,6 +98,13 @@
   --heat-3: oklch(85% 0.14 72);
   --heat-4: oklch(78.5% 0.155 58);
 
+  /* change-tier ramp for the monthly-mix chart: how much highlighter a change
+     deserves — substance (deep) → cosmetic → noise (pale). Single-hue ordinal
+     ramp; steps validated for separation and ≥2:1 contrast on --bg. */
+  --tier-substance: oklch(50% 0.13 50);
+  --tier-cosmetic: oklch(64% 0.125 60);
+  --tier-noise: oklch(77% 0.1 72);
+
   /* template wording: a cool, quiet wash kept off the warm amber ramp, so
      "standard template language" reads as its own category rather than a
      faint version of cross-agency reuse. */

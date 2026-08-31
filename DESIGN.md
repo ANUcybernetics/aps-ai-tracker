@@ -42,9 +42,12 @@ encoding; everything else is ink, paper, and the conventional diff green/red.
 
 Plus a 4-step warm **heat ramp** (`--heat-1`…`--heat-4`, faint yellow → deep
 amber) for reuse intensity, conventional **diff** colours (`--ins-*` green,
-`--del-*` red), and `--ok` green for positive deltas. The adoption charts on
-the policy page draw in ochre ink over the ochre wash, with the policy's own
-milestones as dashed neutral rules.
+`--del-*` red), and `--ok` green for positive deltas. The adoption charts on the
+policy page draw in ochre ink over the ochre wash, with the policy's own
+milestones as dashed neutral rules. The monthly-mix chart (home and timeline)
+uses a 3-step **tier ramp** (`--tier-substance`…`--tier-noise`, deep → pale):
+the same highlighter logic — the deeper the ochre, the more the change amounted
+to.
 
 **Contrast:** every text/background pair clears WCAG AA, including ink on every
 heat step (≥6.3:1) and ochre links (≥7:1). Verified by rendering the real tokens
