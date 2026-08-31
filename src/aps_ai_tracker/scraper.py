@@ -348,12 +348,67 @@ def clean_markdown(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
+# An html2text table delimiter row ("---|---"), which GFM only accepts when its
+# cell count matches the header row's exactly.
+_TABLE_DELIM_RE = re.compile(r"(?m)^\s*\|?[\s:|-]*---[\s:|-]*\|[\s:|-]*$")
+
+
+def _cells(row: str) -> list[str]:
+    return [c.strip() for c in row.strip().strip("\\").strip().strip("|").split("|")]
+
+
+def _pad_row(row: str, ncols: int) -> str:
+    """Normalise a row to exactly ncols explicitly piped cells."""
+    cells = _cells(row)
+    cells += [""] * (ncols - len(cells))
+    return "| " + " | ".join(cells) + " |"
+
+
+def _repair_table_block(block: str) -> str:
+    """Repair an html2text table whose header disagrees with its delimiter.
+
+    Agencies' tables with a colspan'd title row (or none at all) come out of
+    html2text with a header narrower than the body — GFM then refuses the whole
+    table. Widen the delimiter to the widest row and pad (or synthesise) the
+    header to match; GFM tolerates ragged body rows. Only keep the repair when
+    the result actually parses as a table.
+    """
+    lines = block.split("\n")
+    delim_idx = next(
+        (i for i, ln in enumerate(lines) if _TABLE_DELIM_RE.match(ln)), None
+    )
+    if delim_idx is None:
+        return block
+    rows = [ln for i, ln in enumerate(lines) if i != delim_idx and ln.strip()]
+    if not rows:
+        return block
+    ncols = max(len(_cells(r)) for r in rows)
+    fixed = [ln.rstrip() for ln in lines]
+    fixed[delim_idx] = "|" + " --- |" * ncols
+    if delim_idx == 0:
+        fixed.insert(0, "|" + "   |" * ncols)  # headerless table: empty header row
+    else:
+        fixed[delim_idx - 1] = _pad_row(fixed[delim_idx - 1], ncols)
+    candidate = "\n".join(fixed)
+    return (
+        candidate if "| ---" in mdformat.text(candidate, extensions={"gfm"}) else block
+    )
+
+
+def repair_tables(text: str) -> str:
+    """Apply _repair_table_block to every table-bearing block."""
+    parts = re.split(r"(\n\s*\n)", text)  # keep separators
+    return "".join(
+        _repair_table_block(p) if _TABLE_DELIM_RE.search(p) else p for p in parts
+    )
+
+
 def format_markdown(text: str) -> str:
     """Apply deterministic markdown formatting to reduce diff variance."""
     # The gfm extension (mdformat-gfm) keeps tables as tables; without it
     # mdformat reads html2text's pipe rows as a paragraph of hard line breaks
     # and escapes them into an unparseable `---|---\` mess.
-    return mdformat.text(text, extensions={"gfm"}).strip()
+    return mdformat.text(repair_tables(text), extensions={"gfm"}).strip()
 
 
 def remove_boilerplate(element: Tag) -> None:

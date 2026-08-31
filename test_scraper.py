@@ -1108,6 +1108,33 @@ def test_clean_markdown_strips_link_affixes():
     )
 
 
+def test_format_markdown_repairs_malformed_tables():
+    """Tables whose colspan'd (or missing) header disagrees with the delimiter
+    are repaired to parse as GFM — header padded or synthesised, delimiter
+    widened to the widest row (SENATE, SIA, NCC regressions)."""
+    from aps_ai_tracker.scraper import format_markdown
+
+    # colspan'd title row over a wider body (SENATE shape)
+    senate = (
+        "| Usage patterns  \n---|---  \n"
+        "Domains | Decision making | Analytics | Productivity  \n"
+        "Service delivery | | Internal use | Internal use\n"
+    )
+    out = format_markdown(senate)
+    assert "| ---" in out and "\\" not in out
+
+    # headerless table (SIA shape)
+    sia = "---|---  \nAccountable Official | Compliant  \nAI Transparency Statement | Compliant\n"
+    out = format_markdown(sia)
+    assert "| ---" in out and "\\" not in out
+    assert "Accountable Official" in out
+
+    # one-cell header over two-cell rows (NCC shape)
+    ncc = "| **Summary of Expenditure**  \n---|---  \n| Total value of briefs| $0  \n| Total fees paid| $0\n"
+    out = format_markdown(ncc)
+    assert "| ---" in out and "\\" not in out
+
+
 def test_format_markdown_keeps_tables():
     """html2text's pipe tables must survive mdformat as GFM tables — without the
     gfm extension they collapse into a `---|---\\` paragraph (NBA regression)."""
