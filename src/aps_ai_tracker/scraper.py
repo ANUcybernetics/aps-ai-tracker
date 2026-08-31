@@ -256,10 +256,16 @@ _INLINE_DATE_HEAD_RE = re.compile(
 
 _TRAILING_BOILERPLATE_RE = re.compile(
     r"(?mi)^.*(?:did you find this (?:helpful|useful)\??|rate your experience|"
-    r"share (?:this|on)\b.*(?:facebook|twitter|linkedin)|"
+    r"share (?:this|on|to|via)\b.*(?:facebook|twitter|linkedin)|"
     r"print this page|email this page|"
+    r"facebook\.com/(?:sharer|share\.php)|twitter\.com/intent/tweet|"
+    r"linkedin\.com/(?:sharing/share-offsite|shareArticle)|"
     r"\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?\s*\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?).*$\n?",
 )
+
+# The share-widget's orphan label, once its icon links are stripped: a line that
+# is nothing but "Share" (possibly wrapped in heading/bold/bullet markers).
+_SHARE_LABEL_RE = re.compile(r"(?mi)^[ \t>*#-]*share\**:?[ \t]*$\n?")
 
 _OFFICIAL_MARKER_RE = re.compile(
     r"(?im)^\s*(?:classification:\s*)?official(?:\s*[-:]\s*sensitive)?\s*$\n?"
@@ -322,6 +328,7 @@ def clean_markdown(text: str) -> str:
     text = _INLINE_DATE_HEAD_RE.sub("", text)
     text = _LAST_REVIEWED_RE.sub("", text)
     text = _TRAILING_BOILERPLATE_RE.sub("", text)
+    text = _SHARE_LABEL_RE.sub("", text)
     text = _OFFICIAL_MARKER_RE.sub("", text)
     text = _ALSO_INTERESTED_RE.sub("", text)
     text = _ON_THIS_PAGE_RE.sub("", text)
@@ -333,7 +340,10 @@ def clean_markdown(text: str) -> str:
 
 def format_markdown(text: str) -> str:
     """Apply deterministic markdown formatting to reduce diff variance."""
-    return mdformat.text(text).strip()
+    # The gfm extension (mdformat-gfm) keeps tables as tables; without it
+    # mdformat reads html2text's pipe rows as a paragraph of hard line breaks
+    # and escapes them into an unparseable `---|---\` mess.
+    return mdformat.text(text, extensions={"gfm"}).strip()
 
 
 def remove_boilerplate(element: Tag) -> None:

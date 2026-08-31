@@ -1074,6 +1074,38 @@ def test_clean_markdown_strips_trailing_widgets():
     assert "Facebook Twitter LinkedIn" not in result
 
 
+def test_clean_markdown_strips_share_widgets():
+    """Share-widget chrome — endpoint links in any wrapper, plus the orphan
+    'Share' label — is stripped, in each of the shapes seen in the corpus
+    (AIFS, AIHW, APSC, DISR regressions)."""
+    text = (
+        "AI content here.\n\n"
+        "Share\n\n"
+        '[ ](https://www.facebook.com/sharer/sharer.php?u=x "Share to Facebook")\n\n'
+        "- [Linkedin](http://www.linkedin.com/shareArticle?mini=true&url=x)\n"
+        "- [Twitter](http://twitter.com/intent/tweet?status=x)\n\n"
+        "[ Share via Facebook ](https://www.facebook.com/sharer/sharer.php?u=x) "
+        "Share via email\n"
+    )
+    result = clean_markdown(text)
+    assert result == "AI content here."
+
+    prose = "We share information about our AI use with the public."
+    assert clean_markdown(prose) == prose
+
+
+def test_format_markdown_keeps_tables():
+    """html2text's pipe tables must survive mdformat as GFM tables — without the
+    gfm extension they collapse into a `---|---\\` paragraph (NBA regression)."""
+    from aps_ai_tracker.scraper import format_markdown
+
+    text = "Domain| Description  \n---|---  \nService delivery| Better services.  \n"
+    result = format_markdown(text)
+    assert "\\" not in result
+    assert "| Domain" in result
+    assert "| ---" in result
+
+
 def test_clean_markdown_strips_on_this_page_toc_labels():
     """Orphan 'on this page' table-of-contents labels (in any wrapper) are nav,
     not content, and must be stripped — but prose that merely contains the phrase
