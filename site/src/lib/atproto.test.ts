@@ -28,6 +28,7 @@ const rev = (over: Partial<RevisionInput> = {}): RevisionInput => ({
   subject: "initial commit of 57 transparency statements",
   message: "",
   kind: "tracked-since",
+  changeKind: "first-seen",
   isNoise: false,
   charDelta: 6205,
   body: "# AI transparency statement\n\nSome body text.",
@@ -165,7 +166,7 @@ describe("record builders", () => {
 
 describe("announcements", () => {
   const updated = (date: string, over: Partial<RevisionInput> = {}) =>
-    rev({ kind: "updated", date, ...over });
+    rev({ kind: "updated", changeKind: "substantive", date, ...over });
 
   it("announces only unledgered, substantive revisions", () => {
     const sts = [
@@ -173,7 +174,10 @@ describe("announcements", () => {
       statement({
         abbr: "XYZ",
         agency: "Xyz Authority",
-        timeline: [rev(), updated("2026-07-02T10:00:00+10:00", { isNoise: true })],
+        timeline: [
+          rev(),
+          updated("2026-07-02T10:00:00+10:00", { changeKind: "scrape-noise", isNoise: true }),
+        ],
       }),
     ];
     const ledger: Ledger = { "ABS-20251111T061258Z": { seeded: true } };
@@ -181,6 +185,23 @@ describe("announcements", () => {
     // ABS's first revision is seeded and XYZ's update is noise; XYZ's initial
     // tracked-since revision IS announceable (it has no ledger entry).
     expect(announce.map((a) => a.rkey)).toEqual(["XYZ-20251111T061258Z", "ABS-20260701T000000Z"]);
+    expect(autoSeed).toEqual([]);
+  });
+
+  it("never announces revisions, cosmetic edits or unread pairs", () => {
+    const sts = [
+      statement({
+        timeline: [
+          rev(),
+          updated("2026-07-01T10:00:00+10:00", { changeKind: "restructure" }),
+          updated("2026-07-02T10:00:00+10:00", { changeKind: "cosmetic" }),
+          updated("2026-07-03T10:00:00+10:00", { changeKind: "unclassified" }),
+        ],
+      }),
+    ];
+    const ledger: Ledger = { "ABS-20251111T061258Z": { seeded: true } };
+    const { announce, autoSeed } = planAnnouncements(sts, ledger);
+    expect(announce).toEqual([]);
     expect(autoSeed).toEqual([]);
   });
 

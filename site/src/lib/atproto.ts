@@ -93,10 +93,11 @@ export function toPlainText(markdown: string): string {
 // type-checking here, rather than silently publishing records full of
 // undefineds.
 
-/** The slice of a timeline revision the record builders need. */
+/** The slice of a timeline revision the record builders need. changeKind is
+ * used only to decide what gets announced; it is not written into records. */
 export type RevisionInput = Pick<
   TimelineRevision,
-  "sha" | "date" | "subject" | "message" | "kind" | "isNoise" | "charDelta" | "body"
+  "sha" | "date" | "subject" | "message" | "kind" | "changeKind" | "isNoise" | "charDelta" | "body"
 >;
 
 /**
@@ -240,9 +241,13 @@ export interface Announcement {
   revision: RevisionInput;
 }
 
-/** Only substantive events get announced; scrape noise never does. */
+/** What gets announced: a statement's first appearance, and changes of
+ * substance — exactly the substantive kind. Revisions that keep the substance,
+ * cosmetic edits, unread pairs and scrape noise are all recorded on the
+ * network but never skeeted. */
 function announceable(rev: RevisionInput): boolean {
-  return !rev.isNoise && ["added", "tracked-since", "updated"].includes(rev.kind);
+  if (rev.kind === "added" || rev.kind === "tracked-since") return !rev.isNoise;
+  return rev.kind === "updated" && rev.changeKind === "substantive";
 }
 
 /**
