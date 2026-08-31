@@ -12,22 +12,22 @@
 
 [[quarantine]]
 abbr = "HOMEAFFAIRS"
-sha = "e21d30e749"
+sha = "36b4ad43af"
 reason = "SharePoint page body rendered client-side; only the introduction was captured (scraper fixed 2026-08-28)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "50fae366b5"
+sha = "5bc4c0fbe5"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
 
 [[quarantine]]
 abbr = "PSR"
-sha = "50fae366b5"
+sha = "5bc4c0fbe5"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
 
 [[quarantine]]
 abbr = "NCA"
-sha = "49130251fd"
+sha = "b6b96f1d8c"
 reason = "scraper regex ate the publication-date and 'reviewed annually' sentences (fixed 2026-06-26)"
 
 # The same regression persisted through every IGIS capture until the fix, so
@@ -35,22 +35,22 @@ reason = "scraper regex ate the publication-date and 'reviewed annually' sentenc
 # of one AI tool) is therefore observed on 26 June, with the restored line.
 [[quarantine]]
 abbr = "IGIS"
-sha = "31e410a956"
+sha = "c70524e06b"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "5c0831fd39"
+sha = "d51f9f34d6"
 reason = "same regression, still in effect (link-only capture)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "a07889ffda"
+sha = "211e5e41fe"
 reason = "same regression, still in effect; its genuine change is carried by the 26 June capture"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "fd1e488f6d"
+sha = "f5e968c6c8"
 reason = "same regression, still in effect (unrelated register link)"
 
 # Rewrites in which the regression also ate the review sentence: quarantined so
@@ -59,30 +59,40 @@ reason = "same regression, still in effect (unrelated register link)"
 # annual review' followed by a false 'adds an annual review'.
 [[quarantine]]
 abbr = "ACMA"
-sha = "b0cd20fced"
+sha = "efd2863c91"
 reason = "policy 2.0 rewrite captured with the 'reviewed annually' sentence eaten (fixed 2026-06-26)"
 
 [[quarantine]]
 abbr = "WGEA"
-sha = "9ff836078b"
+sha = "22b04fb8ae"
 reason = "rewrite captured with the review sentence eaten (fixed 2026-06-26)"
 
 [[confirmed]]
 abbr = "AEC"
-sha = "0acfd541cd"
+sha = "6558c953a0"
 reason = "tracked document switched from the AEC's public explainer page to its statement PDF"
 
 [[confirmed]]
 abbr = "AUSTRAC"
-sha = "078058e23f"
+sha = "aa4fa18aac"
 reason = "rewrite of a very long statement"
 
 [[confirmed]]
 abbr = "DFSVC"
-sha = "832b504516"
+sha = "ed5ad1deef"
 reason = "statement replaced by a referral to the Department of Social Services' statement"
 
 [[confirmed]]
 abbr = "SWA"
-sha = "3ae7455c98"
+sha = "04d6751441"
 reason = "rewrite"
+
+[[quarantine]]
+abbr = "AUSTRAC"
+sha = "b7e2a3d16d"
+reason = "captured AUSTRAC's corporate-governance landing page (navigation tiles), not the statement; the real statement first appears at the next capture"
+
+[[quarantine]]
+abbr = "AUSTRAC"
+sha = "95328368dc"
+reason = "second capture of the corporate-governance landing page, still not the statement"
