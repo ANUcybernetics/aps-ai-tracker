@@ -29,6 +29,7 @@ from aps_ai_tracker import (
     atomic_write_text,
     clean_html_to_markdown,
     clean_markdown,
+    decode_cf_email,
     extract_main_content,
     extract_markdown_from_statement,
     fetch_all_raw,
@@ -876,6 +877,51 @@ def test_remove_boilerplate_strips_feedback_forms():
     assert "Sidebar navigation" not in content
     assert "Was this page helpful" not in content
     assert "Share on Facebook" not in content
+
+
+def test_remove_boilerplate_decodes_cloudflare_email():
+    """Cloudflare-obfuscated addresses decode, rather than keeping the placeholder.
+
+    Markup as AIFS serves it: a <span data-cfemail> whose text is the literal
+    "[email protected]", wrapped in a link to /cdn-cgi/l/email-protection.
+    """
+    html = """
+    <html><body><main>
+        <p>please contact
+        <a href="/cdn-cgi/l/email-protection#2948406948404f5a074e465f07485c"><span
+           class="__cf_email__"
+           data-cfemail="95f4fcd5f4fcf3e6bbf2fae3bbf4e0">[email&#160;protected]</span></a>.</p>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "ai@aifs.gov.au" in content
+    assert "email" not in content or "protected" not in content
+    assert "cdn-cgi" not in content
+
+
+def test_decode_cf_email_rejects_non_hashes():
+    """A malformed or non-email hash decodes to None so the text is kept as-is."""
+    assert decode_cf_email("95f4fcd5f4fcf3e6bbf2fae3bbf4e0") == "ai@aifs.gov.au"
+    assert decode_cf_email("") is None
+    assert decode_cf_email("zz") is None
+    assert decode_cf_email("95") is None
+    # Decodes cleanly but holds no address, so it isn't an obfuscated email.
+    assert decode_cf_email("0068690a") is None
+
+
+def test_remove_boilerplate_keeps_text_when_hash_is_undecodable():
+    """An undecodable hash falls back to the old behaviour: keep the link text."""
+    html = """
+    <html><body><main>
+        <p>contact <span data-cfemail="nothexatall">the AI team</span>.</p>
+    </main></body></html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "the AI team" in content
 
 
 def test_remove_boilerplate_strips_related_content_blocks():

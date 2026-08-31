@@ -411,6 +411,25 @@ def format_markdown(text: str) -> str:
     return mdformat.text(repair_tables(text), extensions={"gfm"}).strip()
 
 
+def decode_cf_email(cfemail: str) -> str | None:
+    """Decode a Cloudflare `data-cfemail` hex string, or None if it isn't one.
+
+    The first byte is an XOR key for the remaining bytes.
+    """
+    try:
+        encoded = bytes.fromhex(cfemail)
+    except ValueError:
+        return None
+    if len(encoded) < 2:
+        return None
+    key, rest = encoded[0], encoded[1:]
+    try:
+        email = bytes(byte ^ key for byte in rest).decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+    return email if "@" in email else None
+
+
 def remove_boilerplate(element: Tag) -> None:
     """Remove common boilerplate elements from HTML."""
     boilerplate_selectors = [
@@ -476,8 +495,16 @@ def remove_boilerplate(element: Tag) -> None:
         for tag in element.select(selector):
             tag.decompose()
 
-    # Remove email protection links (hashes change on every visit)
-    # Replace with just the link text
+    # Cloudflare's email obfuscation replaces the address with the literal text
+    # "[email protected]" and stashes the real one hex-encoded in data-cfemail,
+    # so keeping the element's text keeps the placeholder. Decode it instead:
+    # the statement then records the address the agency actually published.
+    # Protected addresses nest a <span data-cfemail> inside an <a> pointing at
+    # /cdn-cgi/l/email-protection, so decode the span first and let the link
+    # unwrap around the address it now contains.
+    for marked in element.select("[data-cfemail]"):
+        email = decode_cf_email(str(marked.get("data-cfemail", "")))
+        marked.replace_with(email or marked.get_text())
     for link in element.find_all("a", href=re.compile(r"cdn-cgi/l/email-protection")):
         link.replace_with(link.get_text())
 
