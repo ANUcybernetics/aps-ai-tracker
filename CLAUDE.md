@@ -19,6 +19,9 @@ This is a Python web scraping project using uv for dependency management.
 - Reprocess cached `raw/` files into statements without refetching:
   `mise exec -- uv run process`
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
+- List manual agencies overdue for a hand-check:
+  `mise exec -- uv run stale-manual` (the nightly run turns each line into an nb
+  todo)
 - Export site data (JSON for the Astro site):
   `mise exec -- uv run --group export export` (needs the `export` dependency
   group: pydantic + anthropic). Revision pairs and statement bodies not already
@@ -49,6 +52,8 @@ This is a Python web scraping project using uv for dependency management.
   - `process.py` reprocesses cached `raw/` files into statements without
     fetching
   - `status.py` reports collection status
+  - `verify.py` lists manual agencies overdue for a hand-check (the
+    `stale-manual` command)
   - `export.py` turns the corpus + git history into JSON for the site (timeline
     with revert collapse, lexical passage propagation, originality scores,
     concept adoption, statement currency). Before anything reads a revision it
@@ -217,6 +222,12 @@ after 60 days) — the script redirects nearly all of its output there, so
   parliamentary departments) used to group agencies on the site; keep the
   spelling consistent so identical portfolios collapse together
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
+- `manual = true` drops an agency from the automated fetch entirely --- nothing
+  refreshes it but a person. Set it only for sites the scraper cannot reach (all
+  six current cases are bot challenges: Cloudflare or Imperva), and always with
+  a `manual_reason` saying which; a test enforces the reason. Record
+  `last_verified` (ISO date) whenever you hand-check one against its live page,
+  because `stale-manual` reads it to decide who is overdue
 - **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
   intentional, but that test is deselected by default (`-m might_fail` to run)
 - Scraper skips agencies with `None` URLs when run

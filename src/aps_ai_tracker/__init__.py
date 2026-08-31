@@ -22,10 +22,12 @@ from .scraper import (
     save_raw,
     save_statement,
 )
+from .verify import VERIFY_INTERVAL_DAYS, overdue
 
 __all__ = [
     "AI_KEYWORD_MIN_COUNT",
     "CONTENT_SHRINKAGE_THRESHOLD",
+    "VERIFY_INTERVAL_DAYS",
     "Agency",
     "ProcessCounts",
     "RawFetchResult",
@@ -40,6 +42,7 @@ __all__ = [
     "extract_markdown_from_statement",
     "fetch_all_raw",
     "load_agencies",
+    "overdue",
     "process_raw",
     "process_statements",
     "save_raw",

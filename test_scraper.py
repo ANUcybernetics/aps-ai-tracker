@@ -12,7 +12,7 @@ import asyncio
 import hashlib
 import json
 import re
-from datetime import date
+from datetime import UTC, date, datetime
 from html import escape
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -35,6 +35,7 @@ from aps_ai_tracker import (
     extract_markdown_from_statement,
     fetch_all_raw,
     load_agencies,
+    overdue,
     process_raw,
     process_statements,
     save_raw,
@@ -1399,3 +1400,50 @@ def test_extract_last_updated_reads_the_pages_own_date(text, expected):
     from aps_ai_tracker.scraper import extract_last_updated
 
     assert extract_last_updated(text) == expected
+
+
+# Tests for the manual-agency staleness check
+
+
+def _manual(abbr: str, last_verified: str | None) -> Agency:
+    return Agency(
+        name=f"Agency {abbr}",
+        abbr=abbr,
+        url="https://example.gov.au/ai",
+        manual=True,
+        manual_reason="blocked",
+        last_verified=last_verified,
+    )
+
+
+def test_overdue_flags_never_verified_and_stale():
+    """Never-verified and past-interval agencies are due; recent ones are not."""
+    today = date(2026, 9, 1)
+    agencies = [
+        _manual("NEVER", None),
+        _manual("STALE", "2026-07-01"),
+        _manual("FRESH", "2026-08-25"),
+        # Exactly on the boundary: 30 days old counts as due, so a monthly
+        # rhythm doesn't drift a day later on every pass.
+        _manual("EDGE", "2026-08-02"),
+        Agency(name="Auto", abbr="AUTO", url="https://example.gov.au/ai"),
+    ]
+
+    assert [a.abbr for a in overdue(agencies, today)] == ["NEVER", "STALE", "EDGE"]
+
+
+def test_overdue_ignores_automated_agencies():
+    """An agency the scraper still fetches is never a hand-check candidate."""
+    agencies = [Agency(name="Auto", abbr="AUTO", url="https://example.gov.au/ai")]
+
+    assert overdue(agencies, date(2026, 9, 1)) == []
+
+
+def test_every_manual_agency_is_reachable_by_the_check():
+    """The real corpus: each manual agency either has a date or is flagged now."""
+    manual = [a for a in load_agencies() if a.manual]
+    due = overdue(load_agencies(), datetime.now(UTC).date())
+
+    assert manual, "expected some manual agencies"
+    for agency in manual:
+        assert agency.last_verified is not None or agency in due

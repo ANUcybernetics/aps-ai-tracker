@@ -73,4 +73,25 @@ fi
 echo "=== push at $(date -Iseconds) ===" >> "$LOG_FILE"
 git push >> "$LOG_FILE" 2>&1 || echo "push failed" >> "$LOG_FILE"
 
+# Manual agencies sit behind a bot challenge no HTTP client can pass, so a
+# person opening the page is the only thing that catches a change in them.
+# `stale-manual` lists the ones due (see verify.py); each becomes an nb todo,
+# keyed by abbr so a still-open todo is never raised twice. This is the one
+# step that reaches outside the repo, which is why it lives here rather than
+# in the package: the tracker shouldn't know about Ben's notebook.
+echo "=== manual-check todos at $(date -Iseconds) ===" >> "$LOG_FILE"
+open_todos=$(nb todos open --no-color 2>/dev/null || true)
+while IFS=$'\t' read -r abbr name url; do
+  [ -n "$abbr" ] || continue
+  key="aps-ai-tracker:${abbr}"
+  case "$open_todos" in
+    *"$key"*)
+      echo "todo already open for ${abbr}" >> "$LOG_FILE"
+      continue
+      ;;
+  esac
+  nb todo add "${key} hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml" \
+    >> "$LOG_FILE" 2>&1 || echo "todo add failed for ${abbr}" >> "$LOG_FILE"
+done < <(uv run stale-manual 2>> "$LOG_FILE" || true)
+
 echo "=== run finished at $(date -Iseconds) ===" >> "$LOG_FILE"
