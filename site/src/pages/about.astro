@@ -40,16 +40,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     </p>
     <p>
       Behind those posts, the whole dataset is also published as open,
-      machine-readable records on the <a href="https://atproto.com">AT
-      Protocol</a> (the open network Bluesky is built on): the current text of
-      every statement, and every tracked change, each with a permanent identifier
-      that doesn&rsquo;t depend on this website &mdash; or the agency&rsquo;s
-      &mdash; staying online. Researchers and developers can <a
-        href="https://pdsls.dev/at://did:plc:yhnshyrc2iev6z65u3uraon4"
-        >browse the records</a
-      > directly, or subscribe to the network&rsquo;s live event stream to be
-      notified of changes the moment they are recorded, with no scraping
-      required.
+      machine-readable records on the AT Protocol, the open network Bluesky is
+      built on. The <a href={withBase("/data/")}>data downloads</a> page covers
+      that mirror and every other way to get the data.
     </p>
 
     <h2>Origins</h2>
@@ -85,11 +78,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
         >, which records who has published. Every non-corporate entity is listed
         here, whether or not it has published; corporate entities and other bodies
         are added once a statement of theirs surfaces, and a handful that have never
-        published are kept on the list to show the gap. The defence portfolio and
-        the national intelligence community are <a
-          href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
-          >carved out</a
-        > of the policy, though some publish anyway.
+        published are kept on the list to show the gap. The <a
+          href={withBase("/agencies")}>agencies page</a
+        > sets out who is bound, who is merely encouraged, and who is carved out.
       </li>
       <li>
         <strong>Timeline.</strong> Each change is read straight from git. Spurious
