@@ -1094,6 +1094,20 @@ def test_clean_markdown_strips_share_widgets():
     assert clean_markdown(prose) == prose
 
 
+def test_clean_markdown_strips_link_affixes():
+    """CMS screen-reader affixes glued to link labels are stripped, in both the
+    parenthesised and the AIHW dash form (NBA, AIHW regressions)."""
+    text = (
+        "Read the [DTA policy(Opens in a new tab/window)](https://x.gov.au/a) "
+        "and the _[Privacy Act 1988 - external site opens in new window](https://x.gov.au/b)_."
+    )
+    result = clean_markdown(text)
+    assert result == (
+        "Read the [DTA policy](https://x.gov.au/a) "
+        "and the _[Privacy Act 1988](https://x.gov.au/b)_."
+    )
+
+
 def test_format_markdown_keeps_tables():
     """html2text's pipe tables must survive mdformat as GFM tables — without the
     gfm extension they collapse into a `---|---\\` paragraph (NBA regression)."""
