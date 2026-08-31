@@ -2,19 +2,17 @@
 name = "aps-ai-tracker"
 version = "0.1.0"
 description = "Scrape and track Australian Government AI transparency statements over time"
-authors = [
-    { name = "Ben Swift", email = "ben@benswift.me" }
-]
+authors = [{ name = "Ben Swift", email = "ben@benswift.me" }]
 requires-python = ">=3.14"
 dependencies = [
-    "beautifulsoup4>=4.14.2",
-    "html2text>=2025.4.15",
-    "httpx>=0.28.1",
-    "lxml>=6.0.2",
-    "mdformat>=1.0.0",
-    "mdformat-gfm>=1.0.0",
-    "pypdf>=5.1.0",
-    "pyyaml>=6.0.3",
+  "beautifulsoup4>=4.14.2",
+  "html2text>=2025.4.15",
+  "httpx>=0.28.1",
+  "lxml>=6.0.2",
+  "mdformat>=1.0.0",
+  "mdformat-gfm>=1.0.0",
+  "pypdf>=5.1.0",
+  "pyyaml>=6.0.3",
 ]
 
 [build-system]
@@ -28,22 +26,15 @@ status = "aps_ai_tracker.status:main"
 export = "aps_ai_tracker.export:main"
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.0",
-    "pytest-xdist>=3.6.1",
-    "ruff>=0.14.4",
-]
+dev = ["pytest>=9.0.0", "pytest-xdist>=3.6.1", "ruff>=0.14.4"]
 # Deps only the `export` command needs; kept out of the default install so the
 # scraper stays lean. Run with `uv run --group export export`. The anthropic SDK
 # is only used with APS_LLM_BACKEND=api; the default backend shells out to
 # `claude -p`.
-export = [
-    "anthropic>=1.2.0",
-    "pydantic>=2.13.4",
-]
+export = ["anthropic>=1.2.0", "pydantic>=2.13.4"]
 
 [tool.pytest.ini_options]
 addopts = "-n auto -m 'not might_fail'"
 markers = [
-    "might_fail: marks tests that may fail due to missing URLs or external issues (deselected by default)",
+  "might_fail: marks tests that may fail due to missing URLs or external issues (deselected by default)",
 ]
