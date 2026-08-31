@@ -137,25 +137,28 @@ _WS_RE = re.compile(r"\s+")
 class Captures:
     """Operator verdicts on individual captures, from `captures.toml`.
 
-    `quarantine` lists (abbr, sha) revisions that are failed captures — a page
+    `quarantine` lists (abbr, date) revisions that are failed captures — a page
     rendered client-side, a scraper regression — and must never be read as the
     agency changing its statement. `confirmed` lists revisions that shrank by
     more than half and are genuine, so the automatic shrink check lets them
-    through. SHAs may be abbreviated prefixes.
+    through. Dates are prefixes of the revision's ISO author date (a day is
+    usually enough; add the time when two same-day captures need telling
+    apart). Pinned by date, not commit sha, so verdicts survive a history
+    rewrite.
     """
 
     quarantine: tuple[tuple[str, str], ...] = ()
     confirmed: tuple[tuple[str, str], ...] = ()
 
     @staticmethod
-    def _listed(entries: tuple[tuple[str, str], ...], abbr: str, sha: str) -> bool:
-        return any(a == abbr and sha.startswith(s) for a, s in entries)
+    def _listed(entries: tuple[tuple[str, str], ...], abbr: str, date: str) -> bool:
+        return any(a == abbr and date.startswith(d) for a, d in entries)
 
-    def is_quarantined(self, abbr: str, sha: str) -> bool:
-        return self._listed(self.quarantine, abbr, sha)
+    def is_quarantined(self, abbr: str, date: str) -> bool:
+        return self._listed(self.quarantine, abbr, date)
 
-    def is_confirmed(self, abbr: str, sha: str) -> bool:
-        return self._listed(self.confirmed, abbr, sha)
+    def is_confirmed(self, abbr: str, date: str) -> bool:
+        return self._listed(self.confirmed, abbr, date)
 
 
 def load_captures(path: Path = CAPTURES_PATH) -> Captures:
@@ -164,8 +167,8 @@ def load_captures(path: Path = CAPTURES_PATH) -> Captures:
     with open(path, "rb") as f:
         data = tomllib.load(f)
     return Captures(
-        quarantine=tuple((d["abbr"], d["sha"]) for d in data.get("quarantine", [])),
-        confirmed=tuple((d["abbr"], d["sha"]) for d in data.get("confirmed", [])),
+        quarantine=tuple((d["abbr"], d["date"]) for d in data.get("quarantine", [])),
+        confirmed=tuple((d["abbr"], d["date"]) for d in data.get("confirmed", [])),
     )
 
 
@@ -281,19 +284,21 @@ def quarantine_revisions(
     warning. Returns the surviving revisions and whether the newest one was
     dropped (so the site can show the last good body instead).
     """
-    kept = [r for r in revisions if not captures.is_quarantined(abbr, r.sha)]
+    kept = [r for r in revisions if not captures.is_quarantined(abbr, r.date)]
     newest_dropped = bool(revisions) and (not kept or kept[-1] is not revisions[-1])
     if len(kept) >= 2:
         prev, newest = kept[-2], kept[-1]
         if len(newest.body) < len(
             prev.body
-        ) * CONTENT_SHRINKAGE_THRESHOLD and not captures.is_confirmed(abbr, newest.sha):
+        ) * CONTENT_SHRINKAGE_THRESHOLD and not captures.is_confirmed(
+            abbr, newest.date
+        ):
             logger.warning(
-                "%s %s shrank from %d to %d chars; held back as a failed capture. "
-                "Add it to captures.toml under [[confirmed]] if it is genuine, "
-                "or [[quarantine]] to settle it.",
+                "%s (captured %s) shrank from %d to %d chars; held back as a failed "
+                "capture. Add it to captures.toml under [[confirmed]] if it is "
+                "genuine, or [[quarantine]] to settle it.",
                 abbr,
-                newest.sha[:10],
+                newest.date,
                 len(prev.body),
                 len(newest.body),
             )

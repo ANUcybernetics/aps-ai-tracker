@@ -8,26 +8,33 @@
 # other revision that shrinks past CONTENT_SHRINKAGE_THRESHOLD is dropped
 # automatically with a warning naming it; add it here (or above) to settle it.
 #
-# `sha` may be an abbreviated prefix of the statement commit.
+# `date` is a prefix of the revision's ISO author date. A day is usually
+# enough; add the time when two same-day captures need telling apart. Pinned
+# by date rather than commit sha so verdicts survive a history rewrite.
+
+[[quarantine]]
+abbr = "AUSTRAC"
+date = "2025-11-11"
+reason = "both captures that day grabbed AUSTRAC's corporate-governance landing page (navigation tiles), not the statement; the real statement first appears on 12 November"
 
 [[quarantine]]
 abbr = "HOMEAFFAIRS"
-sha = "36b4ad43af"
+date = "2026-05-01T10:56"
 reason = "SharePoint page body rendered client-side; only the introduction was captured (scraper fixed 2026-08-28)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "5bc4c0fbe5"
+date = "2026-03-13"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
 
 [[quarantine]]
 abbr = "PSR"
-sha = "5bc4c0fbe5"
+date = "2026-03-13"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26); nothing the agency wrote changed"
 
 [[quarantine]]
 abbr = "NCA"
-sha = "b6b96f1d8c"
+date = "2026-05-01"
 reason = "scraper regex ate the publication-date and 'reviewed annually' sentences (fixed 2026-06-26)"
 
 # The same regression persisted through every IGIS capture until the fix, so
@@ -35,22 +42,22 @@ reason = "scraper regex ate the publication-date and 'reviewed annually' sentenc
 # of one AI tool) is therefore observed on 26 June, with the restored line.
 [[quarantine]]
 abbr = "IGIS"
-sha = "c70524e06b"
+date = "2026-04-08"
 reason = "scraper regex ate the 'reviewed annually' sentence (fixed 2026-06-26)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "d51f9f34d6"
+date = "2026-05-15"
 reason = "same regression, still in effect (link-only capture)"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "211e5e41fe"
+date = "2026-06-10"
 reason = "same regression, still in effect; its genuine change is carried by the 26 June capture"
 
 [[quarantine]]
 abbr = "IGIS"
-sha = "f5e968c6c8"
+date = "2026-06-25"
 reason = "same regression, still in effect (unrelated register link)"
 
 # Rewrites in which the regression also ate the review sentence: quarantined so
@@ -59,40 +66,30 @@ reason = "same regression, still in effect (unrelated register link)"
 # annual review' followed by a false 'adds an annual review'.
 [[quarantine]]
 abbr = "ACMA"
-sha = "efd2863c91"
+date = "2026-06-11"
 reason = "policy 2.0 rewrite captured with the 'reviewed annually' sentence eaten (fixed 2026-06-26)"
 
 [[quarantine]]
 abbr = "WGEA"
-sha = "22b04fb8ae"
+date = "2026-06-07"
 reason = "rewrite captured with the review sentence eaten (fixed 2026-06-26)"
 
 [[confirmed]]
 abbr = "AEC"
-sha = "6558c953a0"
+date = "2025-11-12T10:16"
 reason = "tracked document switched from the AEC's public explainer page to its statement PDF"
 
 [[confirmed]]
 abbr = "AUSTRAC"
-sha = "aa4fa18aac"
+date = "2026-02-26"
 reason = "rewrite of a very long statement"
 
 [[confirmed]]
 abbr = "DFSVC"
-sha = "ed5ad1deef"
+date = "2026-03-19"
 reason = "statement replaced by a referral to the Department of Social Services' statement"
 
 [[confirmed]]
 abbr = "SWA"
-sha = "04d6751441"
+date = "2026-04-29"
 reason = "rewrite"
-
-[[quarantine]]
-abbr = "AUSTRAC"
-sha = "b7e2a3d16d"
-reason = "captured AUSTRAC's corporate-governance landing page (navigation tiles), not the statement; the real statement first appears at the next capture"
-
-[[quarantine]]
-abbr = "AUSTRAC"
-sha = "95328368dc"
-reason = "second capture of the corporate-governance landing page, still not the statement"

@@ -75,10 +75,15 @@ def _rev(key: str, sha: str = "s", bulk: bool = False) -> Revision:
     )
 
 
-def _body_rev(body: str, subject: str = "update", sha: str = "s") -> Revision:
+def _body_rev(
+    body: str,
+    subject: str = "update",
+    sha: str = "s",
+    date: str = "2026-01-01T00:00:00+00:00",
+) -> Revision:
     return Revision(
         sha=sha,
-        date="2026-01-01T00:00:00+00:00",
+        date=date,
         subject=subject,
         message="",
         body=body,
@@ -112,9 +117,12 @@ def test_classify_timelines_pairs_consecutive_revisions(monkeypatch):
 
 
 def test_quarantine_drops_listed_revision():
-    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("intro", sha="bbb2")]
+    revs = [
+        _body_rev("full " * 100, sha="aaa1"),
+        _body_rev("intro", sha="bbb2", date="2026-02-02T20:00:00+11:00"),
+    ]
     kept, newest_dropped = quarantine_revisions(
-        "X", revs, Captures(quarantine=(("X", "bbb"),))
+        "X", revs, Captures(quarantine=(("X", "2026-02-02"),))
     )
     assert [r.sha for r in kept] == ["aaa1"]
     assert newest_dropped
@@ -141,9 +149,12 @@ def test_quarantine_leaves_historical_shrinks_to_the_classifier():
 
 
 def test_quarantine_keeps_confirmed_shrink():
-    revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("short now", sha="bbb2")]
+    revs = [
+        _body_rev("full " * 100, sha="aaa1"),
+        _body_rev("short now", sha="bbb2", date="2026-02-02T20:00:00+11:00"),
+    ]
     kept, newest_dropped = quarantine_revisions(
-        "X", revs, Captures(confirmed=(("X", "bbb2"),))
+        "X", revs, Captures(confirmed=(("X", "2026-02-02"),))
     )
     assert [r.sha for r in kept] == ["aaa1", "bbb2"]
     assert not newest_dropped
@@ -151,7 +162,9 @@ def test_quarantine_keeps_confirmed_shrink():
 
 def test_quarantine_only_matches_the_named_agency():
     revs = [_body_rev("full " * 100, sha="aaa1"), _body_rev("full " * 99, sha="bbb2")]
-    kept, _ = quarantine_revisions("X", revs, Captures(quarantine=(("Y", "bbb2"),)))
+    kept, _ = quarantine_revisions(
+        "X", revs, Captures(quarantine=(("Y", "2026-01-01"),))
+    )
     assert len(kept) == 2
 
 
