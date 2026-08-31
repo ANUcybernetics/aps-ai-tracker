@@ -2,19 +2,17 @@
 import Layout from "@/components/Layout.astro";
 import CoverageStats from "@/components/CoverageStats.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
-import DiffView from "@/components/DiffView.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
+import MonthlyChart from "@/islands/MonthlyChart.svelte";
 import { getTimeline, meta, propagation, getAgencies } from "@/lib/load";
-import { getStatements } from "@/lib/statements";
 import { formatDate } from "@/lib/format";
+import { monthlyMix } from "@/lib/monthly";
 import { changeTier } from "@/lib/profile-labels";
 import { withBase, statementPath } from "@/lib/paths";
-import type { TimelineEvent } from "@/types/exporter";
 
 const timeline = await getTimeline();
 const agencies = await getAgencies();
-const statements = await getStatements();
 
 // Compliance among the bodies the policy actually binds, stated from the data
 // rather than hard-coded, so the claim can never drift from what we track.
@@ -27,28 +25,16 @@ const newlyCreated = outstanding.every((a) => a.established)
   ? outstanding.map((a) => `${a.abbr} (${formatDate(a.established as string)})`)
   : [];
 
-// Join an event to its statement's revision history to diff against the previous
-// revision (build-time; only the rendered diff HTML ships). Same join as the
-// timeline page's diffFor.
-function diffFor(event: TimelineEvent) {
-  const stmt = statements[event.statementId];
-  if (!stmt) return null;
-  const idx = stmt.timeline.findIndex((t) => t.sha === event.sha);
-  if (idx <= 0) return null; // first-seen events have nothing to diff against
-  const prev = stmt.timeline[idx - 1];
-  const curr = stmt.timeline[idx];
-  return { before: prev.body, after: curr.body, delta: curr.charDelta };
-}
-
-// One row per agency (their most recent change of substance) so a single
-// daily-churning statement doesn't crowd out the feed. The exporter classifies
-// every revision from its diff; only content changes qualify here.
+// The broad-brushstrokes teaser: the whole record's monthly rhythm, then the
+// three most recent changes of substance (one row per agency, so a single
+// daily-churning statement doesn't crowd them out). The full feed, with its
+// diffs and filters, lives on the timeline page.
+const chart = monthlyMix(timeline);
 const seen = new Set<string>();
 const recent = timeline
   .filter((e) => changeTier(e.changeKind) === "content")
   .filter((e) => !seen.has(e.abbr) && seen.add(e.abbr))
-  .slice(0, 10)
-  .map((event) => ({ event, diff: diffFor(event) }));
+  .slice(0, 3);
 
 const c = meta.counts;
 const finderAgencies = agencies.map((a) => ({
@@ -61,7 +47,7 @@ const explorers = [
     href: withBase("/timeline"),
     title: "Timeline",
     hint: `${c.changes} changes`,
-    body: "Every change of substance, newest first, each summarised in a sentence and traceable to the words that moved.",
+    body: "Every change of substance, newest first, each summarised in a sentence and traceable to the words that moved. Filter by agency, portfolio, kind or month, or search inside the changes.",
   },
   {
     href: withBase("/agencies"),
@@ -131,12 +117,18 @@ const explorers = [
 
     <section class="recent" aria-labelledby="recent-heading">
       <div class="section-title">
-        <h2 id="recent-heading">Recent changes</h2>
+        <h2 id="recent-heading">What&rsquo;s changed</h2>
         <a href={withBase("/timeline")}>Full timeline &rarr;</a>
       </div>
+      <p class="recent__caption">
+        Recorded changes by month since tracking began: the deeper the ochre, the more
+        the change amounted to. First-time captures aren&rsquo;t counted &mdash; only
+        statements actually changing. On the timeline, this chart is a filter.
+      </p>
+      <MonthlyChart data={chart} />
       <ul class="feed">
         {
-          recent.map(({ event: e, diff }) => (
+          recent.map((e) => (
             <li class="feed__row">
               <div class="feed__head">
                 <time class="feed__date mono" datetime={e.date}>
@@ -149,12 +141,6 @@ const explorers = [
               </div>
               {e.summary && <p class="feed__summary">{e.summary}</p>}
               {e.summary && <ModelNote model={e.model} />}
-              {diff && (
-                <details class="feed__diff">
-                  <summary>The words that changed</summary>
-                  <DiffView before={diff.before} after={diff.after} compact />
-                </details>
-              )}
             </li>
           ))
         }
@@ -244,10 +230,17 @@ const explorers = [
     font-weight: 600;
   }
 
-  /* --- recent changes feed --- */
+  /* --- what's changed: monthly mix + latest substance --- */
+  .recent__caption {
+    margin: 0 0 var(--space-4);
+    max-inline-size: var(--measure);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
   .feed {
     list-style: none;
-    margin: 0;
+    margin: var(--space-5) 0 0;
     padding: 0;
     border-block-start: 1px solid var(--border);
   }
@@ -274,17 +267,6 @@ const explorers = [
     margin: var(--space-2) 0 0;
     max-inline-size: var(--measure);
     text-wrap: pretty;
-  }
-
-  .feed__diff {
-    margin-block-start: var(--space-2);
-  }
-
-  .feed__diff summary {
-    cursor: pointer;
-    color: var(--muted);
-    font-size: var(--text-sm);
-    width: max-content;
   }
 
   .feed__date {
