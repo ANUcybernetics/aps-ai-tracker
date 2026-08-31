@@ -61,7 +61,7 @@ Our artificial intelligence (AI) transparency statement explains how we use AI a
 
 Download
 
-[ AI transparency statement PDF | 327KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ai-transparency-statement.pdf?rev=986002d0cd054b96b8a918900c021a7d)
+[ AI transparency statement PDF | 327KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ai-transparency-statement.pdf?rev=39fb8d020fb94b9681e99e7d4b759395)
 
 ## Annual legal services expenditure
 
@@ -117,7 +117,7 @@ Our customer service charter outlines our commitment to our customers.
 
 Our cost recovery implementation statement shows how we cover some of the costs of administering IP rights.
 
-[ Cost Recovery Implementation Statement 2024–25 (Budget update 2026–27) PDF | 819KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/CRIS/cost-recovery-implementation-statement-2024-25-budget-update-2026-27.pdf?rev=f13fbbb67e7e476496275d0620910adf)
+[ Cost Recovery Implementation Statement 2024–25 (Budget update 2026–27) PDF | 819KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/CRIS/cost-recovery-implementation-statement-2024-25-budget-update-2026-27.pdf?rev=207bef0af3b64c7699adbd7f268a0b28)
 
 ##### Regulator performance framework
 
@@ -223,7 +223,7 @@ As per section 13 of the [Public Service Act 1999](https://www.legislation.gov.a
 
 Suspected breaches will be dealt with as per our procedure for determining breaches of the Code of Conduct and for determining sanction.
 
-[ Determining breaches of the APS Code of Conduct procedure PDF | 298KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/determining-breaches-of-the-aps-code-of-conduct-procedure.pdf?rev=929475e48c9240c7ac7a3ed7dbb4aa33)
+[ Determining breaches of the APS Code of Conduct procedure PDF | 298KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/determining-breaches-of-the-aps-code-of-conduct-procedure.pdf?rev=c85cbf3c11e5441f91544ae4d540aef2)
 
 ## Related content
 
