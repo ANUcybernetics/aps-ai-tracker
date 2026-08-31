@@ -273,7 +273,7 @@ _SHARE_LABEL_RE = re.compile(r"(?mi)^[ \t>*#-]*share\**:?[ \t]*$\n?")
 _LINK_AFFIX_RE = re.compile(
     r"\s*(?:\(opens? in (?:a )?new (?:tab|window)(?:/window)?\)|"
     r"-?\s*external site opens in (?:a )?new window)",
-    re.I,
+    re.IGNORECASE,
 )
 
 _OFFICIAL_MARKER_RE = re.compile(
