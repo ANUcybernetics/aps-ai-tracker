@@ -432,6 +432,28 @@ main {
   color: var(--muted);
 }
 
+/* Statement tables (block display so a wide one scrolls on its own axis
+   rather than pushing the page sideways). */
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-block: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--border);
+  padding: var(--space-1) var(--space-2);
+  text-align: start;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--surface);
+}
+
 /* passage reuse heat: the highlighter. More agencies share a passage, the more
    it's marked up. Unique text (heat 0) gets no highlight. */
 .heat {

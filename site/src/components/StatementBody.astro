@@ -21,6 +21,7 @@ type Item = { html: string; heat: number; tip: string; share: Member[]; template
 type Block =
   | { kind: "list"; items: Item[] }
   | ({ kind: "heading"; level: number } & Item)
+  | ({ kind: "table" } & Item)
   | ({ kind: "para" } & Item);
 
 function tip(p: PassageRow): string {
@@ -78,6 +79,9 @@ while (i < passages.length) {
     const level = Math.min(Math.max(raw + headingOffset, 2), 6);
     blocks.push({ kind: "heading", level, ...classify(p) });
     i++;
+  } else if (p.kind === "table") {
+    blocks.push({ kind: "table", ...classify(p) });
+    i++;
   } else {
     blocks.push({ kind: "para", ...classify(p) });
     i++;
@@ -105,6 +109,13 @@ while (i < passages.length) {
           <Tag {...heatAttrs(b)}>
             <PassageText {...b} />
           </Tag>
+        );
+      }
+      if (b.kind === "table") {
+        return (
+          <div {...heatAttrs(b)}>
+            <PassageText {...b} block />
+          </div>
         );
       }
       return (

@@ -63,9 +63,17 @@ export function stripBlockMarkers(text: string): string {
     .trim();
 }
 
-// Render a stored passage to safe display HTML: block scaffolding removed, then
-// inline links/emphasis rendered.
+// A passage that is a GFM table (mdformat's gfm extension always writes table
+// rows with a leading pipe — keep in step with segment_passages in export.py).
+export function isTablePassage(text: string): boolean {
+  return /^\s*\|/.test(text);
+}
+
+// Render a stored passage to safe display HTML. A table renders block-level (it
+// cannot be parsed inline); anything else has its block scaffolding removed,
+// then inline links/emphasis rendered.
 export function passageToHtml(text: string): string {
+  if (isTablePassage(text)) return marked.parse(text, { async: false });
   return inlineMarkdownToHtml(stripBlockMarkers(text));
 }
 

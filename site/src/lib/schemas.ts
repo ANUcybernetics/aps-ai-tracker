@@ -222,7 +222,7 @@ export const timelineRevisionSchema = z.object({
 
 export const passageRowSchema = z.object({
   normKey: z.string(),
-  kind: z.enum(["paragraph", "list_item", "heading"]),
+  kind: z.enum(["paragraph", "list_item", "heading", "table"]),
   rawText: z.string(),
   sharedCount: z.number(),
   isBoilerplate: z.boolean(),
@@ -277,7 +277,7 @@ export const firstObservedSchema = z.object({
 export const passageClusterSchema = z.object({
   normKey: z.string(),
   canonicalText: z.string(),
-  kind: z.enum(["paragraph", "list_item", "heading", "phrase"]),
+  kind: z.enum(["paragraph", "list_item", "heading", "table", "phrase"]),
   memberAbbrs: z.array(z.string()),
   count: z.number(),
   alsoInDta: z.boolean(),

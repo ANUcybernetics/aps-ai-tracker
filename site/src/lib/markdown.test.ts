@@ -111,6 +111,12 @@ describe("passageToHtml", () => {
       "An AI system <strong>infers</strong> outputs.",
     );
   });
+
+  it("renders a table passage as a block-level table", () => {
+    const html = passageToHtml("| Use | Domain |\n| --- | --- |\n| chatbot | service |");
+    expect(html).toContain("<table>");
+    expect(html).toContain("<td>chatbot</td>");
+  });
 });
 
 describe("revisionBodyToHtml", () => {

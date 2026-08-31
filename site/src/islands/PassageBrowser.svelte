@@ -90,8 +90,8 @@
               matched wherever this phrase appears, however the sentence around it is worded
             </p>
           {:else}
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint) -->
-            <p class="pb__text">{@html c.html}</p>
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint); a div because a table cluster's html cannot sit inside <p> -->
+            <div class="pb__text">{@html c.html}</div>
           {/if}
           {#if c.firstObserved}
             <p class="pb__first">

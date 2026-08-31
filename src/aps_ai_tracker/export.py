@@ -482,7 +482,7 @@ class Passage:
     raw_text: str
     normalised: str
     norm_key: str
-    kind: str  # paragraph | list_item | heading
+    kind: str  # paragraph | list_item | heading | table
 
 
 def normalise_passage(text: str) -> str:
@@ -540,6 +540,12 @@ def segment_passages(body: str, abbr: str) -> list[Passage]:
                 add(item, "list_item")
         elif _HEADING_RE.match(first):
             add(block, "heading")
+        elif first.lstrip().startswith("|"):
+            # mdformat's gfm extension always writes table rows with a leading
+            # pipe; the site renders this kind block-level (a table cannot be
+            # parsed inline). Keep the detection in step with isTablePassage in
+            # site/src/lib/markdown.ts.
+            add(block, "table")
         else:
             add(block, "paragraph")
     return passages

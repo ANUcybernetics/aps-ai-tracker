@@ -15,12 +15,16 @@ interface Props {
   heat: number;
   template: boolean;
   share: Member[];
+  // Block-level passages (tables) need a div wrapper — a <table> is not valid
+  // inside a <span>.
+  block?: boolean;
 }
 
-const { html, tip, heat, template, share } = Astro.props;
+const { html, tip, heat, template, share, block = false } = Astro.props;
+const Wrap = block ? "div" : "span";
 ---
 
-<span set:html={html} />{
+<Wrap set:html={html} />{
   share.length ? (
     <ReuseChip members={share} />
   ) : (
