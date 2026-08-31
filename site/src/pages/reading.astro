@@ -37,22 +37,16 @@ for (const c of propagation.clusters) {
     <h2 id="corpus">When the record starts</h2>
     <p>
       Continuous tracking opens on {corpusStart}, the week the Australian Public
-      Service launched its AI Plan. Ben Swift began the tracker from the audience,
-      opening a laptop to archive the agencies&rsquo; statements then and there. That
-      is why the record starts exactly when it does.
-    </p>
-    <p>
-      The <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
-        ><em>Policy for the responsible use of AI in government</em></a
-      > has <a
+      Service launched its AI Plan (the <a href={withBase("/about")}>About page</a>
+      tells the origin story). But the statements themselves have been <a
         href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
-        >required these statements since February 2025</a
-      >. Their first nine months, the period when
-      agencies drew their wording from one another, fell before the tracker was
-      watching. Everything that already existed enters the record together on day one,
-      marked &ldquo;first tracked&rdquo; rather than &ldquo;published&rdquo;. We cannot
-      know what those statements looked like before we first saw them. This is the
-      single biggest limit on everything below.
+        >required since February 2025</a
+      >, so their first nine months, the period when agencies drew their wording
+      from one another, fell before the tracker was watching. Everything that
+      already existed enters the record together on day one, marked &ldquo;first
+      tracked&rdquo; rather than &ldquo;published&rdquo;. We cannot know what those
+      statements looked like before we first saw them. This is the single biggest
+      limit on everything below.
     </p>
 
     <h2 id="reuse">Shared passages and the reuse heat-map</h2>
@@ -170,13 +164,11 @@ for (const c of propagation.clusters) {
       can check its reading against the words.
     </p>
     <p>
-      One further guard sits outside the model. A capture we know to be broken (a page
-      whose body is rendered by a script the scraper cannot run, a sentence our own
-      cleanup once ate) is listed in the repository and dropped before anything reads
-      it, and a fresh capture that lost more than half its text is held off the site
-      until it is confirmed or the scraper is fixed. Dropping a capture can shift the
-      date we observed a genuine change by a few weeks; we would rather that than a
-      false change.
+      One further guard sits outside the model: a capture we know to be broken is
+      dropped before anything reads it, and one that suddenly lost most of its text
+      is held off the site until confirmed. Dropping a capture can shift the date we
+      observed a genuine change by a few weeks; we would rather that than a false
+      change.
     </p>
 
     <h2 id="profiles">Statement profiles</h2>
