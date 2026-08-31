@@ -18,10 +18,19 @@ export PATH="/home/ben/.local/bin:$PATH"
 
 cd "$PROJECT_DIR"
 
+# Every step below may fail without stopping the run: a failed scrape still
+# leaves an export worth running, and a failed export still leaves commits
+# worth pushing. But continuing must not mean reporting success --- each
+# failure is recorded and re-raised as a non-zero exit at the end, so systemd
+# shows the run as failed rather than green.
+FAILURES=()
+failed() {
+  FAILURES+=("$1")
+  echo "FAILED: $1" >> "$LOG_FILE"
+}
+
 echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
-# A failed scrape shouldn't abort the run: the export below is a no-op on an
-# unchanged corpus and the push still redeploys anything already committed.
 # Through agent-run's claude-sub profile, which scrubs ANTHROPIC_* from the
 # environment so the run can only ever bill the subscription, and on Sonnet.
 /home/ben/.dotfiles/bin/agent-run \
@@ -30,7 +39,7 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
   --bypass-permissions \
   --cwd "$PROJECT_DIR" \
   "/scrape" \
-  < /dev/null >> "$LOG_FILE" 2>&1 || echo "scrape failed (continuing)" >> "$LOG_FILE"
+  < /dev/null >> "$LOG_FILE" 2>&1 || failed scrape
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
@@ -41,13 +50,14 @@ echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 # model. Unchanged statements are cache hits, so a typical run makes a handful
 # of calls or none.
 echo "=== export started at $(date -Iseconds) ===" >> "$LOG_FILE"
-uv run --group export export >> "$LOG_FILE" 2>&1 || echo "export failed (continuing)" >> "$LOG_FILE"
+uv run --group export export >> "$LOG_FILE" 2>&1 || failed export
 
 # Commit the refreshed extraction caches (the only derived artifacts we track);
 # generated site JSON is rebuilt in CI.
 git add -- .cache/changes.json .cache/profiles.json 2>/dev/null || true
 if ! git diff --cached --quiet -- .cache/changes.json .cache/profiles.json; then
-  git commit -m "analysis: refresh extraction caches after scrape" >> "$LOG_FILE" 2>&1
+  git commit -m "analysis: refresh extraction caches after scrape" >> "$LOG_FILE" 2>&1 \
+    || failed "commit caches"
 fi
 
 # Sync the corpus to the atproto network (the apsaitracker account; app
@@ -56,13 +66,14 @@ fi
 # run after the export step; on an unchanged corpus it puts nothing.
 echo "=== atproto publish at $(date -Iseconds) ===" >> "$LOG_FILE"
 (cd site && pnpm run atproto:publish -- --write --crosspost) >> "$LOG_FILE" 2>&1 \
-  || echo "atproto publish failed (continuing)" >> "$LOG_FILE"
+  || failed "atproto publish"
 
 # Commit the publish state (record hashes) and syndication ledger (announced
 # skeets) alongside the embeddings cache.
 git add -- atproto-state.json atproto-syndication.json 2>/dev/null || true
 if ! git diff --cached --quiet -- atproto-state.json atproto-syndication.json; then
-  git commit -m "atproto: update publish state after scrape" >> "$LOG_FILE" 2>&1
+  git commit -m "atproto: update publish state after scrape" >> "$LOG_FILE" 2>&1 \
+    || failed "commit publish state"
 fi
 
 # Publish: push so the GitHub Pages workflow rebuilds and deploys the site.
@@ -71,7 +82,7 @@ fi
 # (Overrides the global manual-push default for this repo; weddle needs push
 # credentials for origin.)
 echo "=== push at $(date -Iseconds) ===" >> "$LOG_FILE"
-git push >> "$LOG_FILE" 2>&1 || echo "push failed" >> "$LOG_FILE"
+git push >> "$LOG_FILE" 2>&1 || failed push
 
 # Manual agencies sit behind a bot challenge no HTTP client can pass, so a
 # person opening the page is the only thing that catches a change in them.
@@ -81,17 +92,26 @@ git push >> "$LOG_FILE" 2>&1 || echo "push failed" >> "$LOG_FILE"
 # in the package: the tracker shouldn't know about Ben's notebook.
 echo "=== manual-check todos at $(date -Iseconds) ===" >> "$LOG_FILE"
 open_todos=$(nb todos open --no-color 2>/dev/null || true)
-while IFS=$'\t' read -r abbr name url; do
-  [ -n "$abbr" ] || continue
-  key="aps-ai-tracker:${abbr}"
-  case "$open_todos" in
-    *"$key"*)
-      echo "todo already open for ${abbr}" >> "$LOG_FILE"
-      continue
-      ;;
-  esac
-  nb todo add "${key} hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml" \
-    >> "$LOG_FILE" 2>&1 || echo "todo add failed for ${abbr}" >> "$LOG_FILE"
-done < <(uv run stale-manual 2>> "$LOG_FILE" || true)
+if overdue=$(uv run stale-manual 2>> "$LOG_FILE"); then
+  while IFS=$'\t' read -r abbr name url; do
+    [ -n "$abbr" ] || continue
+    key="aps-ai-tracker:${abbr}"
+    case "$open_todos" in
+      *"$key"*)
+        echo "todo already open for ${abbr}" >> "$LOG_FILE"
+        continue
+        ;;
+    esac
+    nb todo add "${key} hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml" \
+      >> "$LOG_FILE" 2>&1 || failed "todo add (${abbr})"
+  done <<< "$overdue"
+else
+  failed stale-manual
+fi
 
 echo "=== run finished at $(date -Iseconds) ===" >> "$LOG_FILE"
+
+if [ ${#FAILURES[@]} -gt 0 ]; then
+  echo "run finished with failures: ${FAILURES[*]}" >> "$LOG_FILE"
+  exit 1
+fi
