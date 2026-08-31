@@ -3,13 +3,15 @@ import Layout from "@/components/Layout.astro";
 import ChangeFeedItem from "@/components/ChangeFeedItem.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import TimelineFilter from "@/islands/TimelineFilter.svelte";
-import { getTimeline } from "@/lib/load";
+import { getAgencies, getTimeline } from "@/lib/load";
+import { monthlyMix } from "@/lib/monthly";
 import { changeTier } from "@/lib/profile-labels";
 import { getStatements } from "@/lib/statements";
 import type { TimelineEvent } from "@/types/exporter";
 
 const timeline = await getTimeline();
 const statements = await getStatements();
+const agencies = await getAgencies();
 
 // Join each event to its statement's revision history to compute the diff
 // against the previous revision (build-time; only rendered diff HTML ships).
@@ -23,11 +25,22 @@ function diffFor(event: TimelineEvent) {
   return { before: prev.body, after: curr.body, delta: curr.charDelta };
 }
 
-const rows = timeline.map((event) => ({ event, diff: diffFor(event) }));
+const portfolioByAbbr = new Map(agencies.map((a) => [a.abbr, a.portfolio]));
+const rows = timeline.map((event) => ({
+  event,
+  diff: diffFor(event),
+  portfolio: portfolioByAbbr.get(event.abbr) ?? null,
+}));
 
 const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries()]
   .map(([abbr, name]) => ({ abbr, name }))
   .sort((a, b) => a.name.localeCompare(b.name));
+
+const portfolios = [
+  ...new Set(rows.map((r) => r.portfolio).filter((p): p is string => Boolean(p))),
+].sort((a, b) => a.localeCompare(b));
+
+const chart = monthlyMix(timeline);
 
 const tiers = timeline.map((e) => changeTier(e.changeKind));
 const counts = {
@@ -49,7 +62,9 @@ const counts = {
         Every change of substance the daily scrape has recorded, newest first, each
         read from the diff and summarised in a sentence. Cosmetic edits ({counts.cosmetic}),
         scrape noise ({counts.noise}) and first-tracked captures ({counts.first}) are hidden
-        until you ask for them. Open a row to see the words that moved.
+        until you ask for them. Narrow the feed by agency, portfolio or kind of change,
+        click a month in the chart, or search &mdash; the search reads the words that
+        changed, not just the summaries. Open a row to see the words that moved.
       </p>
       <p class="muted">
         Summaries are written by a language model from the diff; each row shows which
@@ -58,10 +73,20 @@ const counts = {
       <ReadingLink anchor="changes" label="How changes are classified" />
     </header>
 
-    <TimelineFilter client:load agencies={agencyOpts} total={counts.content} />
+    <TimelineFilter
+      client:load
+      agencies={agencyOpts}
+      portfolios={portfolios}
+      chart={chart}
+      total={counts.content}
+    />
 
     <ul class="tl-feed" id="tl-feed">
-      {rows.map(({ event, diff }) => <ChangeFeedItem event={event} diff={diff} />)}
+      {
+        rows.map(({ event, diff, portfolio }) => (
+          <ChangeFeedItem event={event} diff={diff} portfolio={portfolio} />
+        ))
+      }
     </ul>
   </div>
 </Layout>
