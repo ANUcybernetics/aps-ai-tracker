@@ -78,7 +78,14 @@ class Agency:
     # after the policy took effect, so the site can say a gap is newness rather
     # than neglect.
     established: str | None = None
+    # Excluded from the automated fetch and maintained by hand instead. Nothing
+    # refreshes a manual agency on its own, so `manual_reason` records why the
+    # fetch can't run and `last_verified` (ISO date) records when a human last
+    # read the live page --- without them a manual entry is indistinguishable
+    # from a fresh capture, however old it is.
     manual: bool = False
+    manual_reason: str | None = None
+    last_verified: str | None = None
     selector: str | None = None
 
 
@@ -135,6 +142,8 @@ def load_agencies() -> list[Agency]:
             portfolio=d.get("portfolio"),
             established=d.get("established"),
             manual=d.get("manual", False),
+            manual_reason=d.get("manual_reason"),
+            last_verified=d.get("last_verified"),
             selector=d.get("selector"),
         )
         for d in data["agencies"]

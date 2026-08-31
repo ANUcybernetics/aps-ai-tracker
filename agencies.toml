@@ -153,6 +153,8 @@ size = "extra-small"
 scope = "mandatory"
 portfolio = "Foreign Affairs and Trade"
 url = "https://www.aciar.gov.au/artificial-intelligence"
+manual = true
+manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
 
 [[agencies]]
 name = "Australian Commission on Safety and Quality in Health Care"
@@ -249,6 +251,9 @@ size = "small"
 scope = "mandatory"
 portfolio = "Social Services"
 url = "https://aifs.gov.au/main/policies/ai-transparency-statement"
+manual = true
+manual_reason = "Cloudflare WAF rule; a flat 403 with no challenge offered"
+last_verified = "2026-09-01"
 
 [[agencies]]
 name = "Australian Institute of Health and Welfare"
@@ -570,6 +575,7 @@ scope = "mandatory"
 portfolio = "Prime Minister and Cabinet"
 url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement"
 manual = true
+manual_reason = "Imperva Incapsula JavaScript challenge"
 
 [[agencies]]
 name = "Domestic, Family and Sexual Violence Commission"
@@ -602,6 +608,8 @@ size = "medium"
 scope = "mandatory"
 portfolio = "Attorney-General's"
 url = "https://www.fedcourt.gov.au/about/corporate-information/ai-statement"
+manual = true
+manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
 
 [[agencies]]
 name = "Food Standards Australia New Zealand"
@@ -783,6 +791,7 @@ portfolio = "Infrastructure, Transport, Regional Development, Communications, Sp
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
 selector = ".block-field-blocknodearticlebody"
 manual = true
+manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
 
 [[agencies]]
 name = "National Health Funding Body"
@@ -871,6 +880,8 @@ size = "medium"
 scope = "mandatory"
 portfolio = "Attorney-General's"
 url = "https://www.ombudsman.gov.au/about/ai-transparency-statement"
+manual = true
+manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
 
 [[agencies]]
 name = "Office of the Inspector-General of Aged Care"

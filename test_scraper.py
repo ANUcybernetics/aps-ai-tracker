@@ -12,6 +12,7 @@ import asyncio
 import hashlib
 import json
 import re
+from datetime import date
 from html import escape
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -86,6 +87,23 @@ def test_agencies_list_structure():
         assert agency.name
         assert agency.abbr
         assert agency.url is None or agency.url.startswith("http")
+
+
+def test_manual_agencies_record_why():
+    """Nothing refreshes a manual agency, so each must say why it is one.
+
+    An unexplained `manual = true` is invisible: the entry simply stops being
+    scraped and its statement freezes with nothing on the record to say so.
+    """
+    unexplained = [a.abbr for a in load_agencies() if a.manual and not a.manual_reason]
+    assert not unexplained, f"manual agencies without a manual_reason: {unexplained}"
+
+
+def test_last_verified_is_an_iso_date():
+    """last_verified feeds the staleness check, which needs a parseable date."""
+    for agency in load_agencies():
+        if agency.last_verified:
+            date.fromisoformat(agency.last_verified)
 
 
 def test_agencies_unique_abbrs():
