@@ -397,7 +397,7 @@ abbr = "AUSTRAC"
 size = "medium"
 scope = "mandatory"
 portfolio = "Home Affairs"
-url = "https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement"
+url = "https://www.austrac.gov.au/about-us/policies-and-governance/reports-and-accountability/our-ai-transparency-statement"
 
 [[agencies]]
 name = "Australian Transport Safety Bureau"

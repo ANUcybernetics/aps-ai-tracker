@@ -1,9 +1,8 @@
 ---
 abbr: AUSTRAC
 agency: Australian Transaction Reports and Analysis Centre
-final_url: https://www.austrac.gov.au/about-us/policies-and-governance/reports-and-accountability/our-ai-transparency-statement
 last_updated_text: 18 August 2026
-source_url: https://www.austrac.gov.au/about-us/corporate-information-and-governance/reports-and-accountability/austrac-artificial-intelligence-transparency-statement
+source_url: https://www.austrac.gov.au/about-us/policies-and-governance/reports-and-accountability/our-ai-transparency-statement
 title: Our AI transparency statement | AUSTRAC
 ---
 
