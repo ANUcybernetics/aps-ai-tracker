@@ -1159,6 +1159,15 @@ def test_clean_markdown_strips_share_widgets():
     assert clean_markdown(prose) == prose
 
 
+def test_clean_markdown_strips_invisible_characters():
+    """Zero-width spaces and soft hyphens render as nothing but differ between
+    capture routes, so they are removed (ACIAR regression). Emoji joiners stay."""
+    text = "Co-\u200boperation with the Depart\u00adment.\n\nFamily: \U0001f469\u200d\U0001f467"
+    assert clean_markdown(text) == (
+        "Co-operation with the Department.\n\nFamily: \U0001f469\u200d\U0001f467"
+    )
+
+
 def test_clean_markdown_strips_link_affixes():
     """CMS screen-reader affixes glued to link labels are stripped: the
     parenthesised form, the AIHW dash form, and Drupal's extlink label

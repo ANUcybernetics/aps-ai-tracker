@@ -63,7 +63,7 @@ Use of AI within the Agency is conducted with respect to all the mandatory requi
 
 ### Accountable official
 
-The Chief Data Officer​ was designated as the accountable official on 01 September 2024.
+The Chief Data Officer was designated as the accountable official on 01 September 2024.
 
 As the accountable official, the Chief Data Officer is responsible for ensuring the compliance of AI use in accordance with internal and external policies, and relevant regulations and legislation within the Agency. At a minimum the Agency will review annually the need to audit and/or review how AI has been used to ensure alignment with intentions and compliance requirements.
 

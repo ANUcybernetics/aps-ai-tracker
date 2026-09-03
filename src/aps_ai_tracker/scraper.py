@@ -287,6 +287,12 @@ _LINK_AFFIX_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Invisible characters a CMS sprinkles through prose for line-breaking control
+# (zero-width space, soft hyphen, stray BOM). They render as nothing, so they are
+# never statement content, but they differ between capture routes and so show up
+# as a phantom revision. U+200D is deliberately left alone: it joins emoji.
+_INVISIBLE_RE = re.compile("[\u00ad\u200b\ufeff]")
+
 _OFFICIAL_MARKER_RE = re.compile(
     r"(?im)^\s*(?:classification:\s*)?official(?:\s*[-:]\s*sensitive)?\s*$\n?"
 )
@@ -342,6 +348,7 @@ def extract_last_updated(text: str) -> str | None:
 
 def clean_markdown(text: str) -> str:
     """Strip date stamps, classification markers, and navigation boilerplate."""
+    text = _INVISIBLE_RE.sub("", text)
     # Trim inline stamps that share a line with prose (trailing, then leading),
     # keeping the prose, then clear any line that is wholly a date stamp.
     text = _INLINE_DATE_TAIL_RE.sub("", text)
