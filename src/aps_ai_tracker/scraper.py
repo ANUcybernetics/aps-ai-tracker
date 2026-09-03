@@ -572,15 +572,21 @@ def inline_page_schema(soup: BeautifulSoup) -> int:
 def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> str:
     """Extract the main content from the page, removing navigation and footers.
 
+    A selector that matches several elements yields all of them, in document
+    order: a CMS often splits one statement across sibling blocks (NFSA's
+    standfirst, body and download link each carry `.article-content`), and
+    taking only the first would silently keep a fragment.
+
     Args:
         soup: BeautifulSoup object of the page
         selector: Optional CSS selector to use instead of default list
     """
     inline_page_schema(soup)
     if selector:
-        if main_content := soup.select_one(selector):
-            remove_boilerplate(main_content)
-            return str(main_content)
+        if matches := soup.select(selector):
+            for match in matches:
+                remove_boilerplate(match)
+            return "".join(str(match) for match in matches)
     else:
         for candidate in ["main", "article", ".content", "#content", ".main-content"]:
             if main_content := soup.select_one(candidate):

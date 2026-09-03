@@ -169,6 +169,32 @@ def test_extract_main_content_fallback():
     assert "Footer" not in content
 
 
+def test_extract_main_content_selector_keeps_every_match():
+    """A selector matching sibling blocks yields all of them, in document order
+    (NFSA splits standfirst, body and download link across .article-content)."""
+    html = """
+    <html>
+        <body>
+            <main>
+                <div class="article-content">Standfirst.</div>
+                <div class="article-content"><nav>Menu</nav>Body of the statement.</div>
+                <div class="promo">Buy tickets</div>
+                <div class="article-content">Download the statement.</div>
+            </main>
+        </body>
+    </html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup, ".article-content")
+
+    assert content.index("Standfirst.") < content.index("Body of the statement.")
+    assert content.index("Body of the statement.") < content.index(
+        "Download the statement."
+    )
+    assert "Buy tickets" not in content
+    assert "Menu" not in content
+
+
 def test_extract_main_content_removes_boilerplate_from_main():
     """Test boilerplate removal works even when main tag is present."""
     html = """

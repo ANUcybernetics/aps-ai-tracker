@@ -790,7 +790,9 @@ size = "medium"
 scope = "voluntary"
 portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
 url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
-selector = ".block-field-blocknodearticlebody"
+# The rebuilt (Sanity) site splits the statement across sibling blocks: the
+# standfirst, the body, and the download link all carry this class.
+selector = ".article-content"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
 
