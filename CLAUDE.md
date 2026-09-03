@@ -22,6 +22,9 @@ This is a Python web scraping project using uv for dependency management.
 - List manual agencies overdue for a hand-check:
   `mise exec -- uv run stale-manual` (the nightly run turns each line into an nb
   todo)
+- Ask whether the browser fetch can reach a blocked site:
+  `mise exec -- uv run browser-probe [ABBR...]` (defaults to every manual
+  agency; reports only, writes nothing)
 - Export site data (JSON for the Astro site):
   `mise exec -- uv run --group export export` (needs the `export` dependency
   group: pydantic + anthropic). Revision pairs and statement bodies not already
@@ -54,6 +57,10 @@ This is a Python web scraping project using uv for dependency management.
   - `status.py` reports collection status
   - `verify.py` lists manual agencies overdue for a hand-check (the
     `stale-manual` command)
+  - `probe.py` reports whether the browser fetch clears a manual agency's
+    challenge (the `browser-probe` command); the nightly run probes PM&C and
+    logs the line, so promoting it to `browser = true` rests on a run of
+    results rather than one night
   - `export.py` turns the corpus + git history into JSON for the site (timeline
     with revert collapse, lexical passage propagation, originality scores,
     concept adoption, statement currency). Before anything reads a revision it
@@ -183,7 +190,9 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
 user unit on weddle. It scrapes (`/scrape` on Sonnet via
 `~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
 subscription route), refreshes the extraction caches (`export`), syncs the
-corpus to atproto (see above), and `git push`es so the Pages site redeploys.
+corpus to atproto (see above), `git push`es so the Pages site redeploys, raises
+an nb todo per overdue manual agency, and probes PM&C's challenge for evidence
+(`browser-probe`, log-only).
 weddle pushes to `origin` (credentials confirmed working) and reads
 `OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
 unit files live in `ops/systemd/`. Install with:
@@ -228,6 +237,13 @@ after 60 days) — the script redirects nearly all of its output there, so
   a `manual_reason` saying which; a test enforces the reason. Record
   `last_verified` (ISO date) whenever you hand-check one against its live page,
   because `stale-manual` reads it to decide who is overdue
+- `browser = true` fetches an agency through the `agent-browser` CLI instead of
+  httpx, for a challenge only JavaScript can answer, with a `browser_reason`
+  (also enforced) naming it. Headless Chrome clears an Imperva JavaScript
+  challenge but not a Cloudflare *managed* one, and Imperva blocks the host's
+  IP outright once it has seen a few visits, so a site earns the flag by a run
+  of clean `browser-probe` lines. An agency is `browser` or `manual`, never
+  both: a browser agency is automated, so nothing reminds a person to read it
 - **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
   intentional, but that test is deselected by default (`-m might_fail` to run)
 - Scraper skips agencies with `None` URLs when run

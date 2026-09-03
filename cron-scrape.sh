@@ -109,6 +109,13 @@ else
   failed stale-manual
 fi
 
+# One cold browser fetch of PM&C, whose Imperva challenge headless Chrome has
+# cleared before (see probe.py). Evidence only: it writes nothing, and a block
+# is not a failure, so the run stays green either way. Promote PM&C to
+# `browser = true` after a run of "ok" lines here, not after one.
+echo "=== browser probe at $(date -Iseconds) ===" >> "$LOG_FILE"
+uv run browser-probe PMC >> "$LOG_FILE" 2>&1 || true
+
 echo "=== run finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 if [ ${#FAILURES[@]} -gt 0 ]; then

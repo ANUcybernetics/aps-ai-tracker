@@ -24,6 +24,7 @@ scrape = "aps_ai_tracker.__main__:main"
 process = "aps_ai_tracker.process:main"
 status = "aps_ai_tracker.status:main"
 stale-manual = "aps_ai_tracker.verify:main"
+browser-probe = "aps_ai_tracker.probe:main"
 export = "aps_ai_tracker.export:main"
 
 [dependency-groups]

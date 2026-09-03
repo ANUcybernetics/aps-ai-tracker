@@ -1586,3 +1586,16 @@ def test_fetch_raw_browser_reports_a_missing_cli():
     assert result["content"] is None
     assert result["error"] is not None
     assert "not installed" in result["error"]
+
+
+def test_probe_describes_both_outcomes():
+    """The nightly probe line has to be readable in a log a week later: which
+    agency, and whether the browser reached the statement or was turned away."""
+    from aps_ai_tracker.probe import describe
+
+    agency = Agency(name="Dept", abbr="PMC", url="https://x.gov.au/ai")
+
+    assert describe(agency, None, 51234) == "PMC\tok, 51234 bytes"
+    assert describe(agency, "bot challenge not cleared", 0) == (
+        "PMC\tblocked: bot challenge not cleared"
+    )
