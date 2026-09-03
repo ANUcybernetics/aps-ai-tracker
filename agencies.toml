@@ -576,6 +576,7 @@ portfolio = "Prime Minister and Cabinet"
 url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement"
 manual = true
 manual_reason = "Imperva Incapsula JavaScript challenge"
+last_verified = "2026-09-03"
 
 [[agencies]]
 name = "Domestic, Family and Sexual Violence Commission"
