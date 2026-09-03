@@ -7,6 +7,7 @@ from datetime import UTC, datetime
 from .scraper import (
     REPO_ROOT,
     fetch_all_raw,
+    fetch_raw_browser,
     load_agencies,
     logger,
     process_statements,
@@ -29,6 +30,10 @@ def main() -> int:
 
     # Filter agencies: exclude manual ones and those without URLs
     auto_agencies = [a for a in agencies if a.url is not None and not a.manual]
+    # The browser path is serial and slow, so it runs on its own after the
+    # concurrent httpx batch rather than inside it.
+    http_agencies = [a for a in auto_agencies if not a.browser]
+    browser_agencies = [a for a in auto_agencies if a.browser]
     manual_count = sum(1 for a in agencies if a.manual)
     skipped_count = sum(1 for a in agencies if a.url is None)
 
@@ -41,7 +46,13 @@ def main() -> int:
 
     # Stage 1: Fetch raw content
     logger.info(f"Stage 1: Fetching raw content for {len(auto_agencies)} agencies...")
-    raw_results = asyncio.run(fetch_all_raw(auto_agencies))
+    raw_results = asyncio.run(fetch_all_raw(http_agencies))
+    if browser_agencies:
+        logger.info(
+            f"Fetching {len(browser_agencies)} bot-challenged agencies "
+            "through the browser..."
+        )
+        raw_results += [(a, fetch_raw_browser(a)) for a in browser_agencies]
 
     fetch_success = 0
     for agency, data in raw_results:

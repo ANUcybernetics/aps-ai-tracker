@@ -34,6 +34,7 @@ from aps_ai_tracker import (
     extract_main_content,
     extract_markdown_from_statement,
     fetch_all_raw,
+    fetch_raw_browser,
     load_agencies,
     overdue,
     process_raw,
@@ -98,6 +99,16 @@ def test_manual_agencies_record_why():
     """
     unexplained = [a.abbr for a in load_agencies() if a.manual and not a.manual_reason]
     assert not unexplained, f"manual agencies without a manual_reason: {unexplained}"
+
+
+def test_browser_agencies_record_why():
+    """The browser path is serial and slow, so each user of it must say which
+    challenge earns it, and no agency may be both browser-fetched and manual."""
+    agencies = load_agencies()
+    unexplained = [a.abbr for a in agencies if a.browser and not a.browser_reason]
+    assert not unexplained, f"browser agencies without a browser_reason: {unexplained}"
+    both = [a.abbr for a in agencies if a.browser and a.manual]
+    assert not both, f"agencies marked both browser and manual: {both}"
 
 
 def test_last_verified_is_an_iso_date():
@@ -1485,3 +1496,93 @@ def test_every_manual_agency_is_reachable_by_the_check():
     assert manual, "expected some manual agencies"
     for agency in manual:
         assert agency.last_verified is not None or agency in due
+
+
+# Tests for the browser fetch path
+
+
+def _fake_browser(script: list[tuple[int, str, str]]):
+    """A BrowserRunner replaying `script`, recording the argv it was given."""
+    calls: list[list[str]] = []
+
+    def runner(args: list[str]) -> tuple[int, str, str]:
+        calls.append(args)
+        # `close` in the finally block runs after the script is exhausted.
+        return script.pop(0) if script else (0, "", "")
+
+    return runner, calls
+
+
+def test_fetch_raw_browser_wraps_the_captured_html():
+    """The CLI returns the <html> element's inner HTML, so the doctype and
+    wrapper are added back to match the shape the httpx path saves."""
+    agency = Agency(name="Dept", abbr="PMC", url="https://x.gov.au/ai")
+    runner, calls = _fake_browser(
+        [
+            (0, "", ""),  # open
+            (0, "<head><title>AI</title></head><body>Statement.</body>", ""),
+            (0, "https://x.gov.au/ai-final\n", ""),  # get url
+        ]
+    )
+
+    result = fetch_raw_browser(agency, runner=runner, retry_delay=0)
+
+    assert result["error"] is None
+    assert result["content"] is not None
+    body = result["content"].decode("utf-8")
+    assert body.startswith('<!DOCTYPE html><html lang="en">')
+    assert body.endswith("</html>")
+    assert "Statement." in body
+    assert result["final_url"] == "https://x.gov.au/ai-final"
+    assert result["content_type"] == "text/html; charset=utf-8"
+    assert calls[-1][0] == "close", "the browser session is always closed"
+
+
+def test_fetch_raw_browser_retries_a_challenge_then_succeeds():
+    """The first load of a challenged page often is the challenge itself; the
+    reload carries the clearance cookie it just set."""
+    agency = Agency(name="Dept", abbr="PMC", url="https://x.gov.au/ai")
+    runner, _ = _fake_browser(
+        [
+            (0, "", ""),
+            (0, "<head><title>Just a moment...</title></head><body></body>", ""),
+            (0, "", ""),
+            (0, "<body>The real statement.</body>", ""),
+            (0, "https://x.gov.au/ai", ""),
+        ]
+    )
+
+    result = fetch_raw_browser(agency, runner=runner, retry_delay=0)
+
+    assert result["error"] is None
+    assert result["content"] is not None
+    assert "The real statement." in result["content"].decode("utf-8")
+
+
+def test_fetch_raw_browser_gives_up_on_a_persistent_challenge():
+    """A challenge that survives the reload is a failed fetch, not content:
+    saving it would overwrite the statement with an interstitial."""
+    agency = Agency(name="Dept", abbr="PMC", url="https://x.gov.au/ai")
+    challenge = (0, "<title>Attention Required! | Cloudflare</title>", "")
+    runner, _ = _fake_browser([(0, "", ""), challenge, (0, "", ""), challenge])
+
+    result = fetch_raw_browser(agency, runner=runner, retry_delay=0)
+
+    assert result["content"] is None
+    assert result["error"] is not None
+    assert "challenge" in result["error"]
+
+
+def test_fetch_raw_browser_reports_a_missing_cli():
+    """A machine without agent-browser fails the fetch cleanly rather than
+    raising through the run."""
+    agency = Agency(name="Dept", abbr="PMC", url="https://x.gov.au/ai")
+
+    def runner(args: list[str]) -> tuple[int, str, str]:
+        raise FileNotFoundError("agent-browser")
+
+    result = fetch_raw_browser(agency, runner=runner, retry_delay=0)
+
+    assert result["content"] is None
+    assert result["error"] is not None
+    assert "not installed" in result["error"]

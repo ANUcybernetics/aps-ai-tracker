@@ -1,12 +1,16 @@
 """Core scraping functionality for AI transparency statements."""
 
 import asyncio
+import contextlib
 import hashlib
 import json
 import logging
 import random
 import re
+import subprocess
+import time
 import tomllib
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal, NotRequired, TypedDict
@@ -86,6 +90,12 @@ class Agency:
     manual: bool = False
     manual_reason: str | None = None
     last_verified: str | None = None
+    # Fetched through a real browser rather than httpx, for a site whose bot
+    # challenge only JavaScript can answer. `browser_reason` records which
+    # challenge, the same way `manual_reason` does, because the browser path is
+    # slow and serial and nobody should widen it by guesswork.
+    browser: bool = False
+    browser_reason: str | None = None
     selector: str | None = None
 
 
@@ -144,6 +154,8 @@ def load_agencies() -> list[Agency]:
             manual=d.get("manual", False),
             manual_reason=d.get("manual_reason"),
             last_verified=d.get("last_verified"),
+            browser=d.get("browser", False),
+            browser_reason=d.get("browser_reason"),
             selector=d.get("selector"),
         )
         for d in data["agencies"]
@@ -720,6 +732,122 @@ async def fetch_raw_async(
         if last_error
         else "Unknown error",
     }
+
+
+# The browser fetch path, for the handful of sites whose bot challenge no HTTP
+# client can answer. It shells out to the `agent-browser` CLI rather than
+# driving Playwright directly, so the scraper and interactive debugging use one
+# tool. Chrome runs headless, which clears a JavaScript challenge (Imperva) but
+# not a Cloudflare *managed* challenge — those sites stay `manual = true`.
+BROWSER_COMMAND = "agent-browser"
+BROWSER_SESSION = "aps-scrape"
+# Chrome cannot start its own sandbox where unprivileged user namespaces are
+# restricted (Ubuntu 23.10+, which is where the nightly run lives), and refuses
+# to launch at all rather than degrading. The pages visited are Commonwealth
+# agency sites read with no credentials in the profile.
+BROWSER_CHROME_ARGS = "--no-sandbox"
+BROWSER_TIMEOUT = 180.0
+# A challenge page returns 200 with an interstitial body, so the give-away is
+# its text. Matched against the capture, never against a live page's prose:
+# these phrases are the challenge vendors', not an agency's.
+CHALLENGE_MARKERS = (
+    "just a moment...",
+    "attention required! | cloudflare",
+    "incapsula incident id",
+    "_incapsula_resource",
+    "verifying you are human",
+)
+# The first load of a challenged page often *is* the challenge; the reload that
+# follows carries the clearance cookie the challenge just set.
+BROWSER_RETRY_DELAY = 8.0
+
+# (argv after the command) -> (returncode, stdout, stderr)
+type BrowserRunner = Callable[[list[str]], tuple[int, str, str]]
+
+
+def _run_browser(args: list[str]) -> tuple[int, str, str]:
+    """Run one agent-browser subcommand, returning (returncode, stdout, stderr)."""
+    result = subprocess.run(
+        [BROWSER_COMMAND, *args],
+        capture_output=True,
+        text=True,
+        timeout=BROWSER_TIMEOUT,
+        check=False,
+    )
+    return result.returncode, result.stdout, result.stderr
+
+
+def challenge_in(html: str) -> str | None:
+    """The bot-challenge marker this capture is showing, if it is one."""
+    lowered = html.lower()
+    return next((m for m in CHALLENGE_MARKERS if m in lowered), None)
+
+
+def fetch_raw_browser(
+    agency: Agency,
+    runner: BrowserRunner = _run_browser,
+    retry_delay: float = BROWSER_RETRY_DELAY,
+) -> RawFetchResult:
+    """Fetch a page through a real browser, for `browser = true` agencies.
+
+    `agent-browser get html html` returns the `<html>` element's *inner* HTML,
+    so the doctype and wrapper are added back to give the parser (and the raw
+    file on disk) the same shape the httpx path produces.
+    """
+    failed: RawFetchResult = {
+        "content": None,
+        "content_type": None,
+        "status_code": None,
+        "final_url": agency.url,
+        "error": None,
+    }
+    if agency.url is None:
+        return {**failed, "error": "No URL provided"}
+
+    session = ["--session", BROWSER_SESSION]
+    try:
+        for attempt in range(2):
+            if attempt:
+                logger.warning(
+                    f"{agency.abbr}: bot challenge on load {attempt}; reloading"
+                )
+                time.sleep(retry_delay)
+
+            logger.info(f"Fetching {agency.name} through the browser...")
+            code, _, stderr = runner(
+                ["open", agency.url, *session, "--args", BROWSER_CHROME_ARGS]
+            )
+            if code != 0:
+                return {**failed, "error": f"browser open failed: {stderr.strip()}"}
+
+            code, html, stderr = runner(["get", "html", "html", *session])
+            if code != 0:
+                return {**failed, "error": f"browser read failed: {stderr.strip()}"}
+            if not html.strip():
+                return {**failed, "error": "browser returned an empty page"}
+            if challenge := challenge_in(html):
+                continue
+
+            code, final_url, _ = runner(["get", "url", *session])
+            document = f'<!DOCTYPE html><html lang="en">\n{html}\n</html>'
+            return {
+                "content": document.encode("utf-8"),
+                "content_type": "text/html; charset=utf-8",
+                "status_code": 200,
+                "final_url": final_url.strip() if code == 0 else agency.url,
+                "error": None,
+            }
+
+        return {**failed, "error": f"bot challenge not cleared ({challenge})"}
+    except FileNotFoundError:
+        return {**failed, "error": f"{BROWSER_COMMAND} is not installed"}
+    except subprocess.TimeoutExpired:
+        return {**failed, "error": f"{BROWSER_COMMAND} timed out"}
+    finally:
+        # Closing is best-effort cleanup: if the CLI is missing or wedged, the
+        # fetch result above is the news, not a second failure on the way out.
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            runner(["close", "--session", BROWSER_SESSION])
 
 
 def save_raw(agency: Agency, data: RawFetchResult, raw_dir: Path) -> bool:
