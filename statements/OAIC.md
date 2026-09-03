@@ -103,6 +103,7 @@ title: OAIC AI transparency statement | OAIC
   - [ Procurement judicial review policy ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/procurement-judicial-review-policy)
   - [ Privacy management plan ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/privacy-management-plan)
   - [ Communicating with the OAIC for members of the public ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/policy-on-communicating-with-the-oaic-for-members-of-the-public)
+  - [ Policy position on consultation for external facing guidance ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/policy-position-on-consultation-for-external-facing-guidance)
 
 # Our AI transparency statement
 
