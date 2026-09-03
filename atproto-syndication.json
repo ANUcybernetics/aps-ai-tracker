@@ -1392,6 +1392,11 @@
   "PMC-20251111T225148Z": {
     "seeded": true
   },
+  "PMC-20260903T063226Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mumxpjgzes25",
+    "cid": "bafyreibrhwzzu7ice2wj7pz4j75ccqndlhvqwixcbwb3aihqzzgu746ev4",
+    "syndicatedAt": "2026-09-03T17:24:02.074Z"
+  },
   "PSR-20251111T061258Z": {
     "seeded": true
   },
