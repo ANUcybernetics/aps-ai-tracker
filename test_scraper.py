@@ -1160,16 +1160,19 @@ def test_clean_markdown_strips_share_widgets():
 
 
 def test_clean_markdown_strips_link_affixes():
-    """CMS screen-reader affixes glued to link labels are stripped, in both the
-    parenthesised and the AIHW dash form (NBA, AIHW regressions)."""
+    """CMS screen-reader affixes glued to link labels are stripped: the
+    parenthesised form, the AIHW dash form, and Drupal's extlink label
+    (NBA, AIHW, PMC regressions)."""
     text = (
-        "Read the [DTA policy(Opens in a new tab/window)](https://x.gov.au/a) "
-        "and the _[Privacy Act 1988 - external site opens in new window](https://x.gov.au/b)_."
+        "Read the [DTA policy(Opens in a new tab/window)](https://x.gov.au/a), "
+        "the _[Privacy Act 1988 - external site opens in new window](https://x.gov.au/b)_ "
+        "and [Australia\u2019s AI Ethics Principles(link is external)](https://x.gov.au/c)."
     )
     result = clean_markdown(text)
     assert result == (
-        "Read the [DTA policy](https://x.gov.au/a) "
-        "and the _[Privacy Act 1988](https://x.gov.au/b)_."
+        "Read the [DTA policy](https://x.gov.au/a), "
+        "the _[Privacy Act 1988](https://x.gov.au/b)_ "
+        "and [Australia\u2019s AI Ethics Principles](https://x.gov.au/c)."
     )
 
 

@@ -277,11 +277,13 @@ _TRAILING_BOILERPLATE_RE = re.compile(
 _SHARE_LABEL_RE = re.compile(r"(?mi)^[ \t>*#-]*share\**:?[ \t]*$\n?")
 
 # CMS accessibility affixes glued to link labels — "[DTA policy(Opens in a new
-# tab/window)](…)", "[Privacy Act 1988 - external site opens in new window](…)".
+# tab/window)](…)", "[Privacy Act 1988 - external site opens in new window](…)",
+# "[Australia's AI Ethics Principles(link is external)](…)" (Drupal's extlink).
 # Screen-reader chrome from the agency's CMS, never statement prose.
 _LINK_AFFIX_RE = re.compile(
     r"\s*(?:\(opens? in (?:a )?new (?:tab|window)(?:/window)?\)|"
-    r"-?\s*external site opens in (?:a )?new window)",
+    r"-?\s*external site opens in (?:a )?new window|"
+    r"\(link is external\))",
     re.IGNORECASE,
 )
 
