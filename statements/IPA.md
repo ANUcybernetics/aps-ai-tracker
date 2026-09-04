@@ -65,15 +65,15 @@ Download
 
 ## Annual legal services expenditure
 
-Our total legal services expenditure in the 2024-25 financial year was:
+Our total legal services expenditure in the 2024–25 financial year was:
 
 **Legal services expenditure** | **Amount**
 
 | **(AUD) (excl GST)** |                |
 | -------------------- | -------------- |
-| External services    | $1,300,575     |
-| Internal services    | $1,551,921     |
-| **Total**            | **$2,852,496** |
+| External services    | $1,400,666     |
+| Internal services    | $1,668,201     |
+| **Total**            | **$3,068,867** |
 
 ## Ministerial Statement of Expectations and Regulator Statement of Intent
 

@@ -78,7 +78,7 @@ We are investigating and adopting fit-for purpose technology to support the use 
 
 ### AI accountable official and chief AI officer
 
-ASIC’s Senior Executive Leader, Data, Analytics and AI is the accountable official under the policy and the chief AI officer under the [APS AI Plan 2025](https://www.digital.gov.au/sites/default/files/documents/2025-11/APS%20AI%20Plan%202025.pdf).
+The Executive Director, Digital, Data and Technology is ASIC’s Accountable Official under the policy, and the Executive Director, Markets is ASIC’s Chief AI Officer under the \[APS AI Plan 2025\](https://www.digital.gov.au/sites/default/files/documents/2025-11/APS AI Plan 2025.pdf).
 
 ### Strategic position on AI adoption
 
@@ -106,3 +106,4 @@ If you have questions or seek more information about this AI transparency statem
 | ----------------------- | ------------------------------------------------------------------------------------------ |
 | 28 February 2025        | Publication of first AI transparency statement                                             |
 | 27 February 2026        | Reviewed to reflect the updated Policy for responsible use of AI released in December 2025 |
+| 4 September 2026        | Updated Accountable Official and Chief AI Officer roles                                    |
