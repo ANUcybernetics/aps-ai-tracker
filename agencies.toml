@@ -180,6 +180,8 @@ size = "medium"
 scope = "mandatory"
 portfolio = "Treasury"
 url = "https://www.accc.gov.au/about-us/accc-role-and-structure/governance-and-accountability/artificial-intelligence-ai-transparency-statement"
+browser = true
+browser_reason = "Akamai edge 403 (Access Denied) on every path, /robots.txt included"
 
 [[agencies]]
 name = "Australian Criminal Intelligence Commission"
