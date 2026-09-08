@@ -65,7 +65,7 @@ Download
 
 ## Annual legal services expenditure
 
-Our total legal services expenditure in the 2024–25 financial year was:
+Our total legal services expenditure in the 2025–26 financial year was:
 
 **Legal services expenditure** | **Amount**
 
