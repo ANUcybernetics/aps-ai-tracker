@@ -109,6 +109,14 @@ describe("record builders", () => {
     expect(record.icon).toBeUndefined();
   });
 
+  it("stamps $type on every embedded lexicon object, which the PDS validates", () => {
+    const theme = buildPublicationRecord().basicTheme as Record<string, { $type?: string }>;
+    expect(theme.$type).toBe("site.standard.theme.basic");
+    for (const slot of ["background", "foreground", "accent", "accentForeground"]) {
+      expect(theme[slot]!.$type).toBe("site.standard.theme.color#rgb");
+    }
+  });
+
   it("document record carries plaintext, path and publishedAt from first observation", () => {
     const record = buildDocumentRecord(statement(), "3mv2ca4kjik27");
     expect(record.site).toBe(publicationUri("3mv2ca4kjik27"));

@@ -154,6 +154,8 @@ export function buildPublicationRecord(iconBlob?: unknown): Record<string, unkno
       "the full text of every AI transparency statement, a timeline of every change, " +
       "and an explorer for how statements resemble each other.",
     basicTheme: {
+      // A ref to a record def, so the embedded object carries its own $type.
+      $type: "site.standard.theme.basic",
       background: themeColor(THEME.background),
       foreground: themeColor(THEME.foreground),
       accent: themeColor(THEME.accent),
