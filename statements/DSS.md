@@ -1,7 +1,7 @@
 ---
 abbr: DSS
 agency: Department of Social Services
-last_updated_text: 22 July 2026
+last_updated_text: 9 September 2026
 source_url: https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Social
   Services
@@ -32,23 +32,20 @@ Currently, our approved AI use cases are within the:
 
 We currently do not use AI within the _Decision making and administrative action_ or _Image processing_ usage patterns, or the _Scientific_ , _Compliance and fraud detection_ , and _Law enforcement, intelligence and security_ domains.
 
-## How our staff use AI
-
 Our staff use AI systems predominantly for:
 
-- Summarising documents, reports and meeting notes into key points
-- Preparing newsletters, presentations and web content; rewrite drafts for clarity
-- Creating agendas and recording action items
-- Generating graphs and dashboards from data; summarising insights
-- Extracting information and preparing summaries and redacting information
-- Drafting and reviewing policy documents for clarity and compliance
-- Summarising contract documents and identifying compliance risks
-- Developing training guides and making technical content easy to understand
-- Summarising risk registers and preparing risk reports with dashboards
-- Generating transcripts of public hearings and sessions e.g Senate Estimates
-- Speech to text transcription of telephone calls.
-
-## AI systems we use
+- Summarising documents, reports and meeting notes into key points.
+- Preparing newsletters, presentations and web content; rewrite drafts for clarity.
+- Creating agendas and recording action items.
+- Generating graphs and dashboards from data; summarising insights.
+- Extracting information and preparing summaries and redacting information.
+- Assisting with drafting policy documents and reviewing them for clarity and compliance.
+- Summarising contract documents and identifying compliance risks.
+- Developing training guides and making technical content easy to understand.
+- Summarising risk registers and preparing risk reports with dashboards.
+- Generating transcripts of public hearings and sessions e.g. Senate Estimates.
+- Speech to text transcription of telephone calls
+- Converting scanned (typed and handwritten) applications submitted to the National Redress Scheme into machine-readable text. The technology assists staff by reducing the need for manual data entry. Before any decision is made, or administrative action is taken, an appropriately authorised staff member will verify the converted text against the original application. The original document will remain the authoritative source of information.
 
 The current AI systems that we utilise are as follows:
 
@@ -63,6 +60,8 @@ The current AI systems that we utilise are as follows:
 **5. Microsoft Copilot Agents and Copilot Studio (Pilot)** – We have commenced controlled pilots of Microsoft Copilot Agents within the DSS controlled environment, including Microsoft-provided agents, DSS-developed agents and Copilot Studio developed agents. These capabilities are being evaluated for approved productivity, knowledge management and information analysis use cases and are subject to additional governance and approval requirements.
 
 **6. Otter AI** – We use Otter AI for a select group of staff, an AI-powered transcription tool designed to convert speech into text.
+
+**7**. **AI-enabled Optical Character Recognition (OCR) Solution** – We use an AI-enabled Optical Character Recognition (OCR) solution to support administration of the National Redress Scheme. The technology converts scanned and handwritten documents into machine-readable text to assist staff with processing documentation and extracting relevant information. The OCR solution does not make decisions or determine outcomes. Outputs will be verified by authorised staff and remain subject to the Department’s governance, privacy, record-keeping and security requirements.
 
 Consistent with our risk-based approach, access to certain AI capabilities, including the full licensed version of Microsoft 365 Copilot and Copilot Studio developed agents, may be restricted to approved cohorts or use cases following legal, privacy, secrecy and risk assessments.
 
@@ -81,7 +80,7 @@ As part of this framework, we have an AI Governance Committee to oversee the ado
 - guiding the department’s AI strategy, principles and policies
 - identifying, assessing and managing AI risks and opportunities
 - reviewing and approving AI use cases
-- monitoring the performance and impact of AI solutions.
+- monitoring the performance and impact of AI solutions
 
 The Committee is chaired by the Chief Operating Officer and includes senior representatives from legal, data, corporate, communications and ICT.
 
@@ -95,7 +94,7 @@ Once implemented, we monitor the effectiveness of AI systems through robust gove
 
 The following table sets out an overview of our compliance with the mandatory requirements of the DTA policy and APS AI Plan:
 
-| **Mandatory requirement**                             | **Status**     | **Comments**                                                                                                                                                                                                                                               | **Due date**    |
+| Mandatory requirement                                 | Status         | Comments                                                                                                                                                                                                                                                   | Due date        |
 | ----------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | **AI transparency statement**                         | Compliant      | N/A                                                                                                                                                                                                                                                        | N/A             |
 | **Strategic position on AI adoption**                 | Compliant      | DSS AI Strategy 2026-2028 has been approved and published to all staff                                                                                                                                                                                     | 1 June 2026     |
@@ -109,7 +108,7 @@ The following table sets out an overview of our compliance with the mandatory re
 
 This statement is authorised by DSS’s accountable official, the Chief Information Officer.
 
-This AI Transparency Statement was updated on 22 July 2026.
+This AI Transparency Statement was updated on 9 September 2026.
 
 ## More information
 
