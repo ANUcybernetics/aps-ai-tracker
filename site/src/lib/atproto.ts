@@ -3,11 +3,19 @@
 // here is pure and env-free so it runs identically under Astro, vitest and tsx.
 //
 // Identifier scheme (see the me.benswift.transparencyStatement* lexicons in
-// lexicons/ at the repo root): rkeys are deterministic — computable from the
-// public corpus, never stored — so AT-URIs survive the loss of any state file.
-//   site.standard.document/{abbr}                       current statement text
+// lexicons/ at the repo root). Our own lexicons declare `key: any`, so their
+// rkeys stay deterministic — computable from the public corpus, never stored —
+// and their AT-URIs survive the loss of any state file:
 //   me.benswift.transparencyStatement/{abbr}            tracked-statement metadata
 //   me.benswift.transparencyStatementRevision/{abbr}-{compact UTC observedAt}
+//
+// The site.standard.* lexicons are third-party and declare `key: tid`, which
+// the PDS enforces, so those rkeys cannot encode the abbr and are allocated
+// once and recorded in atproto-state.json (see atproto-ids.ts):
+//   site.standard.publication/{tid}                     the tracker site
+//   site.standard.document/{tid}                        current statement text
+// Their durable, human-readable identifier is the record's `path` field
+// (/statements/{abbr}) — which is also how a lost mapping is recovered.
 //
 // The handle (apsaitracker.app, a domain handle verified via the _atproto TXT
 // record) is cosmetic and swappable; the DID is the durable identity every
@@ -27,7 +35,10 @@ export const DOCUMENT_COLLECTION = "site.standard.document";
 export const STATEMENT_COLLECTION = "me.benswift.transparencyStatement";
 export const REVISION_COLLECTION = "me.benswift.transparencyStatementRevision";
 
-export const PUBLICATION_URI = `at://${TRACKER_DID}/${PUBLICATION_COLLECTION}/self`;
+/** A record key the site.standard lexicons will accept: 13 base32-sortable chars. */
+export function isTid(rkey: string): boolean {
+  return /^[234567abcdefghij][234567abcdefghijklmnopqrstuvwxyz]{12}$/.test(rkey);
+}
 
 /** "2025-11-11T17:12:58+11:00" -> "20251111T061258Z" (always UTC). */
 export function compactUtc(iso: string): string {
@@ -50,8 +61,13 @@ export function revisionRkey(abbr: string, observedAt: string): string {
   return `${abbr}-${compactUtc(observedAt)}`;
 }
 
-export function documentUri(abbr: string): string {
-  return `at://${TRACKER_DID}/${DOCUMENT_COLLECTION}/${abbr}`;
+export function publicationUri(rkey: string): string {
+  return `at://${TRACKER_DID}/${PUBLICATION_COLLECTION}/${rkey}`;
+}
+
+/** Takes the allocated rkey, not the abbr — site.standard.document is `key: tid`. */
+export function documentUri(rkey: string): string {
+  return `at://${TRACKER_DID}/${DOCUMENT_COLLECTION}/${rkey}`;
 }
 
 export function statementUri(abbr: string): string {
@@ -157,13 +173,14 @@ function lastChanged(statement: StatementInput): string | undefined {
 
 export function buildDocumentRecord(
   statement: StatementInput,
+  publicationRkey: string,
   bskyPostRef?: StrongRef,
 ): Record<string, unknown> {
   const firstObserved = statement.timeline[0]!.date;
   const record: Record<string, unknown> = {
     $type: DOCUMENT_COLLECTION,
     title: `${statement.agency} — AI transparency statement`,
-    site: PUBLICATION_URI,
+    site: publicationUri(publicationRkey),
     path: documentPath(statement.abbr),
     textContent: toPlainText(statement.body),
     publishedAt: utcIso(firstObserved),
@@ -181,13 +198,14 @@ export function buildDocumentRecord(
 export function buildStatementRecord(
   statement: StatementInput,
   contentHash: string,
+  documentRkey: string,
 ): Record<string, unknown> {
   const record: Record<string, unknown> = {
     $type: STATEMENT_COLLECTION,
     abbr: statement.abbr,
     name: statement.agency,
     sourceUrl: statement.sourceUrl,
-    document: documentUri(statement.abbr),
+    document: documentUri(documentRkey),
     firstObservedAt: utcIso(statement.timeline[0]!.date),
     contentHash,
     revisionCount: statement.timeline.length,

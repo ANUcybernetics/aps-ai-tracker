@@ -5,11 +5,17 @@
 // and syncs four kinds of record — see src/lib/atproto.ts for the identifier
 // scheme and lexicons/ at the repo root for the custom schemas:
 //
-//   site.standard.publication/self                    the tracker site
-//   site.standard.document/{abbr}                     current statement text
+//   site.standard.publication/{tid}                   the tracker site
+//   site.standard.document/{tid}                      current statement text
 //   me.benswift.transparencyStatement/{abbr}          tracked-statement metadata
 //   me.benswift.transparencyStatementRevision/{rkey}  one immutable observation
 //                                                     per revision in the timeline
+//
+// The site.standard.* lexicons are `key: tid` and the PDS enforces it, so those
+// two rkeys are allocated once and recorded in the state file rather than
+// derived from the abbr. Losing that mapping is still safe: allocateRkeys()
+// re-adopts the live records by matching their `path` field before minting
+// anything new.
 //
 // Idempotent: every desired record is built deterministically from the corpus
 // and hashed; only records whose hash differs from atproto-state.json (repo
@@ -40,6 +46,7 @@ import net from "node:net";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { AtpAgent, RichText } from "@atproto/api";
+import { TID } from "@atproto/common-web";
 import {
   announcementText,
   ATPROTO_SERVICE,
@@ -49,6 +56,7 @@ import {
   buildStatementRecord,
   DOCUMENT_COLLECTION,
   documentPath,
+  isTid,
   latestPostRef,
   planAnnouncements,
   PUBLICATION_COLLECTION,
@@ -88,6 +96,10 @@ interface State {
   did: string;
   handle: string;
   publication?: string;
+  /** TID rkey of the site.standard.publication record. */
+  publicationRkey?: string;
+  /** abbr -> TID rkey of its site.standard.document record. */
+  documentRkeys: Record<string, string>;
   statements: Record<string, string>;
   revisions: Record<string, string>;
 }
@@ -108,9 +120,17 @@ function writeFileAtomic(filePath: string, data: string) {
 
 function loadState(): State {
   if (!fs.existsSync(STATE_PATH)) {
-    return { did: TRACKER_DID, handle: TRACKER_HANDLE, statements: {}, revisions: {} };
+    return {
+      did: TRACKER_DID,
+      handle: TRACKER_HANDLE,
+      documentRkeys: {},
+      statements: {},
+      revisions: {},
+    };
   }
-  return JSON.parse(fs.readFileSync(STATE_PATH, "utf8")) as State;
+  const state = JSON.parse(fs.readFileSync(STATE_PATH, "utf8")) as State;
+  state.documentRkeys ??= {};
+  return state;
 }
 
 function saveState(state: State) {
@@ -118,6 +138,8 @@ function saveState(state: State) {
     did: state.did,
     handle: state.handle,
     publication: state.publication,
+    publicationRkey: state.publicationRkey,
+    documentRkeys: Object.fromEntries(Object.entries(state.documentRkeys).toSorted()),
     statements: Object.fromEntries(Object.entries(state.statements).toSorted()),
     revisions: Object.fromEntries(Object.entries(state.revisions).toSorted()),
   };
@@ -185,6 +207,86 @@ interface Put {
   hash: string;
 }
 
+/** Stands in for an unallocated rkey in a dry run, which never logs in. */
+const PENDING_RKEY = "(to be allocated)";
+
+/** Every rkey in a collection, paired with its record, following the cursor. */
+async function listAll(
+  agent: AtpAgent,
+  collection: string,
+): Promise<{ rkey: string; value: Record<string, unknown> }[]> {
+  const out: { rkey: string; value: Record<string, unknown> }[] = [];
+  let cursor: string | undefined;
+  do {
+    const res = await agent.com.atproto.repo.listRecords({
+      repo: TRACKER_DID,
+      collection,
+      limit: 100,
+      cursor,
+    });
+    for (const r of res.data.records) {
+      out.push({ rkey: r.uri.slice(r.uri.lastIndexOf("/") + 1), value: r.value as never });
+    }
+    cursor = res.data.cursor;
+  } while (cursor);
+  return out;
+}
+
+/**
+ * Give every statement (and the publication) a site.standard.* rkey. These are
+ * TIDs, so unlike our own rkeys they cannot be recomputed from the corpus and
+ * live in the state file instead. A missing entry is first matched against the
+ * live records by `path` — the durable human-readable identifier — so a lost
+ * state file re-adopts what is already published rather than duplicating it.
+ * Legacy abbr-keyed records are skipped: the PDS rejects writes to them, which
+ * is what this whole scheme exists to fix.
+ */
+async function allocateRkeys(agent: AtpAgent, state: State, statements: StatementInput[]) {
+  const unallocated = statements.filter((st) => !state.documentRkeys[st.abbr]);
+  if (unallocated.length) {
+    const byPath = new Map<string, string>();
+    for (const { rkey, value } of await listAll(agent, DOCUMENT_COLLECTION)) {
+      const p = value.path;
+      if (isTid(rkey) && typeof p === "string") byPath.set(p, rkey);
+    }
+    for (const st of unallocated) {
+      const found = byPath.get(documentPath(st.abbr));
+      state.documentRkeys[st.abbr] = found ?? TID.nextStr();
+      console.log(
+        `  + ${st.abbr}: ${found ? "adopted" : "minted"} document rkey ${state.documentRkeys[st.abbr]}`,
+      );
+    }
+  }
+  if (!state.publicationRkey) {
+    const live = (await listAll(agent, PUBLICATION_COLLECTION)).find((r) => isTid(r.rkey));
+    state.publicationRkey = live?.rkey ?? TID.nextStr();
+    console.log(
+      `  + publication: ${live ? "adopted" : "minted"} rkey ${state.publicationRkey}` +
+        (live ? "" : " — will be published on this run"),
+    );
+    // A minted publication is a record that does not exist yet, whatever hash
+    // the state file remembers from its predecessor at another rkey.
+    if (!live) state.publication = undefined;
+  }
+  saveState(state);
+}
+
+/** Log in as the tracker, refusing any other identity. */
+async function connect(): Promise<AtpAgent> {
+  const password = process.env.APSAITRACKER_BSKY_TOKEN;
+  if (!password) {
+    throw new Error("APSAITRACKER_BSKY_TOKEN required — run via 'mise exec --'");
+  }
+  const agent = new AtpAgent({ service: SERVICE });
+  await agent.login({ identifier: TRACKER_HANDLE, password });
+  if (agent.session!.did !== TRACKER_DID) {
+    throw new Error(
+      `logged in as ${agent.session!.did}, expected ${TRACKER_DID} — refusing to write`,
+    );
+  }
+  return agent;
+}
+
 async function main() {
   const statements = loadStatements();
   const state = loadState();
@@ -194,6 +296,18 @@ async function main() {
     seed(statements, ledger);
     return;
   }
+
+  // site.standard.* rkeys have to exist before any record can be built, and
+  // allocating them needs the network. Only connect when something is actually
+  // unallocated, so an ordinary no-op run never logs in.
+  let agent: AtpAgent | undefined;
+  const unallocated =
+    !state.publicationRkey || statements.some((st) => !state.documentRkeys[st.abbr]);
+  if (WRITE && unallocated) {
+    agent = await connect();
+    await allocateRkeys(agent, state, statements);
+  }
+  const pubRkey = state.publicationRkey ?? PENDING_RKEY;
 
   // Desired records, built deterministically from the corpus (plus, for the
   // document records, the announcement ledger — the latest skeet for an agency
@@ -213,12 +327,13 @@ async function main() {
   const revisionPuts: Put[] = [];
   for (const st of statements) {
     const contentHash = sha256(st.body);
-    const doc = buildDocumentRecord(st, latestPostRef(ledger, st.abbr));
-    const stmt = buildStatementRecord(st, contentHash);
+    const docRkey = state.documentRkeys[st.abbr] ?? PENDING_RKEY;
+    const doc = buildDocumentRecord(st, pubRkey, latestPostRef(ledger, st.abbr));
+    const stmt = buildStatementRecord(st, contentHash, docRkey);
     const hash = sha256(JSON.stringify([doc, stmt]));
     byAbbr.set(st.abbr, { st, stmt, hash });
     if (state.statements[st.abbr] !== hash) {
-      statementPuts.push({ collection: DOCUMENT_COLLECTION, rkey: st.abbr, record: doc, hash });
+      statementPuts.push({ collection: DOCUMENT_COLLECTION, rkey: docRkey, record: doc, hash });
       statementPuts.push({ collection: STATEMENT_COLLECTION, rkey: st.abbr, record: stmt, hash });
     }
     st.timeline.forEach((rev, i) => {
@@ -256,6 +371,12 @@ async function main() {
     console.log(`    ${put.collection}/${put.rkey}`);
   }
   if (total > 10) console.log(`    … and ${total - 10} more`);
+  if (!WRITE && unallocated) {
+    console.log(
+      `  note: some site.standard.* rkeys are not allocated yet, so this dry run ` +
+        `shows them as ${PENDING_RKEY} and over-counts the puts — re-run with --write`,
+    );
+  }
   for (const a of plan.announce) {
     console.log(`  will announce: ${announcementText(a)}`);
   }
@@ -284,17 +405,7 @@ async function main() {
     return;
   }
 
-  const password = process.env.APSAITRACKER_BSKY_TOKEN;
-  if (!password) {
-    throw new Error("APSAITRACKER_BSKY_TOKEN required — run via 'mise exec --'");
-  }
-  const agent = new AtpAgent({ service: SERVICE });
-  await agent.login({ identifier: TRACKER_HANDLE, password });
-  if (agent.session!.did !== TRACKER_DID) {
-    throw new Error(
-      `logged in as ${agent.session!.did}, expected ${TRACKER_DID} — refusing to write`,
-    );
-  }
+  agent ??= await connect();
 
   const put = async (
     collection: string,
@@ -335,7 +446,7 @@ async function main() {
         const uploaded = await agent.uploadBlob(iconBytes, { encoding: "image/png" });
         iconBlob = uploaded.data.blob;
       }
-      pubRef = await put(PUBLICATION_COLLECTION, "self", buildPublicationRecord(iconBlob));
+      pubRef = await put(PUBLICATION_COLLECTION, pubRkey, buildPublicationRecord(iconBlob));
       state.publication = publicationHash;
       progress();
     }
@@ -364,8 +475,13 @@ async function main() {
         delete state.revisions[rkey];
       }
       for (const abbr of staleStatements) {
-        await del(DOCUMENT_COLLECTION, abbr);
+        const docRkey = state.documentRkeys[abbr];
+        // A statement published before the TID migration has no mapping; its
+        // legacy record is unreachable for writes, so leave it and drop only
+        // what we can still address.
+        if (docRkey) await del(DOCUMENT_COLLECTION, docRkey);
         await del(STATEMENT_COLLECTION, abbr);
+        delete state.documentRkeys[abbr];
         delete state.statements[abbr];
       }
       if (stale) console.log(`  pruned ${stale} stale record(s)`);
@@ -380,14 +496,15 @@ async function main() {
     // only the instant between the createRecord response and that write.
     for (const a of plan.autoSeed) ledger[a] = { seeded: true };
     if (plan.announce.length) {
-      pubRef ??= await getRef(PUBLICATION_COLLECTION, "self");
+      pubRef ??= await getRef(PUBLICATION_COLLECTION, pubRkey);
       const thumb = fs.existsSync(OG_PATH)
         ? (await agent.uploadBlob(fs.readFileSync(OG_PATH), { encoding: "image/png" })).data.blob
         : undefined;
       const origin = new URL(SITE_URL).origin;
       for (const a of plan.announce) {
         const entry = byAbbr.get(a.abbr)!;
-        const docRef = docRefs.get(a.abbr) ?? (await getRef(DOCUMENT_COLLECTION, a.abbr));
+        const docRkey = state.documentRkeys[a.abbr]!;
+        const docRef = docRefs.get(docRkey) ?? (await getRef(DOCUMENT_COLLECTION, docRkey));
         const rt = new RichText({ text: announcementText(a) });
         await rt.detectFacets(agent);
         const external: Record<string, unknown> = {
@@ -416,8 +533,8 @@ async function main() {
 
         // Close the reference cycle and keep the state hash honest: the next
         // run rebuilds the document with this ledger entry, so hash it now.
-        const docWithRef = buildDocumentRecord(entry.st, skeetRef);
-        await put(DOCUMENT_COLLECTION, a.abbr, docWithRef);
+        const docWithRef = buildDocumentRecord(entry.st, pubRkey, skeetRef);
+        await put(DOCUMENT_COLLECTION, docRkey, docWithRef);
         state.statements[a.abbr] = sha256(JSON.stringify([docWithRef, entry.stmt]));
       }
     }

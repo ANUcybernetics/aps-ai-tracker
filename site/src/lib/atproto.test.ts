@@ -11,7 +11,8 @@ import {
   compactUtc,
   documentPath,
   documentUri,
-  PUBLICATION_URI,
+  isTid,
+  publicationUri,
   revisionRkey,
   revisionUri,
   statementUri,
@@ -58,13 +59,29 @@ describe("deterministic identifiers", () => {
     expect(() => compactUtc("not a date")).toThrow(/unparseable/);
   });
 
-  it("builds rkeys and AT-URIs from abbr + observation time alone", () => {
+  it("builds our own rkeys and AT-URIs from abbr + observation time alone", () => {
     expect(revisionRkey("ABS", "2025-11-11T17:12:58+11:00")).toBe("ABS-20251111T061258Z");
-    expect(documentUri("ABS")).toBe(`at://${TRACKER_DID}/site.standard.document/ABS`);
     expect(statementUri("ABS")).toBe(`at://${TRACKER_DID}/me.benswift.transparencyStatement/ABS`);
     expect(revisionUri("ABS", "2025-11-11T17:12:58+11:00")).toBe(
       `at://${TRACKER_DID}/me.benswift.transparencyStatementRevision/ABS-20251111T061258Z`,
     );
+  });
+
+  it("takes site.standard rkeys as given — they are TIDs, not derivable", () => {
+    expect(documentUri("3mv2ca4kjik27")).toBe(
+      `at://${TRACKER_DID}/site.standard.document/3mv2ca4kjik27`,
+    );
+    expect(publicationUri("3mv2ca4kjik27")).toBe(
+      `at://${TRACKER_DID}/site.standard.publication/3mv2ca4kjik27`,
+    );
+  });
+
+  it("recognises TID rkeys, so legacy abbr-keyed records are never re-adopted", () => {
+    expect(isTid("3mv2ca4kjik27")).toBe(true);
+    expect(isTid("ABS")).toBe(false);
+    expect(isTid("self")).toBe(false);
+    expect(isTid("3mv2ca4kjik2")).toBe(false); // 12 chars
+    expect(isTid("zmv2ca4kjik27")).toBe(false); // high bit set
   });
 
   it("statement pages live at the site root", () => {
@@ -93,8 +110,8 @@ describe("record builders", () => {
   });
 
   it("document record carries plaintext, path and publishedAt from first observation", () => {
-    const record = buildDocumentRecord(statement());
-    expect(record.site).toBe(PUBLICATION_URI);
+    const record = buildDocumentRecord(statement(), "3mv2ca4kjik27");
+    expect(record.site).toBe(publicationUri("3mv2ca4kjik27"));
     expect(record.path).toBe("/statements/ABS");
     expect(record.textContent).toBe("AI transparency statement Current body.");
     expect(record.publishedAt).toBe("2025-11-11T06:12:58Z");
@@ -105,22 +122,24 @@ describe("record builders", () => {
     const noisy = statement({
       timeline: [rev(), rev({ kind: "updated", isNoise: true, date: "2026-07-07T17:08:42+10:00" })],
     });
-    expect(buildDocumentRecord(noisy).updatedAt).toBeUndefined();
-    expect(buildStatementRecord(noisy, "abc").lastChangedAt).toBeUndefined();
+    expect(buildDocumentRecord(noisy, "3mv2ca4kjik27").updatedAt).toBeUndefined();
+    expect(buildStatementRecord(noisy, "abc", "3mv2ca4kjil27").lastChangedAt).toBeUndefined();
 
     const changed = statement({
       timeline: [rev(), rev({ kind: "updated", date: "2026-07-07T17:08:42+10:00" })],
     });
-    expect(buildDocumentRecord(changed).updatedAt).toBe("2026-07-07T07:08:42Z");
-    expect(buildStatementRecord(changed, "abc").lastChangedAt).toBe("2026-07-07T07:08:42Z");
+    expect(buildDocumentRecord(changed, "3mv2ca4kjik27").updatedAt).toBe("2026-07-07T07:08:42Z");
+    expect(buildStatementRecord(changed, "abc", "3mv2ca4kjil27").lastChangedAt).toBe(
+      "2026-07-07T07:08:42Z",
+    );
   });
 
   it("statement record links its document and counts revisions", () => {
-    const record = buildStatementRecord(statement(), "deadbeef");
+    const record = buildStatementRecord(statement(), "deadbeef", "3mv2ca4kjil27");
     expect(record).toMatchObject({
       $type: "me.benswift.transparencyStatement",
       abbr: "ABS",
-      document: documentUri("ABS"),
+      document: documentUri("3mv2ca4kjil27"),
       contentHash: "deadbeef",
       revisionCount: 1,
       firstObservedAt: "2025-11-11T06:12:58Z",
@@ -159,8 +178,8 @@ describe("record builders", () => {
 
   it("document record carries bskyPostRef when the ledger has an announcement", () => {
     const ref = { uri: "at://did:plc:x/app.bsky.feed.post/3k", cid: "bafy123" };
-    expect(buildDocumentRecord(statement(), ref).bskyPostRef).toEqual(ref);
-    expect(buildDocumentRecord(statement()).bskyPostRef).toBeUndefined();
+    expect(buildDocumentRecord(statement(), "3mv2ca4kjik27", ref).bskyPostRef).toEqual(ref);
+    expect(buildDocumentRecord(statement(), "3mv2ca4kjik27").bskyPostRef).toBeUndefined();
   });
 });
 

@@ -151,8 +151,15 @@ an immutable record per observed revision, chained via `prev`. Lexicon schemas
 live in `lexicons/` and are published from Ben's personal DID (authority is
 `_lexicon.benswift.me`); the data records live in the tracker account.
 
-- All rkeys are deterministic (agency abbr; `{abbr}-{compact UTC observedAt}`
-  for revisions) so AT-URIs are computable, never stored. Shared constants and
+- Our own `me.benswift.*` lexicons are `key: any`, so their rkeys are
+  deterministic (agency abbr; `{abbr}-{compact UTC observedAt}` for revisions)
+  and those AT-URIs are computable, never stored. The third-party
+  `site.standard.*` lexicons are `key: tid` and the PDS enforces it, so the
+  publication and document rkeys are TIDs allocated once and recorded in
+  `atproto-state.json`; `site/src/lib/atproto-ids.ts` is how the site reads
+  them. Losing that mapping is safe --- the publisher re-adopts the live records
+  by matching the `path` field (`/statements/{abbr}`, the durable
+  human-readable identifier) before minting anything. Shared constants and
   record builders: `site/src/lib/atproto.ts` (pure, env-free, vitest-covered).
 - Sync: `cd site && mise exec -- pnpm run atproto:publish -- --write` (dry run
   without `--write`). Runs after `export` (reads `site/src/generated/`).
@@ -171,8 +178,10 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
   `mise exec -- pnpm run atproto:lexicon -- --write` (uses the personal
   `ATP_IDENTIFIER`/`ATP_APP_PASSWORD`).
 - Statement pages emit `site.standard.document`/`publication` `<link>` tags and
-  the site serves `/.well-known/site.standard.publication` (kept by
-  `include-hidden-files: true` in the Pages workflow).
+  the site serves `/.well-known/site.standard.publication` (a generated endpoint
+  under `src/pages/`, since the rkey is an allocated TID; kept in the artifact by
+  `include-hidden-files: true` in the Pages workflow). Both degrade to nothing
+  until the publisher has allocated the rkeys.
 - With `--crosspost` (the cron passes it), new substantive revisions are
   announced as skeets: one per agency per run (newest wins), capped at 25, noise
   never announced. Announced skeets are recorded in the committed

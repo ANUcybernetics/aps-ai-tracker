@@ -7,7 +7,7 @@ import archivoLatin from "@fontsource-variable/archivo/files/archivo-latin-stand
 import "@/styles/global.css";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
-import { PUBLICATION_URI } from "@/lib/atproto";
+import { PUBLICATION_URI } from "@/lib/atproto-ids";
 import { withBase } from "@/lib/paths";
 
 interface Props {
@@ -60,7 +60,7 @@ const ogImage = new URL(withBase("/og.png"), origin).href;
     {
       /* atproto backing records for this page; consumers (e.g. Bluesky link
          cards) verify the document against both, so they travel together. */
-      atUri && (
+      atUri && PUBLICATION_URI && (
         <>
           <link rel="site.standard.document" href={atUri} />
           <link rel="site.standard.publication" href={PUBLICATION_URI} />

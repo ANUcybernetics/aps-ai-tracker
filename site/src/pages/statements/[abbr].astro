@@ -9,6 +9,7 @@ import RevisionList from "@/components/RevisionList.astro";
 import RevisionScrubber from "@/components/RevisionScrubber.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import { documentUri } from "@/lib/atproto";
+import { documentRkey } from "@/lib/atproto-ids";
 import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
@@ -81,12 +82,16 @@ const legend = [
   { heat: 3, label: "many" },
   { heat: 4, label: "most" },
 ];
+
+// undefined until the publisher has allocated this statement's document rkey.
+const rkey = documentRkey(doc.abbr);
+const atUri = rkey ? documentUri(rkey) : undefined;
 ---
 
 <Layout
   title={doc.agency}
   description={`How ${doc.agency} describes its use of AI — what its statement commits to, how that has changed, and the text itself.`}
-  atUri={documentUri(doc.abbr)}
+  atUri={atUri}
 >
   <div class="page stmt stack">
     <header class="stmt__header stack">

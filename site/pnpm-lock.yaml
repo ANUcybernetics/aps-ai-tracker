@@ -17,6 +17,9 @@ importers:
       '@atproto/api':
         specifier: ^0.20.42
         version: 0.20.42
+      '@atproto/common-web':
+        specifier: 0.5.10
+        version: 0.5.10
       '@fontsource-variable/archivo':
         specifier: ^5.3.0
         version: 5.3.0
