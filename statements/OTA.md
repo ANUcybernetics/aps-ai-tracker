@@ -1,25 +1,69 @@
 ---
 abbr: OTA
 agency: Organ and Tissue Authority
-last_updated_text: 23 February 2026
+last_updated_text: 7 September 2026
 source_url: https://www.donatelife.gov.au/ai-transparency-statement
-title: AI transparency statement | DonateLife
+title: Artificial intelligence transparency statement | DonateLife
 ---
 
-# AI transparency statement
+# Artificial intelligence transparency statement
 
-The Digital Transformation Agency's [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) \_\_ sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI.
+The Australian Organ and Tissue Donation and Transplantation Authority (OTA) is committed to using artificial intelligence ethically, safely, responsibly and lawfully.
 
-Artificial Intelligence (AI) describes a family of technologies that can bring together computing power, scalability, networking, connected devices and interfaces, and data. AI systems can be programmed to perform specific tasks such as reasoning, planning, natural language processing, computer vision, audio processing, interaction, prediction and more. AI systems can operate with varying levels of autonomy.
+Our approach is guided by the Digital Transformation Agency’s [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/ai/ai-in-government-policy) and [_Standard for AI transparency statements_](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements).
 
-The Australian Organ and Tissue Donation and Transplantation Authority (OTA) is committed to identifying ethical, responsible and meaningful use when considering the adoption of AI capabilities. We will be transparent as we explore, adopt and integrate AI technology to benefit staff and external stakeholders.
+### Why we use AI
 
-The OTA uses AI for workplace productivity, as outlined in the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) on [digital.gov.au](https://www.digital.gov.au/). This is to reduce the time required for specific routine administrative tasks, such as document summaries, and does not interact with or impact the public. The effectiveness and governance are managed by the Department of Health, Disability and Ageing.
+OTA uses AI to improve productivity, communication and access to information. AI can help staff complete routine tasks more efficiently and support the preparation, presentation and analysis of information.
 
-This use is compliant with relevant legislation, including the Privacy Act 1998, and each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf).
+### How we use AI
 
-The Chief Operating Officer is designated as the accountable official.
+Under the Australian Government’s [_classification system for AI use_](https://www.digital.gov.au/policy/ai/resources/use-classification) , OTA uses AI for workplace productivity and analytics for insights in the corporate and enabling domain.
 
-This AI transparency statement was first published to our website in February 2025. This statement will be reviewed annually, or when we make any significant change to our approach to AI as outlined above.
+### OTA uses approved AI tools to support:
 
-If you have questions about this statement, please [contact us](https://www.donatelife.gov.au/contact-us).
+- content and communication, including preparing, editing and presenting written and visual material
+
+- workplace administration and collaboration, including supporting meetings, task management and internal communication
+
+- information management and research, including finding, extracting, summarising and synthesising information from available sources
+
+- data analysis and presentation, including identifying insights and presenting data in accessible formats.
+
+AI does not make decisions or take administrative action on behalf of OTA. Members of the public do not directly interact with these AI tools and are not significantly affected by AI outputs without human review.
+
+OTA staff remain responsible for checking AI-generated content for accuracy, appropriateness and compliance before it is relied on, shared or published.
+
+### How we manage AI
+
+OTA manages AI use through its governance and risk management arrangements. These include:
+
+- oversight by OTA’s Accountable Official
+
+- assessment and approval of AI use cases
+
+- maintaining an internal register of AI use cases
+
+- staff training and guidance
+
+- human review of AI-generated outputs
+
+- processes for managing AI risks, concerns and incidents.
+
+The Department of Health, Disability and Ageing supports the OTA through a Shared Services arrangement, which includes managing the relevant enterprise technology controls for AI services it provides to OTA.
+
+### Our commitment
+
+OTA uses AI in accordance with the _Policy for the responsible use of AI in government_ and applicable laws and requirements, including the _Privacy Act 1988_.
+
+We monitor the use and effectiveness of AI through use-case oversight, staff feedback and the review of identified risks, issues and incidents. We apply safeguards to reduce the risk of inaccurate, inappropriate or harmful outputs.
+
+We review this statement at least annually, when we make a significant change to our approach to AI, or when another factor materially affects the statement’s accuracy.
+
+The Chief Operating Officer is OTA’s Accountable Official for the responsible use of AI.
+
+### Contact
+
+If you have questions or concerns about OTA’s use of AI, please [_contact us_](https://www.donatelife.gov.au/contact-us).
+
+This statement was first published in February 2025.
