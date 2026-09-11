@@ -109,12 +109,15 @@ else
   failed stale-manual
 fi
 
-# One cold browser fetch of PM&C, whose Imperva challenge headless Chrome has
-# cleared before (see probe.py). Evidence only: it writes nothing, and a block
-# is not a failure, so the run stays green either way. Promote PM&C to
-# `browser = true` after a run of "ok" lines here, not after one.
-echo "=== browser probe at $(date -Iseconds) ===" >> "$LOG_FILE"
-uv run browser-probe PMC >> "$LOG_FILE" 2>&1 || true
+# One cold browser fetch of PM&C's Imperva challenge (see probe.py). Evidence
+# only: it writes nothing, and a block is not a failure, so the run stays green
+# either way. Promote PM&C to `browser = true` after a run of "ok" lines here,
+# not after one. Mondays only --- Imperva blocks the host IP once it has seen a
+# few visits, so probing nightly costs the signal it is trying to gather.
+if [ "$(date +%u)" -eq 1 ]; then
+  echo "=== browser probe at $(date -Iseconds) ===" >> "$LOG_FILE"
+  uv run browser-probe PMC >> "$LOG_FILE" 2>&1 || true
+fi
 
 echo "=== run finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 

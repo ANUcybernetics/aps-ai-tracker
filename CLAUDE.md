@@ -58,9 +58,9 @@ This is a Python web scraping project using uv for dependency management.
   - `verify.py` lists manual agencies overdue for a hand-check (the
     `stale-manual` command)
   - `probe.py` reports whether the browser fetch clears a manual agency's
-    challenge (the `browser-probe` command); the nightly run probes PM&C and
-    logs the line, so promoting it to `browser = true` rests on a run of
-    results rather than one night
+    challenge (the `browser-probe` command); the scheduled run probes PM&C on
+    Mondays and logs the line, so promoting it to `browser = true` rests on a
+    run of results rather than one night
   - `export.py` turns the corpus + git history into JSON for the site (timeline
     with revert collapse, lexical passage propagation, originality scores,
     concept adoption, statement currency). Before anything reads a revision it
@@ -200,8 +200,9 @@ user unit on weddle. It scrapes (`/scrape` on Sonnet via
 `~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
 subscription route), refreshes the extraction caches (`export`), syncs the
 corpus to atproto (see above), `git push`es so the Pages site redeploys, raises
-an nb todo per overdue manual agency, and probes PM&C's challenge for evidence
-(`browser-probe`, log-only).
+an nb todo per overdue manual agency, and on Mondays probes PM&C's challenge
+for evidence (`browser-probe`, log-only --- weekly because Imperva blocks the
+host IP once it has seen a few visits).
 weddle pushes to `origin` (credentials confirmed working) and reads
 `OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
 unit files live in `ops/systemd/`. Install with:
