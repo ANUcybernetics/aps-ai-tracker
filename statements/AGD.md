@@ -13,11 +13,11 @@ Print
 
 ## Introduction
 
-We are trialling the use of artificial intelligence (AI) to help our staff work more effectively and support the department's responsibilities.\
+We are trialling the use of artificial intelligence (AI) to help our staff work more effectively and support the department's responsibilities.
+
 We are using AI to:
 
-- summarise and compare information to
-- support policy and legal work
+- summarise and compare information to support policy and legal work
 - draft and refine routine internal content to improve consistency and timeliness
 - classify and manage documents to support records and information management
 - identify patterns and unusual activity in system information to support cyber security and protective practices.
