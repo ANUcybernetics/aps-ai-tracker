@@ -55,5 +55,3 @@ The NZEA will continuously refine and enhance our AI capabilities. We do this by
 This statement will evolve to align with technology changes, legislation, policy and governance best practices. We will review at least every 12 months and update it if our AI approach changes, or if anything materially impacts its accuracy.
 
 For further information on the NZEA’s AI governance and transparency please contact the NZEA at [itservicedesk@nzea.gov.au](mailto:itservicedesk@nzea.gov.au).
-
-## Search
