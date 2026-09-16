@@ -66,14 +66,13 @@ The accountable authority of the Office of the Inspector-General of Intelligence
 
 Recent Senate Orders for Entity Contracts:
 
-[Senate Order for Entity Contracts – 1 July 2025 to 30 June 2026](https://www.igis.gov.au/sites/default/files/2026-08/Senate%20Order%20for%20Entity%20Contracts%20-%201%20July%202025%20to%2030%20June%202026.PDF)\
-[Senate Order for Entity Contracts - 1 January 2025 to 31 December 2025](https://www.igis.gov.au/sites/default/files/2026-02/Senate%20Order%20for%20Entity%20Contracts%20%E2%80%93%201%20January%202025%20to%2031%20December%202025.PDF)
+[Senate Order for Entity Contracts – 1 July 2025 to 30 June 2026](https://www.igis.gov.au/sites/default/files/2026-08/Senate%20Order%20for%20Entity%20Contracts%20-%201%20July%202025%20to%2030%20June%202026.PDF)
 
 ## Legal Services Expenditure
 
-Directions from the Attorney-General about the provision of legal services to the Australian Government require that ‘the agency’s legal services purchasing, including expenditure, is appropriately recorded and monitored and that, by 30 October each year, the agency makes publicly available records of its legal services expenditure for the previous financial year’ ([__Legal Services Directions 2005__](https://www.legislation.gov.au/Details/F2018C00409) _, 11.1 (ba)_).
+The Attorney-General has issued Directions under section 55ZF of the Judiciary Act 1903 (Cth) which apply generally to Commonwealth legal work. The [**Legal Services Directions 2025**](https://www.legislation.gov.au/F2025L01591/asmade/text) (the Directions) require, among other things, that ‘by 30 October each year, the entity makes records of its legal services expenditure for the previous financial year publicly available’ (section 109(1)(d)).
 
-Use of the Australian Government Solicitor for national security matters is a requirement specified in the Attorney-General’s Legal Services Directions (issued pursuant to section 55ZF of the [__Judiciary Act 1903__](https://www.legislation.gov.au/Details/C2016C00836)).
+Additionally, the Directions require non-corporate Commonwealth entities, such as the IGIS, to only use certain providers for ‘national security legal work’ (section 13). These providers are prescribed in section 14 as the Australian Government Solicitor or the Attorney-General’s Department.
 
 ##### IGIS Legal Services Expenditure
 

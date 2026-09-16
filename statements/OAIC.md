@@ -86,6 +86,7 @@ title: OAIC AI transparency statement | OAIC
 
   - [ Procedures for Managing Suspected Breaches of the APS Code of Conduct ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/breaches-of-the-aps-code-of-conduct-procedures)
   - [ Data breach response plan ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/data-breach-response-plan)
+  - [ Strategic Plan 2026–29 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/strategic-plan-2026-2029)
   - [ OAIC Emissions reduction plan 2024–2026 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/oaic-emissions-reduction-plan-2024-2026)
   - [ External complaints about OAIC employees or contractors ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/external-complaints-about-oaic-employees-or-contractors)
   - [ External complaints about OAIC employees or contractors – overarching policy ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/plans-policies-and-procedures/external-complaints-about-oaic-employees-or-contractors-overarching-policy)
