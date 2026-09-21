@@ -311,6 +311,11 @@
   "ARPC-20260707T070842Z": {
     "seeded": true
   },
+  "ARPC-20260921T170303Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mw26yjmakt2t",
+    "cid": "bafyreifds4nuson3qatuag3ocxdsbpvydh5oeosvkpjjsto6yndi2xzrjm",
+    "syndicatedAt": "2026-09-21T17:04:08.002Z"
+  },
   "ART-20251111T061258Z": {
     "seeded": true
   },
