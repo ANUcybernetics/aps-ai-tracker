@@ -87,7 +87,7 @@
           {#if c.kind === "phrase"}
             <p class="pb__text pb__text--phrase">the phrase &ldquo;{c.canonicalText}&rdquo;</p>
             <p class="pb__phrase-note muted">
-              matched wherever this phrase appears, however the sentence around it is worded
+              matched wherever the phrase appears, whatever the surrounding sentence
             </p>
           {:else}
             <!-- eslint-disable-next-line svelte/no-at-html-tags -- escaped + scheme-checked at build time (passages.json endpoint); a div because a table cluster's html cannot sit inside <p> -->
@@ -105,7 +105,7 @@
                 {formatDate(c.firstObserved.date)}{#if tierLabel(c.firstObserved.tier)}
                   <span class="muted">· {tierLabel(c.firstObserved.tier)}</span>{/if}
               {:else}
-                <span class="muted">Present across agencies from the corpus start</span>
+                <span class="muted">Shared from the start of tracking</span>
               {/if}
               <a class="pb__how" href={withBase("/reading#first-observed")}>
                 How to read this &rarr;

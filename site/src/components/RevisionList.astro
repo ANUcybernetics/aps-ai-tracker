@@ -26,8 +26,8 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
       <div class="revs-toggle">
         <input type="checkbox" id="show-noise-revs" />
         <label for="show-noise-revs">
-          Include {noiseCount} noise {noiseCount === 1 ? "revision" : "revisions"} (nothing
-          the agency wrote changed)
+          Show {noiseCount} noise {noiseCount === 1 ? "version" : "versions"} (nothing the
+          agency wrote changed)
         </label>
       </div>
     )
@@ -56,11 +56,11 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
           {rev.summary && <ModelNote model={rev.model} />}
           {prev ? (
             <details class="rev__diff">
-              <summary>View diff</summary>
+              <summary>The words that changed</summary>
               <DiffView before={prev.body} after={rev.body} />
             </details>
           ) : (
-            <p class="muted rev__first">First tracked revision.</p>
+            <p class="muted rev__first">First tracked version.</p>
           )}
           <a
             class="rev__sha mono muted"

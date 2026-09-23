@@ -11,7 +11,7 @@ import type { AgencyRow, StatementDoc, TimelineRevision } from "@/types/exporter
 const MOSTLY_SHARED = 1 / 3;
 
 export const AGENCY_QUESTIONS: { key: string; label: string }[] = [
-  { key: "mandatory", label: "Bound by the policy" },
+  { key: "mandatory", label: "Are required to publish" },
   { key: "all-eight", label: "Cover all eight Standard elements" },
   { key: "not-all-eight", label: "Miss at least one Standard element" },
   { key: "not-since-v2", label: "No update seen since policy v2.0" },

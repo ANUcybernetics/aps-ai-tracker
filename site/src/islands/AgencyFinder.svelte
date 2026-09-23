@@ -24,7 +24,7 @@
   const STATUS_NOTE: Record<Finder["status"], string> = {
     published: "",
     "not-yet": "not yet published",
-    exempt: "exempt",
+    exempt: "not required to publish",
   };
 
   let query = $state("");

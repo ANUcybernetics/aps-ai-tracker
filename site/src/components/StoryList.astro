@@ -20,10 +20,9 @@ import type { Currency, TimelineRevision } from "@/types/exporter";
 interface Props {
   timeline: TimelineRevision[];
   currency: Currency;
-  agency: string;
 }
 
-const { timeline, currency, agency } = Astro.props;
+const { timeline, currency } = Astro.props;
 
 type Chapter =
   | { type: "first"; rev: TimelineRevision }
@@ -60,15 +59,15 @@ const stated = currency.statedFirstPublished;
             </time>
             <div class="story__body">
               <p class="story__summary">
-                {bulk ? "Tracking begins." : "First captured by the tracker."}
+                {bulk ? "Tracking begins." : "First tracked."}
                 {stated && (
                   <>
                     {" "}
-                    The statement itself says it was first published {formatStatedDate(stated)}.
+                    The statement says it was first published {formatStatedDate(stated)}.
                   </>
                 )}
                 {!stated && bulk && (
-                  <> The statement already existed; when {agency} first published it is not recorded.</>
+                  <> The statement already existed, and doesn&rsquo;t say when it was first published.</>
                 )}
               </p>
             </div>
@@ -85,7 +84,7 @@ const stated = currency.statedFirstPublished;
             </time>
             <div class="story__body">
               <p class="story__summary muted">
-                {n === 1 ? "One cosmetic edit" : `${n} cosmetic edits`} with no change of substance
+                {n === 1 ? "One cosmetic edit" : `${n} cosmetic edits`}
                 {n === 1 && chapter.revs[0].summary && <>: {chapter.revs[0].summary}</>}
               </p>
             </div>

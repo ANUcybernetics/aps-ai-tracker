@@ -92,30 +92,19 @@ const readable = counts.substance + counts.revision + counts.unclassified;
 
 <Layout
   title="Timeline"
-  description="Every change worth reading across every Australian Government AI transparency statement, newest first, each summarised in a sentence."
+  description="Every change to Australian Government AI transparency statements, newest first, each summarised in a sentence."
 >
   <div class="page stack">
     <header class="stack">
       <h1>Timeline</h1>
       <p class="lede">
-        Every change worth reading, newest first, each summarised in a sentence from its
-        diff. There are {counts.substance} substantive changes, where a claim, commitment
-        or disclosure was added, removed or altered{
-          counts.revision > 0 && (
-            <>, and {counts.revision} reworded ones that say the same things differently</>
-          )
+        Every change worth reading, newest first: {counts.substance} substantive changes{
+          counts.revision > 0 && <>, {counts.revision} rewordings</>
         }{
-          counts.unclassified > 0 && <>, plus {counts.unclassified} not yet read</>
-        }. Cosmetic edits ({counts.cosmetic}), noise ({counts.noise}) and first captures
-        ({counts.first}) are hidden unless you ask for them. Narrow the feed by the
-        question a change touched and whether it added or dropped an answer, by agency,
-        portfolio or coverage, or by month in the chart; search covers the changed text,
-        and opening a row shows the diff.
-      </p>
-      <p class="muted">
-        A language model writes each summary from the diff, and each row names the model.
-        Where a summary and &ldquo;the words that changed&rdquo; disagree, trust the
-        words.
+          counts.unclassified > 0 && <> and {counts.unclassified} not yet read</>
+        }. Each has a one-sentence summary written by a language model; open a row to see
+        the words that changed. Use the filters to narrow the list, or show the cosmetic
+        edits and noise that are hidden by default.
       </p>
       <ReadingLink anchor="anatomy" label="Anatomy of a change" />
       <nav class="starters" aria-label="Questions to start from">

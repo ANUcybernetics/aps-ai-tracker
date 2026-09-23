@@ -25,9 +25,9 @@ const carvedOutCount = agencies.filter(
 
 const facts = [
   { label: "Published", value: `${c.published} of ${c.agencies}`, href: null },
-  { label: "Not yet", value: String(c.notYet), href: null },
-  { label: "Publication voluntary", value: String(voluntaryCount), href: null },
-  { label: "Carved out", value: String(carvedOutCount), href: null },
+  { label: "Not yet published", value: String(c.notYet), href: null },
+  { label: "Not required", value: String(voluntaryCount), href: null },
+  { label: "Exempt", value: String(carvedOutCount), href: null },
   {
     label: "Most changed",
     value: `${mostChanged.abbr} · ${mostChanged.changeCount} changes`,
@@ -45,9 +45,8 @@ const facts = [
   <p class="coverage__lead">
     <span class="coverage__big mono">{c.changes}</span>
     <span class="coverage__gloss">
-      changes of substance tracked since {since}, across <strong>{c.published}</strong> published
-      statements from the {c.agencies} Australian Government bodies we track ({c.revisions} captures
-      in all).
+      changes of substance since {since}, across <strong>{c.published}</strong> published
+      statements.
     </span>
   </p>
 

@@ -100,7 +100,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
       <h3>What it says AI is used for</h3>
       {
         p.usage_patterns.length + p.domains.length === 0 ? (
-          <p class="muted rc__none">No use classified by DTA usage pattern or domain.</p>
+          <p class="muted rc__none">No uses in the DTA&rsquo;s categories.</p>
         ) : (
           <ul class="chips">
             {p.usage_patterns.map((u) => (
@@ -188,10 +188,10 @@ const will = p.commitments.filter((c) => c.kind === "will");
     </section>
 
     <section class="rc__block">
-      <h3>Currency <span class="muted rc__asof">as of {formatStatedDate(currency.evaluatedAt)}</span></h3>
+      <h3>Dates <span class="muted rc__asof">as of {formatStatedDate(currency.evaluatedAt)}</span></h3>
       <dl class="kv">
         <div class="kv__row">
-          <dt>Review cadence</dt>
+          <dt>Review schedule</dt>
           <dd>{REVIEW_LABEL[p.review_cadence]}</dd>
         </div>
         <div class="kv__row">
@@ -199,7 +199,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
           <dd>{currency.statedLastUpdated ? formatStatedDate(currency.statedLastUpdated) : <span class="muted">no date given</span>}</dd>
         </div>
         <div class="kv__row">
-          <dt>Last change we observed</dt>
+          <dt>Last change we saw</dt>
           <dd>
             {currency.lastContentChange ? formatDate(currency.lastContentChange) : <span class="muted">none since tracking began</span>}
           </dd>

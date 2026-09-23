@@ -41,22 +41,21 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
 
 <Layout
   title="Agencies"
-  description={`Which of the ${agencies.length} tracked Australian Government bodies have published an AI transparency statement, which haven't, and which sit outside the mandate.`}
+  description={`Which of the ${agencies.length} tracked Australian Government bodies have published an AI transparency statement, which haven't, and which aren't required to.`}
 >
   <div class="page stack">
     <header class="stack">
       <h1>Agencies</h1>
       <p class="lede">
-        All {agencies.length} bodies we track. The Policy for the responsible use of
-        AI in government <a
+        All {agencies.length} bodies we track. The <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
-          >applies to non-corporate Commonwealth entities</a
-        >, {mandatoryCount} of the bodies listed here, and each must publish an <a
+          >AI policy applies</a
+        > to non-corporate Commonwealth entities ({mandatoryCount} of those listed here),
+        and each must publish an <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statement</a
-        >. Corporate Commonwealth entities are encouraged to publish but not required
-        to, and the defence portfolio and national intelligence community are carved
-        out altogether. Plenty of these bodies publish anyway, so we track them too.
+        >. Other bodies are encouraged to publish, and many do. Defence and the
+        intelligence agencies are exempt.
       </p>
     </header>
 
@@ -80,7 +79,7 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
               <th scope="col" class="num">Standard</th>
               <th scope="col" class="num">Bespoke</th>
               <th scope="col" class="num">Changes</th>
-              <th scope="col" class="num">Captures</th>
+              <th scope="col" class="num">Versions</th>
               <th scope="col">Since policy v2.0</th>
             </tr>
           </thead>
@@ -129,9 +128,9 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
             <span class="muted">{notYet.length}</span>
           </div>
           <p class="section-note">
-            Bodies that owe a statement and have none we can find, or whose statement
-            we hold a link for but failed to capture on the latest run. Bodies created
-            after the policy took effect show their date of establishment.
+            Bodies that must publish but have no statement we can find, or whose
+            statement we couldn&rsquo;t capture on the latest run. Bodies created after
+            the policy took effect show when they were established.
           </p>
           <ul class="agency-list">
             {notYet.map((a) => (
@@ -151,16 +150,15 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
       voluntary.length > 0 && (
         <section>
           <div class="section-title">
-            <h2>Publication voluntary</h2>
+            <h2>Not required to publish</h2>
             <span class="muted">{voluntary.length}</span>
           </div>
           <p class="section-note">
-            Corporate Commonwealth entities and bodies outside the PGPA list. The
-            policy encourages them to publish but does not require it, and these
-            ones have not. Many of their peers have published, and appear under
-            Published above and among the DTA&rsquo;s{" "}
+            Bodies the policy encourages but doesn&rsquo;t require to publish, which
+            haven&rsquo;t. Those that have are listed under Published, and on the
+            DTA&rsquo;s{" "}
             <a href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements">
-              voluntary statements
+              register
             </a>
             .
           </p>
@@ -179,18 +177,17 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
       carvedOut.length > 0 && (
         <section>
           <div class="section-title">
-            <h2>Carved out of the policy</h2>
+            <h2>Exempt</h2>
             <span class="muted">{carvedOut.length}</span>
           </div>
           <p class="section-note">
             The policy{" "}
             <a href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation">
-              does not apply
+              doesn&rsquo;t apply
             </a>{" "}
-            to AI use in the defence portfolio, or to the national intelligence
-            community as defined in section 4 of the <cite>Office of National
-            Intelligence Act 2018</cite>. The carved-out bodies that publish anyway
-            appear under Published above; these ones have not.
+            to the defence portfolio or the national intelligence community (section 4
+            of the <cite>Office of National Intelligence Act 2018</cite>). These exempt
+            bodies haven&rsquo;t published; those that have are listed under Published.
           </p>
           <ul class="agency-list">
             {carvedOut.map((a) => (

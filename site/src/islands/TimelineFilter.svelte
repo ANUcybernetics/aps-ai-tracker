@@ -56,9 +56,9 @@
   ];
   const SCOPE_OPTIONS = [
     { value: "", label: "All bodies" },
-    { value: "mandatory", label: "Bound by the policy" },
-    { value: "voluntary", label: "Publishing voluntarily" },
-    { value: "exempt", label: "Carved out of the policy" },
+    { value: "mandatory", label: "Required to publish" },
+    { value: "voluntary", label: "Not required" },
+    { value: "exempt", label: "Exempt" },
   ];
 
   // One control over the change-tier ladder: the default view is everything

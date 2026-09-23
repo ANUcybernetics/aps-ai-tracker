@@ -101,14 +101,14 @@ const atUri = rkey ? documentUri(rkey) : undefined;
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
         {" · "}{changes} {changes === 1 ? "change" : "changes"} of substance across {doc.timeline.length}{" "}
-        {doc.timeline.length === 1 ? "capture" : "captures"}
+        {doc.timeline.length === 1 ? "version" : "versions"}
         {lastUpdated && <> · last changed {formatDate(lastUpdated)}</>}
       </p>
       {
         doc.latestCaptureSuspect && (
           <p class="stmt__notice">
-            Our latest capture of this page lost most of its text and has been held back as a
-            likely scraping failure, so the statement shown here is the last complete capture.{" "}
+            Our latest copy of this page lost most of its text, probably through a scraping
+            failure, so this is the last complete copy.{" "}
             <a href={doc.finalUrl ?? doc.sourceUrl ?? "#"}>Check the agency&rsquo;s page</a> for the current text.
           </p>
         )
@@ -117,10 +117,10 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 
     <section class="stmt__section" aria-labelledby="story-heading">
       <div class="section-title">
-        <h2 id="story-heading">The story so far</h2>
+        <h2 id="story-heading">What&rsquo;s changed</h2>
         <ReadingLink anchor="changes" />
       </div>
-      <StoryList timeline={doc.timeline} currency={doc.currency} agency={doc.agency} />
+      <StoryList timeline={doc.timeline} currency={doc.currency} />
     </section>
 
     {
@@ -148,7 +148,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
         <div data-rev-current>
           <div class="heat-legend">
             <div class="heat-legend__items" aria-hidden="true">
-              <span>Reused by agencies:</span>
+              <span>Shared with other agencies:</span>
               {
                 legend.map((l) => (
                   <span>
@@ -175,8 +175,8 @@ const atUri = rkey ? documentUri(rkey) : undefined;
           ))
         }
         <p class="muted stmt__attribution">
-          Statement text &copy; {doc.agency}, reproduced for transparency tracking
-          (most agency content is CC BY 4.0; check the original for its terms).
+          Statement text &copy; {doc.agency}. Most agency content is CC BY 4.0; check the
+          original for its terms.
         </p>
       </article>
 
@@ -191,12 +191,11 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 
     <section class="stmt__history">
       <div class="section-title">
-        <h2>Every revision</h2>
+        <h2>Every version</h2>
       </div>
       <p class="muted stmt__history-note">
-        Every capture the daily scrape recorded that differed from the last, including
-        edits with no change of substance. Pick a dot to view the statement as it stood
-        at that capture.
+        Every copy the daily scrape saved that differed from the one before, including
+        minor edits. Pick a dot to see the statement as it was then.
       </p>
       <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
       <RevisionList timeline={doc.timeline} />

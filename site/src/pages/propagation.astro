@@ -63,19 +63,19 @@ const columns = [
 ---
 
 <Layout
-  title="Propagation"
-  description="How a shared template spreads across Australian Government AI transparency statements, with an originality leaderboard and a browser of the passages agencies share."
+  title="Shared wording"
+  description="Which passages Australian Government AI transparency statements share, and which statements are in their own words."
 >
   <div class="page stack">
     <header class="stack">
-      <h1>The template effect</h1>
+      <h1>Shared wording</h1>
       <p class="lede">
-        Agencies reuse one another&rsquo;s wording heavily, and some of it is wording the
-        Standard asks for. This page ranks each statement by how much of its text appears
-        in no other tracked statement, and lists the {clusters.length} passages that recur,{" "}
-        {templateClusters} of which also appear in the {ursourceLabel}&rsquo;s own
-        statement. A shared passage appears in more than one statement; the data says
-        nothing about who wrote it first.
+        Agencies reuse a lot of each other&rsquo;s wording, and some of it is wording
+        the Standard asks for. This page ranks statements by how much of their text is
+        their own, and lists the {clusters.length} passages that appear in more than one
+        statement. {templateClusters} of these are also in the statement of the{" "}
+        {ursourceLabel}, which publishes the template. Sharing a passage says nothing
+        about who wrote it first.
       </p>
     </header>
 
@@ -120,11 +120,9 @@ const columns = [
           </div>
           <p class="muted shared-note">
             Leaving the {ursource} template aside, {pairTotal} pairs of agencies share at
-            least one passage, and {samePortfolioPairs} of those pairs sit in the same
-            portfolio. Shared corporate services, a shared ICT provider or a department
-            whose statement became the model for its portfolio would each produce this
-            pattern. Each row gives the number of passages shared within a portfolio and
-            the agencies that share them.
+            least one passage, and {samePortfolioPairs} of those pairs are in the same
+            portfolio. Each row shows how many passages are shared within a portfolio, and
+            by which agencies.
           </p>
           <ul class="families">
             {familyRows.map((f) => (
@@ -153,12 +151,12 @@ const columns = [
         <h2>Shared passages</h2>
         <span class="section-title__links">
           <ReadingLink anchor="reuse" />
-          <span class="muted">{clusters.length} clusters</span>
+          <span class="muted">{clusters.length} passages</span>
         </span>
       </div>
       <p class="muted shared-note">
-        Passages that recur across statements, widest reach first. The {ursource} publishes
-        the canonical template, so passages also found there are marked.
+        Passages that appear in more than one statement, most widely shared first.
+        Passages also in the {ursource} template are marked.
       </p>
       <PassageBrowser client:idle names={names} />
     </section>

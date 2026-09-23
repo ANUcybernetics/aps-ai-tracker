@@ -12,184 +12,124 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
   <div class="page about prose stack">
     <h1>About this tracker</h1>
     <p class="lede">
-      Under the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
-        >Policy for the responsible use of AI in government</a
-      >, non-corporate Commonwealth entities have had to <a
+      This site keeps a dated copy of every version of the Australian
+      Government&rsquo;s <a
         href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
-        >publish AI transparency statements since February 2025</a
-      >. This project keeps a dated copy of every version of those statements and
-      shows what changed between them.
+        >AI transparency statements</a
+      > and shows what changed between them. It is a <a
+        href="https://cybernetics.anu.edu.au/cybernetic-studio/">Cybernetic Studio</a
+      > project by <a href="https://benswift.me">Dr Ben Swift</a> at the <a
+        href="https://cybernetics.anu.edu.au">ANU School of Cybernetics</a
+      >.
     </p>
 
     <h2>How it works</h2>
     <p>
-      Every day a scraper visits each agency&rsquo;s statement, saves a copy, and
-      records anything that has changed since the previous day. The result is a
-      dated history of every statement, down to the wording. Apart from the
-      analysis described below, the site adds no commentary of its own.
+      Every day a scraper visits each agency&rsquo;s statement and saves a copy if
+      the text has changed. A language model (Claude Opus 5.5) then reads each
+      change, writes a one-sentence summary, and records the statement&rsquo;s
+      answers to a fixed set of questions. <a href={withBase("/reading")}
+        >Reading the data</a
+      > explains the results.
+    </p>
+    <p>
+      Ben Swift started the archive in November 2025, the week the <a
+        href="https://ministers.finance.gov.au/financeminister/speech/2025/11/12/launch-ai-plan-australian-public-service"
+        >APS AI Plan</a
+      > was launched, so the record opens on {corpusStart} and misses the
+      statements&rsquo; first nine months (<a href={withBase("/reading#corpus")}
+        >what that means</a
+      >).
     </p>
 
     <h2>Following changes</h2>
     <p>
-      When an agency publishes or revises its statement, the tracker announces it
-      from <a href="https://bsky.app/profile/apsaitracker.app"
-        >@apsaitracker.app</a
-      > on Bluesky. Follow that account to hear about changes as they happen.
-    </p>
-    <p>
-      The whole dataset is also published as machine-readable records on the AT
-      Protocol, the open network Bluesky runs on. The <a href={withBase("/data/")}
-        >data downloads</a
-      > page covers that mirror and the other ways to get the data.
+      New and changed statements are announced on Bluesky by <a
+        href="https://bsky.app/profile/apsaitracker.app">@apsaitracker.app</a
+      >. The data is on the <a href={withBase("/data/")}>downloads</a> page.
     </p>
 
-    <h2>Origins</h2>
-    <p>
-      This tracker began in the audience. While the Australian Public
-      Service&rsquo;s <a
-        href="https://ministers.finance.gov.au/financeminister/speech/2025/11/12/launch-ai-plan-australian-public-service"
-        >AI Plan</a
-      > was being launched in November 2025, Ben Swift opened a laptop and started
-      archiving the agencies&rsquo; transparency statements. The record therefore
-      opens on {corpusStart}, and the statements&rsquo; first nine months fall
-      outside it; <a href={withBase("/reading#corpus")}>how to read the data</a>
-      covers what that means for the figures.
-    </p>
-
-    <h2>Methodology</h2>
-    <p>
-      <a href={withBase("/reading")}>How to read the data</a> is the plain-language
-      guide to the scores and colours on this site, including what they
-      don&rsquo;t claim. The notes below give the technical method.
-    </p>
-
+    <h2>Method</h2>
     <h3>Who we track</h3>
     <p>
-      The list is checked against two sources. The Department of Finance&rsquo;s <a
+      Every non-corporate Commonwealth entity, from the Department of
+      Finance&rsquo;s <a
         href="https://www.finance.gov.au/government/managing-commonwealth-resources/structure-australian-government-public-sector/pgpa-act-flipchart-and-list"
         >list of Commonwealth entities</a
-      > under the PGPA Act says which bodies are non-corporate entities and so bound
-      by the policy; the DTA&rsquo;s <a
+      >, since these are the bodies the policy binds. Other bodies are added when
+      we find a statement of theirs, often through the DTA&rsquo;s <a
         href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements"
         >central register</a
-      > records who has published. Every non-corporate entity is listed here
-      whether or not it has published. Corporate entities and other bodies are
-      added once we find a statement of theirs, and a handful that have never
-      published stay on the list to show the gap. The <a
+      >, and a few that have never published are kept on the list. The <a
         href={withBase("/agencies")}>agencies page</a
-      > sets out which bodies are bound, which are only encouraged, and which are
-      exempt.
+      > shows who is required to publish.
     </p>
-
     <h3>Changes</h3>
     <p>
-      The <a href={withBase("/reading#anatomy")}>anatomy of a change</a> explains
-      how each change is read; this is the machinery underneath. Changes come
-      straight from git, and a scrape glitch that is later reverted collapses out.
-      Captures known to have failed are listed in the repository
-      (<code>captures.toml</code>) and dropped before anything reads them, as are
-      captures the model judges not to be the statement. A new capture that has
-      lost more than half its text is held back until someone confirms it.
+      Each capture is a git commit, and a scrape glitch that is later reverted is
+      dropped. So are captures known to have failed (listed in <code
+        >captures.toml</code
+      >) and captures the model judges not to be the statement. A new capture that
+      has lost more than half its text is held back until someone checks it. Every
+      model reading is cached by content hash in the repository, so each is made
+      once.
     </p>
+    <h3>Shared wording</h3>
     <p>
-      Claude Opus 5.5 does the reading, and every summary names its model. Capture
-      checks, change classifications and profiles are cached by content hash in the
-      repository, so each is made once and the site rebuilds without model calls.
+      Passages are compared after removing links, markup, punctuation and case,
+      with a separate pass for phrases from the DTA template.
     </p>
-    <p>
-      A statement&rsquo;s first appearance is labelled &ldquo;first tracked&rdquo;,
-      whether it came in the day-one bulk import or later. It is never labelled &ldquo;published&rdquo;, because we know only
-      when a statement entered the tracker, and the agency&rsquo;s actual
-      publication date may be earlier.
-    </p>
-
-    <h3>Propagation</h3>
-    <p>
-      Shared passages are found lexically. Passages are normalised (links, markup,
-      punctuation and case removed) and matched across agencies, with a separate
-      pass for canonical template phrases. The site claims only that a passage
-      appears in more than one statement and says nothing about who copied whom,
-      though passages that also appear in the DTA&rsquo;s own statement are marked.
-    </p>
-
     <h3>Profiles</h3>
     <p>
-      A profile is JSON validated against a closed vocabulary for each answer. A
-      revision a rule marks as noise, such as a ticking date stamp, keeps the
-      previous revision&rsquo;s profile; every other revision is read, with the
-      previous profile as its baseline. The scraper records a page&rsquo;s own
-      last-updated date and strips that line, so a changing date stamp
-      doesn&rsquo;t show up in the diffs, and if the page has no such line the
-      model looks for a date in the text. Commitments are matched across revisions
-      by word overlap.
+      A profile is the model&rsquo;s answers to a fixed set of questions, each with
+      a fixed set of possible answers. Each version is read with the previous
+      version&rsquo;s profile as a baseline. Commitments are matched across
+      versions by word overlap.
     </p>
 
     <h2>Related work</h2>
     <p>
-      Other researchers study these statements, but as far as we know nobody else
-      tracks how they <em>change</em>. <a href="https://arxiv.org/abs/2604.26075"
-        >Pan et al. (2026)</a
-      >, who assembled the <em>AITS-101</em> dataset for the first systematic
-      analysis of the Australian corpus, and an <a
+      Others have studied these statements as a single snapshot: <a
+        href="https://arxiv.org/abs/2604.26075">Pan et al. (2026)</a
+      >, who built the <em>AITS-101</em> dataset, and an <a
         href="https://www.admscentre.org.au/government-ai-transparency-statements-hard-to-find-new-report-finds/"
         >audit by the ADM+S Centre</a
-      > both treat the statements as a single snapshot. The Digital Transformation
-      Agency&rsquo;s <a
+      >. The DTA&rsquo;s <a
         href="https://www.dta.gov.au/articles/new-central-register-ai-transparency-statements-commonwealth-entities"
         >central register</a
-      > aims to surface major updates but publishes no version history.
+      > lists the statements but keeps no version history. As far as we know, no
+      one else tracks how they change.
     </p>
     <p>
-      The method is borrowed. Longitudinal corpora of privacy policies, such as the <a
+      The approach follows archives of privacy policies such as the <a
         href="https://privacypolicies.cs.princeton.edu/">Princeton&ndash;Leuven
         corpus</a
-      >, and terms-of-service trackers have long archived each snapshot and diffed
-      it; this project does the same for government AI transparency statements.
-      The nearest efforts abroad either register AI <em>use</em> itself, like the
-      UK&rsquo;s <a
+      > and terms-of-service trackers. Similar efforts overseas record AI use
+      itself, like the UK&rsquo;s <a
         href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub"
         >Algorithmic Transparency Recording Standard</a
       > and the Amsterdam and Helsinki algorithm registers, or score transparency
       over time, like Stanford&rsquo;s <a
         href="https://news.stanford.edu/stories/2025/12/foundation-model-transparency-index-ai-companies-information"
         >Foundation Model Transparency Index</a
-      >. None of them diffs the text of agency statements.
-    </p>
-
-    <h2>Caveats</h2>
-    <p>
-      Scraping is imperfect: site redesigns, bot blocks and PDF extraction all
-      introduce noise. A body counts as not having published when we have searched
-      and found nothing, and that is weaker evidence than a find, since a statement
-      filed somewhere unusual or behind a bot block can be missed. Treat the figures
-      as indicative, and follow the source link on any statement to check the
-      original.
-    </p>
-
-    <h2>Credits</h2>
-    <p>
-      This tracker is a <a
-        href="https://cybernetics.anu.edu.au/cybernetic-studio/"
-        >Cybernetic Studio</a
-      > project created by <a href="https://benswift.me">Dr Ben Swift</a> at the <a
-        href="https://cybernetics.anu.edu.au">ANU School of Cybernetics</a
       >.
     </p>
 
-    <h2>Citation and referencing</h2>
+    <h2>Limitations</h2>
     <p>
-      This tracker is archived on Zenodo with a permanent DOI, and Ben Swift is its
-      sole creator and maintainer. If you use the project, its data or its
-      analysis, please cite or credit it; that also helps others find the source
-      and check it for themselves.
+      Site redesigns, bot blocks and PDF extraction all introduce noise, and a
+      statement filed somewhere unusual can be missed, so an agency listed as not
+      having published may have. Treat the figures as indicative, and check the
+      original via the source link on each statement page.
     </p>
+
+    <h2>Citing the tracker</h2>
     <p>
-      The DOI <a href="https://doi.org/10.5281/zenodo.20842437"
+      The tracker is archived on Zenodo. The DOI <a
+        href="https://doi.org/10.5281/zenodo.20842437"
         ><code>10.5281/zenodo.20842437</code></a
-      > is a <em>concept</em> DOI: it always resolves to the latest archived
-      version, so a citation stays current as new versions are released.
+      > always resolves to the latest version. In scholarly work:
     </p>
-    <p>In scholarly work, cite it as:</p>
     <blockquote class="about__cite">
       Swift, B. (2025). <cite>Australian Government AI Tracker</cite>
       [Software]. ANU School of Cybernetics. <a
@@ -198,34 +138,26 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       >
     </blockquote>
     <p>
-      A machine-readable <a
+      BibTeX and other formats are available from the Zenodo record or the <a
         href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/CITATION.cff"
         ><code>CITATION.cff</code></a
-      > in the repository can generate the equivalent BibTeX or other formats, and
-      the Zenodo record exports them directly.
-    </p>
-    <p>
-      In a newspaper, blog or other non-academic piece, a credit with a link is
-      enough, for example:
+      > file. Elsewhere, a credit with a link is enough:
     </p>
     <blockquote class="about__cite">
       Data from the <a href={withBase("/")}>Australian Government AI Tracker</a>,
       a project by Dr Ben Swift at the ANU School of Cybernetics.
     </blockquote>
     <p>
-      Please link to the site as well as naming it, so readers can reach the
-      underlying record. When you quote a figure, include the date you read it,
-      because the corpus is updated daily.
+      The data changes daily, so give the date you read any figure you quote.
     </p>
 
     <h2>Licensing</h2>
     <p>
-      The scraper and this site are released under the MIT License. The dataset
-      (the <a href={withBase("/data/")}>downloads</a>, including the derived fields
-      in them) is licensed{" "}
-      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The
-      statement text belongs to the respective agencies; most Australian Government
-      content is licensed CC BY 4.0, but check each agency&rsquo;s site for specifics.
+      The scraper and this site are MIT-licensed. The dataset, including the <a
+        href={withBase("/data/")}>downloads</a
+      >, is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      The statement text belongs to the agencies; most is CC BY 4.0, but check
+      each agency&rsquo;s site.
     </p>
 
     <p class="muted about__build">

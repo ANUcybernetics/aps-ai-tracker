@@ -23,40 +23,36 @@ for (const c of propagation.clusters) {
 
 <Layout
   title="Reading the data"
-  description="The anatomy of a change on this site (how much the text changed, and which answers changed), and how to read the adoption charts, originality figures and reuse heat-map."
+  description="How the figures on this site are made: what counts as a change, how statements are profiled, and how to read the charts, originality scores and shared-wording colours."
 >
   <div class="page reading prose stack">
     <h1>Reading the data</h1>
     <p class="lede">
-      Most Commonwealth agencies must publish a statement about how they use AI.
-      This site keeps every version of those statements and reads each change. The
-      anatomy of a change, below, is the place to start: the timeline, the profiles
-      and the adoption charts are all built from it.
+      How the figures on this site are made. Start with the anatomy of a change:
+      the timeline, the profiles and the charts are all built from it.
     </p>
 
     <h2 id="anatomy">Anatomy of a change</h2>
     <p>
-      Every night the tracker fetches each agency&rsquo;s statement. When the text
-      differs from the last good capture, the new capture is a <em>change</em>.
-      Before anything else reads it, a language model checks that the capture is
-      the statement at all, and not a firewall&rsquo;s block page, an index page
-      that only links to the statement, or a page that failed to load part-way.
-      Captures that fail the check are left out. Each change that passes is read
-      twice: once for how much the text changed, and once for which of the
-      statement&rsquo;s answers changed.
+      Every night the tracker fetches each agency&rsquo;s statement. If the text
+      differs from the last good copy, the new copy is a <em>change</em>. A
+      language model first checks that it really is the statement, and not a
+      firewall&rsquo;s block page, an index page that links to it, or a page that
+      only half loaded. Copies that fail are left out. Each change is then read
+      twice: for how much the text changed, and for which of the statement&rsquo;s
+      answers changed.
     </p>
     <p>
-      Both readings record what a statement <em>says</em>. A statement that
-      doesn&rsquo;t mention a use-case register may come from an agency that has
-      one, and a statement that claims one is no proof of it. None of the figures
-      on this site is a finding that an agency has or hasn&rsquo;t done something.
+      Both readings record what a statement <em>says</em>, which may differ from
+      what an agency does. A statement that doesn&rsquo;t mention a use-case
+      register may come from an agency that has one, and a statement that claims
+      one may come from an agency that doesn&rsquo;t.
     </p>
 
     <h3 id="changes">How much the text changed</h3>
     <p>
-      Every change falls into one of four tiers. Rules settle the mechanical cases
-      (formatting, links, page furniture, a date stamp) and the model reads the
-      rest.
+      Each change is put in one of four tiers. Rules handle the mechanical cases
+      (formatting, links, page furniture, date stamps) and the model reads the rest.
     </p>
     <dl class="tiers">
       <dt>Noise</dt>
@@ -66,50 +62,42 @@ for (const c of propagation.clusters) {
         same words.
       </dd>
       <dt>Cosmetic</dt>
-      <dd>The agency edited wording, punctuation, formatting or a link, and nothing of substance.</dd>
+      <dd>Wording, punctuation, formatting or a link changed, but nothing of substance.</dd>
       <dt>Reworded</dt>
-      <dd>
-        The statement reads differently, rearranged or said at more length, but
-        claims and commits to the same things.
-      </dd>
+      <dd>The text was rewritten or rearranged, but makes the same claims and commitments.</dd>
       <dt>Substantive</dt>
       <dd>A claim, commitment, fact or disclosure was added, removed or altered.</dd>
     </dl>
     <p>
-      Substantive and reworded changes appear on the timeline and in each
-      statement&rsquo;s story, each with a one-sentence summary the model writes
-      from the diff and a list of the points of substance it found, removals
-      included. Wherever the site counts &ldquo;changes of substance&rdquo;, it
-      counts the substantive tier alone. Noise and cosmetic changes are hidden
-      unless you ask for them, and the rare change nothing has read yet shows as
-      not yet read.
+      Substantive and reworded changes appear on the timeline and statement pages,
+      each with a one-sentence summary and a list of the points that changed.
+      &ldquo;Changes of substance&rdquo; counts only the substantive tier. Noise and
+      cosmetic changes are hidden unless you ask for them.
     </p>
 
     <h3 id="profiles">Which answers changed</h3>
     <p>
       The model also reads every version of every statement into a <em>profile</em>:
-      a fixed set of questions, each with a fixed set of answers.
-      Most of the questions come from the instruments behind the statements. The
-      DTA&rsquo;s Standard sets eight things every statement must contain, policy
-      v2.0 adds five requirements of its own, and the APS AI Plan asks each agency
-      for a Chief AI Officer. The rest are ours, and are marked as ours.
+      a fixed set of questions, each with a fixed set of possible answers. Most of
+      the questions come from the three documents behind the statements. The
+      DTA&rsquo;s Standard lists eight things every statement must contain, policy
+      v2.0 adds five requirements, and the APS AI Plan asks each agency for a Chief
+      AI Officer. The rest are ours, and are marked as such.
     </p>
     <p>
-      Comparing one version&rsquo;s profile with the one before gives the second
-      reading of a change: the answers it gained, dropped or altered, each filed
-      under the question it answers. &ldquo;Chief AI Officer: planned &rarr; in
-      place&rdquo; is one such answer; &ldquo;Commitment dropped (will not):
-      &hellip;&rdquo; is another. A bullet point grown into a paragraph about the
-      same thing changes no answer. Profiles record job titles but never
+      Comparing a version&rsquo;s profile with the one before shows which answers
+      were added, dropped or altered, such as &ldquo;Chief AI Officer: planned
+      &rarr; in place&rdquo;. A bullet point expanded into a paragraph about the
+      same thing changes no answer. Profiles record job titles, never
       people&rsquo;s names.
     </p>
+
     <h4 id="schema">Where the questions come from</h4>
     <p>
-      The <a href={withBase("/whos-who")}>who&rsquo;s who</a> page explains how the
-      three instruments fit together. A question is a requirement only if its source
-      makes it one; the Chief AI Officer, in particular, comes from the AI Plan and
-      not the policy. The usage patterns and domains are the DTA&rsquo;s own
-      classification, word for word.
+      <a href={withBase("/whos-who")}>Who&rsquo;s who</a> explains how the three
+      documents fit together. A question is a requirement only if its source makes
+      it one: the Chief AI Officer comes from the AI Plan, not the policy. Usage
+      patterns and domains use the DTA&rsquo;s own categories.
     </p>
     <dl class="sources">
       {
@@ -136,145 +124,121 @@ for (const c of propagation.clusters) {
 
     <h3 id="checking">Checking a reading</h3>
     <p>
-      Both readings are a model&rsquo;s, and either can be wrong. When an agency
-      rewrites a section, a commitment it has only reworded can show as dropped
-      alongside its new wording as added. Most of the dropped commitments listed on
-      this site come from such rewrites, and some are genuine drops; the diff beside
-      each one tells them apart. A vaguely described role can also land in the wrong
-      category. Each version is read
-      against the previous version&rsquo;s profile to limit that drift. Every
-      summary names the model that wrote it and sits beside the diff, and every
-      profile sits beside the statement it came from, so you can check one against
-      the other. The <a href={withBase("/data/")}>downloads</a> carry the detail
-      the site leaves out: the finer kinds within each tier, whether a rule or the
-      model decided, and every profile field for every version.
+      Both readings come from a model, and either can be wrong. When an agency
+      rewrites a section, a commitment it only reworded can show as dropped, with
+      the new wording shown as added. Most of the dropped commitments on this site
+      are of this kind, though some are genuine; the diff beside each one tells
+      you which. A vaguely described role can also land in the wrong category.
+    </p>
+    <p>
+      Every summary names the model that wrote it and sits beside the diff, and
+      every profile sits beside its statement, so you can check one against the
+      other. The <a href={withBase("/data/")}>downloads</a> have more detail,
+      including whether a rule or the model classified each change.
     </p>
 
     <h2 id="corpus">When the record starts</h2>
     <p>
-      Tracking began on {corpusStart}, the week the Australian Public Service
-      launched its AI Plan (the <a href={withBase("/about")}>About page</a> tells
-      the story). The statements themselves have been <a
+      Tracking began on {corpusStart}. Statements have been <a
         href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
         >required since February 2025</a
-      >, so their first nine months, when agencies were drawing their wording from
-      one another, came before the tracker started. Every statement that already
-      existed enters the record on day one, marked &ldquo;first tracked&rdquo;,
-      because we don&rsquo;t know when it was published or what it looked like
-      before then. That gap limits much of the analysis below.
+      >, so their first nine months aren&rsquo;t in the record. Every statement that
+      already existed enters on day one as &ldquo;first tracked&rdquo;, because we
+      don&rsquo;t know when it was published or how it read before then.
     </p>
 
     <h2 id="adoption">Adoption over time</h2>
     <p>
-      The <a href={withBase("/policy")}>what the statements say</a> page counts,
-      for each month since tracking began, how many tracked statements&rsquo;
-      profiles report each item (a Chief AI Officer, a register, mandatory
-      training, a reference to version 2.0), as a share of the statements tracked
-      that month. Early months have small denominators: {meta.counts.statements}{" "}
-      statements are tracked now, and fewer were on day one. Agencies also joined
-      in waves, so a jump from one month to the next can come from new entrants as
-      easily as from new text.
+      <a href={withBase("/policy")}>What the statements say</a> charts, for each
+      month, the share of tracked statements whose profile reports each item (a
+      Chief AI Officer, a register, mandatory training, a reference to policy
+      v2.0). Agencies joined the tracker in waves, so a jump between months can
+      come from new statements rather than new text, and early months have fewer
+      statements ({meta.counts.statements} are tracked now).
     </p>
     <p>
-      Two lists on that page rest on a statement&rsquo;s own dates. A statement
-      counts as updated since policy v2.0 when its self-declared last-updated date,
-      or a change we observed, falls on or after 15 December 2025. It is listed as
-      not updated when we have watched it since before then and seen neither, and
-      where we can&rsquo;t tell, we say so. The Standard asks for a review at least
-      once a year, so a second list gives the statements whose own last-updated
-      date is more than a year old. A statement with no date can be on the first
-      list but never the second.
-      Both lists change as time passes, so both carry the date they were computed.
+      Two lists on that page use the statements&rsquo; own dates. A statement
+      counts as updated since policy v2.0 if its stated last-updated date, or a
+      change we saw, falls on or after 15 December 2025. It is listed as not
+      updated if we have watched it since before then and seen neither; otherwise
+      we can&rsquo;t tell. The Standard asks for a review at least once a year, so
+      the second list shows statements whose own date is more than a year old. A
+      statement with no date can&rsquo;t appear on it.
     </p>
 
-    <h2 id="reuse">Shared passages and the reuse heat-map</h2>
+    <h2 id="reuse">Shared wording</h2>
     <p>
-      Agencies reuse one another&rsquo;s wording heavily. On each statement page,
-      passages carry two different tints. An <em>amber</em> tint means the same
-      passage appears in other agencies&rsquo; statements; the deeper the amber, the
-      more widely it is shared:
+      On each statement page, an <em>amber</em> tint marks a passage that also
+      appears in other agencies&rsquo; statements. The deeper the amber, the more
+      agencies share it:
     </p>
     <ul>
-      <li><strong>uncoloured</strong>: unique to that statement;</li>
+      <li><strong>uncoloured</strong>: only in this statement;</li>
       <li><strong>a few</strong>: shared with two or three other agencies;</li>
       <li><strong>several</strong>: shared with four to nine;</li>
       <li><strong>many</strong>: shared with ten to twenty-four;</li>
       <li><strong>most</strong>: shared with twenty-five or more.</li>
     </ul>
     <p>
-      An amber passage also carries a small count; open it to see which other
-      agencies use the same words, each linked to its statement.
+      Open the small count on an amber passage to see which agencies share it.
     </p>
     <p>
-      A separate <em>cool grey</em> tint marks <em>template wording</em>: phrasing
-      taken straight from the Policy or the Digital Transformation Agency&rsquo;s <a
+      A <em>grey</em> tint marks wording from the policy or the DTA&rsquo;s <a
         href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
         >template</a
-      >, which most agencies start from. Template wording is boilerplate that
-      can&rsquo;t be traced to particular agencies, so it gets its own colour and
-      has no count to open.
+      >, which most agencies start from. It has no count, because it can&rsquo;t be
+      traced to particular agencies.
     </p>
-    <h3 id="first-observed">First observed in our corpus</h3>
+
+    <h3 id="first-observed">First observed</h3>
     <p>
-      For every shared passage we also record which tracked statement showed it
-      earliest, and the order in which the others picked it up. Each passage falls into
-      one of three tiers, according to how far that ordering can be trusted:
+      For each shared passage we record which statement had it first and the order
+      in which others picked it up. How far that order can be trusted puts each
+      passage in one of three tiers:
     </p>
     <ul>
       <li>
-        <strong>added during tracking</strong> ({tierCounts.added}): we watched the
-        first agency add the passage well after the record opened, with others
-        following later. This is the strongest evidence of order.
+        <strong>added during tracking</strong> ({tierCounts.added}): we saw the
+        first agency add it after tracking began, and others follow. This is the
+        strongest evidence of order.
       </li>
       <li>
-        <strong>present at the start</strong> ({tierCounts["present-at-start"]}): the
-        first agency already had the passage when tracking began, and others adopted it
-        later. We can order the latecomers, but not that first agency&rsquo;s own source.
+        <strong>present at the start</strong> ({tierCounts["present-at-start"]}):
+        the first agency already had it when tracking began, and others added it
+        later.
       </li>
       <li>
-        <strong>tied</strong> ({tierCounts.tied}): several agencies share the earliest
-        date, usually because they were all present on day one, so we make no claim
-        about order.
+        <strong>tied</strong> ({tierCounts.tied}): several agencies had it on the
+        same earliest date, usually day one, so there is no order.
       </li>
     </ul>
     <p>
-      Read this as the order <em>we</em> observed, which is no proof of who wrote a
-      passage first. A passage two agencies both carried on day one can&rsquo;t be
-      ordered at all, and even a clean ordering says only who we saw with it first.
-      The real source could be an agency we don&rsquo;t track, an internal draft
-      that never went online, or the DTA template itself.
+      This is the order we saw, and it doesn&rsquo;t show who wrote a passage. The
+      source could be an agency we don&rsquo;t track, a draft that never went
+      online, or the DTA template.
     </p>
 
     <h2 id="originality">Originality scores</h2>
     <p>
-      A statement&rsquo;s originality score is the share of its text, by length, that
-      is <em>neither</em> shared with other agencies <em>nor</em> drawn from the
-      template. A statement at 80% is mostly in its own words; one at 20% is mostly
-      shared or templated language. The leaderboard and the agency grid colour each
-      statement on this scale, from borrowed to bespoke.
+      A statement&rsquo;s originality score is the share of its text that is
+      neither shared with other agencies nor from the template. A statement at 80%
+      is mostly in its own words; one at 20% is mostly shared. The leaderboard and
+      the agency grid colour statements on this scale, from borrowed to bespoke.
     </p>
     <p>
-      The score measures how much of a statement&rsquo;s text appears elsewhere,
-      and it is no grade of effort. Two things lower a score for reasons unrelated
-      to effort. Shared text includes wording the Standard
-      itself calls for (the document&rsquo;s title, its section headings, the OECD
-      definition of an AI system that the policy adopts), so an agency that follows the
-      Standard to the letter shares more than one that ignores it. And a statement
-      published jointly by two bodies (the AASB and AUASB, for instance) counts as
-      shared with itself.
+      The score doesn&rsquo;t measure effort. Shared text includes wording the
+      Standard asks for (the title, the section headings, the OECD definition of
+      an AI system), so following the Standard closely lowers the score. A
+      statement published jointly by two bodies, such as the AASB and AUASB,
+      counts as shared with itself.
     </p>
 
-    <h2 id="more">The fine print</h2>
+    <h2 id="more">Limitations</h2>
     <p>
-      The <a href={withBase("/about")}>About page</a> has the technical method: how
-      scrape glitches are filtered out, how passages are matched, which model does
-      the reading, and the limits of the scraping itself.
-    </p>
-    <p>
-      Because each statement is read from a live web page, a capture sometimes picks
-      up the page around the statement as well, and the classifier has to tell the
-      two apart. It usually does, but not always, so follow the source link on any
-      statement to check the original.
+      A capture sometimes picks up parts of the page around the statement. The
+      model usually tells the two apart, but not always, so check the source link
+      on any statement. The <a href={withBase("/about")}>About page</a> has the
+      technical method.
     </p>
   </div>
 </Layout>
