@@ -396,15 +396,12 @@ def extract_profiles(
 
 # --- profile diffs ----------------------------------------------------------
 
-Significance = Literal["minor", "notable", "significant"]
-
 
 @dataclass(frozen=True, slots=True)
 class Delta:
     field: str
     label: str  # human-readable description of the change
     direction: Literal["added", "removed", "changed"]
-    significance: Significance
     before: str | None = None
     after: str | None = None
 
@@ -542,7 +539,7 @@ def _pretty(value: object) -> str:
 
 
 def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
-    """Field-level changes between two profiles, most significant first."""
+    """Field-level changes between two profiles, removals first."""
     deltas: list[Delta] = []
 
     for name, rank in _ORDERED.items():
@@ -550,15 +547,11 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
         if b == a:
             continue
         progressed = rank[a] > rank[b]
-        significant = a == "in-place" or b == "in-place" or name in ("staff_training",)
         deltas.append(
             Delta(
                 field=name,
                 label=f"{_LABELS[name]}: {_pretty(b)} → {_pretty(a)}",
                 direction="added" if progressed else "removed",
-                significance="notable"
-                if (progressed and significant)
-                else ("significant" if not progressed else "minor"),
                 before=b,
                 after=a,
             )
@@ -568,17 +561,11 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
         b, a = getattr(before, name), getattr(after, name)
         if b == a:
             continue
-        weight: Significance = (
-            "significant" if name == "public_interaction_commitment" else "notable"
-        )
         deltas.append(
             Delta(
                 field=name,
                 label=f"{_LABELS[name]} {'added' if a else 'removed'}",
                 direction="added" if a else "removed",
-                significance=weight
-                if not a or name == "public_interaction_commitment"
-                else "minor",
                 before=str(b),
                 after=str(a),
             )
@@ -588,16 +575,11 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
         b, a = getattr(before, name), getattr(after, name)
         if b == a:
             continue
-        weakened = name == "public_facing" and a in (
-            "without-human-review",
-            "not-addressed",
-        )
         deltas.append(
             Delta(
                 field=name,
                 label=f"{_LABELS[name]}: {_pretty(b)} → {_pretty(a)}",
                 direction="changed",
-                significance="significant" if weakened else "notable",
                 before=b,
                 after=a,
             )
@@ -624,20 +606,15 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
                     name,
                     f"{_LABELS[name]} added: {display[item]}",
                     "added",
-                    "notable",
                     after=display[item],
                 )
             )
         for item in sorted(b - a):
-            # A disclosed use or a named tool disappearing is a change in what
-            # the agency admits to; the safeguards list is a looser reading
-            # and a dropped entry there is worth noting, not headlining.
             deltas.append(
                 Delta(
                     name,
                     f"{_LABELS[name]} dropped: {display[item]}",
                     "removed",
-                    "notable" if name == "measures" else "significant",
                     before=display[item],
                 )
             )
@@ -654,22 +631,16 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
                     "commitments",
                     f"New commitment ({_pretty(c.kind)}): {c.text}",
                     "added",
-                    "notable",
                     after=c.text,
                 )
             )
     for i, old in enumerate(before.commitments):
         if i not in matched:
-            # A dropped limit ("will not") or oversight promise is the change
-            # most worth noticing. A plain "will" is often time-bound ("a Chief
-            # AI Officer will be appointed by July") and disappears when it is
-            # fulfilled, so it is noted rather than headlined.
             deltas.append(
                 Delta(
                     "commitments",
                     f"Commitment dropped ({_pretty(old.kind)}): {old.text}",
                     "removed",
-                    "notable" if old.kind == "will" else "significant",
                     before=old.text,
                 )
             )
@@ -682,16 +653,13 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
                     name,
                     f"{_LABELS[name]}: {b or '—'} → {a or '—'}",
                     "changed",
-                    "minor",
                     b,
                     a,
                 )
             )
 
-    order = {"significant": 0, "notable": 1, "minor": 2}
-    return sorted(
-        deltas, key=lambda d: (order[d.significance], d.direction != "removed", d.label)
-    )
+    order = {"removed": 0, "changed": 1, "added": 2}
+    return sorted(deltas, key=lambda d: (order[d.direction], d.label))
 
 
 def delta_dict(delta: Delta) -> dict:
@@ -699,7 +667,6 @@ def delta_dict(delta: Delta) -> dict:
         "field": delta.field,
         "label": delta.label,
         "direction": delta.direction,
-        "significance": delta.significance,
         "before": delta.before,
         "after": delta.after,
     }

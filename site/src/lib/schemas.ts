@@ -201,7 +201,6 @@ export const profileDeltaSchema = z.object({
   field: z.string(),
   label: z.string(),
   direction: z.enum(["added", "removed", "changed"]),
-  significance: z.enum(["minor", "notable", "significant"]),
   before: z.string().nullable(),
   after: z.string().nullable(),
 });

@@ -33,18 +33,16 @@ const charted = [
   .filter((c): c is NonNullable<typeof c> => c !== undefined);
 
 // Things a later revision no longer says, newest first, each pointing at the
-// revision it happened in. Split by what was lost: a commitment or safeguard
-// the agency made (promises, the public-facing pledge, a weakened
-// public-facing position), versus a disclosure it no longer makes (a use, a
-// domain, a named tool, a training claim). Only significant removals qualify;
-// a fulfilled time-bound "will" (an officer to be appointed by July) is
-// notable, not significant, and stays on the statement page.
-const COMMITMENT_FIELDS = new Set(["commitments", "public_interaction_commitment", "public_facing"]);
+// revision it happened in: every profile item a revision removed. Split by
+// what was lost: a commitment or safeguard the agency made, versus anything
+// else it no longer says (a use, a domain, a named tool, an officer, a
+// compliance statement).
+const COMMITMENT_FIELDS = new Set(["commitments", "public_interaction_commitment", "measures"]);
 const removals = statements
   .flatMap((s) =>
     s.timeline.flatMap((rev) =>
       rev.profileDeltas
-        .filter((d) => d.direction === "removed" && d.significance === "significant")
+        .filter((d) => d.direction === "removed")
         .map((d) => ({
           abbr: s.abbr,
           agency: s.agency,
@@ -193,8 +191,8 @@ const built = formatDate(meta.builtAt);
       </div>
       <p class="section-note">
         A statement that promises less than it used to is easy to miss. These are the
-        promises, self-imposed limits and public-facing safeguards that a later revision no
-        longer makes, newest first, as read by a language model comparing the two
+        promises, self-imposed limits and named safeguards that a later revision no longer
+        makes, newest first, as read by a language model comparing the two
         revisions&rsquo; profiles. A reworded promise can also appear here, so each entry
         links to the revision and its exact words.
       </p>
@@ -207,8 +205,8 @@ const built = formatDate(meta.builtAt);
         <span class="muted">{droppedDisclosures.length}</span>
       </div>
       <p class="section-note">
-        Uses, domains, named tools and training claims that a later revision no longer
-        mentions. A tool that drops out of a statement may simply have been renamed or
+        Uses, domains, named tools, officers, training and compliance statements that a
+        later revision no longer mentions. A tool that drops out of a statement may simply have been renamed or
         folded into a broader description, and a use that drops out may still be happening.
       </p>
       <PolicyLedger rows={droppedDisclosures} />

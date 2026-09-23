@@ -68,14 +68,13 @@ def test_expansion_without_substance_change_has_no_deltas():
     assert diff_profiles(before, after) == []
 
 
-def test_dropped_commitment_is_significant_and_first():
+def test_dropped_commitment_sorts_first():
     before = make_profile()
     after = make_profile(
         public_interaction_commitment=False,
         commitments=[Commitment(text="Review the statement annually", kind="will")],
     )
     deltas = diff_profiles(before, after)
-    assert deltas[0].significance == "significant"
     assert deltas[0].direction == "removed"
     fields = {d.field for d in deltas}
     assert fields == {"public_interaction_commitment", "commitments"}
@@ -95,21 +94,20 @@ def test_reworded_commitment_still_matches():
     assert diff_profiles(before, after) == []
 
 
-def test_officer_appointment_reads_as_notable_addition():
+def test_officer_appointment_reads_as_addition():
     before = make_profile()
     after = make_profile(chief_ai_officer="in-place", chief_ai_officer_role="COO")
     (delta,) = diff_profiles(before, after)
     assert delta.field == "chief_ai_officer"
     assert delta.direction == "added"
-    assert delta.significance == "notable"
     assert "not mentioned → in place" in delta.label
 
 
-def test_regression_in_ordered_field_is_significant():
+def test_regression_in_ordered_field_is_a_removal():
     before = make_profile(staff_training="mandatory")
     after = make_profile(staff_training="available")
     (delta,) = diff_profiles(before, after)
-    assert (delta.direction, delta.significance) == ("removed", "significant")
+    assert delta.direction == "removed"
 
 
 def test_list_fields_report_added_and_dropped_items():
@@ -122,7 +120,7 @@ def test_list_fields_report_added_and_dropped_items():
     labels = [d.label for d in deltas]
     assert "Usage pattern added: analytics for insights" in labels
     assert "Named tool dropped: Microsoft 365 Copilot" in labels
-    # removals sort ahead of additions of the same significance tier
+    # removals sort ahead of additions
     assert deltas[0].direction == "removed"
 
 
