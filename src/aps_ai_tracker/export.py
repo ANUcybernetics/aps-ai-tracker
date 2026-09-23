@@ -1040,10 +1040,12 @@ def main() -> int:
         abbr: originality_score(passages, shared_count)
         for abbr, passages in passages_by_abbr.items()
     }
-    leaderboard = sorted(
-        ({"abbr": abbr, "score": o["score"]} for abbr, o in originalities.items()),
-        key=lambda e: (-e["score"], e["abbr"]),
-    )
+    leaderboard = [
+        {"abbr": abbr, "score": o["score"]}
+        for abbr, o in sorted(
+            originalities.items(), key=lambda kv: (-kv[1]["score"], kv[0])
+        )
+    ]
 
     built_at = datetime.now(UTC).isoformat()
     logger.info("Extracting statement profiles...")
