@@ -120,6 +120,11 @@ abbr = "IPA"
 date = "2026-09-0"
 reason = "accountability hub page, not the statement"
 
+[[quarantine]]
+abbr = "ACCC"
+date = "2026-09-12"
+reason = "Akamai 'Access Denied' block page served with a 200"
+
 [[confirmed]]
 abbr = "AEC"
 date = "2025-11-12T10:16"
