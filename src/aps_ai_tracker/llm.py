@@ -18,7 +18,7 @@ Two interchangeable backends, chosen with `APS_LLM_BACKEND`:
 - `api`: the Anthropic SDK against `ANTHROPIC_API_KEY`, for environments
   without a logged-in Claude Code
 
-The model defaults to Sonnet (`APS_LLM_MODEL` overrides); the cache records
+The model defaults to Opus 5.5 (`APS_LLM_MODEL` overrides); the cache records
 which model produced each entry.
 """
 
@@ -34,7 +34,7 @@ from pydantic import BaseModel
 
 from .scraper import REPO_ROOT, atomic_write_text, logger
 
-MODEL = os.environ.get("APS_LLM_MODEL", "claude-sonnet-5")
+MODEL = os.environ.get("APS_LLM_MODEL", "claude-opus-5-5")
 CACHE_DIR = REPO_ROOT / ".cache"
 # A handful of concurrent requests is plenty: the backfill is a few hundred calls
 # once, and a daily run is one or two. Keeps well inside rate limits.
