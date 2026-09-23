@@ -2,7 +2,10 @@
 import Layout from "@/components/Layout.astro";
 import AgencyWall from "@/components/AgencyWall.astro";
 import AgencyFinder from "@/islands/AgencyFinder.svelte";
+import AgencyQuestions from "@/islands/AgencyQuestions.svelte";
 import { getAgencies } from "@/lib/load";
+import { getStatements } from "@/lib/statements";
+import { AGENCY_QUESTIONS, agencyAnswers } from "@/lib/questions";
 import { SIZE_LABEL, originalityPercent, formatDate } from "@/lib/format";
 import { statementPath } from "@/lib/paths";
 
@@ -17,6 +20,23 @@ const voluntary = silent.filter((a) => a.scope === "voluntary").toSorted(byName)
 const carvedOut = silent.filter((a) => a.scope === "exempt").toSorted(byName);
 const mandatoryCount = agencies.filter((a) => a.scope === "mandatory").length;
 const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status: a.status }));
+
+// Each published statement's answers to the reader's questions, and how many
+// of the Standard's eight elements it covers.
+const docs = await getStatements();
+const rows = published.map((a) => {
+  const doc = a.statementId ? docs[a.statementId] : undefined;
+  const standard = doc?.standard ? Object.values(doc.standard) : null;
+  return {
+    agency: a,
+    answers: agencyAnswers(a, doc),
+    standard: standard ? `${standard.filter(Boolean).length} of ${standard.length}` : null,
+  };
+});
+const questions = AGENCY_QUESTIONS.map((q) => ({
+  ...q,
+  count: rows.filter((r) => r.answers.includes(q.key)).length,
+})).filter((q) => q.count > 0);
 ---
 
 <Layout
@@ -49,6 +69,7 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
         <h2>Published</h2>
         <span class="muted">{published.length}</span>
       </div>
+      <AgencyQuestions client:load questions={questions} total={published.length} />
       <div class="table-wrap">
         <table class="agencies">
           <caption class="visually-hidden">Agencies with a published AI transparency statement</caption>
@@ -56,21 +77,23 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
             <tr>
               <th scope="col">Agency</th>
               <th scope="col">Size</th>
+              <th scope="col" class="num">Standard</th>
               <th scope="col" class="num">Bespoke</th>
               <th scope="col" class="num">Changes</th>
               <th scope="col" class="num">Captures</th>
-              <th scope="col">Since policy 2.0</th>
+              <th scope="col">Since policy v2.0</th>
             </tr>
           </thead>
           <tbody>
             {
-              published.map((a) => (
-                <tr>
+              rows.map(({ agency: a, answers, standard }) => (
+                <tr data-answers={answers.join(" ")}>
                   <td>
                     <a href={statementPath(a.abbr)}>{a.name}</a>
                     <span class="muted mono"> {a.abbr}</span>
                   </td>
                   <td>{SIZE_LABEL[a.size]}</td>
+                  <td class="num">{standard ?? "—"}</td>
                   <td class="num">
                     {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
                   </td>
@@ -80,7 +103,7 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
                     {a.currency?.updatedSincePolicyV2 === true ? (
                       <span class="pill pill--ok">updated</span>
                     ) : a.currency?.updatedSincePolicyV2 === false ? (
-                      <span class="muted">no sign</span>
+                      <span class="muted">none seen</span>
                     ) : (
                       <span
                         class="muted"
@@ -209,6 +232,10 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
   .agencies .num {
     text-align: end;
     font-variant-numeric: tabular-nums;
+  }
+
+  .agencies :is(th, td) + :is(th, td) {
+    padding-inline-start: var(--space-4);
   }
 
   .section-note {

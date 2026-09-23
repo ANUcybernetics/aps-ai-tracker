@@ -9,24 +9,57 @@
   import MonthlyChart from "@/islands/MonthlyChart.svelte";
   import { formatMonth } from "@/lib/format";
   import { STACK_TIERS, type MonthlyMixRow, type StackTier } from "@/lib/monthly";
-  import { READABLE_TIERS, type ChangeTier } from "@/lib/profile-labels";
+  import { READABLE_TIERS, type ChangeTier, type FieldSource } from "@/lib/profile-labels";
+  import { SOURCE_GROUP_LABEL } from "@/lib/questions";
 
   interface AgencyOpt {
     abbr: string;
     name: string;
   }
 
+  interface RequirementOpt {
+    key: string;
+    label: string;
+    source: FieldSource;
+    count: number;
+  }
+
   let {
     agencies,
     portfolios,
+    requirements,
     chart,
     total,
   }: {
     agencies: AgencyOpt[];
     portfolios: string[];
+    requirements: RequirementOpt[];
     chart: MonthlyMixRow[];
     total: number;
   } = $props();
+
+  // The questions a change touched, grouped by the instrument that asks them.
+  const requirementGroups = $derived(
+    (Object.keys(SOURCE_GROUP_LABEL) as FieldSource[])
+      .map((source) => ({
+        label: SOURCE_GROUP_LABEL[source],
+        options: requirements.filter((r) => r.source === source),
+      }))
+      .filter((g) => g.options.length > 0),
+  );
+
+  const ANSWER_OPTIONS = [
+    { value: "", label: "Any" },
+    { value: "removed", label: "Dropped an answer" },
+    { value: "added", label: "Added an answer" },
+    { value: "changed", label: "Altered an answer" },
+  ];
+  const SCOPE_OPTIONS = [
+    { value: "", label: "All bodies" },
+    { value: "mandatory", label: "Bound by the policy" },
+    { value: "voluntary", label: "Publishing voluntarily" },
+    { value: "exempt", label: "Carved out of the policy" },
+  ];
 
   // One control over the change-tier ladder: the default view is everything
   // that changed (or may have changed) what a statement says.
@@ -49,6 +82,14 @@
   let q = $state(params?.get("q") ?? "");
   let agency = $state(params?.get("agency") ?? "");
   let portfolio = $state(params?.get("portfolio") ?? "");
+  const urlAbout = params?.get("about") ?? "";
+  let about = $state(urlAbout);
+  // A stale or mistyped ?about= filters nothing rather than hiding everything.
+  const aboutKey = $derived(requirements.some((r) => r.key === about) ? about : "");
+  const urlAnswers = params?.get("answers") ?? "";
+  let answers = $state(ANSWER_OPTIONS.some((o) => o.value === urlAnswers) ? urlAnswers : "");
+  const urlScope = params?.get("scope") ?? "";
+  let scope = $state(SCOPE_OPTIONS.some((o) => o.value === urlScope) ? urlScope : "");
   let show = $state(showValues.has(urlShow) ? urlShow : "read");
   let month = $state<string | null>(/^\d{4}-\d{2}$/.test(urlMonth) ? urlMonth : null);
   // Counted from the DOM after hydration; falls back to `total` for SSR/no-JS.
@@ -62,11 +103,24 @@
   // then a string scan.
   let searchText: Map<HTMLElement, string> | null = null;
 
+  // A row's facets are "requirement:direction" pairs, so "about" and "answers"
+  // together match one answer that did both (a dropped commitment).
+  function facetOk(facets: string): boolean {
+    if (!aboutKey && !answers) return true;
+    return facets.split(" ").some((f) => {
+      const [req, dir] = f.split(":");
+      return (!aboutKey || req === aboutKey) && (!answers || dir === answers);
+    });
+  }
+
   function syncUrl() {
     const p = new URLSearchParams();
     if (q.trim()) p.set("q", q.trim());
     if (agency) p.set("agency", agency);
     if (portfolio) p.set("portfolio", portfolio);
+    if (scope) p.set("scope", scope);
+    if (aboutKey) p.set("about", aboutKey);
+    if (answers) p.set("answers", answers);
     if (show !== "read") p.set("show", show);
     if (month) p.set("month", month);
     const qs = p.toString();
@@ -90,6 +144,8 @@
       const sliceOk =
         (!agency || row.dataset.abbr === agency) &&
         (!portfolio || row.dataset.portfolio === portfolio) &&
+        (!scope || row.dataset.scope === scope) &&
+        facetOk(row.dataset.facets ?? "") &&
         (!query || (searchText?.get(row) ?? "").includes(query));
       const showOk = show === "all" || (show === "read" ? READABLE_TIERS.has(tier) : show === tier);
       const visible = sliceOk && showOk && (!month || rowMonth === month);
@@ -139,6 +195,29 @@
     </label>
 
     <label class="tl-filter__field">
+      <span>About</span>
+      <select bind:value={about}>
+        <option value="">Any question</option>
+        {#each requirementGroups as g (g.label)}
+          <optgroup label={g.label}>
+            {#each g.options as r (r.key)}
+              <option value={r.key}>{r.label} ({r.count})</option>
+            {/each}
+          </optgroup>
+        {/each}
+      </select>
+    </label>
+
+    <label class="tl-filter__field">
+      <span>Answers</span>
+      <select bind:value={answers}>
+        {#each ANSWER_OPTIONS as o (o.value)}
+          <option value={o.value}>{o.label}</option>
+        {/each}
+      </select>
+    </label>
+
+    <label class="tl-filter__field">
       <span>Agency</span>
       <select bind:value={agency}>
         <option value="">All agencies</option>
@@ -154,6 +233,15 @@
         <option value="">All portfolios</option>
         {#each portfolios as p (p)}
           <option value={p}>{p}</option>
+        {/each}
+      </select>
+    </label>
+
+    <label class="tl-filter__field">
+      <span>Coverage</span>
+      <select bind:value={scope}>
+        {#each SCOPE_OPTIONS as o (o.value)}
+          <option value={o.value}>{o.label}</option>
         {/each}
       </select>
     </label>

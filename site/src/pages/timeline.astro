@@ -5,7 +5,9 @@ import ReadingLink from "@/components/ReadingLink.astro";
 import TimelineFilter from "@/islands/TimelineFilter.svelte";
 import { getAgencies, getTimeline } from "@/lib/load";
 import { monthlyMix } from "@/lib/monthly";
-import { changeTier } from "@/lib/profile-labels";
+import { REQUIREMENTS, changeTier } from "@/lib/profile-labels";
+import { changeFacets } from "@/lib/questions";
+import { withBase } from "@/lib/paths";
 import { getStatements } from "@/lib/statements";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -13,24 +15,57 @@ const timeline = await getTimeline();
 const statements = await getStatements();
 const agencies = await getAgencies();
 
-// Join each event to its statement's revision history to compute the diff
-// against the previous revision (build-time; only rendered diff HTML ships).
-function diffFor(event: TimelineEvent) {
+// Join each event to its statement's revision history: the diff against the
+// previous revision (build-time; only rendered diff HTML ships) and the
+// answers the revision changed.
+function revisionFor(event: TimelineEvent) {
   const stmt = statements[event.statementId];
-  if (!stmt) return null;
-  const idx = stmt.timeline.findIndex((t) => t.sha === event.sha);
-  if (idx <= 0) return null; // first-seen events have nothing to diff against
-  const prev = stmt.timeline[idx - 1];
-  const curr = stmt.timeline[idx];
+  const idx = stmt ? stmt.timeline.findIndex((t) => t.sha === event.sha) : -1;
+  return idx < 0 ? null : { stmt, idx };
+}
+
+function diffFor(event: TimelineEvent) {
+  const found = revisionFor(event);
+  if (!found || found.idx === 0) return null; // first-seen events have nothing to diff against
+  const prev = found.stmt.timeline[found.idx - 1];
+  const curr = found.stmt.timeline[found.idx];
   return { before: prev.body, after: curr.body, delta: curr.charDelta };
 }
 
-const portfolioByAbbr = new Map(agencies.map((a) => [a.abbr, a.portfolio]));
-const rows = timeline.map((event) => ({
-  event,
-  diff: diffFor(event),
-  portfolio: portfolioByAbbr.get(event.abbr) ?? null,
+const agencyByAbbr = new Map(agencies.map((a) => [a.abbr, a]));
+const rows = timeline.map((event) => {
+  const found = revisionFor(event);
+  const deltas = found ? found.stmt.timeline[found.idx].profileDeltas : [];
+  return {
+    event,
+    diff: diffFor(event),
+    portfolio: agencyByAbbr.get(event.abbr)?.portfolio ?? null,
+    scope: agencyByAbbr.get(event.abbr)?.scope ?? null,
+    deltas,
+    facets: changeFacets({ profileDeltas: deltas }),
+  };
+});
+
+// The "about" filter lists only requirements some change actually touched.
+const touched = new Map<string, number>();
+for (const r of rows) {
+  for (const k of new Set(r.facets.map((f) => f.split(":")[0]))) touched.set(k, (touched.get(k) ?? 0) + 1);
+}
+const requirementOpts = REQUIREMENTS.filter((r) => touched.has(r.key)).map((r) => ({
+  key: r.key,
+  label: r.label,
+  source: r.source,
+  count: touched.get(r.key) ?? 0,
 }));
+
+// Questions to start from, each a link into the filtered feed.
+const starters = [
+  { label: "Commitments dropped", query: "about=commitments&answers=removed" },
+  { label: "Anything dropped", query: "answers=removed" },
+  { label: "Chief AI Officers named", query: "about=chief-ai-officer&answers=added" },
+  { label: "New uses of AI disclosed", query: "about=classification&answers=added" },
+  { label: "Public-facing AI", query: "about=public-facing" },
+].map((s) => ({ ...s, href: `${withBase("/timeline")}?${s.query}` }));
 
 const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries()]
   .map(([abbr, name]) => ({ abbr, name }))
@@ -72,9 +107,10 @@ const readable = counts.substance + counts.revision + counts.unclassified;
         }{
           counts.unclassified > 0 && <>, plus {counts.unclassified} not yet read</>
         }. Cosmetic edits ({counts.cosmetic}), noise ({counts.noise}) and first captures
-        ({counts.first}) are hidden unless you ask for them. Narrow the feed by agency,
-        portfolio or tier, click a month in the chart, or search the changed text; opening
-        a row shows the diff.
+        ({counts.first}) are hidden unless you ask for them. Narrow the feed by the
+        question a change touched and whether it added or dropped an answer, by agency,
+        portfolio or coverage, or by month in the chart; search covers the changed text,
+        and opening a row shows the diff.
       </p>
       <p class="muted">
         A language model writes each summary from the diff, and each row names the model.
@@ -82,20 +118,36 @@ const readable = counts.substance + counts.revision + counts.unclassified;
         words.
       </p>
       <ReadingLink anchor="anatomy" label="Anatomy of a change" />
+      <nav class="starters" aria-label="Questions to start from">
+        <span class="muted">Start from:</span>
+        <ul>
+          {starters.map((s) => (
+            <li><a href={s.href}>{s.label}</a></li>
+          ))}
+        </ul>
+      </nav>
     </header>
 
     <TimelineFilter
       client:load
       agencies={agencyOpts}
       portfolios={portfolios}
+      requirements={requirementOpts}
       chart={chart}
       total={readable}
     />
 
     <ul class="tl-feed" id="tl-feed">
       {
-        rows.map(({ event, diff, portfolio }) => (
-          <ChangeFeedItem event={event} diff={diff} portfolio={portfolio} />
+        rows.map(({ event, diff, portfolio, scope, deltas, facets }) => (
+          <ChangeFeedItem
+            event={event}
+            diff={diff}
+            portfolio={portfolio}
+            scope={scope}
+            deltas={deltas}
+            facets={facets}
+          />
         ))
       }
     </ul>
@@ -110,5 +162,36 @@ const readable = counts.substance + counts.revision + counts.unclassified;
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .starters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .starters ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .starters a {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .starters a:hover {
+    border-color: var(--accent);
+    color: var(--accent-ink);
   }
 </style>
