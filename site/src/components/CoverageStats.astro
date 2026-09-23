@@ -1,7 +1,7 @@
 ---
 import { meta, getAgencies, propagation } from "@/lib/load";
 import { formatDate, originalityPercent } from "@/lib/format";
-import { statementPath } from "@/lib/paths";
+import { statementPath, withBase } from "@/lib/paths";
 
 const agencies = await getAgencies();
 const c = meta.counts;
@@ -45,7 +45,7 @@ const facts = [
   <p class="coverage__lead">
     <span class="coverage__big mono">{c.changes}</span>
     <span class="coverage__gloss">
-      changes of substance since {since}, across <strong>{c.published}</strong> published
+      <a href={withBase("/reading#changes")}>changes of substance</a> since {since}, across <strong>{c.published}</strong> published
       statements.
     </span>
   </p>

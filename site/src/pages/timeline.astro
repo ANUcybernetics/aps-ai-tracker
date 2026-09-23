@@ -98,7 +98,8 @@ const readable = counts.substance + counts.revision + counts.unclassified;
     <header class="stack">
       <h1>Timeline</h1>
       <p class="lede">
-        Every change worth reading, newest first: {counts.substance} substantive changes{
+        Every change worth reading, newest first: {counts.substance}{" "}
+        <a href={withBase("/reading#changes")}>substantive changes</a>{
           counts.revision > 0 && <>, {counts.revision} rewordings</>
         }{
           counts.unclassified > 0 && <> and {counts.unclassified} not yet read</>

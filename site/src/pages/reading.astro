@@ -28,17 +28,16 @@ for (const c of propagation.clusters) {
   <div class="page reading prose stack">
     <h1>Reading the data</h1>
     <p class="lede">
-      How the figures on this site are made. Start with the anatomy of a change:
-      the timeline, the profiles and the charts are all built from it.
+      What each figure on this site measures, and how far to trust it. Start with
+      the anatomy of a change: the timeline, the profiles and the charts are all
+      built from it.
     </p>
 
     <h2 id="anatomy">Anatomy of a change</h2>
     <p>
-      Every night the tracker fetches each agency&rsquo;s statement. If the text
-      differs from the last good copy, the new copy is a <em>change</em>. A
-      language model first checks that it really is the statement, and not a
-      firewall&rsquo;s block page, an index page that links to it, or a page that
-      only half loaded. Copies that fail are left out. Each change is then read
+      Every night the tracker copies each agency&rsquo;s statement. After a check
+      that the copy captured the statement properly, any copy whose text differs
+      from the last one is a <em>change</em>. A language model reads each change
       twice: for how much the text changed, and for which of the statement&rsquo;s
       answers changed.
     </p>
@@ -51,8 +50,7 @@ for (const c of propagation.clusters) {
 
     <h3 id="changes">How much the text changed</h3>
     <p>
-      Each change is put in one of four tiers. Rules handle the mechanical cases
-      (formatting, links, page furniture, date stamps) and the model reads the rest.
+      Each change is put in one of four tiers.
     </p>
     <dl class="tiers">
       <dt>Noise</dt>
@@ -133,8 +131,8 @@ for (const c of propagation.clusters) {
     <p>
       Every summary names the model that wrote it and sits beside the diff, and
       every profile sits beside its statement, so you can check one against the
-      other. The <a href={withBase("/data/")}>downloads</a> have more detail,
-      including whether a rule or the model classified each change.
+      other. The <a href={withBase("/data/")}>downloads</a> have every reading in
+      bulk.
     </p>
 
     <h2 id="corpus">When the record starts</h2>
@@ -237,8 +235,9 @@ for (const c of propagation.clusters) {
     <p>
       A capture sometimes picks up parts of the page around the statement. The
       model usually tells the two apart, but not always, so check the source link
-      on any statement. The <a href={withBase("/about")}>About page</a> has the
-      technical method.
+      on any statement. The tracker is <a
+        href="https://github.com/ANUcybernetics/aps-ai-tracker">open source</a>, for
+      anyone who wants the technical method.
     </p>
   </div>
 </Layout>

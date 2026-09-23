@@ -30,7 +30,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       change, writes a one-sentence summary, and records the statement&rsquo;s
       answers to a fixed set of questions. <a href={withBase("/reading")}
         >Reading the data</a
-      > explains the results.
+      > explains the results. The scraper, the prompts and every model reading are <a
+        href="https://github.com/ANUcybernetics/aps-ai-tracker">open source</a
+      >, so any figure can be traced back to its source.
     </p>
     <p>
       Ben Swift started the archive in November 2025, the week the <a
@@ -49,8 +51,7 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       >. The data is on the <a href={withBase("/data/")}>downloads</a> page.
     </p>
 
-    <h2>Method</h2>
-    <h3>Who we track</h3>
+    <h2>Who we track</h2>
     <p>
       Every non-corporate Commonwealth entity, from the Department of
       Finance&rsquo;s <a
@@ -63,28 +64,6 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       >, and a few that have never published are kept on the list. The <a
         href={withBase("/agencies")}>agencies page</a
       > shows who is required to publish.
-    </p>
-    <h3>Changes</h3>
-    <p>
-      Each capture is a git commit, and a scrape glitch that is later reverted is
-      dropped. So are captures known to have failed (listed in <code
-        >captures.toml</code
-      >) and captures the model judges not to be the statement. A new capture that
-      has lost more than half its text is held back until someone checks it. Every
-      model reading is cached by content hash in the repository, so each is made
-      once.
-    </p>
-    <h3>Shared wording</h3>
-    <p>
-      Passages are compared after removing links, markup, punctuation and case,
-      with a separate pass for phrases from the DTA template.
-    </p>
-    <h3>Profiles</h3>
-    <p>
-      A profile is the model&rsquo;s answers to a fixed set of questions, each with
-      a fixed set of possible answers. Each version is read with the previous
-      version&rsquo;s profile as a baseline. Commitments are matched across
-      versions by word overlap.
     </p>
 
     <h2>Related work</h2>
@@ -161,7 +140,9 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
     </p>
 
     <p class="muted about__build">
-      {c.statements} statements, {c.changes} changes of substance across {c.revisions}{" "}
+      {c.statements} statements, <a href={withBase("/reading#changes")}
+        >{c.changes} changes of substance</a
+      > across {c.revisions}{" "}
       captures, {c.profiled} profiled. Built {formatDate(meta.builtAt)} from commit{" "}
       <a href={`https://github.com/ANUcybernetics/aps-ai-tracker/commit/${meta.headSha}`}
         >{meta.headSha.slice(0, 7)}</a

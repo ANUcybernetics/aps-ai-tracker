@@ -13,6 +13,7 @@ import { documentRkey } from "@/lib/atproto-ids";
 import { getAllStatements } from "@/lib/statements";
 import { meta, propagation, getAgencyNames } from "@/lib/load";
 import { formatDate } from "@/lib/format";
+import { withBase } from "@/lib/paths";
 import { revisionBodyToHtml } from "@/lib/markdown";
 import { READABLE_TIERS, changeTier } from "@/lib/profile-labels";
 import { buildScrubberDots, revAnchor, timePercent } from "@/lib/scrubber";
@@ -100,7 +101,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
       <StatementMeta doc={doc} />
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
-        {" · "}{changes} {changes === 1 ? "change" : "changes"} of substance across {doc.timeline.length}{" "}
+        {" · "}<a href={withBase("/reading#changes")}>{changes} {changes === 1 ? "change" : "changes"} of substance</a> across {doc.timeline.length}{" "}
         {doc.timeline.length === 1 ? "version" : "versions"}
         {lastUpdated && <> · last changed {formatDate(lastUpdated)}</>}
       </p>

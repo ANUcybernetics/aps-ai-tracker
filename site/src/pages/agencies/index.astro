@@ -7,7 +7,7 @@ import { getAgencies } from "@/lib/load";
 import { getStatements } from "@/lib/statements";
 import { AGENCY_QUESTIONS, agencyAnswers } from "@/lib/questions";
 import { SIZE_LABEL, originalityPercent, formatDate } from "@/lib/format";
-import { statementPath } from "@/lib/paths";
+import { statementPath, withBase } from "@/lib/paths";
 
 const agencies = await getAgencies();
 const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
@@ -78,9 +78,9 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
               <th scope="col">Size</th>
               <th scope="col" class="num">Standard</th>
               <th scope="col" class="num">Bespoke</th>
-              <th scope="col" class="num">Changes</th>
+              <th scope="col" class="num"><a href={withBase("/reading#changes")}>Changes</a></th>
               <th scope="col" class="num">Versions</th>
-              <th scope="col">Since policy v2.0</th>
+              <th scope="col"><a href={withBase("/reading#adoption")}>Since policy v2.0</a></th>
             </tr>
           </thead>
           <tbody>
