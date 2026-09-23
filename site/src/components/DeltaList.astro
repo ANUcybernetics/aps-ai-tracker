@@ -1,0 +1,78 @@
+---
+// A revision's profile deltas as chips: dropped answers first, then added,
+// then altered, each with its sign and a screen-reader word for it. Shared by
+// the statement story and the timeline feed so a change reads the same in both.
+import type { ProfileDelta } from "@/types/exporter";
+
+interface Props {
+  deltas: ProfileDelta[];
+}
+
+const { deltas } = Astro.props;
+const DIRECTIONS = [
+  { direction: "removed", sign: "−", word: "Removed" },
+  { direction: "added", sign: "+", word: "Added" },
+  { direction: "changed", sign: "~", word: "Changed" },
+] as const;
+---
+
+{
+  deltas.length > 0 && (
+    <ul class="deltas" aria-label="What changed in the statement's answers">
+      {DIRECTIONS.flatMap(({ direction, sign, word }) =>
+        deltas
+          .filter((d) => d.direction === direction)
+          .map((d) => (
+            <li class={`delta delta--${direction}`}>
+              <span class="delta__sign" aria-hidden="true">
+                {sign}
+              </span>
+              <span class="visually-hidden">{word}: </span>
+              {d.label}
+            </li>
+          )),
+      )}
+    </ul>
+  )
+}
+
+<style>
+  .deltas {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .delta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .delta__sign {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .delta--removed {
+    background: var(--del-bg);
+    color: var(--del-text);
+    border-color: transparent;
+  }
+
+  .delta--added {
+    background: var(--ins-bg);
+    color: var(--ins-text);
+    border-color: transparent;
+  }
+</style>

@@ -5,6 +5,7 @@
 // the model pulled out, and the structured profile deltas (a commitment
 // dropped, an officer appointed). Noise never appears here; cosmetic edits are
 // folded into one quiet line so the story stays readable.
+import DeltaList from "@/components/DeltaList.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
 import {
@@ -92,9 +93,6 @@ const stated = currency.statedFirstPublished;
         );
       }
       const { rev } = chapter;
-      const removed = rev.profileDeltas.filter((d) => d.direction === "removed");
-      const added = rev.profileDeltas.filter((d) => d.direction === "added");
-      const changed = rev.profileDeltas.filter((d) => d.direction === "changed");
       const tier = changeTier(rev.changeKind);
       return (
         <li class="story__item">
@@ -118,37 +116,7 @@ const stated = currency.statedFirstPublished;
                 ))}
               </ul>
             )}
-            {(removed.length > 0 || added.length > 0 || changed.length > 0) && (
-              <ul class="story__deltas" aria-label="What changed in the profile">
-                {removed.map((d) => (
-                  <li class="delta delta--removed">
-                    <span class="delta__sign" aria-hidden="true">
-                      &minus;
-                    </span>
-                    <span class="visually-hidden">Removed: </span>
-                    {d.label}
-                  </li>
-                ))}
-                {added.map((d) => (
-                  <li class="delta delta--added">
-                    <span class="delta__sign" aria-hidden="true">
-                      +
-                    </span>
-                    <span class="visually-hidden">Added: </span>
-                    {d.label}
-                  </li>
-                ))}
-                {changed.map((d) => (
-                  <li class="delta delta--changed">
-                    <span class="delta__sign" aria-hidden="true">
-                      ~
-                    </span>
-                    <span class="visually-hidden">Changed: </span>
-                    {d.label}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <DeltaList deltas={rev.profileDeltas} />
             <a class="story__diff" href={`#${revAnchor(rev.sha)}`}>
               Show the words that changed &darr;
             </a>
@@ -256,45 +224,6 @@ const stated = currency.statedFirstPublished;
 
   .story__points li[data-removal] {
     color: var(--del-text);
-  }
-
-  .story__deltas {
-    list-style: none;
-    margin: var(--space-3) 0 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .delta {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.35em;
-    font-size: var(--text-xs);
-    line-height: 1.35;
-    padding: 0.2rem 0.55rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-  }
-
-  .delta__sign {
-    font-family: var(--font-mono);
-    font-weight: 700;
-  }
-
-  .delta--removed {
-    background: var(--del-bg);
-    color: var(--del-text);
-    border-color: transparent;
-  }
-
-  .delta--added {
-    background: var(--ins-bg);
-    color: var(--ins-text);
-    border-color: transparent;
   }
 
   .story__diff {
