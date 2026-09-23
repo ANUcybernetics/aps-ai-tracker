@@ -109,7 +109,7 @@ const built = formatDate(meta.builtAt);
 
 <Layout
   title="Policy in practice"
-  description="What the statements show about the Australian Government's AI policy landing: adoption of each obligation over time, commitments dropped, who is in charge, and which statements have gone stale."
+  description="What the statements show about how agencies are meeting the Australian Government's AI policy: adoption of each obligation over time, commitments dropped, who is in charge, and which statements have gone stale."
 >
   <div class="page policy stack">
     <header class="stack">
@@ -123,8 +123,8 @@ const built = formatDate(meta.builtAt);
           href="https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps"
           >APS AI Plan</a
         > asked each agency to name a Chief AI Officer by July 2026. The statements are where
-        agencies say how far they have got. This page reads all {profiled.length} of them
-        together, as of {built}. Every figure here is a count of what a language model read
+        agencies say how far they have got, and this page reads all {profiled.length} of them
+        together as of {built}. Every figure here is a count of what a language model read
         in each statement; each links to the statement so the reading can be checked, and
         the full dataset behind them is <a href={withBase("/data")}>downloadable</a>.
       </p>
@@ -195,8 +195,8 @@ const built = formatDate(meta.builtAt);
         A statement that promises less than it used to is easy to miss. These are the
         promises, self-imposed limits and public-facing safeguards that a later revision no
         longer makes, newest first, as read by a language model comparing the two
-        revisions&rsquo; profiles. A promise reworded rather than withdrawn can land here, so each
-        links to the revision, where the exact words are shown.
+        revisions&rsquo; profiles. A reworded promise can also appear here, so each entry
+        links to the revision and its exact words.
       </p>
       <PolicyLedger rows={droppedCommitments} />
     </section>
@@ -209,8 +209,7 @@ const built = formatDate(meta.builtAt);
       <p class="section-note">
         Uses, domains, named tools and training claims that a later revision no longer
         mentions. A tool that drops out of a statement may simply have been renamed or
-        folded into a broader description; a use that drops out may still be happening.
-        These are changes in what the agency says, not in what it does.
+        folded into a broader description, and a use that drops out may still be happening.
       </p>
       <PolicyLedger rows={droppedDisclosures} />
     </section>
@@ -222,8 +221,8 @@ const built = formatDate(meta.builtAt);
       <p class="section-note">
         {caioInPlace} statements say a Chief AI Officer is in place and {caioPlanned} say one
         is coming. Most statements name the post without saying which job holds it; where
-        they do, this is who holds it (job titles only, never people). The counts below are
-        therefore smaller than the counts above.
+        they do, the lists below give the job title (never the person), so their counts are
+        smaller.
       </p>
       <div class="roles">
         <div>
@@ -358,9 +357,9 @@ const built = formatDate(meta.builtAt);
 
     <p class="muted policy__foot">
       {substanceChanges} changes of substance across {statements.length} statements feed these
-      figures, each read by a language model and each checkable against the words that changed.
-      For the full change record see the <a href={withBase("/timeline")}>timeline</a>;
-      for how any single agency got here, its statement page tells the story.
+      figures, each read by a language model and checkable against the words that changed.
+      The full change record is on the <a href={withBase("/timeline")}>timeline</a>, and each
+      agency&rsquo;s own history is on its statement page.
     </p>
   </div>
 </Layout>

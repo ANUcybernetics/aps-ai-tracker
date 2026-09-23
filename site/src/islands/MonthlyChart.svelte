@@ -101,7 +101,7 @@
   function describe(d: MonthlyMixRow): string {
     const total = STACK_TIERS.reduce((sum, t) => sum + d[t], 0);
     const parts = activeTiers.map((t) => `${d[t]} ${DESCRIBE_LABEL[t]}`).join(", ");
-    return `${formatMonthLong(d.month)}: ${total} ${total === 1 ? "change" : "changes"} — ${parts}`;
+    return `${formatMonthLong(d.month)}: ${total} ${total === 1 ? "change" : "changes"} (${parts})`;
   }
 
   const uid = $props.id();
@@ -136,7 +136,7 @@
                   rx={k === col.segs.length - 1 ? CAP_R : 0}
                   class={`mmx__seg mmx__seg--${seg.key}`}
                 >
-                  <title>{formatMonthLong(col.month)} — {seg.label}: {seg.value}</title>
+                  <title>{formatMonthLong(col.month)}, {seg.label}: {seg.value}</title>
                 </rect>
                 {#if k === col.segs.length - 1 && seg.h > 2 * CAP_PCT}
                   <!-- square off the rx'd bottom corners: the data-end rounds, the

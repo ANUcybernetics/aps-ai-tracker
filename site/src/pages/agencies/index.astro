@@ -31,12 +31,12 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
         AI in government <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
           >applies to non-corporate Commonwealth entities</a
-        > &mdash; {mandatoryCount} of these &mdash; and each must publish an <a
+        >, {mandatoryCount} of the bodies listed here, and each must publish an <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statement</a
-        >. Corporate Commonwealth entities are encouraged rather than required to,
-        and the defence portfolio and national intelligence community are carved out
-        altogether. We track the rest anyway, because plenty publish regardless.
+        >. Corporate Commonwealth entities are encouraged to publish but not required
+        to, and the defence portfolio and national intelligence community are carved
+        out altogether. Plenty of these bodies publish anyway, so we track them too.
       </p>
     </header>
 
@@ -106,16 +106,16 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
             <span class="muted">{notYet.length}</span>
           </div>
           <p class="section-note">
-            Bodies that owe a statement and have none we can find &mdash; or whose
-            statement we hold a link for but failed to capture on the latest run. A
-            body created after the policy took effect is dated.
+            Bodies that owe a statement and have none we can find, or whose statement
+            we hold a link for but failed to capture on the latest run. Bodies created
+            after the policy took effect show their date of establishment.
           </p>
           <ul class="agency-list">
             {notYet.map((a) => (
               <li>
                 {a.name} <span class="muted mono">{a.abbr}</span>
                 {a.established && (
-                  <span class="muted"> &mdash; established {formatDate(a.established)}</span>
+                  <span class="muted">, established {formatDate(a.established)}</span>
                 )}
               </li>
             ))}
@@ -134,7 +134,7 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
           <p class="section-note">
             Corporate Commonwealth entities and bodies outside the PGPA list. The
             policy encourages them to publish but does not require it, and these
-            ones have not. Many of their peers did publish anyway, and appear under
+            ones have not. Many of their peers have published, and appear under
             Published above and among the DTA&rsquo;s{" "}
             <a href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements">
               voluntary statements
@@ -166,8 +166,8 @@ const finderAgencies = agencies.map((a) => ({ abbr: a.abbr, name: a.name, status
             </a>{" "}
             to AI use in the defence portfolio, or to the national intelligence
             community as defined in section 4 of the <cite>Office of National
-            Intelligence Act 2018</cite>. Carve-outs may still publish voluntarily,
-            and several have.
+            Intelligence Act 2018</cite>. The carved-out bodies that publish anyway
+            appear under Published above; these ones have not.
           </p>
           <ul class="agency-list">
             {carvedOut.map((a) => (

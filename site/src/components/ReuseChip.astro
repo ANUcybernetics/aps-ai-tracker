@@ -17,7 +17,7 @@ interface Props {
 
 const { members } = Astro.props;
 const n = members.length;
-const label = `Also appears in ${n} other ${n === 1 ? "agency" : "agencies"} — show which`;
+const label = `Also appears in ${n} other ${n === 1 ? "agency" : "agencies"}; show which`;
 ---
 
 <span class="reuse">

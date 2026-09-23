@@ -47,31 +47,31 @@ const explorers = [
     href: withBase("/timeline"),
     title: "Timeline",
     hint: `${c.changes} changes`,
-    body: "Every change of substance, newest first, each summarised in a sentence and traceable to the words that moved. Filter by agency, portfolio, kind or month, or search inside the changes.",
+    body: "Every change of substance, newest first, each summarised in a sentence and linked to its diff. Filter by agency, portfolio, kind or month, or search the text of the changes.",
   },
   {
     href: withBase("/agencies"),
     title: "Agencies",
     hint: `${c.published} / ${c.agencies}`,
-    body: "Who has published, who hasn't, and who sits outside the mandate.",
+    body: "Which agencies have published and which haven't, including those the policy doesn't bind.",
   },
   {
     href: withBase("/policy"),
     title: "Policy in practice",
     hint: `${c.profiled} profiled`,
-    body: "How far the AI policy has landed: what agencies have taken up, what they have dropped, and who is in charge.",
+    body: "What agencies say they have taken up from the AI policy, what they have dropped, and who is responsible for AI in each.",
   },
   {
     href: withBase("/propagation"),
     title: "Propagation",
     hint: `${propagation.clusters.length} clusters`,
-    body: "How one DTA template bleeds across agencies, and who wrote their own.",
+    body: "Which passages recur across statements (much of it DTA template text), and which agencies wrote their own.",
   },
   {
     href: withBase("/whos-who"),
     title: "Who's who",
     hint: "hand-curated",
-    body: "The bodies behind the policy: who owns which piece of it, and how the arrangement grew.",
+    body: "The bodies behind the policy, which parts of it each one is responsible for, and how that arrangement came about.",
   },
 ];
 ---
@@ -85,7 +85,7 @@ const explorers = [
         Since February 2025, non-corporate Commonwealth entities must publish <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statements</a
-        > &mdash; {mandatoryPublished} of {mandatory.length} have{
+        >, and {mandatoryPublished} of {mandatory.length} have{
           newlyCreated.length > 0 && (
             <>
               ; the {newlyCreated.length === 1 ? "one" : newlyCreated.length} still to
@@ -121,9 +121,9 @@ const explorers = [
         <a href={withBase("/timeline")}>Full timeline &rarr;</a>
       </div>
       <p class="recent__caption">
-        Recorded changes by month since tracking began: the deeper the ochre, the more
-        the change amounted to. First-time captures aren&rsquo;t counted &mdash; only
-        statements actually changing. On the timeline, this chart is a filter.
+        Recorded changes by month since tracking began; the deeper the ochre, the more
+        substantial the change. A statement&rsquo;s first capture isn&rsquo;t counted.
+        On the timeline page the same chart works as a filter.
       </p>
       <MonthlyChart data={chart} />
       <ul class="feed">

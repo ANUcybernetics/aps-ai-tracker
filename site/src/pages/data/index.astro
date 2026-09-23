@@ -31,14 +31,14 @@ const files = [
 
 <Layout
   title="Data downloads"
-  description="Download the tracker's full dataset — every agency, statement profile, revision and classified change — as CSV and JSON, without cloning the repository."
+  description="Download the tracker's full dataset (every agency, statement profile, revision and classified change) as CSV and JSON."
 >
   <div class="page data prose stack">
     <h1>Data downloads</h1>
     <p class="lede">
-      Everything on this site is generated from one dataset, and you can have it. These
-      files are rebuilt with every deploy (this copy: {built}), so they always match the
-      pages. No API key, no repository clone, no scraping required.
+      Everything on this site is generated from one dataset, and these files are that
+      dataset. They are rebuilt with every deploy (this copy: {built}), so they always
+      match the pages, and you need neither an API key nor a clone of the repository.
     </p>
 
     <h2 id="files">The files</h2>
@@ -66,7 +66,7 @@ const files = [
       originality score. <span class="mono">stated_first_published</span> through{" "}
       <span class="mono">annual_review_overdue</span> are currency: the statement&rsquo;s
       own dates against the policy&rsquo;s review rules. The{" "}
-      <span class="mono">standard_*</span> columns are the report card &mdash; which of the
+      <span class="mono">standard_*</span> columns are the report card: which of the
       Standard&rsquo;s eight minimum elements the statement shows. The remaining columns
       are the current profile in the closed vocabularies of{" "}
       <a href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/src/aps_ai_tracker/profiles.py"
@@ -74,25 +74,26 @@ const files = [
       >, with list-valued fields (usage patterns, domains, measures, named tools) joined
       by semicolons and <span class="mono">profile_model</span> naming the model that read
       it. Agencies with no published statement keep their roster columns and leave the
-      rest empty &mdash; a blank profile means &ldquo;no statement&rdquo;, not
-      &ldquo;answered no&rdquo;.
+      rest empty, so a blank profile field means there is no statement to read, never
+      that the statement answered no.
     </p>
 
     <h2 id="caveats">What to know before you analyse</h2>
     <p>
       The profile fields, change classifications and summaries are a language
-      model&rsquo;s reading of each statement &mdash; convenient, mostly right, and worth
-      spot-checking against the linked text before you publish a finding. <a
+      model&rsquo;s reading of each statement. They are mostly right, but check them
+      against the linked text before you publish a finding. <a
         href={withBase("/reading")}>Reading the data</a
-      > explains what each figure claims and, more importantly, what it does not. The
-      record also only starts when the tracker did: a statement&rsquo;s first tracked
-      revision is not its first published version.
+      > explains what each figure claims and what it does not. The record also starts
+      only when the tracker did, so a statement&rsquo;s first tracked revision is not
+      its first published version.
     </p>
     <p>
-      The schemas follow the extraction code and do evolve. Each JSON file carries{" "}
+      The schemas change as the extraction code does. Each JSON file carries{" "}
       <span class="mono">generatedAt</span>, <span class="mono">headSha</span> and{" "}
       <span class="mono">schemaVersions</span> so you can tell which vintage produced
-      your copy; new CSV columns are appended rather than reordered.
+      your copy, and new CSV columns are added at the end so existing ones keep their
+      positions.
     </p>
 
     <h2 id="not-here">What is not here</h2>
@@ -105,30 +106,28 @@ const files = [
       > network (the open network Bluesky is built on) under{" "}
       <a href="https://bsky.app/profile/apsaitracker.app">@apsaitracker.app</a>: one
       record per statement and one per tracked change, each with a permanent identifier
-      that doesn&rsquo;t depend on this website &mdash; or the agency&rsquo;s &mdash;
-      staying online. You can <a
+      that stays valid if this website or the agency&rsquo;s goes offline. You can <a
         href="https://pdsls.dev/at://did:plc:yhnshyrc2iev6z65u3uraon4"
         >browse the records</a
-      > directly, or subscribe to the network&rsquo;s live event stream to be notified
-      of changes the moment they are recorded. The passage-reuse clusters behind the{" "}
+      > directly, or subscribe to the network&rsquo;s live event stream to hear of
+      changes as they are recorded. The passage-reuse clusters behind the{" "}
       <a href={withBase("/propagation")}>propagation explorer</a> are also derivable from
       those texts.
     </p>
 
     <h2 id="terms">Reuse and citation</h2>
     <p>
-      The dataset &mdash; these downloads and the derived fields in them &mdash; is
-      licensed{" "}
-      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, the same
-      licence most Australian Government open data carries: use it freely with
-      attribution. The scraper and this site are MIT-licensed, and the statement texts
+      These downloads, including the derived fields in them, are licensed{" "}
+      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, as is most
+      Australian Government open data, so you can use them freely with attribution. The
+      scraper and this site are MIT-licensed, and the statement texts
       remain the work of their agencies, most themselves licensed CC BY 4.0. If the data
       feeds something published, cite the tracker via the
       repository&rsquo;s <a
         href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/CITATION.cff"
         >CITATION.cff</a
-      >, and check the <a href={withBase("/about")}>about page</a> for the fuller
-      licensing story.
+      >. The <a href={withBase("/about")}>about page</a> has the full licensing
+      details.
     </p>
   </div>
 </Layout>

@@ -47,7 +47,7 @@ function tipText(d: ScrubberDot): string {
           data-current={d.isCurrent ? "" : undefined}
           data-edge={d.edge ?? undefined}
           data-date-label={formatDate(d.date)}
-          aria-label={`${formatDate(d.date)} — ${tipText(d)}`}
+          aria-label={`${formatDate(d.date)}: ${tipText(d)}`}
           aria-current={d.isCurrent ? "true" : "false"}
         >
           <span class="scrubber__tip" aria-hidden="true">
@@ -65,8 +65,8 @@ function tipText(d: ScrubberDot): string {
   <p class="scrubber__banner" data-banner hidden>
     <span>
       Viewing the revision of <strong class="mono" data-banner-date></strong>
-      {" "}(<span data-banner-pos></span> of {dots.length}) — passage highlighting applies only to
-      the current version.
+      {" "}(<span data-banner-pos></span> of {dots.length}). Passage highlighting shows only on the
+      current version.
     </span>
     <span class="scrubber__banner-nav">
       <button type="button" data-nav="prev">&larr; older</button>

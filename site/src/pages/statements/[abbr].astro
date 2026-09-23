@@ -90,7 +90,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 
 <Layout
   title={doc.agency}
-  description={`How ${doc.agency} describes its use of AI — what its statement commits to, how that has changed, and the text itself.`}
+  description={`How ${doc.agency} describes its use of AI: what its statement commits to, how that has changed, and the full text.`}
   atUri={atUri}
 >
   <div class="page stmt stack">
@@ -176,7 +176,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
         }
         <p class="muted stmt__attribution">
           Statement text &copy; {doc.agency}, reproduced for transparency tracking
-          (most agency content is CC BY 4.0 &mdash; check the original for specifics).
+          (most agency content is CC BY 4.0; check the original for its terms).
         </p>
       </article>
 

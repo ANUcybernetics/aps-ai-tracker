@@ -63,26 +63,24 @@ const readable = counts.substance + counts.revision + counts.unclassified;
     <header class="stack">
       <h1>Timeline</h1>
       <p class="lede">
-        Every change worth reading, newest first, each read from the diff and summarised
-        in a sentence: {counts.substance} changes of substance &mdash; a claim, commitment
-        or disclosure added, removed or altered{
+        Every change worth reading, newest first, each summarised in a sentence from its
+        diff. There are {counts.substance} changes of substance, where a claim, commitment
+        or disclosure was added, removed or altered{
           counts.revision > 0 && (
-            <>
-              {" "}
-              &mdash; and {counts.revision} revisions that reword without changing the substance
-            </>
+            <>, and {counts.revision} revisions that reword without changing the substance</>
           )
         }{
           counts.unclassified > 0 && <>, plus {counts.unclassified} not yet classified</>
         }. Cosmetic edits ({counts.cosmetic}), scrape noise ({counts.noise}) and
-        first-tracked captures ({counts.first}) are hidden until you ask for them. Narrow
-        the feed by agency, portfolio or kind of change, click a month in the chart, or
-        search &mdash; the search reads the words that changed, not just the summaries.
-        Open a row to see the words that moved.
+        first-tracked captures ({counts.first}) are hidden unless you ask for them. Narrow
+        the feed by agency, portfolio or kind of change, or click a month in the chart.
+        Search covers the changed text as well as the summaries, and opening a row shows
+        the diff.
       </p>
       <p class="muted">
-        Summaries are written by a language model from the diff; each row shows which
-        one, and &ldquo;the words that changed&rdquo; is always the primary source.
+        A language model writes each summary from the diff, and each row names the model.
+        Where a summary and &ldquo;the words that changed&rdquo; disagree, trust the
+        words.
       </p>
       <ReadingLink anchor="changes" label="How changes are classified" />
     </header>

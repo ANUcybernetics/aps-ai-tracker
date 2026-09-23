@@ -64,18 +64,18 @@ const columns = [
 
 <Layout
   title="Propagation"
-  description="How a shared template spreads across Australian Government AI transparency statements — an originality leaderboard and a browser of the passages agencies copy."
+  description="How a shared template spreads across Australian Government AI transparency statements, with an originality leaderboard and a browser of the passages agencies share."
 >
   <div class="page stack">
     <header class="stack">
       <h1>The template effect</h1>
       <p class="lede">
         Agencies reuse one another&rsquo;s wording heavily, and some of it is wording the
-        Standard asks for. This shows how much each statement is bespoke versus shared
-        with another tracked statement, and lets you browse the exact passages that
-        recur: {clusters.length} of them, of which {templateClusters} also appear in the
-        {ursourceLabel}&rsquo;s own statement. Sharing says a passage appears in more than
-        one place, not who wrote it first.
+        Standard asks for. This page ranks each statement by how much of its text appears
+        in no other tracked statement, and lists the {clusters.length} passages that recur,
+        {templateClusters} of which also appear in the {ursourceLabel}&rsquo;s own
+        statement. A shared passage appears in more than one statement; the data says
+        nothing about who wrote it first.
       </p>
     </header>
 
@@ -119,11 +119,12 @@ const columns = [
             <span class="muted">{familyRows.length} portfolios</span>
           </div>
           <p class="muted shared-note">
-            Set the {ursource} template aside and look at the passages agencies share
-            with each other. Of the {pairTotal} pairs of agencies that share such a passage,{" "}
-            {samePortfolioPairs} sit in the same portfolio. Shared corporate services, a shared
-            ICT provider, or one departmental statement used as the model for its portfolio
-            all leave this mark. Passages here, agencies in each family.
+            Leaving the {ursource} template aside, {pairTotal} pairs of agencies share at
+            least one passage, and {samePortfolioPairs} of those pairs sit in the same
+            portfolio. Shared corporate services, a shared ICT provider or a department
+            whose statement became the model for its portfolio would each produce this
+            pattern. Each row gives the number of passages shared within a portfolio and
+            the agencies that share them.
           </p>
           <ul class="families">
             {familyRows.map((f) => (
