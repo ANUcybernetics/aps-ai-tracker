@@ -1,7 +1,8 @@
 ---
 title: "A clearer tracker"
 date: 2026-09-23
-summary: "Every change on the site is now explained the same way, you can filter by the
+summary:
+  "Every change on the site is now explained the same way, you can filter by the
   questions you'd actually ask, and every capture is checked and read by Claude
   Opus 5.5."
 draft: true
@@ -30,9 +31,10 @@ a use-case register may still come from an agency that has one.
 Underneath, every capture is now checked to be the statement at all before
 anything reads it. That caught a few pages we'd been tracking that only linked
 to the statement (IP Australia's, for almost five months) and one firewall block
-page. The whole history has also been re-read with Claude Opus 5.5, and the
-numbers moved a little, mostly because it reads "complies with legislation" more
-strictly.
+page. A few agencies publish their statement as one section of a longer
+reporting page, so for those we now capture only that section, and an edit to a
+gifts register no longer shows up as a change to an AI statement. The whole
+history has also been re-read with Claude Opus 5.5.
 
 The [data downloads](/data/) have everything behind the site. If you spot
 something wrong,
