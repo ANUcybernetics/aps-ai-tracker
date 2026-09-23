@@ -262,9 +262,14 @@ def test_parse_stated_date(text, expected):
 
 
 def test_standard_report_counts_the_page_date():
-    profile = make_profile(last_updated_stated=None)
+    profile = make_profile(last_updated_stated=None, first_published_stated=None)
     assert standard_report(profile)["last-updated"] is False
     assert standard_report(profile, "2026-02-25")["last-updated"] is True
+
+
+def test_standard_report_counts_a_publication_date_as_last_updated():
+    profile = make_profile(last_updated_stated=None, first_published_stated="2026-02")
+    assert standard_report(profile)["last-updated"] is True
 
 
 def test_extract_profiles_inherits_across_noise_and_anchors_on_previous(

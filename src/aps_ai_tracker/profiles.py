@@ -693,7 +693,8 @@ def standard_report(
 
     `stated_last_updated` is the date the page itself carries (captured by the
     scraper, which strips it from the body before the model reads it); the
-    model's own reading of a date inside the prose is the fallback.
+    model's own reading of a date inside the prose is the fallback. A statement
+    that gives only its publication date has said when it was last updated.
     """
     return {
         "intentions": profile.intentions_stated,
@@ -702,7 +703,11 @@ def standard_report(
         "monitoring": profile.monitoring_measures_stated,
         "policy-compliance": profile.policy_compliance_stated,
         "legislation": profile.legislation_compliance_stated,
-        "last-updated": (stated_last_updated or profile.last_updated_stated)
+        "last-updated": (
+            stated_last_updated
+            or profile.last_updated_stated
+            or profile.first_published_stated
+        )
         is not None,
         "contact": profile.contact_provided,
     }
