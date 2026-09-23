@@ -18,6 +18,7 @@ from aps_ai_tracker.export import (
     collapse_reverts,
     normalise_passage,
     originality_score,
+    profile_timelines,
     quarantine_revisions,
     segment_passages,
     source_type,
@@ -90,6 +91,25 @@ def _body_rev(
         body_key=body,
         bulk=False,
     )
+
+
+def test_profile_timelines_reads_model_judged_noise(monkeypatch):
+    """Rule-caught noise inherits; model-judged noise (where a good capture
+    follows a failed one) is read."""
+    seen = {}
+    monkeypatch.setattr(
+        "aps_ai_tracker.export.extract_profiles", lambda chains: seen.update(chains)
+    )
+    revs = [_rev(k, sha=k) for k in ("failed", "recovered", "stamp", "edit")]
+    classes = {
+        "A": {
+            "recovered": Classification(kind="scrape-noise", method="llm"),
+            "stamp": Classification(kind="date-stamp", method="rule"),
+            "edit": Classification(kind="substantive", method="llm"),
+        }
+    }
+    profile_timelines({"A": revs}, classes, {"A": "Agency A"})
+    assert [step.readable for step in seen["A"][1]] == [True, True, False, True]
 
 
 def test_classify_timelines_pairs_consecutive_revisions(monkeypatch):

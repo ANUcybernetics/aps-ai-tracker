@@ -128,7 +128,8 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       minimum content, the policy 2.0 mandatory requirements and the APS AI Plan,
       and each question&rsquo;s source is recorded (see <a
         href={withBase("/reading#schema")}>where the questions come from</a
-      >). Noise revisions inherit the previous revision&rsquo;s profile.
+      >). A revision a rule marks as noise, such as a ticking date stamp, keeps the
+      previous revision&rsquo;s profile; every other revision is read.
     </p>
     <p>
       The scraper records a page&rsquo;s own last-updated date and then strips that

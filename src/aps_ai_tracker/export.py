@@ -356,8 +356,10 @@ def profile_timelines(
     """One profile per revision: read for readable revisions, inherited across noise.
 
     The first revision and every non-noise revision are read (each anchored on
-    the previous profile); a noise revision (nothing the agency wrote changed)
-    carries its predecessor's profile forward.
+    the previous profile). Noise a rule caught (a date stamp, a sidebar) carries
+    its predecessor's profile forward. Noise the model judged is read anyway:
+    that is where a good capture following a failed one lands, and inheriting
+    there would keep the failed page's reading.
     """
     chains = {
         abbr: (
@@ -367,7 +369,8 @@ def profile_timelines(
                     body=rev.body,
                     readable=i == 0
                     or (c := classes.get(abbr, {}).get(rev.sha)) is None
-                    or not c.is_noise,
+                    or not c.is_noise
+                    or c.method == "llm",
                 )
                 for i, rev in enumerate(revs)
             ],
