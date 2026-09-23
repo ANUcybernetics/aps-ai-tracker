@@ -1,252 +1,252 @@
 ---
 abbr: IPA
 agency: IP Australia
-source_url: https://www.ipaustralia.gov.au/about-us/accountability-and-reporting
-title: Accountability and reporting | IP Australia
+raw_hash: 08935350e939216384859807f2b9cdea59b4cc17212b4593bb92fe92f84b7cf4
+source_url: https://www.ipaustralia.gov.au/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ai-transparency-statement.pdf
+title: IP Australia artificial intelligence and automated decision-making transparency
+  statement
 ---
 
-## Strategic corporate plan
-
-We develop a strategic plan each year to establish:
-
-- our strategic objectives
-- key activities we'll undertake to meet them
-- performance measures.
-
-Our plan also includes an analysis of:
-
-- our operating environment
-- our capability to deliver what we promise
-- a forecast of demand for our services
-- how we'll monitor and manage risk.
-
-[Our corporate plan](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/corporate-plan)
-
-## Annual report
-
-Our annual report includes information about our financial outcomes and our performance against our objectives and measures. We produce our annual report at the end of each financial year. Past Annual Reports are available on the transparency portal [Publications](https://www.transparency.gov.au/publications?page=1&q=IP+Australia).
-
-Download the report
-
-[ Annual Report 2024-25 PDF | 4MB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/Annual-Report-2024-25.pdf?rev=99ddd3582eaa4253bc91b111ad704c79)
-
-## Annual budget statement
-
-We publish our budget and direction statement in May each year. It outlines what we aim to achieve and the expected performance results for our programs. Our budget statements appear in the Australian Government's Department of Industry, Science and Resources portfolio.
-
-[Portfolio budget statements](https://www.industry.gov.au/corporate-governance/budget-statements)
-
-## Audit committee and charter
-
-As our accountable authority, the Director General has established our Audit Committee in accordance with:
-
-- [section 45 of the Public Governance, Performance and Accountability Act 2013](https://www.legislation.gov.au/C2013A00123/latest/text) (PGPA Act)
-- [section 17 of the Public Governance, Performance and Accountability Act Rule 2014](https://www.legislation.gov.au/F2014L00911/latest/text) (PGPA Rule).
-
-The Audit Committee Charter lays out our Audit Committee's:
-
-- objectives
-- authority
-- composition and tenure
-- roles and responsibilities
-- reporting and administrative arrangements.
-
-Download
-
-[ Audit Committee Charter - 18 December 2025 PDF | 303KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/Audit-Committee-Charter---18-December-2025.pdf?rev=018fee8dd9dc41aface64f1aaa6e2e1a)
-
-## Artificial intelligence transparency statement
-
-Our artificial intelligence (AI) transparency statement explains how we use AI and how we comply with the [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
-
-Download
-
-[ AI transparency statement PDF | 327KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ai-transparency-statement.pdf?rev=39fb8d020fb94b9681e99e7d4b759395)
-
-## Annual legal services expenditure
-
-Our total legal services expenditure in the 2025–26 financial year was:
-
-**Legal services expenditure** | **Amount**
-
-| **(AUD) (excl GST)** |                |
-| -------------------- | -------------- |
-| External services    | $1,400,666     |
-| Internal services    | $1,668,201     |
-| **Total**            | **$3,068,867** |
-
-## Ministerial Statement of Expectations and Regulator Statement of Intent
-
-This Ministerial Statement of Expectations has been issued to IP Australia by our responsible Minister, Senator the Hon Tim Ayres, to provide greater clarity about the relevant government policies, objectives and priorities the Minister expects us to reflect in our work.
-
-Our Regulator Statement of Intent responds the Minister’s letter, outlining how we intend to meet those expectations and demonstrate progress.
-
-These statements should be read alongside our Strategic Corporate Plan and Annual Report, which include detailed information about our planned and actual performance, mapped to the regulator performance principles.
-
-Download
-
-[ IP Australia Ministerial Statement of Expectations Letter PDF | 2MB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip-australia-ministerial-statement-of-expectations-letter.pdf?rev=978687f034834fcebd6f0530810e45c8) [ Statement of Intent – IP Australia to Minister Ayres PDF | 577KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/statement-of-intent-ip-australia-to-minister-ayres.pdf?rev=7347e1b69543468282899c72dd6e6b5f)
-
-## WGEA Employer Statement
-
-The Workplace Gender Equality Agency (WGEA), is an Australian Government statutory agency created by the Workplace Gender Equality Act 2012.
-
-Under this Act, Commonwealth public sector employers that employ 100 or more people are required to submit an annual report on their Gender Pay Gap (GPG) to WGEA as a part of the Commonwealth Public Sector Gender Equality Reporting program.
-
-IP Australia provides this Employer Statement to provide context to its gender pay gap information and confirm its commitment to a diverse workforce, ensuring a range of talent pathways are available to people of all genders and acknowledge the importance of fairness and equity for all our employees.
-
-The data that the WGEA collects relates to women and men. Due to the limited amount of data available, we are currently unable to provide comprehensive insights on gender representation beyond male and female categories.
-
-IP Australia welcomes a diverse workforce and is committed to inclusive practices for female, transgender, gender non-conforming and non-binary gender identities supported through the [Gender Action Plan 2025-27](https://www.ipaustralia.gov.au/-/media/Project/IPA/IPAustralia/PDF/Gender-Action-Plan-2025-27.pdf?rev=bef1d7df1a634d1fb44bc7bdd52ba80d&hash=019DDBD70901C5C486D75AC8E115913F).
-
-Download
-
-[ WGEA Employer Statement PDF | 267KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/Employer-Statement-WGEA.pdf?rev=832ed8cd1df74be695d4125790a3493b)
-
-Other governance frameworks
-
-Our activities throughout the year are also guided by the following frameworks:
-
-##### Customer service charter
-
-Our customer service charter outlines our commitment to our customers.
-
-[Customer service charter](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
-
-##### Cost recovery implementation statement
-
-Our cost recovery implementation statement shows how we cover some of the costs of administering IP rights.
-
-[ Cost Recovery Implementation Statement 2024–25 (Budget update 2026–27) PDF | 819KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/CRIS/cost-recovery-implementation-statement-2024-25-budget-update-2026-27.pdf?rev=207bef0af3b64c7699adbd7f268a0b28)
-
-##### Regulator performance framework
-
-The regulator performance framework aims to reduce unnecessary or inefficient regulation. We complete a self assessment against this framework each year.
-
-[ Regulator Performance Framework Report 2019-2020 PDF | 227KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/ip-australia-rpf-self-assessment-report-2019-20.pdf?rev=a80fb5849a684b02b383833cef0deb2c)
-
-##### Tenders and contracts
-
-#### Senate Order for entity contracts
-
-The Senate Order for entity contracts requires entities to develop an internet listing twice a year that identifies contracts entered into during the preceding calendar or financial year, valued at or above $100,000 (GST inclusive), along with details relating to each of those contracts.
-
-Our Senate Order report is available at [AusTender](https://www.tenders.gov.au/senateorder/list).
-
-##### Public interest disclosure scheme
-
-Public officials can use the public interest disclosure (PID) scheme to report suspected wrongdoing in the Australian public sector.
-
-The scheme facilitates the investigation of wrongdoing and maladministration in the Commonwealth public sector and protects disclosers and others from reprisal. The [Public Interest Disclosure Act 2013](https://www.legislation.gov.au/C2013A00133/latest/versions) (PID Act) underpins the PID scheme.
-
-#### Examples of wrongdoing
-
-- suspected illegal conduct under a Commonwealth, State or Territory law
-- corruption - PIDs involving serious or systemic corruption issues may be referred by our agency to [The National Anti-Corruption Commission](https://www.nacc.gov.au/) (NACC).
-- maladministration
-- abuse of public trust
-- scientific research deception like fabrication, falsification or plagiarism
-- wasting public money or wastage of public property
-- unreasonable danger to health and safety
-- conduct that is a danger to the environment
-- abuse of position
-- conduct which may be grounds for disciplinary action resulting in termination of a person’s engagement or appointment.
-
-#### Who can make a PID
-
-Generally, a discloser must be a current or former public official of the Commonwealth. This includes:
-
-- public servants (ongoing, non-ongoing and casual)
-- parliamentary service employees
-- service providers under a Commonwealth contract
-- statutory office holders
-- staff of Commonwealth companies
-- temporary employees engaged through a recruitment agency
-- people deemed to be a public official by an authorised officer.
-
-#### Protections provided to a discloser and others under the PID Act
-
-The person making the PID, called the ‘discloser’, and other public officials involved gain certain protections.
-
-- The discloser and witnesses are immune from civil, criminal and administrative liability (including disciplinary action) that might otherwise arise from making the disclosure or participating in the investigation. This does not apply if the person knowingly makes a statement that is false or misleading, or for a disclosure involving their own conduct.
-- The discloser and others are also protected from reprisal actions or threats of reprisal action as a result of a PID, such as being dismissed, other injuries to their employment and damage to the person’s property, reputation, business or financial position. IP Australia has a duty to protect disclosers and other public officials that belong to IP Australia from reprisals. Disclosers and other public officials should raise any concerns about reprisal action with an authorised officer so the risk can be managed.
-
-The discloser’s identity must be kept confidential. The discloser should be careful to not act in a way that is inconsistent with keeping their identity confidential, such as identifying themselves as a discloser to persons who are not involved in the management of the PID.
-
-A discloser must make the PID following the process below to ensure that the protections apply.
-
-#### Who can make a PID
-
-**Who to report to**
-
-To gain the protection of the PID Act you must disclose your concerns to an authorised person.
-
-You can make a PID about our agency by contacting an authorised officer. Our authorised officers are the Director General and the Deputy Director General
-
-You can also make a PID through a supervisor, if you’re an IP Australia staff member, and they will pass it on to an authorised officer.
-
-The PID scheme is designed to facilitate internal disclosures and investigations. In limited circumstances, you may want to make a PID to someone outside the Australian Government. If you're considering making such a disclosure, it is important to seek independent legal advice to see if you are protected under the Act.
-
-**What information to include**
-
-You don’t have to follow a specific format to make a disclosure.\
-A disclosure can be made:
-
-- anonymously or openly (if you choose to remain anonymous it may limit our ability to investigate the disclosure)
-- orally (in person or by phone)
-- in writing (by email or hardcopy).
-
-Our agency prefers PIDs in writing. Please try to cover the following information in your PID:
-
-- your name and contact details (although you may choose to remain anonymous)
-- details of the alleged wrongdoing
-- who you think committed the alleged wrongdoing
-- when and where the alleged wrongdoing occurred
-- any relevant evidence surrounding the alleged wrongdoing
-- whether you did anything in response to the alleged wrongdoing
-- others who know about the alleged wrongdoing and any action they have taken
-- whether you believe your information is a PID under the PID Act
-- if you’re concerned about possible reprisals as a result of making your disclosure
-- if you have any supporting correspondence or documentation and if you can provide copies.
-
-Please do not attempt to investigate the allegations yourself or to obtain information which you do not have authorisation to access in your day-to-day duties.
-
-#### After you make a PID
-
-Our Director General decides how the PID scheme operates in our agency. Read details in the PID procedure:
-
-[ IP Australia public disclosure procedure January 2024 PDF | 5MB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/Accountability-and-reporting/ip_australia_public_interest_disclosure_procedure_january_2024.pdf?rev=59a7a2c9c4de42c5b7675b4cba6c856f)
-
-##### Breaches of the Code of Conduct
-
-As per section 13 of the [Public Service Act 1999](https://www.legislation.gov.au/C2004A00538/latest/text), everyone who works at IP Australia Is required to adhere to the [Australian Public Service (APS) Code of Conduct](https://www.apsc.gov.au/aps-code-conduct).
-
-Suspected breaches will be dealt with as per our procedure for determining breaches of the Code of Conduct and for determining sanction.
-
-[ Determining breaches of the APS Code of Conduct procedure PDF | 298KB ](https://www.ipaustralia.gov.au/about-us/~/-/media/Project/IPA/IPAustralia/PDF/determining-breaches-of-the-aps-code-of-conduct-procedure.pdf?rev=c85cbf3c11e5441f91544ae4d540aef2)
-
-## Related content
-
-Freedom of information
-
-You can request copies of information held by our agency at anytime. Here's how to make a freedom of information (FOI) request, and the other ways of accessing our documents and historical data.
-
-[Read more](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/freedom-of-information)
-
-Corporate
-
-Customer service charter
-
-Our customer service charter outlines what our customers can expect when interacting with us and how we aim to provide high levels of service.
-
-[Read more](https://www.ipaustralia.gov.au/about-us/customer-service-charter)
-
-Gift register
-
-Our gift register lists the gifts and benefits our staff receive while undertaking official duties. It includes those valued above the disclosure threshold.
-
-[Read more](https://www.ipaustralia.gov.au/about-us/accountability-and-reporting/gift-register)
-
-We [ use cookies](https://www.ipaustralia.gov.au/about-us/our-agency/privacy) to improve your experience.
-
-Accept Opt Out
+1 of 6 
+ 
+ 
+IP Australia artificial intelligence and 
+automated decision-making 
+transparency statement 
+This transparency statement provides the public with relevant information about IP Australia’s use of 
+artificial intelligence (AI) and automated decision-making (ADM). This statement is required under the 
+Policy for the responsible use of AI in government (the Policy).  
+How do we define AI & ADM?   
+In accordance with the Policy, IP Australia applies the definition for AI provided by the Organisation for 
+Economic Co-operation and Development (OECD): 
+An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the 
+input it receives, how to generate outputs such as predictions, content, recommendations, or 
+decisions that can influence physical or virtual environments. Different AI systems vary in their 
+levels of autonomy and adaptiveness after deployment. 
+With reference to the Commonwealth Ombudsman’s Automated Decision-making – Better Practice 
+Guide, IP Australia defines ADM as: 
+Automated Decision-Making refers to the application of automated systems in any part of the 
+decision-making process. Automated decision-making includes using automated systems to: 
+• make the final decision 
+• make interim assessments or decisions leading up to the final decision 
+• recommend a decision to a human decision-maker 
+• guide a human decision-maker through relevant facts, legislation or policy 
+• automate aspects of the fact-finding process which may influence an interim decision or 
+the final decision. 
+Automated systems range from traditional non-technological rules-based systems to specialised 
+technological systems, which use automated tools to predict and deliberate. 
+Why do we use AI & ADM? 
+IP Australia’s purpose is Enabling Australians to benefit from great ideas by providing a world-leading 
+IP system. We are committed to fostering innovation and engaging AI and ADM to improve the 
+efficiency and accessibility of the IP rights system and deliver innovative digital and data-driven 
+customer and staff experiences. 
+How do we use AI & ADM?   
+IP Australia uses AI and ADM to boost service efficiency by automating business processes, enhancing 
+compliance and fraud detection, and supporting decision-making and analysis of information. 
+Our approach is based on Australia’s AI Ethics Principles and reflects that decisions that are likely to 
+significantly impact our customers, including decisions to grant IP rights, are always made by our 
+skilled people.  
+
+ 
+2 of 6 
+Under our IP rights legislation1, the Commissioner of Patents, Registrar of Trade Marks and Designs, 
+and Registrar of Plant Breeder’s Rights may arrange for the use, under their control, of computer 
+programs for any purposes for which they may, or must, under the legislation:  
+• make a decision;  
+• exercise any power or comply with any obligation; or  
+• do anything else related to making a decision, exercising a power, or complying with an 
+obligation. 
+IP Australia currently uses AI in the following domains and usage patterns. More information about AI 
+usage patterns and domains is available on the DTA website: 
+https://www.digital.gov.au/policy/ai/resources/use-classification.  
+ 
+Domains 
+• Service delivery: Enhances the services we provide. AI supports our IP rights examination and 
+administration officers to deliver more efficient services and products, allowing them to focus 
+their expertise on the quality of our products.   
+• Corporate and enabling: Automates processes, optimises resources and improves efficiency. 
+This includes AI enabled tools that support staff to quickly digest large amounts of 
+information, refine emails and documents, and keep records of meetings.   
+• Compliance and fraud detection: Identifies patterns or anomalies in data to detect fraudulent 
+activities and support compliance with laws and regulations. 
+• Policy and legal: Analyses policies and legal documents to provide insights that support our 
+expert policy and legal officers. 
+• Scientific: Processes complex datasets, predict outcomes and enhance monitoring functions. 
+Usage patterns 
+• Decision making and administrative action: Supports decision making or the taking of 
+administrative action by guiding, assessing or making a recommendation to a human decision 
+maker.  
+• Analytics for insights: Identifies, produces or understands insights within structured or 
+unstructured materials via comprehensive data analysis, predictive modelling and/or reporting 
+tools. 
+• Workplace productivity: Automates routine tasks, manages workflows, and facilitates 
+communication. 
+• Image processing: Processes images to identify patterns and objects. 
+Interaction with the public  
+IP Australia makes specific AI tools available to the public which are designed to assist in accessing 
+information about the IP rights system. This means that the public may directly interact with, or be 
+significantly impacted by, AI or its outputs without human review. This falls under the service delivery 
+domain with usage patterns consistent with analytics for insights, image processing and workplace 
+productivity. 
+ 
+1 Trade Marks Act 1995, Section 222A Computerised decision-making. 
+Designs Act 2003, Section 135A Computerised decision-making. 
+Patents Act 1990, Section 223A Computerised decision-making. 
+Plant Breeder’s Rights Act 1994, Section 76B Computerised decision‑making. 
+
+ 
+3 of 6 
+The following are plain English examples of how we use AI to benefit our customers, stakeholders and 
+staff.   
+ 
+Patent examination: Family Member Analyser 
+Domain: Service delivery; Corporate and enabling 
+Usage patterns: Workplace productivity; Decision making and administrative action; Analytics for insights 
+Family members are applications for the same invention lodged in Australia and other 
+countries/jurisdictions. Family Member Analyser is used by IP Australia Patent Examiners to 
+improve the efficiency of the patent examination process. This tool uses a machine learning model 
+to compare published claim sets of ‘family members’ of an Australian Patent Application. The model 
+uses semantic word comparison of independent claims to assess their similarity and then rank the 
+family member search results by claim relevance. This ranking assists patent examiners to quickly 
+identify all available family members and overseas examination reports that are most relevant to 
+the specific case undergoing examination. Family Member Analyser does not make examination 
+decisions, recommendations, or determinations. All examination outcomes remain the 
+responsibility of the Patent Examiner, who exercises independent professional judgement when 
+reviewing and using the information provided by the tool. The ranked results are provided as 
+decision‑support information and may be accepted, supplemented, or disregarded by the examiner 
+as appropriate to the circumstances of the case under Australian law.   
+Corporate tasks: Microsoft Copilot 365 
+Domain: Corporate and enabling; Policy and legal 
+Usage patterns: Workplace productivity; Analytics for insights 
+IP Australia staff, across both corporate and examination functions, use Microsoft Copilot 365 to 
+assist with everyday tasks in Microsoft programs like Teams, Outlook, Word, PowerPoint and Excel. 
+Copilot 365 is used by staff in routine tasks such as summarising meetings and chat conversations 
+and assisting in the editing process for documents or emails. The tool is particularly useful to staff in 
+our corporate functions, such as policy and legal, to help get across large or complex document 
+sets. Any outputs generated by Copilot are always subject to the professional expertise and 
+judgement of our staff. 
+TM Checker 
+Domain: Service Delivery  
+Usage patterns: Analytics for insights; Image Processing 
+TM Checker is a publicly available AI assisted tool provided by IP Australia to help users decide if 
+their trade mark is likely to face problems when it is examined. The tool is designed primarily to 
+support small and medium enterprises by improving access to information about the Australian 
+trade mark system. TM Checker uses AI to check a proposed trade mark based on internally trained 
+data and examinations conducted by IP Australia.   
+TM Checker provides informational results only and does not make decisions, recommendations, or 
+determinations about registrability. Users should carefully evaluate the accuracy, currency, 
+completeness and relevance of the information obtained from TM Checker and draw their own 
+conclusions for their specific circumstances and purposes. This tool is not a substitute for receiving 
+legal advice in relation to registration for a trade mark. IP Australia recommends that users consult 
+an intellectual property professional directly for specific advice in relation to registering a trade 
+mark. 
+
+ 
+4 of 6 
+IP First Response AI Chatbot 
+Domain: Service Delivery  
+Usage patterns: Analytics for insights 
+The IP First Response AI Chatbot is an experimental tool developed by IP Australia to help 
+individuals and small businesses access plain English information on intellectual property rights and 
+enforcement in Australia. The chatbot provides general guidance and does not offer professional 
+legal advice or recommendations, only options on navigating the IP rights system. 
+The tool can only access and provide users approved content from the publicly viewable webpages 
+on IP First Response website and a curated number of IP Australia corporate webpages – this is its 
+knowledge base. The tool does not access external sources. The chatbot also retains access to the 
+base training data contained within the Claude Large Language Model.  
+The tool cannot recall conversation history beyond a user’s active session. Any retained data is 
+deidentified before it is stored to help protect user privacy. The deidentified data is used exclusively 
+for monitoring and service improvement. 
+The chatbot has been programmed (via it’s prompts) to restrict discussions to IP rights and IP rights 
+enforcement only, however due to the variable nature of generative AI there may be rare instances 
+where the chatbot could produce outputs outside of the pre-defined context. The deidentified chat 
+data is reviewed to monitor for instances of this context-drift.   
+ 
+Customer Contact Centre’s new systems  
+Domain: Service delivery 
+Usage patterns:  Workplace productivity 
+When a customer contacts IP Australia’s Contact Centre, an AI-powered system called Oration may 
+assist in handling the enquiry. Oration converts speech into text, identifies the reason for the call, 
+and collects information needed to help the customer, such as details about intellectual property 
+(IP) rights. Using pre-defined business rules, the system helps direct the call to the customer service 
+representative best placed to assist. Information from the call is also recorded in Salesforce, our 
+customer relationship management system, to support customer service and record-keeping 
+requirements.   
+IP Australia also uses AI features within Salesforce, known as Agentforce, to help customer service 
+representatives work more efficiently. These tools can automatically suggest enquiry topics, identify 
+relevant IP right information, summarise customer interactions, and generate draft email or live 
+chat responses. The AI helps reduce administrative tasks and enables staff to focus on providing 
+customer support. 
+AI does not make decisions on behalf of IP Australia or our customers. All AI-generated information 
+and draft responses are reviewed and can be amended by a customer service representative before 
+being saved or sent. AI-generated content is based only on IP Australia-approved knowledge 
+articles, and security controls are in place to protect personal information and ensure customer 
+data remains secure. 
+ 
+ 
+
+ 
+5 of 6 
+ADM use cases 
+At IP Australia, ADM is only used for objective and rules-based decisions and administrative actions, or 
+to support a human decision maker. Decisions that are likely to significantly impact our customers, 
+including decisions to grant IP rights, are always made by our skilled people. The following are plain 
+English examples of how ADM is used to benefit our customers, stakeholders and staff. 
+ 
+Patent administration: Minimum filing requirements  
+The initial processing for some types of new patent applications has been automated using optical 
+character recognition. The system automatically reviews the application and verifies key elements of 
+the minimum filing requirements, including a language check, applications filed in English, description 
+supplied, applicant/agent contact details. If the automation identifies anything that does not meet 
+minimum requirements, the application is sent to an IP Australia staff member for manual review. If 
+the system identifies the minimum filing requirements are met, the application is sent on for the next 
+step in the process.  
+Trade Mark administration: Trade marks renewal 
+IP Australia uses basic rules-based automation to manage the renewal process for registered trade 
+marks. When a trade mark is coming up for renewal, which happens every 10 years, the system 
+automatically notifies the trade mark owner. The trade mark owner can pay the renewal fee any time 
+in the 12 months before it’s due, or up to 6 months after the due date. If the fee is paid, the system 
+automatically renews the trade mark. If the fee isn’t paid within those 6 months after the deadline, 
+the system will automatically mark the trade mark as ceased. Automated reminders and notifications 
+are sent throughout the process, making it easier for trade mark owners to keep their registration 
+active without missing any deadlines, and generating significant efficiencies for IP Australia in trade 
+mark administration.  
+How do we govern AI & ADM? 
+IP Australia has AI and ADM governance policies. These policies set the guardrails to ensure 
+appropriate governance of AI and ADM technologies at IP Australia. While distinct, the two polices 
+share many features and are governed in similar ways. We review the policies at least annually to 
+ensure they continue to be appropriate for IP Australia’s context and are aligned to  
+whole-of-government requirements.  
+IP Australia’s Accountable Official for AI and Chief AI Officer is the Deputy Director General. The 
+Accountable Official is accountable for governance of AI and implementation of the Policy within IP 
+Australia.  
+As per the IP rights legislation, the Commissioner/Registrar is responsible for all relevant applications 
+of ADM.  
+To ensure appropriate monitoring and governance of AI, IP Australia has implemented the Australian 
+Government Artificial intelligence impact assessment tool, and applies additional risk-scaled 
+governance mechanisms. This includes regular review of deployed AI systems.  
+Our approach to governance empowers our people to engage in low-risk AI use cases and ensures that 
+higher-risk applications are subject to rigorous controls and conditions to protect the public, our 
+customers and our staff.  
+
+ 
+6 of 6 
+How do we comply with the Policy? 
+IP Australia is compliant with all mandatory requirements of the Policy, except for those mandatory 
+requirements with a future implementation date articulated in the Policy, which we are working 
+towards applying.  
+When will this transparency statement be updated? 
+This statement will be updated at least once a year, or sooner if we make any significant change to our 
+approach to AI, or if any new factor materially impacts the existing statement’s accuracy. 
+Who can I talk to? 
+For any enquires regarding IP Australia’s use of AI, please contact  
+MDB-AI-ADM-Governance@IPAustralia.gov.au.  
+ 
+Version History  
+Version 
+number  
+Date published  Key changes  
+1 27 February 2025 First version  
+2 27 February 2026 Annual update   
+3 30 July 2026 Interim Update: Introduction of the IP First Response AI 
+Chatbot and Customer Contact Centre’s new systems
