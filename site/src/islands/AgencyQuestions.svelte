@@ -58,6 +58,7 @@
   }
 
   .aq__field {
+    min-inline-size: 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -67,6 +68,7 @@
   }
 
   .aq__field select {
+    min-inline-size: 0;
     max-inline-size: 100%;
     font: inherit;
     font-size: 0.9rem;
