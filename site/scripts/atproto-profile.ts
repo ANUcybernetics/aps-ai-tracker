@@ -17,7 +17,7 @@ net.setDefaultAutoSelectFamilyAttemptTimeout(500);
 
 const DISPLAY_NAME = "APS AI Tracker";
 // Bluesky caps bios at 256 graphemes; keep well under.
-const DESCRIPTION = `Tracking how Australian Government agencies describe their use of AI — full text + change history of every AI transparency statement, updated daily.
+const DESCRIPTION = `The full text and change history of every Australian Government AI transparency statement, scraped daily.
 
 ${SITE_URL}
 doi.org/10.5281/zenodo.20842437`;
