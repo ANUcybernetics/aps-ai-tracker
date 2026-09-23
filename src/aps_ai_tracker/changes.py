@@ -31,7 +31,7 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 CACHE_PATH = llm.CACHE_DIR / "changes.json"
 
 NOISE_KINDS = frozenset(

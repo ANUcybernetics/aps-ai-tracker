@@ -35,7 +35,7 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 CACHE_PATH = llm.CACHE_DIR / "profiles.json"
 
 # The instruments' own dates, used for the staleness and adoption views.
