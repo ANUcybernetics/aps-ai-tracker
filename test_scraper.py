@@ -17,6 +17,7 @@ from html import escape
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+import httpx
 import pytest
 import yaml
 from bs4 import BeautifulSoup
@@ -42,6 +43,7 @@ from aps_ai_tracker import (
     save_raw,
     save_statement,
 )
+from aps_ai_tracker.scraper import fetch_raw_async
 
 
 def fetch_statement(agency: Agency) -> StatementResult:
@@ -431,6 +433,40 @@ def test_save_statement_includes_final_url_on_redirect():
         # final_url should be present when it differs from source_url
         assert metadata["final_url"] == "https://example.com/new"
         assert metadata["source_url"] == "https://example.com/old"
+
+
+def _fetch_through(body: str, content_type: str = "text/html") -> RawFetchResult:
+    agency = Agency(name="Test Agency", abbr="TEST", url="https://example.com")
+    transport = httpx.MockTransport(
+        lambda _: httpx.Response(200, text=body, headers={"content-type": content_type})
+    )
+
+    async def run() -> RawFetchResult:
+        async with httpx.AsyncClient(transport=transport) as client:
+            return await fetch_raw_async(agency, client, max_retries=1)
+
+    return asyncio.run(run())
+
+
+def test_fetch_rejects_block_page_served_with_200():
+    """A WAF block page is a failed fetch, never a statement to save."""
+    # ACCC's page as the nightly run received it (12 September 2026).
+    result = _fetch_through(
+        '<!DOCTYPE html><html lang="en"><head><title>Access Denied</title></head>'
+        "<body><h1>Access Denied</h1>You don't have permission to access "
+        '"http://www.accc.gov.au/" on this server.<p>Reference #18.ebefc017</p>'
+        "<p>https://errors.edgesuite.net/18.ebefc017</p></body></html>"
+    )
+    assert result["content"] is None
+    assert result["error"] and "block page" in result["error"]
+
+
+def test_fetch_keeps_ordinary_page():
+    result = _fetch_through(
+        "<html><body><h1>AI transparency statement</h1></body></html>"
+    )
+    assert result["error"] is None
+    assert result["content"]
 
 
 def test_save_raw_html():

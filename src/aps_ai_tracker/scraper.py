@@ -667,9 +667,22 @@ async def fetch_raw_async(
             )
             response.raise_for_status()
 
+            # A WAF block page can arrive with a 200; saving it would record
+            # the block as the agency rewriting its statement.
+            content_type = response.headers.get("content-type", "").lower()
+            if "pdf" not in content_type and (challenge := challenge_in(response.text)):
+                logger.error(f"{agency.name}: served a block page ({challenge})")
+                return {
+                    "content": None,
+                    "content_type": None,
+                    "status_code": response.status_code,
+                    "final_url": str(response.url),
+                    "error": f"block page served ({challenge})",
+                }
+
             return {
                 "content": response.content,
-                "content_type": response.headers.get("content-type", "").lower(),
+                "content_type": content_type,
                 "status_code": response.status_code,
                 "final_url": str(response.url),
                 "error": None,
@@ -747,15 +760,17 @@ BROWSER_SESSION = "aps-scrape"
 # agency sites read with no credentials in the profile.
 BROWSER_CHROME_ARGS = "--no-sandbox"
 BROWSER_TIMEOUT = 180.0
-# A challenge page returns 200 with an interstitial body, so the give-away is
-# its text. Matched against the capture, never against a live page's prose:
-# these phrases are the challenge vendors', not an agency's.
+# A challenge or block page returns 200 with an interstitial body, so the
+# give-away is its text. Matched against the capture, never against a live
+# page's prose: these phrases are the WAF vendors', not an agency's. Both fetch
+# paths check them.
 CHALLENGE_MARKERS = (
     "just a moment...",
     "attention required! | cloudflare",
     "incapsula incident id",
     "_incapsula_resource",
     "verifying you are human",
+    "errors.edgesuite.net",  # Akamai's "Access Denied" reference link
 )
 # The first load of a challenged page often *is* the challenge; the reload that
 # follows carries the clearance cookie the challenge just set.
