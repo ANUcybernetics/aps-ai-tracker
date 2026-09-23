@@ -8,8 +8,8 @@
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
 import {
-  CHANGE_KIND_LABEL,
   READABLE_TIERS,
+  TIER_LABEL,
   changeTier,
   formatStatedDate,
 } from "@/lib/profile-labels";
@@ -95,7 +95,7 @@ const stated = currency.statedFirstPublished;
       const removed = rev.profileDeltas.filter((d) => d.direction === "removed");
       const added = rev.profileDeltas.filter((d) => d.direction === "added");
       const changed = rev.profileDeltas.filter((d) => d.direction === "changed");
-      const kindLabel = CHANGE_KIND_LABEL[rev.changeKind];
+      const tier = changeTier(rev.changeKind);
       return (
         <li class="story__item">
           <time class="story__date mono" datetime={rev.date}>
@@ -103,8 +103,8 @@ const stated = currency.statedFirstPublished;
           </time>
           <div class="story__body">
             <p class="story__summary">
-              <span class="pill" data-kind={rev.changeKind}>
-                {kindLabel}
+              <span class="pill" data-tier={tier}>
+                {TIER_LABEL[tier]}
               </span>{" "}
               {rev.summary ?? "Not yet summarised."}
             </p>
@@ -121,7 +121,7 @@ const stated = currency.statedFirstPublished;
             {(removed.length > 0 || added.length > 0 || changed.length > 0) && (
               <ul class="story__deltas" aria-label="What changed in the profile">
                 {removed.map((d) => (
-                  <li class="delta delta--removed" data-sig={d.significance}>
+                  <li class="delta delta--removed">
                     <span class="delta__sign" aria-hidden="true">
                       &minus;
                     </span>
@@ -130,7 +130,7 @@ const stated = currency.statedFirstPublished;
                   </li>
                 ))}
                 {added.map((d) => (
-                  <li class="delta delta--added" data-sig={d.significance}>
+                  <li class="delta delta--added">
                     <span class="delta__sign" aria-hidden="true">
                       +
                     </span>
@@ -139,7 +139,7 @@ const stated = currency.statedFirstPublished;
                   </li>
                 ))}
                 {changed.map((d) => (
-                  <li class="delta delta--changed" data-sig={d.significance}>
+                  <li class="delta delta--changed">
                     <span class="delta__sign" aria-hidden="true">
                       ~
                     </span>
@@ -237,7 +237,7 @@ const stated = currency.statedFirstPublished;
     vertical-align: 0.1em;
   }
 
-  .pill[data-kind="substantive"] {
+  .pill[data-tier="substance"] {
     background: var(--accent-wash);
     color: var(--accent-ink);
     border-color: var(--accent);
@@ -295,10 +295,6 @@ const stated = currency.statedFirstPublished;
     background: var(--ins-bg);
     color: var(--ins-text);
     border-color: transparent;
-  }
-
-  .delta[data-sig="significant"] {
-    font-weight: 600;
   }
 
   .story__diff {

@@ -2,7 +2,7 @@
 import DiffView from "@/components/DiffView.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate, signedDelta } from "@/lib/format";
-import { CHANGE_KIND_LABEL, changeTier } from "@/lib/profile-labels";
+import { TIER_LABEL, changeTier } from "@/lib/profile-labels";
 import { revAnchor } from "@/lib/scrubber";
 import type { TimelineRevision } from "@/types/exporter";
 
@@ -47,9 +47,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
             <time class="mono muted" datetime={rev.date}>
               {formatDate(rev.date)}
             </time>
-            <span class="pill" data-kind={rev.changeKind}>
-              {CHANGE_KIND_LABEL[rev.changeKind]}
-            </span>
+            <span class="pill">{TIER_LABEL[tier]}</span>
             <span class="rev__delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
               {signedDelta(rev.charDelta)}
             </span>

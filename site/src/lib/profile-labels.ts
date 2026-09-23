@@ -4,21 +4,6 @@
 import type { ChangeKind, Profile } from "@/types/exporter";
 import { NOISE_KINDS } from "@/lib/schemas";
 
-export const CHANGE_KIND_LABEL: Record<ChangeKind, string> = {
-  "first-seen": "first tracked",
-  formatting: "formatting only",
-  "link-churn": "links only",
-  chrome: "page chrome",
-  "date-stamp": "date stamp",
-  "scrape-noise": "scrape noise",
-  reordering: "reordered",
-  cosmetic: "cosmetic",
-  expansion: "expanded",
-  restructure: "restructured",
-  substantive: "substantive",
-  unclassified: "unclassified",
-};
-
 // The ladder every view groups by, from the two questions the classification
 // answers: did the agency edit at all (noise = no), and did the substance
 // change? "Substance" means exactly the substantive kind — a claim, commitment,
@@ -36,6 +21,18 @@ export function changeTier(kind: ChangeKind): ChangeTier {
   if (NOISE_KINDS.has(kind)) return "noise";
   return "cosmetic"; // cosmetic, reordering
 }
+
+// The one label each tier wears wherever a change is shown. The finer kinds
+// (links only, page chrome, expanded, restructured, ...) stay in the data
+// downloads for anyone auditing the classification.
+export const TIER_LABEL: Record<ChangeTier, string> = {
+  substance: "substantive",
+  revision: "reworded",
+  cosmetic: "cosmetic",
+  noise: "noise",
+  unclassified: "not yet read",
+  first: "first tracked",
+};
 
 // What the feed shows by default and "the story so far" narrates: everything
 // that changed (or may have changed) what a statement says.
@@ -115,19 +112,6 @@ export const COMMITMENT_KIND_LABEL: Record<Profile["commitments"][number]["kind"
   "human-oversight": "human oversight",
 };
 
-// The Standard's minimum elements, in the order the report card shows them.
-// Keys match profiles.py STANDARD_ELEMENTS.
-export const STANDARD_ELEMENTS: { key: string; label: string }[] = [
-  { key: "intentions", label: "Intentions behind AI use" },
-  { key: "classification", label: "Use classified by DTA usage pattern or domain" },
-  { key: "public-facing", label: "Public-facing use addressed" },
-  { key: "monitoring", label: "Monitoring and protection measures" },
-  { key: "policy-compliance", label: "Compliance with the policy" },
-  { key: "legislation", label: "Compliance with legislation" },
-  { key: "last-updated", label: "Date last updated" },
-  { key: "contact", label: "Public contact" },
-];
-
 // Where each question the profile asks comes from. Mirrors FIELD_SOURCES /
 // FIELD_SOURCE in profiles.py; the report card and the reading page show it so
 // the schema is never mistaken for the policy itself.
@@ -159,35 +143,172 @@ export const FIELD_SOURCE_LABEL: Record<
   },
 };
 
-// Every question the profile asks, grouped by source, for the reading page.
-export const PROFILE_QUESTIONS: { source: FieldSource; label: string }[] = [
-  { source: "standard", label: "Intentions behind AI use" },
-  { source: "standard", label: "Usage patterns and domains in use (Attachment A classification)" },
+// Every question a profile answers, in the order the instruments set them: the
+// Standard's eight minimum elements (keys match profiles.py STANDARD_ELEMENTS),
+// the policy's mandatory requirements, the AI Plan's Chief AI Officer, then the
+// tracker's own questions. `fields` are the profile fields that answer each
+// one (mirroring FIELD_SOURCE in profiles.py), so a change to a field is filed
+// under the requirement it answers.
+export type Requirement = {
+  key: string;
+  source: FieldSource;
+  label: string;
+  question: string;
+  fields: string[];
+};
+
+export const REQUIREMENTS: Requirement[] = [
   {
+    key: "intentions",
     source: "standard",
-    label: "Whether the public interacts with or is affected by AI without human review",
+    label: "Intentions behind AI use",
+    question: "Intentions behind AI use",
+    fields: ["intentions_stated"],
   },
-  { source: "standard", label: "Measures to monitor effectiveness and protect the public" },
-  { source: "standard", label: "Compliance with the policy" },
-  { source: "standard", label: "Compliance with legislation" },
-  { source: "standard", label: "When the statement was last updated" },
-  { source: "standard", label: "A public contact" },
-  { source: "policy", label: "Review cadence (annually, or sooner on a significant change)" },
-  { source: "policy", label: "Accountable official designated" },
-  { source: "policy", label: "Strategic position on AI (due within 6 months of v2.0)" },
-  { source: "policy", label: "Internal AI use-case register (due within 12 months)" },
-  { source: "policy", label: "Mandatory staff training (due within 12 months)" },
-  { source: "ai-plan", label: "Chief AI Officer (due July 2026)" },
   {
-    source: "tracker",
-    label: "An explicit commitment to a human intermediary for public-facing AI",
+    key: "classification",
+    source: "standard",
+    label: "Use classified by DTA usage pattern or domain",
+    question: "Usage patterns and domains in use (Attachment A classification)",
+    fields: ["usage_patterns", "domains"],
   },
-  { source: "tracker", label: "Named safeguards, named tools, explicit commitments" },
   {
+    key: "public-facing",
+    source: "standard",
+    label: "Public-facing use addressed",
+    question: "Whether the public interacts with or is affected by AI without human review",
+    fields: ["public_facing"],
+  },
+  {
+    key: "monitoring",
+    source: "standard",
+    label: "Monitoring and protection measures",
+    question: "Measures to monitor effectiveness and protect the public",
+    fields: ["monitoring_measures_stated"],
+  },
+  {
+    key: "policy-compliance",
+    source: "standard",
+    label: "Compliance with the policy",
+    question: "Compliance with the policy",
+    fields: ["policy_compliance_stated"],
+  },
+  {
+    key: "legislation",
+    source: "standard",
+    label: "Compliance with legislation",
+    question: "Compliance with legislation",
+    fields: ["legislation_compliance_stated"],
+  },
+  {
+    key: "last-updated",
+    source: "standard",
+    label: "Date last updated",
+    question: "When the statement was last updated",
+    fields: ["last_updated_stated"],
+  },
+  {
+    key: "contact",
+    source: "standard",
+    label: "Public contact",
+    question: "A public contact",
+    fields: ["contact_provided"],
+  },
+  {
+    key: "review",
+    source: "policy",
+    label: "Review cadence",
+    question: "Review cadence (annually, or sooner on a significant change)",
+    fields: ["review_cadence"],
+  },
+  {
+    key: "accountable-official",
+    source: "policy",
+    label: "Accountable official",
+    question: "Accountable official designated",
+    fields: ["accountable_official"],
+  },
+  {
+    key: "strategic-position",
+    source: "policy",
+    label: "Strategic position on AI",
+    question: "Strategic position on AI (due within 6 months of v2.0)",
+    fields: ["strategic_position"],
+  },
+  {
+    key: "use-case-register",
+    source: "policy",
+    label: "AI use-case register",
+    question: "Internal AI use-case register (due within 12 months)",
+    fields: ["use_case_register"],
+  },
+  {
+    key: "training",
+    source: "policy",
+    label: "Staff training",
+    question: "Mandatory staff training (due within 12 months)",
+    fields: ["staff_training"],
+  },
+  {
+    key: "chief-ai-officer",
+    source: "ai-plan",
+    label: "Chief AI Officer",
+    question: "Chief AI Officer (due July 2026)",
+    fields: ["chief_ai_officer"],
+  },
+  {
+    key: "human-intermediary",
     source: "tracker",
-    label: "Which policy version the statement refers to; a stated first-published date",
+    label: "Human intermediary for public-facing AI",
+    question: "An explicit commitment to a human intermediary for public-facing AI",
+    fields: ["public_interaction_commitment"],
+  },
+  {
+    key: "commitments",
+    source: "tracker",
+    label: "Commitments",
+    question:
+      "Explicit commitments: what the agency will do, will not do, or keep under human oversight",
+    fields: ["commitments"],
+  },
+  {
+    key: "safeguards",
+    source: "tracker",
+    label: "Named safeguards",
+    question: "Named safeguards (risk assessment, audit, testing and so on)",
+    fields: ["measures"],
+  },
+  {
+    key: "named-tools",
+    source: "tracker",
+    label: "Named tools",
+    question: "Named AI tools",
+    fields: ["named_tools"],
+  },
+  {
+    key: "policy-version",
+    source: "tracker",
+    label: "Policy version referenced",
+    question: "Which policy version the statement refers to",
+    fields: ["policy_version"],
+  },
+  {
+    key: "first-published",
+    source: "tracker",
+    label: "Stated first-published date",
+    question: "A stated first-published date",
+    fields: ["first_published_stated"],
   },
 ];
+
+export const STANDARD_ELEMENTS = REQUIREMENTS.filter((r) => r.source === "standard");
+
+const REQUIREMENT_BY_FIELD = new Map(REQUIREMENTS.flatMap((r) => r.fields.map((f) => [f, r])));
+
+// The requirement a profile field answers, for filing a change under it.
+export function requirementFor(field: string): Requirement | undefined {
+  return REQUIREMENT_BY_FIELD.get(field);
+}
 
 // A stated date (YYYY-MM or YYYY-MM-DD) in the site's date style.
 export function formatStatedDate(stated: string): string {

@@ -3,7 +3,7 @@ import DiffView from "@/components/DiffView.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate, signedDelta } from "@/lib/format";
 import { monthKey } from "@/lib/monthly";
-import { CHANGE_KIND_LABEL, READABLE_TIERS, changeTier } from "@/lib/profile-labels";
+import { READABLE_TIERS, TIER_LABEL, changeTier } from "@/lib/profile-labels";
 import { statementPath } from "@/lib/paths";
 import type { TimelineEvent } from "@/types/exporter";
 
@@ -35,7 +35,7 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
       {formatDate(event.date)}
     </time>
     <a class="tl-row__agency" href={statementPath(event.abbr)}>{event.agency}</a>
-    <span class="pill" data-kind={event.changeKind}>{CHANGE_KIND_LABEL[event.changeKind]}</span>
+    <span class="pill">{TIER_LABEL[tier]}</span>
     {
       diff && (
         <span class="tl-row__delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>

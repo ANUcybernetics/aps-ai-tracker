@@ -33,7 +33,7 @@
   const SHOW_OPTIONS = [
     { value: "read", label: "Changes worth reading" },
     { value: "substance", label: "Changes of substance" },
-    { value: "revision", label: "Revisions, same substance" },
+    { value: "revision", label: "Reworded, same substance" },
     { value: "cosmetic", label: "Cosmetic edits" },
     { value: "noise", label: "Scrape noise" },
     { value: "first", label: "First tracked" },

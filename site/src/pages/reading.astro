@@ -3,7 +3,7 @@ import Layout from "@/components/Layout.astro";
 import { propagation, meta } from "@/lib/load";
 import { formatDate } from "@/lib/format";
 import { withBase } from "@/lib/paths";
-import { FIELD_SOURCE_LABEL, PROFILE_QUESTIONS } from "@/lib/profile-labels";
+import { FIELD_SOURCE_LABEL, REQUIREMENTS } from "@/lib/profile-labels";
 import type { FieldSource } from "@/lib/profile-labels";
 
 const sources: FieldSource[] = ["standard", "policy", "ai-plan", "tracker"];
@@ -214,8 +214,8 @@ for (const c of propagation.clusters) {
             </dt>
             <dd>
               <ul>
-                {PROFILE_QUESTIONS.filter((q) => q.source === source).map((q) => (
-                  <li>{q.label}</li>
+                {REQUIREMENTS.filter((q) => q.source === source).map((q) => (
+                  <li>{q.question}</li>
                 ))}
               </ul>
             </dd>

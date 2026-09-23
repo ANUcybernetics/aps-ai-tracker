@@ -29,7 +29,7 @@
 
   const TIER_LABEL: Record<StackTier, string> = {
     substance: "changes of substance",
-    revision: "revisions, same substance",
+    revision: "reworded, same substance",
     cosmetic: "cosmetic edits",
     noise: "scrape noise",
     unclassified: "unclassified",
@@ -92,7 +92,7 @@
 
   const DESCRIBE_LABEL: Record<StackTier, string> = {
     substance: "of substance",
-    revision: "revisions",
+    revision: "reworded",
     cosmetic: "cosmetic",
     noise: "scrape noise",
     unclassified: "unclassified",
