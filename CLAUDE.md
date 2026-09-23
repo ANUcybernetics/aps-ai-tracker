@@ -115,10 +115,9 @@ Toolchain mirrors the benswift-me repo: pnpm + Astro 7 + Svelte 5 islands,
 oxlint/oxfmt/stylelint, node 24. The site is light-only (no dark mode); design
 tokens live in `src/styles/tokens.css`.
 
-- News about the tracker itself lives in `site/src/content/news/*.md`, with
-  flat frontmatter (title, date, summary, draft). A `draft: true` post never
-  builds and is never announced; the News nav item appears once one post is
-  published.
+- News about the tracker itself lives in `site/src/content/news/*.md`, with flat
+  frontmatter (title, date, summary, draft). A `draft: true` post never builds
+  and is never announced; the News nav item appears once one post is published.
 - Dev: `cd site && mise exec -- pnpm dev`
 - Build/lint/format/typecheck/test:
   `mise exec -- pnpm run {build,lint,format,typecheck,test}`
@@ -167,9 +166,9 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
   publication and document rkeys are TIDs allocated once and recorded in
   `atproto-state.json`; `site/src/lib/atproto-ids.ts` is how the site reads
   them. Losing that mapping is safe --- the publisher re-adopts the live records
-  by matching the `path` field (`/statements/{abbr}`, the durable
-  human-readable identifier) before minting anything. Shared constants and
-  record builders: `site/src/lib/atproto.ts` (pure, env-free, vitest-covered).
+  by matching the `path` field (`/statements/{abbr}`, the durable human-readable
+  identifier) before minting anything. Shared constants and record builders:
+  `site/src/lib/atproto.ts` (pure, env-free, vitest-covered).
 - Sync: `cd site && mise exec -- pnpm run atproto:publish -- --write` (dry run
   without `--write`). Runs after `export` (reads `site/src/generated/`).
   Idempotent via record hashes in the committed `atproto-state.json`; deleting
@@ -188,9 +187,9 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
   `ATP_IDENTIFIER`/`ATP_APP_PASSWORD`).
 - Statement pages emit `site.standard.document`/`publication` `<link>` tags and
   the site serves `/.well-known/site.standard.publication` (a generated endpoint
-  under `src/pages/`, since the rkey is an allocated TID; kept in the artifact by
-  `include-hidden-files: true` in the Pages workflow). Both degrade to nothing
-  until the publisher has allocated the rkeys.
+  under `src/pages/`, since the rkey is an allocated TID; kept in the artifact
+  by `include-hidden-files: true` in the Pages workflow). Both degrade to
+  nothing until the publisher has allocated the rkeys.
 - With `--crosspost` (the cron passes it), new substantive revisions are
   announced as skeets: one per agency per run (newest wins), capped at 25, noise
   never announced. Announced skeets are recorded in the committed
@@ -213,12 +212,12 @@ user unit on weddle. It scrapes (`/scrape` on Sonnet via
 `~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
 subscription route), refreshes the extraction caches (`export`), syncs the
 corpus to atproto (see above), `git push`es so the Pages site redeploys, raises
-an nb todo per overdue manual agency, and on Mondays probes PM&C's challenge
-for evidence (`browser-probe`, log-only --- weekly because Imperva blocks the
-host IP once it has seen a few visits).
-weddle pushes to `origin` (credentials confirmed working) and reads
-`OPENAI_API_KEY` from its global `~/.config/mise/config.local.toml`. Canonical
-unit files live in `ops/systemd/`. Install with:
+an nb todo per overdue manual agency, and on Mondays probes PM&C's challenge for
+evidence (`browser-probe`, log-only --- weekly because Imperva blocks the host
+IP once it has seen a few visits). weddle pushes to `origin` (credentials
+confirmed working) and reads `OPENAI_API_KEY` from its global
+`~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.
+Install with:
 
 ```sh
 cp ops/systemd/aps-scrape.{service,timer} ~/.config/systemd/user/
@@ -263,10 +262,10 @@ after 60 days) — the script redirects nearly all of its output there, so
 - `browser = true` fetches an agency through the `agent-browser` CLI instead of
   httpx, for a challenge only JavaScript can answer, with a `browser_reason`
   (also enforced) naming it. Headless Chrome clears an Imperva JavaScript
-  challenge but not a Cloudflare *managed* one, and Imperva blocks the host's
-  IP outright once it has seen a few visits, so a site earns the flag by a run
-  of clean `browser-probe` lines. An agency is `browser` or `manual`, never
-  both: a browser agency is automated, so nothing reminds a person to read it
+  challenge but not a Cloudflare _managed_ one, and Imperva blocks the host's IP
+  outright once it has seen a few visits, so a site earns the flag by a run of
+  clean `browser-probe` lines. An agency is `browser` or `manual`, never both: a
+  browser agency is automated, so nothing reminds a person to read it
 - **The `might_fail` fetch test fails for agencies with `None` URLs** - this is
   intentional, but that test is deselected by default (`-m might_fail` to run)
 - Scraper skips agencies with `None` URLs when run
