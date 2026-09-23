@@ -103,11 +103,11 @@ This is a Python web scraping project using uv for dependency management.
 ## Static site (`site/`)
 
 An Astro static site presents the data: a timeline of every change of substance
-(each with its model-written summary), per-statement pages ("the story so far",
+(each with its model-written summary), per-statement pages (what's changed,
 a profile report card against the Standard and policy v2.0, the text with a
-passage-reuse heat-map, and every revision with time-travel), a "policy in
-practice" page (adoption charts, commitments dropped, who is in charge,
-staleness), a propagation explorer, and downloadable datasets at `/data/`
+passage-reuse heat-map, and every revision with time-travel), a "what the
+statements say" page (adoption charts, commitments dropped, who is in charge,
+staleness), a shared-wording explorer, and downloadable datasets at `/data/`
 (statements as CSV and JSON, timeline, adoption — static endpoints in
 `src/pages/data/` flattening the generated JSON via `src/lib/dataset.ts`, each
 stamped with provenance and the extraction `schemaVersions` from `meta.json`).
