@@ -9,7 +9,7 @@ const files = [
   {
     href: withBase("/data/statements.csv"),
     name: "statements.csv",
-    what: `One row per tracked agency (${meta.counts.agencies} rows): roster, coverage status, currency, the Standard report card, and the current profile, flattened for a spreadsheet or dataframe. Start here.`,
+    what: `One row per tracked agency (${meta.counts.agencies} rows): roster, coverage status, currency, the Standard checklist, and the current profile, flattened for a spreadsheet or dataframe. Start here.`,
   },
   {
     href: withBase("/data/statements.json"),
@@ -66,7 +66,7 @@ const files = [
       originality score. <span class="mono">stated_first_published</span> through{" "}
       <span class="mono">annual_review_overdue</span> are currency: the statement&rsquo;s
       own dates against the policy&rsquo;s review rules. The{" "}
-      <span class="mono">standard_*</span> columns are the report card: which of the
+      <span class="mono">standard_*</span> columns are the Standard checklist: which of the
       Standard&rsquo;s eight minimum elements the statement shows. The remaining columns
       are the current profile in the closed vocabularies of{" "}
       <a href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/src/aps_ai_tracker/profiles.py"

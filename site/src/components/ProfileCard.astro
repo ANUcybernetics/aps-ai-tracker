@@ -1,6 +1,6 @@
 ---
-// The statement's report card: what it says, read against what the DTA's
-// Standard requires and what policy v2.0 asks agencies to stand up. Every
+// What the statement says, set against what the DTA's Standard requires and
+// what policy v2.0 asks agencies to stand up. Every
 // value here comes from the closed-vocabulary profile in profiles.py, so two
 // agencies' cards are directly comparable.
 import {
@@ -85,7 +85,7 @@ const sinceV2 =
     ? { text: "can't tell", tone: undefined, title: "First tracked after 15 December 2025 and gives no date of its own" }
     : currency.updatedSincePolicyV2
       ? { text: "yes", tone: "on" as Tone, title: undefined }
-      : { text: "no sign of it", tone: "off" as Tone, title: undefined };
+      : { text: "none seen", tone: "off" as Tone, title: undefined };
 
 const willNot = p.commitments.filter((c) => c.kind === "will-not");
 const oversight = p.commitments.filter((c) => c.kind === "human-oversight");
@@ -136,7 +136,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
     </section>
 
     <section class="rc__block">
-      <h3>Against the Standard <span class="rc__score mono">{metCount}/{STANDARD_ELEMENTS.length}</span></h3>
+      <h3>The Standard&rsquo;s eight elements <span class="rc__score mono">{metCount} of {STANDARD_ELEMENTS.length}</span></h3>
       <ul class="checks">
         {
           STANDARD_ELEMENTS.map((e) => (
@@ -144,7 +144,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
               <span class="checks__mark mono" aria-hidden="true">
                 {standard[e.key] ? "✓" : "–"}
               </span>
-              <span class="visually-hidden">{standard[e.key] ? "Present:" : "Missing:"}</span>
+              <span class="visually-hidden">{standard[e.key] ? "Found:" : "Not found:"}</span>
               {e.label}
             </li>
           ))
@@ -205,14 +205,14 @@ const will = p.commitments.filter((c) => c.kind === "will");
           </dd>
         </div>
         <div class="kv__row" data-tone={sinceV2.tone}>
-          <dt>Updated since policy 2.0</dt>
+          <dt>Updated since policy v2.0</dt>
           <dd title={sinceV2.title}>{sinceV2.text}</dd>
         </div>
         {
           currency.annualReviewOverdue !== null && (
             <div class="kv__row" data-tone={currency.annualReviewOverdue ? "off" : "on"}>
               <dt>Annual review</dt>
-              <dd>{currency.annualReviewOverdue ? "overdue by its own date" : "within a year of its own date"}</dd>
+              <dd>{currency.annualReviewOverdue ? "stated date over a year ago" : "stated date within the last year"}</dd>
             </div>
           )
         }

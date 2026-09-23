@@ -1,8 +1,7 @@
 ---
-// Policy in practice: what the corpus of statements shows about the policy
-// landing — adoption of each v2.0 obligation over time, the commitments
-// agencies have dropped, who has been put in charge, and whose
-// statement has gone stale. Everything here is aggregated from the
+// What the statements say: the corpus read together against the policy's
+// requirements: adoption of each v2.0 item over time, what later versions
+// dropped, who is named in charge, and the statements' own dates. Everything here is aggregated from the
 // per-revision profiles (profiles.py) and the change classifications
 // (changes.py); every figure links back to the statement it came from.
 import Layout from "@/components/Layout.astro";
@@ -106,12 +105,12 @@ const built = formatDate(meta.builtAt);
 ---
 
 <Layout
-  title="Policy in practice"
-  description="What the statements show about how agencies are meeting the Australian Government's AI policy: adoption of each obligation over time, commitments dropped, who is in charge, and which statements have gone stale."
+  title="What the statements say"
+  description="All the Australian Government's AI transparency statements read together against the AI policy, the Standard and the APS AI Plan: what they report over time, what later versions dropped, who is named in charge, and the statements' own dates."
 >
   <div class="page policy stack">
     <header class="stack">
-      <h1>Policy in practice</h1>
+      <h1>What the statements say</h1>
       <p class="lede">
         Version 2.0 of the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
           >Policy for the responsible use of AI in government</a
@@ -120,20 +119,20 @@ const built = formatDate(meta.builtAt);
         staff training within twelve. Separately, the <a
           href="https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps"
           >APS AI Plan</a
-        > asked each agency to name a Chief AI Officer by July 2026. The statements are where
-        agencies say how far they have got, and this page reads all {profiled.length} of them
-        together as of {built}. Every figure here is a count of what a language model read
-        in each statement; each links to the statement so the reading can be checked, and
-        the full dataset behind them is <a href={withBase("/data")}>downloadable</a>.
+        > asked each agency to name a Chief AI Officer by July 2026. This page reads all{" "}
+        {profiled.length} statements together as of {built}. Every figure counts what the
+        statements say, as a language model read them, and none is a finding about what an
+        agency has done. Each figure links to the statements behind it, and the full dataset
+        is <a href={withBase("/data")}>downloadable</a>.
       </p>
       <ReadingLink anchor="adoption" label="How these figures are made" />
       <dl class="facts headline-facts">
         <div>
-          <dt><a href="#standard-heading">Show all eight Standard elements</a></dt>
+          <dt><a href="#standard-heading">Cover all eight Standard elements</a></dt>
           <dd>{fullMarks} <span class="muted">of {profiled.length}</span></dd>
         </div>
         <div>
-          <dt><a href="#charge-heading">Chief AI Officer in place</a></dt>
+          <dt><a href="#charge-heading">Say a Chief AI Officer is in place</a></dt>
           <dd>{caioInPlace} <span class="muted">(+{caioPlanned} planned)</span></dd>
         </div>
         <div>
@@ -141,15 +140,15 @@ const built = formatDate(meta.builtAt);
           <dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd>
         </div>
         <div>
-          <dt><a href="#removals-heading">Commitments no longer made</a></dt>
+          <dt><a href="#removals-heading">Commitments dropped between versions</a></dt>
           <dd>{droppedCommitments.length}</dd>
         </div>
         <div>
-          <dt><a href="#stale-heading">No sign of an update since v2.0</a></dt>
+          <dt><a href="#stale-heading">No update seen since v2.0</a></dt>
           <dd>{notSinceV2.length}</dd>
         </div>
         <div>
-          <dt><a href="#stale-heading">Overdue by their own date</a></dt>
+          <dt><a href="#stale-heading">Say they were last updated over a year ago</a></dt>
           <dd>{overdue.length}</dd>
         </div>
       </dl>
@@ -157,7 +156,7 @@ const built = formatDate(meta.builtAt);
 
     <section class="stack" aria-labelledby="adoption-heading">
       <div class="section-title">
-        <h2 id="adoption-heading">What the statements have taken up</h2>
+        <h2 id="adoption-heading">What the statements report, month by month</h2>
       </div>
       <p class="section-note">
         Share of tracked statements whose text reports each item, month by month.
@@ -185,28 +184,27 @@ const built = formatDate(meta.builtAt);
 
     <section class="stack" aria-labelledby="removals-heading">
       <div class="section-title">
-        <h2 id="removals-heading">Commitments no longer made</h2>
+        <h2 id="removals-heading">Commitments dropped between versions</h2>
         <span class="muted">{droppedCommitments.length}</span>
         <ReadingLink anchor="profiles" />
       </div>
       <p class="section-note">
-        A statement that promises less than it used to is easy to miss. These are the
-        promises, self-imposed limits and named safeguards that a later revision no longer
-        makes, newest first, as read by a language model comparing the two
-        revisions&rsquo; profiles. A reworded promise can also appear here, so each entry
-        links to the revision and its exact words.
+        Promises, self-imposed limits and named safeguards that one version of a statement
+        made and the next did not, newest first, as a language model read the two versions.
+        A reworded promise can also appear here, so each entry links to the version and its
+        exact words.
       </p>
       <PolicyLedger rows={droppedCommitments} />
     </section>
 
     <section class="stack" aria-labelledby="disclosures-heading">
       <div class="section-title">
-        <h2 id="disclosures-heading">Disclosures no longer made</h2>
+        <h2 id="disclosures-heading">Other answers dropped between versions</h2>
         <span class="muted">{droppedDisclosures.length}</span>
       </div>
       <p class="section-note">
-        Uses, domains, named tools, officers, training and compliance statements that a
-        later revision no longer mentions. A tool that drops out of a statement may simply have been renamed or
+        Uses, domains, named tools, officers, training and compliance statements that one
+        version mentioned and the next did not. A tool that drops out may have been renamed or
         folded into a broader description, and a use that drops out may still be happening.
       </p>
       <PolicyLedger rows={droppedDisclosures} />
@@ -262,23 +260,23 @@ const built = formatDate(meta.builtAt);
       </p>
       <dl class="facts">
         <div><dt>Say they use no public-facing AI</dt><dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd></div>
-        <div><dt>Use it with human review</dt><dd>{pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span></dd></div>
-        <div><dt>Use it without stating human review</dt><dd>{pf["without-human-review"]} <span class="muted">({pct(pf["without-human-review"])})</span></dd></div>
-        <div><dt>Do not address it</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
-        <div><dt>Explicitly commit to a human intermediary</dt><dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd></div>
+        <div><dt>Say they use it with human review</dt><dd>{pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span></dd></div>
+        <div><dt>Say they use it, without stating human review</dt><dd>{pf["without-human-review"]} <span class="muted">({pct(pf["without-human-review"])})</span></dd></div>
+        <div><dt>Don&rsquo;t address it</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
+        <div><dt>Commit to a human intermediary</dt><dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd></div>
       </dl>
     </section>
 
     <section class="stack" aria-labelledby="standard-heading">
       <div class="section-title">
-        <h2 id="standard-heading">Against the Standard</h2>
+        <h2 id="standard-heading">The Standard&rsquo;s eight elements</h2>
       </div>
       <p class="section-note">
         The DTA&rsquo;s <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >Standard for AI transparency statements</a
-        > lists what every statement must contain. {fullMarks} of {profiled.length} show all
-        eight; this is how many show each. &ldquo;Date last updated&rdquo; counts a date the
+        > lists what every statement must contain. {fullMarks} of {profiled.length} cover all
+        eight; this is how many cover each. &ldquo;Date last updated&rdquo; counts a date the
         page itself carries as well as one in the statement&rsquo;s prose.
       </p>
       <ul class="bars">
@@ -300,7 +298,7 @@ const built = formatDate(meta.builtAt);
 
     <section class="stack" aria-labelledby="stale-heading">
       <div class="section-title">
-        <h2 id="stale-heading">Going stale</h2>
+        <h2 id="stale-heading">Dates and updates</h2>
       </div>
       <p class="section-note">
         The <a
@@ -312,7 +310,7 @@ const built = formatDate(meta.builtAt);
       </p>
       <div class="stale">
         <div>
-          <h3>No sign of an update since policy 2.0 <span class="muted">{notSinceV2.length}</span></h3>
+          <h3>No update seen since policy v2.0 <span class="muted">{notSinceV2.length}</span></h3>
           <p class="muted stale__note">
             Statements we have watched since before 15 December 2025 where neither the
             statement&rsquo;s own date nor any change we observed falls after it. A further{" "}
@@ -331,7 +329,7 @@ const built = formatDate(meta.builtAt);
           </ul>
         </div>
         <div>
-          <h3>Overdue by their own date <span class="muted">{overdue.length}</span></h3>
+          <h3>Say they were last updated over a year ago <span class="muted">{overdue.length}</span></h3>
           <p class="muted stale__note">
             The statement&rsquo;s stated last-updated date is more than a year before {built}.
           </p>

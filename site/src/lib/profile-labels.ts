@@ -1,5 +1,5 @@
 // Human labels for the closed vocabularies in profiles.py / changes.py, shared
-// by the statement report card, the story list, the timeline and the policy
+// by the statement checklist, the story list, the timeline and the policy
 // page so a term reads the same everywhere.
 import type { ChangeKind, Profile } from "@/types/exporter";
 import { NOISE_KINDS } from "@/lib/schemas";
@@ -113,7 +113,7 @@ export const COMMITMENT_KIND_LABEL: Record<Profile["commitments"][number]["kind"
 };
 
 // Where each question the profile asks comes from. Mirrors FIELD_SOURCES /
-// FIELD_SOURCE in profiles.py; the report card and the reading page show it so
+// FIELD_SOURCE in profiles.py; the checklist and the reading page show it so
 // the schema is never mistaken for the policy itself.
 export type FieldSource = "standard" | "policy" | "ai-plan" | "tracker";
 
