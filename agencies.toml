@@ -787,6 +787,8 @@ size = "medium"
 scope = "mandatory"
 portfolio = "Home Affairs"
 url = "https://www.nema.gov.au/about-us/privacy-disclosures"
+# Statement is one accordion item on a page of privacy and legal notices.
+selector = '.accordion-item:has(.accordion-button:-soup-contains("AI Transparency Statement"))'
 
 [[agencies]]
 name = "National Film and Sound Archive of Australia"
@@ -908,6 +910,9 @@ size = "extra-small"
 scope = "mandatory"
 portfolio = "Attorney-General's"
 url = "https://www.igis.gov.au/resources/reporting-and-accountability"
+# Statement is one accordion item on a reporting page; the collapse ids look
+# generated, so match the heading.
+selector = '.accordion-item:has(h2:-soup-contains("Artificial Intelligence"))'
 
 [[agencies]]
 name = "Office of the Special Investigator"
@@ -1084,6 +1089,9 @@ size = "extra-small"
 scope = "mandatory"
 portfolio = "Treasury"
 url = "https://ncc.gov.au/about/statutory_and_required_reporting"
+# Statement is the last section of a flat reporting page: its heading and
+# everything after it.
+selector = '#content h2:-soup-contains("Artificial Intelligence"), #content h2:-soup-contains("Artificial Intelligence") ~ *'
 
 [[agencies]]
 name = "Office of the Official Secretary to the Governor-General"
