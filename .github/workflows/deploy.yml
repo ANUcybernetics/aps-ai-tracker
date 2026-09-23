@@ -59,9 +59,9 @@ jobs:
 
       # Through the project env with the export group, so the pydantic/anthropic
       # imports in the analysis modules resolve (bare `uvx ty` sees no project
-      # packages).
+      # packages). ty is pinned in the dev group, so this matches a local run.
       - name: Python typecheck
-        run: uv run --group export --with ty==0.0.75 ty check
+        run: uv run --group export ty check
 
       - name: Generate site data
         run: uv run --group export export

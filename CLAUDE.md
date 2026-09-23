@@ -43,9 +43,9 @@ This is a Python web scraping project using uv for dependency management.
   tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
   latter, plus `test_changes.py` and `test_profiles.py`, with `--group export`
   so pydantic is present.
-- Typecheck: `mise exec -- uv run --group export --with ty ty check` (the export
-  group so the pydantic/anthropic imports resolve; CI pins the ty version in
-  `deploy.yml` — bump it there deliberately after a clean local run)
+- Typecheck: `mise exec -- uv run --group export ty check` (the export group so
+  the pydantic/anthropic imports resolve). ty is pinned exactly in the `dev`
+  group, which CI uses too; bump it there deliberately after a clean local run
 - Add agencies by editing `agencies.toml`
 - Output goes to `statements/` directory
 - Package structure:

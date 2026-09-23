@@ -28,7 +28,7 @@ browser-probe = "aps_ai_tracker.probe:main"
 export = "aps_ai_tracker.export:main"
 
 [dependency-groups]
-dev = ["pytest>=9.0.0", "pytest-xdist>=3.6.1", "ruff>=0.14.4"]
+dev = ["pytest>=9.0.0", "pytest-xdist>=3.6.1", "ruff>=0.14.4", "ty==0.0.75"]
 # Deps only the `export` command needs; kept out of the default install so the
 # scraper stays lean. Run with `uv run --group export export`. The anthropic SDK
 # is only used with APS_LLM_BACKEND=api; the default backend shells out to
