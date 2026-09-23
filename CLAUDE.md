@@ -255,8 +255,8 @@ after 60 days) — the script redirects nearly all of its output there, so
 - Empty URLs (`url = ""`) are converted to `None` by the scraper
 - `manual = true` drops an agency from the automated fetch entirely --- nothing
   refreshes it but a person. Set it only for sites the scraper cannot reach (all
-  six current cases are bot challenges: Cloudflare or Imperva), and always with
-  a `manual_reason` saying which; a test enforces the reason. Record
+  current cases are bot challenges: Cloudflare, Imperva or Akamai), and always
+  with a `manual_reason` saying which; a test enforces the reason. Record
   `last_verified` (ISO date) whenever you hand-check one against its live page,
   because `stale-manual` reads it to decide who is overdue
 - `browser = true` fetches an agency through the `agent-browser` CLI instead of
