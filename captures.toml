@@ -144,3 +144,18 @@ reason = "statement replaced by a referral to the Department of Social Services'
 abbr = "SWA"
 date = "2026-04-29"
 reason = "rewrite"
+
+[[confirmed]]
+abbr = "IGIS"
+date = "2026-09-23T19:42"
+reason = "capture narrowed to the AI section of IGIS's reporting-and-accountability page"
+
+[[confirmed]]
+abbr = "NCC"
+date = "2026-09-23T19:42"
+reason = "capture narrowed to the AI section of NCC's statutory-reporting page"
+
+[[confirmed]]
+abbr = "NEMA"
+date = "2026-09-23T19:42"
+reason = "capture narrowed to the AI section of NEMA's privacy-disclosures page"
