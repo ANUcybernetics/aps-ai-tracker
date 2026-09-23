@@ -64,25 +64,24 @@ const readable = counts.substance + counts.revision + counts.unclassified;
       <h1>Timeline</h1>
       <p class="lede">
         Every change worth reading, newest first, each summarised in a sentence from its
-        diff. There are {counts.substance} changes of substance, where a claim, commitment
+        diff. There are {counts.substance} substantive changes, where a claim, commitment
         or disclosure was added, removed or altered{
           counts.revision > 0 && (
-            <>, and {counts.revision} revisions that reword without changing the substance</>
+            <>, and {counts.revision} reworded ones that say the same things differently</>
           )
         }{
-          counts.unclassified > 0 && <>, plus {counts.unclassified} not yet classified</>
-        }. Cosmetic edits ({counts.cosmetic}), scrape noise ({counts.noise}) and
-        first-tracked captures ({counts.first}) are hidden unless you ask for them. Narrow
-        the feed by agency, portfolio or kind of change, or click a month in the chart.
-        Search covers the changed text as well as the summaries, and opening a row shows
-        the diff.
+          counts.unclassified > 0 && <>, plus {counts.unclassified} not yet read</>
+        }. Cosmetic edits ({counts.cosmetic}), noise ({counts.noise}) and first captures
+        ({counts.first}) are hidden unless you ask for them. Narrow the feed by agency,
+        portfolio or tier, click a month in the chart, or search the changed text; opening
+        a row shows the diff.
       </p>
       <p class="muted">
         A language model writes each summary from the diff, and each row names the model.
         Where a summary and &ldquo;the words that changed&rdquo; disagree, trust the
         words.
       </p>
-      <ReadingLink anchor="changes" label="How changes are classified" />
+      <ReadingLink anchor="anatomy" label="Anatomy of a change" />
     </header>
 
     <TimelineFilter

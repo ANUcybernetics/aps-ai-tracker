@@ -31,7 +31,7 @@
     substance: "changes of substance",
     revision: "reworded, same substance",
     cosmetic: "cosmetic edits",
-    noise: "scrape noise",
+    noise: "noise",
     unclassified: "unclassified",
   };
 
@@ -94,7 +94,7 @@
     substance: "of substance",
     revision: "reworded",
     cosmetic: "cosmetic",
-    noise: "scrape noise",
+    noise: "noise",
     unclassified: "unclassified",
   };
 

@@ -26,7 +26,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
       <div class="revs-toggle">
         <input type="checkbox" id="show-noise-revs" />
         <label for="show-noise-revs">
-          Include {noiseCount} scrape-noise {noiseCount === 1 ? "revision" : "revisions"} (nothing
+          Include {noiseCount} noise {noiseCount === 1 ? "revision" : "revisions"} (nothing
           the agency wrote changed)
         </label>
       </div>

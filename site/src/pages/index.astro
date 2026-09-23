@@ -57,9 +57,9 @@ const explorers = [
   },
   {
     href: withBase("/policy"),
-    title: "Policy in practice",
+    title: "What the statements say",
     hint: `${c.profiled} profiled`,
-    body: "What agencies say they have taken up from the AI policy, what they have dropped, and who is responsible for AI in each.",
+    body: "Every statement read against the AI policy and the Standard: what they report over time, what later versions dropped, and who they name in charge.",
   },
   {
     href: withBase("/propagation"),
@@ -123,7 +123,10 @@ const explorers = [
       <p class="recent__caption">
         Recorded changes by month since tracking began; the deeper the ochre, the more
         substantial the change. A statement&rsquo;s first capture isn&rsquo;t counted.
-        On the timeline page the same chart works as a filter.
+        On the timeline page the same chart works as a filter. Each change is read twice,
+        for how much the text changed and for which of the statement&rsquo;s answers
+        changed; the <a href={withBase("/reading#anatomy")}>anatomy of a change</a>
+        explains both.
       </p>
       <MonthlyChart data={chart} />
       <ul class="feed">

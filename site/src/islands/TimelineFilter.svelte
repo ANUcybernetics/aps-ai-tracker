@@ -35,7 +35,7 @@
     { value: "substance", label: "Changes of substance" },
     { value: "revision", label: "Reworded, same substance" },
     { value: "cosmetic", label: "Cosmetic edits" },
-    { value: "noise", label: "Scrape noise" },
+    { value: "noise", label: "Noise" },
     { value: "first", label: "First tracked" },
     { value: "all", label: "Everything" },
   ];

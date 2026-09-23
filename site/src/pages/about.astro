@@ -81,25 +81,20 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       exempt.
     </p>
 
-    <h3>Timeline</h3>
+    <h3>Changes</h3>
     <p>
-      Each change is read straight from git. Scrape glitches that are later
-      reverted, and pure reformatting, are left out. Captures known to have failed
-      are listed in the repository (<code>captures.toml</code>) and dropped before
-      anything reads them, and a new capture that has lost more than half its text
-      is held back until someone confirms it. Claude also reads every capture
-      once to check that it is the statement at all, and not a block page, an
-      index page linking to the statement, or a capture that failed part-way;
-      a capture that isn&rsquo;t is dropped the same way.
+      The <a href={withBase("/reading#anatomy")}>anatomy of a change</a> explains
+      how each change is read; this is the machinery underneath. Changes come
+      straight from git, and a scrape glitch that is later reverted collapses out.
+      Captures known to have failed are listed in the repository
+      (<code>captures.toml</code>) and dropped before anything reads them, as are
+      captures the model judges not to be the statement. A new capture that has
+      lost more than half its text is held back until someone confirms it.
     </p>
     <p>
-      Every remaining revision is classified from its diff. Deterministic rules
-      catch formatting-only, link-only, page-chrome, date-stamp and reordering
-      changes. Claude (Opus 5.5; every summary names the model) reads the rest,
-      assigning one of five kinds,
-      writing a one-sentence summary and listing notable additions and removals.
-      The results are cached by content hash in the repository, so each revision
-      is read once and the site rebuilds without model calls.
+      Claude Opus 5.5 does the reading, and every summary names its model. Capture
+      checks, change classifications and profiles are cached by content hash in the
+      repository, so each is made once and the site rebuilds without model calls.
     </p>
     <p>
       A statement&rsquo;s first appearance is labelled &ldquo;first tracked&rdquo;
@@ -118,29 +113,16 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       though passages that also appear in the DTA&rsquo;s own statement are marked.
     </p>
 
-    <h3>Originality</h3>
-    <p>
-      A statement&rsquo;s originality is the share of its text, by length, that
-      isn&rsquo;t shared with other agencies or drawn from template language.
-    </p>
-
     <h3>Profiles</h3>
     <p>
-      The same model reads each readable revision into a fixed-vocabulary profile
-      (pydantic-validated JSON). Its questions come from the Standard&rsquo;s
-      minimum content, the policy 2.0 mandatory requirements and the APS AI Plan,
-      and each question&rsquo;s source is recorded (see <a
-        href={withBase("/reading#schema")}>where the questions come from</a
-      >). A revision a rule marks as noise, such as a ticking date stamp, keeps the
-      previous revision&rsquo;s profile; every other revision is read.
-    </p>
-    <p>
-      The scraper records a page&rsquo;s own last-updated date and then strips that
-      line, so a changing date stamp doesn&rsquo;t show up in the diffs. If the page
-      has no such line, the model looks for a date in the text. Consecutive profiles
-      are compared field by field to produce the structured change markers, and
-      commitments are matched across revisions by word overlap. The adoption curves
-      count, for each month, the tracked statements whose profile reports each item.
+      A profile is JSON validated against a closed vocabulary for each answer. A
+      revision a rule marks as noise, such as a ticking date stamp, keeps the
+      previous revision&rsquo;s profile; every other revision is read, with the
+      previous profile as its baseline. The scraper records a page&rsquo;s own
+      last-updated date and strips that line, so a changing date stamp
+      doesn&rsquo;t show up in the diffs, and if the page has no such line the
+      model looks for a date in the text. Commitments are matched across revisions
+      by word overlap.
     </p>
 
     <h2>Related work</h2>
