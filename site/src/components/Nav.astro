@@ -1,15 +1,20 @@
 ---
+import { getPublishedNews } from "@/lib/load";
 import { withBase } from "@/lib/paths";
 
+// The questions a reader arrives with, then how to read the answers. The
+// propagation explorer, who's who and the data downloads keep their URLs and
+// are linked from the footer, the overview and the pages that use them.
 const links = [
   { href: withBase("/"), label: "Overview", exact: true },
   { href: withBase("/timeline"), label: "Timeline", exact: false },
   { href: withBase("/agencies"), label: "Agencies", exact: false },
   { href: withBase("/policy"), label: "What the statements say", exact: false },
-  { href: withBase("/propagation"), label: "Propagation", exact: false },
-  { href: withBase("/whos-who"), label: "Who's who", exact: false },
   { href: withBase("/reading"), label: "Reading the data", exact: false },
-  { href: withBase("/data"), label: "Data", exact: false },
+  // News appears once there is a published post to read.
+  ...((await getPublishedNews()).length > 0
+    ? [{ href: withBase("/news"), label: "News", exact: false }]
+    : []),
   { href: withBase("/about"), label: "About", exact: false },
 ];
 
