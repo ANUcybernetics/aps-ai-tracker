@@ -1,0 +1,65 @@
+---
+import Layout from "@/components/Layout.astro";
+import { getPublishedNews } from "@/lib/load";
+import { formatDate } from "@/lib/format";
+import { withBase } from "@/lib/paths";
+
+const posts = await getPublishedNews();
+---
+
+<Layout
+  title="News"
+  description="News about the APS AI Tracker itself: new features, changes to the method, and corrections."
+>
+  <div class="page prose stack news">
+    <h1>News</h1>
+    <p class="lede">
+      Changes to the tracker itself: new features, changes to the method, and
+      corrections. Changes to the statements are on the <a href={withBase("/timeline")}
+        >timeline</a
+      >. There is also an <a href={withBase("/news.xml")}>RSS feed</a>.
+    </p>
+    {
+      posts.length === 0 ? (
+        <p class="muted">Nothing yet.</p>
+      ) : (
+        <ol class="news__list">
+          {posts.map((p) => (
+            <li>
+              <time class="mono muted" datetime={p.data.date.toISOString().slice(0, 10)}>
+                {formatDate(p.data.date.toISOString())}
+              </time>
+              <h2>
+                <a href={withBase(`/news/${p.id}`)}>{p.data.title}</a>
+              </h2>
+              <p>{p.data.summary}</p>
+            </li>
+          ))}
+        </ol>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .news {
+    max-width: 46rem;
+  }
+
+  .news__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .news__list h2 {
+    margin: var(--space-1) 0;
+    font-size: var(--text-xl);
+  }
+
+  .news__list p {
+    margin: 0;
+  }
+</style>

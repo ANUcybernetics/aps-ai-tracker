@@ -115,6 +115,10 @@ Toolchain mirrors the benswift-me repo: pnpm + Astro 7 + Svelte 5 islands,
 oxlint/oxfmt/stylelint, node 24. The site is light-only (no dark mode); design
 tokens live in `src/styles/tokens.css`.
 
+- News about the tracker itself lives in `site/src/content/news/*.md`, with
+  flat frontmatter (title, date, summary, draft). A `draft: true` post never
+  builds and is never announced; the News nav item appears once one post is
+  published.
 - Dev: `cd site && mise exec -- pnpm dev`
 - Build/lint/format/typecheck/test:
   `mise exec -- pnpm run {build,lint,format,typecheck,test}`
@@ -195,6 +199,10 @@ live in `lexicons/` and are published from Ben's personal DID (authority is
   marks the whole corpus as already announced). Each skeet carries an external
   card with `associatedRefs` to the backing records, and the agency's document
   record is re-put with `bskyPostRef` pointing at its latest announcement.
+  Published news posts are announced the same way, once each (ledger key
+  `news:{slug}`). A capture made current by a URL fix is not news: after fixing
+  an agency's URL, run `--seed` so its first good capture isn't announced as
+  "has published".
 - Bot profile (name/bio/avatar): `mise exec -- pnpm run atproto:profile`
   (idempotent; edit constants in `site/scripts/atproto-profile.ts`).
 

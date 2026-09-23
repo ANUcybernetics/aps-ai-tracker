@@ -23,11 +23,13 @@
 // re-put of everything.
 //
 // With --crosspost, new substantive revisions are also announced as skeets
-// (one per agency per run, capped). Announcements are tracked in the separate,
-// durable atproto-syndication.json ledger — deliberately NOT the state file,
-// so a state reset/backfill can never re-announce the back catalogue. --seed
-// marks every current corpus revision as already-announced (used once after
-// the initial backfill, or after manual corpus surgery).
+// (one per agency per run, capped), and so is each published news post in
+// src/content/news/ (drafts never; ledger key `news:{slug}`). Announcements
+// are tracked in the separate, durable atproto-syndication.json ledger —
+// deliberately NOT the state file, so a state reset/backfill can never
+// re-announce the back catalogue. --seed marks every current corpus revision
+// as already-announced (used once after the initial backfill, or after manual
+// corpus surgery).
 //
 //   mise exec -- pnpm run atproto:publish                          # dry run
 //   mise exec -- pnpm run atproto:publish -- --write --crosspost   # the cron
@@ -70,6 +72,13 @@ import {
   type StatementInput,
   type StrongRef,
 } from "../src/lib/atproto";
+import {
+  newsLedgerKey,
+  newsPostText,
+  newsToAnnounce,
+  parseNewsPost,
+  type NewsPost,
+} from "../src/lib/news";
 import { statementSchema } from "../src/lib/schemas";
 
 // Work around node's IPv6-first happy-eyeballs stalls against bsky.social.
@@ -90,6 +99,7 @@ const GENERATED_DIR = path.join(SITE_DIR, "src", "generated");
 const STATE_PATH = path.join(REPO_ROOT, "atproto-state.json");
 const LEDGER_PATH = path.join(REPO_ROOT, "atproto-syndication.json");
 const ICON_PATH = path.join(SITE_DIR, "src", "assets", "publication-icon.png");
+const NEWS_DIR = path.join(SITE_DIR, "src", "content", "news");
 const OG_PATH = path.join(SITE_DIR, "public", "og.png");
 
 interface State {
@@ -182,6 +192,14 @@ function loadStatements(): StatementInput[] {
     statements.push({ ...doc, sourceUrl });
   }
   return statements;
+}
+
+function loadNews(): NewsPost[] {
+  if (!fs.existsSync(NEWS_DIR)) return [];
+  return fs
+    .readdirSync(NEWS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => parseNewsPost(f.slice(0, -3), fs.readFileSync(path.join(NEWS_DIR, f), "utf8")));
 }
 
 /** Mark every current corpus revision as already-announced, write the ledger, done. */
@@ -355,6 +373,7 @@ async function main() {
   );
   const stale = staleStatements.length * 2 + staleRevisions.length;
   const plan = CROSSPOST ? planAnnouncements(statements, ledger) : { announce: [], autoSeed: [] };
+  const newsPlan = CROSSPOST ? newsToAnnounce(loadNews(), ledger) : [];
 
   const publicationChanged = state.publication !== publicationHash;
   const total = revisionPuts.length + statementPuts.length + (publicationChanged ? 1 : 0);
@@ -380,6 +399,9 @@ async function main() {
   for (const a of plan.announce) {
     console.log(`  will announce: ${announcementText(a)}`);
   }
+  for (const post of newsPlan) {
+    console.log(`  will announce news: ${post.title}`);
+  }
   if (plan.autoSeed.length) {
     console.log(`  auto-seeding ${plan.autoSeed.length} passed-over revision(s)`);
   }
@@ -398,6 +420,7 @@ async function main() {
   if (
     total === 0 &&
     plan.announce.length === 0 &&
+    newsPlan.length === 0 &&
     plan.autoSeed.length === 0 &&
     !(PRUNE && stale > 0)
   ) {
@@ -495,12 +518,15 @@ async function main() {
     // block, which a hard kill would skip), so the double-announce window is
     // only the instant between the createRecord response and that write.
     for (const a of plan.autoSeed) ledger[a] = { seeded: true };
+    const origin = new URL(SITE_URL).origin;
+    let thumb: unknown;
+    const cardThumb = async () =>
+      (thumb ??= fs.existsSync(OG_PATH)
+        ? (await agent.uploadBlob(fs.readFileSync(OG_PATH), { encoding: "image/png" })).data.blob
+        : undefined);
     if (plan.announce.length) {
       pubRef ??= await getRef(PUBLICATION_COLLECTION, pubRkey);
-      const thumb = fs.existsSync(OG_PATH)
-        ? (await agent.uploadBlob(fs.readFileSync(OG_PATH), { encoding: "image/png" })).data.blob
-        : undefined;
-      const origin = new URL(SITE_URL).origin;
+      await cardThumb();
       for (const a of plan.announce) {
         const entry = byAbbr.get(a.abbr)!;
         const docRkey = state.documentRkeys[a.abbr]!;
@@ -538,12 +564,44 @@ async function main() {
         state.statements[a.abbr] = sha256(JSON.stringify([docWithRef, entry.stmt]));
       }
     }
+
+    // News posts: one skeet each, an external card pointing at the post.
+    for (const post of newsPlan) {
+      const rt = new RichText({ text: newsPostText(post) });
+      await rt.detectFacets(agent);
+      const external: Record<string, unknown> = {
+        uri: `${origin}/news/${post.slug}`,
+        title: post.title,
+        description: post.summary,
+      };
+      const image = await cardThumb();
+      if (image) external.thumb = image;
+      const res = await agent.com.atproto.repo.createRecord({
+        repo: TRACKER_DID,
+        collection: "app.bsky.feed.post",
+        record: {
+          $type: "app.bsky.feed.post",
+          text: rt.text,
+          facets: rt.facets,
+          langs: ["en"],
+          embed: { $type: "app.bsky.embed.external", external },
+          createdAt: new Date().toISOString(),
+        },
+      });
+      ledger[newsLedgerKey(post.slug)] = {
+        uri: res.data.uri,
+        cid: res.data.cid,
+        syndicatedAt: new Date().toISOString(),
+      };
+      saveLedger(ledger);
+      console.log(`  ☁ news ${res.data.uri}`);
+    }
   } finally {
     saveState(state);
     if (CROSSPOST) saveLedger(ledger);
   }
   console.log(
-    `✓ ${total} record(s) put, ${plan.announce.length} announcement(s) ` +
+    `✓ ${total} record(s) put, ${plan.announce.length + newsPlan.length} announcement(s) ` +
       `as ${TRACKER_HANDLE} (${TRACKER_DID})`,
   );
 }

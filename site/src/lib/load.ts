@@ -56,3 +56,11 @@ export async function getTimeline() {
       a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? 1 : a.id > b.id ? -1 : 0,
     );
 }
+
+// Published news posts, newest first. Drafts are left out of every page.
+export async function getPublishedNews() {
+  const posts = await getCollection("news", (p) => !p.data.draft);
+  return posts.toSorted(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id),
+  );
+}

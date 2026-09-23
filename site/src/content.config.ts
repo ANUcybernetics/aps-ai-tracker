@@ -1,4 +1,5 @@
 import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { file, glob } from "astro/loaders";
 
 import { agencyRowSchema, statementSchema, timelineEventSchema } from "@/lib/schemas";
@@ -37,4 +38,17 @@ const timeline = defineCollection({
   schema: timelineEventSchema,
 });
 
-export const collections = { statements, agencies, timeline };
+// News about the tracker itself, hand-written in src/content/news/. A post
+// with `draft: true` never builds and is never announced on Bluesky; the
+// announcer (scripts/atproto-news.ts) reads the same flat frontmatter.
+const news = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/news" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    summary: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { statements, agencies, timeline, news };
