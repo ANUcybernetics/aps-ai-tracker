@@ -74,6 +74,52 @@ abbr = "WGEA"
 date = "2026-06-07"
 reason = "rewrite captured with the review sentence eaten (fixed 2026-06-26)"
 
+# A failed first capture followed by a good one: the recovery is correctly
+# scrape noise, but noise inherits the previous profile, so the statement kept a
+# reading of the failed page. Quarantining the failures makes the first good
+# capture the one that is read.
+[[quarantine]]
+abbr = "ANMM"
+date = "2025-12-03"
+reason = "tracked URL returned the museum's reports-and-policies index, not the statement"
+
+[[quarantine]]
+abbr = "ANMM"
+date = "2026-02-26"
+reason = "tracked URL returned the museum's governance page, not the statement"
+
+[[quarantine]]
+abbr = "NFSA"
+date = "2025-11-11"
+reason = "capture failed, grabbing only a banner image"
+
+[[quarantine]]
+abbr = "DHA"
+date = "2026-04-04"
+reason = "capture held only the page title, no body"
+
+# Every IPA capture before 23 September was IP Australia's accountability hub,
+# which links to the statement PDF but does not contain it.
+[[quarantine]]
+abbr = "IPA"
+date = "2026-05"
+reason = "accountability hub page, not the statement"
+
+[[quarantine]]
+abbr = "IPA"
+date = "2026-07"
+reason = "accountability hub page, not the statement"
+
+[[quarantine]]
+abbr = "IPA"
+date = "2026-08"
+reason = "accountability hub page, not the statement"
+
+[[quarantine]]
+abbr = "IPA"
+date = "2026-09-0"
+reason = "accountability hub page, not the statement"
+
 [[confirmed]]
 abbr = "AEC"
 date = "2025-11-12T10:16"
