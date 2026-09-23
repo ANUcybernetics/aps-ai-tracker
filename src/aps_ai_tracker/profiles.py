@@ -35,7 +35,7 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 CACHE_PATH = llm.CACHE_DIR / "profiles.json"
 
 # The instruments' own dates, used for the staleness and adoption views.
@@ -181,10 +181,10 @@ class Profile(BaseModel):
         description="Which version of the Policy for the responsible use of AI in government the statement refers to"
     )
     policy_compliance_stated: bool = Field(
-        description="States that the agency complies with or implements the policy"
+        description="Addresses the agency's compliance with the Policy for the responsible use of AI in government: says its AI use complies, aligns or will comply with it, or is governed so that it does"
     )
     legislation_compliance_stated: bool = Field(
-        description="States compliance with applicable legislation (Privacy Act, Archives Act, PGPA Act, etc.)"
+        description="Addresses the agency's compliance with applicable legislation and regulation in its AI use (Privacy Act, Archives Act, PGPA Act, etc., named or not): says it complies or will comply, or is governed so that it does"
     )
     commitments: list[Commitment] = Field(
         description="Explicit promises and self-imposed limits, especially 'we will not…' statements"
@@ -236,6 +236,15 @@ Rules:
 - review_cadence: "annual" for yearly review; "on-change" for review when the
   approach changes; "annual-and-on-change" when both; "other" for any other
   stated cadence.
+- policy_compliance_stated / legislation_compliance_stated: the Standard asks a
+  statement to address compliance, not to certify it. True when the statement
+  says the agency's AI use complies with, aligns with or will comply with the
+  policy (or applicable legislation and regulation), or makes an official or
+  body responsible for ensuring that it does; a forward-looking commitment from
+  an agency that does not yet use AI counts. False when the words appear only
+  in a list of what a future statement will contain, or when legislation is
+  mentioned only as subject matter (legislated functions, decisions under an
+  Act).
 - Dates: give YYYY-MM-DD when the day is stated, YYYY-MM when only the month is.
   Do not derive a date from a version number or from page chrome.
 - Roles, never names: record job titles only.
