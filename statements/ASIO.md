@@ -1,46 +1,39 @@
 ---
 abbr: ASIO
 agency: Australian Security Intelligence Organisation
-source_url: https://www.asio.gov.au/automation-and-artificial-intelligence-policy
-title: Automation and Artificial Intelligence Policy | ASIO
+cleaned_hash: ba8101d5757a46757030e0c14d9f83257709ac25909e6fcf4a76fbe578de6e8b
+last_updated_text: 19 February 2026
+raw_hash: ba8101d5757a46757030e0c14d9f83257709ac25909e6fcf4a76fbe578de6e8b
+source_url: https://www.asio.gov.au/system/files/2026-02/ASIO%20transparency%20statement%20-%20agency%20use%20of%20Artificial%20Intelligence%20%28AI%29.pdf
+title: ASIO AI Transparency Statement
 ---
 
-ASIO is a human-led, data-driven, technology-enabled organisation committed to transparency wherever possible. ASIO's transparency statement, reviewed 19 February 2026, outlines our approach to AI, our principles, and commitment to accountability and oversight.
+## Introduction
 
-\[ [ASIO transparency statement - agency use of Artificial Intelligence (AI).pdf](https://www.asio.gov.au/system/files/2025-02/ASIO%20transparency%20statement%20-%20agency%20use%20of%20Artificial%20Intelligence%20%28AI%29.pdf) \](https://www.asio.gov.au/system/files/2026-02/ASIO%20transparency%20statement%20-%20agency%20use%20of%20Artificial%20Intelligence%20%28AI%29.pdf)
+The Australian Security Intelligence Organisation (ASIO) is committed to using Artificial Intelligence (AI) in a responsible and transparent manner. To deliver our mission to protect Australia and Australians from threats to their security, we leverage AI, where appropriate, to enhance our capabilities and improve our effectiveness.
 
-ASIO's Automation and Artificial Intelligence Policy outlines how ASIO will interact with Automation and AI and demonstrates our commitment to doing what is legal _and_ doing what is right.
+This transparency statement outlines ASIO's approach to AI, our principles, and commitment to accountability and oversight.
 
-[Automation & AI Policy.pdf](https://www.asio.gov.au/system/files/2023-10/Automation%20%26%20AI%20Policy.pdf)
+ASIO's use of AI is guided by our Automation and AI Policy, which is built on seven core principles:
 
-Our AI ethical principles guide our approach to capability development and our work using AI and its outputs. The principles ensure ethical considerations underpin ASIO's use of AI and are applied by all involved from development to implementation. They ensure an appropriate level of human involvement and acknowledge humans are accountable for decision making.
+1. Human-led: Our use of AI supports human decision-making, with humans accountable for all decisions.
+1. Data-driven: We evaluate the accuracy and limitations of AI models and strive to minimise biases.
+1. Considered: We recognise potential harms and act to minimise them.
+1. Accountable: We clearly communicate AI capabilities and limitations to users.
+1. Responsive: We monitor AI use and update systems as needed.
+1. Security-conscious: We handle data and AI models securely.
+1. Compliant and responsible: Our AI use complies with relevant legislation and respects democratic values.
 
-Ethical AI principles
+## ASIO's commitment to transparency and accountability
 
-**Human-led**
+While ASIO does not publicly comment on the specifics of our technology and tools, ASIO is committed to transparency and accountability in the use of AI, and has made our policy and ethical principles publicly available. We have established internal governance to ensure that our AI use is responsible and aligned with these principles. This includes a structured decision-making framework, where accountability and decision-making are vested in a senior delegate, and informed by input and advice from internal stakeholders with diverse expertise and perspectives, who are well-positioned to assess the implications of our AI use.
 
-Our use of AI supports human decision making. While we find ourselves required to delegate some routine, large-scale tasks to AI due to increasing volumes of data, we ensure that ultimately humans are accountable for decision making and that the use of AI includes an appropriate level of human involvement for the particular use-case. This is especially relevant in the case of decisions significantly affecting an individual.
+## Risk assessment and oversight
 
-**Data-driven**
+We conduct thorough risk assessments for all AI capabilities, considering potential benefits, harms, and limitations. This process includes evaluation of data quality, model performance, and potential biases. We ensure that AI capabilities are reviewed and updated to maintain their integrity and effectiveness.
 
-We actively endeavour to evaluate the accuracy and limitations of AI models and determine whether an AI solution is appropriate for a given problem. We strive to understand, and where possible minimise through technical design and data usage, the biases inherently present in all AI.
+## Summary
 
-**Considered**
+ASIO is committed to using AI in a responsible and transparent manner, guided by our principles and policy. We will continue to review and update our AI policy and practices to ensure they remain effective, aligned with our mission, and enable our commitment to do what it is legal and what is right.
 
-We seek to recognise harms that may arise from the use of AI and act to minimise those harms whether they be individual or societal, reputational or operational. We balance potential risks and costs of using AI against both the benefits of AI and the risks associated with not using AI.
-
-**Accountable**
-
-We clearly and actively communicate information on proper usage and limitations of AI capabilities to users. Responsibility for proper use of AI is clearly articulated and a system of checks and balances is in place guiding use where appropriate to ensure our actions are reasonable, fair and proportionate.
-
-**Responsive**
-
-The use of AI is monitored as use-cases emerge or evolve over time—officers should be empowered to highlight any perceived issues with the use of AI. Where appropriate, systems are updated to ensure the use of AI continues to meet its intended purpose.
-
-**Security-conscious**
-
-Data and AI models are security classified and handled appropriately. This includes considering the potential for compromise of our capabilities arising from improper classification or sharing of data and AI models which is balanced against the need for the transparency afforded by a lower classification where appropriate.
-
-**Compliant and responsible**
-
-ASIO's use of AI complies with relevant legislation and codes of practice. Further, our use of AI and the data that support it considers not just whether we can do something (because the action is lawful) but whether we should do it—our use of AI must be respectful of the values of our democratic society as well as upholding ASIO values. We strive for transparency in the development, deployment and reporting of AI capabilities, to ensure we maintain our licence to operate.
+ASIO transparency statement – agency use of Artificial Intelligence (AI)

@@ -1,22 +1,56 @@
 ---
 abbr: DVSC
 agency: Defence and Veterans' Service Commission
-source_url: https://www.dvsc.gov.au/about-us/accountability-and-reporting/ai-transparency-statement
-title: AI Transparency Statement | Defence and Veterans' Service Commission
+cleaned_hash: 0fbf592b84cd7c91a4e04862d31df26ea6c84a268050a29348ed37e076a755b6
+raw_hash: 0fbf592b84cd7c91a4e04862d31df26ea6c84a268050a29348ed37e076a755b6
+source_url: https://www.dvsc.gov.au/sites/default/files/2026-01/AI%20Transparency%20Statement%20-%20January%202026_0.pdf
+title: AI transparency statement
 ---
 
-# AI Transparency Statement
+# AI transparency statement
 
-This statement explains the Artificial Intelligence (AI) systems we use, and how we use them.
+January 2026
 
-The Digital Transformation Agency's [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) (the Policy) sets out the Australian Government’s approach to embracing the opportunities of AI while ensuring that use is safe and responsible. Transparency is critical to building public trust and is an important aim of the Policy and the broader APS Reform agenda.
+The Defence and Veterans' Service Commission (DVSC) recognises the potential of Artificial Intelligence (AI) to enhance the way we work. In adopting AI technologies, the DVSC is committed to upholding the highest transparency, risk management, and governance standards to ensure responsible and ethical use.
 
-An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and ability to adapt after deployment.
+## Our approach to AI transparency
 
-The Defence and Veterans’ Service Commission (DVSC) uses AI in accordance with the DVSC’s AI Transparency Statement.
+- Accountability and Oversight—AI systems are subject to robust governance frameworks, ensuring alignment with legal, ethical, and policy obligations.
+- Explainability and Fairness—We use AI models that are interpretable, fair, and free from bias.
+- Privacy and Security—Protecting personal data is paramount. AI applications must comply with strict privacy and cybersecurity standards to safeguard sensitive information.
+- Human Oversight and Decision-Making—AI assists, not replaces, human judgement. Critical decisions are made by our people.
+- Continuous Monitoring and Improvement—AI systems are assessed for performance, fairness and transparency.
 
-[Download a copy of our AI Transparency Statement here](https://www.dvsc.gov.au/resources/ai-transparency-statement "AI Transparency Statement")
+The DVSC adheres to Australia's AI Ethics Principles, demonstrating our commitment to protecting privacy and security and to the Digital Information Agency's Policy for the responsible use of AI in government. AI must be used in a manner consistent with the APS Values, Code of Conduct and Employment Principles.
 
-This statement will be reviewed annually, when we make a significant change to our approach to AI, or when any new factor impacts this statement.
+In addition to Australia's AI Ethics Principles, the DVSC adopted the following six AI principles:
 
-For enquiries, please contact us via our [general enquiries form](https://www.dvsc.gov.au/enquiries "General enquiries").
+- Only AI tools that are authorised for access and use within the DVSC are to be deployed.
+- Users must critically examine AI outputs.
+- AI input must not include or reveal classified, sensitive, or personal information.
+- AI must not be the decision-maker on government advice and services.
+- AI must be used in a manner consistent with the APS Values, Employment Principles and Code of Conduct.
+
+## How we use AI
+
+The DVSC does not use AI in any way that members of the public may directly interact with, or be significantly impacted by, without a human intermediary or intervention.
+
+Based on the classification system for AI in government, we use AI to enhance:
+
+- Workplace productivity.
+
+We may apply AI in the following domains:
+
+- Corporate and enabling.
+
+DVSC staff have access to GovAI, which is a government initiative providing staff with the opportunity to get hands-on experience with various AI tools in a secure, controlled setting. Our focus is on exploring how AI might boost productivity, as well as enhance our data analytic capabilities.
+
+Additionally, once trained, DVSC staff have access to Microsoft 365 Copilot. This tool provides AI-assisted capabilities within a secure environment, further supporting our day-to-day operations.
+
+The DVSC provides guidance to staff, to help understand the compliance and governance arrangements and the requirement to adhere to both internal and external policies.
+
+The DVSC is dedicated to fostering public trust by ensuring AI-driven processes remain ethical, responsible, and aligned with the interests of the Australian Government while still being able to harness AI technologies.
+
+This statement will be reviewed when the DVSC makes significant changes to our approach to AI, or when any new factors impact this statement. This statement was updated on 15 January 2026.
+
+For further information on the DVSC's AI governance and transparency please contact CIO@dvsc.gov.au.

@@ -360,7 +360,7 @@ abbr = "ASIO"
 size = "medium"
 scope = "exempt"
 portfolio = "Home Affairs"
-url = "https://www.asio.gov.au/automation-and-artificial-intelligence-policy"
+url = "https://www.asio.gov.au/system/files/2026-02/ASIO%20transparency%20statement%20-%20agency%20use%20of%20Artificial%20Intelligence%20%28AI%29.pdf"
 
 [[agencies]]
 name = "Australian Skills Quality Authority"
@@ -488,7 +488,7 @@ abbr = "DVSC"
 size = "extra-small"
 scope = "exempt"
 portfolio = "Defence"
-url = "https://www.dvsc.gov.au/about-us/accountability-and-reporting/ai-transparency-statement"
+url = "https://www.dvsc.gov.au/sites/default/files/2026-01/AI%20Transparency%20Statement%20-%20January%202026_0.pdf"
 
 [[agencies]]
 name = "Defence Housing Australia"
