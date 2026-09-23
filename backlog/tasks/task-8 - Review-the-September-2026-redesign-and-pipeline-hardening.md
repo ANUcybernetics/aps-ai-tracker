@@ -1,9 +1,10 @@
 ---
 id: TASK-8
 title: Review the September 2026 redesign and pipeline hardening
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-09-23 09:30'
+updated_date: '2026-09-23 10:15'
 labels:
   - review
   - site
@@ -37,13 +38,19 @@ Known loose ends to check:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Every page's copy has been read end to end for accuracy, AI tropes and the 'says, not does' rule, and anything wrong is fixed
-- [ ] #2 A sample of at least 20 capture-check verdicts (rejections and borderline acceptances) has been checked against the captured text, with any false verdict confirmed or quarantined in captures.toml
-- [ ] #3 The Opus 5.5 Standard-element shifts have been spot-checked, and the site's figures are either confirmed or corrected
-- [ ] #4 Non-AI page content being classed as a substantive change (the IGIS case) is either fixed or recorded as a known limitation on /reading
-- [ ] #5 The dropped-commitment lists on /policy and the timeline have been spot-checked for reworded commitments shown as dropped, with the finding either fixed or explained on /reading
-- [ ] #6 The timeline and agencies filters give correct results for each starter question and each agency question, on desktop and at phone width
+- [x] #1 Every page's copy has been read end to end for accuracy, AI tropes and the 'says, not does' rule, and anything wrong is fixed
+- [x] #2 A sample of at least 20 capture-check verdicts (rejections and borderline acceptances) has been checked against the captured text, with any false verdict confirmed or quarantined in captures.toml
+- [x] #3 The Opus 5.5 Standard-element shifts have been spot-checked, and the site's figures are either confirmed or corrected
+- [x] #4 Non-AI page content being classed as a substantive change (the IGIS case) is either fixed or recorded as a known limitation on /reading
+- [x] #5 The dropped-commitment lists on /policy and the timeline have been spot-checked for reworded commitments shown as dropped, with the finding either fixed or explained on /reading
+- [x] #6 The timeline and agencies filters give correct results for each starter question and each agency question, on desktop and at phone width
 - [ ] #7 At least one nightly run has completed with the new cron steps, the captures cache is committed, and any rejected-capture todos are sensible
-- [ ] #8 ACCC is either fetching again or marked manual = true with a manual_reason
+- [x] #8 ACCC is either fetching again or marked manual = true with a manual_reason
 - [ ] #9 The first news post has been edited and published (draft: false), and its Bluesky announcement has gone out once
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Reviewed 23 Sep 2026 with parallel agents. #1: two copy reviews; four untrue claims fixed (bfcf1c9). #2: 26 verdicts checked, all correct. #3: Opus 5.5 legislation flips mostly wrong (field wording asked for certification); prompt fixed and history re-read (mandatory all-eight 43 -> 53); a stated publication date now counts as last-updated. #4: IGIS, NCC, NEMA narrowed with selectors; past false events (IGIS 28 Aug + 17 Sep, NCC 6 Aug, the Aug ones already posted to Bluesky) remain. #5: no safe deterministic rule; explained on /reading. #6: all counts match; phone overflow on /agencies fixed. #8: ACCC manual. Open: #7 needs the 24 Sep nightly run; #9 needs Ben to approve publishing.
+<!-- SECTION:NOTES:END -->
