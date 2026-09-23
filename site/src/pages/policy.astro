@@ -163,7 +163,7 @@ const built = formatDate(meta.builtAt);
         Dashed rules mark the instruments&rsquo; own dates: v2.0 commencement, the policy&rsquo;s
         six-month and twelve-month deadlines, and the AI Plan&rsquo;s July 2026 date for Chief AI
         Officers. A statement counts from the month we first saw it, and agencies joined the
-        tracker in waves (61 in November 2025, 24 more in June 2026), so a month-on-month move
+        tracker in waves (the largest in November 2025 and June 2026), so a month-on-month move
         can be new entrants as much as new text; open a chart&rsquo;s figures for the denominator.
       </p>
       <div class="charts">
@@ -262,7 +262,7 @@ const built = formatDate(meta.builtAt);
         <div><dt>Say they use no public-facing AI</dt><dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd></div>
         <div><dt>Say they use it with human review</dt><dd>{pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span></dd></div>
         <div><dt>Say they use it, without stating human review</dt><dd>{pf["without-human-review"]} <span class="muted">({pct(pf["without-human-review"])})</span></dd></div>
-        <div><dt>Don&rsquo;t address it</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
+        <div><dt>Don&rsquo;t address it, or not clearly</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
         <div><dt>Commit to a human intermediary</dt><dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd></div>
       </dl>
     </section>

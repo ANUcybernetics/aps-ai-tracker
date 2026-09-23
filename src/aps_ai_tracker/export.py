@@ -806,8 +806,8 @@ def _is_shared(passage: Passage, shared_count: dict[str, int]) -> bool:
 def originality_score(passages: list[Passage], shared_count: dict[str, int]) -> dict:
     """Length-weighted share of a statement that is bespoke vs template/boilerplate.
 
-    Score 1.0 = wholly unique, low = mostly copied. DTA scores low *because* it is
-    the template source, so the site labels it canonical rather than unoriginal.
+    Score 1.0 = wholly unique, low = mostly copied. The DTA is the template
+    source, so the site labels it canonical rather than scoring it as unoriginal.
     """
     total = sum(len(p.normalised) for p in passages)
     if total == 0:

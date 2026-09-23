@@ -68,6 +68,6 @@ export const SIZE_LABEL: Record<AgencySize, string> = {
 
 export const KIND_LABEL: Record<EventKind, string> = {
   updated: "updated",
-  added: "added",
+  added: "first tracked",
   "tracked-since": "first tracked",
 };
