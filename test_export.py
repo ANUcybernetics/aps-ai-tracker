@@ -7,6 +7,7 @@ touching git or a model.
 
 import pytest
 
+from aps_ai_tracker.capture_check import CaptureCheck
 from aps_ai_tracker.changes import Classification
 from aps_ai_tracker.export import (
     Captures,
@@ -186,6 +187,32 @@ def test_quarantine_only_matches_the_named_agency():
         "X", revs, Captures(quarantine=(("Y", "2026-01-01"),))
     )
     assert len(kept) == 2
+
+
+def test_quarantine_drops_captures_the_check_rejects():
+    # A hub page first, then the statement: only the statement survives.
+    revs = [
+        _body_rev("links to the statement PDF", sha="aaa1"),
+        _body_rev("full " * 100, sha="bbb2", date="2026-02-02T20:00:00+11:00"),
+    ]
+    checks = {
+        "aaa1": CaptureCheck(
+            "index-or-hub", "An index page.", "https://x.gov.au/s.pdf"
+        ),
+        "bbb2": CaptureCheck("statement", "The statement."),
+    }
+    kept, newest_dropped = quarantine_revisions("X", revs, Captures(), checks)
+    assert [r.sha for r in kept] == ["bbb2"]
+    assert not newest_dropped
+
+
+def test_quarantine_keeps_a_rejected_capture_the_operator_confirmed():
+    revs = [_body_rev("full " * 100, sha="aaa1", date="2026-02-02T20:00:00+11:00")]
+    checks = {"aaa1": CaptureCheck("other-document", "A principles page.")}
+    kept, _ = quarantine_revisions(
+        "X", revs, Captures(confirmed=(("X", "2026-02-02"),)), checks
+    )
+    assert [r.sha for r in kept] == ["aaa1"]
 
 
 def test_collapse_drops_revert_excursion():

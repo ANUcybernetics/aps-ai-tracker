@@ -43,9 +43,10 @@ echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
 
 echo "=== scrape finished at $(date -Iseconds) ===" >> "$LOG_FILE"
 
-# Classify today's changed revisions and profile the changed statements. This
-# is the one place a model is called: the export shells out to `claude -p`
-# (Sonnet, subscription — llm.py scrubs API credentials from the child
+# Check today's captures, classify the changed revisions and profile the
+# changed statements. This is the one place a model is called: the export
+# shells out to `claude -p` (Opus 5.5, subscription — llm.py scrubs API
+# credentials from the child
 # environment), and CI rebuilds the site from the committed caches without any
 # model. Unchanged statements are cache hits, so a typical run makes a handful
 # of calls or none.
@@ -54,8 +55,8 @@ uv run --group export export >> "$LOG_FILE" 2>&1 || failed export
 
 # Commit the refreshed extraction caches (the only derived artifacts we track);
 # generated site JSON is rebuilt in CI.
-git add -- .cache/changes.json .cache/profiles.json 2>/dev/null || true
-if ! git diff --cached --quiet -- .cache/changes.json .cache/profiles.json; then
+git add -- .cache/captures.json .cache/changes.json .cache/profiles.json 2>/dev/null || true
+if ! git diff --cached --quiet -- .cache/captures.json .cache/changes.json .cache/profiles.json; then
   git commit -m "analysis: refresh extraction caches after scrape" >> "$LOG_FILE" 2>&1 \
     || failed "commit caches"
 fi
@@ -108,6 +109,21 @@ if overdue=$(uv run stale-manual 2>> "$LOG_FILE"); then
 else
   failed stale-manual
 fi
+
+# A newest capture the export judged not to be the statement (a block page, a
+# hub page, a failed capture) is held off the site; each one needs a person to
+# fix the URL or confirm the capture. The export's warning names the agency and,
+# for a hub page, the statement link it found. One todo per agency, as above.
+echo "=== rejected-capture todos at $(date -Iseconds) ===" >> "$LOG_FILE"
+open_todos=$(nb todos open --no-color 2>/dev/null || true)
+while IFS= read -r line; do
+  abbr=${line%% *}
+  key="aps-ai-tracker:capture:${abbr}"
+  case "$open_todos" in *"$key"*) continue ;; esac
+  nb todo add "${key} ${line%% Held back*}" >> "$LOG_FILE" 2>&1 \
+    || failed "todo add (capture ${abbr})"
+done < <(grep -oP 'WARNING - \K\S+ \(captured [^)]*\) is not the statement: .*' "$LOG_FILE" \
+  | sort -u -k1,1)
 
 # One cold browser fetch of PM&C's Imperva challenge (see probe.py). Evidence
 # only: it writes nothing, and a block is not a failure, so the run stays green

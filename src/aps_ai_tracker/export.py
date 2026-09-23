@@ -24,11 +24,13 @@ import subprocess
 import sys
 import tomllib
 from collections import Counter, defaultdict
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
 from .adoption import build_adoption, staleness
+from .capture_check import CaptureCheck, check_captures
 from .changes import SCHEMA_VERSION as CHANGES_SCHEMA_VERSION
 from .changes import UNCLASSIFIED, Classification, classify_pairs
 from .profiles import SCHEMA_VERSION as PROFILES_SCHEMA_VERSION
@@ -268,11 +270,16 @@ def collapse_reverts(revisions: list[Revision]) -> list[Revision]:
 
 
 def quarantine_revisions(
-    abbr: str, revisions: list[Revision], captures: Captures
+    abbr: str,
+    revisions: list[Revision],
+    captures: Captures,
+    checks: Mapping[str, CaptureCheck] | None = None,
 ) -> tuple[list[Revision], bool]:
     """Drop failed captures from a statement's history.
 
-    Listed quarantine entries are dropped outright. The newest revision is also
+    Listed quarantine entries are dropped outright, and so is any revision the
+    capture check (`checks`, by sha) judged not to be the statement, unless it
+    is confirmed genuine in `captures.toml`. The newest revision is also
     held back when its body is less than half its predecessor's
     (`CONTENT_SHRINKAGE_THRESHOLD`) and it is not confirmed genuine: a fresh
     capture that lost most of the page is far more often a scraper failure
@@ -284,7 +291,27 @@ def quarantine_revisions(
     warning. Returns the surviving revisions and whether the newest one was
     dropped (so the site can show the last good body instead).
     """
-    kept = [r for r in revisions if not captures.is_quarantined(abbr, r.date)]
+    checks = checks or {}
+    kept = []
+    for r in revisions:
+        if captures.is_quarantined(abbr, r.date):
+            continue
+        check = checks.get(r.sha)
+        if check and not check.is_statement and not captures.is_confirmed(abbr, r.date):
+            log = logger.warning if r is revisions[-1] else logger.info
+            log(
+                "%s (captured %s) is not the statement: %s. %s%s Held back; add it "
+                "to captures.toml under [[confirmed]] if it is genuine.",
+                abbr,
+                r.date,
+                check.verdict,
+                check.reason,
+                f" Statement link: {check.statement_link}."
+                if check.statement_link
+                else "",
+            )
+            continue
+        kept.append(r)
     newest_dropped = bool(revisions) and (not kept or kept[-1] is not revisions[-1])
     if len(kept) >= 2:
         prev, newest = kept[-2], kept[-1]
@@ -962,24 +989,42 @@ def main() -> int:
     captures = load_captures()
     logger.info("Loaded %d agencies, %d statements", len(agencies), len(statements))
 
+    names = {
+        abbr: d["frontmatter"].get("agency", abbr) for abbr, d in statements.items()
+    }
     logger.info("Walking git history for %d statements...", len(statements))
     bulk = bulk_import_shas()
+    history = {abbr: git_file_revisions(abbr, bulk) for abbr in statements}
+    logger.info("Checking captures...")
+    verdicts = check_captures(
+        {
+            f"{abbr}:{rev.sha}": (names[abbr], rev.body)
+            for abbr, revs in history.items()
+            for rev in revs
+            if not captures.is_quarantined(abbr, rev.date)
+        }
+    )
+    checks: dict[str, dict[str, CaptureCheck]] = defaultdict(dict)
+    for cid, check in verdicts.items():
+        abbr, sha = cid.split(":", 1)
+        checks[abbr][sha] = check
+
     timelines: dict[str, list[Revision]] = {}
     suspect: dict[str, bool] = {}
-    for abbr in statements:
-        revs, newest_dropped = quarantine_revisions(
-            abbr, git_file_revisions(abbr, bulk), captures
-        )
-        timelines[abbr] = collapse_reverts(revs)
+    for abbr, revs in history.items():
+        kept, newest_dropped = quarantine_revisions(abbr, revs, captures, checks[abbr])
+        if not kept:
+            # Nothing we hold is the statement: the agency reads as not-yet
+            # rather than showing a page that isn't its statement.
+            logger.warning("%s has no capture that is its statement", abbr)
+            del statements[abbr]
+            continue
+        timelines[abbr] = collapse_reverts(kept)
         suspect[abbr] = newest_dropped
         if newest_dropped:
             # Show the last good capture as the statement, not the failed one.
             statements[abbr]["body"] = timelines[abbr][-1].body
     total_revisions = sum(len(r) for r in timelines.values())
-
-    names = {
-        abbr: d["frontmatter"].get("agency", abbr) for abbr, d in statements.items()
-    }
     logger.info("Classifying revision changes...")
     classes = classify_timelines(timelines, names)
     timeline = build_timeline(timelines, agencies, statements, classes)

@@ -28,7 +28,7 @@ This is a Python web scraping project using uv for dependency management.
 - Export site data (JSON for the Astro site):
   `mise exec -- uv run --group export export` (needs the `export` dependency
   group: pydantic + anthropic). Revision pairs and statement bodies not already
-  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude (Sonnet
+  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude (Opus 5.5
   by default; `APS_LLM_MODEL` overrides). The default backend shells out to
   `claude -p --json-schema` under the logged-in Claude Code subscription, with
   `ANTHROPIC_*` scrubbed from the child environment because Claude Code prefers
@@ -73,6 +73,12 @@ This is a Python web scraping project using uv for dependency management.
     whole batch, not one file). Never "fix" a false change by editing the cache;
     quarantine the capture, accepting that a genuine change in a quarantined
     capture is then observed at the next good one
+  - `capture_check.py` has Claude read each capture once (cached by agency +
+    body hash in `.cache/captures.json`) and say whether it is the statement at
+    all. The export drops block pages, hub pages, partial captures and other
+    documents like a quarantine unless `[[confirmed]]`; a rejected newest
+    capture becomes an nb todo in the nightly run, with the statement link when
+    the page was a hub
   - `changes.py` classifies every consecutive revision pair from its diff:
     deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
     Claude for the rest (kind + one-sentence summary + noteworthy points);
@@ -133,11 +139,10 @@ tokens live in `src/styles/tokens.css`.
   still go through `withBase()` in `site/src/lib/paths.ts`.
 - **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape, which classifies the day's new revision pairs and profiles
-  the changed bodies through `claude -p` (Sonnet, subscription), commits the
-  refreshed `.cache/changes.json` and `.cache/profiles.json`, and pushes.
-  Unchanged statements are cache hits, so most runs make a handful of calls or
-  none. The history was backfilled with Opus 5; the cache records the model per
-  entry.
+  the changed bodies through `claude -p` (Opus 5.5, subscription), commits the
+  refreshed `.cache/*.json` caches, and pushes. Unchanged statements are cache
+  hits, so most runs make a handful of calls or none. The cache records the
+  model per entry.
 
 ## atproto
 

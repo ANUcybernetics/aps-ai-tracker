@@ -87,13 +87,16 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
       reverted, and pure reformatting, are left out. Captures known to have failed
       are listed in the repository (<code>captures.toml</code>) and dropped before
       anything reads them, and a new capture that has lost more than half its text
-      is held back until someone confirms it.
+      is held back until someone confirms it. Claude also reads every capture
+      once to check that it is the statement at all, and not a block page, an
+      index page linking to the statement, or a capture that failed part-way;
+      a capture that isn&rsquo;t is dropped the same way.
     </p>
     <p>
       Every remaining revision is classified from its diff. Deterministic rules
       catch formatting-only, link-only, page-chrome, date-stamp and reordering
-      changes. Claude reads the rest (Opus 5 for the back catalogue, Sonnet 5 for
-      the nightly run, and every summary says which), assigning one of five kinds,
+      changes. Claude (Opus 5.5; every summary names the model) reads the rest,
+      assigning one of five kinds,
       writing a one-sentence summary and listing notable additions and removals.
       The results are cached by content hash in the repository, so each revision
       is read once and the site rebuilds without model calls.
