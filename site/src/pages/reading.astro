@@ -1,10 +1,14 @@
 ---
 import Layout from "@/components/Layout.astro";
-import { propagation, meta } from "@/lib/load";
+import { getTimeline, propagation, meta } from "@/lib/load";
 import { formatDate } from "@/lib/format";
-import { withBase } from "@/lib/paths";
-import { FIELD_SOURCE_LABEL, REQUIREMENTS } from "@/lib/profile-labels";
+import { statementPath, withBase } from "@/lib/paths";
+import { getStatements } from "@/lib/statements";
+import { FIELD_SOURCE_LABEL, REQUIREMENTS, TIER_LABEL, changeTier } from "@/lib/profile-labels";
 import type { FieldSource } from "@/lib/profile-labels";
+import DeltaList from "@/components/DeltaList.astro";
+import DiffView from "@/components/DiffView.astro";
+import ModelNote from "@/components/ModelNote.astro";
 
 const sources: FieldSource[] = ["standard", "policy", "ai-plan", "tracker"];
 
@@ -19,6 +23,19 @@ for (const c of propagation.clusters) {
   const t = c.firstObserved?.tier;
   if (t) tierCounts[t] += 1;
 }
+
+// The worked example: one small change that exercises both readings. The
+// captions below describe this particular change, so fail the build rather
+// than show them against a different one if a history rewrite loses it.
+const EXAMPLE_ID = "FCA:0704351742";
+const example = (await getTimeline()).find((e) => e.id === EXAMPLE_ID);
+const exampleRevs = example ? (await getStatements())[example.statementId]?.timeline : undefined;
+const exampleIdx = exampleRevs?.findIndex((r) => r.sha === example?.sha) ?? -1;
+if (!example || !exampleRevs || exampleIdx < 1) {
+  throw new Error(`reading: worked example ${EXAMPLE_ID} is missing from the export`);
+}
+const exampleBefore = exampleRevs[exampleIdx - 1];
+const exampleAfter = exampleRevs[exampleIdx];
 ---
 
 <Layout
@@ -47,6 +64,48 @@ for (const c of propagation.clusters) {
       register may come from an agency that has one, and a statement that claims
       one may come from an agency that doesn&rsquo;t.
     </p>
+
+    <h3 id="example">An example</h3>
+    <p>
+      Here is one change to the <a href={statementPath(example.abbr)}>{example.agency}</a>&rsquo;s
+      statement, taken apart.
+    </p>
+    <ol class="example">
+      <li>
+        <h4>The words that changed</h4>
+        <p>
+          The copy taken on {formatDate(example.date)} differed from the one before
+          in two places: the statement&rsquo;s date, and one sentence about its Chief
+          AI Officer.
+        </p>
+        <DiffView before={exampleBefore.body} after={exampleAfter.body} compact />
+      </li>
+      <li>
+        <h4>How much the text changed</h4>
+        <p>
+          The first reading puts the change in a <a href="#changes">tier</a>, sums it
+          up in a sentence and lists the points that changed. Reporting an
+          appointment is a new fact, so this change is substantive rather than
+          reworded.
+        </p>
+        <div class="example__reading">
+          <span class="pill">{TIER_LABEL[changeTier(example.changeKind)]}</span>
+          <p>{example.summary} <ModelNote model={example.model} /></p>
+          <ul>{example.noteworthy.map((point) => <li>{point}</li>)}</ul>
+        </div>
+      </li>
+      <li>
+        <h4>Which answers changed</h4>
+        <p>
+          The second reading compares the statement&rsquo;s{" "}
+          <a href="#profiles">profile</a> before and after. Three answers moved. The
+          promise to appoint a Chief AI Officer shows as a dropped commitment, but it
+          was dropped because it was kept, which is why every reading sits beside its diff (see <a
+            href="#checking">checking a reading</a>).
+        </p>
+        <DeltaList deltas={exampleAfter.profileDeltas} />
+      </li>
+    </ol>
 
     <h3 id="changes">How much the text changed</h3>
     <p>
@@ -255,6 +314,45 @@ for (const c of propagation.clusters) {
   .reading h4 {
     font-size: 1rem;
     margin-block-start: var(--space-3);
+  }
+
+  .example {
+    list-style: none;
+    padding: 0;
+    counter-reset: layer;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .example > li {
+    counter-increment: layer;
+    padding-inline-start: var(--space-3);
+    border-inline-start: 3px solid var(--border);
+  }
+
+  .example h4::before {
+    content: counter(layer) ". ";
+    color: var(--muted);
+  }
+
+  .example h4 {
+    margin-block-start: 0;
+  }
+
+  .example__reading {
+    margin-block-start: var(--space-2);
+    padding: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+  }
+
+  .example__reading > p {
+    margin: var(--space-2) 0 0;
+  }
+
+  .example__reading ul {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
   }
 
   .tiers {
