@@ -6,23 +6,22 @@ import { withBase } from "@/lib/paths";
 // propagation explorer, who's who and the data downloads keep their URLs and
 // are linked from the footer, the overview and the pages that use them.
 const links = [
-  { href: withBase("/"), label: "Overview", exact: true },
-  { href: withBase("/timeline"), label: "Timeline", exact: false },
-  { href: withBase("/agencies"), label: "Agencies", exact: false },
-  { href: withBase("/policy"), label: "What the statements say", exact: false },
-  { href: withBase("/reading"), label: "Reading the data", exact: false },
+  { href: withBase("/timeline"), label: "Timeline" },
+  { href: withBase("/agencies"), label: "Agencies" },
+  { href: withBase("/policy"), label: "What the statements say" },
+  { href: withBase("/reading"), label: "Reading the data" },
   // News appears once there is a published post to read.
   ...((await getPublishedNews()).length > 0
-    ? [{ href: withBase("/news"), label: "News", exact: false }]
+    ? [{ href: withBase("/news"), label: "News" }]
     : []),
-  { href: withBase("/about"), label: "About", exact: false },
+  { href: withBase("/about"), label: "About" },
 ];
 
 const here = Astro.url.pathname.replace(/\/$/, "");
 
-function isCurrent(href: string, exact: boolean): boolean {
+function isCurrent(href: string): boolean {
   const h = href.replace(/\/$/, "");
-  return exact ? here === h : here === h || here.startsWith(`${h}/`);
+  return here === h || here.startsWith(`${h}/`);
 }
 ---
 
@@ -38,7 +37,7 @@ function isCurrent(href: string, exact: boolean): boolean {
         links.map((link) => (
           <a
             href={link.href}
-            aria-current={isCurrent(link.href, link.exact) ? "page" : undefined}
+            aria-current={isCurrent(link.href) ? "page" : undefined}
           >
             {link.label}
           </a>
