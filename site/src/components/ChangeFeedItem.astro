@@ -15,6 +15,8 @@ interface Props {
   scope?: string | null;
   deltas?: ProfileDelta[];
   facets?: string[];
+  // Show the diff expanded, for a row shown on its own as an example.
+  open?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   scope = null,
   deltas = [],
   facets = [],
+  open = false,
 } = Astro.props;
 const tier = changeTier(event.changeKind);
 // Changes worth reading are the feed's default view; cosmetic edits, scrape
@@ -71,7 +74,7 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
   <DeltaList deltas={deltas} />
   {
     diff && (
-      <details class="tl-row__diff">
+      <details class="tl-row__diff" open={open}>
         <summary>The words that changed</summary>
         <DiffView before={diff.before} after={diff.after} compact />
       </details>
