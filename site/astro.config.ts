@@ -11,6 +11,9 @@ export default defineConfig({
   base: "/",
   trailingSlash: "ignore",
   output: "static",
+  // Astro 7's default ("jsx") drops the line break between wrapped prose and an
+  // inline element, running words into links. `true` collapses it to a space.
+  compressHTML: true,
   // Static MPA with cross-document view transitions: prefetch internal links as
   // they enter the viewport so navigations feel instant. Astro emits
   // <link rel="prefetch">, which degrades cleanly where the Speculation Rules
