@@ -231,7 +231,6 @@
 
 <style>
   .mmx {
-    margin: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
