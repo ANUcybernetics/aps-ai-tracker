@@ -104,11 +104,11 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
                     ) : a.currency?.updatedSincePolicyV2 === false ? (
                       <span class="muted">none seen</span>
                     ) : (
-                      <span
-                        class="muted"
-                        title="First tracked after 15 December 2025 and gives no date, so we cannot know"
-                      >
+                      <span class="muted">
                         can&rsquo;t tell
+                        <span class="visually-hidden">
+                          (first tracked after 15 December 2025 and gives no date, so we cannot know)
+                        </span>
                       </span>
                     )}
                   </td>

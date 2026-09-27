@@ -80,7 +80,7 @@
   let inputEl = $state<HTMLInputElement>();
 </script>
 
-<div class="finder">
+<search class="finder">
   <label class="finder__label" for="agency-finder">{label}</label>
   <input
     bind:this={inputEl}
@@ -125,7 +125,7 @@
       </ul>
     {/if}
   {/if}
-</div>
+</search>
 
 <style>
   .finder {
@@ -201,7 +201,6 @@
   a.finder__hit:hover,
   a.finder__hit:focus-visible {
     background: color-mix(in oklab, var(--accent) 12%, var(--surface));
-    outline: none;
   }
 
   a.finder__hit:hover .finder__name,

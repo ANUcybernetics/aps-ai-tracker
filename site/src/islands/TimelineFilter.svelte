@@ -179,24 +179,24 @@
 <div class="tl-explorer">
   <MonthlyChart data={live ?? chart} selected={month} onselect={(m) => (month = m)} />
 
-  <div class="tl-filter">
-    <label class="tl-filter__field tl-filter__search">
+  <search class="tl-filter">
+    <label class="tl-filter__field tl-filter__search" for="tl-search">
       <span>Search</span>
-      <input type="search" placeholder="words in the summary or the change itself" bind:value={q} />
+      <input id="tl-search" type="search" placeholder="words in the summary or the change itself" bind:value={q} />
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-show">
       <span>Show</span>
-      <select bind:value={show}>
+      <select id="tl-show" bind:value={show}>
         {#each SHOW_OPTIONS as o (o.value)}
           <option value={o.value}>{o.label}</option>
         {/each}
       </select>
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-about">
       <span>About</span>
-      <select bind:value={about}>
+      <select id="tl-about" bind:value={about}>
         <option value="">Any question</option>
         {#each requirementGroups as g (g.label)}
           <optgroup label={g.label}>
@@ -208,18 +208,18 @@
       </select>
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-answers">
       <span>Answers</span>
-      <select bind:value={answers}>
+      <select id="tl-answers" bind:value={answers}>
         {#each ANSWER_OPTIONS as o (o.value)}
           <option value={o.value}>{o.label}</option>
         {/each}
       </select>
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-agency">
       <span>Agency</span>
-      <select bind:value={agency}>
+      <select id="tl-agency" bind:value={agency}>
         <option value="">All agencies</option>
         {#each agencies as a (a.abbr)}
           <option value={a.abbr}>{a.name}</option>
@@ -227,9 +227,9 @@
       </select>
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-portfolio">
       <span>Portfolio</span>
-      <select bind:value={portfolio}>
+      <select id="tl-portfolio" bind:value={portfolio}>
         <option value="">All portfolios</option>
         {#each portfolios as p (p)}
           <option value={p}>{p}</option>
@@ -237,9 +237,9 @@
       </select>
     </label>
 
-    <label class="tl-filter__field">
+    <label class="tl-filter__field" for="tl-coverage">
       <span>Coverage</span>
-      <select bind:value={scope}>
+      <select id="tl-coverage" bind:value={scope}>
         {#each SCOPE_OPTIONS as o (o.value)}
           <option value={o.value}>{o.label}</option>
         {/each}
@@ -255,7 +255,7 @@
     {/if}
 
     <span class="tl-filter__count mono" aria-live="polite">{shown ?? total} shown</span>
-  </div>
+  </search>
 </div>
 
 <style>

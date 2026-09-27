@@ -206,7 +206,10 @@ const will = p.commitments.filter((c) => c.kind === "will");
         </div>
         <div class="kv__row" data-tone={sinceV2.tone}>
           <dt>Updated since policy v2.0</dt>
-          <dd title={sinceV2.title}>{sinceV2.text}</dd>
+          <dd>
+            {sinceV2.text}
+            {sinceV2.title && <span class="visually-hidden"> ({sinceV2.title})</span>}
+          </dd>
         </div>
         {
           currency.annualReviewOverdue !== null && (

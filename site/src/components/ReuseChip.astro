@@ -74,12 +74,6 @@ const label = `Also appears in ${n} other ${n === 1 ? "agency" : "agencies"}; sh
   .reuse__trigger:focus-visible {
     background: var(--accent);
     color: var(--accent-contrast);
-    outline: none;
-  }
-
-  .reuse__trigger:focus-visible {
-    outline: 2px solid var(--accent-ink);
-    outline-offset: 2px;
   }
 
   /* the panel: hidden until the chip (or panel) is hovered/focused */
@@ -153,13 +147,5 @@ const label = `Also appears in ${n} other ${n === 1 ? "agency" : "agencies"}; sh
   a.reuse__pill:focus-visible {
     background: var(--accent-wash);
     border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
-    outline: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reuse__panel {
-      transition: none;
-      transform: none;
-    }
   }
 </style>

@@ -31,10 +31,10 @@
   });
 </script>
 
-<div class="aq">
-  <label class="aq__field">
+<search class="aq">
+  <label class="aq__field" for="aq-question">
     <span>Show statements that</span>
-    <select bind:value={question}>
+    <select id="aq-question" bind:value={question}>
       <option value="">(all published statements)</option>
       {#each questions as q (q.key)}
         <option value={q.key}>{q.label} ({q.count})</option>
@@ -42,7 +42,7 @@
     </select>
   </label>
   <span class="aq__count mono" aria-live="polite">{shown ?? total} shown</span>
-</div>
+</search>
 
 <style>
   .aq {
