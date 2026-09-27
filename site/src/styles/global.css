@@ -115,6 +115,12 @@ hr {
   padding-inline: var(--space-5);
 }
 
+/* A stack owns its children's block margins, so a component resetting its own
+   margin can't cancel the gap. */
+.stack > * {
+  margin-block: 0;
+}
+
 .stack > * + * {
   margin-block-start: var(--space-4);
 }

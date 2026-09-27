@@ -65,12 +65,12 @@ const rest = rows.slice(limit);
 <style>
   .ledger {
     list-style: none;
-    margin: 0;
     padding: 0;
     border-block-start: 1px solid var(--border);
   }
 
   .ledger-more .ledger {
+    margin: 0;
     border-block-start: none;
   }
 
@@ -82,6 +82,13 @@ const rest = rows.slice(limit);
     padding-block: var(--space-2);
     border-block-end: 1px solid var(--border);
     font-size: var(--text-sm);
+  }
+
+  @media (width < 40rem) {
+    .ledger__row {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
   }
 
   .ledger__row time {

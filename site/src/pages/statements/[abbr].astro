@@ -211,8 +211,9 @@ const atUri = rkey ? documentUri(rkey) : undefined;
     letter-spacing: 0.08em;
   }
 
+  /* the agency name sits tight under its abbreviation kicker */
   .stmt__header h1 {
-    margin: 0;
+    margin-block-start: 0;
   }
 
   .stmt__dates {
@@ -220,7 +221,6 @@ const atUri = rkey ? documentUri(rkey) : undefined;
   }
 
   .stmt__notice {
-    margin: 0;
     max-inline-size: var(--measure);
     padding: var(--space-3);
     border-inline-start: 3px solid var(--accent);

@@ -3,19 +3,21 @@
 // change kind, profile, originality figure, reuse colour or propagation marking
 // links back to the canonical explainer (the Reading page) through this, so the
 // wording and destination stay identical everywhere.
+// Rest props carry the caller's scope attribute, so a class the caller styles
+// actually reaches the link.
+import type { HTMLAttributes } from "astro/types";
 import { withBase } from "@/lib/paths";
 
-interface Props {
+interface Props extends HTMLAttributes<"a"> {
   anchor?: "anatomy" | "corpus" | "reuse" | "originality" | "changes" | "profiles" | "adoption";
   label?: string;
-  class?: string;
 }
 
-const { anchor, label = "How to read this", class: className } = Astro.props;
+const { anchor, label = "How to read this", class: className, ...rest } = Astro.props;
 const href = withBase(`/reading${anchor ? `#${anchor}` : ""}`);
 ---
 
-<a class:list={["reading-link", className]} href={href}>
+<a class:list={["reading-link", className]} href={href} {...rest}>
   {label}<span aria-hidden="true"> &rarr;</span>
 </a>
 
