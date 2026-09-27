@@ -251,6 +251,9 @@ function tipText(d: ScrubberDot): string {
     border-radius: 50%;
     background: var(--node-ink);
     border: 2px solid var(--node-ink);
+    /* identity scale at rest, so a state change never creates a new stacking
+       context mid-interaction */
+    scale: 1;
     transition:
       scale var(--dur-fast) var(--ease-out-quart),
       background var(--dur-fast) var(--ease-out-quart);

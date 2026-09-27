@@ -104,10 +104,14 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
     padding: 0;
   }
 
+  /* The history sits at the foot of the page, so every row can defer
+     rendering until it nears the viewport (as the timeline's rows do). */
   .rev {
     position: relative;
     border-bottom: 1px solid var(--border);
     padding-block: var(--space-3);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 72px;
   }
 
   /* Scrape noise is hidden by default so the real edit history reads clean;
