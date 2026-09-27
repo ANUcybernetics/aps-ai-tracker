@@ -9,6 +9,7 @@ import { REQUIREMENTS, changeTier } from "@/lib/profile-labels";
 import { changeFacets } from "@/lib/questions";
 import { withBase } from "@/lib/paths";
 import { getStatements } from "@/lib/statements";
+import { revisionFor, revisionPair } from "@/lib/timeline-revisions";
 import type { TimelineEvent } from "@/types/exporter";
 
 const timeline = await getTimeline();
@@ -16,25 +17,16 @@ const statements = await getStatements();
 const agencies = await getAgencies();
 
 // Join each event to its statement's revision history: the diff against the
-// previous revision (build-time; only rendered diff HTML ships) and the
+// previous revision (rendered into timeline/diffs.json, not this page) and the
 // answers the revision changed.
-function revisionFor(event: TimelineEvent) {
-  const stmt = statements[event.statementId];
-  const idx = stmt ? stmt.timeline.findIndex((t) => t.sha === event.sha) : -1;
-  return idx < 0 ? null : { stmt, idx };
-}
-
 function diffFor(event: TimelineEvent) {
-  const found = revisionFor(event);
-  if (!found || found.idx === 0) return null; // first-seen events have nothing to diff against
-  const prev = found.stmt.timeline[found.idx - 1];
-  const curr = found.stmt.timeline[found.idx];
-  return { before: prev.body, after: curr.body, delta: curr.charDelta };
+  const pair = revisionPair(statements, event);
+  return pair && { before: pair.prev.body, after: pair.curr.body, delta: pair.curr.charDelta };
 }
 
 const agencyByAbbr = new Map(agencies.map((a) => [a.abbr, a]));
 const rows = timeline.map((event) => {
-  const found = revisionFor(event);
+  const found = revisionFor(statements, event);
   const deltas = found ? found.stmt.timeline[found.idx].profileDeltas : [];
   return {
     event,
@@ -137,6 +129,7 @@ const readable = counts.substance + counts.revision + counts.unclassified;
             scope={scope}
             deltas={deltas}
             facets={facets}
+            lazy
           />
         ))
       }

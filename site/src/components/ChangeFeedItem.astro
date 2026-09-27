@@ -6,6 +6,8 @@ import { formatDate, signedDelta } from "@/lib/format";
 import { monthKey } from "@/lib/monthly";
 import { READABLE_TIERS, TIER_LABEL, changeTier } from "@/lib/profile-labels";
 import { statementPath } from "@/lib/paths";
+import { revAnchor } from "@/lib/scrubber";
+import { diffKey } from "@/lib/timeline-diffs";
 import type { ProfileDelta, TimelineEvent } from "@/types/exporter";
 
 interface Props {
@@ -17,6 +19,8 @@ interface Props {
   facets?: string[];
   // Show the diff expanded, for a row shown on its own as an example.
   open?: boolean;
+  // Leave the diff out of the page and load it when opened (the timeline feed).
+  lazy?: boolean;
 }
 
 const {
@@ -27,6 +31,7 @@ const {
   deltas = [],
   facets = [],
   open = false,
+  lazy = false,
 } = Astro.props;
 const tier = changeTier(event.changeKind);
 // Changes worth reading are the feed's default view; cosmetic edits, scrape
@@ -76,7 +81,14 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     diff && (
       <details class="tl-row__diff" open={open}>
         <summary>The words that changed</summary>
-        <DiffView before={diff.before} after={diff.after} compact />
+        {lazy ? (
+          <DiffView
+            lazyKey={diffKey(event.abbr, event.sha)}
+            fallbackHref={`${statementPath(event.abbr)}#${revAnchor(event.sha)}`}
+          />
+        ) : (
+          <DiffView before={diff.before} after={diff.after} compact />
+        )}
       </details>
     )
   }

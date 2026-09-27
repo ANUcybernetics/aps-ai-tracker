@@ -1,19 +1,31 @@
 ---
 import { wordDiffHtml, compactWordDiffHtml } from "@/lib/diff";
 
-interface Props {
-  before: string;
-  after: string;
-  compact?: boolean;
-}
+// Either renders a diff now, or (with lazyKey) leaves a slot the script below
+// fills from the timeline's diffs file when its <details> opens. The slot's
+// link is the no-JS fallback: the same revision on the statement page.
+type Props =
+  | { before: string; after: string; compact?: boolean }
+  | { lazyKey: string; fallbackHref: string };
 
-const { before, after, compact = false } = Astro.props;
-const html = compact
-  ? compactWordDiffHtml(before, after)
-  : wordDiffHtml(before, after);
+const props = Astro.props;
+const html =
+  "lazyKey" in props
+    ? null
+    : props.compact
+      ? compactWordDiffHtml(props.before, props.after)
+      : wordDiffHtml(props.before, props.after);
 ---
 
-<div class="diff" set:html={html}></div>
+{
+  "lazyKey" in props ? (
+    <div class="diff" data-diff-key={props.lazyKey}>
+      <a href={props.fallbackHref}>See this change on the agency&rsquo;s page</a>
+    </div>
+  ) : (
+    <div class="diff" set:html={html} />
+  )
+}
 
 <style>
   .diff {
@@ -27,3 +39,28 @@ const html = compact
     overflow-wrap: anywhere;
   }
 </style>
+
+<script>
+  import { loadTimelineDiffs } from "@/lib/timeline-diffs";
+
+  // toggle doesn't bubble, so listen in the capture phase for any <details>.
+  document.addEventListener(
+    "toggle",
+    async (event) => {
+      const details = event.target;
+      if (!(details instanceof HTMLDetailsElement) || !details.open) return;
+      const slot = details.querySelector<HTMLElement>(".diff[data-diff-key]:not([data-loaded])");
+      if (!slot) return;
+      try {
+        const diffs = await loadTimelineDiffs();
+        const html = diffs[slot.dataset.diffKey ?? ""];
+        if (html === undefined) return; // keep the fallback link
+        slot.innerHTML = html;
+        slot.dataset.loaded = "";
+      } catch {
+        // offline or missing file: the fallback link still works
+      }
+    },
+    true,
+  );
+</script>

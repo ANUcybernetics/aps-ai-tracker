@@ -1,6 +1,6 @@
 <script lang="ts">
   // Filters the server-rendered timeline feed by toggling row visibility — the
-  // rows (and their build-time diffs) stay in the Astro HTML; this island owns
+  // rows stay in the Astro HTML; this island owns
   // the controls, the show/hide logic, and the monthly-mix chart, which is
   // re-counted against the current agency/portfolio/search slice so it always
   // charts the slice the feed is showing. Filter state round-trips through the
@@ -11,6 +11,7 @@
   import { STACK_TIERS, type MonthlyMixRow, type StackTier } from "@/lib/monthly";
   import { READABLE_TIERS, type ChangeTier, type FieldSource } from "@/lib/profile-labels";
   import { SOURCE_GROUP_LABEL } from "@/lib/questions";
+  import { loadTimelineDiffs } from "@/lib/timeline-diffs";
 
   interface AgencyOpt {
     abbr: string;
@@ -98,10 +99,29 @@
   // SSR/no-JS.
   let live: MonthlyMixRow[] | null = $state(null);
 
-  // Row text is cached lazily on the first search keystroke: reading the
-  // textContent of every row (diffs included) once is cheap; per-keystroke is
-  // then a string scan.
+  // Row text is cached lazily on the first search keystroke: reading every row
+  // once is cheap; per-keystroke is then a string scan. The diffs aren't in the
+  // page, so that keystroke also fetches them, and the cache is rebuilt with
+  // their text when they arrive.
   let searchText: Map<HTMLElement, string> | null = null;
+  let diffsReady = $state(false);
+
+  function rowText(row: HTMLElement, diffs: Record<string, string> | null): string {
+    const slot = row.querySelector<HTMLElement>("[data-diff-key]");
+    // The slot holds either the no-JS link or a diff opened earlier; either
+    // way the diff's own text comes from the file.
+    const own = (row.textContent ?? "").replace(slot?.textContent ?? "", "");
+    const html = slot && diffs ? diffs[slot.dataset.diffKey ?? ""] : undefined;
+    const diff = html
+      ? (new DOMParser().parseFromString(html, "text/html").body.textContent ?? "")
+      : "";
+    return `${own} ${diff}`.toLowerCase();
+  }
+
+  function cacheSearchText(rows: Iterable<HTMLElement>, diffs: Record<string, string> | null) {
+    searchText = new Map();
+    for (const row of rows) searchText.set(row, rowText(row, diffs));
+  }
 
   // A row's facets are "requirement:direction" pairs, so "about" and "answers"
   // together match one answer that did both (a dropped commitment).
@@ -132,9 +152,16 @@
     const rows = document.querySelectorAll<HTMLElement>(".tl-row");
     const query = q.trim().toLowerCase();
     if (query && searchText === null) {
-      searchText = new Map();
-      for (const row of rows) searchText.set(row, row.textContent?.toLowerCase() ?? "");
+      cacheSearchText(rows, null);
+      loadTimelineDiffs().then(
+        (diffs) => {
+          cacheSearchText(rows, diffs);
+          diffsReady = true;
+        },
+        () => {}, // search still covers everything but the diffs
+      );
     }
+    void diffsReady; // rescan once the diffs' text is in the cache
     const stackTiers = new Set<string>(STACK_TIERS);
     const byMonth = new Map<string, Record<StackTier, number>>();
     let count = 0;
