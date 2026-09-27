@@ -115,12 +115,14 @@ hr {
 }
 
 /* A stack owns its children's block margins, so a component resetting its own
-   margin can't cancel the gap. */
+   margin can't cancel the gap. An island's wrapper is display: contents, so
+   its root takes the gap instead. */
 .stack > * {
   margin-block: 0;
 }
 
-.stack > * + * {
+.stack > * + *,
+.stack > * + astro-island > * {
   margin-block-start: var(--space-4);
 }
 
