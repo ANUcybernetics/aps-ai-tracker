@@ -242,7 +242,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 
     .stmt__aside {
       position: sticky;
-      top: 4.5rem;
+      top: calc(var(--sticky-top) + var(--space-4));
       /* clear the section heading in the main column */
       margin-block-start: 3.2rem;
     }

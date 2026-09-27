@@ -9,6 +9,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   scrollbar-gutter: stable;
+  /* anchor targets land clear of the sticky header */
+  scroll-padding-block-start: calc(var(--sticky-top) + var(--space-4));
 }
 
 body {

@@ -273,7 +273,7 @@
   @media (width >= 48rem) {
     .tl-filter {
       position: sticky;
-      top: 3.5rem;
+      top: var(--sticky-top);
       z-index: 5;
     }
   }

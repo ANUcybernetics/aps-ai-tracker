@@ -47,6 +47,8 @@
   --radius-sm: 0.1875rem;
   --measure: 66ch;
   --page-max: 74rem;
+  /* clears the sticky site header (one line tall wherever anything else sticks) */
+  --sticky-top: 3.5rem;
 
   /* motion */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
