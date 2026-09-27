@@ -1,77 +1,123 @@
 ---
 abbr: ACQSC
 agency: Aged Care Quality and Safety Commission
-raw_hash: c402300067353dc99878348d643ca6688c0e0c1b5dbbb7e88dd21c5a2b58f975
-cleaned_hash: c402300067353dc99878348d643ca6688c0e0c1b5dbbb7e88dd21c5a2b58f975
-source_url: https://www.agedcarequality.gov.au/sites/default/files/media/acqsc_ai_transparency_statement.pdf
-title: ACQSC AI Transparency Statement
+last_updated_text: 16 July 2026
+source_url: https://www.agedcarequality.gov.au/about-us/corporate-documents/ai-transparency-statement
+title: AI Transparency Statement | Aged Care Quality and Safety Commission
 ---
+
+[ Listen ](https://app.readspeaker.com/cgi-bin/rsent?customerid=5802&lang=en_au&readid=content&url=https://www.agedcarequality.gov.au/about-us/corporate-documents/ai-transparency-statement "Listen to this page using ReadSpeaker")
+
+\_\_
 
 # AI Transparency Statement
 
-February 2025
+The Aged Care Quality and Safety Commission (the Commission) uses Artificial Intelligence (AI) safely, responsibly and ethically.
 
-This document is designed for online viewing. Printed copies, although permitted, are deemed uncontrolled from 04/03/2026
+This statement explains how we use and govern AI, the safeguards we apply, and how the public can contact us about our use of AI.
 
-# ACQSC AI Transparency Statement
+We follow the Digital Transformation Agency (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) and related standards and guidance.
 
-The Aged Care Quality and Safety Commission (the Commission) employs Artificial Intelligence (AI) safely, responsibly and ethically. The Commission complies with the standards published by the Digital Transformation Agency (DTA), in its role as whole-of-government coordinator on the use of AI by the Australian Public Service (APS), including:
+## Our position on AI
 
-- Policy for the responsible use of AI in government
-- Standard for accountable officials
-- Standard for AI transparency statements
-- Interim guidance on government use of public generative AI tools
-- Australia's AI Ethics Principles
+The Commission applies the [Organisation for Economic Co-operation and Development (OECD)](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html) definition of AI.
 
-## Our stance on AI
+‘ _An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.’_
 
-The Commission applies the Organisation for Economic Co-operation and Development (OECD) definition of AI in line with the Policy for the responsible use of AI in government by the Digital Transformation Agency (DTA).
+For the purposes of this statement, AI includes generative AI, machine learning and other tools that meet the OECD definition of an AI system. It does not include rules-based automation or workflow tools that follow pre-set instructions and do not infer how to generate outputs from the inputs they receive.
 
-'An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.'
-
-The Commission's AI Policy was approved on 10 December 2025. We are currently developing our strategic position on AI adoption. This transparency statement will be updated to reflect this strategy by 15 June 2026.
+The Commission’s AI Policy was approved on 10 December 2025. The Commission has developed its [strategic position on AI adoption](https://agedcarequality.sharepoint.com/sites/DigitalGroupDTK/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FDigitalGroupDTK%2FShared%20Documents%2FDigital%2DData%2DStrategy%2D2026%2D2029%2Epdf&parent=%2Fsites%2FDigitalGroupDTK%2FShared%20Documents). This statement reflects our current approach and will be updated as our agency and our AI use evolve.
 
 ## Why we use AI
 
-The Commission is dedicated to enhancing the quality and efficiency of our services by introducing AI capabilities in a responsible and safe manner. The Commission is pursuing AI opportunities, while managing the risks, to take advantage of the benefits the technology provides to support our work to protect and improve the safety, health, wellbeing and quality of life for people receiving aged care services.
+The Commission is committed to improving the quality and efficiency of our services by introducing AI capabilities in a safe and responsible way.
+
+We see AI as both an opportunity and a strategic enabler. Used appropriately, AI can improve our ability to protect older people, strengthen regulatory intelligence, support risk-based oversight and reduce administrative burden for staff. We will use AI in a way that maintains public trust, regulatory integrity and human accountability.
 
 ## How we use AI
 
-The Commission currently has limited use of AI, listed here in accordance with the DTA's classification system:
+The Commission has made Microsoft 365 Copilot Chat available to staff to support workplace productivity. Staff are expected to complete internal training before using approved AI tools. This training covers the foundations of safe and responsible AI use.
 
-- Usage patterns:
-  - Analytics for insights, including regulatory risk models, and
-  - Workplace productivity for automation of routine tasks
-- Domains:
-  - Compliance,
-  - Corporate and enabling, and
-  - Service delivery.
+The Commission uses AI in accordance with applicable laws, regulations, policies and frameworks. This includes obligations relating to privacy, information security, records management, freedom of information, procurement, administrative decision-making, delegations, accessibility and the Commission’s aged care regulatory functions.
 
-## Public Interaction and impact
+We classify our AI use according to the DTA’s [classification system](https://www.digital.gov.au/policy/ai/resources/use-classification) for AI use. The usage patterns and domains that apply to the Commission’s AI use are listed below.
 
-All Commission decisions are made by, and communicated through, Commission staff. Commission AI applications do not impact the public, and members of the public are not required to interact with AI applications in dealings with the Commission. This transparency statement will be updated if this changes.
+## Usage patterns
 
-As AI becomes more widely used, the Commission is committed to identifying any negative impacts from the use of AI and protecting the public and aged care service recipients. The Commission will continue to engage with AI in a responsible way and be transparent about its use of AI.
+### Analytics for insights
 
-## Ensuring Safe and Responsible use of AI
+We use AI to identify patterns, trends and insights. This includes regulatory intelligence, risk analysis, reporting and modelling to support our work.
 
-- The Commission ensures that AI initiatives align with its values and are in the best interests of the public, including the recipients of aged care services.
-- The Commission applies DTA policies and use AI in accordance with applicable legislation, regulations, frameworks, policies and best practice.
+### Workplace productivity
 
-The Commission is in the process of developing an AI strategy which will define the approach to Data Governance, Data Privacy, and Cybersecurity Compliance as it pertains to the use of AI. This will also align with the Commission's Regulatory Strategy and Corporate Plan. We will leverage whole of Australian Government policies and develop additional, Commission specific, policies and processes as required. This will support the Commission's ongoing commitment to maintain robust governance frameworks, protect against negative impacts and ensure AI system effectiveness.
+We use approved AI tools, including Microsoft 365 Copilot Chat, to support routine workplace tasks. This may include summarising information, drafting content, and supporting research.
 
-Commission policies apply to all employees including contractors and consultants. The Commission will also develop and deploy AI fundamentals guidance material for all staff.
+### Decision making and administrative action
 
-This transparency statement will be updated at least once a year, or as the Commission develops and evolves AI usage, policies and technology.
+Our AI tools are not approved to make decisions or take administrative action without human intervention. Staff may use approved AI tools to research, compare options, summarise evidence, identify risks, recommend wording or a course of action to support human decision making. Staff remain responsible for verifying AI-generated outputs and for all final decisions.
 
-## Accountable Official
+## Domains
 
-The Commission's Chief Digital Information Officer and Director of AI are appointed as the AI Accountable Officials.
+### Service delivery
+
+We use AI to support staff who respond to enquiries, manage information and deliver services. The public does not currently directly interact with Commission AI systems when dealing with the Commission.
+
+### Compliance and fraud detection
+
+We use AI-supported analytics to identify patterns, risks and trends that help inform regulatory oversight and compliance activities. AI does not determine compliance outcomes without human review.
+
+### Corporate and enabling
+
+We use AI to support internal corporate functions, including information management, drafting, summarising, analysis, communication, technology support and other productivity activities.
+
+## Public interaction and impact
+
+The public does not currently directly interact with Commission AI systems when dealing with the Commission. If this changes, we will update this statement.
+
+As AI becomes more widely used, the Commission is committed to identifying and managing potential negative impacts from AI use. This includes impacts on older people, aged care service recipients, representatives, providers, members of the public and Commission staff.
+
+## Ensuring safe and responsible use of AI
+
+The Commission applies responsible AI principles to guide the design, adoption and use of AI. These principles support ethical practice, human oversight, accountability and transparency.
+
+The Commission’s responsible AI principles are:
+
+- **ethical and human-centred use:** AI systems must align with our values, respect human dignity and support human judgment for ultimate decision making
+- **clear accountability:** every AI system must have an accountable owner who is responsible for its outcomes and compliance with relevant policies
+- **risk and impact assessment:** AI systems must be assessed before they are used, including consideration of risks, impacts and appropriate controls
+- **reliability and security:** AI systems must be fit for purpose, reliable, secure and suitable for its intended use
+- **fairness, inclusion and accessibility:** AI systems must be inclusive, accessible and fair. They must not involve or result in unfair discrimination against people, communities or groups
+- **transparency and contestability:** AI use must be transparent at a level that matches the risk, impact and public interest
+- **human oversight and control:** human oversight must be proportionate to the autonomy, sensitivity, risk and impact of the system
+- **monitoring, review and continuous improvement:** AI use must be reviewed over time, so controls remain effective as systems, risks and policy settings change.
+
+## AI governance
+
+The Commission supports these principles through governance and assurance processes that include:
+
+- an internal AI use case register to provide visibility of approved, proposed and exploratory AI use across the Commission
+- escalation pathways for AI concerns, incidents or emerging risks, including the ability to suspend, restrict or stop AI use if controls are not operating effectively.
+
+The Commission will continue to use whole-of-government policies and develop Commission-specific policies and processes as required. This supports our commitment to maintain robust governance frameworks and protect against negative impacts.
+
+## Accountable Officials
+
+The Commission’s Chief Digital Information Officer and Director of AI are appointed as the AI Accountable Officials.
+
+The AI Accountable Officials are accountable for implementing the APS AI Plan and Policy for the responsible use of AI within the Commission. They support responsible and confident adoption of AI through governance and risk management.
+
+## Chief AI Officer
+
+The Commission’s Chief Data and Analytics Officer is appointed as the Chief AI Officer.
+
+The Chief AI Officer leads AI transformation across the Commission by identifying opportunities, supporting adoption and driving cultural change.
 
 ## How to contact us about our use of AI
 
-If you have any questions about this statement or the Commission's use of AI, you can contact the Commission as follows:
+If you have any questions about this statement or the Commission’s use of AI, you can contact the Commission by email at: [info@agedcarequality.gov.au](mailto:info@agedcarequality.gov.au).
 
-- email at: info@agedcarequality.gov.au
+## Statement review and updates
 
-This statement was last updated February 2026
+The Commission reviews this statement at least once a year, when making a significant change to its approach to AI, or when any new factor materially affects the accuracy of this statement.
+
+Share this page
