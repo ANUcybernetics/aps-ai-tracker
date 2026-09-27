@@ -308,6 +308,100 @@ main {
 
 /* --- reusable pieces --- */
 
+/* form controls take the surrounding type, on paper with a hairline */
+input[type="search"],
+select {
+  font: inherit;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* a panel of filter controls with a live count at its end */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.filters__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.filters__count {
+  margin-inline-start: auto;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+/* A share bar: an ink fill on a track. The default ochre track is the borrowed
+   remainder, so an originality bar reads itself. */
+.meter {
+  display: block;
+  block-size: 0.55rem;
+  background: var(--heat-2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  block-size: 100%;
+  background: var(--text);
+  border-radius: 999px;
+}
+
+.meter--plain {
+  background: var(--surface-2);
+}
+
+/* A short muted note under a section heading or above a figure. Zero
+   specificity, so a stack's spacing wins over its margin. */
+:where(.section-note) {
+  margin-block: 0 var(--space-4);
+  max-inline-size: var(--measure);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  text-wrap: pretty;
+}
+
+/* an agency named at the head of a row: ink and bold, no underline */
+.row-link {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.row-link:hover {
+  color: var(--accent-ink);
+}
+
+/* a plain list of agency names, flowing into columns (zero specificity, like
+   .section-note, so a stack's gap still applies) */
+:where(.agency-list) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2 17rem;
+  column-gap: var(--space-5);
+}
+
+.agency-list li {
+  padding-block: var(--space-1);
+  break-inside: avoid;
+}
+
 /* disclosure toggles: quiet, and only as wide as their label */
 summary {
   cursor: pointer;
@@ -471,6 +565,11 @@ summary:hover {
   max-width: var(--measure);
 }
 
+/* a page that is all prose sits a little wider than a statement's measure */
+.page.prose {
+  max-width: 46rem;
+}
+
 .prose :where(h1, h2, h3) {
   margin-block: var(--space-6) var(--space-3);
 }
@@ -568,13 +667,15 @@ summary:hover {
 
 /* Forced Colors Mode (Windows High Contrast): the UA replaces author colours
    with system keywords, which would flatten the parts of this site where colour
-   IS the data — the reuse heat ramp, the diff add/remove, the legend swatches.
+   IS the data — the reuse heat ramp, the diff add/remove, the legend swatches, the share bars.
    Opt those out so the encoding survives (the documented forced-color-adjust
    exception for charts/swatches, not aesthetics). Everything else keeps the
    system palette. */
 @media (forced-colors: active) {
   .heat,
   .heat-legend__swatch,
+  .meter,
+  .meter > span,
   .diff ins,
   .diff del {
     forced-color-adjust: none;

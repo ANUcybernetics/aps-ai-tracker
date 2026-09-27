@@ -17,7 +17,7 @@ const total = originality.shared + originality.unique;
     <span class="orig__pct">{isUrsource ? "Template source" : `${pct}%`}</span>
     <span class="muted">{isUrsource ? "the DTA's template wording" : "bespoke"}</span>
   </div>
-  <div class="orig__bar" role="presentation">
+  <div class="meter orig__bar" role="presentation">
     <span style={`inline-size:${pct}%`}></span>
   </div>
   <p class="muted">
@@ -41,32 +41,12 @@ const total = originality.shared + originality.unique;
     color: var(--text);
   }
 
-  /* ink fill (their own words) on an ochre track (the borrowed remainder) */
   .orig__bar {
     margin-block: var(--space-2);
-    block-size: 0.55rem;
-    background: var(--heat-2);
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
-  .orig__bar span {
-    display: block;
-    block-size: 100%;
-    background: var(--text);
-    border-radius: 999px;
   }
 
   .orig p {
     font-size: var(--text-sm);
     margin: 0;
-  }
-
-  /* ink-fill / ochre-track encodes the bespoke share; preserve it in forced colours */
-  @media (forced-colors: active) {
-    .orig__bar,
-    .orig__bar span {
-      forced-color-adjust: none;
-    }
   }
 </style>

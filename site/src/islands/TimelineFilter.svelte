@@ -179,8 +179,8 @@
 <div class="tl-explorer">
   <MonthlyChart data={live ?? chart} selected={month} onselect={(m) => (month = m)} />
 
-  <search class="tl-filter">
-    <label class="tl-filter__field tl-filter__search" for="tl-search">
+  <search class="filters tl-filter">
+    <label class="filters__field tl-filter__search" for="tl-search">
       <span>Search</span>
       <input
         id="tl-search"
@@ -190,7 +190,7 @@
       />
     </label>
 
-    <label class="tl-filter__field" for="tl-show">
+    <label class="filters__field" for="tl-show">
       <span>Show</span>
       <select id="tl-show" bind:value={show}>
         {#each SHOW_OPTIONS as o (o.value)}
@@ -199,7 +199,7 @@
       </select>
     </label>
 
-    <label class="tl-filter__field" for="tl-about">
+    <label class="filters__field" for="tl-about">
       <span>About</span>
       <select id="tl-about" bind:value={about}>
         <option value="">Any question</option>
@@ -213,7 +213,7 @@
       </select>
     </label>
 
-    <label class="tl-filter__field" for="tl-answers">
+    <label class="filters__field" for="tl-answers">
       <span>Answers</span>
       <select id="tl-answers" bind:value={answers}>
         {#each ANSWER_OPTIONS as o (o.value)}
@@ -222,7 +222,7 @@
       </select>
     </label>
 
-    <label class="tl-filter__field" for="tl-agency">
+    <label class="filters__field" for="tl-agency">
       <span>Agency</span>
       <select id="tl-agency" bind:value={agency}>
         <option value="">All agencies</option>
@@ -232,7 +232,7 @@
       </select>
     </label>
 
-    <label class="tl-filter__field" for="tl-portfolio">
+    <label class="filters__field" for="tl-portfolio">
       <span>Portfolio</span>
       <select id="tl-portfolio" bind:value={portfolio}>
         <option value="">All portfolios</option>
@@ -242,7 +242,7 @@
       </select>
     </label>
 
-    <label class="tl-filter__field" for="tl-coverage">
+    <label class="filters__field" for="tl-coverage">
       <span>Coverage</span>
       <select id="tl-coverage" bind:value={scope}>
         {#each SCOPE_OPTIONS as o (o.value)}
@@ -259,7 +259,7 @@
       </button>
     {/if}
 
-    <span class="tl-filter__count mono" aria-live="polite">{shown ?? total} shown</span>
+    <span class="filters__count mono" aria-live="polite">{shown ?? total} shown</span>
   </search>
 </div>
 
@@ -270,31 +270,12 @@
     gap: var(--space-4);
   }
 
-  .tl-filter {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-3) var(--space-4);
-    padding: var(--space-3) var(--space-4);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-
   @media (width >= 48rem) {
     .tl-filter {
       position: sticky;
       top: 3.5rem;
       z-index: 5;
     }
-  }
-
-  .tl-filter__field {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--muted);
   }
 
   .tl-filter__search {
@@ -304,23 +285,9 @@
   input[type="search"] {
     flex: 1;
     min-width: 0;
-    font: inherit;
-    font-size: var(--text-sm);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text);
   }
 
   select {
-    font: inherit;
-    font-size: var(--text-sm);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text);
     max-width: 15rem;
   }
 
@@ -332,11 +299,5 @@
     background: var(--accent-wash);
     color: var(--accent-ink);
     cursor: pointer;
-  }
-
-  .tl-filter__count {
-    margin-inline-start: auto;
-    color: var(--muted);
-    font-size: var(--text-sm);
   }
 </style>

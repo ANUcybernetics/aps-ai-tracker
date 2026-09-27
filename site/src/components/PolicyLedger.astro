@@ -32,7 +32,7 @@ const rest = rows.slice(limit);
           <time class="mono muted" datetime={r.date}>
             {formatDate(r.date)}
           </time>
-          <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+          <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
             {r.agency}
           </a>
           <span class="ledger__what">{r.label}</span>
@@ -51,7 +51,7 @@ const rest = rows.slice(limit);
             <time class="mono muted" datetime={r.date}>
               {formatDate(r.date)}
             </time>
-            <a class="ledger__agency" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+            <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
               {r.agency}
             </a>
             <span class="ledger__what">{r.label}</span>
@@ -93,16 +93,6 @@ const rest = rows.slice(limit);
 
   .ledger__row time {
     font-size: var(--text-xs);
-  }
-
-  .ledger__agency {
-    color: var(--text);
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .ledger__agency:hover {
-    color: var(--accent-ink);
   }
 
   .ledger__what {

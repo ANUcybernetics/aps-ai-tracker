@@ -103,7 +103,7 @@ const explorers = [
     </div>
 
     <div class="home__wall">
-      <p class="home__wall-caption">
+      <p class="section-note home__wall-caption">
         Each square is an agency, shaded by how much of its statement is in its own
         words (<strong>bespoke</strong>) rather than shared with other agencies
         (<strong>borrowed</strong>).
@@ -118,7 +118,7 @@ const explorers = [
         <h2 id="recent-heading">What&rsquo;s changed</h2>
         <a href={withBase("/timeline")}>Full timeline &rarr;</a>
       </div>
-      <p class="recent__caption">
+      <p class="section-note">
         Changes recorded each month; the darker the colour, the more substantial the
         change. The <a href={withBase("/reading#anatomy")}>anatomy of a change</a>
         explains how each one is read.
@@ -132,7 +132,7 @@ const explorers = [
                 <time class="feed__date mono" datetime={e.date}>
                   {formatDate(e.date)}
                 </time>
-                <a class="feed__agency" href={statementPath(e.abbr)}>
+                <a class="row-link feed__agency" href={statementPath(e.abbr)}>
                   {e.agency}
                 </a>
                 <span class="feed__abbr mono">{e.abbr}</span>
@@ -216,26 +216,12 @@ const explorers = [
     margin-block-start: calc(-1 * var(--space-4));
   }
 
-  .home__wall-caption {
-    margin: 0 0 var(--space-4);
-    max-inline-size: var(--measure);
-    color: var(--muted);
-    font-size: var(--text-sm);
-  }
-
   .home__wall-caption strong {
     color: var(--text);
     font-weight: 600;
   }
 
   /* --- what's changed: monthly mix + latest substance --- */
-  .recent__caption {
-    margin: 0 0 var(--space-4);
-    max-inline-size: var(--measure);
-    color: var(--muted);
-    font-size: var(--text-sm);
-  }
-
   .feed {
     list-style: none;
     margin: var(--space-5) 0 0;
@@ -270,12 +256,6 @@ const explorers = [
   .feed__date {
     color: var(--muted);
     font-size: var(--text-sm);
-  }
-
-  .feed__agency {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
   }
 
   .feed__row:hover .feed__agency {

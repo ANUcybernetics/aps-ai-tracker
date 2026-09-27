@@ -50,7 +50,7 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     <time class="tl-row__date mono" datetime={event.date}>
       {formatDate(event.date)}
     </time>
-    <a class="tl-row__agency" href={statementPath(event.abbr)}>{event.agency}</a>
+    <a class="row-link" href={statementPath(event.abbr)}>{event.agency}</a>
     <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
     {
       diff && (
@@ -109,16 +109,6 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     color: var(--muted);
     font-size: var(--text-sm);
     min-width: 6.5rem;
-  }
-
-  .tl-row__agency {
-    font-weight: 550;
-    color: var(--text);
-    text-decoration: none;
-  }
-
-  .tl-row__agency:hover {
-    color: var(--accent-ink);
   }
 
   .tl-row__summary {

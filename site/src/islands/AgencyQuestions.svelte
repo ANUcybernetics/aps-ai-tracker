@@ -31,8 +31,8 @@
   });
 </script>
 
-<search class="aq">
-  <label class="aq__field" for="aq-question">
+<search class="filters aq">
+  <label class="filters__field aq__field" for="aq-question">
     <span>Show statements that</span>
     <select id="aq-question" bind:value={question}>
       <option value="">(all published statements)</option>
@@ -41,47 +41,21 @@
       {/each}
     </select>
   </label>
-  <span class="aq__count mono" aria-live="polite">{shown ?? total} shown</span>
+  <span class="filters__count mono" aria-live="polite">{shown ?? total} shown</span>
 </search>
 
 <style>
   .aq {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-3) var(--space-4);
-    padding: var(--space-3) var(--space-4);
     margin-block-end: var(--space-3);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
   }
 
   .aq__field {
     min-inline-size: 0;
-    display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--muted);
   }
 
   .aq__field select {
     min-inline-size: 0;
     max-inline-size: 100%;
-    font: inherit;
-    font-size: var(--text-sm);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text);
-  }
-
-  .aq__count {
-    margin-inline-start: auto;
-    font-size: var(--text-sm);
-    color: var(--muted);
   }
 </style>

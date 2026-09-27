@@ -142,12 +142,9 @@
   }
 
   input[type="search"] {
-    font: inherit;
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius);
-    border: 1px solid var(--border-strong);
-    background: var(--bg);
-    color: var(--text);
+    border-color: var(--border-strong);
     width: 100%;
     max-width: 34rem;
     transition:

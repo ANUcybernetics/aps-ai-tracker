@@ -276,8 +276,8 @@ const built = formatDate(meta.builtAt);
           elementCounts.map((e) => (
             <li class="bar">
               <span class="bar__label">{e.label}</span>
-              <span class="bar__track" role="presentation">
-                <span class="bar__fill" style={`inline-size:${(100 * e.count) / Math.max(profiled.length, 1)}%`} />
+              <span class="meter meter--plain" role="presentation">
+                <span style={`inline-size:${(100 * e.count) / Math.max(profiled.length, 1)}%`} />
               </span>
               <span class="bar__n mono">
                 {e.count} <span class="muted">({pct(e.count)})</span>
@@ -346,13 +346,6 @@ const built = formatDate(meta.builtAt);
 </Layout>
 
 <style>
-  .section-note {
-    max-inline-size: var(--measure);
-    color: var(--muted);
-    font-size: var(--text-sm);
-    text-wrap: pretty;
-  }
-
   .charts {
     display: grid;
     gap: var(--space-6);
@@ -446,21 +439,6 @@ const built = formatDate(meta.builtAt);
     font-size: var(--text-sm);
   }
 
-  .bar__track {
-    display: block;
-    block-size: 0.55rem;
-    background: var(--surface-2);
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
-  .bar__fill {
-    display: block;
-    block-size: 100%;
-    background: var(--text);
-    border-radius: 999px;
-  }
-
   .bar__n {
     text-align: end;
     font-size: var(--text-xs);
@@ -472,17 +450,7 @@ const built = formatDate(meta.builtAt);
   }
 
   .agency-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     font-size: var(--text-sm);
-    columns: 2 16rem;
-    column-gap: var(--space-5);
-  }
-
-  .agency-list li {
-    break-inside: avoid;
-    padding-block: 0.15rem;
   }
 
   @media (width < 40rem) {

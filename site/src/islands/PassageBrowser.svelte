@@ -136,12 +136,7 @@
   }
 
   input[type="search"] {
-    font: inherit;
     padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text);
     min-width: 16rem;
     flex: 1;
   }
