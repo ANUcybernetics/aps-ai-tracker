@@ -86,14 +86,9 @@ const explorers = [
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statement</a
         >: a public page saying how they use AI and how they manage its risks.{" "}
-        {mandatoryPublished} of the {mandatory.length} agencies required to have done so{
-          newlyCreated.length > 0 && (
-            <>
-              ; {newlyCreated.length === 1 ? "the other" : "the others"} ({newlyCreated.join("; ")}){" "}
-              {newlyCreated.length === 1 ? "was" : "were"} created only recently
-            </>
-          )
-        }. This site checks every statement daily, keeps each version, and summarises
+        {mandatoryPublished} of the {mandatory.length} agencies required to have done so{newlyCreated.length > 0 &&
+          `; ${newlyCreated.length === 1 ? "the other" : "the others"} (${newlyCreated.join("; ")}) ${newlyCreated.length === 1 ? "was" : "were"} created only recently`}.
+        This site checks every statement daily, keeps each version, and summarises
         what changed.
       </p>
     </header>
