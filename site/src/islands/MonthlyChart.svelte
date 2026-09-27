@@ -254,13 +254,11 @@
     inset: 0;
     inline-size: 100%;
     block-size: 100%;
-    display: block;
     overflow: visible;
   }
 
   .mmx__grid {
     stroke: var(--border);
-    stroke-width: 1;
   }
 
   .mmx__col,

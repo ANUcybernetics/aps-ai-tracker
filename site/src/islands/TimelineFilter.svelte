@@ -288,7 +288,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     color: var(--muted);
   }
 
@@ -300,7 +300,7 @@
     flex: 1;
     min-width: 0;
     font: inherit;
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
@@ -310,7 +310,7 @@
 
   select {
     font: inherit;
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
@@ -320,7 +320,7 @@
   }
 
   .tl-filter__month {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     padding: var(--space-1) var(--space-2);
     border: 1px solid var(--accent);
     border-radius: 999px;
@@ -332,6 +332,6 @@
   .tl-filter__count {
     margin-inline-start: auto;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 </style>

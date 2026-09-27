@@ -150,12 +150,12 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 
   .pb__count {
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .pb__list {
@@ -199,12 +199,12 @@
 
   .pb__phrase-note {
     margin: var(--space-1) 0 0;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .pb__first {
     margin: var(--space-2) 0 0;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .pb__first a {
@@ -228,7 +228,7 @@
   .pb__members summary {
     cursor: pointer;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     width: max-content;
   }
 
@@ -241,22 +241,10 @@
     color: var(--accent-ink);
   }
 
-  /* Links rendered from the passage Markdown: ink with an ochre underline, like
-     body links, but constrained so a long URL-y label still wraps. */
+  /* Links rendered from the passage Markdown keep the body link style, but a
+     long URL-y label must still wrap. */
   .pb__text :global(a) {
-    color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
     overflow-wrap: anywhere;
-  }
-
-  .pb__text :global(a):hover {
-    color: var(--accent-ink);
-  }
-
-  .pb__text :global(code) {
-    font-family: var(--font-mono);
-    font-size: 0.85em;
   }
 
   /* Loading skeleton: stand-ins shaped like the real cluster rows so the section

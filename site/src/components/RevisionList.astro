@@ -87,7 +87,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
   .revs-toggle {
     order: 2;
     margin-block-start: var(--space-3);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--muted);
     display: flex;
     align-items: center;
@@ -149,7 +149,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
 
   .rev__delta {
     margin-inline-start: auto;
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     color: var(--muted);
   }
 
@@ -163,7 +163,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
 
   .rev__first {
     margin-block: var(--space-2) 0;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .rev__diff {
@@ -173,7 +173,7 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
   .rev__diff summary {
     cursor: pointer;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     width: max-content;
   }
 

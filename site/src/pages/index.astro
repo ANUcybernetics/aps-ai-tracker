@@ -369,8 +369,7 @@ const explorers = [
     }
   }
 
-  /* --- one orchestrated entrance on load (reduced-motion falls back instantly
-     via the global rule that collapses animation duration) --- */
+  /* --- one orchestrated entrance on load, only for no-preference --- */
   @media (prefers-reduced-motion: no-preference) {
     .hero__dateline,
     .hero__lede,

@@ -207,7 +207,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 <style>
   .stmt__abbr {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     letter-spacing: 0.08em;
   }
 
@@ -217,7 +217,7 @@ const atUri = rkey ? documentUri(rkey) : undefined;
   }
 
   .stmt__dates {
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 
   .stmt__notice {
@@ -228,16 +228,11 @@ const atUri = rkey ? documentUri(rkey) : undefined;
     font-size: var(--text-sm);
   }
 
-  .stmt__section {
-    margin-block-start: var(--space-4);
-  }
-
   .stmt__grid {
     display: grid;
     gap: var(--space-6);
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
-    margin-block-start: var(--space-4);
   }
 
   @media (width >= 60rem) {
@@ -303,13 +298,9 @@ const atUri = rkey ? documentUri(rkey) : undefined;
 
   .stmt__attribution {
     margin-block-start: var(--space-6);
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     border-top: 1px solid var(--border);
     padding-block-start: var(--space-3);
-  }
-
-  .stmt__history {
-    margin-block-start: var(--space-4);
   }
 
   .stmt__history-note {

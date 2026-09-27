@@ -63,7 +63,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     color: var(--muted);
   }
 
@@ -71,7 +71,7 @@
     min-inline-size: 0;
     max-inline-size: 100%;
     font: inherit;
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);

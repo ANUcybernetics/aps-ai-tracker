@@ -39,14 +39,12 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-8: 3rem;
-  --space-12: 5rem;
   /* fluid gap between major page sections */
   --space-section: clamp(2.75rem, 1.9rem + 3.6vw, 5rem);
 
   /* crisp, document-like corners */
   --radius: 0.375rem;
   --radius-sm: 0.1875rem;
-  --radius-lg: 0.625rem;
   --measure: 66ch;
   --page-max: 74rem;
 
@@ -60,8 +58,6 @@
   /* semantic z-index scale */
   --z-sticky: 10;
   --z-dropdown: 20;
-  --z-modal: 30;
-  --z-toast: 40;
   --z-skip: 100;
 
   /* surfaces + ink */
@@ -83,7 +79,6 @@
 
   /* status */
   --ok: oklch(50% 0.13 150);
-  --off: var(--muted);
 
   /* diff: conventional green insert / red delete, kept distinct from the ochre */
   --ins-bg: oklch(91% 0.09 150);

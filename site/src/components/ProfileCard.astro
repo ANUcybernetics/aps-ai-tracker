@@ -359,7 +359,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
     display: grid;
     grid-template-columns: minmax(9rem, 0.5fr) 1fr;
     gap: var(--space-3);
-    padding-block: 0.25rem;
+    padding-block: var(--space-1);
     border-block-end: 1px solid var(--border);
   }
 
@@ -399,7 +399,7 @@ const will = p.commitments.filter((c) => c.kind === "will");
 
   .commitments li {
     break-inside: avoid;
-    padding-block: 0.25rem;
+    padding-block: var(--space-1);
     display: flex;
     gap: var(--space-2);
     align-items: baseline;
