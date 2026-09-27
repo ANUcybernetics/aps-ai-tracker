@@ -308,6 +308,36 @@ main {
 
 /* --- reusable pieces --- */
 
+/* disclosure toggles: quiet, and only as wide as their label */
+summary {
+  cursor: pointer;
+  inline-size: max-content;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+summary:hover {
+  color: var(--accent-ink);
+}
+
+/* the "Figures" table behind a chart: the accessible reading of its data */
+.chart-figures summary {
+  font-size: var(--text-xs);
+}
+
+.chart-figures table {
+  margin-block-start: var(--space-2);
+  font-size: var(--text-xs);
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-figures :is(th, td) {
+  text-align: start;
+  padding: 0.15rem 0.6rem 0.15rem 0;
+  border-block-end: 1px solid var(--border);
+}
+
 .lede {
   font-size: var(--text-lg);
   line-height: 1.5;
@@ -340,6 +370,32 @@ main {
 .pill--ok {
   color: var(--ok);
   border-color: color-mix(in oklab, var(--ok) 40%, var(--border));
+}
+
+/* change tier: substance is marked up; noise and unread diffs recede */
+.pill[data-tier="substance"] {
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+.pill:is([data-tier="noise"], [data-tier="unclassified"]) {
+  border-style: dashed;
+}
+
+/* signed character delta of a revision, pushed to the row's end */
+.char-delta {
+  margin-inline-start: auto;
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+.char-delta[data-sign="+"] {
+  color: var(--ok);
+}
+
+.char-delta[data-sign="-"] {
+  color: var(--del-text);
 }
 
 .pill--pdf {
@@ -461,19 +517,19 @@ main {
   text-decoration-thickness: 1px;
 }
 
-.heat[data-heat="1"] {
+:is(.heat, .heat-legend__swatch)[data-heat="1"] {
   background: var(--heat-1);
 }
 
-.heat[data-heat="2"] {
+:is(.heat, .heat-legend__swatch)[data-heat="2"] {
   background: var(--heat-2);
 }
 
-.heat[data-heat="3"] {
+:is(.heat, .heat-legend__swatch)[data-heat="3"] {
   background: var(--heat-3);
 }
 
-.heat[data-heat="4"] {
+:is(.heat, .heat-legend__swatch)[data-heat="4"] {
   background: var(--heat-4);
 }
 
@@ -481,7 +537,7 @@ main {
    amber reuse ramp. It carries no popover (the exact passage isn't traced to
    named agencies), so a different colour — not a fainter amber — signals a
    different kind of match. */
-.heat[data-variant="template"] {
+:is(.heat, .heat-legend__swatch)[data-variant="template"] {
   background: var(--template-wash);
 }
 

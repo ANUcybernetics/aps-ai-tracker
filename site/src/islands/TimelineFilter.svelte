@@ -182,7 +182,12 @@
   <search class="tl-filter">
     <label class="tl-filter__field tl-filter__search" for="tl-search">
       <span>Search</span>
-      <input id="tl-search" type="search" placeholder="words in the summary or the change itself" bind:value={q} />
+      <input
+        id="tl-search"
+        type="search"
+        placeholder="words in the summary or the change itself"
+        bind:value={q}
+      />
     </label>
 
     <label class="tl-filter__field" for="tl-show">

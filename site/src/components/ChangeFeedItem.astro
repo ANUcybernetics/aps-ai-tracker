@@ -51,10 +51,10 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
       {formatDate(event.date)}
     </time>
     <a class="tl-row__agency" href={statementPath(event.abbr)}>{event.agency}</a>
-    <span class="pill">{TIER_LABEL[tier]}</span>
+    <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
     {
       diff && (
-        <span class="tl-row__delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>
+        <span class="char-delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>
           {signedDelta(diff.delta)}
         </span>
       )
@@ -121,32 +121,6 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     color: var(--accent-ink);
   }
 
-  .tl-row[data-tier="substance"] .pill {
-    background: var(--accent-wash);
-    color: var(--accent-ink);
-    border-color: var(--accent);
-  }
-
-  .tl-row[data-tier="noise"] .pill,
-  .tl-row[data-tier="unclassified"] .pill {
-    border-style: dashed;
-    color: var(--muted);
-  }
-
-  .tl-row__delta {
-    margin-inline-start: auto;
-    font-size: var(--text-xs);
-    color: var(--muted);
-  }
-
-  .tl-row__delta[data-sign="+"] {
-    color: var(--ok);
-  }
-
-  .tl-row__delta[data-sign="-"] {
-    color: var(--del-text);
-  }
-
   .tl-row__summary {
     margin: var(--space-2) 0 0;
     max-inline-size: var(--measure);
@@ -168,10 +142,4 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     margin-block-start: var(--space-2);
   }
 
-  .tl-row__diff summary {
-    cursor: pointer;
-    color: var(--muted);
-    font-size: var(--text-sm);
-    width: max-content;
-  }
 </style>

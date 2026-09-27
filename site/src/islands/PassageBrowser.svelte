@@ -225,13 +225,6 @@
     margin-block-start: var(--space-3);
   }
 
-  .pb__members summary {
-    cursor: pointer;
-    color: var(--muted);
-    font-size: var(--text-sm);
-    width: max-content;
-  }
-
   .pb__members .cluster {
     margin-block-start: var(--space-2);
   }

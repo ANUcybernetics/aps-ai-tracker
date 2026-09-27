@@ -203,7 +203,7 @@
         <span class="mmx__key"><i class={`mmx__swatch mmx__seg--${t}`}></i>{TIER_LABEL[t]}</span>
       {/each}
     </div>
-    <details class="mmx__table">
+    <details class="chart-figures">
       <summary>Figures</summary>
       <table>
         <thead>
@@ -377,26 +377,5 @@
     inline-size: 10px;
     block-size: 10px;
     border-radius: 2px;
-  }
-
-  .mmx__table summary {
-    cursor: pointer;
-    font-size: var(--text-xs);
-    color: var(--muted);
-    width: max-content;
-  }
-
-  .mmx__table table {
-    margin-block-start: var(--space-2);
-    font-size: var(--text-xs);
-    border-collapse: collapse;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .mmx__table th,
-  .mmx__table td {
-    text-align: start;
-    padding: 0.15rem 0.6rem 0.15rem 0;
-    border-block-end: 1px solid var(--border);
   }
 </style>

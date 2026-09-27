@@ -106,32 +106,34 @@ const cells = agencies.toSorted(byName).map((a) => ({
     text-decoration: none;
   }
 
-  /* published, bespoke: inky neutral (their own words) */
-  .wall__cell[data-status="published"][data-heat="0"] {
+  /* Cells and legend keys share one encoding. Published and bespoke: inky
+     neutral (their own words). */
+  .wall__cell[data-status="published"][data-heat="0"],
+  .wall__key[data-heat="0"] {
     background: color-mix(in oklab, var(--text) 16%, var(--surface));
     border-color: color-mix(in oklab, var(--text) 22%, var(--border));
   }
 
-  .wall__cell[data-heat="1"] {
+  :is(.wall__cell, .wall__key)[data-heat="1"] {
     background: var(--heat-1);
   }
-  .wall__cell[data-heat="2"] {
+  :is(.wall__cell, .wall__key)[data-heat="2"] {
     background: var(--heat-2);
   }
-  .wall__cell[data-heat="3"] {
+  :is(.wall__cell, .wall__key)[data-heat="3"] {
     background: var(--heat-3);
   }
-  .wall__cell[data-heat="4"] {
+  :is(.wall__cell, .wall__key)[data-heat="4"] {
     background: var(--heat-4);
     border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
   }
 
-  .wall__cell[data-status="not-yet"] {
+  :is(.wall__cell, .wall__key)[data-status="not-yet"] {
     background: transparent;
     border: 1.5px dashed var(--border-strong);
   }
 
-  .wall__cell[data-status="exempt"] {
+  :is(.wall__cell, .wall__key)[data-status="exempt"] {
     background: var(--surface);
     opacity: 0.5;
   }
@@ -192,24 +194,6 @@ const cells = agencies.toSorted(byName).map((a) => ({
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     vertical-align: -0.12em;
-  }
-
-  .wall__key[data-heat="0"] {
-    background: color-mix(in oklab, var(--text) 16%, var(--surface));
-  }
-  .wall__key[data-heat="2"] {
-    background: var(--heat-2);
-  }
-  .wall__key[data-heat="4"] {
-    background: var(--heat-4);
-  }
-  .wall__key[data-status="not-yet"] {
-    background: transparent;
-    border: 1.5px dashed var(--border-strong);
-  }
-  .wall__key[data-status="exempt"] {
-    background: var(--surface);
-    opacity: 0.6;
   }
 
   /* The cell colour is the data (bespoke ink → borrowed ochre); keep it under

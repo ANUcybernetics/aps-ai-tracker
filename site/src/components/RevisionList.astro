@@ -47,8 +47,8 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
             <time class="mono muted" datetime={rev.date}>
               {formatDate(rev.date)}
             </time>
-            <span class="pill">{TIER_LABEL[tier]}</span>
-            <span class="rev__delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
+            <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
+            <span class="char-delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
               {signedDelta(rev.charDelta)}
             </span>
           </div>
@@ -128,37 +128,11 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
     gap: var(--space-2) var(--space-3);
   }
 
-  .rev[data-tier="substance"] .pill {
-    background: var(--accent-wash);
-    color: var(--accent-ink);
-    border-color: var(--accent);
-  }
-
-  .rev[data-tier="noise"] .pill,
-  .rev[data-tier="unclassified"] .pill {
-    border-style: dashed;
-    color: var(--muted);
-  }
-
   .rev__summary {
     margin: var(--space-2) 0 0;
     font-size: var(--text-sm);
     max-inline-size: var(--measure);
     text-wrap: pretty;
-  }
-
-  .rev__delta {
-    margin-inline-start: auto;
-    font-size: var(--text-xs);
-    color: var(--muted);
-  }
-
-  .rev__delta[data-sign="+"] {
-    color: var(--ok);
-  }
-
-  .rev__delta[data-sign="-"] {
-    color: var(--del-text);
   }
 
   .rev__first {
@@ -170,12 +144,6 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
     margin-block-start: var(--space-2);
   }
 
-  .rev__diff summary {
-    cursor: pointer;
-    color: var(--muted);
-    font-size: var(--text-sm);
-    width: max-content;
-  }
 
   .rev__sha {
     position: absolute;
