@@ -137,75 +137,21 @@ const cells = agencies.toSorted(byName).map((a) => ({
   }
 
   a.wall__cell {
+    position: relative;
+    scale: 1;
     transition:
-      transform var(--dur-fast) var(--ease-out-quart),
+      scale var(--dur-fast) var(--ease-out-quart),
       border-color var(--dur-fast) var(--ease-out-quart);
   }
 
-  a.wall__cell:hover {
-    transform: scale(1.2);
-    border-color: var(--accent-ink);
-    z-index: 1;
-  }
-
+  a.wall__cell:hover,
   a.wall__cell:focus-visible {
-    transform: scale(1.2);
+    scale: 1.2;
     z-index: 1;
   }
 
-  /* Desktop locality: a floating label tethered to the hovered/focused cell.
-     The pseudo-element lives on the <li> (not the cell) so the cell's scale
-     transform doesn't drag it; :has() lifts the whole li above its neighbours
-     while the label is up. Touch devices get the readout below instead. */
-  .wall__grid > li {
-    position: relative;
-  }
-
-  .wall__grid > li:has(.wall__cell:hover),
-  .wall__grid > li:has(.wall__cell:focus-visible) {
-    z-index: 2;
-  }
-
-  .wall__grid > li::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: calc(100% + 0.45rem);
-    left: 50%;
-    width: max-content;
-    max-width: 14rem;
-    padding: 0.3rem 0.5rem;
-    border-radius: var(--radius-sm);
-    background: var(--text);
-    color: var(--surface);
-    font-size: var(--text-sm);
-    line-height: 1.3;
-    text-align: center;
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transform: translateX(-50%) translateY(0.2rem);
-    transition:
-      opacity var(--dur-fast) var(--ease-out-quart),
-      transform var(--dur-fast) var(--ease-out-quart);
-    pointer-events: none;
-  }
-
-  .wall__grid > li:has(.wall__cell:hover)::after,
-  .wall__grid > li:has(.wall__cell:focus-visible)::after {
-    opacity: 1;
-    transform: translateX(-50%);
-  }
-
-  /* No hover label on touch — it can't be dismissed and the readout covers it. */
-  @media (hover: none) {
-    .wall__grid > li::after {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wall__grid > li::after {
-      transition: none;
-    }
+  a.wall__cell:hover {
+    border-color: var(--accent-ink);
   }
 
   .wall__readout {
@@ -277,9 +223,8 @@ const cells = agencies.toSorted(byName).map((a) => ({
 </style>
 
 <script>
-  // Live readout: name the agency under the pointer / focus / finger. This is the
-  // touch story (native title is invisible on touch) and the keyboard story; the
-  // CSS ::after label handles desktop pointer locality on top.
+  // Live readout: name the agency under the pointer / focus / finger, for mouse,
+  // touch and keyboard alike (native title is invisible on touch).
   for (const wall of document.querySelectorAll<HTMLElement>(".wall")) {
     const grid = wall.querySelector<HTMLElement>(".wall__grid");
     const readout = wall.querySelector<HTMLElement>(".wall__readout");
