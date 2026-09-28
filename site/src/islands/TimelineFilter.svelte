@@ -128,6 +128,17 @@
     });
   }
 
+  const anyActive = $derived(Boolean(q.trim() || agency || month) || moreActive > 0);
+
+  function clearFilters() {
+    q = "";
+    agency = "";
+    about = "";
+    answers = "";
+    show = "read";
+    month = null;
+  }
+
   function syncUrl() {
     const p = new URLSearchParams();
     if (q.trim()) p.set("q", q.trim());
@@ -226,7 +237,12 @@
       </button>
     {/if}
 
-    <span class="filters__count mono" aria-live="polite">{shown ?? total} shown</span>
+    <span class="filters__count mono" aria-live="polite">
+      {shown ?? total} shown
+      {#if anyActive}
+        <button type="button" class="tl-filter__clear" onclick={clearFilters}>Clear filters</button>
+      {/if}
+    </span>
 
     <details class="tl-filter__more" open={moreOpen}>
       <summary>
@@ -295,6 +311,19 @@
 
   select {
     max-width: 15rem;
+  }
+
+  .tl-filter__clear {
+    margin-inline-start: var(--space-2);
+    padding: var(--space-1) 0;
+    border: none;
+    background: none;
+    font: inherit;
+    font-family: var(--font-sans);
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
   }
 
   .tl-filter__more {
