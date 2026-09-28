@@ -87,7 +87,7 @@ export const PUBLIC_FACING_LABEL: Record<Profile["public_facing"], string> = {
   "not-addressed": "not addressed",
   none: "none",
   "with-human-review": "yes, with human review",
-  "without-human-review": "yes, without human review",
+  "without-human-review": "yes, human review not stated",
   unclear: "unclear",
 };
 
