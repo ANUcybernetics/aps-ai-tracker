@@ -43,24 +43,22 @@ const exampleAfter = exampleRevs[exampleIdx];
   <div class="page reading prose stack">
     <h1>Reading the data</h1>
     <p class="lede">
-      What each figure on this site measures, and how far to trust it. Start with
-      the anatomy of a change: the timeline, the profiles and the charts are all
-      built from it.
+      How the tracker records changes, reads statements and counts what they say.
+      The examples and caveats below show how to check a result against the text.
     </p>
 
     <h2 id="anatomy">Anatomy of a change</h2>
     <p>
-      Every night the tracker copies each agency&rsquo;s statement. After a check
-      that the copy captured the statement properly, any copy whose text differs
-      from the last one is a <em>change</em>. A language model reads each change
-      twice: for how much the text changed, and for which of the statement&rsquo;s
-      answers changed.
+      The tracker checks most statements nightly; some sites have to be checked
+      by hand. After a check that the copy captured the statement properly, any
+      copy whose text differs from the last one is a <em>change</em>. A language
+      model reads each change twice: for how much the text changed, and for which
+      of the statement&rsquo;s answers changed.
     </p>
     <p>
       Both readings record what a statement <em>says</em>, which may differ from
-      what an agency does. A statement that doesn&rsquo;t mention a use-case
-      register may come from an agency that has one, and a statement that claims
-      one may come from an agency that doesn&rsquo;t.
+      what an agency does. Silence about a use-case register does not prove the
+      agency lacks one; a claim to have one does not prove it exists.
     </p>
 
     <h3 id="example">An example</h3>

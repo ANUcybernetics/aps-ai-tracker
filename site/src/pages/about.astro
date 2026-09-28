@@ -25,14 +25,15 @@ const corpusStart = meta.corpusStart ? formatDate(meta.corpusStart) : "11 Novemb
 
     <h2>How it works</h2>
     <p>
-      Every day a scraper visits each agency&rsquo;s statement and saves a copy if
-      the text has changed. A language model (Claude Opus 5.5) then reads each
-      change, writes a one-sentence summary, and records the statement&rsquo;s
+      The scraper checks most agency statements daily and saves a copy when the
+      text changes. Pages it cannot fetch are checked by hand. A language model
+      (Claude Opus 5.5) then reads each change, writes a one-sentence summary,
+      and records the statement&rsquo;s
       answers to a fixed set of questions. <a href={withBase("/reading")}
         >Reading the data</a
       > explains the results. The scraper, the prompts and every model reading are <a
         href="https://github.com/ANUcybernetics/aps-ai-tracker">open source</a
-      >, so any figure can be traced back to its source.
+      >. Each figure can be checked against the statement it came from.
     </p>
     <p>
       Ben Swift started the archive in November 2025, the week the <a

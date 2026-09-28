@@ -67,10 +67,11 @@ const built = formatDate(meta.builtAt);
     <h1>For agencies</h1>
     <p class="lede">
       If you are drafting or updating your agency&rsquo;s AI transparency
-      statement, this page gathers what the tracker can tell you: what a
-      statement has to cover, how many statements already cover each item, and
-      examples worth reading. Your own statement&rsquo;s report card is on its
-      page; find it from the <a href={withBase("/agencies")}>agencies list</a>.
+      statement, you can check what it has to cover, how many statements already
+      cover each item, and examples from other agencies. Find your
+      statement&rsquo;s report card in the <a href={withBase("/agencies")}
+        >agencies list</a
+      >.
     </p>
 
     <h2 id="checklist">What a statement has to cover</h2>
@@ -142,9 +143,8 @@ const built = formatDate(meta.builtAt);
     <p>
       The tracker records what the page says, not what your agency does. If your
       agency has a use-case register but the statement doesn&rsquo;t mention it,
-      the report card will say &ldquo;not mentioned&rdquo;. A reader of the
-      statement would conclude the same. Plain, explicit wording gets read
-      correctly:
+      the report card will say &ldquo;not mentioned&rdquo;. Plain, explicit wording
+      makes errors less likely:
     </p>
     <ul>
       <li>
@@ -177,12 +177,10 @@ const built = formatDate(meta.builtAt);
       Each statement page shades the passages it shares with other agencies, and
       gives an <a href={withBase("/reading#originality")}>originality score</a>.
       The score is not a grade: the Standard asks for some of the same wording
-      everywhere, and following it closely lowers the score. Where shared
-      wording helps is as a source of phrasings. The <a
+      everywhere, and following it closely lowers the score. The <a
         href={withBase("/propagation")}>shared wording</a
-      > page shows which passages have spread, and how far. The parts a reader
-      most wants in your own words are the ones only your agency can write: what
-      you use AI for, and what you will not use it for.
+      > page shows which passages agencies share. Describe your agency&rsquo;s AI
+      uses and limits in terms specific to its work.
     </p>
 
     <h2 id="corrections">If we have read your statement wrongly</h2>
