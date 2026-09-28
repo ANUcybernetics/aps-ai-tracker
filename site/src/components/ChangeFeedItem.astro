@@ -13,8 +13,6 @@ import type { ProfileDelta, TimelineEvent } from "@/types/exporter";
 interface Props {
   event: TimelineEvent;
   diff: { before: string; after: string; delta: number } | null;
-  portfolio?: string | null;
-  scope?: string | null;
   deltas?: ProfileDelta[];
   facets?: string[];
   // Show the diff expanded, for a row shown on its own as an example.
@@ -26,8 +24,6 @@ interface Props {
 const {
   event,
   diff,
-  portfolio = null,
-  scope = null,
   deltas = [],
   facets = [],
   open = false,
@@ -46,8 +42,6 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
   data-kind={event.kind}
   data-tier={tier}
   data-month={monthKey(event.date)}
-  data-portfolio={portfolio ?? ""}
-  data-scope={scope ?? ""}
   data-facets={facets.join(" ")}
   hidden={hiddenByDefault ? true : undefined}
 >

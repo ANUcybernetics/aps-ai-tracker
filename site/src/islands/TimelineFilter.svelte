@@ -2,7 +2,7 @@
   // Filters the server-rendered timeline feed by toggling row visibility — the
   // rows stay in the Astro HTML; this island owns
   // the controls, the show/hide logic, and the monthly-mix chart, which is
-  // re-counted against the current agency/portfolio/search slice so it always
+  // re-counted against the current agency/search/question slice so it always
   // charts the slice the feed is showing. Filter state round-trips through the
   // URL query string, so any filtered view is a shareable link. No-JS users see
   // the default view (content changes only) and the full-corpus chart.
@@ -27,13 +27,11 @@
 
   let {
     agencies,
-    portfolios,
     requirements,
     chart,
     total,
   }: {
     agencies: AgencyOpt[];
-    portfolios: string[];
     requirements: RequirementOpt[];
     chart: MonthlyMixRow[];
     total: number;
@@ -54,12 +52,6 @@
     { value: "removed", label: "Dropped an answer" },
     { value: "added", label: "Added an answer" },
     { value: "changed", label: "Altered an answer" },
-  ];
-  const SCOPE_OPTIONS = [
-    { value: "", label: "All bodies" },
-    { value: "mandatory", label: "Required to publish" },
-    { value: "voluntary", label: "Not required" },
-    { value: "exempt", label: "Exempt" },
   ];
 
   // One control over the change-tier ladder: the default view is everything
@@ -82,17 +74,20 @@
 
   let q = $state(params?.get("q") ?? "");
   let agency = $state(params?.get("agency") ?? "");
-  let portfolio = $state(params?.get("portfolio") ?? "");
   const urlAbout = params?.get("about") ?? "";
   let about = $state(urlAbout);
   // A stale or mistyped ?about= filters nothing rather than hiding everything.
   const aboutKey = $derived(requirements.some((r) => r.key === about) ? about : "");
   const urlAnswers = params?.get("answers") ?? "";
   let answers = $state(ANSWER_OPTIONS.some((o) => o.value === urlAnswers) ? urlAnswers : "");
-  const urlScope = params?.get("scope") ?? "";
-  let scope = $state(SCOPE_OPTIONS.some((o) => o.value === urlScope) ? urlScope : "");
   let show = $state(showValues.has(urlShow) ? urlShow : "read");
   let month = $state<string | null>(/^\d{4}-\d{2}$/.test(urlMonth) ? urlMonth : null);
+  // Show, About and Answers sit behind a disclosure; a link that sets any of
+  // them arrives with it open so the narrowing is visible.
+  const moreActive = $derived(
+    Number(show !== "read") + Number(Boolean(aboutKey)) + Number(Boolean(answers)),
+  );
+  const moreOpen = (urlShow !== "" && urlShow !== "read") || urlAbout !== "" || urlAnswers !== "";
   // Counted from the DOM after hydration; falls back to `total` for SSR/no-JS.
   let shown: number | undefined = $state();
   // Recounted from the DOM each filter change; the build-time prop covers
@@ -137,8 +132,6 @@
     const p = new URLSearchParams();
     if (q.trim()) p.set("q", q.trim());
     if (agency) p.set("agency", agency);
-    if (portfolio) p.set("portfolio", portfolio);
-    if (scope) p.set("scope", scope);
     if (aboutKey) p.set("about", aboutKey);
     if (answers) p.set("answers", answers);
     if (show !== "read") p.set("show", show);
@@ -170,8 +163,6 @@
       const rowMonth = row.dataset.month ?? "";
       const sliceOk =
         (!agency || row.dataset.abbr === agency) &&
-        (!portfolio || row.dataset.portfolio === portfolio) &&
-        (!scope || row.dataset.scope === scope) &&
         facetOk(row.dataset.facets ?? "") &&
         (!query || (searchText?.get(row) ?? "").includes(query));
       const showOk = show === "all" || (show === "read" ? READABLE_TIERS.has(tier) : show === tier);
@@ -217,63 +208,12 @@
       />
     </label>
 
-    <label class="filters__field" for="tl-show">
-      <span>Show</span>
-      <select id="tl-show" bind:value={show}>
-        {#each SHOW_OPTIONS as o (o.value)}
-          <option value={o.value}>{o.label}</option>
-        {/each}
-      </select>
-    </label>
-
-    <label class="filters__field" for="tl-about">
-      <span>About</span>
-      <select id="tl-about" bind:value={about}>
-        <option value="">Any question</option>
-        {#each requirementGroups as g (g.label)}
-          <optgroup label={g.label}>
-            {#each g.options as r (r.key)}
-              <option value={r.key}>{r.label} ({r.count})</option>
-            {/each}
-          </optgroup>
-        {/each}
-      </select>
-    </label>
-
-    <label class="filters__field" for="tl-answers">
-      <span>Answers</span>
-      <select id="tl-answers" bind:value={answers}>
-        {#each ANSWER_OPTIONS as o (o.value)}
-          <option value={o.value}>{o.label}</option>
-        {/each}
-      </select>
-    </label>
-
     <label class="filters__field" for="tl-agency">
       <span>Agency</span>
       <select id="tl-agency" bind:value={agency}>
         <option value="">All agencies</option>
         {#each agencies as a (a.abbr)}
           <option value={a.abbr}>{a.name}</option>
-        {/each}
-      </select>
-    </label>
-
-    <label class="filters__field" for="tl-portfolio">
-      <span>Portfolio</span>
-      <select id="tl-portfolio" bind:value={portfolio}>
-        <option value="">All portfolios</option>
-        {#each portfolios as p (p)}
-          <option value={p}>{p}</option>
-        {/each}
-      </select>
-    </label>
-
-    <label class="filters__field" for="tl-coverage">
-      <span>Coverage</span>
-      <select id="tl-coverage" bind:value={scope}>
-        {#each SCOPE_OPTIONS as o (o.value)}
-          <option value={o.value}>{o.label}</option>
         {/each}
       </select>
     </label>
@@ -287,6 +227,45 @@
     {/if}
 
     <span class="filters__count mono" aria-live="polite">{shown ?? total} shown</span>
+
+    <details class="tl-filter__more" open={moreOpen}>
+      <summary>
+        More filters{#if moreActive > 0}{" "}<span class="muted">({moreActive} active)</span>{/if}
+      </summary>
+      <div class="tl-filter__more-fields">
+        <label class="filters__field" for="tl-show">
+          <span>Show</span>
+          <select id="tl-show" bind:value={show}>
+            {#each SHOW_OPTIONS as o (o.value)}
+              <option value={o.value}>{o.label}</option>
+            {/each}
+          </select>
+        </label>
+
+        <label class="filters__field" for="tl-about">
+          <span>About</span>
+          <select id="tl-about" bind:value={about}>
+            <option value="">Any question</option>
+            {#each requirementGroups as g (g.label)}
+              <optgroup label={g.label}>
+                {#each g.options as r (r.key)}
+                  <option value={r.key}>{r.label} ({r.count})</option>
+                {/each}
+              </optgroup>
+            {/each}
+          </select>
+        </label>
+
+        <label class="filters__field" for="tl-answers">
+          <span>Answers</span>
+          <select id="tl-answers" bind:value={answers}>
+            {#each ANSWER_OPTIONS as o (o.value)}
+              <option value={o.value}>{o.label}</option>
+            {/each}
+          </select>
+        </label>
+      </div>
+    </details>
   </search>
 </div>
 
@@ -316,6 +295,29 @@
 
   select {
     max-width: 15rem;
+  }
+
+  .tl-filter__more {
+    flex-basis: 100%;
+    font-size: var(--text-sm);
+  }
+
+  .tl-filter__more summary {
+    inline-size: fit-content;
+    padding-block: var(--space-1);
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .tl-filter__more summary:hover {
+    color: var(--text);
+  }
+
+  .tl-filter__more-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+    padding-block-start: var(--space-3);
   }
 
   .tl-filter__month {

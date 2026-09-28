@@ -3,7 +3,7 @@ import Layout from "@/components/Layout.astro";
 import ChangeFeedItem from "@/components/ChangeFeedItem.astro";
 import ReadingLink from "@/components/ReadingLink.astro";
 import TimelineFilter from "@/islands/TimelineFilter.svelte";
-import { getAgencies, getTimeline } from "@/lib/load";
+import { getTimeline } from "@/lib/load";
 import { monthlyMix } from "@/lib/monthly";
 import { REQUIREMENTS, changeTier } from "@/lib/profile-labels";
 import { changeFacets } from "@/lib/questions";
@@ -14,7 +14,6 @@ import type { TimelineEvent } from "@/types/exporter";
 
 const timeline = await getTimeline();
 const statements = await getStatements();
-const agencies = await getAgencies();
 
 // Join each event to its statement's revision history: the diff against the
 // previous revision (rendered into timeline/diffs.json, not this page) and the
@@ -24,15 +23,12 @@ function diffFor(event: TimelineEvent) {
   return pair && { before: pair.prev.body, after: pair.curr.body, delta: pair.curr.charDelta };
 }
 
-const agencyByAbbr = new Map(agencies.map((a) => [a.abbr, a]));
 const rows = timeline.map((event) => {
   const found = revisionFor(statements, event);
   const deltas = found ? found.stmt.timeline[found.idx].profileDeltas : [];
   return {
     event,
     diff: diffFor(event),
-    portfolio: agencyByAbbr.get(event.abbr)?.portfolio ?? null,
-    scope: agencyByAbbr.get(event.abbr)?.scope ?? null,
     deltas,
     facets: changeFacets({ profileDeltas: deltas }),
   };
@@ -62,10 +58,6 @@ const starters = [
 const agencyOpts = [...new Map(timeline.map((e) => [e.abbr, e.agency])).entries()]
   .map(([abbr, name]) => ({ abbr, name }))
   .sort((a, b) => a.name.localeCompare(b.name));
-
-const portfolios = [
-  ...new Set(rows.map((r) => r.portfolio).filter((p): p is string => Boolean(p))),
-].sort((a, b) => a.localeCompare(b));
 
 const chart = monthlyMix(timeline);
 
@@ -113,7 +105,6 @@ const readable = counts.substance + counts.revision + counts.unclassified;
     <TimelineFilter
       client:load
       agencies={agencyOpts}
-      portfolios={portfolios}
       requirements={requirementOpts}
       chart={chart}
       total={readable}
@@ -121,12 +112,10 @@ const readable = counts.substance + counts.revision + counts.unclassified;
 
     <ul class="tl-feed" id="tl-feed">
       {
-        rows.map(({ event, diff, portfolio, scope, deltas, facets }) => (
+        rows.map(({ event, diff, deltas, facets }) => (
           <ChangeFeedItem
             event={event}
             diff={diff}
-            portfolio={portfolio}
-            scope={scope}
             deltas={deltas}
             facets={facets}
             lazy
