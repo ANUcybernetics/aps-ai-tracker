@@ -35,7 +35,7 @@ from pydantic import BaseModel, Field
 from . import llm
 from .scraper import logger
 
-SCHEMA_VERSION = 5
+SCHEMA_VERSION = 6
 CACHE_PATH = llm.CACHE_DIR / "profiles.json"
 
 # The instruments' own dates, used for the staleness and adoption views.
@@ -82,6 +82,7 @@ FIELD_SOURCE = {
     "measures": "tracker",
     "named_tools": "tracker",
     "commitments": "tracker",
+    "kept_commitments": "tracker",
     "policy_version": "tracker",
     "first_published_stated": "tracker",
 }
@@ -189,6 +190,9 @@ class Profile(BaseModel):
     commitments: list[Commitment] = Field(
         description="Explicit promises and self-imposed limits, especially 'we will not…' statements"
     )
+    kept_commitments: list[str] = Field(
+        description="Baseline commitments, in the baseline's wording, that this revision no longer makes because it reports them done"
+    )
 
 
 SYSTEM_PROMPT = """\
@@ -265,7 +269,10 @@ different on that field, and keep the previous wording of each commitment
 verbatim wherever the statement still makes that commitment, even if the
 agency has rephrased it. Add a commitment only when it is genuinely new; drop
 one only when the statement no longer makes it. Rewording, reordering and
-expansion are not changes.
+expansion are not changes. When a commitment is dropped because the statement
+now reports it done (the officer appointed, the strategy published, the policy
+released), also copy its baseline wording into kept_commitments; leave that
+list empty otherwise, and always empty when there is no baseline.
 """
 
 
@@ -533,14 +540,16 @@ def _keys(profile: Profile, name: str) -> set[str]:
     return {tool_family(v) for v in values} if name == "named_tools" else set(values)
 
 
-def _same_commitment(a: Commitment, b: Commitment) -> bool:
-    """Fuzzy match: same kind and enough shared content words to be one promise."""
-    if a.kind != b.kind:
-        return False
-    ta, tb = _tokens(a.text), _tokens(b.text)
+def _same_text(a: str, b: str) -> bool:
+    """Fuzzy match: enough shared content words to be one promise."""
+    ta, tb = _tokens(a), _tokens(b)
     if not ta or not tb:
-        return a.text.strip().lower() == b.text.strip().lower()
+        return a.strip().lower() == b.strip().lower()
     return len(ta & tb) / len(ta | tb) >= 0.5
+
+
+def _same_commitment(a: Commitment, b: Commitment) -> bool:
+    return a.kind == b.kind and _same_text(a.text, b.text)
 
 
 def _pretty(value: object) -> str:
@@ -644,7 +653,20 @@ def diff_profiles(before: Profile, after: Profile) -> list[Delta]:
                 )
             )
     for i, old in enumerate(before.commitments):
-        if i not in matched:
+        if i in matched:
+            continue
+        # A promise reported done is kept, not dropped: it leaves the list
+        # because the statement no longer needs to make it.
+        if any(_same_text(old.text, k) for k in after.kept_commitments):
+            deltas.append(
+                Delta(
+                    "commitments",
+                    f"Commitment kept ({_pretty(old.kind)}): {old.text}",
+                    "changed",
+                    before=old.text,
+                )
+            )
+        else:
             deltas.append(
                 Delta(
                     "commitments",

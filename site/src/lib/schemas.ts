@@ -194,6 +194,7 @@ export const profileSchema = z.object({
   policy_compliance_stated: z.boolean(),
   legislation_compliance_stated: z.boolean(),
   commitments: z.array(commitmentSchema),
+  kept_commitments: z.array(z.string()),
 });
 
 // One field-level change between two consecutive profiles.

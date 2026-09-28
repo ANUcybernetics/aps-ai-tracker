@@ -269,7 +269,7 @@ export const REQUIREMENTS: Requirement[] = [
     label: "Commitments",
     question:
       "Explicit commitments: what the agency will do, will not do, or keep under human oversight",
-    fields: ["commitments"],
+    fields: ["commitments", "kept_commitments"],
   },
   {
     key: "safeguards",

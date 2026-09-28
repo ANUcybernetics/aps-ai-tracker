@@ -101,9 +101,10 @@ const exampleAfter = exampleRevs[exampleIdx];
       </li>
     </ol>
     <p>
-      The red chip says a commitment was dropped, but the diff shows why: the
-      promise to appoint a Chief AI Officer was kept. This is why every reading
-      sits beside its diff (see <a href="#checking">checking a reading</a>).
+      The grey chip marks the promise to appoint a Chief AI Officer as kept: the
+      new version reports the appointment, so it no longer needs to make the
+      promise. A promise that disappears without being reported done shows in
+      red, as dropped.
     </p>
 
     <h3 id="changes">How much the text changed</h3>
@@ -182,9 +183,8 @@ const exampleAfter = exampleRevs[exampleIdx];
     <p>
       Both readings come from a model, and either can be wrong. When an agency
       rewrites a section, a commitment it only reworded can show as dropped, with
-      the new wording shown as added. Most of the dropped commitments on this site
-      are of this kind, though some are genuine; the diff beside each one tells
-      you which. A vaguely described role can also land in the wrong category.
+      the new wording shown as added; the diff beside each one tells you which. A
+      vaguely described role can also land in the wrong category.
     </p>
     <p>
       Every summary names the model that wrote it and sits beside the diff, and

@@ -52,6 +52,7 @@ def make_profile(**overrides) -> Profile:
             ),
             Commitment(text="Review the statement annually", kind="will"),
         ],
+        "kept_commitments": [],
     }
     base.update(overrides)
     return Profile.model_validate(base)
@@ -78,6 +79,22 @@ def test_dropped_commitment_sorts_first():
     assert deltas[0].direction == "removed"
     fields = {d.field for d in deltas}
     assert fields == {"public_interaction_commitment", "commitments"}
+
+
+def test_commitment_reported_done_is_kept_not_dropped():
+    before = make_profile(
+        commitments=[
+            Commitment(text="Appoint a Chief AI Officer by July 2026", kind="will")
+        ]
+    )
+    after = make_profile(
+        chief_ai_officer="in-place",
+        commitments=[],
+        kept_commitments=["Appoint a Chief AI Officer by July 2026"],
+    )
+    deltas = {d.field: d for d in diff_profiles(before, after)}
+    assert deltas["commitments"].direction == "changed"
+    assert deltas["commitments"].label.startswith("Commitment kept")
 
 
 def test_reworded_commitment_still_matches():

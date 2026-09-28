@@ -87,6 +87,7 @@ export const doc = {
       { text: "We will not use AI for decisions", kind: "will-not" },
       { text: "We will review annually", kind: "will" },
     ],
+    kept_commitments: [],
   },
   profileModel: "claude-opus-5",
   standard: {
