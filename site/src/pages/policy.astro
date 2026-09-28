@@ -11,7 +11,7 @@ import ReadingLink from "@/components/ReadingLink.astro";
 import { adoption, meta } from "@/lib/load";
 import { getAllStatements } from "@/lib/statements";
 import { formatDate } from "@/lib/format";
-import { STANDARD_ELEMENTS, changeTier, formatStatedDate } from "@/lib/profile-labels";
+import { STANDARD_ELEMENTS, formatStatedDate } from "@/lib/profile-labels";
 import { statementPath, withBase } from "@/lib/paths";
 
 const statements = await getAllStatements();
