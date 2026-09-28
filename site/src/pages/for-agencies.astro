@@ -1,0 +1,228 @@
+---
+// For the people who write the statements: what a statement has to cover, how
+// many statements already cover each item (with examples to read), how the
+// tracker reads a statement, and how to tell us when it has read one wrongly.
+// The checklist is built from the same profiles as the statement pages, so the
+// counts always match the report cards.
+import Layout from "@/components/Layout.astro";
+import { meta } from "@/lib/load";
+import { getAllStatements } from "@/lib/statements";
+import { formatDate } from "@/lib/format";
+import { FIELD_SOURCE_LABEL, REQUIREMENTS } from "@/lib/profile-labels";
+import { statementPath, withBase } from "@/lib/paths";
+import type { Profile } from "@/types/exporter";
+
+const statements = await getAllStatements();
+const profiled = statements.filter((s) => s.profile && s.standard);
+
+// What counts as done for each requirement that an instrument sets. The
+// Standard's elements come straight from the report card; the rest read the
+// profile field the same way the report card colours it "on".
+const due: Record<string, string> = {
+  review: "annually, and after any significant change",
+  "strategic-position": "due 15 June 2026",
+  "use-case-register": "due 15 December 2026",
+  training: "due 15 December 2026",
+  "chief-ai-officer": "due July 2026",
+};
+const met: Record<string, (p: Profile) => boolean> = {
+  review: (p) => p.review_cadence === "annual" || p.review_cadence === "annual-and-on-change",
+  "accountable-official": (p) => p.accountable_official === "designated",
+  "strategic-position": (p) => p.strategic_position === "in-place",
+  "use-case-register": (p) => p.use_case_register === "in-place",
+  training: (p) => p.staff_training === "mandatory",
+  "chief-ai-officer": (p) => p.chief_ai_officer === "in-place",
+};
+
+// Examples only for the policy and Plan items, which most statements have yet
+// to cover; every statement covers most of the Standard's. They are the
+// statements that cover the item mostly in their own words, since those show
+// one agency's way of saying it rather than the template's.
+const rows = REQUIREMENTS.filter((r) => r.source !== "tracker").map((r) => {
+  const covering = profiled.filter((s) =>
+    r.source === "standard" ? s.standard![r.key] : met[r.key]!(s.profile!),
+  );
+  return {
+    ...r,
+    due: due[r.key],
+    count: covering.length,
+    examples:
+      r.source === "standard"
+        ? []
+        : covering.toSorted((a, b) => b.originality.score - a.originality.score).slice(0, 3),
+  };
+});
+
+const complete = profiled.filter((s) =>
+  rows.every((r) => (r.source === "standard" ? s.standard![r.key] : met[r.key]!(s.profile!))),
+);
+const built = formatDate(meta.builtAt);
+---
+
+<Layout
+  title="For agencies"
+  description="For anyone updating an Australian Government AI transparency statement: what it has to cover, how many statements already do, examples to read, and how this tracker reads a statement."
+>
+  <div class="page prose stack">
+    <h1>For agencies</h1>
+    <p class="lede">
+      If you are drafting or updating your agency&rsquo;s AI transparency
+      statement, this page gathers what the tracker can tell you: what a
+      statement has to cover, how many statements already cover each item, and
+      examples worth reading. Your own statement&rsquo;s report card is on its
+      page; find it from the <a href={withBase("/agencies")}>agencies list</a>.
+    </p>
+
+    <h2 id="checklist">What a statement has to cover</h2>
+    <p>
+      Three documents set the content. The DTA&rsquo;s <a
+        href={FIELD_SOURCE_LABEL.standard.href}>Standard for AI transparency
+        statements</a
+      > lists eight things every statement must contain. Version 2.0 of the <a
+        href={FIELD_SOURCE_LABEL.policy.href}>AI policy</a
+      >, in force since 15 December 2025, adds obligations that statements are
+      expected to report on. The <a href={FIELD_SOURCE_LABEL["ai-plan"].href}
+        >APS AI Plan</a
+      > separately asks each agency for a Chief AI Officer. Who&rsquo;s who
+      explains <a href={withBase("/whos-who")}>how they fit together</a>.
+    </p>
+    <p>
+      The counts are of the {profiled.length} published statements as of {built},
+      as read by a language model. For the policy and Plan items, the examples
+      cover the item mostly in their own words.
+    </p>
+    <table class="checklist">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Asked by</th>
+          <th scope="col">Statements that say so</th>
+          <th scope="col">Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((r) => (
+            <tr>
+              <th scope="row">{r.label}</th>
+              <td>{[FIELD_SOURCE_LABEL[r.source].short, r.due].filter(Boolean).join(", ")}</td>
+              <td class="num">
+                {r.count} <span class="muted">of {profiled.length}</span>
+              </td>
+              <td>
+                <span class="items">
+                  {r.examples.map((s) => (
+                    <span>
+                      <a href={statementPath(s.abbr)} title={s.agency}>
+                        {s.abbr}
+                      </a>
+                    </span>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+    <p>
+      Statements that report every item as done ({complete.length}):{" "}
+      <span class="items">
+        {
+          complete.map((s) => (
+            <span>
+              <a href={statementPath(s.abbr)}>{s.agency}</a>
+            </span>
+          ))
+        }
+      </span>
+    </p>
+
+    <h2 id="reading">How the tracker reads your statement</h2>
+    <p>
+      The tracker records what the page says, not what your agency does. If your
+      agency has a use-case register but the statement doesn&rsquo;t mention it,
+      the report card will say &ldquo;not mentioned&rdquo;. A reader of the
+      statement would conclude the same. Plain, explicit wording gets read
+      correctly:
+    </p>
+    <ul>
+      <li>
+        name each role by its job title, and say which one is the Chief AI
+        Officer and which the accountable official, even if one person holds
+        both
+      </li>
+      <li>
+        put a last-updated date on the page, and say how often the statement is
+        reviewed
+      </li>
+      <li>say which version of the policy you comply with</li>
+      <li>
+        when you have done something an earlier version promised (appointed the
+        officer, published the strategy), say so, so the promise reads as kept
+        rather than quietly dropped
+      </li>
+    </ul>
+    <p>
+      Where the statement lives matters too. The tracker follows one address per
+      agency, so moving the page breaks the record until we find it again. A web
+      page reads more reliably than a PDF, and a page that only links to a PDF is
+      read as a signpost, not a statement. Pages behind bot protection
+      (Cloudflare, Imperva or Akamai challenges) often can only be checked by
+      hand, so they are checked less often.
+    </p>
+
+    <h2 id="wording">Borrowed wording is fine</h2>
+    <p>
+      Each statement page shades the passages it shares with other agencies, and
+      gives an <a href={withBase("/reading#originality")}>originality score</a>.
+      The score is not a grade: the Standard asks for some of the same wording
+      everywhere, and following it closely lowers the score. Where shared
+      wording helps is as a source of phrasings. The <a
+        href={withBase("/propagation")}>shared wording</a
+      > page shows which passages have spread, and how far. The parts a reader
+      most wants in your own words are the ones only your agency can write: what
+      you use AI for, and what you will not use it for.
+    </p>
+
+    <h2 id="corrections">If we have read your statement wrongly</h2>
+    <p>
+      Every reading is made by a model and can be wrong, and each sits beside
+      the text it came from so it can be checked. If your statement&rsquo;s
+      report card, summary or change history misstates what it says, email <a
+        href="mailto:ben.swift@anu.edu.au">ben.swift@anu.edu.au</a
+      > or <a href="https://github.com/ANUcybernetics/aps-ai-tracker/issues"
+        >open an issue</a
+      > on GitHub, naming the statement and the reading. We will check it against
+      the text and correct it or explain it. The same address takes <a
+        href={withBase("/about#contribute")}>earlier versions</a
+      > we don&rsquo;t have.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .checklist .num {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Flex drops the whitespace around each item, so the commas sit tight. */
+  .items {
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 0.3em;
+  }
+
+  .items > span {
+    display: inline-flex;
+  }
+
+  .items > span:not(:last-child)::after {
+    content: ",";
+  }
+
+  .checklist th[scope="row"] {
+    font-weight: 500;
+  }
+</style>

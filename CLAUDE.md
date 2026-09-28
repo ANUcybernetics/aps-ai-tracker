@@ -103,17 +103,18 @@ This is a Python web scraping project using uv for dependency management.
 ## Static site (`site/`)
 
 An Astro static site presents the data: a timeline of every change of substance
-(each with its model-written summary), per-statement pages (what's changed,
-a profile report card against the Standard and policy v2.0, the text with a
+(each with its model-written summary), per-statement pages (what's changed, a
+profile report card against the Standard and policy v2.0, the text with a
 passage-reuse heat-map, and every revision with time-travel), a "what the
 statements say" page (adoption charts, commitments dropped, who is in charge,
-staleness), a shared-wording explorer, and downloadable datasets at `/data/`
-(statements as CSV and JSON, timeline, adoption — static endpoints in
-`src/pages/data/` flattening the generated JSON via `src/lib/dataset.ts`, each
-stamped with provenance and the extraction `schemaVersions` from `meta.json`).
-Toolchain mirrors the benswift-me repo: pnpm + Astro 7 + Svelte 5 islands,
-oxlint/oxfmt/stylelint, node 24. The site is light-only (no dark mode); design
-tokens live in `src/styles/tokens.css`.
+staleness), a shared-wording explorer, a "for agencies" page for statement
+authors (checklist with counts and examples, corrections), and downloadable
+datasets at `/data/` (statements as CSV and JSON, timeline, adoption — static
+endpoints in `src/pages/data/` flattening the generated JSON via
+`src/lib/dataset.ts`, each stamped with provenance and the extraction
+`schemaVersions` from `meta.json`). Toolchain mirrors the benswift-me repo:
+pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The site is
+light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
 
 - News about the tracker itself lives in `site/src/content/news/*.md`, with flat
   frontmatter (title, date, summary, draft). A `draft: true` post never builds
