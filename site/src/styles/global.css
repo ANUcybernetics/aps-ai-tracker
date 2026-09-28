@@ -312,15 +312,26 @@ main {
 
 /* --- reusable pieces --- */
 
-/* form controls take the surrounding type, on paper with a hairline */
+/* form controls take the surrounding type, on paper with a hairline, and are
+   never shorter than --control-size however small that type is */
 input[type="search"],
 select {
   font: inherit;
-  padding: var(--space-1) var(--space-2);
+  min-block-size: var(--control-size);
+  padding: var(--space-1) var(--space-3);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--text);
+}
+
+/* :where() so component rules (e.g. the hidden nav toggle) still win */
+:where(input[type="checkbox"]) {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  margin: 0;
+  accent-color: var(--accent-ink);
+  cursor: pointer;
 }
 
 /* a panel of filter controls with a live count at its end */

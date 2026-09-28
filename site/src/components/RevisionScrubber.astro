@@ -363,7 +363,8 @@ function tipText(d: ScrubberDot): string {
   .scrubber__banner-nav button {
     border: none;
     background: none;
-    padding: 0;
+    /* link-styled, but with a taller hit area than the text alone */
+    padding: var(--space-1) 0;
     font: inherit;
     color: var(--accent-ink);
     text-decoration: underline;

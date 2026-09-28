@@ -136,7 +136,6 @@
   }
 
   input[type="search"] {
-    padding: var(--space-2) var(--space-3);
     min-width: 16rem;
     flex: 1;
   }

@@ -45,6 +45,9 @@
   /* crisp, document-like corners */
   --radius: 0.375rem;
   --radius-sm: 0.1875rem;
+
+  /* the minimum height of a text field or select: a comfortable pointer target */
+  --control-size: 2.5rem;
   --measure: 66ch;
   --page-max: 74rem;
   /* clears the sticky site header (one line tall wherever anything else sticks) */
