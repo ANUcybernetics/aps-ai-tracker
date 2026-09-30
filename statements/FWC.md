@@ -61,7 +61,7 @@ We require all staff to complete AI fundamentals training developed by the DTA.
 
 ## Enquiries about how we use AI
 
-For enquiries, please contact us at [artificialintelligence@fwc.gov.au](mailto:artificialintelligence@fwc.gov.au).
+For enquiries, please contact us at artificialintelligence@fwc.gov.au.
 
 The Executive Director of Enabling Services is designated as the accountable official for our use of AI.
 

@@ -1,19 +1,24 @@
 ---
 abbr: NACC
 agency: National Anti-Corruption Commission
+final_url: https://www.nacc.gov.au/ai-policy
 source_url: https://www.nacc.gov.au/ai-transparency-statement
-title: AI transparency statement | National Anti-Corruption Commission (NACC)
+title: AI Policy | National Anti-Corruption Commission (NACC)
 ---
 
 Content
 
-The Digital Transformation Agency’s (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of Artificial Intelligence (AI) technologies and promote the safe and responsible use of AI.
+The Digital Transformation Agency’s (DTA) [Policy for the responsible use of AI](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) in government sets out the Australian Government approach to embrace the opportunities of Artificial Intelligence (AI) technologies and promote the safe and responsible use of AI.
 
-The National Anti-Corruption Commission (NACC) is open to exploring the opportunities presented by AI technologies. The NACC is using Microsoft CoPilot within the following [usage patterns](https://www.digital.gov.au/policy/ai/resources/use-classification#:~:text=to%20the%20public.-,Usage%20patterns,-Decision%20making%20and) and [domains](https://www.digital.gov.au/policy/ai/resources/use-classification#:~:text=to%20aid%20biosecurity.-,Domains,-Service%20delivery):
+The National Anti-Corruption Commission (NACC) is open to exploring the opportunities presented by AI technologies.
 
-**Usage pattern:** Workplace productivity
+## AI usage patterns
 
-Domain:
+The NACC is using Microsoft CoPilot within the following [usage patterns](https://www.digital.gov.au/policy/ai/resources/use-classification#:~:text=to%20the%20public.-,Usage%20patterns,-Decision%20making%20and) and [domains](https://www.digital.gov.au/policy/ai/resources/use-classification#:~:text=to%20aid%20biosecurity.-,Domains,-Service%20delivery):
+
+### Workplace productivity
+
+#### Domain
 
 - Corporate and enabling
 - Law enforcement, intelligence and security.
@@ -27,9 +32,9 @@ Examples of use cases being trialled:
 - Searching for and presenting relevant information
 - Automating retention labelling for documents.
 
-**Usage pattern:** Analytics for insights
+### Analytics for insights
 
-Domain:
+#### Domain
 
 - Corporate and enabling
 - Law enforcement, intelligence and security.
@@ -41,28 +46,31 @@ Examples of use cases being trialled:
 - Formatting and basic analysis of financial records
 - Visualising data through natural language prompts.
 
-The NACC has also authorised several public generative AI services for staff to use for information classified up to OFFICIAL.
+## AI governance
 
-We have implemented several policy and technical controls to maintain the security of data that that is entered into Microsoft Copilot and public generative AI services. This includes ensuring all staff have received training in AI fundamentals prior to accessing the systems.
+The NACC has also authorised several public generative AI services for staff to use for information classified up to OFFICIAL.\
+We have implemented several policy and technical controls to maintain the security of data that is entered into Microsoft CoPilot and public generative AI services. This includes ensuring all staff have received training in AI fundamentals prior to accessing the systems.
 
-Our internal policy restricts the use of AI technologies for automated decision making, or for generating content for official use or publication before it has been reviewed by a staff member. The NACC will not use AI to replace human judgement.
+Our internal policy restricts the use of AI technologies for automated decision-making, or for generating content for official use or publication before it has been reviewed by a staff member. The NACC will not use AI to replace human judgement.
 
-We have appointed the following internal roles to assisting in governing the adoption and use of AI:
+## Internal AI roles
 
-**Role:** AI Governance Committee
+We have appointed the following internal roles to assist in governing the adoption and use of AI:
+
+### AI Governance Committee
 
 Responsibilities include:
 
 - Reviewing and approving AI plans and policy frameworks
 - Reviewing high risk AI systems and use-cases.
 
-**Role:** Chief AI Officer
+#### Chief AI Officer
 
 Responsibilities include:
 
 - Driving the use of the adoption and use of AI.
 
-**Role:** AI Accountable Official
+#### AI Accountable Official
 
 Responsibilities include:
 
@@ -70,7 +78,9 @@ Responsibilities include:
 - Developing AI risk assessments
 - Ensuring the Commission’s AI Transparency Statement remains up to date.
 
-Prior to the further adoption of further AI technologies at the NACC, we will ensure appropriate technology, process, and ethical governance is established. We will also update this statement to summarise:
+## Next steps
+
+Prior to the adoption of further AI technologies at the NACC, we will ensure appropriate technology, process and ethical governance are established. We will also update this statement to summarise:
 
 - the intentions behind why the NACC uses AI or is considering its adoption
 - classification of AI use according to required outcomes and AI system or tool
@@ -78,14 +88,14 @@ Prior to the further adoption of further AI technologies at the NACC, we will en
 - measures to monitor the effectiveness of deployed AI systems, such as governance or processes
 - compliance with applicable legislation and regulation
 - efforts to identify and protect the public against negative impacts
-- compliance with each requirement under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf).
+- compliance with each requirement under the Policy for the responsible use of AI in government.
 
-The NACC will update this statement in accordance with the Australian Government’s Policy for the responsible use of AI in government:
+The NACC will update this statement in accordance with the Australian Government’s [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf):
 
-- every twelve months (12) months
+- every twelve (12) months
 - when making a significant change to the agency’s approach to AI
 - when any new factor materially impacts the existing statement’s accuracy.
 
-For further information please [contact us](https://www.nacc.gov.au/about-nacc/contact-us).
+For further information please [contact us](https://nginx-test-nacc.govcms7.amazee.io/about-nacc/contact-us).
 
-Policy updated: 31/08/2026
+Policy Updated: 31/08/2026

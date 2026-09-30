@@ -73,7 +73,7 @@ title: OAIC AI transparency statement | OAIC
   - [ Delegation of freedom of information powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-freedom-of-information-powers-and-functions)
   - [ Delegation of privacy powers and functions ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/delegation-of-privacy-powers-and-functions)
   - [ Employee census results ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/employee-census-results)
-  - [ OAIC Audit Committee ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-audit-committee)
+  - [ OAIC Audit and Risk Committee Charter ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-audit-committee)
   - [ OAIC Enterprise Agreement 2024-2027 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-enterprise-agreement-2024-2027)
   - [ OAIC Privacy Champion, Chief Privacy Officer and Privacy Officer roles ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/oaic-privacy-champion,-chief-privacy-officer-and-privacy-officer-roles)
   - [ Regulator expectations and intent ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/operational-information/regulator-expectations-and-intent)
