@@ -257,7 +257,7 @@ portfolio = "Social Services"
 url = "https://aifs.gov.au/main/policies/ai-transparency-statement"
 manual = true
 manual_reason = "Cloudflare WAF rule; a flat 403 with no challenge offered"
-last_verified = "2026-09-01"
+last_verified = "2026-10-02"
 
 [[agencies]]
 name = "Australian Institute of Health and Welfare"
