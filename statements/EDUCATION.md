@@ -1,7 +1,7 @@
 ---
 abbr: EDUCATION
 agency: Department of Education
-last_updated_text: 05/05/2026
+last_updated_text: October 2026
 source_url: https://www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement - Department of Education,
   Australian Government
@@ -13,52 +13,93 @@ title: Artificial Intelligence (AI) Transparency Statement - Department of Educa
 
 Learn how the Department of Education uses artificial intelligence safely and responsibly to improve services, inform policy, and support quality education.
 
-The Department of Education recognises the opportunities artificial intelligence (AI) presents to transform the way we work and how we deliver our services. We are committed to using AI safely, responsibly and transparently to support our mission to ensure all Australians can access quality education.
+The Department of Education recognises the opportunities artificial intelligence (AI) presents to improve the way we work and deliver services. We are committed to using AI safely, responsibly and transparently to support our mission to ensure all Australians can access quality education.
 
-Our use of AI is considered and purposeful. We are maturing our understanding and use through trialling and experimentation to better inform our policy development, unlock internal efficiencies and uplift our capabilities.
+Our use of AI is considered and purposeful. We are progressively expanding its use to support staff, improve productivity, inform policy development, strengthen information management and improve internal processes. Our approach aligns with the AI Plan for the Australian Public Service and the Digital Transformation Agency’s Policy for the responsible use of AI in government. It is supported by governance, guidance, training, risk management and assurance, with appropriate human oversight and accountability. The department is supporting staff to improve productivity, inform policy development, strengthen information management, improve internal processes, and assist our decision making.
 
-Our use of AI is informed by and aligned with the [AI Plan for the Australian Public Service and the Policy for Responsible use of AI in Government](https://www.digital.gov.au/ai/ai-in-government-policy).
+The department is progressively adopting and integrating AI technologies into its operations. Our governance, assessment, monitoring and benefits realisation arrangements will continue to evolve and mature over time. This statement will be updated to reflect significant developments in those arrangements and the introduction of new use cases.
 
-The department is developing its own AI Strategy and Roadmap for the coming 12 – 18 month period. We also have our own internal AI Guidelines to help staff understand their responsibilities and obligations when using AI in the workplace.
+## Why and how we use AI
 
-## AI Accountable Officer and Chief AI Officer
+The department uses AI primarily to support staff and improve internal operations. Consistent with the Australian Government Classification System for AI Use, we classify our current and emerging AI activities by usage pattern and domain. These classifications include operational uses, controlled trials and use cases in development.
 
-The Department of Education’s use of AI is overseen by our AI Accountable Officer and a Chief AI Officer. The AI Accountable Officer:
+Our current and emerging AI activities include the following usage patterns:
 
-- is the primary contact for whole‑of‑government AI assurance and coordination, and keeping staff informed of AI policy obligations and changes,
-- is accountable for implementing AI policy within the agency, including governance frameworks, transparency statements and internal registers,
-- oversees AI risk assessments and ensures appropriate controls are in place.
+- workplace productivity
+- analytics for insights
+- supporting decision-making and administrative action.
 
-The department’s AI Accountable Officer is Kerryn Kovacevic, Chief Information Officer.
+They occur across the following domains:
 
-The department’s Chief AI Officer is responsible for:
+- corporate and enabling
+- policy and legal
+- service delivery
+- regulation and compliance.
 
-- leading and championing a department-wide approach to AI adoption, driving change and uplifting AI literacy in the department,
-- identifying, prioritising and sponsoring high-value AI use cases,
-- reporting to the department’s Executive Board, working with the AI Accountable Officer to ensure AI adoption occurs within agreed risk boundaries and in alignment with whole-of-government policy and community expectations.
+Examples include:
 
-The department’s Chief AI Officer is Brendan Moon, First Assistant Secretary, Child Care Integrity Division.
+- drafting, summarising and refining written materials
+- supporting research, information discovery and knowledge management
+- assisting with data analysis and the processing of large volumes of information
+- supporting the development of communication products, including generating visuals, imagery
+- supporting workflow automation and business process improvement
+- providing staff with access to approved conversational AI tools
+- supporting administrative aspects of recruitment while preserving merit-based, human decision-making
+- identifying patterns, missing information or anomalies for further staff review.
 
-## Governance and transparency
+AI outputs must be reviewed by an appropriately skilled departmental staff member before they are relied on or used. AI does not replace the judgement, authority or accountability of departmental decision-makers.
 
-The department is maturing its AI governance arrangements. Existing governance arrangements such as the departments Audit and Risk Committee receive regular updates and review of AI usage, tooling, training and compliance.
+The department does not use AI to make final decisions. Where AI supports decision-making or administrative action, departmental employees remain responsible for assessing the evidence, applying relevant law and policy, and making the decision.
 
-The departments AI Transparency Statement and internal AI guidance are regularly reviewed and updated to reflect progress or changes and comply with Australian Government policy.
+## Approved tools and information handling
 
-The department maintains an AI use case register and has clear guidance on approved tools and record keeping requirements in line with the Archives Act 1983.
+The department provides access to approved AI tools within managed government environments. These include Microsoft Copilot Chat, Microsoft 365 Copilot for licensed users, Copilot Studio and GitHub Copilot for a limited number of users supporting data and software development activities. A limited number of users are also trialing AI capabilities available through the Databricks service to support data analytics.
 
-The department has approved the use of Microsoft Copilot and made Copilot Chat available to all staff. All staff are required to complete the AI in Government Fundamentals training developed by the Australian Public Service Commission every 12 months.
+Staff can also access GovAI Chat, a government-managed generative AI service supported by the Department of Finance. At the date of this statement, GovAI Chat is limited to publicly available and OFFICIAL information. Staff must not enter personal information, OFFICIAL: Sensitive information, PROTECTED information or information at a higher classification into GovAI Chat.
 
-## Why and how does the department use Artificial Intelligence (AI)?
+Information assets created using AI are subject to the same information management standards, obligations and accountability as all other information assets.
 
-The Department of Education is primarily using AI to improve internal efficiency. Staff are encouraged to use AI to draft, summarise and refine their work, support the processing of large volumes of data and information, and reduce time spent on routine tasks. Staff must review outputs for quality and accuracy.
+## Governance and accountability
 
-To minimise risk and safeguard the public, the Department of Education does not use AI for automated decision-making. All decisions are made by staff, ensuring human oversight and accountability.
+The department has established governance arrangements to oversee AI adoption and manage risk, including:
 
-## Review and Updates
+- an AI Accountable Officer responsible for implementing whole-of-government AI policy and overseeing assurance and transparency obligations. The department’s AI Accountable Officer is Kerryn Kovacevic, Chief Information Officer
+- a Chief AI Officer responsible for supporting responsible adoption, capability uplift and high-value use cases. The department’s Chief AI Officer is Brendan Moon, First Assistant Secretary, Child Care Integrity Division
+- an AI Steering Committee providing strategic oversight and monitoring delivery priorities
+- executive and Audit and Risk Committee oversight through regular reporting
+- working-level coordination across governance, people and change, tools, data, ethics and adoption
+- accountable owners for in-scope AI use cases.
 
-This statement is reviewed annually, or sooner if there are significant changes to how the Department uses AI.
+Privacy impact assessments and data security considerations are embedded into the AI governance process, ensuring that the department’s AI tools maintain the privacy of Australians and that their use adheres to our privacy obligations, including under the _Privacy Act 1988_ (Cth). More information about how the department manages personal information can be found in our [Privacy Policy](https://www.education.gov.au/about-department/resources/department-education-complete-privacy-policy), including in relation to our use of AI.
 
-## Contact Information
+## AI use case register and assurance
 
-For inquiries regarding the department’s use of AI, [contact us](https://www.education.gov.au/about-department/contact-us#toc-online-contact-form).
+The department maintains an internal AI Use Case Register for AI activity in development, testing or production that falls within the scope of the register. Concepts that have not progressed to development or testing are not recorded as active use cases.
+
+The register supports accountability, monitoring, risk management, assurance and reporting to the Digital Transformation Agency.
+
+The register is updated as use cases are identified, changed, deployed or retired. The department is continuing to improve its processes for identifying and recording use cases.
+
+## Capability, training and staff guidance
+
+Staff must complete the Australian Public Service Commission’s AI in Government Fundamentals training every 12 months. The department complements this with internal guidance, practical learning and communications to build AI literacy and confidence.
+
+Guidance covers approved tools, safe prompting, information handling, privacy, security, quality assurance, records management, accessibility, responsible decision support and use in specific business contexts.
+
+The department is also developing measures to understand adoption, staff confidence, quality and benefits. These measures will inform guidance, investment and future updates to the department’s AI approach.
+
+## Public interaction with AI
+
+At the date of publication, the department does not operate an AI service that directly interacts with members of the public.
+
+## Review and updates
+
+This statement will be reviewed at least annually and updated earlier where significant changes occur.
+
+Statements about current use and controls reflect the department’s position at the date of publication and may change as tools, risks, use cases and government requirements evolve.
+
+Last updated: October 2026
+
+## Contact information
+
+For questions or concerns about the department’s use of AI, contact: [AI.ICT.Support@education.gov.au](mailto:AI.ICT.Support@education.gov.au).
