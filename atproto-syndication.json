@@ -854,6 +854,11 @@
   "EDUCATION-20260707T070842Z": {
     "seeded": true
   },
+  "EDUCATION-20261006T161051Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mx7t3cvvze22",
+    "cid": "bafyreigts7mwqe27kxp44o5ihbyohj7dhlbmtzgf4bdgokqxdouf3o6pwm",
+    "syndicatedAt": "2026-10-06T16:12:06.802Z"
+  },
   "FCA-20260403T231233Z": {
     "seeded": true
   },
