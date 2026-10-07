@@ -22,7 +22,7 @@ AFSA plays an important role in supporting Australia's personal insolvency and p
 
 However, this must be approached with due consideration of related risks and concerns, such as explainability, accountability, and unintended outcomes. We must also consider and be guided by the expectations of, and potential impacts to, our key stakeholders and the wider Australian community.
 
-Our usage of the term AI aligns to the Organisation for Economic Co-operation and Development (OECD) [definition of AI](https://www.oecd-ilibrary.org/science-and-technology/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en):
+Our usage of the term AI aligns to the Organisation for Economic Co-operation and Development (OECD) [definition of AI](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html):
 
 _An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment._
 

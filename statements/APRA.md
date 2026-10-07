@@ -41,3 +41,5 @@ This statement will be updated as and when APRA’s approach to AI changes or wh
 For inquiries about APRA's AI use, please email: [aiao@apra.gov.au](mailto:aiao@apra.gov.au).
 
 ## Footnotes
+
+The Australian Prudential Regulation Authority (APRA) is the prudential regulator of the financial services industry. It oversees banks, mutuals, general insurance and reinsurance companies, life insurance, private health insurers, friendly societies, and most members of the superannuation industry. APRA currently supervises institutions holding around $10.6 trillion in assets for Australian depositors, policyholders and superannuation fund members.
