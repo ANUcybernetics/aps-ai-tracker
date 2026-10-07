@@ -615,7 +615,7 @@ portfolio = "Attorney-General's"
 url = "https://www.fedcourt.gov.au/about/corporate-information/ai-statement"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-09-03"
+last_verified = "2026-10-07"
 
 [[agencies]]
 name = "Food Standards Australia New Zealand"

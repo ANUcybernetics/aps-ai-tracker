@@ -7,7 +7,7 @@ title: AI statement
 
 # AI Transparency Statement
 
-3 July 2026
+15 September 2026
 
 The Federal Court of Australia Listed Entity1 (the Entity) is committed to safety and transparency in its adoption of technological innovations, including the use of AI. The Entity proactively monitors advancements in AI, including in relation to potential applications, ethics, regulation and risk. In recognition of the utmost importance of ensuring the security of public sector data and responsible handling of personal information, we are taking a cautious approach to the adoption of AI while recognising its potential to deliver benefits for Australians.
 
@@ -33,9 +33,9 @@ The Entity permits the use of generative AI tools within defined policy restrict
 
 Separately, AI-based coding, design and testing automation tools are used within our Information Technology section to improve the efficiency, reliability, and scalability of business-as-usual tasks.
 
-According to the classification system for AI use, the Entity's AI use is entirely within the 'workplace productivity' pattern and the 'corporate and enabling' domain.
+According to the classification system for AI use, the Entity's current AI use is entirely within the 'workplace productivity' pattern and the 'corporate and enabling' domain. Beyond the implemented use cases classified this way, the Entity continues to explore a variety of potential applications of AI through proof-of-concept and trial activities. Some of this exploratory work relates to use cases which would fall into the ‘decision making and administrative action’ pattern and the ‘service delivery’ domain, if not the pattern and domain already reported above, once implemented.
 
-The Entity does not use AI in any way where the public may directly interact with it or be significantly impacted by it. Specifically, the Entity does not use AI for decision-making, data analytics, prediction, service delivery, or policy and legal activity.
+The Entity does not currently use AI in any way where the public may directly interact with it or be significantly impacted by it, and does not use AI for decision-making, data analytics, prediction, or policy and legal activity.
 
 ## Governance and risk management
 
@@ -43,11 +43,11 @@ The Entity has issued internal policy guidance with the aim of addressing inhere
 
 Separately, the Entity's Information Technology policy defines controls for the acceptable use, management and maintenance of software, including to protect the confidentiality of data.
 
-Under the guidance of the nominated Accountable Officials, regular Entity-wide communication and training will ensure awareness of, and foster compliance with, defined policy and best practice in relation to the use of AI and data protection more broadly. Ongoing monitoring and control of the use of AI tools will ensure that their use continues to be effective and appropriate.
+Under the guidance of the Chief AI Officer and AI Accountable Officials, regular Entity-wide communication and training ensures awareness of, and fosters compliance with, defined policy and best practice in relation to the use of AI and data protection more broadly. Ongoing monitoring and control of the use of AI tools ensures that their use continues to be effective and appropriate.
 
-In combination, these governance controls will protect the public against any negative impact of the Entity's use of AI.
+In combination, these governance controls protect the public against any negative impact of the Entity's use of AI.
 
-This statement was prepared on 7 April 2026. In accordance with the Policy, it will be updated at least annually and as otherwise required to ensure currency as our approach to the adoption of AI evolves.
+This statement was prepared on 15 September 2026. In accordance with the Policy, it will be updated at least annually and as otherwise required to ensure currency as our approach to the adoption of AI evolves.
 
 Enquiries relating to this statement should be sent to [AI@fedcourt.gov.au](mailto:AI@fedcourt.gov.au)
 
