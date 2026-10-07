@@ -1,7 +1,7 @@
 ---
 abbr: PMC
 agency: Department of the Prime Minister and Cabinet
-source_url: https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement
+source_url: https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-transparency-statement
 title: Artificial intelligence transparency statement | PM&C
 ---
 

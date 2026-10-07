@@ -155,7 +155,7 @@ portfolio = "Foreign Affairs and Trade"
 url = "https://www.aciar.gov.au/artificial-intelligence"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-09-03"
+last_verified = "2026-10-07"
 
 [[agencies]]
 name = "Australian Commission on Safety and Quality in Health Care"
@@ -577,10 +577,10 @@ abbr = "PMC"
 size = "medium"
 scope = "mandatory"
 portfolio = "Prime Minister and Cabinet"
-url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-ai-transparency-statement"
+url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-transparency-statement"
 manual = true
 manual_reason = "Imperva Incapsula JavaScript challenge"
-last_verified = "2026-09-03"
+last_verified = "2026-10-07"
 
 [[agencies]]
 name = "Domestic, Family and Sexual Violence Commission"
@@ -796,13 +796,13 @@ abbr = "NFSA"
 size = "medium"
 scope = "voluntary"
 portfolio = "Infrastructure, Transport, Regional Development, Communications, Sport and the Arts"
-url = "https://www.nfsa.gov.au/latest/nfsa-principles-ml-and-ai"
+url = "https://www.nfsa.gov.au/stories/articles/nfsa-principles-ml-and-ai"
 # The rebuilt (Sanity) site splits the statement across sibling blocks: the
 # standfirst, the body, and the download link all carry this class.
 selector = ".article-content"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-09-03"
+last_verified = "2026-10-07"
 
 [[agencies]]
 name = "National Health Funding Body"
