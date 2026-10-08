@@ -893,7 +893,7 @@ portfolio = "Attorney-General's"
 url = "https://www.ombudsman.gov.au/about/ai-transparency-statement"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-09-03"
+last_verified = "2026-10-08"
 
 [[agencies]]
 name = "Office of the Inspector-General of Aged Care"
