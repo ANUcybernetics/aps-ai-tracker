@@ -1,7 +1,7 @@
 ---
 abbr: FWC
 agency: Fair Work Commission
-last_updated_text: 3 February 2026
+last_updated_text: 08/10/2026
 source_url: https://www.fwc.gov.au/about-us/artificial-intelligence-transparency-statement
 title: Artificial intelligence transparency statement | Fair Work Commission
 ---
@@ -30,9 +30,13 @@ Consistent with the DTA Policy, we use the Organisation for Economic Co-operatio
 
 The Commission **will not** use generative AI to make decisions under the _Fair Work Act 2009_ or _Fair Work (Registered Organisations) Act 2009_. The power to make such decisions can only be exercised by an appropriate human office holder.
 
-### Usage Patterns and Domains
+## Usage patterns and domains
 
-We are exploring the use of AI for analytics, insights and for workplace productivity purposes. We will use AI to support improved and efficient service delivery and our internal corporate activities. This may include:
+In accordance with the classification framework set out in Attachment A to the Standard for AI transparency statements our use falls into two usage patterns: workplace productivity and analytics for insights. These uses operate across two domains, being corporate and enabling, and service delivery.
+
+You can find further information about usage patterns and domains on the Australian Government's [Artificial intelligence in government webpage ](https://www.digital.gov.au/policy/ai/resources/use-classification "Open Artificial intelligence in government webpage in a new tab").
+
+We use AI to reduce the routine effort in administrative work and to make our systems easier for people to use. This may include:
 
 - helping answer questions from staff regarding workplace policies and entitlements
 - improving accessibility to help all staff use platforms, applications and services
@@ -40,18 +44,18 @@ We are exploring the use of AI for analytics, insights and for workplace product
 - performing transcription of interviews and meeting notes
 - redacting information before providing to third parties
 - creation or assistance with the generation of creative content
+- use of agents to automate administrative tasks, integrate information and systems, and streamline workflows
+- supporting the initial assessment and triage of enterprise agreements by identifying and categorising matters for consideration by Commission staff.
 
 Non-generative AI is a component of our [Document search](https://www.fwc.gov.au/document-search?q=*&options=SearchType_1%2CSortOrder_decision-date-desc) tool, which allows users to search our decisions, agreements and awards and other case material.
 
-You can find further information about usage patterns and domains on the Australian Government's [Artificial intelligence in government webpage](https://www.digital.gov.au/policy/ai/resources/use-classification).
-
-## Public Interaction
+## Public interaction
 
 We do not currently use generative AI in a way that the public could interact with it, or be significantly impacted by it, without a human intermediary or intervention.
 
 To enhance our service delivery in future, we may develop generative AI tools that the public can interact with. We will update this statement as required.
 
-## How we comply with the DTA Policy and other legislation
+## How we comply with the DTA policy and other legislation
 
 We have established an internal Artificial Intelligence Assessment Committee (AIAC) to provide oversight of our use of AI to ensure it meets government requirements and satisfies public expectations. We have appointed the chair of that committee as the official with accountability for implementing the DTA Policy.
 
@@ -59,10 +63,12 @@ Our _Use of Artificial Intelligence Tools Policy_ sets guidelines for when AI ma
 
 We require all staff to complete AI fundamentals training developed by the DTA.
 
+## Accountable official and review of this statement
+
+The Executive Director, Legal Performance and Engagement is the designated accountable official for our use of AI.
+
+This statement was first published in February 2025, and will be reviewed at least annually, or when we make a significant change to our approach to AI as outlined above.
+
 ## Enquiries about how we use AI
 
 For enquiries, please contact us at artificialintelligence@fwc.gov.au.
-
-The Executive Director of Enabling Services is designated as the accountable official for our use of AI.
-
-This statement was first published in February 2025, and will be reviewed at least annually, or when we make a significant change to our approach to AI as outlined above.

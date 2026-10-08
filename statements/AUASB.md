@@ -11,7 +11,7 @@ title: Artificial Intelligence (AI) transparency statement
 
 # Artificial Intelligence (AI) transparency statement
 
-Updated 3 December 2025
+Updated 2 October 2026
 
 This statement is published by the AASB and AUASB in accordance with requirements set out in the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
