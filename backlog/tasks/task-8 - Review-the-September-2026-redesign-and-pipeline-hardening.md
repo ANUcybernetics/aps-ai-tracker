@@ -25,7 +25,7 @@ What landed:
 - profile fields filed under the requirement they answer (REQUIREMENTS in site/src/lib/profile-labels.ts)
 - question filters on /timeline (about, answers, coverage, starters) and /agencies (AgencyQuestions); logic in site/src/lib/questions.ts
 - nav cut to six items; propagation, who's who and data moved to the footer
-- news section (site/src/content/news, /news, /news.xml) with Bluesky announcement through atproto-publish --crosspost; first post a-clearer-tracker.md is still draft: true
+- news section (site/src/content/news, /news, /news.xml) with Bluesky announcement through atproto-publish --crosspost; first post one-year-on.md is still draft: true
 - pipeline: WAF block pages rejected on the httpx path; capture_check.py (Opus 5.5 verdict on every capture, cached in .cache/captures.json, rejected captures dropped like a quarantine); model-judged noise revisions now re-read their profile; default model Opus 5.5 and the whole history re-read with it; URL fixes for IPA, ASIO, DVSC; ACCC hand-captured past an Akamai block
 
 Known loose ends to check:
