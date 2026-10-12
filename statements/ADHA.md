@@ -49,3 +49,7 @@ The AI Accountable Official is responsible for overseeing implementation of the 
 This AI transparency statement was last updated in February 2025. Further adjustments will be made if the Agency's use of AI changes. This statement will be reviewed annually at a minimum.
 
 For enquiries, visit our [contact us](https://www.digitalhealth.gov.au/support/contact-us "Contact us") page or email [help@digitalhealth.gov.au](mailto:help@digitalhealth.gov.au).
+
+### Office of the Chief AI Officer
+
+The Agency has appointed a Chief AI Officer who leads the Agency’s AI strategic approach, partnering with teams across the organisation and government to drive safe, trusted and impactful use of AI in digital healthcare. This role works in tandem with the AIAO to balance innovation with accountability, trust and safety.
