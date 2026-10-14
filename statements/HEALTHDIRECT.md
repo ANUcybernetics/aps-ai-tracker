@@ -6,7 +6,11 @@ source_url: https://www.healthdirect.gov.au/artificial-intelligence-transparency
 title: Artificial Intelligence Transparency Statement | healthdirect
 ---
 
-Effective as of June 2026
+Print
+
+# Artificial Intelligence Transparency Statement
+
+Effective as of Jun 2026
 
 ## Introduction
 
@@ -28,6 +32,7 @@ While we do not use AI across all our services, this Transparency Statement cove
 - Helpline services
   - healthdirect helpline (also known as 1800MEDICARE, and NURSE-ON-CALL helpline in Victoria)
   - 1800MEDICARE (GP)
+  - healthdirect GP helpline
   - Pregnancy, Birth and Baby
   - health alert lines
 - Digital services
@@ -78,13 +83,13 @@ Healthdirect uses AI for the following purposes.
 - To assist with how the large volume of information published on our websites is organised and referenced.
 - To write software routines that automate data management activities before testing and assurance by our technical team (using Microsoft Copilot and AWS Kiro).
 
-This classification of how we use AI is based on guidelines developed by the Commonwealth of Australia’s Digital Transformation Agency. More information is available here: [digital.gov.au/policy/ai/resources/use-classification](https://www.digital.gov.au/policy/ai/resources/use-classification)
+This classification of how we use AI is based on guidelines developed by the Commonwealth of Australia’s Digital Transformation Agency. More information is available here: [digital.gov.au/policy/ai/resources/use-classification](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
-You can read more about the AI software and systems we use in our [Quality and safety of Healthdirect’s triage service statement](https://about.healthdirect.gov.au/quality-and-safety-of-healthdirects-triage-service-statement).
+You can read more about the AI software and systems we use in our [Quality and safety of Healthdirect’s triage service statement.](https://about.healthdirect.gov.au/quality-and-safety-of-healthdirects-triage-service-statement)
 
 ## Where you may interact with AI without human assistance
 
-Healthdirect provides a self-help health tool called the Symptom Checker. The system that powers the Symptom Checker uses AI to compute and recommend the most appropriate healthcare for you. This AI uses a probabilistic model to make recommendations. The model is based on expert clinical knowledge and a large database of empirical evidence that is constantly monitored and managed by qualified professionals both within Healthdirect and our technology partner Infermedica.
+Healthdirect provides a self-help health tool called the Symptom Checker. The system that powers the Symptom Checker uses AI to compute and recommend the most appropriate healthcare for you. This AI uses a [probabilistic model](https://www.healthdirect.gov.au/artificial-intelligence-transparency-statement#probabilistic) to make recommendations. The model is based on expert clinical knowledge and a large database of empirical evidence that is constantly monitored and managed by qualified professionals both within Healthdirect and our technology partner Infermedica.
 
 You do not have to enter personally identifiable information into the Symptom Checker. This means the AI does not store, or use, your personal information as part of the model.
 
@@ -102,7 +107,7 @@ Healthdirect’s [Clinical Governance and Quality Framework](https://media.healt
 
 Under Healthdirect’s Clinical Governance and Quality Framework we maintain robust, integrated safety and quality systems to actively manage and improve our services.
 
-Under the auspices of the Clinical Governance and Quality Framework, we apply quality assurance methodologies that are specific to uses of AI before we use them. More information on how we did this for the system supporting our Symptom Checker is available here: [about.healthdirect.gov.au/evaluations](https://about.healthdirect.gov.au/evaluations)
+Under the auspices of the Clinical Governance and Quality Framework, we apply quality assurance methodologies that are specific to uses of AI before we use them. More information on how we did this for the system supporting our Symptom Checker is available here: [about.healthdirect.gov.au/evaluations](https://about.healthdirect.gov.au/resources/publications/evaluations)
 
 ## Future use of AI
 
@@ -138,10 +143,13 @@ You can contact our Chief Insights Officer as follows:
 
 **Postal address:**
 
-Chief Insights Officer\
+Chief Insights Officer
+
 Healthdirect Australia\
 PO Box K411\
 Haymarket NSW 1240\
 Australia
+
+______________________________________________________________________
 
 Last reviewed: June 2026
