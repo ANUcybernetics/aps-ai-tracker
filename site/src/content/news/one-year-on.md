@@ -1,94 +1,149 @@
 ---
-title: "One year on: from “we don't use AI” to “AI doesn't decide”"
+title: "One year on: from “we don't use AI” to “a human makes the decision”"
 date: 2026-11-11
 summary:
-  "A year of archived transparency statements shows where the line has moved.
-  Agencies that once said they didn't use AI now say that AI doesn't make the
-  decisions."
+  "In a year of archived AI transparency statements, 21 agencies deleted a
+  sentence saying they didn't use AI. Most now promise that a human makes the
+  decision, and few say how that is checked."
 draft: true
 ---
 
-The tracker started saving Australian Government AI transparency statements on
-11 November 2025. A year on it holds 430 versions of 121 statements. Most of
-those versions are of no interest. 103 were noise from site redesigns, bot
-blocks and PDF extraction, and many more were formatting or link changes. The
-127 changes of substance, from 83 agencies, each get a summary written by a
-language model. Summaries are good for finding things, but counting them is
-misleading, because a deleted sentence can be a policy change or a page tidy-up.
-The patterns below come from reading the diffs, and every quote was checked
-against the archive.
+Since February 2025, most Australian Government agencies have had to publish an
+[AI transparency statement](https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements):
+a public web page saying how the agency uses AI.[^scope] The tracker has checked
+every one of them daily since 11 November 2025 and kept each version, so anyone
+can see what an agency changed and when.
 
-The clearest pattern is a change in what agencies rule out. Twenty-one agencies
-deleted a sentence saying they didn't use AI somewhere (in their services, with
-the public, or in administration), and most put a narrower sentence in its
-place. In May, [Sport Integrity Australia](/statements/SIA) replaced "we do not
-use AI in any services or advice we provide externally (publicly) or internally"
-with a promise not to use AI "to independently provide public services, make
-regulatory decisions, or deliver advice without human review and accountability
-mechanisms". In February the
-[NDIS Quality and Safeguards Commission](/statements/NDISQSC) went from not
-using AI "in services or advice we provide externally (publicly) or internally"
-to not using it in any way the public "may directly interact with, or be
-significantly impacted by, without a human intermediary or intervention". In
-March [DEWR](/statements/DEWR) went from "does not currently use AI in service
-delivery" to "uses AI to support service delivery".
+A year on it holds 431 versions of 121 statements. Most versions are of no
+interest, being site redesigns, bot blocks, and fixes to formatting or links.
+That leaves 128 changes of substance from 84 agencies, and reading those diffs
+turned up three patterns. A statement is what an agency chooses to say about its
+AI use, so none of them means an agency has done anything wrong.
 
-Some of the narrowing is small enough to miss. In June [ACMA](/statements/ACMA)
+First, 21 agencies deleted a sentence saying they didn't use AI somewhere: in
+their services, with the public, or in administration.
+[Sport Integrity Australia](/statements/SIA) made the change in May. Its
+statement used to say:
+
+> Currently, we do not use AI in any services or advice we provide externally
+> (publicly) or internally.
+
+It now says:
+
+> Currently, SIA does not use AI systems to independently provide public
+> services, make regulatory decisions, or deliver advice without human review
+> and accountability mechanisms.
+
+The new sentence permits AI anywhere a person reviews the result. Six other
+agencies made the same move, and the rest went three different ways.
+
+<figure class="split">
+  <div class="split__bar" role="img" aria-label="Of the 21 agencies, 7 now say not without a person, 5 gave a narrower no, 4 say they use AI and 5 put nothing in the sentence's place.">
+    <span class="split__seg split__seg--accent" style="flex-grow: 7">7</span>
+    <span class="split__seg split__seg--ochre" style="flex-grow: 5">5</span>
+    <span class="split__seg split__seg--ink" style="flex-grow: 4">4</span>
+    <span class="split__seg split__seg--grey" style="flex-grow: 5">5</span>
+  </div>
+  <figcaption>
+    What 21 agencies put in place of “we don't use AI”: 7 wrote “not without a
+    person”, 5 a narrower “no”, 4 “we use AI”, and 5 nothing.
+  </figcaption>
+</figure>
+
+Some of the narrower versions are easy to miss. In June [ACMA](/statements/ACMA)
 replaced "ACMA does not plan to use AI in services that the public may directly
 interact with or be significantly impacted by" with "ACMA does not currently
 deploy AI in direct interactions with the public". The new sentence makes no
 claim about plans, and it no longer covers AI that affects the public without
-interacting with them. The [AEC](/statements/AEC) used to commit to "not use AI
-as part of any AEC interaction with the public"; it now commits to "not use AI
-to independently provide authoritative advice or make decisions in public facing
-interactions".
+interacting with them. Others reversed the sentence outright: in March
+[DEWR](/statements/DEWR) went from "does not currently use AI in service
+delivery" to "uses AI to support service delivery". In April
+[Safe Work Australia](/statements/SWA) deleted "We do not propose to use AI
+where the public may directly interact with or be significantly impacted by it"
+and put nothing in its place.
 
-What replaced those sentences is the promise of human oversight. It's now in 92
-of the 121 statements. Several uses disclosed this year sit close to decisions
-about people, and most come with a human check attached:
+Second, nine agencies disclosed a new use of AI in the lead-up to a decision.
+The [Commonwealth Ombudsman](/statements/OCO)'s is the easiest to picture. When
+someone complains about a government agency, AI writes "a short summary", which
+the Office uses "to help us find the right team and staff member" and "to help
+us prioritise the most urgent complaints". A person decides what happens next,
+and the statement says the summaries "are never used to make a decision about
+what action to take in relation to a complaint". The other eight:
 
-- the [Commonwealth Ombudsman](/statements/OCO) summarises complaints to help
-  triage them, and says the summaries are "never used to make a decision about
-  what action to take"
 - [Veterans' Affairs](/statements/DVA) is piloting a claims document reader that
   "does not make decisions or determine claim outcomes"
-- the [Fair Work Commission](/statements/FWC) uses AI in the initial assessment
-  and triage of enterprise agreements
-- [DCCEEW](/statements/DCCEEW) is trialling AI in recruitment, with a human
-  panel making every selection
-- the [DTA](/statements/DTA) uses AI to help evaluate applications to its
-  Digital Marketplace panel
-- the [ATO](/statements/ATO) uses it to alert taxpayers to lodgments suspected
-  of identity crime
+- the [Fair Work Commission](/statements/FWC) sorts enterprise agreements for
+  staff to consider
+- [DCCEEW](/statements/DCCEEW) is trialling AI in recruitment, alongside a human
+  selection panel
+- the [NDIS Commission](/statements/NDISQSC) annotates complaints and incident
+  reports
+- the [Taxation Ombudsman](/statements/IGTO) summarises complaint cases
+- the [ATO](/statements/ATO) alerts taxpayers to lodgments suspected of identity
+  crime
+- [Education](/statements/EDUCATION) flags anomalies for staff to review
+- the [DTA](/statements/DTA), which sets the standard for these statements, has
+  AI assess applications to its Digital Marketplace panel and make
+  recommendations to a human decision maker
 
-None of this means an agency has done anything wrong, and a statement is what an
-agency chooses to say rather than a record of what it does. But "we don't use
-AI" didn't last long as an answer. The question the statements now raise is what
-human oversight amounts to in practice. Fewer than a third say how they would
-know: 36 mention testing or evaluating their AI, 37 audit or assurance, and 23 a
-way to report an incident or raise a concern. Knowing that a person makes the
-decision doesn't tell you whether they catch the mistakes in an AI summary of a
-complaint, which is what testing and audit would show.
+Third, the promise of human oversight is now in 92 of the 121 statements, and 36
+of those 92 name no way of checking it. A check here means any mention of
+testing or evaluation, audit or assurance, or a way to report an incident or
+raise a concern.
 
-Other commitments have been dropped or softened. Nine agencies dropped their
-promise to review the statement annually; the [NBA](/statements/NBA) replaced it
-with "We will update this transparency statement if our approach changes". Eight
-dropped or weakened a claim to comply with the policy or a standard.
+<figure class="split">
+  <div class="split__bar" role="img" aria-label="Of 121 statements, 36 promise human oversight and name no check, 56 promise it and name at least one check, and 29 make no such promise.">
+    <span class="split__seg split__seg--ink" style="flex-grow: 36">36</span>
+    <span class="split__seg split__seg--accent" style="flex-grow: 56">56</span>
+    <span class="split__seg split__seg--hollow" style="flex-grow: 29">29</span>
+  </div>
+  <figcaption>
+    All 121 statements: 36 promise human oversight and name no way of checking
+    it, 56 promise it and name at least one check, and 29 make no such promise.
+  </figcaption>
+</figure>
+
+Knowing that a person makes the decision doesn't tell you whether they catch the
+mistakes in an AI summary of a complaint. Testing and audit are how an agency
+would find out. Other commitments have gone over the same year. Nine agencies
+dropped their promise to review the statement annually; the
+[National Blood Authority](/statements/NBA) replaced it with "We will update
+this transparency statement if our approach changes". Eight dropped or weakened
+a claim to comply with the policy or a standard, and
 [Finance](/statements/FINANCE) went from "has implemented all mandatory
 requirements" to "is committed to the full implementation of the Policy". The
 timeline can filter for
 [commitments dropped between versions](/timeline?about=commitments&answers=removed).
 
-The site has also changed over the year. The timeline, statement pages and
-charts now describe changes in the same terms, and the answers each statement
-gives are filed under questions from the DTA Standard, policy v2.0 and the APS
-AI Plan; [reading the data](/reading#anatomy) explains how. Each captured page
-is now checked before it enters the archive. That caught pages we'd been
-tracking that only linked to the statement (IP Australia's, for almost five
-months) and one firewall block page. Agencies that publish their statement as
-one section of a longer page now have only that section captured, so an edit to
-a gifts register no longer shows up as an AI statement change.
+Everything behind this post is in the [data downloads](/data/): the answers each
+statement gives (CSV and JSON), the timeline of changes, and
+[the text of every version](https://github.com/ANUcybernetics/aps-ai-tracker/tree/main/statements)
+in git. It is all CC BY 4.0. One warning from doing this analysis: every change
+of substance has a model-written summary, and counting keywords in those
+summaries gave wrong answers. That first pass found 24 agencies deleting a "we
+don't use AI" sentence, 35 moving a trial into everyday use, and 12 dropping
+their annual review. Reading the diffs cut those to 21, 13 and 9. Two of the
+dropped reviews, the DTA's among them, were sentences our own scraper had lost
+and later restored. Use the summaries to find a change, then read the diff.
 
-The [data downloads](/data/) have everything behind the site. If you spot
-something wrong,
+There are questions in the data that we haven't followed up:
+
+- thirteen agencies moved AI from a trial into everyday use (Austrade "has since
+  made Copilot available to all staff"); which of them say what the trial found?
+- six loosened their rules for staff, and the Taxation Ombudsman now allows
+  "publicly available AI tools in low-risk situations"; are the rest heading the
+  same way?
+- are the 36 statements that promise oversight without a check from small
+  agencies with little AI, or large ones?
+- much of the wording is [shared between agencies](/propagation); when one
+  agency edits a shared sentence, do the others follow?
+
+If you find an answer, or spot something we got wrong,
 [open an issue](https://github.com/ANUcybernetics/aps-ai-tracker/issues).
+
+[^scope]:
+    The
+    [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy)
+    binds non-corporate Commonwealth entities and carves out the defence
+    portfolio and the national intelligence community. The 121 statements
+    include some from corporate entities that publish voluntarily.

@@ -32,4 +32,51 @@ const { Content } = await render(post);
     margin: 0;
     font-size: var(--text-sm);
   }
+
+  /* A count split into parts: one bar, each segment sized by its number
+     (flex-grow set inline in the post's markdown). */
+  .news-post :global(.split) {
+    margin-block: var(--space-5);
+  }
+
+  .news-post :global(.split__bar) {
+    display: flex;
+    gap: 2px;
+  }
+
+  .news-post :global(.split__seg) {
+    flex-basis: 0;
+    padding: var(--space-2) 0;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .news-post :global(.split__seg--accent) {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .news-post :global(.split__seg--ochre) {
+    background: var(--accent-ink);
+    color: var(--bg);
+  }
+
+  .news-post :global(.split__seg--ink) {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .news-post :global(.split__seg--grey) {
+    background: var(--surface-2);
+  }
+
+  .news-post :global(.split__seg--hollow) {
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+
+  .news-post :global(.split figcaption) {
+    margin-block-start: var(--space-2);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
 </style>
