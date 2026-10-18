@@ -858,7 +858,7 @@ abbr = "NZEA"
 size = "small"
 scope = "mandatory"
 portfolio = "Industry, Science and Resources"
-url = "https://www.netzero.gov.au/artificial-intelligence-transparency-statement"
+url = "https://www.nzea.gov.au/artificial-intelligence-transparency-statement"
 
 [[agencies]]
 name = "Office of National Intelligence"

@@ -1,13 +1,12 @@
 ---
 abbr: NZEA
 agency: Net Zero Economy Authority
-final_url: https://www.nzea.gov.au/artificial-intelligence-transparency-statement
 last_updated_text: 10 July 2026
-source_url: https://www.netzero.gov.au/artificial-intelligence-transparency-statement
+source_url: https://www.nzea.gov.au/artificial-intelligence-transparency-statement
 title: Artificial Intelligence Transparency Statement | Net Zero Economy Authority
 ---
 
-[ Home ](https://www.netzero.gov.au/)
+[ Home ](https://www.nzea.gov.au/)
 
 Policies
 
