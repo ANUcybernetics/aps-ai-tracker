@@ -1,7 +1,7 @@
 ---
 abbr: DSS
 agency: Department of Social Services
-last_updated_text: 9 September 2026
+last_updated_text: 20 October 2026
 source_url: https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Social
   Services
@@ -27,8 +27,8 @@ We are committed to using AI in ways that serve the public interest. This means 
 
 Currently, our approved AI use cases are within the:
 
-- Service _delivery, Policy and legal_ and _Corporate and enabling_ domains; and
-- _Workplace productivity_ and _Analytics for insights_ usage patterns, of the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification).
+- _Service delivery, Policy and legal_ and _Corporate and enabling_ domains; and
+- _Workplace productivity_ , _Analytics for insights_ and _Decision making and administrative action_ usage patterns, of the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
 We currently do not use AI within the _Decision making and administrative action_ or _Image processing_ usage patterns, or the _Scientific_ , _Compliance and fraud detection_ , and _Law enforcement, intelligence and security_ domains.
 
@@ -46,22 +46,17 @@ Our staff use AI systems predominantly for:
 - Generating transcripts of public hearings and sessions e.g. Senate Estimates.
 - Speech to text transcription of telephone calls
 - Converting scanned (typed and handwritten) applications submitted to the National Redress Scheme into machine-readable text. The technology assists staff by reducing the need for manual data entry. Before any decision is made, or administrative action is taken, an appropriately authorised staff member will verify the converted text against the original application. The original document will remain the authoritative source of information.
+- AI-assisted analysis, summarisation and structuring of grant-related information to support grants administration activities, including application review, reporting and compliance review. Authorised staff retain responsibility for all assessments and decisions.
 
 The current AI systems that we utilise are as follows:
 
-**1. GovAI Multi-Model** – We use the GovAI platform as a secure space for staff to test AI models and to support staff learning. This helps build capability uplift and supports safe trials.
-
-**2. Microsoft Copilot via GovTEAMS** - We use Microsoft Copilot in the secure GovTEAMS environment.
-
-**3. Microsoft 365 Copilot Chat (DSS Internal)** – We use Microsoft 365 Copilot Chat within the DSS controlled environment.
-
-**4. Microsoft 365 Copilot (Pilot)** – We have commenced a controlled pilot of the full licensed version of Microsoft 365 Copilot within the DSS controlled environment for approved staff cohorts. The pilot is being implemented using a staged enablement approach, with access granted based on risk, privacy, secrecy and business assessments.
-
-**5. Microsoft Copilot Agents and Copilot Studio (Pilot)** – We have commenced controlled pilots of Microsoft Copilot Agents within the DSS controlled environment, including Microsoft-provided agents, DSS-developed agents and Copilot Studio developed agents. These capabilities are being evaluated for approved productivity, knowledge management and information analysis use cases and are subject to additional governance and approval requirements.
-
-**6. Otter AI** – We use Otter AI for a select group of staff, an AI-powered transcription tool designed to convert speech into text.
-
-**7**. **AI-enabled Optical Character Recognition (OCR) Solution** – We use an AI-enabled Optical Character Recognition (OCR) solution to support administration of the National Redress Scheme. The technology converts scanned and handwritten documents into machine-readable text to assist staff with processing documentation and extracting relevant information. The OCR solution does not make decisions or determine outcomes. Outputs will be verified by authorised staff and remain subject to the Department’s governance, privacy, record-keeping and security requirements.
+1. **GovAI Multi-Model** – We use the GovAI platform as a secure space for staff to test AI models and to support staff learning. This helps build capability uplift and supports safe trials.
+1. **Microsoft Copilot via GovTEAMS** - We use Microsoft Copilot in the secure GovTEAMS environment. This includes an approved Community Grants Hub AI use case to analyse, summarise and structure information to support grants administration activities.
+1. **Microsoft 365 Copilot Chat (DSS Internal)** – We use Microsoft 365 Copilot Chat within the DSS controlled environment.
+1. **Microsoft 365 Copilot (Pilot)** – We have commenced a controlled pilot of the full licensed version of Microsoft 365 Copilot within the DSS controlled environment for approved staff cohorts. The pilot is being implemented using a staged enablement approach, with access granted based on risk, privacy, secrecy and business assessments.
+1. **Microsoft Copilot Agents and Copilot Studio (Pilot)** – We have commenced controlled pilots of Microsoft Copilot Agents within the DSS controlled environment, including Microsoft-provided agents, DSS-developed agents and Copilot Studio developed agents. These capabilities are being evaluated for approved productivity, knowledge management and information analysis use cases and are subject to additional governance and approval requirements.
+1. **Otter AI** – We use Otter AI for a select group of staff, an AI-powered transcription tool designed to convert speech into text.
+1. **AI-enabled Optical Character Recognition (OCR) Solution** – We use an AI-enabled Optical Character Recognition (OCR) solution to support administration of the National Redress Scheme. The technology converts scanned and handwritten documents into machine-readable text to assist staff with processing documentation and extracting relevant information. The OCR solution does not make decisions or determine outcomes. Outputs will be verified by authorised staff and remain subject to the Department’s governance, privacy, record-keeping and security requirements.
 
 Consistent with our risk-based approach, access to certain AI capabilities, including the full licensed version of Microsoft 365 Copilot and Copilot Studio developed agents, may be restricted to approved cohorts or use cases following legal, privacy, secrecy and risk assessments.
 
@@ -94,7 +89,7 @@ Once implemented, we monitor the effectiveness of AI systems through robust gove
 
 The following table sets out an overview of our compliance with the mandatory requirements of the DTA policy and APS AI Plan:
 
-| Mandatory requirement                                 | Status         | Comments                                                                                                                                                                                                                                                   | Due date        |
+| **Mandatory Requirement**                             | **Status**     | **Comments**                                                                                                                                                                                                                                               | **Due Date**    |
 | ----------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | **AI transparency statement**                         | Compliant      | N/A                                                                                                                                                                                                                                                        | N/A             |
 | **Strategic position on AI adoption**                 | Compliant      | DSS AI Strategy 2026-2028 has been approved and published to all staff                                                                                                                                                                                     | 1 June 2026     |
@@ -106,15 +101,13 @@ The following table sets out an overview of our compliance with the mandatory re
 | **Assessment of AI Use Cases & subsequent treatment** | In development | As outlined above, DSS has substantially implemented a formal AI governance framework requiring all AI use cases to be assessed in accordance with the DTA policy.                                                                                         | 1 December 2026 |
 | **Chief AI Officer**                                  | Compliant      | Under the APS AI Plan DSS has appointed a Chief AI Officer (CAIO) at the SES Band 3 level to provide strategic leadership and oversight of AI adoption.                                                                                                    | 30 June 2026    |
 
+## Contact
+
+For questions or feedback, email [AI@dss.gov.au](mailto:AI@dss.gov.au).
+
 This statement is authorised by DSS’s accountable official, the Chief Information Officer.
 
 This AI Transparency Statement was updated on 9 September 2026.
-
-## More information
-
-- Visit the Digital Transformation Agency to read the [DTA policy](https://www.digital.gov.au/ai/ai-in-government-policy).
-
-- If you have questions or feedback, email [AI@dss.gov.au](mailto:AI@dss.gov.au).
 
 - Print
 
