@@ -791,6 +791,11 @@
     "cid": "bafyreifkdmkkpsfh4wrurfz4i5y4stfqlngja25m4v4jc6jk7ea3dib2pm",
     "syndicatedAt": "2026-09-09T17:20:07.099Z"
   },
+  "DSS-20261020T160251Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mycz5lxsn52r",
+    "cid": "bafyreifv7veik23rebmzlzg4apwd5jm7ribxloajxeh2tgf65uho5s4ckm",
+    "syndicatedAt": "2026-10-20T16:03:56.697Z"
+  },
   "DTA-20251111T063910Z": {
     "seeded": true
   },
