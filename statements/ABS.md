@@ -5,11 +5,6 @@ source_url: https://www.abs.gov.au/about/legislation-and-policy/ai-transparency-
 title: AI transparency statement | Australian Bureau of Statistics
 ---
 
-We are currently experiencing some system issues.\
-Some users may have trouble accessing ABS web pages, their ABS survey account or completing their ABS survey while upgrades are being made.\
-We are working to fully restore the service as soon as possible.\
-Thank you for your patience.
-
 # AI transparency statement
 
 How we develop, deploy and manage artificial intelligence

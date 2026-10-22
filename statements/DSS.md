@@ -1,7 +1,7 @@
 ---
 abbr: DSS
 agency: Department of Social Services
-last_updated_text: 20 October 2026
+last_updated_text: 22 October 2026
 source_url: https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement
 title: Artificial Intelligence (AI) Transparency Statement | Department of Social
   Services
@@ -30,7 +30,7 @@ Currently, our approved AI use cases are within the:
 - _Service delivery, Policy and legal_ and _Corporate and enabling_ domains; and
 - _Workplace productivity_ , _Analytics for insights_ and _Decision making and administrative action_ usage patterns, of the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
-We currently do not use AI within the _Decision making and administrative action_ or _Image processing_ usage patterns, or the _Scientific_ , _Compliance and fraud detection_ , and _Law enforcement, intelligence and security_ domains.
+We currently do not use AI within the _Image processing_ usage patterns, or the _Scientific_ , _Compliance and fraud detection_ , and _Law enforcement, intelligence and security_ domains.
 
 Our staff use AI systems predominantly for:
 

@@ -1,7 +1,6 @@
 ---
 abbr: OAIC
 agency: Office of the Australian Information Commissioner
-last_updated_text: 24 January 2026
 source_url: https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement
 title: OAIC AI transparency statement | OAIC
 ---
@@ -110,32 +109,58 @@ title: OAIC AI transparency statement | OAIC
 
 \_\_ Published: 20 February 2025
 
+\_\_ Updated: 22 October 2026
+
 \_\_
 
-## Introduction
+The Office of the Australian Information Commissioner (OAIC) is committed to transparency and accountability in its use of existing and emerging technologies, including artificial intelligence (AI).
 
-The Office of the Australian Information Commissioner is committed to transparency and accountability in its use of existing and emerging technologies, including artificial intelligence (AI).
+The OAIC approach to the adoption of AI is focused on ensuring that any use of AI within the OAIC fully aligns with the Australian Government's [Policy for responsible AI in government](https://www.digital.gov.au/policy/ai/policy) and the [Voluntary AI Safety Standard](https://www.industry.gov.au/publications/voluntary-ai-safety-standard).
+
+As the preeminent information rights regulator, the OAIC is committed to the ethical and lawful rights-preserving implementation of technology.
 
 ## Current use of AI
 
-The OAIC does not currently use AI for any of its regulatory, operational, or administrative functions.
+The OAIC uses AI technology within our IT environment to support administrative and business processes and improve workplace productivity and service delivery.
 
-## Future intentions for AI use
+AI use in the OAIC may include:
 
-The OAIC monitors AI developments to explore how such technologies may be leveraged to enhance service delivery, improve operational efficiency, and support our regulatory responsibilities. The OAIC is committed to ensuring any future adoption of AI technology by the agency aligns with the Australian government's [Policy for responsible AI in government](https://www.digital.gov.au/policy/ai/policy).
+- supporting corporate functions, including HR, finance, media and communications, and IT.
+- assisting with service delivery and communication, including in relation to public engagement and the OAIC’s public advisory function.
+- supporting the OAIC’s regulatory, policy and case management functions. This may include summarising information, eDiscovery and data categorisation, or identifying specific information in data sets.
+- trialling new and emerging AI tools to assess their potential for internal productivity gains and also to identify potential regulatory risks arising from their use across the OAIC’s regulated environment.
 
-## Monitoring and governance of potential AI systems
+AI tools, including Generative AI, are not used to make statutory or administrative decisions.
 
-Should the OAIC decide to deploy AI systems in the future, governance and oversight would be implemented to ensure their effectiveness and compliance with the Privacy Act 1988 (Cth), the Freedom of Information Act 1982 (Cth), other relevant legislation and government policy.
+As the national freedom of information and privacy regulator, the OAIC is prioritising lawfulness, transparency and maintaining public trust as we pilot the use of AI. Our focus is on identifying ways to implement AI ethically, securely and responsibly to support workplace productivity and enhance service delivery across the Office.
 
-## Protecting the public from negative impacts of AI
+## Monitoring and governance of AI systems
 
-Should the OAIC adopt AI technologies we will conduct thorough risk assessments and ensure that robust safeguards are in place to protect individuals’ rights and prevent adverse outcomes.
+The use of AI within the OAIC is overseen by a Chief AI Officer, supported by the OAIC’s AI Accountable Officer. The AI Accountable Officer is responsible for ensuring there is robust monitoring and evaluation of AI tools and technologies used within the Office.
 
-## Commitment to safe and responsible AI use
+The OAIC maintains an AI Use Case Register that captures all approved uses within the OAIC and outlines the approved domains and usage patterns for AI. The OAIC will report any ‘high risk’ uses of AI to the Digital Transformation Agency, in accordance with the Policy for the responsible use of AI in government.
 
-We are committed to ensuring that any future OAIC AI systems are deployed safely and responsibly. This includes upholding the highest standards of integrity, prioritising government and public trust and value, and ensuring that AI technologies are used in a manner that aligns with government policy, OAIC values and our legal obligations.
+The OAIC Chief AI Officer and AI Accountable Officer are supported by an AI Governance Board and an AI Subcommittee, which will focus on ensuring effectiveness, fairness, lawfulness and compliance with the Australian Government’s AI policies and ethics principles.
 
-This statement will be reviewed regularly to reflect any changes in the OAIC's approach to AI, including any future adoption of AI technologies.
+All OAIC staff are required to undertake training in the ethical use of AI and to act consistent with [Australia’s 8 AI ethic’s principles](https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles) when they use AI to support business activities. These principles are:
+
+- Human, societal and environmental wellbeing: AI systems should benefit individuals, society and the environment.
+- Human-centred values: AI systems should respect human rights, diversity, and the autonomy of individuals.
+- Fairness: AI systems should be inclusive and accessible and should not involve or result in unfair discrimination against individuals, communities or groups.
+- Privacy protection and security: AI systems should respect and uphold privacy rights and data protection and ensure the security of data.
+- Reliability and safety: AI systems should reliably operate in accordance with their intended purpose.
+- Transparency and explainability: There should be transparency and responsible disclosure so people can understand when they are being significantly impacted by AI and can find out when an AI system is engaging with them.
+- Contestability: When an AI system significantly impacts a person, community, group or environment, there should be a timely process to allow people to challenge the use or outcomes of the AI system.
+- Accountability: People responsible for the different phases of the AI system lifecycle should be identifiable and accountable for the outcomes of the AI systems, and human oversight of AI systems should be enabled.
+
+## Artificial Intelligence definition
+
+When discussing AI, the OAIC applies the Organisation for Economic Co-operation and Development definition:
+
+An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
+
+## Review and Updates
+
+This AI Transparency statement was last updated on XXXXX. It will be reviewed and updated annually or when there are significant changes to the OAIC’s AI use, governance framework or other relevant government policies or laws.
 
 For further information on our approach to AI, or to raise any concerns, please contact the [OAIC directly.](https://www.oaic.gov.au/contact-us)

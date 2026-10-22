@@ -9,7 +9,7 @@ title: Artificial Intelligence (AI) transparency statement | naa.gov.au
 
 # Artificial Intelligence (AI) transparency statement
 
-The Digital Transformation Agency's [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI. Transparency is critical to building public trust and is an important aim of the policy and broader APS Reform agenda.
+The Digital Transformation Agency's [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2026-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%202_1.pdf) sets out the Australian Government approach to embrace the opportunities of AI and provide for safe and responsible use of AI. Transparency is critical to building public trust and is an important aim of the policy and broader APS Reform agenda.
 
 National Archives is dedicated to ongoing refinement and enhancement of our AI capabilities. We will be transparent as we enable and prepare, engage, monitor, adopt, review, evolve, integrate and pivot to changes in AI, the technology environment and Government policy requirements.
 
