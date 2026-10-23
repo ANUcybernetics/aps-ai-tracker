@@ -54,6 +54,7 @@ title: OAIC AI transparency statement | OAIC
 
 - [ OAIC annual reports ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-plus.svg) ![](https://www.oaic.gov.au/__data/assets/git_bridge/0012/12063/mysource_files/icon-minus.svg)
 
+  - [ Annual report 2025-26 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2025-26)
   - [ Annual report 2024-25 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2024-25)
   - [ Annual report 2023–24 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-202324)
   - [ Annual report 2022-23 ](https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-annual-reports/annual-report-2022-23)
