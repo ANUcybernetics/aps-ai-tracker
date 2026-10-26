@@ -54,3 +54,23 @@ The NZEA will continuously refine and enhance our AI capabilities. We do this by
 This statement will evolve to align with technology changes, legislation, policy and governance best practices. We will review at least every 12 months and update it if our AI approach changes, or if anything materially impacts its accuracy.
 
 For further information on the NZEA’s AI governance and transparency please contact the NZEA at [itservicedesk@nzea.gov.au](mailto:itservicedesk@nzea.gov.au).
+
+## Browse topics
+
+### About net zero
+
+Learn about Australia’s net zero transition, why it’s happening and the Australian Government’s plans to get there.
+
+[ About net zero ](https://www.nzea.gov.au/about/net-zero)
+
+### Energy Industry Jobs Plan
+
+The Energy Industry Jobs Plan (the EIJP) provides support directly to workers to prepare for and transition into a new job when eligible coal-fired or gas-fired power stations close.
+
+[ Energy Industry Jobs Plan ](https://www.nzea.gov.au/energy-industry-jobs-plan)
+
+### Net Zero Investment Map
+
+An interactive map showing a range of Australian Government-supported renewable energy and net zero research projects.
+
+[ Net Zero Investment Map ](https://www.nzea.gov.au/net-zero-investment-map)

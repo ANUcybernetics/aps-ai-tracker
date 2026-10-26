@@ -1,6 +1,7 @@
 ---
 abbr: OAIC
 agency: Office of the Australian Information Commissioner
+last_updated_text: 22 October 2026
 source_url: https://www.oaic.gov.au/about-the-OAIC/our-corporate-information/oaic-ai-transparency-statement
 title: OAIC AI transparency statement | OAIC
 ---
@@ -162,6 +163,6 @@ An AI system is a machine-based system that, for explicit or implicit objectives
 
 ## Review and Updates
 
-This AI Transparency statement was last updated on XXXXX. It will be reviewed and updated annually or when there are significant changes to the OAIC’s AI use, governance framework or other relevant government policies or laws.
+It will be reviewed and updated annually or when there are significant changes to the OAIC’s AI use, governance framework or other relevant government policies or laws.
 
 For further information on our approach to AI, or to raise any concerns, please contact the [OAIC directly.](https://www.oaic.gov.au/contact-us)

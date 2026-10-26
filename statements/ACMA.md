@@ -46,7 +46,7 @@ For more information about the review, visit the [Department of Infrastructure, 
 
 ## ACMA AI transparency statement
 
-The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2025-12/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20Government%202.0_0.pdf) sets out the Australian Government approach to embrace the opportunities of artificial intelligence (AI) for the benefit of Australians while ensuring its safe, ethical and responsible use, in line with community expectations.
+The Digital Transformation Agency's [ _Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2026-10/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%202_1_1.pdf) sets out the Australian Government approach to embrace the opportunities of artificial intelligence (AI) for the benefit of Australians while ensuring its safe, ethical and responsible use, in line with community expectations.
 
 The Australian Communications and Media Authority (ACMA) adhere to this policy supporting its principles and requirements to enable a forward-leaning approach to agency adoption.
 
