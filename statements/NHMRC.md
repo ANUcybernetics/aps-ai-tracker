@@ -5,10 +5,66 @@ source_url: https://www.nhmrc.gov.au/about-us/accountability-and-reporting/artif
 title: Artificial Intelligence (AI) Transparency Statement | NHMRC
 ---
 
-**We're changing the way Sapphire looks**
+The National Health and Medical Research Council (NHMRC) is dedicated to the adoption and responsible use of Artificial Intelligence (AI). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies) in relation to adopting emerging technologies.
 
-Same platform, new visual identity. Learn more: [Sapphire is becoming NHMRC Grant Management System](https://www.nhmrc.gov.au/about-us/news-centre/sapphire-becoming-nhmrc-grant-management-system).
+This Transparency Statement outlines our approach to AI use within the NHMRC, in accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible AI in government](https://www.digital.gov.au/ai/ai-in-government-policy/staff-training).
 
-[Close](https://www.nhmrc.gov.au/about-us/accountability-and-reporting/artificial-intelligence-ai-transparency-statement)
+## Purpose of AI use
 
-Close
+The NHMRC encourages the use of Generative AI (GenAI) to enhance our productivity, where it is ethical and safe to do so. Our AI initiatives include automation of repeatable processes which helps us streamline our work to support the overall mission of building a healthy Australia.
+
+GenAI is not relied upon for decision-making in NHMRC. Use of GenAI is limited to support functions (such as drafting, editing, summarising, structuring and supporting research analyses) and does not replace human authorship, decision-making or accountability.
+
+## AI applications
+
+Following a [pilot](https://www.digital.gov.au/initiatives/copilot-trial) and [evaluation](https://evaluation.treasury.gov.au/publications/evaluation-generative-artificial-intelligence) of Microsoft 365 (M365) Copilot, NHMRC staff have access to the licenced version providing enterprise data protection. M365 Copilot allows staff to use GenAI, as per the \[DTA classification system\](https://www.digital.gov.au/sites/default/files/documents/2025-12/Standard for AI transparency statements 2.0_0.pdf), for the purposes of:
+
+### Workplace productivity
+
+- Automating repetitive tasks (for example, meeting transcriptions, minutes, searching for emails or sorting data), allowing staff to focus on more complex and value-added activities.
+- Structuring and refining content in documents such as internal reports, publications and briefing materials.
+- Generating and debugging code used in systems and applications development and maintenance.
+
+### Corporate and enabling
+
+- GenAI is used to support internal HR and IT advice using simple SharePoint agents.
+
+### Analytics for insights
+
+- Used to support a range of reporting and analytics activities such as internally classifying research topics.
+
+### Research and analysis support
+
+- GenAI may be used to assist with research, including summarising information, structuring analyses, and supporting the preparation of written materials such as reports, publications and briefing content. AI is used as a support tool only and does not replace human judgement or accountability.
+
+_Note: We also allow staff to access certain public GenAI tools in line with the DTA's guide on APS use of public generative AI tools._
+
+## Monitoring and governance
+
+The NHMRC has established governance mechanisms to ensure the ethical and effective use of AI. This includes:
+
+- **Training** – All staff must complete [AI fundamentals](https://www.apsacademy.gov.au/course-sessions/ai-government-fundamentals) training to ensure that there is always human involvement for any processes where AI is applied.
+- **Community of Practice** – An inclusive group that meets regularly to discuss AI related risks and opportunities.
+- **Governance forums** – We use our range of existing forums integrating AI issues such as security and privacy.
+
+Staff remain responsible for verifying the accuracy and appropriateness of all AI-assisted outputs.
+
+## Public impact and compliance
+
+We are committed to protecting the public from potential negative impacts of AI. We will assess AI use cases where the public may directly interact with or be significantly impacted by AI. We use the DTA’s [AI impact assessment tool](https://www.digital.gov.au/ai/impact-assessment-tool) to review the impact of AI against Australia’s AI Ethics Principles.
+
+The NHMRC will adhere to any relevant legislation and regulations governing AI across Commonwealth agencies. NHMRC is implementing the DTA’s [Policy for responsible AI in government v2.0](https://www.digital.gov.au/ai/ai-in-government-policy) and following its guidance on [use of public generative AI tools](https://www.dta.gov.au/media-releases/dta-releases-new-guidance-australian-government-use-public-generative-ai-tools).
+
+## Transparency and updates
+
+This Transparency Statement is part of our commitment to open and transparent communication about our AI use. It will be updated regularly to reflect any changes in our AI practices and policies.
+
+### Update history
+
+- 19 June 2026: Updated version published.
+- 6 May 2026: Updated version published.
+- 26 February 2025: Initial version published.
+
+## Contact information
+
+For more information about our AI initiatives or to provide feedback, please contact the Director of IT Management and Strategy through our [Contact us](https://www.nhmrc.gov.au/about-us/contact-us "Contact us") page.
