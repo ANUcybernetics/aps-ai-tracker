@@ -14,7 +14,7 @@ In accordance with the Digital Transformation Agency’s (DTA) [_Policy for resp
 
 We see significant potential benefits from using AI to improve the analysis and communication of our research and in improving workplace productivity. We commit to using AI in a safe and responsible manner.
 
-When discussing AI, we apply the [Organisation for Economic Co-operation and Development (OECD) definition](https://www.oecd.org/en.html):
+When discussing AI, we apply the [Organisation for Economic Co-operation and Development (OECD) definition](https://www.oecd.org/en.html "(opens in a new window)"):
 
 > An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 
@@ -85,7 +85,7 @@ The AI transparency statement was first published to our website on 2 December 2
 
 ## AI contact
 
-For questions about this statement or for further information on the Institute’s usage of AI, please contact ai@aifs.gov.au.
+For questions about this statement or for further information on the Institute’s usage of AI, please contact [ai@aifs.gov.au](mailto:ai@aifs.gov.au).
 
 Change history
 
