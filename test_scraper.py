@@ -182,6 +182,27 @@ def test_extract_main_content_fallback():
     assert "Footer" not in content
 
 
+def test_extract_main_content_prefers_role_main_over_earlier_article():
+    """A page with no <main> but a role="main" container takes that container,
+    not the first <article> (NHMRC's GovCMS sitewide alert is an <article>
+    above the statement)."""
+    html = """
+    <html>
+        <body>
+            <article class="sitewide-alert">We're changing the way Sapphire looks</article>
+            <div role="main">
+                <article>Statement body.</article>
+            </div>
+        </body>
+    </html>
+    """
+    soup = BeautifulSoup(html, "lxml")
+    content = extract_main_content(soup)
+
+    assert "Statement body." in content
+    assert "Sapphire" not in content
+
+
 def test_extract_main_content_selector_keeps_every_match():
     """A selector matching sibling blocks yields all of them, in document order
     (NFSA splits standfirst, body and download link across .article-content)."""

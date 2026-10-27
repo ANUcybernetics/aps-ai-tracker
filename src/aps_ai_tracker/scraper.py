@@ -497,6 +497,7 @@ def remove_boilerplate(element: Tag) -> None:
         ".banner",
         ".notification",
         ".notice-banner",
+        ".back-to-top",
         "#header",
         "#footer",
         "#sidebar",
@@ -600,7 +601,14 @@ def extract_main_content(soup: BeautifulSoup, selector: str | None = None) -> st
                 remove_boilerplate(match)
             return "".join(str(match) for match in matches)
     else:
-        for candidate in ["main", "article", ".content", "#content", ".main-content"]:
+        for candidate in [
+            "main",
+            "[role='main']",
+            "article",
+            ".content",
+            "#content",
+            ".main-content",
+        ]:
             if main_content := soup.select_one(candidate):
                 remove_boilerplate(main_content)
                 return str(main_content)
