@@ -490,6 +490,7 @@ def remove_boilerplate(element: Tag) -> None:
         ".social-share",
         ".social-links",
         ".social-media",
+        "[class*='social-sharing']",
         ".subscribe",
         ".newsletter",
         ".alert",
