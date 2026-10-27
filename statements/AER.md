@@ -91,7 +91,7 @@ This statement was published in **July 2026**. It will be reviewed and updated:
 
 ## Contact
 
-For questions about this statement or for further information on our use of AI, please [contact us](https://www.aer.gov.au/about/contact-us "Contact us")[.](https://www.aer.gov.au/about/contact-us)
+For questions about this statement or for further information on our use of AI, please [contact us](https://www.aer.gov.au/about/contact-us)[.](https://www.aer.gov.au/about/contact-us)
 
 Updated
 

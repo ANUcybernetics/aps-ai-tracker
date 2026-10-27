@@ -22,7 +22,7 @@ Our current use of AI is limited and internal.
 
 We use AI to support internal administrative activities, such as transcribing voicemail submissions. Original audio recordings are retained, and transcripts are reviewed by staff for accuracy before use.
 
-We are also beginning to use AI to assist some staff with background research activities supporting the development of projects outlined in our [Annual Work Plan](https://www.igac.gov.au/what-we-do/annual-work-plans "Annual work plans"). This use is limited to identifying and summarising publicly available information and internal materials to support early research and scoping. AI does not determine project selection, priorities, or outcomes. All planning and decision‑making remains the responsibility of our staff.
+We are also beginning to use AI to assist some staff with background research activities supporting the development of projects outlined in our [Annual Work Plan](https://www.igac.gov.au/what-we-do/annual-work-plans). This use is limited to identifying and summarising publicly available information and internal materials to support early research and scoping. AI does not determine project selection, priorities, or outcomes. All planning and decision‑making remains the responsibility of our staff.
 
 Our use of AI is confined to assistive, internal productivity purposes within corporate and enabling services. There is no direct public interaction with AI, and AI outputs are not relied on without human review and oversight
 

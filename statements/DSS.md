@@ -117,8 +117,6 @@ https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intellige
 
 Copy shareable link Close
 
-- \[ Email \](mailto:?subject=Artificial Intelligence (AI) Transparency Statement&body=https://www.dss.gov.au/doing-business-us/corporate-policies/artificial-intelligence-ai-transparency-statement)
-
 ## Was this page helpful?
 
 Yes No

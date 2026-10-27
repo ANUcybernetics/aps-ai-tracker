@@ -14,7 +14,7 @@ In accordance with the Digital Transformation Agency’s (DTA) [_Policy for resp
 
 We see significant potential benefits from using AI to improve the analysis and communication of our research and in improving workplace productivity. We commit to using AI in a safe and responsible manner.
 
-When discussing AI, we apply the [Organisation for Economic Co-operation and Development (OECD) definition](https://www.oecd.org/en.html "(opens in a new window)"):
+When discussing AI, we apply the [Organisation for Economic Co-operation and Development (OECD) definition](https://www.oecd.org/en.html):
 
 > An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.
 

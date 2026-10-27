@@ -16,10 +16,6 @@ Last updated
 
 25 March 2026
 
-- \[Email\](mailto:?subject=Interesting page Transparent Use of AI at the Commission&body=Check out this site I came across https://www.apsc.gov.au/about-us/accountability-and-reporting/transparent-use-ai-commission "Share via email")
-
-\[Print\](javascript:if(window.print)window.print())
-
 ## AI Transparency Statement
 
 The Commission is dedicated to the safe, ethical and transparent use of Artificial Intelligence technologies that accords with evolving legislation, ethical standards and public expectations.

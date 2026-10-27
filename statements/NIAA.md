@@ -10,8 +10,6 @@ title: Artificial Intelligence (AI) Transparency Statement 2026 | NIAA
 
 [\_\_**Back to** Home](https://www.niaa.gov.au/)
 
-[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=page-content__content&url=https://www.niaa.gov.au/artificial-intelligence-ai-transparency-statement-2026 "Listen to this page using ReadSpeaker")
-
 ## **Purpose**
 
 The National Indigenous Australians Agency (NIAA) is committed to the safe, ethical, and transparent use of Artificial Intelligence (AI). The NIAA will leverage AI to improve outcomes for Aboriginal and Torres Strait Islander peoples while ensuring alignment with the Digital Transformation Agency (DTA) [Policy for the Responsible Use of AI in Government (v2.0)](https://www.digital.gov.au/ai/ai-in-government-policy).

@@ -10,7 +10,7 @@ title: Artificial Intelligence Transparency Statement - DCCEEW
 
 This page explains how we are using Artificial Intelligence, in line with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-We recognise that AI can help in supporting delivery of the outcomes in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan"). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
+We recognise that AI can help in supporting delivery of the outcomes in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan). Our commitment to digital innovation aligns with the Australian Government’s [Data and Digital Government Strategy](https://www.dataanddigital.gov.au/strategy/missions/government-for-the-future#adopt_emerging_technologies), the [National AI Plan](https://www.industry.gov.au/publications/national-ai-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve).
 
 When we refer to AI, we use the [Organisation for Economic Co-operation and Development](https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html) (OECD) definition:
 
@@ -39,7 +39,7 @@ We support staff using generative AI tools, by providing guidance on how to do s
 
 We are undertaking a limited, opt-in trial of AI in recruitment. AI will be used to support comparison and evaluation of recruitment processes, alongside standard human assessment for this process. We do not use AI to make selection decisions about candidates. All decisions to shortlist, assess or select candidates are made by a human selection panel, consistent with APS merit based recruitment principles. Results and outcomes of the trial will be explored once the recruitment process is completed.
 
-We continue exploring applications of AI to support our vision, purposes and outcomes as set out in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan "Corporate plan") and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve). This may include uses across policy development, program delivery, asset management, the administration of legislation and regulation. We will continue to update this statement as its use of AI changes.
+We continue exploring applications of AI to support our vision, purposes and outcomes as set out in our [Corporate Plan](https://www.dcceew.gov.au/about/reporting/corporate-plan) and the [APS AI Plan 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025/what-we-plan-achieve). This may include uses across policy development, program delivery, asset management, the administration of legislation and regulation. We will continue to update this statement as its use of AI changes.
 
 ## Public interaction and impact
 
@@ -67,7 +67,7 @@ We use AI in line with:
 - whole-of-government frameworks and policies
 - the [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy).
 
-We review compliance through existing governance and risk management processes. As we implement our [Enterprise Data Strategy](https://www.dcceew.gov.au/about/commitment/information-public-data/strategy "Enterprise Data Strategy"), we continue to build a culture that balances innovation with responsible AI risk management and use.
+We review compliance through existing governance and risk management processes. As we implement our [Enterprise Data Strategy](https://www.dcceew.gov.au/about/commitment/information-public-data/strategy), we continue to build a culture that balances innovation with responsible AI risk management and use.
 
 ## Accountable official
 

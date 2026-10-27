@@ -14,17 +14,17 @@ We set strategic plans and priorities to guide our work and the benefits we aim 
 
 Our [corporate plan](https://www.acma.gov.au/node/6020) is prepared annually and is our primary strategic planning document.
 
-View our [annual work program](https://www.acma.gov.au/acma-2025-26-annual-work-program "ACMA 2025–26 annual work program").
+View our [annual work program](https://www.acma.gov.au/acma-2025-26-annual-work-program).
 
 ## Compliance priorities
 
-Our [compliance priorities](https://www.acma.gov.au/compliance-priorities "Compliance and enforcement priorities 2026–27") outline our key areas of focus for the year. They will guide our efforts to deliver effective compliance and, where necessary, targeted enforcement action.
+Our [compliance priorities](https://www.acma.gov.au/compliance-priorities) outline our key areas of focus for the year. They will guide our efforts to deliver effective compliance and, where necessary, targeted enforcement action.
 
 ## Data strategy
 
 Our _Data strategy 2024–25_ sets out a 12-month plan to enhance digital, data and analytical capabilities across the ACMA. It aims to improve the discoverability, usability and safety of our data.
 
-Data and analytics are critical tools and capabilities that position us for the future. As recognised in our [2024–25 corporate plan](https://www.acma.gov.au/publications/2024-08/plan/corporate-plan-2024-25 "Corporate plan 2024–25"), data and analytics support our evidence-based regulatory analysis and actions, and give greater insight into, and understanding of, Australia’s communications and media sectors. This 2024 _–_ 25 strategy will be updated with a 4-year strategy and governance framework in 2025 _–_ 26.
+Data and analytics are critical tools and capabilities that position us for the future. As recognised in our [2024–25 corporate plan](https://www.acma.gov.au/publications/2024-08/plan/corporate-plan-2024-25), data and analytics support our evidence-based regulatory analysis and actions, and give greater insight into, and understanding of, Australia’s communications and media sectors. This 2024 _–_ 25 strategy will be updated with a 4-year strategy and governance framework in 2025 _–_ 26.
 
 download
 
@@ -34,7 +34,7 @@ pdf
 
 ## Statement of intent
 
-Our [statement of intent](https://www.acma.gov.au/publications/2023-03/plan/acma-statement-intent "ACMA Statement of Intent") responds to the Australian Government’s [statement of expectations](https://www.infrastructure.gov.au/media-centre/publications/statement-expectations-australian-communications-and-media-authority) outlining its expectations of us.
+Our [statement of intent](https://www.acma.gov.au/publications/2023-03/plan/acma-statement-intent) responds to the Australian Government’s [statement of expectations](https://www.infrastructure.gov.au/media-centre/publications/statement-expectations-australian-communications-and-media-authority) outlining its expectations of us.
 
 ## Review of the ACMA
 

@@ -30,19 +30,19 @@ The Commission works in partnership with patients, healthcare professionals, pol
 
 The Commission’s planned activities are shaped by these four strategic priorities and align with the functions of the Commission set out in the NHR Act.
 
-The [Commission Board](https://www.safetyandquality.gov.au/about-us/our-board "Our Board"), appointed by the Minister for Health and Ageing, Disability and the National Disability Insurance Scheme, is responsible for governing the Commission and meeting its functions and responsibilities under legislation. In undertaking its work, the Commission is supported by the Inter-Jurisdictional Committee, which is made up of senior safety and quality managers from the Australian Government Department of Health, Disability, and Ageing, and each state and territory. In addition, the Board has established sub-committees in the form of the Private Hospital Sector Committee and Primary Care Committee that provide a valuable connection with representatives from the private and public sectors.
+The [Commission Board](https://www.safetyandquality.gov.au/about-us/our-board), appointed by the Minister for Health and Ageing, Disability and the National Disability Insurance Scheme, is responsible for governing the Commission and meeting its functions and responsibilities under legislation. In undertaking its work, the Commission is supported by the Inter-Jurisdictional Committee, which is made up of senior safety and quality managers from the Australian Government Department of Health, Disability, and Ageing, and each state and territory. In addition, the Board has established sub-committees in the form of the Private Hospital Sector Committee and Primary Care Committee that provide a valuable connection with representatives from the private and public sectors.
 
-Program initiatives are informed by external advisory committees, working groups, public consultation and workshops. Major Commission proposals are forwarded to the Health Chief Executives Forum and the Health Ministers' Meeting. The Commission is situated in Sydney and is managed on a day-to-day basis by its [CEO, Conjoint Professor Anne Duggan](https://www.safetyandquality.gov.au/about-us/who-we-are "Who we are").
+Program initiatives are informed by external advisory committees, working groups, public consultation and workshops. Major Commission proposals are forwarded to the Health Chief Executives Forum and the Health Ministers' Meeting. The Commission is situated in Sydney and is managed on a day-to-day basis by its [CEO, Conjoint Professor Anne Duggan](https://www.safetyandquality.gov.au/about-us/who-we-are).
 
 ## Data governance
 
-The Commission has established a [Data Governance Framework](https://www.safetyandquality.gov.au/resources/acsqhc-data-governance-framework "ACSQHC Data Governance Framework") and [Data Plan](https://www.safetyandquality.gov.au/resources/acsqhc-data-plan-2025-28 "ACSQHC Data Plan 2025-28") to govern the use of data.
+The Commission has established a [Data Governance Framework](https://www.safetyandquality.gov.au/resources/acsqhc-data-governance-framework) and [Data Plan](https://www.safetyandquality.gov.au/resources/acsqhc-data-plan-2025-28) to govern the use of data.
 
 The Commission’s Data Governance Framework specifies the obligations of the Commission with regard to data acquisition, maintenance, sharing/permissions, reporting and publication. The Data Governance Framework was developed in accordance with legislative requirements and formal agreements.
 
 ## Disclosure of Interests Policy
 
-The Commission has developed a [Disclosure of Interests Policy](https://www.safetyandquality.gov.au/resources/acsqhc-disclosure-interests-policy "ACSQHC Disclosure of Interests Policy"). This policy assists in ensuring that the Commission complies with statutory obligations relating to disclosure of interests under the Commonwealth legislation by appropriately disclosing any material personal interests in a prescribed way.
+The Commission has developed a [Disclosure of Interests Policy](https://www.safetyandquality.gov.au/resources/acsqhc-disclosure-interests-policy). This policy assists in ensuring that the Commission complies with statutory obligations relating to disclosure of interests under the Commonwealth legislation by appropriately disclosing any material personal interests in a prescribed way.
 
 The Disclosure of Interests Policy applies to all employees, contractors and consultants who have duties related to the operations and functions of the Commission.
 
@@ -54,7 +54,7 @@ If you have any questions regarding the Disclosure of Interests Policy, please c
 
 The purpose of the [Freedom of Information Act 1982](http://www.comlaw.gov.au/Series/C2004A02562%5Ct_self) (FOI Act) is to give members of the public rights of access to information held by the Government of the Commonwealth and of its agencies.
 
-[View how to make a Freedom of Information (FOI) request.](https://www.safetyandquality.gov.au/about-us/corporate-governance/making-freedom-information-foi-request "Making a Freedom of Information (FOI) request")
+[View how to make a Freedom of Information (FOI) request.](https://www.safetyandquality.gov.au/about-us/corporate-governance/making-freedom-information-foi-request)
 
 ## Privacy Impact Assessment Register
 
@@ -92,7 +92,7 @@ The Commission is committed to the protection of personal information in accorda
 
 The Commission is also committed to ensuring that the statistical healthcare datasets accessed pursuant to our functions under the [National Health Reform Act 2011](https://www.legislation.gov.au/C2011A00009/latest/text) and the National Health Reform Agreement is managed in a manner which is generally consistent with the APPs, as well as state and territory privacy laws and healthcare regulations.
 
-[View our privacy policy](https://www.safetyandquality.gov.au/resources/privacy-policy "Privacy Policy")
+[View our privacy policy](https://www.safetyandquality.gov.au/resources/privacy-policy)
 
 The most up to date versions of both the Privacy Act and [National Health Reform Act 2011](https://www.legislation.gov.au/C2011A00009/latest/text) are available from [Comlaw](http://www.comlaw.gov.au/).
 
@@ -137,7 +137,7 @@ The Commission's Chief Executive Officer has appointed the following staff membe
 
 The PID Act prescribes a framework for the disclosure and investigation of wrongdoing and maladministration in the Australian Public Sector (APS). The Commission encourages and supports the reporting of wrongdoings in the APS so that they can be investigated and addressed.
 
-[View our Public Interest Disclosure Policy and Procedures](https://www.safetyandquality.gov.au/resources/public-interest-disclosure-policy-and-procedures "Public Interest Disclosure Policy and Procedures")
+[View our Public Interest Disclosure Policy and Procedures](https://www.safetyandquality.gov.au/resources/public-interest-disclosure-policy-and-procedures)
 
 ## AI transparency statement
 

@@ -34,7 +34,7 @@ The Commission **will not** use generative AI to make decisions under the _Fair 
 
 In accordance with the classification framework set out in Attachment A to the Standard for AI transparency statements our use falls into two usage patterns: workplace productivity and analytics for insights. These uses operate across two domains, being corporate and enabling, and service delivery.
 
-You can find further information about usage patterns and domains on the Australian Government's [Artificial intelligence in government webpage ](https://www.digital.gov.au/policy/ai/resources/use-classification "Open Artificial intelligence in government webpage in a new tab").
+You can find further information about usage patterns and domains on the Australian Government's [Artificial intelligence in government webpage ](https://www.digital.gov.au/policy/ai/resources/use-classification).
 
 We use AI to reduce the routine effort in administrative work and to make our systems easier for people to use. This may include:
 

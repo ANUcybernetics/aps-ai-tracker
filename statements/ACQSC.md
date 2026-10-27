@@ -6,8 +6,6 @@ source_url: https://www.agedcarequality.gov.au/about-us/corporate-documents/ai-t
 title: AI Transparency Statement | Aged Care Quality and Safety Commission
 ---
 
-[ Listen ](https://app.readspeaker.com/cgi-bin/rsent?customerid=5802&lang=en_au&readid=content&url=https://www.agedcarequality.gov.au/about-us/corporate-documents/ai-transparency-statement "Listen to this page using ReadSpeaker")
-
 \_\_
 
 # AI Transparency Statement

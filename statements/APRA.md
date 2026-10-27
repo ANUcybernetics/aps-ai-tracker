@@ -6,13 +6,13 @@ source_url: https://www.apra.gov.au/apras-ai-transparency-statement
 title: APRA's AI Transparency Statement | APRA
 ---
 
-In accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy "https://www.digital.gov.au/policy/ai/policy"), this page presents the Australian Prudential Regulation Authority’s statement on Artificial Intelligence Transparency.
+In accordance with the Digital Transformation Agency’s (DTA) [Policy for responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), this page presents the Australian Prudential Regulation Authority’s statement on Artificial Intelligence Transparency.
 
 ## How APRA uses Artificial Intelligence
 
 At this time, APRA has not yet deployed any use of Artificial Intelligence (AI) which directly interacts with the public or is involved in decision making and administrative action without human intervention in its entity facing supervision, decision-making, and/or its engagements with the regulated entities and members of the public. APRA's use of AI is limited to the development of use cases within internal departments, focused on improving operational efficiencies. (DTA domains of Corporate and Enabling, and Workplace Productivity\*).
 
-\*Please see [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification "https://www.digital.gov.au/policy/ai/resources/use-classification") for more information on usage patterns related to AI in agencies.
+\*Please see [Classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) for more information on usage patterns related to AI in agencies.
 
 ### Monitoring and Governance
 

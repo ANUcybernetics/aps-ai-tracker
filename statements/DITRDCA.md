@@ -8,8 +8,6 @@ title: Artificial Intelligence Transparency Statement | Department of Infrastruc
   Transport, Regional Development, Communications, Sport and the Arts
 ---
 
-[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=5274&lang=en_au&readid=main-wrapper-normal&url=https%3A%2F%2Fwww.infrastructure.gov.au%2Fabout-us%2Fartificial-intelligence-transparency-statement "Listen to this page using ReadSpeaker webReader")
-
 ## Our Commitment to AI Transparency
 
 The Department of Infrastructure, Transport, Regional Development, Communications, Sport and the Arts (the department) is committed to the safe, responsible, and transparent use of artificial intelligence (AI). We adopt AI to enhance the efficiency, effectiveness and quality of our operations, always ensuring compliance with legislative and regulatory obligations, including the [Policy for the Responsible Use of AI in Government](https://www.digital.gov.au/policy/ai/policy).

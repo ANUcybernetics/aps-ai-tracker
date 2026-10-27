@@ -56,7 +56,7 @@ We use AI in accordance with applicable legislation and regulation, including (w
 
 ## Contact
 
-For further information or enquiries about this statement, please [contact us](https://www.climatechangeauthority.gov.au/contact-us "Contact us").
+For further information or enquiries about this statement, please [contact us](https://www.climatechangeauthority.gov.au/contact-us).
 
 ## AI Transparency statement review and updates
 

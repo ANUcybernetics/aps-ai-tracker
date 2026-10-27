@@ -7,8 +7,6 @@ title: Artificial Intelligence (AI) Transparency Statement - Department of Educa
   Australian Government
 ---
 
-[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=13793&lang=en_au&readid=main-content&url=https%3A//www.education.gov.au/about-department/corporate-reporting/artificial-intelligence-ai-transparency-statement "Listen to this page using ReadSpeaker")
-
 # Artificial Intelligence (AI) Transparency Statement
 
 Learn how the Department of Education uses artificial intelligence safely and responsibly to improve services, inform policy, and support quality education.

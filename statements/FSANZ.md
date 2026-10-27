@@ -8,7 +8,7 @@ title: AI transparency statement | Food Standards Australia New Zealand
 
 Food Standards Australia New Zealand (FSANZ) recognises the potential for Artificial Intelligence (AI) to support innovation. This statement is part of our compliance with the [_Policy for the responsible use of AI in government_](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf), as adopted from 1 September 2024.
 
-Please refer to the [_FSANZ Corporate Plan 2024-25_](https://www.foodstandards.gov.au/publications/corporate-plan2024-25 "Corporate Plan 2024-25") for our key activities that AI may impact over time.
+Please refer to the [_FSANZ Corporate Plan 2024-25_](https://www.foodstandards.gov.au/publications/corporate-plan2024-25) for our key activities that AI may impact over time.
 
 The following table outlines how FSANZ currently complies with the key requirements of the policy.
 

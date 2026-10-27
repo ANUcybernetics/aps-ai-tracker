@@ -36,4 +36,4 @@ This statement was **published in February 2025 and reviewed in April 2026**. It
 
 ## Contact us
 
-Comcare's Chief Information Office is designated as the accountable official under the Policy. If you have any enquiries about this statement, please contact us via the details on the [contact us](https://www.comcare.gov.au/about/contact/contact-us "Contact us") page of this website.
+Comcare's Chief Information Office is designated as the accountable official under the Policy. If you have any enquiries about this statement, please contact us via the details on the [contact us](https://www.comcare.gov.au/about/contact/contact-us) page of this website.

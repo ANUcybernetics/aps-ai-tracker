@@ -67,4 +67,4 @@ This Transparency Statement is part of our commitment to open and transparent co
 
 ## Contact information
 
-For more information about our AI initiatives or to provide feedback, please contact the Director of IT Management and Strategy through our [Contact us](https://www.nhmrc.gov.au/about-us/contact-us "Contact us") page.
+For more information about our AI initiatives or to provide feedback, please contact the Director of IT Management and Strategy through our [Contact us](https://www.nhmrc.gov.au/about-us/contact-us) page.

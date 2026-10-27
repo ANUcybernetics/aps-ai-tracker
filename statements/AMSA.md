@@ -34,7 +34,7 @@ Through the IDGC, AMSA will develop processes to ensure:
 
 As the technology of AI matures and as AMSA progressively assesses opportunities to leverage AI effectively for customer related processes, we will update this statement to outline our AI use.
 
-For enquiries, please [contact us](https://www.amsa.gov.au/about/contact-us "Contact us").
+For enquiries, please [contact us](https://www.amsa.gov.au/about/contact-us).
 
 ## Our accountable officials
 

@@ -13,11 +13,6 @@ Published
 
 3 March 2025
 
-- [X - external site](https://x.com/intent/post?text=IPEA%20Artificial%20Intelligence%20%28AI%29%20Transparency%20Statement&url=https%3A%2F%2Fwww.ipea.gov.au%2Fabout-ipea%2Faccountability%2Fipea-artificial-intelligence-ai-transparency-statement "Share to X")
-- [Email](mailto:?subject=Interesting%20page%20IPEA%20Artificial%20Intelligence%20%28AI%29%20Transparency%20Statement&body=Check%20out%20this%20site%20I%20came%20across%20https%3A%2F%2Fwww.ipea.gov.au%2Fabout-ipea%2Faccountability%2Fipea-artificial-intelligence-ai-transparency-statement "Share via email")
-
-\[Print\](javascript:if(window.print)window.print())
-
 The Independent Parliamentary Expenses Authority (IPEA) is aligned to the [Australian Policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy) and we are committed to keeping our stakeholders informed about our AI initiatives.
 
 **Governance and policy**

@@ -103,6 +103,6 @@ The AFP acknowledges that differences may exist in the use and assurance of AI a
 
 File icon
 
-[Download the AFP AI Transparency Statement](https://www.afp.gov.au/sites/default/files/2025-10/AFP-AI-TransparencyStatement.pdf "Download the Download the AFP AI Transparency Statement document")
+[Download the AFP AI Transparency Statement](https://www.afp.gov.au/sites/default/files/2025-10/AFP-AI-TransparencyStatement.pdf)
 
 (pdf, 451.46 KB)

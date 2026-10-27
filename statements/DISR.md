@@ -16,10 +16,6 @@ Date updated:
 
 25 August 2026
 
-\[\_\_Share this page\](javascript:;)
-
-- [\_\_Email](mailto:?body=https%3A%2F%2Fwww.industry.gov.au%2Fpublications%2Fartificial-intelligence-transparency-statement)
-
 ### Topics
 
 - [Corporate](https://www.industry.gov.au/publications?pub-topic=2906)

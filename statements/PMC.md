@@ -5,8 +5,6 @@ source_url: https://www.pmc.gov.au/about-us/accountability-and-reporting/corpora
 title: Artificial intelligence transparency statement | PM&C
 ---
 
-[ Listen ](https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=7448&lang=en_au&readid=block-pearly-content&url=https%3A//www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-transparency-statement "Listen to this page using ReadSpeaker")
-
 The Department of the Prime Minister and Cabinet (PM&C) recognises the potential of artificial intelligence (AI) to enhance efficiency, improve decision-making, and service delivery. In adopting AI technologies, PM&C is committed to upholding the highest **transparency, risk management, and governance** standards to ensure responsible and ethical use.
 
 ## Our approach to AI transparency

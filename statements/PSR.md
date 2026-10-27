@@ -46,4 +46,4 @@ This transparency statement was last updated in February 2026. It will be update
 
 For further information about this statement or PSR’s usage of AI, please [contact us](https://www.psr.gov.au/contact).
 
-[Download PSR AI Transparency Statement 2026](https://www.psr.gov.au/sites/default/files/2026-03/PSR%20AI%20Transparency%20Statement%202026.pdf "PSR AI Transparency Statement 2026.pdf") - 182.81 KB
+[Download PSR AI Transparency Statement 2026](https://www.psr.gov.au/sites/default/files/2026-03/PSR%20AI%20Transparency%20Statement%202026.pdf) - 182.81 KB
