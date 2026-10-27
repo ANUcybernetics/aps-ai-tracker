@@ -1253,6 +1253,53 @@ def test_clean_markdown_strips_share_widgets():
     assert clean_markdown(prose) == prose
 
 
+def test_remove_boilerplate_strips_page_tool_links():
+    """Addressless share mailtos, ReadSpeaker players and javascript: toggles go
+    (with the list item they leave empty); a real mailto stays."""
+    html = """
+    <html><body><main>
+        <a href="https://app-oc.readspeaker.com/cgi-bin/rsent?customerid=1">Listen</a>
+        <ul>
+            <li><a href="mailto:?subject=Interesting page">Email</a></li>
+            <li><a href="javascript:if(window.print)window.print()">Print</a></li>
+        </ul>
+        <p>Contact <a href="mailto:ai@agency.gov.au">ai@agency.gov.au</a>.</p>
+    </main></body></html>
+    """
+    content = extract_main_content(BeautifulSoup(html, "lxml"))
+
+    assert clean_html_to_markdown(content, "https://agency.gov.au").strip() == (
+        "Contact [ai@agency.gov.au](mailto:ai@agency.gov.au)."
+    )
+
+
+def test_remove_boilerplate_decodes_email_encoder_address():
+    """WordPress Email Encoder's ROT13 data-enc-email decodes to the address
+    (markup as AFA serves it)."""
+    html = """
+    <html><body><main><p><a class="mail-link"
+        data-enc-email="urycqrfx[at]ntevshgherf.pbz.nh" href="javascript:;"><span
+        id="eeb-1"></span><noscript>*protected email*</noscript></a></p>
+    </main></body></html>
+    """
+    content = extract_main_content(BeautifulSoup(html, "lxml"))
+
+    assert "helpdesk@agrifutures.com.au" in content
+    assert "protected" not in content
+
+
+def test_clean_markdown_strips_link_titles():
+    """Link tooltips go, but only after the share/print line filter has used them."""
+    text = (
+        'See the [OECD definition](https://www.oecd.org/en.html "(opens in a new window)").\n\n'
+        '[Print](https://www.abs.gov.au/statement/print "Print this page.")\n\n'
+        "- [X](https://x.com/intent/post?text=x)\n"
+    )
+    assert clean_markdown(text) == (
+        "See the [OECD definition](https://www.oecd.org/en.html)."
+    )
+
+
 def test_clean_markdown_strips_invisible_characters():
     """Zero-width spaces and soft hyphens render as nothing but differ between
     capture routes, so they are removed (ACIAR regression). Emoji joiners stay."""

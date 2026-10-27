@@ -1,6 +1,7 @@
 """Core scraping functionality for AI transparency statements."""
 
 import asyncio
+import codecs
 import contextlib
 import hashlib
 import json
@@ -279,7 +280,7 @@ _TRAILING_BOILERPLATE_RE = re.compile(
     r"(?mi)^.*(?:did you find this (?:helpful|useful)\??|rate your experience|"
     r"share (?:this|on|to|via)\b.*(?:facebook|twitter|linkedin)|"
     r"print this page|email this page|"
-    r"facebook\.com/(?:sharer|share\.php)|(?:twitter|x)\.com/intent/tweet|"
+    r"facebook\.com/(?:sharer|share\.php)|(?:twitter|x)\.com/intent/(?:tweet|post)|"
     r"linkedin\.com/(?:sharing/share-offsite|shareArticle)|"
     r"\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?\s*\[?\s*(?:facebook|twitter|linkedin|email)\s*\]?).*$\n?",
 )
@@ -298,6 +299,12 @@ _LINK_AFFIX_RE = re.compile(
     r"\(link is external\))",
     re.IGNORECASE,
 )
+
+# A link's tooltip title (html2text's `[label](url "title")`). Often injected by
+# script (Drupal's extlink adds "(opens in a new window)"), so a browser fetch and
+# an httpx fetch of the same page disagree on it. Stripped after
+# _TRAILING_BOILERPLATE_RE, which keys on some of them ("Print this page").
+_LINK_TITLE_RE = re.compile(r'(\]\([^\s)]+) "[^"\n]*"\)')
 
 # Invisible characters a CMS sprinkles through prose for line-breaking control
 # (zero-width space, soft hyphen, stray BOM). They render as nothing, so they are
@@ -368,6 +375,7 @@ def clean_markdown(text: str) -> str:
     text = _LAST_REVIEWED_RE.sub("", text)
     text = _TRAILING_BOILERPLATE_RE.sub("", text)
     text = _SHARE_LABEL_RE.sub("", text)
+    text = _LINK_TITLE_RE.sub(r"\1)", text)
     text = _LINK_AFFIX_RE.sub("", text)
     text = _OFFICIAL_MARKER_RE.sub("", text)
     text = _ALSO_INTERESTED_RE.sub("", text)
@@ -460,6 +468,9 @@ def decode_cf_email(cfemail: str) -> str | None:
     return email if "@" in email else None
 
 
+_TOOL_LINK = re.compile(r"^\s*(mailto:\?|javascript:)|readspeaker\.com", re.IGNORECASE)
+
+
 def remove_boilerplate(element: Tag) -> None:
     """Remove common boilerplate elements from HTML."""
     boilerplate_selectors = [
@@ -539,6 +550,21 @@ def remove_boilerplate(element: Tag) -> None:
         marked.replace_with(email or marked.get_text())
     for link in element.find_all("a", href=re.compile(r"cdn-cgi/l/email-protection")):
         link.replace_with(link.get_text())
+    # WordPress's Email Encoder hides the address ROT13-encoded, "@" as "[at]",
+    # in data-enc-email and writes it back with a script (AFA).
+    for link in element.select("a[data-enc-email]"):
+        encoded = str(link.get("data-enc-email", "")).replace("[at]", "@")
+        link.replace_with(codecs.decode(encoded, "rot13"))
+
+    # Page-tool links the markdown line filters can't see: addressless share
+    # mailtos, ReadSpeaker "Listen" players and javascript: print/menu toggles.
+    # Their wrappers differ on every CMS but their targets don't. A list item
+    # left empty goes too, or it renders as a bare "-".
+    for link in element.find_all("a", href=_TOOL_LINK):
+        item = link.find_parent("li")
+        link.decompose()
+        if item and not item.get_text(strip=True):
+            item.decompose()
 
 
 # SharePoint "page schema" pages (Home Affairs) ship the statement body as JSON
