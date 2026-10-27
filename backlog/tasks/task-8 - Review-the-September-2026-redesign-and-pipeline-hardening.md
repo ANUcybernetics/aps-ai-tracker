@@ -3,8 +3,8 @@ id: TASK-8
 title: Review the September 2026 redesign and pipeline hardening
 status: In Progress
 assignee: []
-created_date: '2026-09-23 09:30'
-updated_date: '2026-09-23 10:15'
+created_date: 2026-09-23 09:30
+updated_date: '2026-10-27T06:16:00Z'
 labels:
   - review
   - site
@@ -44,7 +44,7 @@ Known loose ends to check:
 - [x] #4 Non-AI page content being classed as a substantive change (the IGIS case) is either fixed or recorded as a known limitation on /reading
 - [x] #5 The dropped-commitment lists on /policy and the timeline have been spot-checked for reworded commitments shown as dropped, with the finding either fixed or explained on /reading
 - [x] #6 The timeline and agencies filters give correct results for each starter question and each agency question, on desktop and at phone width
-- [ ] #7 At least one nightly run has completed with the new cron steps, the captures cache is committed, and any rejected-capture todos are sensible
+- [x] #7 At least one nightly run has completed with the new cron steps, the captures cache is committed, and any rejected-capture todos are sensible
 - [x] #8 ACCC is either fetching again or marked manual = true with a manual_reason
 - [ ] #9 The first news post has been edited and published (draft: false), and its Bluesky announcement has gone out once
 <!-- AC:END -->
@@ -53,4 +53,6 @@ Known loose ends to check:
 
 <!-- SECTION:NOTES:BEGIN -->
 Reviewed 23 Sep 2026 with parallel agents. #1: two copy reviews; four untrue claims fixed (bfcf1c9). #2: 26 verdicts checked, all correct. #3: Opus 5.5 legislation flips mostly wrong (field wording asked for certification); prompt fixed and history re-read (mandatory all-eight 43 -> 53); a stated publication date now counts as last-updated. #4: IGIS, NCC, NEMA narrowed with selectors; past false events (IGIS 28 Aug + 17 Sep, NCC 6 Aug, the Aug ones already posted to Bluesky) remain. #5: no safe deterministic rule; explained on /reading. #6: all counts match; phone overflow on /agencies fixed. #8: ACCC manual. Open: #7 needs the 24 Sep nightly run; #9 needs Ben to approve publishing.
+
+#7: nightly runs since 24 Sep commit .cache/captures.json; rejected-capture todos are sensible (e.g. NHMRC sitewide-alert capture, 27 Oct, fixed in 1c55c46).
 <!-- SECTION:NOTES:END -->
