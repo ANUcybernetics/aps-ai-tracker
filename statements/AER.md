@@ -20,7 +20,7 @@ In considering AI, we have adopted the definition of AI used in the [Policy for 
 
 Our people will remain responsible for all oversight of tasks and decision making. When engaging with or using AI, we will meet our commitments to the public, businesses, government and the courts, including with respect to security, privacy, confidentiality, ethics and other legal obligations. We make risk-based decisions on its use.
 
-## How we are using AI
+### How we are using AI
 
 We're considering AI in line with common Australian Government AI usage patterns and domains. See the [classification system for AI use](https://www.digital.gov.au/policy/ai/resources/use-classification) for more information.
 
@@ -95,4 +95,4 @@ For questions about this statement or for further information on our use of AI, 
 
 Updated
 
-27 July 2026
+28 October 2026

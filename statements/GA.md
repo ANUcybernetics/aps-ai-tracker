@@ -1,7 +1,7 @@
 ---
 abbr: GA
 agency: Geoscience Australia
-last_updated_text: 15 May 2026
+last_updated_text: 28 October 2026
 source_url: https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement
 title: AI transparency statement | Geoscience Australia
 ---
@@ -41,9 +41,9 @@ Our aim is to utilise AI services in accordance with applicable legislation, reg
 
 ### Key roles
 
-In alignment with the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), the Chief Information Officer ([CIO](https://www.ga.gov.au/about/organisational-structure)) is our designated Accountable Official.
+In alignment with the [policy for the responsible use of AI in government](https://www.digital.gov.au/policy/ai/policy), the Chief Information and Transformation Officer ([CITO](https://www.ga.gov.au/about/organisational-structure)) is our designated AI Accountable Official (AIAO).
 
-A Chief AI Officer (CAIO) will be appointed by July 2026. As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025#:~:text=The%20plan%20provides%20the%20platform,Officers%20working%20to%20promote%20adoption.), the CAIO will lead our AI transformation.
+Our Chief AI Officer (CAIO) is our [CEO, Melissa Harris](https://www.ga.gov.au/about/organisational-structure). As part of the [AI Plan for the Australian Public Service 2025](https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025), the CAIO leads our AI transformation.
 
 ### Authoritative source, individual responsibility and monitoring
 
