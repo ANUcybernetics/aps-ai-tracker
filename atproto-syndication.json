@@ -166,6 +166,11 @@
   "AFP-20260607T062539Z": {
     "seeded": true
   },
+  "AFP-20261028T160319Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3myx4vqwcko24",
+    "cid": "bafyreic2d7tvyqkiybiawb2ja5zm7clsncjwennsqktytyzwdts6dqw6ci",
+    "syndicatedAt": "2026-10-28T16:04:23.209Z"
+  },
   "AFSA-20251111T061258Z": {
     "seeded": true
   },
@@ -959,6 +964,11 @@
   },
   "GA-20260515T100204Z": {
     "seeded": true
+  },
+  "GA-20261028T160319Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3myx4vrag552c",
+    "cid": "bafyreidgiqfd4lftvk5dmazglau6d2gjkhc7d4lzqgkyp5ozd2e75m5id4",
+    "syndicatedAt": "2026-10-28T16:04:23.539Z"
   },
   "GBRMPA-20251111T061258Z": {
     "seeded": true
