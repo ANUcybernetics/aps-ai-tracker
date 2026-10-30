@@ -20,8 +20,8 @@ This is a Python web scraping project using uv for dependency management.
   `mise exec -- uv run process`
 - Show collection status (statements vs agencies): `mise exec -- uv run status`
 - List manual agencies overdue for a hand-check:
-  `mise exec -- uv run stale-manual` (the nightly run turns each line into an nb
-  todo)
+  `mise exec -- uv run stale-manual` (the nightly run turns each line into a wiz
+  task)
 - Ask whether the browser fetch can reach a blocked site:
   `mise exec -- uv run browser-probe [ABBR...]` (defaults to every manual
   agency; reports only, writes nothing)
@@ -77,7 +77,7 @@ This is a Python web scraping project using uv for dependency management.
     body hash in `.cache/captures.json`) and say whether it is the statement at
     all. The export drops block pages, hub pages, partial captures and other
     documents like a quarantine unless `[[confirmed]]`; a rejected newest
-    capture becomes an nb todo in the nightly run, with the statement link when
+    capture becomes a wiz task in the nightly run, with the statement link when
     the page was a hub
   - `changes.py` classifies every consecutive revision pair from its diff:
     deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
@@ -213,7 +213,7 @@ user unit on weddle. It scrapes (`/scrape` on Sonnet via
 `~/.dotfiles/bin/agent-run --profile claude-sub`, which guarantees the
 subscription route), refreshes the extraction caches (`export`), syncs the
 corpus to atproto (see above), `git push`es so the Pages site redeploys, raises
-an nb todo per overdue manual agency, and on Mondays probes PM&C's challenge for
+a wiz task per overdue manual agency, and on Mondays probes PM&C's challenge for
 evidence (`browser-probe`, log-only --- weekly because Imperva blocks the host
 IP once it has seen a few visits). weddle pushes to `origin` (credentials
 confirmed working) and reads `OPENAI_API_KEY` from its global
