@@ -267,8 +267,8 @@ against `agencies.toml` **both ways**:
 
 ### Source B --- targeted per-agency web search
 
-For every agency still `url = ""` after the register pass, search the open web
---- it catches statements the register omits or links indirectly. Launch
+For every agency still `url = ""` after the register pass, search the open
+web --- it catches statements the register omits or links indirectly. Launch
 subagents in parallel (batches of 5--6) with the Agent tool, each with
 `model: "sonnet"` (Sonnet 5) --- targeted web search has a strict output shape,
 so it doesn't need a stronger model. Each subagent should:
