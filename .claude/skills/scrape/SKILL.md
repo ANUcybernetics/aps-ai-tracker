@@ -282,6 +282,9 @@ so it doesn't need a stronger model. Each subagent should:
 - WebFetch any plausible hit to confirm it's an actual transparency statement
   (not a general AI-policy page), then return the verified URL or "not found".
 
+While a batch runs, say so in one line ("6 agency searches running") before
+waiting: a turn that waits with no text trips the harness's no-output nudge.
+
 ### Source C --- the PGPA entity list (who exists at all)
 
 Sources A and B only find bodies someone already knows about. To catch an entity
