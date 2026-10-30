@@ -87,23 +87,26 @@ git push >> "$LOG_FILE" 2>&1 || failed push
 
 # Manual agencies sit behind a bot challenge no HTTP client can pass, so a
 # person opening the page is the only thing that catches a change in them.
-# `stale-manual` lists the ones due (see verify.py); each becomes an nb todo,
-# keyed by abbr so a still-open todo is never raised twice. This is the one
-# step that reaches outside the repo, which is why it lives here rather than
-# in the package: the tracker shouldn't know about Ben's notebook.
+# `stale-manual` lists the ones due (see verify.py); each becomes a task in
+# Ben's wiz vault, keyed by abbr in its title so a still-open one is never
+# raised twice. This is the one step that reaches outside the repo, which is
+# why it lives here rather than in the package: the tracker shouldn't know
+# about Ben's notebook. `wiz add` leaves the write for the vault's scheduled
+# sync to commit.
 echo "=== manual-check todos at $(date -Iseconds) ===" >> "$LOG_FILE"
-open_todos=$(nb todos open --no-color 2>/dev/null || true)
+open_todos=$(wiz query ben 'type == "task" && status == "open"' 2>/dev/null || true)
 if overdue=$(uv run stale-manual 2>> "$LOG_FILE"); then
   while IFS=$'\t' read -r abbr name url; do
     [ -n "$abbr" ] || continue
     key="aps-ai-tracker:${abbr}"
     case "$open_todos" in
-      *"$key"*)
+      *"${key} "*)
         echo "todo already open for ${abbr}" >> "$LOG_FILE"
         continue
         ;;
     esac
-    nb todo add "${key} hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml" \
+    echo "Hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml." \
+      | wiz add ben task -title "${key} hand-check ${name}" -set status=open \
       >> "$LOG_FILE" 2>&1 || failed "todo add (${abbr})"
   done <<< "$overdue"
 else
@@ -115,13 +118,14 @@ fi
 # fix the URL or confirm the capture. The export's warning names the agency and,
 # for a hub page, the statement link it found. One todo per agency, as above.
 echo "=== rejected-capture todos at $(date -Iseconds) ===" >> "$LOG_FILE"
-open_todos=$(nb todos open --no-color 2>/dev/null || true)
+open_todos=$(wiz query ben 'type == "task" && status == "open"' 2>/dev/null || true)
 while IFS= read -r line; do
   abbr=${line%% *}
   key="aps-ai-tracker:capture:${abbr}"
-  case "$open_todos" in *"$key"*) continue ;; esac
-  nb todo add "${key} ${line%% Held back*}" >> "$LOG_FILE" 2>&1 \
-    || failed "todo add (capture ${abbr})"
+  case "$open_todos" in *"${key} "*) continue ;; esac
+  echo "${line%% Held back*}" \
+    | wiz add ben task -title "${key} capture is not the statement" -set status=open \
+    >> "$LOG_FILE" 2>&1 || failed "todo add (capture ${abbr})"
 done < <(grep -oP 'WARNING - \K\S+ \(captured [^)]*\) is not the statement: .*' "$LOG_FILE" \
   | sort -u -k1,1)
 
