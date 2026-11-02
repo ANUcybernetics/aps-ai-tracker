@@ -10,7 +10,7 @@ title: Artificial intelligence transparency statement | Fair Work Commission
 
 Introduction
 
-The Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy%20for%20the%20responsible%20use%20of%20AI%20in%20government%20v1.1.pdf) (**DTA Policy**) sets out the Australian Government approach to embrace the opportunities of artificial intelligence (**AI**) and provide for safe and responsible use of AI.
+The Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) (**DTA Policy**) sets out the Australian Government approach to embrace the opportunities of artificial intelligence (**AI**) and provide for safe and responsible use of AI.
 
 Content
 

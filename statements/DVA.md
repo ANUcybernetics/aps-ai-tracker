@@ -60,7 +60,7 @@ DVA is committed to transparent engagement with the veteran community about how 
 - Deputy Commissioner mailing lists (State Ex Service Organisations (ESOs) and fee-for-service advocates)
 - National Consultation Framework (National ESOs) comprising
   - Ex-Service Organisation Round Table (ESORT)
-  - Female Veterans and Veterans’ Families Policy Forum
+  - Female Veterans and Veterans’ Families Policy Forums
   - National Aged and Community Care Forum (NACCF)
   - Operational Working Party (OWP)
   - Younger Veterans - Contemporary Needs Forum (YVF).

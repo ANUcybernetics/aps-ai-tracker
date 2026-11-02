@@ -99,7 +99,7 @@ The following table outlines the requirements of version 2.0 of the AI in govern
 
 We will regularly review and update our AI policies and practices as part of our ongoing commitment to the responsible use of AI. This includes staying informed about new developments in AI technology, ethics and regulatory requirements. We will strive to improve the transparency, fairness and effectiveness of our use of AI systems through continuous learning and adaptation.
 
-If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us/form).
+If you have questions, concerns or would like more information about how AUSTRAC uses AI, [contact us](https://www.austrac.gov.au/contact-us).
 
 This guidance sets out how we interpret certain Australian legislation, along with associated Rules and regulations. Australian courts are ultimately responsible for interpreting these laws and determining if any provisions of these laws are contravened.
 
