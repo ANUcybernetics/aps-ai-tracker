@@ -37,6 +37,7 @@ export = ["anthropic>=1.2.0", "pydantic>=2.13.4"]
 
 [tool.pytest.ini_options]
 addopts = "-n auto -m 'not might_fail'"
+testpaths = ["tests"]
 markers = [
   "might_fail: marks tests that may fail due to missing URLs or external issues (deselected by default)",
 ]
