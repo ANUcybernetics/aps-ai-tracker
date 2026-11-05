@@ -4,101 +4,48 @@ This is a Python web scraping project using uv for dependency management.
 
 ## Key context
 
-- Uses `uv` for package management with proper package structure
-- Project has `mise.toml`---prefix commands with `mise exec --`
-- Scrapes Australian Government AI transparency statements from agency websites
-- Converts HTML/PDF to markdown with YAML frontmatter
-- Tracks changes via git commits (designed for cron jobs)
-- Dependencies defined in `pyproject.toml`: httpx, beautifulsoup4, html2text,
-  lxml, mdformat, pypdf, pyyaml
+Scrapes Australian Government AI transparency statements from agency websites,
+converts them to markdown with YAML frontmatter under `statements/`, and tracks
+changes through git commits (designed for cron). `export` turns the corpus and
+its history into JSON for the Astro site in `site/`. Prefix commands with
+`mise exec --`.
 
-## Working on this project
+## Python
 
-- Run scraper: `mise exec -- uv run --module aps_ai_tracker` (or the `scrape`
-  entry point: `mise exec -- uv run scrape`)
-- Reprocess cached `raw/` files into statements without refetching:
-  `mise exec -- uv run process`
-- Show collection status (statements vs agencies): `mise exec -- uv run status`
-- List manual agencies overdue for a hand-check:
-  `mise exec -- uv run stale-manual` (the nightly run turns each line into a wiz
-  task)
-- Ask whether the browser fetch can reach a blocked site:
-  `mise exec -- uv run browser-probe [ABBR...]` (defaults to every manual
-  agency; reports only, writes nothing)
-- Export site data (JSON for the Astro site):
-  `mise exec -- uv run --group export export` (needs the `export` dependency
-  group: pydantic + anthropic). Revision pairs and statement bodies not already
-  in `.cache/changes.json` / `.cache/profiles.json` are sent to Claude (Opus 5.5
-  by default; `APS_LLM_MODEL` overrides). The default backend shells out to
-  `claude -p --json-schema` under the logged-in Claude Code subscription, with
-  `ANTHROPIC_*` scrubbed from the child environment because Claude Code prefers
-  an API key over the login; `APS_LLM_BACKEND=api` uses the SDK with an
+- Entry points are the `[project.scripts]` in `pyproject.toml`: `scrape`
+  (also `uv run --module aps_ai_tracker`), `process` (reprocess cached `raw/`
+  without fetching), `status`, `stale-manual` (manual agencies overdue for a
+  hand-check; the nightly run turns each line into a wiz task), `browser-probe
+  [ABBR...]` (reports only, writes nothing), `export`.
+- Each module's docstring says what it does; read it before changing the module
+  (`export`, `changes`, `profiles`, `capture_check`, `adoption`, `llm`,
+  `probe`). Bump a module's `SCHEMA_VERSION` after changing its prompt or
+  schema; stale cache entries are ignored and pruned.
+- `export` needs the `export` dependency group: `uv run --group export export`.
+  Revision pairs and bodies not already in `.cache/changes.json` /
+  `.cache/profiles.json` go to Claude (`APS_LLM_MODEL` overrides the model). The
+  default backend shells out to `claude -p` under the logged-in subscription,
+  with `ANTHROPIC_*` scrubbed from the child environment because Claude Code
+  prefers an API key over the login; `APS_LLM_BACKEND=api` uses the SDK with an
   `ANTHROPIC_API_KEY` you pass explicitly for that run. **Never put an
   `ANTHROPIC_API_KEY` in this project's mise env**: every `claude` started in
   the repo, including the nightly `/scrape`, would silently bill it. With no
-  backend the export degrades to the caches (unclassified pairs fall back to the
-  commit-message noise heuristic; unprofiled bodies get `profile: null`)
-- Run tests: `mise exec -- uv run python -m pytest` (the `uv run pytest`
-  console-script form does not resolve; invoke pytest as a module). Scraper
-  tests live in `test_scraper.py`, exporter tests in `test_export.py`; run the
-  latter, plus `test_changes.py` and `test_profiles.py`, with `--group export`
-  so pydantic is present.
-- Typecheck: `mise exec -- uv run --group export ty check` (the export group so
-  the pydantic/anthropic imports resolve). ty is pinned exactly in the `dev`
-  group, which CI uses too; bump it there deliberately after a clean local run
-- Add agencies by editing `agencies.toml`
-- Output goes to `statements/` directory
-- Package structure:
-  - `src/aps_ai_tracker/` contains the package
-  - `scraper.py` has core functionality
-  - `__main__.py` provides CLI entry point (the `scrape` command)
-  - `process.py` reprocesses cached `raw/` files into statements without
-    fetching
-  - `status.py` reports collection status
-  - `verify.py` lists manual agencies overdue for a hand-check (the
-    `stale-manual` command)
-  - `probe.py` reports whether the browser fetch clears a manual agency's
-    challenge (the `browser-probe` command); the scheduled run probes PM&C on
-    Mondays and logs the line, so promoting it to `browser = true` rests on a
-    run of results rather than one night
-  - `export.py` turns the corpus + git history into JSON for the site (timeline
-    with revert collapse, lexical passage propagation, originality scores,
-    concept adoption, statement currency). Before anything reads a revision it
-    applies `captures.toml`: `[[quarantine]]` entries (abbr + sha prefix) are
-    failed captures dropped from history outright; a **newest** capture that
-    shrank past `CONTENT_SHRINKAGE_THRESHOLD` is held off the site (the doc
-    shows the last good body with `latestCaptureSuspect`) until listed under
-    `[[confirmed]]` or the scraper is fixed --- the export log names it every
-    run. Commit messages are never consulted (a scrape commit describes the
-    whole batch, not one file). Never "fix" a false change by editing the cache;
-    quarantine the capture, accepting that a genuine change in a quarantined
-    capture is then observed at the next good one
-  - `capture_check.py` has Claude read each capture once (cached by agency +
-    body hash in `.cache/captures.json`) and say whether it is the statement at
-    all. The export drops block pages, hub pages, partial captures and other
-    documents like a quarantine unless `[[confirmed]]`; a rejected newest
-    capture becomes a wiz task in the nightly run, with the statement link when
-    the page was a hub
-  - `changes.py` classifies every consecutive revision pair from its diff:
-    deterministic rules for formatting/link/chrome/date-stamp/reorder churn,
-    Claude for the rest (kind + one-sentence summary + noteworthy points);
-    cached by body-hash pair in `.cache/changes.json`
-  - `profiles.py` reads each readable revision into a closed-vocabulary
-    `Profile` (pydantic) whose questions come from the DTA Standard's minimum
-    content, the policy v2.0 mandatory requirements and the APS AI Plan (the
-    Chief AI Officer is the Plan's, **not** the policy's --- `FIELD_SOURCE`
-    records each field's instrument and the site shows it), diffs consecutive
-    profiles into labelled deltas, and derives the Standard report card and
-    concept flags; cached by body hash in `.cache/profiles.json`, each entry
-    recording the model (`Reading.model`) so the site can say who read it. The
-    page's own last-updated date is not the model's job: the scraper captures it
-    into frontmatter as `last_updated_text` before stripping the stamp, and
-    `adoption.parse_stated_date` normalises it
-  - `adoption.py` builds the monthly concept-adoption series and per-statement
-    currency (updated since policy v2.0, annual review overdue)
-  - `llm.py` is the shared structured-extraction layer (backend selection,
-    caches, concurrency). Bump a module's `SCHEMA_VERSION` after changing its
-    prompt or schema; stale cache entries are ignored and pruned
+  backend the export degrades to the caches.
+- Bad captures are handled in `captures.toml` (its header explains
+  `[[quarantine]]` and `[[confirmed]]`). Commit messages are never consulted
+  (a scrape commit describes a whole batch). Never "fix" a false change by
+  editing a cache; quarantine the capture.
+- The profile questions come from the DTA Standard, policy v2.0 and the APS AI
+  Plan; the Chief AI Officer is the Plan's, **not** the policy's
+  (`FIELD_SOURCES` in `profiles.py`). Vocabulary labels live in
+  `site/src/lib/profile-labels.ts`; keep them in step with `profiles.py`.
+- Tests: `uv run --group export python -m pytest` (the `uv run pytest` form
+  does not resolve). They live in `tests/`; the exporter tests need the
+  `export` group for pydantic.
+- Typecheck: `uv run --group export ty check` (ty is pinned exactly in the
+  `dev` group, which CI uses too; bump it deliberately after a clean local run).
+- Also `uv run ruff check` and `uv run ruff format --check`.
+- stdlib `logging` is used deliberately; `print` is for CLI output only.
 
 ## Static site (`site/`)
 
@@ -113,34 +60,29 @@ datasets at `/data/` (statements as CSV and JSON, timeline, adoption — static
 endpoints in `src/pages/data/` flattening the generated JSON via
 `src/lib/dataset.ts`, each stamped with provenance and the extraction
 `schemaVersions` from `meta.json`). Toolchain mirrors the benswift-me repo:
-pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 26. The site is
+pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint. The site is
 light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
 
 - News about the tracker itself lives in `site/src/content/news/*.md`, with flat
   frontmatter (title, date, summary, draft). A `draft: true` post never builds
   and is never announced; the News nav item appears once one post is published.
 - Dev: `cd site && mise exec -- pnpm dev`
-- Build/lint/format/typecheck/test:
+- Build/lint/format/typecheck/test (and `lint:css`, `format:check`):
   `mise exec -- pnpm run {build,lint,format,typecheck,test}`
 - Site unit tests use Vitest (`pnpm run test`); pure-TS helpers under `src/lib/`
-  (e.g. `markdown.ts`) carry `*.test.ts` files. The exporter still uses pytest.
+  (e.g. `markdown.ts`) carry `*.test.ts` files.
 - The exporter writes gitignored JSON into `site/src/generated/`; only the
   `.cache/*.json` extraction caches are committed. Run `export` before building
-  the site locally. Vocabulary labels for the profile fields live in
-  `src/lib/profile-labels.ts`; keep them in step with `profiles.py`.
+  the site locally.
 - **Deploy**: live at <https://apsaitracker.app/> (apex custom domain; the
-  `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it, and
-  the old `aps-ai-transparency-tracker` repo is a redirect stub for pre-rename
-  links). The domain is pinned by `site/public/CNAME` **and** the Pages config
+  `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it). The domain is pinned by `site/public/CNAME` **and** the Pages config
   `cname` (both needed: workflow deploys don't adopt the artifact CNAME on their
   own). `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
   push to `main` (doc/ops-only pushes are skipped via `paths-ignore`). CI is
   also the only place the Python tests and `ty` typecheck run automatically,
   ahead of the export step. CI runs `export` **without** any model access (it
-  reuses the committed extraction caches), so no GitHub secret is needed. Pages
-  is already configured (Settings → Pages → Source: GitHub Actions); only re-set
-  that if it's ever reset. It serves from the domain root, so all internal links
-  still go through `withBase()` in `site/src/lib/paths.ts`.
+  reuses the committed extraction caches), so no GitHub secret is needed. All
+  internal links go through `withBase()` in `site/src/lib/paths.ts`.
 - **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape, which classifies the day's new revision pairs and profiles
   the changed bodies through `claude -p` (Opus 5.5, subscription), commits the
@@ -215,9 +157,7 @@ subscription route), refreshes the extraction caches (`export`), syncs the
 corpus to atproto (see above), `git push`es so the Pages site redeploys, raises
 a wiz task per overdue manual agency, and on Mondays probes PM&C's challenge for
 evidence (`browser-probe`, log-only --- weekly because Imperva blocks the host
-IP once it has seen a few visits). weddle pushes to `origin` (credentials
-confirmed working) and reads `OPENAI_API_KEY` from its global
-`~/.config/mise/config.local.toml`. Canonical unit files live in `ops/systemd/`.
+IP once it has seen a few visits). Canonical unit files live in `ops/systemd/`.
 Install with:
 
 ```sh
@@ -281,11 +221,3 @@ after 60 days) — the script redirects nearly all of its output there, so
 
 [pgpa]:
   https://www.finance.gov.au/government/managing-commonwealth-resources/structure-australian-government-public-sector/pgpa-act-flipchart-and-list
-
-## Code patterns
-
-- Uses `dataclass` for data classes (Agency)
-- Type hints throughout
-- Returns dicts with explicit `str | int | None` types
-- Handles both HTML and PDF sources
-- Follows structured logging with stdlib `logging`
