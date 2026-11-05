@@ -60,6 +60,11 @@ jobs:
       # Through the project env with the export group, so the pydantic/anthropic
       # imports in the analysis modules resolve (bare `uvx ty` sees no project
       # packages). ty is pinned in the dev group, so this matches a local run.
+      - name: Python lint
+        run: |
+          uv run --group export ruff check
+          uv run --group export ruff format --check
+
       - name: Python typecheck
         run: uv run --group export ty check
 
