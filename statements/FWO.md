@@ -1,8 +1,9 @@
 ---
 abbr: FWO
 agency: Fair Work Ombudsman
-raw_hash: 8055883beb6cc789c243ad0173c0963f87f3882ebc04f5ffd6aa0ff192a521aa
-cleaned_hash: 8055883beb6cc789c243ad0173c0963f87f3882ebc04f5ffd6aa0ff192a521aa
+last_updated_text: 24 August 2026
+raw_hash: 342cecb89c5df89d62d624114905f9a82347f858522362712b181e39f36333a8
+cleaned_hash: 342cecb89c5df89d62d624114905f9a82347f858522362712b181e39f36333a8
 source_url: https://www.fairwork.gov.au/sites/default/files/2025-02/fwo-ai-transparency-statement.pdf
 title: Fair Work Ombudsman AI Transparency Statement
 ---
