@@ -44,7 +44,7 @@ jobs:
       - name: Set up uv
         # Full version pin: setup-uv stopped publishing floating major tags
         # after v7, so @v10 fails to resolve at job setup.
-        uses: astral-sh/setup-uv@v10.0.1
+        uses: astral-sh/setup-uv@v10.3.3
         with:
           python-version: "3.14"
 
@@ -70,7 +70,7 @@ jobs:
       # single-source setup the sibling benswift-me repo uses — no version pinned
       # here or in package.json.
       - name: Setup mise (node + pnpm)
-        uses: jdx/mise-action@v4
+        uses: jdx/mise-action@v5
 
       - name: Locate pnpm store
         shell: bash
@@ -83,6 +83,14 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Astro build artefacts
+        uses: actions/cache@v6
+        with:
+          path: site/node_modules/.astro
+          key: ${{ runner.os }}-astro-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
 
       - name: Set up Pages
         uses: actions/configure-pages@v6
@@ -97,6 +105,10 @@ jobs:
 
       - name: Lint CSS
         run: pnpm run lint:css
+        working-directory: site
+
+      - name: Format check
+        run: pnpm run format:check
         working-directory: site
 
       - name: Typecheck

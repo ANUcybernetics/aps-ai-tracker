@@ -1,6 +1,6 @@
 [tools]
 # pnpm is the one deliberate "latest" (see the pnpm-version convention in the
 # deploy workflow); everything else is pinned.
-uv = "0.12.6"
+uv = "0.13.7"
 node = "26"
 pnpm = "latest"
