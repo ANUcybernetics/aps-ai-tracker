@@ -191,10 +191,10 @@ describe("record builders", () => {
   });
 });
 
-describe("announcements", () => {
-  const updated = (date: string, over: Partial<RevisionInput> = {}) =>
-    rev({ kind: "updated", changeKind: "substantive", date, ...over });
+const updated = (date: string, over: Partial<RevisionInput> = {}) =>
+  rev({ kind: "updated", changeKind: "substantive", date, ...over });
 
+describe("announcements", () => {
   it("announces only unledgered, substantive revisions", () => {
     const sts = [
       statement({ timeline: [rev(), updated("2026-07-01T10:00:00+10:00")] }),
