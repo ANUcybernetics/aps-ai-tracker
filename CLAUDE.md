@@ -113,7 +113,7 @@ datasets at `/data/` (statements as CSV and JSON, timeline, adoption — static
 endpoints in `src/pages/data/` flattening the generated JSON via
 `src/lib/dataset.ts`, each stamped with provenance and the extraction
 `schemaVersions` from `meta.json`). Toolchain mirrors the benswift-me repo:
-pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 24. The site is
+pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint, node 26. The site is
 light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
 
 - News about the tracker itself lives in `site/src/content/news/*.md`, with flat

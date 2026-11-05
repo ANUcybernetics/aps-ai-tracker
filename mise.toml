@@ -2,5 +2,5 @@
 # pnpm is the one deliberate "latest" (see the pnpm-version convention in the
 # deploy workflow); everything else is pinned.
 uv = "0.12.6"
-node = "24"
+node = "26"
 pnpm = "latest"
