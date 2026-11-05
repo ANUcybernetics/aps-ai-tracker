@@ -37,7 +37,7 @@ def parse_stated_date(text: str | None) -> str | None:
     for fmt in _STATED_FORMATS:
         try:
             # A calendar date on a page has no zone; naive is the honest parse.
-            parsed = datetime.strptime(cleaned, fmt)  # noqa: DTZ007
+            parsed = datetime.strptime(cleaned, fmt)
         except ValueError:
             continue
         return parsed.strftime("%Y-%m-%d" if "%d" in fmt else "%Y-%m")
