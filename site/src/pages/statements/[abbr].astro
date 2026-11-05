@@ -36,8 +36,9 @@ const firstSeen = doc.timeline[0]?.date;
 // changed" is the newest change worth reading (a revision that rewords without
 // changing substance still updates the statement).
 const changes = doc.timeline.filter((t) => changeTier(t.changeKind) === "substance").length;
-const lastUpdated = doc.timeline.findLast((t) => READABLE_TIERS.has(changeTier(t.changeKind)))
-  ?.date;
+const lastUpdated = doc.timeline.findLast((t) =>
+  READABLE_TIERS.has(changeTier(t.changeKind)),
+)?.date;
 
 // For each shared passage, the other agencies that carry it (matched by normKey
 // to a propagation cluster), so a highlighted passage can name its company.
@@ -101,19 +102,19 @@ const atUri = rkey ? documentUri(rkey) : undefined;
       <StatementMeta doc={doc} />
       <p class="muted stmt__dates">
         {firstSeen && <>Tracked since {formatDate(firstSeen)}</>}
-        {" · "}<a href={withBase("/reading#changes")}>{changes} {changes === 1 ? "change" : "changes"} of substance</a> across {doc.timeline.length}{" "}
+        {" · "}<a href={withBase("/reading#changes")}
+          >{changes} {changes === 1 ? "change" : "changes"} of substance</a
+        >
+        across {doc.timeline.length}{" "}
         {doc.timeline.length === 1 ? "version" : "versions"}
         {lastUpdated && <> · last changed {formatDate(lastUpdated)}</>}
       </p>
-      {
-        doc.latestCaptureSuspect && (
-          <p class="stmt__notice">
-            Our latest copy of this page lost most of its text, probably through a scraping
-            failure, so this is the last complete copy.{" "}
-            <a href={doc.finalUrl ?? doc.sourceUrl ?? "#"}>Check the agency&rsquo;s page</a> for the current text.
-          </p>
-        )
-      }
+      {doc.latestCaptureSuspect && <p class="stmt__notice">
+        Our latest copy of this page lost most of its text, probably through a scraping failure, so
+        this is the last complete copy.{" "}
+        <a href={doc.finalUrl ?? doc.sourceUrl ?? "#"}>Check the agency&rsquo;s page</a> for the
+        current text.
+      </p>}
     </header>
 
     <section class="stmt__section" aria-labelledby="story-heading">
@@ -124,22 +125,21 @@ const atUri = rkey ? documentUri(rkey) : undefined;
       <StoryList timeline={doc.timeline} currency={doc.currency} />
     </section>
 
-    {
-      doc.profile && doc.standard && (
-        <section class="stmt__section" aria-labelledby="profile-heading">
-          <div class="section-title">
-            <h2 id="profile-heading">What the statement says</h2>
-            <ReadingLink anchor="profiles" />
-          </div>
-          <ProfileCard
-            profile={doc.profile}
-            standard={doc.standard}
-            currency={doc.currency}
-            model={doc.profileModel}
-          />
-        </section>
-      )
-    }
+    {doc.profile && doc.standard && <section
+      class="stmt__section"
+      aria-labelledby="profile-heading"
+    >
+      <div class="section-title">
+        <h2 id="profile-heading">What the statement says</h2>
+        <ReadingLink anchor="profiles" />
+      </div>
+      <ProfileCard
+        profile={doc.profile}
+        standard={doc.standard}
+        currency={doc.currency}
+        model={doc.profileModel}
+      />
+    </section>}
 
     <div class="stmt__grid">
       <article class="stmt__main" id="statement">
@@ -150,13 +150,9 @@ const atUri = rkey ? documentUri(rkey) : undefined;
           <div class="heat-legend">
             <div class="heat-legend__items" aria-hidden="true">
               <span>Shared with other agencies:</span>
-              {
-                legend.map((l) => (
-                  <span>
-                    <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
-                  </span>
-                ))
-              }
+              {legend.map((l) => <span>
+                <span class="heat-legend__swatch" data-heat={l.heat} /> {l.label}
+              </span>)}
               <span class="heat-legend__sep">
                 <span class="heat-legend__swatch" data-variant="template" /> template wording
               </span>
@@ -165,19 +161,12 @@ const atUri = rkey ? documentUri(rkey) : undefined;
           </div>
           <StatementBody passages={doc.passages} sharedBy={sharedBy} />
         </div>
-        {
-          historical.map((rev) => (
-            <section
-              class="prose rev-body"
-              data-rev-body={rev.anchor}
-              hidden
-              set:html={rev.html}
-            />
-          ))
-        }
+        {historical.map((rev) => (
+          <section class="prose rev-body" data-rev-body={rev.anchor} hidden set:html={rev.html} />
+        ))}
         <p class="muted stmt__attribution">
-          Statement text &copy; {doc.agency}. Most agency content is CC BY 4.0; check the
-          original for its terms.
+          Statement text &copy; {doc.agency}. Most agency content is CC BY 4.0; check the original
+          for its terms.
         </p>
       </article>
 
@@ -195,8 +184,8 @@ const atUri = rkey ? documentUri(rkey) : undefined;
         <h2>Every version</h2>
       </div>
       <p class="section-note">
-        Every copy the daily scrape saved that differed from the one before, including
-        minor edits. Pick a dot to see the statement as it was then.
+        Every copy the daily scrape saved that differed from the one before, including minor edits.
+        Pick a dot to see the statement as it was then.
       </p>
       <RevisionScrubber dots={dots} axisStart={axisStart} firstSeenPct={firstSeenPct} />
       <RevisionList timeline={doc.timeline} />

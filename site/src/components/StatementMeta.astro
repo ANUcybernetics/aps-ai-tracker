@@ -12,13 +12,9 @@ const redirectHost =
 
 <div class="stmt-meta">
   {doc.sourceType === "pdf" && <span class="pill pill--pdf">PDF source</span>}
-  {
-    doc.sourceUrl && (
-      <a href={doc.sourceUrl} rel="nofollow noopener" target="_blank">
-        View the original &nearr;
-      </a>
-    )
-  }
+  {doc.sourceUrl && <a href={doc.sourceUrl} rel="nofollow noopener" target="_blank">
+    View the original &nearr;
+  </a>}
   {redirectHost && <span class="muted">redirects to {redirectHost}</span>}
 </div>
 

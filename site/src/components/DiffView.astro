@@ -17,15 +17,13 @@ const html =
       : wordDiffHtml(props.before, props.after);
 ---
 
-{
-  "lazyKey" in props ? (
-    <div class="diff" data-diff-key={props.lazyKey}>
-      <a href={props.fallbackHref}>See this change on the agency&rsquo;s page</a>
-    </div>
-  ) : (
-    <div class="diff" set:html={html} />
-  )
-}
+{"lazyKey" in props ? (
+  <div class="diff" data-diff-key={props.lazyKey}>
+    <a href={props.fallbackHref}>See this change on the agency&rsquo;s page</a>
+  </div>
+) : (
+  <div class="diff" set:html={html} />
+)}
 
 <style>
   .diff {

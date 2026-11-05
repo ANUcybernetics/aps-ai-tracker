@@ -21,59 +21,51 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
 ---
 
 <div class="revs-wrap">
-  {
-    noiseCount > 0 && (
-      <div class="revs-toggle">
-        <input type="checkbox" id="show-noise-revs" />
-        <label for="show-noise-revs">
-          Show {noiseCount} noise {noiseCount === 1 ? "version" : "versions"} (nothing the
-          agency wrote changed)
-        </label>
-      </div>
-    )
-  }
+  {noiseCount > 0 && <div class="revs-toggle">
+    <input type="checkbox" id="show-noise-revs" />
+    <label for="show-noise-revs">
+      Show {noiseCount} noise {noiseCount === 1 ? "version" : "versions"} (nothing the agency wrote
+      changed)
+    </label>
+  </div>}
   <ol class="revs">
-  {
-    revs.map(({ rev, prev }) => {
+    {revs.map(({ rev, prev }) => {
       const tier = changeTier(rev.changeKind);
-      return (
-        <li
-          class="rev"
-          id={revAnchor(rev.sha)}
-          data-noise={tier === "noise" ? "" : undefined}
-          data-tier={tier}
+      return <li
+        class="rev"
+        id={revAnchor(rev.sha)}
+        data-noise={tier === "noise" ? "" : undefined}
+        data-tier={tier}
+      >
+        <div class="rev__head">
+          <time class="mono muted" datetime={rev.date}>
+            {formatDate(rev.date)}
+          </time>
+          <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
+          <span class="char-delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
+            {signedDelta(rev.charDelta)}
+          </span>
+        </div>
+        {rev.summary && <p class="rev__summary">{rev.summary}</p>}
+        {rev.summary && <ModelNote model={rev.model} />}
+        {prev ? (
+          <details class="rev__diff">
+            <summary>The words that changed</summary>
+            <DiffView before={prev.body} after={rev.body} />
+          </details>
+        ) : (
+          <p class="muted rev__first">First tracked version.</p>
+        )}
+        <a
+          class="rev__sha mono muted"
+          href={`https://github.com/ANUcybernetics/aps-ai-tracker/commit/${rev.sha}`}
+          rel="noopener"
+          aria-label="View this capture's commit on GitHub"
         >
-          <div class="rev__head">
-            <time class="mono muted" datetime={rev.date}>
-              {formatDate(rev.date)}
-            </time>
-            <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
-            <span class="char-delta mono" data-sign={rev.charDelta >= 0 ? "+" : "-"}>
-              {signedDelta(rev.charDelta)}
-            </span>
-          </div>
-          {rev.summary && <p class="rev__summary">{rev.summary}</p>}
-          {rev.summary && <ModelNote model={rev.model} />}
-          {prev ? (
-            <details class="rev__diff">
-              <summary>The words that changed</summary>
-              <DiffView before={prev.body} after={rev.body} />
-            </details>
-          ) : (
-            <p class="muted rev__first">First tracked version.</p>
-          )}
-          <a
-            class="rev__sha mono muted"
-            href={`https://github.com/ANUcybernetics/aps-ai-tracker/commit/${rev.sha}`}
-            rel="noopener"
-            aria-label="View this capture's commit on GitHub"
-          >
-            {rev.sha.slice(0, 7)}
-          </a>
-        </li>
-      );
-    })
-  }
+          {rev.sha.slice(0, 7)}
+        </a>
+      </li>;
+    })}
   </ol>
 </div>
 
@@ -147,7 +139,6 @@ const noiseCount = revs.filter((r) => changeTier(r.rev.changeKind) === "noise").
   .rev__diff {
     margin-block-start: var(--space-2);
   }
-
 
   .rev__sha {
     position: absolute;

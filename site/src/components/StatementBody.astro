@@ -90,39 +90,27 @@ while (i < passages.length) {
 ---
 
 <div class="statement-body prose">
-  {
-    blocks.map((b) => {
-      if (b.kind === "list") {
-        return (
-          <ul>
-            {b.items.map((it) => (
-              <li {...heatAttrs(it)}>
-                <PassageText {...it} />
-              </li>
-            ))}
-          </ul>
-        );
-      }
-      if (b.kind === "heading") {
-        const Tag = `h${b.level}` as "h2";
-        return (
-          <Tag {...heatAttrs(b)}>
-            <PassageText {...b} />
-          </Tag>
-        );
-      }
-      if (b.kind === "table") {
-        return (
-          <div {...heatAttrs(b)}>
-            <PassageText {...b} block />
-          </div>
-        );
-      }
-      return (
-        <p {...heatAttrs(b)}>
-          <PassageText {...b} />
-        </p>
-      );
-    })
-  }
+  {blocks.map((b) => {
+    if (b.kind === "list") {
+      return <ul>
+        {b.items.map((it) => <li {...heatAttrs(it)}>
+          <PassageText {...it} />
+        </li>)}
+      </ul>;
+    }
+    if (b.kind === "heading") {
+      const Tag = `h${b.level}` as "h2";
+      return <Tag {...heatAttrs(b)}>
+        <PassageText {...b} />
+      </Tag>;
+    }
+    if (b.kind === "table") {
+      return <div {...heatAttrs(b)}>
+        <PassageText {...b} block />
+      </div>;
+    }
+    return <p {...heatAttrs(b)}>
+      <PassageText {...b} />
+    </p>;
+  })}
 </div>

@@ -27,36 +27,27 @@ function tipText(d: ScrubberDot): string {
 
 <nav class="scrubber" data-scrubber aria-label="Version history">
   <div class="scrubber__viewport">
-  <div class="scrubber__track">
-    <div class="scrubber__rail" aria-hidden="true"></div>
-    <div
-      class="scrubber__tracked"
-      style={`left: ${firstSeenPct}%`}
-      aria-hidden="true"
-    >
+    <div class="scrubber__track">
+      <div class="scrubber__rail" aria-hidden="true"></div>
+      <div class="scrubber__tracked" style={`left: ${firstSeenPct}%`} aria-hidden="true"></div>
+      {dots.map((d) => <a
+        class="scrubber__dot"
+        href={`#${d.anchor}`}
+        style={`left: ${d.pct}%`}
+        data-anchor={d.anchor}
+        data-kind={d.kind}
+        data-noise={d.isNoise ? "" : undefined}
+        data-current={d.isCurrent ? "" : undefined}
+        data-edge={d.edge ?? undefined}
+        data-date-label={formatDate(d.date)}
+        aria-label={`${formatDate(d.date)}: ${tipText(d)}`}
+        aria-current={d.isCurrent ? "true" : "false"}
+      >
+        <span class="scrubber__tip" aria-hidden="true">
+          <span class="mono">{formatDate(d.date)}</span> · {tipText(d)}
+        </span>
+      </a>)}
     </div>
-    {
-      dots.map((d) => (
-        <a
-          class="scrubber__dot"
-          href={`#${d.anchor}`}
-          style={`left: ${d.pct}%`}
-          data-anchor={d.anchor}
-          data-kind={d.kind}
-          data-noise={d.isNoise ? "" : undefined}
-          data-current={d.isCurrent ? "" : undefined}
-          data-edge={d.edge ?? undefined}
-          data-date-label={formatDate(d.date)}
-          aria-label={`${formatDate(d.date)}: ${tipText(d)}`}
-          aria-current={d.isCurrent ? "true" : "false"}
-        >
-          <span class="scrubber__tip" aria-hidden="true">
-            <span class="mono">{formatDate(d.date)}</span> · {tipText(d)}
-          </span>
-        </a>
-      ))
-    }
-  </div>
   </div>
   <div class="scrubber__axis mono muted" aria-hidden="true">
     <span>{formatDate(axisStart)}</span>
@@ -132,9 +123,7 @@ function tipText(d: ScrubberDot): string {
         history.replaceState(
           null,
           "",
-          isCurrent
-            ? location.pathname + location.search
-            : `#${dot.dataset.anchor}`,
+          isCurrent ? location.pathname + location.search : `#${dot.dataset.anchor}`,
         );
       }
     };
@@ -277,7 +266,9 @@ function tipText(d: ScrubberDot): string {
   }
 
   .scrubber__dot[aria-current="true"]::before {
-    box-shadow: 0 0 0 3px var(--accent-wash), 0 0 0 4px var(--accent-strong);
+    box-shadow:
+      0 0 0 3px var(--accent-wash),
+      0 0 0 4px var(--accent-strong);
   }
 
   .scrubber__dot:hover,

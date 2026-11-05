@@ -24,43 +24,31 @@ const rest = rows.slice(limit);
 ---
 
 {rows.length === 0 && <p class="muted">None recorded.</p>}
-{
-  rows.length > 0 && (
-    <ul class="ledger">
-      {shown.map((r) => (
-        <li class="ledger__row">
-          <time class="mono muted" datetime={r.date}>
-            {formatDate(r.date)}
-          </time>
-          <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
-            {r.agency}
-          </a>
-          <span class="ledger__what">{r.label}</span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-{
-  rest.length > 0 && (
-    <details class="ledger-more">
-      <summary>Show all {rows.length}</summary>
-      <ul class="ledger">
-        {rest.map((r) => (
-          <li class="ledger__row">
-            <time class="mono muted" datetime={r.date}>
-              {formatDate(r.date)}
-            </time>
-            <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
-              {r.agency}
-            </a>
-            <span class="ledger__what">{r.label}</span>
-          </li>
-        ))}
-      </ul>
-    </details>
-  )
-}
+{rows.length > 0 && <ul class="ledger">
+  {shown.map((r) => <li class="ledger__row">
+    <time class="mono muted" datetime={r.date}>
+      {formatDate(r.date)}
+    </time>
+    <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+      {r.agency}
+    </a>
+    <span class="ledger__what">{r.label}</span>
+  </li>)}
+</ul>}
+{rest.length > 0 && <details class="ledger-more">
+  <summary>Show all {rows.length}</summary>
+  <ul class="ledger">
+    {rest.map((r) => <li class="ledger__row">
+      <time class="mono muted" datetime={r.date}>
+        {formatDate(r.date)}
+      </time>
+      <a class="row-link" href={`${statementPath(r.abbr)}#${revAnchor(r.sha)}`}>
+        {r.agency}
+      </a>
+      <span class="ledger__what">{r.label}</span>
+    </li>)}
+  </ul>
+</details>}
 
 <style>
   .ledger {

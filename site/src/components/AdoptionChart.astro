@@ -74,13 +74,9 @@ const trend =
 <figure class="adopt">
   <figcaption class="adopt__cap">
     <span class="adopt__label">{label}</span>
-    {
-      headline && (
-        <span class="adopt__now mono">
-          {latestCount}/{latestTracked} · {Math.round(latest)}%
-        </span>
-      )
-    }
+    {headline && <span class="adopt__now mono">
+      {latestCount}/{latestTracked} · {Math.round(latest)}%
+    </span>}
   </figcaption>
   <svg
     class="adopt__svg"
@@ -91,66 +87,46 @@ const trend =
   >
     <title id={titleId}>{label}, share of tracked statements by month</title>
     <desc id={descId}>{trend}. Figures in the table below.</desc>
-    {
-      [0, 50, 100].map((v) => (
-        <g>
-          <line
-            x1={PAD.left}
-            x2={PAD.left + innerW}
-            y1={y(v)}
-            y2={y(v)}
-            class="adopt__grid"
-          />
-          <text x={PAD.left - 4} y={y(v) + 3} class="adopt__tick" text-anchor="end">
-            {v}%
-          </text>
-        </g>
-      ))
-    }
-    {
-      inRange.map((m) => (
-        <line
-          x1={milestoneX(m.date)}
-          x2={milestoneX(m.date)}
-          y1={PAD.top - 4}
-          y2={PAD.top + innerH}
-          class="adopt__milestone"
-        >
-          <title>{m.label}</title>
-        </line>
-      ))
-    }
+    {[0, 50, 100].map((v) => <g>
+      <line x1={PAD.left} x2={PAD.left + innerW} y1={y(v)} y2={y(v)} class="adopt__grid" />
+      <text x={PAD.left - 4} y={y(v) + 3} class="adopt__tick" text-anchor="end"> {v}% </text>
+    </g>)}
+    {inRange.map((m) => <line
+      x1={milestoneX(m.date)}
+      x2={milestoneX(m.date)}
+      y1={PAD.top - 4}
+      y2={PAD.top + innerH}
+      class="adopt__milestone"
+    >
+      <title>{m.label}</title>
+    </line>)}
     <path d={area} class="adopt__area" />
     <path d={d} class="adopt__line" />
-    {
-      xLabels.map(({ m, i }) => (
-        <text
-          x={x(i)}
-          y={H - 6}
-          class="adopt__tick"
-          text-anchor={i === 0 ? "start" : i === months.length - 1 ? "end" : "middle"}
-        >
-          {formatMonth(m)}
-        </text>
-      ))
-    }
+    {xLabels.map(({ m, i }) => <text
+      x={x(i)}
+      y={H - 6}
+      class="adopt__tick"
+      text-anchor={i === 0 ? "start" : i === months.length - 1 ? "end" : "middle"}
+    >
+      {formatMonth(m)}
+    </text>)}
   </svg>
   <details class="chart-figures">
     <summary>Figures</summary>
     <table>
       <thead>
-        <tr><th scope="col">Month</th><th scope="col">Statements</th><th scope="col">Tracked</th></tr>
+        <tr>
+          <th scope="col">Month</th>
+          <th scope="col">Statements</th>
+          <th scope="col">Tracked</th>
+        </tr>
       </thead>
       <tbody>
-        {
-          months.map((m, i) => (
-            <tr>
-              <td>{formatMonth(m)}</td>
-              <td>{counts[i]}</td>
-              <td>{tracked[i]}</td>
-            </tr>
-          ))
-        }
+        {months.map((m, i) => <tr>
+          <td>{formatMonth(m)}</td>
+          <td>{counts[i]}</td>
+          <td>{tracked[i]}</td>
+        </tr>)}
       </tbody>
     </table>
   </details>

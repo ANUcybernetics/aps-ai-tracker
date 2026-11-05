@@ -62,7 +62,8 @@ const policyRows: Row[] = [
   {
     label: "Staff training",
     value: TRAINING_LABEL[p.staff_training],
-    tone: p.staff_training === "mandatory" ? "on" : p.staff_training === "available" ? "part" : "off",
+    tone:
+      p.staff_training === "mandatory" ? "on" : p.staff_training === "available" ? "part" : "off",
   },
   {
     label: "Policy version referenced",
@@ -82,7 +83,11 @@ const aiPlanRows: Row[] = [
 ];
 const sinceV2 =
   currency.updatedSincePolicyV2 === null
-    ? { text: "can't tell", tone: undefined, title: "First tracked after 15 December 2025 and gives no date of its own" }
+    ? {
+        text: "can't tell",
+        tone: undefined,
+        title: "First tracked after 15 December 2025 and gives no date of its own",
+      }
     : currency.updatedSincePolicyV2
       ? { text: "yes", tone: "on" as Tone, title: undefined }
       : { text: "none seen", tone: "off" as Tone, title: undefined };
@@ -98,97 +103,82 @@ const will = p.commitments.filter((c) => c.kind === "will");
   <div class="rc__grid">
     <section class="rc__block">
       <h3>What it says AI is used for</h3>
-      {
-        p.usage_patterns.length + p.domains.length === 0 ? (
-          <p class="muted rc__none">No uses in the DTA&rsquo;s categories.</p>
-        ) : (
-          <ul class="chips">
-            {p.usage_patterns.map((u) => (
-              <li class="chip">{USAGE_PATTERN_LABEL[u]}</li>
-            ))}
-            {p.domains.map((d) => (
-              <li class="chip chip--domain">{DOMAIN_LABEL[d]}</li>
-            ))}
-          </ul>
-        )
-      }
-      {
-        p.named_tools.length > 0 && (
-          <p class="rc__line">
-            <span class="muted">Named tools:</span> {p.named_tools.join(", ")}
-          </p>
-        )
-      }
+      {p.usage_patterns.length + p.domains.length === 0 ? (
+        <p class="muted rc__none">No uses in the DTA&rsquo;s categories.</p>
+      ) : (
+        <ul class="chips">
+          {p.usage_patterns.map((u) => <li class="chip">{USAGE_PATTERN_LABEL[u]}</li>)}
+          {p.domains.map((d) => <li class="chip chip--domain">{DOMAIN_LABEL[d]}</li>)}
+        </ul>
+      )}
+      {p.named_tools.length > 0 && <p class="rc__line">
+        <span class="muted">Named tools:</span> {p.named_tools.join(", ")}
+      </p>}
       <p class="rc__line">
         <span class="muted">Public-facing AI:</span> {PUBLIC_FACING_LABEL[p.public_facing]}
-        {p.public_interaction_commitment && (
-          <span class="pill pill--ok">commits to a human intermediary</span>
-        )}
+        {p.public_interaction_commitment && <span class="pill pill--ok"
+          >commits to a human intermediary</span
+        >}
       </p>
-      {
-        p.measures.length > 0 && (
-          <p class="rc__line">
-            <span class="muted">Safeguards named:</span>{" "}
-            {p.measures.map((m) => MEASURE_LABEL[m]).join(", ")}
-          </p>
-        )
-      }
+      {p.measures.length > 0 && <p class="rc__line">
+        <span class="muted">Safeguards named:</span>{" "}
+        {p.measures.map((m) => MEASURE_LABEL[m]).join(", ")}
+      </p>}
     </section>
 
     <section class="rc__block">
-      <h3>The Standard&rsquo;s eight elements <span class="rc__score mono">{metCount} of {STANDARD_ELEMENTS.length}</span></h3>
+      <h3>
+        The Standard&rsquo;s eight elements
+        <span class="rc__score mono">{metCount} of {STANDARD_ELEMENTS.length}</span>
+      </h3>
       <ul class="checks">
-        {
-          STANDARD_ELEMENTS.map((e) => (
-            <li data-met={standard[e.key] ? "yes" : "no"}>
-              <span class="checks__mark mono" aria-hidden="true">
-                {standard[e.key] ? "✓" : "–"}
-              </span>
-              <span class="visually-hidden">{standard[e.key] ? "Found:" : "Not found:"}</span>
-              {e.label}
-            </li>
-          ))
-        }
+        {STANDARD_ELEMENTS.map((e) => <li data-met={standard[e.key] ? "yes" : "no"}>
+          <span class="checks__mark mono" aria-hidden="true">
+            {standard[e.key] ? "✓" : "–"}
+          </span>
+          <span class="visually-hidden">{standard[e.key] ? "Found:" : "Not found:"}</span>
+          {e.label}
+        </li>)}
       </ul>
     </section>
 
     <section class="rc__block">
       <h3>
         What the policy requires
-        <a class="rc__source" href={FIELD_SOURCE_LABEL.policy.href} title={FIELD_SOURCE_LABEL.policy.long}
+        <a
+          class="rc__source"
+          href={FIELD_SOURCE_LABEL.policy.href}
+          title={FIELD_SOURCE_LABEL.policy.long}
           >{FIELD_SOURCE_LABEL.policy.short}</a
         >
       </h3>
       <dl class="kv">
-        {
-          policyRows.map((row) => (
-            <div class="kv__row" data-tone={row.tone}>
-              <dt>{row.label}</dt>
-              <dd>{row.value}</dd>
-            </div>
-          ))
-        }
+        {policyRows.map((row) => <div class="kv__row" data-tone={row.tone}>
+          <dt>{row.label}</dt>
+          <dd>{row.value}</dd>
+        </div>)}
       </dl>
       <h3>
         What the AI Plan asks
-        <a class="rc__source" href={FIELD_SOURCE_LABEL["ai-plan"].href} title={FIELD_SOURCE_LABEL["ai-plan"].long}
+        <a
+          class="rc__source"
+          href={FIELD_SOURCE_LABEL["ai-plan"].href}
+          title={FIELD_SOURCE_LABEL["ai-plan"].long}
           >{FIELD_SOURCE_LABEL["ai-plan"].short}</a
         >
       </h3>
       <dl class="kv">
-        {
-          aiPlanRows.map((row) => (
-            <div class="kv__row" data-tone={row.tone}>
-              <dt>{row.label}</dt>
-              <dd>{row.value}</dd>
-            </div>
-          ))
-        }
+        {aiPlanRows.map((row) => <div class="kv__row" data-tone={row.tone}>
+          <dt>{row.label}</dt>
+          <dd>{row.value}</dd>
+        </div>)}
       </dl>
     </section>
 
     <section class="rc__block">
-      <h3>Dates <span class="muted rc__asof">as of {formatStatedDate(currency.evaluatedAt)}</span></h3>
+      <h3>
+        Dates <span class="muted rc__asof">as of {formatStatedDate(currency.evaluatedAt)}</span>
+      </h3>
       <dl class="kv">
         <div class="kv__row">
           <dt>Review schedule</dt>
@@ -196,12 +186,22 @@ const will = p.commitments.filter((c) => c.kind === "will");
         </div>
         <div class="kv__row">
           <dt>Says it was last updated</dt>
-          <dd>{currency.statedLastUpdated ? formatStatedDate(currency.statedLastUpdated) : <span class="muted">no date given</span>}</dd>
+          <dd>
+            {currency.statedLastUpdated ? (
+              formatStatedDate(currency.statedLastUpdated)
+            ) : (
+              <span class="muted">no date given</span>
+            )}
+          </dd>
         </div>
         <div class="kv__row">
           <dt>Last change we saw</dt>
           <dd>
-            {currency.lastContentChange ? formatDate(currency.lastContentChange) : <span class="muted">none since tracking began</span>}
+            {currency.lastContentChange ? (
+              formatDate(currency.lastContentChange)
+            ) : (
+              <span class="muted">none since tracking began</span>
+            )}
           </dd>
         </div>
         <div class="kv__row" data-tone={sinceV2.tone}>
@@ -211,33 +211,30 @@ const will = p.commitments.filter((c) => c.kind === "will");
             {sinceV2.title && <span class="visually-hidden"> ({sinceV2.title})</span>}
           </dd>
         </div>
-        {
-          currency.annualReviewOverdue !== null && (
-            <div class="kv__row" data-tone={currency.annualReviewOverdue ? "off" : "on"}>
-              <dt>Annual review</dt>
-              <dd>{currency.annualReviewOverdue ? "stated date over a year ago" : "stated date within the last year"}</dd>
-            </div>
-          )
-        }
+        {currency.annualReviewOverdue !== null && <div
+          class="kv__row"
+          data-tone={currency.annualReviewOverdue ? "off" : "on"}
+        >
+          <dt>Annual review</dt>
+          <dd>
+            {currency.annualReviewOverdue
+              ? "stated date over a year ago"
+              : "stated date within the last year"}
+          </dd>
+        </div>}
       </dl>
     </section>
   </div>
 
-  {
-    p.commitments.length > 0 && (
-      <section class="rc__block rc__commitments">
-        <h3>Commitments</h3>
-        <ul class="commitments">
-          {[...willNot, ...oversight, ...will].map((c) => (
-            <li data-kind={c.kind}>
-              <span class="commitments__kind mono">{COMMITMENT_KIND_LABEL[c.kind]}</span>
-              {c.text}
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+  {p.commitments.length > 0 && <section class="rc__block rc__commitments">
+    <h3>Commitments</h3>
+    <ul class="commitments">
+      {[...willNot, ...oversight, ...will].map((c) => <li data-kind={c.kind}>
+        <span class="commitments__kind mono">{COMMITMENT_KIND_LABEL[c.kind]}</span>
+        {c.text}
+      </li>)}
+    </ul>
+  </section>}
 </div>
 
 <style>

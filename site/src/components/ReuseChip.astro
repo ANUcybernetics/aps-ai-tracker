@@ -27,13 +27,9 @@ const label = `Also appears in ${n} other ${n === 1 ? "agency" : "agencies"}; sh
   <span class="reuse__panel" role="note">
     <span class="reuse__head">Also appears in {n} other {n === 1 ? "agency" : "agencies"}</span>
     <span class="reuse__pills">
-      {
-        members.map((m) => (
-          <a class="pill reuse__pill" href={statementPath(m.abbr)} title={m.name}>
-            {m.abbr}
-          </a>
-        ))
-      }
+      {members.map((m) => <a class="pill reuse__pill" href={statementPath(m.abbr)} title={m.name}>
+        {m.abbr}
+      </a>)}
     </span>
   </span>
 </span>

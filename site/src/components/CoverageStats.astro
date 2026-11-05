@@ -45,20 +45,16 @@ const facts = [
   <p class="coverage__lead">
     <span class="coverage__big mono">{c.changes}</span>
     <span class="coverage__gloss">
-      <a href={withBase("/reading#changes")}>changes of substance</a> since {since}, across <strong>{c.published}</strong> published
-      statements.
+      <a href={withBase("/reading#changes")}>changes of substance</a> since {since}, across
+      <strong>{c.published}</strong> published statements.
     </span>
   </p>
 
   <dl class="coverage__facts">
-    {
-      facts.map((f) => (
-        <div class="coverage__fact">
-          <dt>{f.label}</dt>
-          <dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd>
-        </div>
-      ))
-    }
+    {facts.map((f) => <div class="coverage__fact">
+      <dt>{f.label}</dt>
+      <dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd>
+    </div>)}
   </dl>
 </section>
 

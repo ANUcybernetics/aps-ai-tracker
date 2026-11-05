@@ -68,8 +68,12 @@ function roleCounts(pick: (p: NonNullable<(typeof profiled)[number]["profile"]>)
   }
   return [...counts.entries()].toSorted((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
-const aoRoles = roleCounts((p) => (p.accountable_official === "designated" ? p.accountable_official_role : null));
-const caioRoles = roleCounts((p) => (p.chief_ai_officer === "in-place" ? p.chief_ai_officer_role : null));
+const aoRoles = roleCounts((p) =>
+  p.accountable_official === "designated" ? p.accountable_official_role : null,
+);
+const caioRoles = roleCounts((p) =>
+  p.chief_ai_officer === "in-place" ? p.chief_ai_officer_role : null,
+);
 const caioInPlace = profiled.filter((s) => s.profile!.chief_ai_officer === "in-place").length;
 const caioPlanned = profiled.filter((s) => s.profile!.chief_ai_officer === "planned").length;
 
@@ -82,7 +86,9 @@ const notSinceV2 = statements
 const cannotTell = statements.filter((s) => s.currency.updatedSincePolicyV2 === null).length;
 const overdue = statements
   .filter((s) => s.currency.annualReviewOverdue === true)
-  .toSorted((a, b) => (a.currency.statedLastUpdated ?? "").localeCompare(b.currency.statedLastUpdated ?? ""));
+  .toSorted((a, b) =>
+    (a.currency.statedLastUpdated ?? "").localeCompare(b.currency.statedLastUpdated ?? ""),
+  );
 const undated = statements.filter((s) => s.profile && !s.currency.statedLastUpdated).length;
 
 // The Standard's elements: how many statements show each.
@@ -93,7 +99,13 @@ const elementCounts = STANDARD_ELEMENTS.map((e) => ({
 const fullMarks = profiled.filter((s) => STANDARD_ELEMENTS.every((e) => s.standard![e.key])).length;
 
 // Public-facing AI: the headline split.
-const pf = { none: 0, "with-human-review": 0, "without-human-review": 0, "not-addressed": 0, unclear: 0 };
+const pf = {
+  none: 0,
+  "with-human-review": 0,
+  "without-human-review": 0,
+  "not-addressed": 0,
+  unclear: 0,
+};
 for (const s of profiled) pf[s.profile!.public_facing] += 1;
 const withCommitment = profiled.filter((s) => s.profile!.public_interaction_commitment).length;
 
@@ -109,16 +121,19 @@ const built = formatDate(meta.builtAt);
     <header class="stack">
       <h1>What the statements say</h1>
       <p class="lede">
-        Version 2.0 of the <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
+        Version 2.0 of the
+        <a href="https://www.digital.gov.au/ai/ai-in-government-policy"
           >Policy for the responsible use of AI in government</a
-        > took effect on 15 December 2025. Agencies must set a strategic position on AI
-        within six months, and set up a use-case register and mandatory staff training
-        within twelve. Separately, the <a
-          href="https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps"
+        >
+        took effect on 15 December 2025. Agencies must set a strategic position on AI within six
+        months, and set up a use-case register and mandatory staff training within twelve.
+        Separately, the
+        <a href="https://www.finance.gov.au/about-us/news/2025/establishing-chief-ai-officers-aps"
           >APS AI Plan</a
-        > asked each agency to appoint a Chief AI Officer by July 2026. This page reads
-        all {profiled.length} statements against these requirements, as of {built}. The
-        figures count what the statements say, as read by a language model.
+        >
+        asked each agency to appoint a Chief AI Officer by July 2026. This page reads all
+        {profiled.length} statements against these requirements, as of {built}. The figures count
+        what the statements say, as read by a language model.
       </p>
       <ReadingLink anchor="adoption" label="How these figures are made" />
       <dl class="facts headline-facts">
@@ -154,25 +169,23 @@ const built = formatDate(meta.builtAt);
         <h2 id="adoption-heading">What the statements report, month by month</h2>
       </div>
       <p class="section-note">
-        The share of tracked statements that report each item, by month. Dashed lines
-        mark the policy&rsquo;s start, its six- and twelve-month deadlines, and the AI
-        Plan&rsquo;s Chief AI Officer deadline. Agencies joined the tracker in waves
-        (mostly in November 2025 and June 2026), so a rise can come from new statements
-        rather than new text. Open &ldquo;Figures&rdquo; under a chart for the counts.
+        The share of tracked statements that report each item, by month. Dashed lines mark the
+        policy&rsquo;s start, its six- and twelve-month deadlines, and the AI Plan&rsquo;s Chief AI
+        Officer deadline. Agencies joined the tracker in waves (mostly in November 2025 and June
+        2026), so a rise can come from new statements rather than new text. Open
+        &ldquo;Figures&rdquo; under a chart for the counts.
       </p>
       <div class="charts">
-        {
-          charted.map((c) => (
-            <AdoptionChart
-              id={`adopt-${c.id}`}
-              label={c.label}
-              months={adoption.months}
-              counts={c.counts}
-              tracked={adoption.tracked}
-              milestones={adoption.milestones}
-            />
-          ))
-        }
+        {charted.map((c) => (
+          <AdoptionChart
+            id={`adopt-${c.id}`}
+            label={c.label}
+            months={adoption.months}
+            counts={c.counts}
+            tracked={adoption.tracked}
+            milestones={adoption.milestones}
+          />
+        ))}
       </div>
     </section>
 
@@ -183,10 +196,9 @@ const built = formatDate(meta.builtAt);
         <ReadingLink anchor="profiles" />
       </div>
       <p class="section-note">
-        Promises, limits and safeguards that one version of a statement made and the
-        next didn&rsquo;t, newest first. A promise the next version reports done is
-        kept, not dropped, and is not listed. Some were only reworded (<a
-          href={withBase("/reading#checking")}>why</a
+        Promises, limits and safeguards that one version of a statement made and the next
+        didn&rsquo;t, newest first. A promise the next version reports done is kept, not dropped,
+        and is not listed. Some were only reworded (<a href={withBase("/reading#checking")}>why</a
         >), so each links to the diff.
       </p>
       <PolicyLedger rows={droppedCommitments} />
@@ -198,9 +210,9 @@ const built = formatDate(meta.builtAt);
         <span class="muted">{droppedDisclosures.length}</span>
       </div>
       <p class="section-note">
-        Uses, domains, tools, officers, training and compliance statements that one
-        version mentioned and the next didn&rsquo;t. A tool may have been renamed, and a
-        use may continue without being mentioned.
+        Uses, domains, tools, officers, training and compliance statements that one version
+        mentioned and the next didn&rsquo;t. A tool may have been renamed, and a use may continue
+        without being mentioned.
       </p>
       <PolicyLedger rows={droppedDisclosures} />
     </section>
@@ -210,36 +222,30 @@ const built = formatDate(meta.builtAt);
         <h2 id="charge-heading">Who is in charge</h2>
       </div>
       <p class="section-note">
-        {caioInPlace} statements say a Chief AI Officer is in place and {caioPlanned} say
-        one is planned. Most don&rsquo;t say which job holds each role; those that do are
-        counted below (job titles only, never names).
+        {caioInPlace} statements say a Chief AI Officer is in place and {caioPlanned} say one is
+        planned. Most don&rsquo;t say which job holds each role; those that do are counted below
+        (job titles only, never names).
       </p>
       <div class="roles">
         <div>
           <h3>Accountable official</h3>
           <ol class="roles__list">
-            {aoRoles.slice(0, 8).map(([role, n]) => (
-              <li>
-                <span class="mono roles__n">{n}</span> {role}
-              </li>
-            ))}
+            {aoRoles
+              .slice(0, 8)
+              .map(([role, n]) => <li><span class="mono roles__n">{n}</span> {role}</li>)}
           </ol>
         </div>
         <div>
           <h3>Chief AI Officer</h3>
-          {
-            caioRoles.length === 0 ? (
-              <p class="muted">No roles named yet.</p>
-            ) : (
-              <ol class="roles__list">
-                {caioRoles.slice(0, 8).map(([role, n]) => (
-                  <li>
-                    <span class="mono roles__n">{n}</span> {role}
-                  </li>
-                ))}
-              </ol>
-            )
-          }
+          {caioRoles.length === 0 ? (
+            <p class="muted">No roles named yet.</p>
+          ) : (
+            <ol class="roles__list">
+              {caioRoles
+                .slice(0, 8)
+                .map(([role, n]) => <li><span class="mono roles__n">{n}</span> {role}</li>)}
+            </ol>
+          )}
         </div>
       </div>
     </section>
@@ -253,11 +259,34 @@ const built = formatDate(meta.builtAt);
         significantly affected by, its AI without a human in the loop.
       </p>
       <dl class="facts">
-        <div><dt>Say they use no public-facing AI</dt><dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd></div>
-        <div><dt>Say they use it with human review</dt><dd>{pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span></dd></div>
-        <div><dt>Say they use it, without stating human review</dt><dd>{pf["without-human-review"]} <span class="muted">({pct(pf["without-human-review"])})</span></dd></div>
-        <div><dt>Don&rsquo;t address it, or not clearly</dt><dd>{pf["not-addressed"] + pf.unclear} <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span></dd></div>
-        <div><dt>Commit to a human intermediary</dt><dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd></div>
+        <div>
+          <dt>Say they use no public-facing AI</dt>
+          <dd>{pf.none} <span class="muted">({pct(pf.none)})</span></dd>
+        </div>
+        <div>
+          <dt>Say they use it with human review</dt>
+          <dd>
+            {pf["with-human-review"]} <span class="muted">({pct(pf["with-human-review"])})</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Say they use it, without stating human review</dt>
+          <dd>
+            {pf["without-human-review"]}
+            <span class="muted">({pct(pf["without-human-review"])})</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Don&rsquo;t address it, or not clearly</dt>
+          <dd>
+            {pf["not-addressed"] + pf.unclear}
+            <span class="muted">({pct(pf["not-addressed"] + pf.unclear)})</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Commit to a human intermediary</dt>
+          <dd>{withCommitment} <span class="muted">({pct(withCommitment)})</span></dd>
+        </div>
       </dl>
     </section>
 
@@ -266,26 +295,22 @@ const built = formatDate(meta.builtAt);
         <h2 id="standard-heading">The Standard&rsquo;s eight elements</h2>
       </div>
       <p class="section-note">
-        The DTA&rsquo;s <a
+        The DTA&rsquo;s
+        <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >Standard for AI transparency statements</a
-        > lists what every statement must contain. {fullMarks} of {profiled.length} cover
-        all eight. A date shown on the page counts as a &ldquo;date last updated&rdquo;.
+        >
+        lists what every statement must contain. {fullMarks} of {profiled.length} cover all eight. A
+        date shown on the page counts as a &ldquo;date last updated&rdquo;.
       </p>
       <ul class="bars">
-        {
-          elementCounts.map((e) => (
-            <li class="bar">
-              <span class="bar__label">{e.label}</span>
-              <span class="meter meter--plain" role="presentation">
-                <span style={`inline-size:${(100 * e.count) / Math.max(profiled.length, 1)}%`} />
-              </span>
-              <span class="bar__n mono">
-                {e.count} <span class="muted">({pct(e.count)})</span>
-              </span>
-            </li>
-          ))
-        }
+        {elementCounts.map((e) => <li class="bar">
+          <span class="bar__label">{e.label}</span>
+          <span class="meter meter--plain" role="presentation">
+            <span style={`inline-size:${(100 * e.count) / Math.max(profiled.length, 1)}%`} />
+          </span>
+          <span class="bar__n mono"> {e.count} <span class="muted">({pct(e.count)})</span> </span>
+        </li>)}
       </ul>
     </section>
 
@@ -294,55 +319,51 @@ const built = formatDate(meta.builtAt);
         <h2 id="stale-heading">Dates and updates</h2>
       </div>
       <p class="section-note">
-        The <a
+        The
+        <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >Standard</a
-        > requires statements to be &ldquo;reviewed and updated&rdquo; at least once a year
-        and whenever the agency&rsquo;s approach to AI changes, and to say when they were
-        last updated. {undated} statements give no date.
+        >
+        requires statements to be &ldquo;reviewed and updated&rdquo; at least once a year and
+        whenever the agency&rsquo;s approach to AI changes, and to say when they were last updated.
+        {undated} statements give no date.
       </p>
       <div class="stale">
         <div>
           <h3>No update seen since policy v2.0 <span class="muted">{notSinceV2.length}</span></h3>
           <p class="muted stale__note">
-            Statements we have watched since before 15 December 2025 with no stated date
-            or observed change after it. Another {cannotTell} were first tracked after that
-            date and give no date, so we can&rsquo;t tell.
+            Statements we have watched since before 15 December 2025 with no stated date or observed
+            change after it. Another {cannotTell} were first tracked after that date and give no
+            date, so we can&rsquo;t tell.
           </p>
           <ul class="agency-list">
-            {notSinceV2.map((s) => (
-              <li>
-                <a href={statementPath(s.abbr)}>{s.agency}</a>
-                {s.currency.statedLastUpdated && (
-                  <span class="muted"> · says {formatStatedDate(s.currency.statedLastUpdated)}</span>
-                )}
-              </li>
-            ))}
+            {notSinceV2.map((s) => <li>
+              <a href={statementPath(s.abbr)}>{s.agency}</a>
+              {s.currency.statedLastUpdated && <span class="muted">
+                · says {formatStatedDate(s.currency.statedLastUpdated)}</span>}
+            </li>)}
           </ul>
         </div>
         <div>
-          <h3>Say they were last updated over a year ago <span class="muted">{overdue.length}</span></h3>
+          <h3>
+            Say they were last updated over a year ago <span class="muted">{overdue.length}</span>
+          </h3>
           <p class="muted stale__note">
             The statement&rsquo;s own last-updated date is more than a year before {built}.
           </p>
-          {
-            overdue.length === 0 ? (
-              <p class="muted">None.</p>
-            ) : (
-              <ul class="agency-list">
-                {overdue.map((s) => (
-                  <li>
-                    <a href={statementPath(s.abbr)}>{s.agency}</a>
-                    <span class="muted"> · says {formatStatedDate(s.currency.statedLastUpdated!)}</span>
-                  </li>
-                ))}
-              </ul>
-            )
-          }
+          {overdue.length === 0 ? (
+            <p class="muted">None.</p>
+          ) : (
+            <ul class="agency-list">
+              {overdue.map((s) => <li>
+                <a href={statementPath(s.abbr)}>{s.agency}</a>
+                <span class="muted"> · says {formatStatedDate(s.currency.statedLastUpdated!)}</span>
+              </li>)}
+            </ul>
+          )}
         </div>
       </div>
     </section>
-
   </div>
 </Layout>
 

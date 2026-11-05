@@ -43,17 +43,19 @@ const cells = agencies.toSorted(byName).map((a) => ({
 
 <figure class="wall">
   <ul class="wall__grid" role="list">
-    {
-      cells.map((c) => (
-        <li data-label={c.label}>
-          {c.href ? (
-            <a class="wall__cell" data-status={c.status} data-heat={c.heat} href={c.href} aria-label={c.label} />
-          ) : (
-            <span class="wall__cell" data-status={c.status} aria-label={c.label} role="img" />
-          )}
-        </li>
-      ))
-    }
+    {cells.map((c) => <li data-label={c.label}>
+      {c.href ? (
+        <a
+          class="wall__cell"
+          data-status={c.status}
+          data-heat={c.heat}
+          href={c.href}
+          aria-label={c.label}
+        />
+      ) : (
+        <span class="wall__cell" data-status={c.status} aria-label={c.label} role="img" />
+      )}
+    </li>)}
   </ul>
 
   <p
@@ -72,9 +74,7 @@ const cells = agencies.toSorted(byName).map((a) => ({
     </span>
     <span class="wall__sep" aria-hidden="true">·</span>
     <span><span class="wall__key" data-status="not-yet" aria-hidden="true" /> not yet</span>
-    <span
-      ><span class="wall__key" data-status="exempt" aria-hidden="true" /> not required</span
-    >
+    <span><span class="wall__key" data-status="exempt" aria-hidden="true" /> not required</span>
     <ReadingLink anchor="originality" label="What is bespoke?" class="wall__how" />
   </figcaption>
 </figure>
@@ -216,7 +216,8 @@ const cells = agencies.toSorted(byName).map((a) => ({
 
     const hint = readout.dataset.hint ?? readout.textContent ?? "";
     const name = (target: EventTarget | null) =>
-      (target instanceof Element ? target.closest<HTMLElement>("li[data-label]") : null)?.dataset.label;
+      (target instanceof Element ? target.closest<HTMLElement>("li[data-label]") : null)?.dataset
+        .label;
 
     const show = (target: EventTarget | null) => {
       const label = name(target);

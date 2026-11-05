@@ -36,81 +36,74 @@ const files = [
   <div class="page data prose stack">
     <h1>Data downloads</h1>
     <p class="lede">
-      The charts, agency tables and statement pages draw on these files. They are
-      rebuilt with the site; this copy was built {built}.
+      The charts, agency tables and statement pages draw on these files. They are rebuilt with the
+      site; this copy was built {built}.
     </p>
 
     <h2 id="files">The files</h2>
     <dl class="files">
-      {
-        files.map((f) => (
-          <div>
-            <dt>
-              <a class="mono" href={f.href} download>
-                {f.name}
-              </a>
-            </dt>
-            <dd>{f.what}</dd>
-          </div>
-        ))
-      }
+      {files.map((f) => <div>
+        <dt>
+          <a class="mono" href={f.href} download>
+            {f.name}
+          </a>
+        </dt>
+        <dd>{f.what}</dd>
+      </div>)}
     </dl>
 
     <h2 id="reading-csv">Reading the CSV</h2>
     <p>
       The columns come in four groups. <span class="mono">abbr</span> to{" "}
-      <span class="mono">originality</span> describe the agency: name, portfolio,
-      whether it must publish (<span class="mono">scope</span>), whether it has,
-      statement URL, when we first saw it, how often it has changed, and its
-      originality score. <span class="mono">stated_first_published</span> to{" "}
-      <span class="mono">annual_review_overdue</span> are the statement&rsquo;s own
-      dates and whether its annual review is overdue. The <span class="mono">standard_*</span>
-      columns show which of the Standard&rsquo;s eight elements the statement covers.
-      The rest are its current profile, using the answer lists in{" "}
-      <a href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/src/aps_ai_tracker/profiles.py"
+      <span class="mono">originality</span> describe the agency: name, portfolio, whether it must
+      publish (<span class="mono">scope</span>), whether it has, statement URL, when we first saw
+      it, how often it has changed, and its originality score.
+      <span class="mono">stated_first_published</span> to{" "}
+      <span class="mono">annual_review_overdue</span> are the statement&rsquo;s own dates and
+      whether its annual review is overdue. The <span class="mono">standard_*</span> columns show
+      which of the Standard&rsquo;s eight elements the statement covers. The rest are its current
+      profile, using the answer lists in{" "}
+      <a
+        href="https://github.com/ANUcybernetics/aps-ai-tracker/blob/main/src/aps_ai_tracker/profiles.py"
         >profiles.py</a
       >, with multiple values separated by semicolons.
     </p>
     <p>
-      An agency with no statement has only the first group filled in, so a blank
-      profile field means there was nothing to read, not that the answer was no.
+      An agency with no statement has only the first group filled in, so a blank profile field means
+      there was nothing to read, not that the answer was no.
     </p>
 
     <h2 id="caveats">Before you analyse</h2>
     <p>
-      The profiles, classifications and summaries are a language model&rsquo;s
-      reading, so check them against the statement text before you publish a
-      finding. <a href={withBase("/reading")}>Reading the data</a> explains what
-      each figure means. The record starts in November 2025, so a statement&rsquo;s
-      first tracked version may not be its first published one.
+      The profiles, classifications and summaries are a language model&rsquo;s reading, so check
+      them against the statement text before you publish a finding.
+      <a href={withBase("/reading")}>Reading the data</a> explains what each figure means. The
+      record starts in November 2025, so a statement&rsquo;s first tracked version may not be its
+      first published one.
     </p>
     <p>
       Each JSON file carries <span class="mono">generatedAt</span>,{" "}
-      <span class="mono">headSha</span> and <span class="mono">schemaVersions</span>,
-      so you can tell which version of the pipeline produced it. New CSV columns are
-      added at the end.
+      <span class="mono">headSha</span> and <span class="mono">schemaVersions</span>, so you can
+      tell which version of the pipeline produced it. New CSV columns are added at the end.
     </p>
 
     <h2 id="not-here">Statement text</h2>
     <p>
-      The text of every version is in the <a
-        href="https://github.com/ANUcybernetics/aps-ai-tracker/tree/main/statements"
+      The text of every version is in the
+      <a href="https://github.com/ANUcybernetics/aps-ai-tracker/tree/main/statements"
         >git repository</a
-      >. The current statements are also published on the <a
-        href="https://atproto.com">AT Protocol</a
-      > network (which Bluesky runs on) by <a
-        href="https://bsky.app/profile/apsaitracker.app">@apsaitracker.app</a
-      >, with one record per statement and one per change, each with a permanent
-      identifier. You can <a href="https://pdsls.dev/at://did:plc:yhnshyrc2iev6z65u3uraon4"
-        >browse the records</a
-      > or subscribe to the network&rsquo;s live feed.
+      >. The current statements are also published on the
+      <a href="https://atproto.com">AT Protocol</a> network (which Bluesky runs on) by
+      <a href="https://bsky.app/profile/apsaitracker.app">@apsaitracker.app</a>, with one record per
+      statement and one per change, each with a permanent identifier. You can
+      <a href="https://pdsls.dev/at://did:plc:yhnshyrc2iev6z65u3uraon4">browse the records</a> or
+      subscribe to the network&rsquo;s live feed.
     </p>
 
     <h2 id="terms">Licence</h2>
     <p>
-      These files are <a href="https://creativecommons.org/licenses/by/4.0/"
-        >CC BY 4.0</a
-      >. See <a href={withBase("/about")}>About</a> for how to cite the tracker.
+      These files are <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. See
+      <a href={withBase("/about")}>About</a> for how to cite the tracker.
     </p>
   </div>
 </Layout>

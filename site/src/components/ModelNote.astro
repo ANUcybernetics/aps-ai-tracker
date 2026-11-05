@@ -17,13 +17,6 @@ const MODEL_LABEL: Record<string, string> = {
 const label = model ? (MODEL_LABEL[model] ?? model) : null;
 ---
 
-{
-  label && (
-    <span
-      class="model-note"
-      title="Written by a language model; check it against the text"
-    >
-      read by {label}
-    </span>
-  )
-}
+{label && <span class="model-note" title="Written by a language model; check it against the text">
+  read by {label}
+</span>}

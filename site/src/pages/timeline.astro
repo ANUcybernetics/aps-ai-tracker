@@ -37,7 +37,8 @@ const rows = timeline.map((event) => {
 // The "about" filter lists only requirements some change actually touched.
 const touched = new Map<string, number>();
 for (const r of rows) {
-  for (const k of new Set(r.facets.map((f) => f.split(":")[0]))) touched.set(k, (touched.get(k) ?? 0) + 1);
+  for (const k of new Set(r.facets.map((f) => f.split(":")[0])))
+    touched.set(k, (touched.get(k) ?? 0) + 1);
 }
 const requirementOpts = REQUIREMENTS.filter((r) => touched.has(r.key)).map((r) => ({
   key: r.key,
@@ -83,21 +84,19 @@ const readable = counts.substance + counts.revision + counts.unclassified;
       <h1>Timeline</h1>
       <p class="lede">
         Changes to the statements, newest first: {counts.substance}{" "}
-        <a href={withBase("/reading#changes")}>substantive changes</a>{
-          counts.revision > 0 && <>, {counts.revision} rewordings</>
-        }{
-          counts.unclassified > 0 && <> and {counts.unclassified} not yet read</>
-        }. Each has a one-sentence summary written by a language model; open a row to see
-        the words that changed. Use the filters to narrow the list, or show the cosmetic
-        edits and noise that are hidden by default.
+        <a href={withBase("/reading#changes")}>substantive changes</a
+        >{counts.revision > 0 && <>, {counts.revision} rewordings</>}{counts.unclassified > 0 && (
+          <> and {counts.unclassified} not yet read</>
+        )}.
+        Each has a one-sentence summary written by a language model; open a row to see the words
+        that changed. Use the filters to narrow the list, or show the cosmetic edits and noise that
+        are hidden by default.
       </p>
       <ReadingLink anchor="anatomy" label="Anatomy of a change" />
       <nav class="starters" aria-label="Questions to start from">
         <span class="muted">Start from:</span>
         <ul>
-          {starters.map((s) => (
-            <li><a href={s.href}>{s.label}</a></li>
-          ))}
+          {starters.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
         </ul>
       </nav>
     </header>
@@ -111,17 +110,9 @@ const readable = counts.substance + counts.revision + counts.unclassified;
     />
 
     <ul class="tl-feed" id="tl-feed">
-      {
-        rows.map(({ event, diff, deltas, facets }) => (
-          <ChangeFeedItem
-            event={event}
-            diff={diff}
-            deltas={deltas}
-            facets={facets}
-            lazy
-          />
-        ))
-      }
+      {rows.map(({ event, diff, deltas, facets }) => (
+        <ChangeFeedItem event={event} diff={diff} deltas={deltas} facets={facets} lazy />
+      ))}
     </ul>
   </div>
 </Layout>

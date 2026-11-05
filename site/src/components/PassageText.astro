@@ -24,10 +24,8 @@ const { html, tip, heat, template, share, block = false } = Astro.props;
 const Wrap = block ? "div" : "span";
 ---
 
-<Wrap set:html={html} />{
-  share.length ? (
-    <ReuseChip members={share} />
-  ) : (
-    (heat >= 1 || template) && <span class="visually-hidden"> ({tip})</span>
-  )
-}
+<Wrap set:html={html} />{share.length ? (
+  <ReuseChip members={share} />
+) : (
+  (heat >= 1 || template) && <span class="visually-hidden"> ({tip})</span>
+)}

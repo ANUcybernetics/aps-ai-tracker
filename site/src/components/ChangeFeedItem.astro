@@ -21,19 +21,14 @@ interface Props {
   lazy?: boolean;
 }
 
-const {
-  event,
-  diff,
-  deltas = [],
-  facets = [],
-  open = false,
-  lazy = false,
-} = Astro.props;
+const { event, diff, deltas = [], facets = [], open = false, lazy = false } = Astro.props;
 const tier = changeTier(event.changeKind);
 // Changes worth reading are the feed's default view; cosmetic edits, scrape
 // noise and first-tracked imports ship hidden and the filter island reveals
 // them.
 const hiddenByDefault = !READABLE_TIERS.has(tier);
+const points = event.noteworthy.slice(0, 4);
+const removal = (point: string) => (point.toLowerCase().startsWith("removed") ? "" : undefined);
 ---
 
 <li
@@ -51,41 +46,27 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
     </time>
     <a class="row-link" href={statementPath(event.abbr)}>{event.agency}</a>
     <span class="pill" data-tier={tier}>{TIER_LABEL[tier]}</span>
-    {
-      diff && (
-        <span class="char-delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>
-          {signedDelta(diff.delta)}
-        </span>
-      )
-    }
+    {diff && <span class="char-delta mono" data-sign={diff.delta >= 0 ? "+" : "-"}>
+      {signedDelta(diff.delta)}
+    </span>}
   </div>
   {event.summary && <p class="tl-row__summary">{event.summary}</p>}
   {event.summary && <ModelNote model={event.model} />}
-  {
-    event.noteworthy.length > 0 && (
-      <ul class="tl-row__points">
-        {event.noteworthy.slice(0, 4).map((point) => (
-          <li data-removal={point.toLowerCase().startsWith("removed") ? "" : undefined}>{point}</li>
-        ))}
-      </ul>
-    )
-  }
+  {event.noteworthy.length > 0 && <ul class="tl-row__points">
+    {points.map((point) => <li data-removal={removal(point)}>{point}</li>)}
+  </ul>}
   <DeltaList deltas={deltas} />
-  {
-    diff && (
-      <details class="tl-row__diff" open={open}>
-        <summary>The words that changed</summary>
-        {lazy ? (
-          <DiffView
-            lazyKey={diffKey(event.abbr, event.sha)}
-            fallbackHref={`${statementPath(event.abbr)}#${revAnchor(event.sha)}`}
-          />
-        ) : (
-          <DiffView before={diff.before} after={diff.after} compact />
-        )}
-      </details>
-    )
-  }
+  {diff && <details class="tl-row__diff" open={open}>
+    <summary>The words that changed</summary>
+    {lazy ? (
+      <DiffView
+        lazyKey={diffKey(event.abbr, event.sha)}
+        fallbackHref={`${statementPath(event.abbr)}#${revAnchor(event.sha)}`}
+      />
+    ) : (
+      <DiffView before={diff.before} after={diff.after} compact />
+    )}
+  </details>}
 </li>
 
 <style>
@@ -137,5 +118,4 @@ const hiddenByDefault = !READABLE_TIERS.has(tier);
   .tl-row__diff {
     margin-block-start: var(--space-2);
   }
-
 </style>

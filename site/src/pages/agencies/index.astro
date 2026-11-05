@@ -47,15 +47,17 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
     <header class="stack">
       <h1>Agencies</h1>
       <p class="lede">
-        All {agencies.length} bodies we track. The <a
-          href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
+        All {agencies.length} bodies we track. The
+        <a href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation"
           >AI policy applies</a
-        > to non-corporate Commonwealth entities ({mandatoryCount} of those listed here),
-        and each must publish an <a
+        >
+        to non-corporate Commonwealth entities ({mandatoryCount} of those listed here), and each
+        must publish an
+        <a
           href="https://www.digital.gov.au/ai/ai-in-government-policy/standard-ai-transparency-statements"
           >AI transparency statement</a
-        >. Other bodies are encouraged to publish, and many do. Defence and the
-        intelligence agencies are exempt.
+        >. Other bodies are encouraged to publish, and many do. Defence and the intelligence
+        agencies are exempt.
       </p>
     </header>
 
@@ -71,7 +73,9 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
       <AgencyQuestions client:load questions={questions} total={published.length} />
       <div class="table-wrap">
         <table class="agencies">
-          <caption class="visually-hidden">Agencies with a published AI transparency statement</caption>
+          <caption class="visually-hidden">
+            Agencies with a published AI transparency statement
+          </caption>
           <thead>
             <tr>
               <th scope="col">Agency</th>
@@ -84,121 +88,92 @@ const questions = AGENCY_QUESTIONS.map((q) => ({
             </tr>
           </thead>
           <tbody>
-            {
-              rows.map(({ agency: a, answers, standard }) => (
-                <tr data-answers={answers.join(" ")}>
-                  <td>
-                    <a href={statementPath(a.abbr)}>{a.name}</a>
-                    <span class="muted mono"> {a.abbr}</span>
-                  </td>
-                  <td>{SIZE_LABEL[a.size]}</td>
-                  <td class="num">{standard ?? "—"}</td>
-                  <td class="num">
-                    {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
-                  </td>
-                  <td class="num">{a.changeCount}</td>
-                  <td class="num">{a.revisionCount}</td>
-                  <td>
-                    {a.currency?.updatedSincePolicyV2 === true ? (
-                      <span class="pill pill--ok">updated</span>
-                    ) : a.currency?.updatedSincePolicyV2 === false ? (
-                      <span class="muted">none seen</span>
-                    ) : (
-                      <span class="muted">
-                        can&rsquo;t tell
-                        <span class="visually-hidden">
-                          (first tracked after 15 December 2025 and gives no date, so we cannot know)
-                        </span>
-                      </span>
-                    )}
-                  </td>
-                </tr>
-              ))
-            }
+            {rows.map(({ agency: a, answers, standard }) => <tr data-answers={answers.join(" ")}>
+              <td>
+                <a href={statementPath(a.abbr)}>{a.name}</a>
+                <span class="muted mono"> {a.abbr}</span>
+              </td>
+              <td>{SIZE_LABEL[a.size]}</td>
+              <td class="num">{standard ?? "—"}</td>
+              <td class="num">
+                {a.originality === null ? "—" : `${originalityPercent(a.originality)}%`}
+              </td>
+              <td class="num">{a.changeCount}</td>
+              <td class="num">{a.revisionCount}</td>
+              <td>
+                {a.currency?.updatedSincePolicyV2 === true ? (
+                  <span class="pill pill--ok">updated</span>
+                ) : a.currency?.updatedSincePolicyV2 === false ? (
+                  <span class="muted">none seen</span>
+                ) : (
+                  <span class="muted">
+                    can&rsquo;t tell
+                    <span class="visually-hidden">
+                      (first tracked after 15 December 2025 and gives no date, so we cannot know)
+                    </span>
+                  </span>
+                )}
+              </td>
+            </tr>)}
           </tbody>
         </table>
       </div>
     </section>
 
-    {
-      notYet.length > 0 && (
-        <section>
-          <div class="section-title">
-            <h2>Not yet published</h2>
-            <span class="muted">{notYet.length}</span>
-          </div>
-          <p class="section-note">
-            Bodies that must publish but have no statement we can find, or whose
-            statement we couldn&rsquo;t capture on the latest run. Bodies created after
-            the policy took effect show when they were established.
-          </p>
-          <ul class="agency-list">
-            {notYet.map((a) => (
-              <li>
-                {a.name} <span class="muted mono">{a.abbr}</span>
-                {a.established && (
-                  <span class="muted">, established {formatDate(a.established)}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    {notYet.length > 0 && <section>
+      <div class="section-title">
+        <h2>Not yet published</h2>
+        <span class="muted">{notYet.length}</span>
+      </div>
+      <p class="section-note">
+        Bodies that must publish but have no statement we can find, or whose statement we
+        couldn&rsquo;t capture on the latest run. Bodies created after the policy took effect show
+        when they were established.
+      </p>
+      <ul class="agency-list">
+        {notYet.map((a) => <li>
+          {a.name} <span class="muted mono">{a.abbr}</span>
+          {a.established && <span class="muted">, established {formatDate(a.established)}</span>}
+        </li>)}
+      </ul>
+    </section>}
 
-    {
-      voluntary.length > 0 && (
-        <section>
-          <div class="section-title">
-            <h2>Not required to publish</h2>
-            <span class="muted">{voluntary.length}</span>
-          </div>
-          <p class="section-note">
-            Bodies the policy encourages but doesn&rsquo;t require to publish, which
-            haven&rsquo;t. Those that have are listed under Published, and on the
-            DTA&rsquo;s{" "}
-            <a href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements">
-              register
-            </a>
-            .
-          </p>
-          <ul class="agency-list">
-            {voluntary.map((a) => (
-              <li>
-                {a.name} <span class="muted mono">{a.abbr}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    {voluntary.length > 0 && <section>
+      <div class="section-title">
+        <h2>Not required to publish</h2>
+        <span class="muted">{voluntary.length}</span>
+      </div>
+      <p class="section-note">
+        Bodies the policy encourages but doesn&rsquo;t require to publish, which haven&rsquo;t.
+        Those that have are listed under Published, and on the DTA&rsquo;s{" "}
+        <a href="https://www.digital.gov.au/policy/ai/list-of-transparency-statements">
+          register
+        </a>
+        .
+      </p>
+      <ul class="agency-list">
+        {voluntary.map((a) => <li>{a.name} <span class="muted mono">{a.abbr}</span></li>)}
+      </ul>
+    </section>}
 
-    {
-      carvedOut.length > 0 && (
-        <section>
-          <div class="section-title">
-            <h2>Exempt</h2>
-            <span class="muted">{carvedOut.length}</span>
-          </div>
-          <p class="section-note">
-            The policy{" "}
-            <a href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation">
-              doesn&rsquo;t apply
-            </a>{" "}
-            to the defence portfolio or the national intelligence community (section 4
-            of the <cite>Office of National Intelligence Act 2018</cite>). These exempt
-            bodies haven&rsquo;t published; those that have are listed under Published.
-          </p>
-          <ul class="agency-list">
-            {carvedOut.map((a) => (
-              <li>
-                {a.name} <span class="muted mono">{a.abbr}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    {carvedOut.length > 0 && <section>
+      <div class="section-title">
+        <h2>Exempt</h2>
+        <span class="muted">{carvedOut.length}</span>
+      </div>
+      <p class="section-note">
+        The policy{" "}
+        <a href="https://www.digital.gov.au/ai/ai-in-government-policy/implementation">
+          doesn&rsquo;t apply
+        </a
+        >{" "} to the defence portfolio or the national intelligence community (section 4 of the
+        <cite>Office of National Intelligence Act 2018</cite>). These exempt bodies haven&rsquo;t
+        published; those that have are listed under Published.
+      </p>
+      <ul class="agency-list">
+        {carvedOut.map((a) => <li>{a.name} <span class="muted mono">{a.abbr}</span></li>)}
+      </ul>
+    </section>}
   </div>
 </Layout>
 

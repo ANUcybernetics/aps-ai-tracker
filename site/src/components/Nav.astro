@@ -11,9 +11,7 @@ const links = [
   { href: withBase("/policy"), label: "What the statements say" },
   { href: withBase("/reading"), label: "Reading the data" },
   // News appears once there is a published post to read.
-  ...((await getPublishedNews()).length > 0
-    ? [{ href: withBase("/news"), label: "News" }]
-    : []),
+  ...((await getPublishedNews()).length > 0 ? [{ href: withBase("/news"), label: "News" }] : []),
   { href: withBase("/about"), label: "About" },
 ];
 
@@ -33,16 +31,12 @@ function isCurrent(href: string): boolean {
       <span class="nav-burger__bars" aria-hidden="true"></span>
     </label>
     <nav class="nav" aria-label="Primary">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            aria-current={isCurrent(link.href) ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        ))
-      }
+      {links.map((link) => <a
+        href={link.href}
+        aria-current={isCurrent(link.href) ? "page" : undefined}
+      >
+        {link.label}
+      </a>)}
     </nav>
   </div>
 </header>

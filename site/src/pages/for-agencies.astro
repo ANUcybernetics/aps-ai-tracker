@@ -66,31 +66,27 @@ const built = formatDate(meta.builtAt);
   <div class="page prose stack">
     <h1>For agencies</h1>
     <p class="lede">
-      If you are drafting or updating your agency&rsquo;s AI transparency
-      statement, you can check what it has to cover, how many statements already
-      cover each item, and examples from other agencies. Find your
-      statement&rsquo;s report card in the <a href={withBase("/agencies")}
-        >agencies list</a
-      >.
+      If you are drafting or updating your agency&rsquo;s AI transparency statement, you can check
+      what it has to cover, how many statements already cover each item, and examples from other
+      agencies. Find your statement&rsquo;s report card in the
+      <a href={withBase("/agencies")}>agencies list</a>.
     </p>
 
     <h2 id="checklist">What a statement has to cover</h2>
     <p>
-      Three documents set the content. The DTA&rsquo;s <a
-        href={FIELD_SOURCE_LABEL.standard.href}>Standard for AI transparency
-        statements</a
-      > lists eight things every statement must contain. Version 2.0 of the <a
-        href={FIELD_SOURCE_LABEL.policy.href}>AI policy</a
-      >, in force since 15 December 2025, adds obligations that statements are
-      expected to report on. The <a href={FIELD_SOURCE_LABEL["ai-plan"].href}
-        >APS AI Plan</a
-      > separately asks each agency for a Chief AI Officer. Who&rsquo;s who
-      explains <a href={withBase("/whos-who")}>how they fit together</a>.
+      Three documents set the content. The DTA&rsquo;s
+      <a href={FIELD_SOURCE_LABEL.standard.href}>Standard for AI transparency statements</a> lists
+      eight things every statement must contain. Version 2.0 of the
+      <a href={FIELD_SOURCE_LABEL.policy.href}>AI policy</a>, in force since 15 December 2025, adds
+      obligations that statements are expected to report on. The
+      <a href={FIELD_SOURCE_LABEL["ai-plan"].href}>APS AI Plan</a> separately asks each agency for a
+      Chief AI Officer. Who&rsquo;s who explains
+      <a href={withBase("/whos-who")}>how they fit together</a>.
     </p>
     <p>
-      The counts are of the {profiled.length} published statements as of {built},
-      as read by a language model. For the policy and Plan items, the examples
-      cover the item mostly in their own words.
+      The counts are of the {profiled.length} published statements as of {built}, as read by a
+      language model. For the policy and Plan items, the examples cover the item mostly in their own
+      words.
     </p>
     <table class="checklist">
       <thead>
@@ -102,99 +98,75 @@ const built = formatDate(meta.builtAt);
         </tr>
       </thead>
       <tbody>
-        {
-          rows.map((r) => (
-            <tr>
-              <th scope="row">{r.label}</th>
-              <td>{[FIELD_SOURCE_LABEL[r.source].short, r.due].filter(Boolean).join(", ")}</td>
-              <td class="num">
-                {r.count} <span class="muted">of {profiled.length}</span>
-              </td>
-              <td>
-                <span class="items">
-                  {r.examples.map((s) => (
-                    <span>
-                      <a href={statementPath(s.abbr)} title={s.agency}>
-                        {s.abbr}
-                      </a>
-                    </span>
-                  ))}
-                </span>
-              </td>
-            </tr>
-          ))
-        }
+        {rows.map((r) => <tr>
+          <th scope="row">{r.label}</th>
+          <td>{[FIELD_SOURCE_LABEL[r.source].short, r.due].filter(Boolean).join(", ")}</td>
+          <td class="num">{r.count} <span class="muted">of {profiled.length}</span></td>
+          <td>
+            <span class="items">
+              {r.examples.map((s) => <span>
+                <a href={statementPath(s.abbr)} title={s.agency}>
+                  {s.abbr}
+                </a>
+              </span>)}
+            </span>
+          </td>
+        </tr>)}
       </tbody>
     </table>
     <p>
       Statements that report every item as done ({complete.length}):{" "}
       <span class="items">
-        {
-          complete.map((s) => (
-            <span>
-              <a href={statementPath(s.abbr)}>{s.agency}</a>
-            </span>
-          ))
-        }
+        {complete.map((s) => <span>
+          <a href={statementPath(s.abbr)}>{s.agency}</a>
+        </span>)}
       </span>
     </p>
 
     <h2 id="reading">How the tracker reads your statement</h2>
     <p>
-      The tracker records what the page says, not what your agency does. If your
-      agency has a use-case register but the statement doesn&rsquo;t mention it,
-      the report card will say &ldquo;not mentioned&rdquo;. Plain, explicit wording
-      makes errors less likely:
+      The tracker records what the page says, not what your agency does. If your agency has a
+      use-case register but the statement doesn&rsquo;t mention it, the report card will say
+      &ldquo;not mentioned&rdquo;. Plain, explicit wording makes errors less likely:
     </p>
     <ul>
       <li>
-        name each role by its job title, and say which one is the Chief AI
-        Officer and which the accountable official, even if one person holds
-        both
+        name each role by its job title, and say which one is the Chief AI Officer and which the
+        accountable official, even if one person holds both
       </li>
-      <li>
-        put a last-updated date on the page, and say how often the statement is
-        reviewed
-      </li>
+      <li>put a last-updated date on the page, and say how often the statement is reviewed</li>
       <li>say which version of the policy you comply with</li>
       <li>
-        when you have done something an earlier version promised (appointed the
-        officer, published the strategy), say so, so the promise reads as kept
-        rather than quietly dropped
+        when you have done something an earlier version promised (appointed the officer, published
+        the strategy), say so, so the promise reads as kept rather than quietly dropped
       </li>
     </ul>
     <p>
-      Where the statement lives matters too. The tracker follows one address per
-      agency, so moving the page breaks the record until we find it again. A web
-      page reads more reliably than a PDF, and a page that only links to a PDF is
-      read as a signpost, not a statement. Pages behind bot protection
-      (Cloudflare, Imperva or Akamai challenges) often can only be checked by
-      hand, so they are checked less often.
+      Where the statement lives matters too. The tracker follows one address per agency, so moving
+      the page breaks the record until we find it again. A web page reads more reliably than a PDF,
+      and a page that only links to a PDF is read as a signpost, not a statement. Pages behind bot
+      protection (Cloudflare, Imperva or Akamai challenges) often can only be checked by hand, so
+      they are checked less often.
     </p>
 
     <h2 id="wording">Borrowed wording is fine</h2>
     <p>
-      Each statement page shades the passages it shares with other agencies, and
-      gives an <a href={withBase("/reading#originality")}>originality score</a>.
-      The score is not a grade: the Standard asks for some of the same wording
-      everywhere, and following it closely lowers the score. The <a
-        href={withBase("/propagation")}>shared wording</a
-      > page shows which passages agencies share. Describe your agency&rsquo;s AI
-      uses and limits in terms specific to its work.
+      Each statement page shades the passages it shares with other agencies, and gives an
+      <a href={withBase("/reading#originality")}>originality score</a>. The score is not a grade:
+      the Standard asks for some of the same wording everywhere, and following it closely lowers the
+      score. The <a href={withBase("/propagation")}>shared wording</a> page shows which passages
+      agencies share. Describe your agency&rsquo;s AI uses and limits in terms specific to its work.
     </p>
 
     <h2 id="corrections">If we have read your statement wrongly</h2>
     <p>
-      Every reading is made by a model and can be wrong, and each sits beside
-      the text it came from so it can be checked. If your statement&rsquo;s
-      report card, summary or change history misstates what it says, email <a
-        href="mailto:ben.swift@anu.edu.au">ben.swift@anu.edu.au</a
-      > or <a href="https://github.com/ANUcybernetics/aps-ai-tracker/issues"
-        >open an issue</a
-      > on GitHub, naming the statement and the reading. We will check it against
-      the text and correct it or explain it. The same address takes <a
-        href={withBase("/about#contribute")}>earlier versions</a
-      > we don&rsquo;t have.
+      Every reading is made by a model and can be wrong, and each sits beside the text it came from
+      so it can be checked. If your statement&rsquo;s report card, summary or change history
+      misstates what it says, email <a href="mailto:ben.swift@anu.edu.au">ben.swift@anu.edu.au</a>
+      or <a href="https://github.com/ANUcybernetics/aps-ai-tracker/issues">open an issue</a> on
+      GitHub, naming the statement and the reading. We will check it against the text and correct it
+      or explain it. The same address takes
+      <a href={withBase("/about#contribute")}>earlier versions</a> we don&rsquo;t have.
     </p>
   </div>
 </Layout>

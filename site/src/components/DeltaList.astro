@@ -16,25 +16,19 @@ const DIRECTIONS = [
 ] as const;
 ---
 
-{
-  deltas.length > 0 && (
-    <ul class="deltas" aria-label="What changed in the statement's answers">
-      {DIRECTIONS.flatMap(({ direction, sign, word }) =>
-        deltas
-          .filter((d) => d.direction === direction)
-          .map((d) => (
-            <li class={`delta delta--${direction}`}>
-              <span class="delta__sign" aria-hidden="true">
-                {sign}
-              </span>
-              <span class="visually-hidden">{word}: </span>
-              {d.label}
-            </li>
-          )),
-      )}
-    </ul>
-  )
-}
+{deltas.length > 0 && <ul class="deltas" aria-label="What changed in the statement's answers">
+  {DIRECTIONS.flatMap(({ direction, sign, word }) =>
+    deltas
+      .filter((d) => d.direction === direction)
+      .map((d) => <li class={`delta delta--${direction}`}>
+        <span class="delta__sign" aria-hidden="true">
+          {sign}
+        </span>
+        <span class="visually-hidden">{word}: </span>
+        {d.label}
+      </li>),
+  )}
+</ul>}
 
 <style>
   .deltas {

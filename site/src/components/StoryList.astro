@@ -8,12 +8,7 @@
 import DeltaList from "@/components/DeltaList.astro";
 import ModelNote from "@/components/ModelNote.astro";
 import { formatDate } from "@/lib/format";
-import {
-  READABLE_TIERS,
-  TIER_LABEL,
-  changeTier,
-  formatStatedDate,
-} from "@/lib/profile-labels";
+import { READABLE_TIERS, TIER_LABEL, changeTier, formatStatedDate } from "@/lib/profile-labels";
 import { revAnchor } from "@/lib/scrubber";
 import type { Currency, TimelineRevision } from "@/types/exporter";
 
@@ -48,96 +43,80 @@ const stated = currency.statedFirstPublished;
 ---
 
 <ol class="story">
-  {
-    chapters.map((chapter) => {
-      if (chapter.type === "first") {
-        const bulk = chapter.rev.kind === "tracked-since";
-        return (
-          <li class="story__item story__item--first">
-            <time class="story__date mono" datetime={chapter.rev.date}>
-              {formatDate(chapter.rev.date)}
-            </time>
-            <div class="story__body">
-              <p class="story__summary">
-                {bulk ? "Tracking begins." : "First tracked."}
-                {stated && (
-                  <>
-                    {" "}
-                    The statement says it was first published {formatStatedDate(stated)}.
-                  </>
-                )}
-                {!stated && bulk && (
-                  <> The statement already existed, and doesn&rsquo;t say when it was first published.</>
-                )}
-              </p>
-            </div>
-          </li>
-        );
-      }
-      if (chapter.type === "cosmetic") {
-        const n = chapter.revs.length;
-        return (
-          <li class="story__item story__item--quiet">
-            <time class="story__date mono" datetime={chapter.revs[0].date}>
-              {formatDate(chapter.revs[0].date)}
-              {n > 1 && <> &ndash; {formatDate(chapter.revs[n - 1].date)}</>}
-            </time>
-            <div class="story__body">
-              <p class="story__summary muted">
-                {n === 1 ? "One cosmetic edit" : `${n} cosmetic edits`}
-                {n === 1 && chapter.revs[0].summary && <>: {chapter.revs[0].summary}</>}
-              </p>
-            </div>
-          </li>
-        );
-      }
-      const { rev } = chapter;
-      const tier = changeTier(rev.changeKind);
-      return (
-        <li class="story__item">
-          <time class="story__date mono" datetime={rev.date}>
-            {formatDate(rev.date)}
-          </time>
-          <div class="story__body">
-            <p class="story__summary">
-              <span class="pill" data-tier={tier}>
-                {TIER_LABEL[tier]}
-              </span>{" "}
-              {rev.summary ?? "Not yet summarised."}
-            </p>
-            <ModelNote model={rev.model} />
-            {rev.noteworthy.length > 0 && (
-              <ul class="story__points">
-                {rev.noteworthy.map((point) => (
-                  <li data-removal={point.toLowerCase().startsWith("removed") ? "" : undefined}>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            )}
-            <DeltaList deltas={rev.profileDeltas} />
-            <a class="story__diff" href={`#${revAnchor(rev.sha)}`}>
-              Show the words that changed &darr;
-            </a>
-          </div>
-        </li>
-      );
-    })
-  }
-  {
-    changeCount === 0 && (
-      <li class="story__item story__item--quiet">
-        <span class="story__date mono" aria-hidden="true">
-          &mdash;
-        </span>
+  {chapters.map((chapter) => {
+    if (chapter.type === "first") {
+      const bulk = chapter.rev.kind === "tracked-since";
+      return <li class="story__item story__item--first">
+        <time class="story__date mono" datetime={chapter.rev.date}>
+          {formatDate(chapter.rev.date)}
+        </time>
         <div class="story__body">
-          <p class="story__summary muted">
-            No change of substance since tracking began.
+          <p class="story__summary">
+            {bulk ? "Tracking begins." : "First tracked."}
+            {stated && (
+              <>
+                {" "}
+                The statement says it was first published {formatStatedDate(stated)}.
+              </>
+            )}
+            {!stated && bulk && (
+              <>
+                The statement already existed, and doesn&rsquo;t say when it was first published.</>
+            )}
           </p>
         </div>
-      </li>
-    )
-  }
+      </li>;
+    }
+    if (chapter.type === "cosmetic") {
+      const n = chapter.revs.length;
+      return <li class="story__item story__item--quiet">
+        <time class="story__date mono" datetime={chapter.revs[0].date}>
+          {formatDate(chapter.revs[0].date)}
+          {n > 1 && <> &ndash; {formatDate(chapter.revs[n - 1].date)}</>}
+        </time>
+        <div class="story__body">
+          <p class="story__summary muted">
+            {n === 1 ? "One cosmetic edit" : `${n} cosmetic edits`}
+            {n === 1 && chapter.revs[0].summary && <>: {chapter.revs[0].summary}</>}
+          </p>
+        </div>
+      </li>;
+    }
+    const { rev } = chapter;
+    const tier = changeTier(rev.changeKind);
+    return <li class="story__item">
+      <time class="story__date mono" datetime={rev.date}>
+        {formatDate(rev.date)}
+      </time>
+      <div class="story__body">
+        <p class="story__summary">
+          <span class="pill" data-tier={tier}>
+            {TIER_LABEL[tier]}
+          </span
+          >{" "}
+          {rev.summary ?? "Not yet summarised."}
+        </p>
+        <ModelNote model={rev.model} />
+        {rev.noteworthy.length > 0 && <ul class="story__points">
+          {rev.noteworthy.map((point) => <li
+            data-removal={point.toLowerCase().startsWith("removed") ? "" : undefined}
+          >
+            {point}
+          </li>)}
+        </ul>}
+        <DeltaList deltas={rev.profileDeltas} />
+        <a class="story__diff" href={`#${revAnchor(rev.sha)}`}>
+          Show the words that changed &darr;
+        </a>
+      </div>
+    </li>;
+  })}
+  {changeCount === 0 && <li class="story__item story__item--quiet">
+    <span class="story__date mono" aria-hidden="true"> &mdash; </span>
+    <div class="story__body">
+      <p class="story__summary muted">No change of substance since tracking began.</p>
+    </div>
+  </li>}
 </ol>
 
 <style>
