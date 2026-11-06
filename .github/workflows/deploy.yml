@@ -15,7 +15,7 @@ on:
     # matches, so a mixed commit still builds.) workflow_dispatch always runs.
     paths-ignore:
       - "README.md"
-      - "CLAUDE.md"
+      - "AGENTS.md"
       - "LICENSE"
       - ".gitignore"
       - "cron-scrape.sh"

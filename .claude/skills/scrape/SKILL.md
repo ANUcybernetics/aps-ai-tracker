@@ -306,7 +306,7 @@ every scrape; the roster changes a few times a year, not daily.
 
 Combine the results from all three sources, de-duplicated. For each verified
 statement, set the `url` field in `agencies.toml`. Give every newly added body a
-`scope` (see CLAUDE.md for what the three values mean).
+`scope` (see AGENTS.md for what the three values mean).
 
 Some bodies legitimately stay `url = ""`: the policy carves out the defence
 portfolio and the national intelligence community, and only encourages corporate
