@@ -921,6 +921,11 @@
   "FSANZ-20260511T100146Z": {
     "seeded": true
   },
+  "FSANZ-20261106T162327Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3mzns7zra7d2h",
+    "cid": "bafyreigo37rqdk4rkhaubdv2mldm22gg6hkvny6wyy34oz2zg27jpeel7e",
+    "syndicatedAt": "2026-11-06T16:24:30.850Z"
+  },
   "FWC-20251111T061258Z": {
     "seeded": true
   },
