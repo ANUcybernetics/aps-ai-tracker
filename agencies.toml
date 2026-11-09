@@ -580,7 +580,7 @@ portfolio = "Prime Minister and Cabinet"
 url = "https://www.pmc.gov.au/about-us/accountability-and-reporting/corporate-reporting/artificial-intelligence-transparency-statement"
 manual = true
 manual_reason = "Imperva Incapsula JavaScript challenge"
-last_verified = "2026-10-07"
+last_verified = "2026-11-09"
 
 [[agencies]]
 name = "Domestic, Family and Sexual Violence Commission"
@@ -615,7 +615,7 @@ portfolio = "Attorney-General's"
 url = "https://www.fedcourt.gov.au/about/corporate-information/ai-statement"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-10-07"
+last_verified = "2026-11-09"
 
 [[agencies]]
 name = "Food Standards Australia New Zealand"
@@ -802,7 +802,7 @@ url = "https://www.nfsa.gov.au/stories/articles/nfsa-principles-ml-and-ai"
 selector = ".article-content"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-10-07"
+last_verified = "2026-11-09"
 
 [[agencies]]
 name = "National Health Funding Body"
@@ -893,7 +893,7 @@ portfolio = "Attorney-General's"
 url = "https://www.ombudsman.gov.au/about/ai-transparency-statement"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-10-08"
+last_verified = "2026-11-09"
 
 [[agencies]]
 name = "Office of the Inspector-General of Aged Care"
