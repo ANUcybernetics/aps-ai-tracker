@@ -155,7 +155,7 @@ portfolio = "Foreign Affairs and Trade"
 url = "https://www.aciar.gov.au/artificial-intelligence"
 manual = true
 manual_reason = "Cloudflare managed challenge (cf-mitigated: challenge)"
-last_verified = "2026-10-07"
+last_verified = "2026-11-09"
 
 [[agencies]]
 name = "Australian Commission on Safety and Quality in Health Care"
