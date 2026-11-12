@@ -22,15 +22,28 @@ Our [compliance priorities](https://www.acma.gov.au/compliance-priorities) outli
 
 ## Data strategy
 
-Our _Data strategy 2024–25_ sets out a 12-month plan to enhance digital, data and analytical capabilities across the ACMA. It aims to improve the discoverability, usability and safety of our data.
+Our _Data strategy 2026–29_ sets out how we will make data easier to find, use and trust. It supports effective regulation and responsible use of public resources.
 
-Data and analytics are critical tools and capabilities that position us for the future. As recognised in our [2024–25 corporate plan](https://www.acma.gov.au/publications/2024-08/plan/corporate-plan-2024-25), data and analytics support our evidence-based regulatory analysis and actions, and give greater insight into, and understanding of, Australia’s communications and media sectors. This 2024 _–_ 25 strategy will be updated with a 4-year strategy and governance framework in 2025 _–_ 26.
+To continue to build our data capability and maturity, our strategy focuses on:
+
+- strengthening data governance and management
+- building staff capability
+- improving technology.
+
+To unlock and maximise the value of our data, the strategy also prioritises:
+
+- self-service analytics
+- business intelligence
+- geospatial capability
+- data science.
+
+A 3-year roadmap and annual action plans will guide delivery, helping us improve productivity and make better regulatory decisions for a connected, informed and entertained Australia.
 
 download
 
 pdf
 
-[ Data strategy 2024–25 [pdf, 572.52 KB] ](https://www.acma.gov.au/sites/default/files/2025-03/Data%20strategy%202025.pdf)
+[ Data strategy 2026–29 [pdf, 347.62 KB] ](https://www.acma.gov.au/sites/default/files/2026-11/Data%20strategy%202026-29_0.pdf)
 
 ## Statement of intent
 
