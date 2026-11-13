@@ -1,7 +1,5 @@
 # Agent guidelines
 
-This is a Python web scraping project using uv for dependency management.
-
 ## Key context
 
 Scrapes Australian Government AI transparency statements from agency websites,
@@ -49,28 +47,19 @@ its history into JSON for the Astro site in `site/`. Prefix commands with
 
 ## Static site (`site/`)
 
-An Astro static site presents the data: a timeline of every change of substance
-(each with its model-written summary), per-statement pages (what's changed, a
-profile report card against the Standard and policy v2.0, the text with a
-passage-reuse heat-map, and every revision with time-travel), a "what the
-statements say" page (adoption charts, commitments dropped, who is in charge,
-staleness), a shared-wording explorer, a "for agencies" page for statement
-authors (checklist with counts and examples, corrections), and downloadable
-datasets at `/data/` (statements as CSV and JSON, timeline, adoption — static
-endpoints in `src/pages/data/` flattening the generated JSON via
-`src/lib/dataset.ts`, each stamped with provenance and the extraction
-`schemaVersions` from `meta.json`). Toolchain mirrors the benswift-me repo:
-pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint. The site is
+An Astro static site presents the data: timeline, per-statement pages (changes,
+profile report card, passage-reuse heat-map, revision time-travel), adoption
+page, shared-wording explorer, a "for agencies" checklist, and downloadable
+datasets at `/data/` (static endpoints in `src/pages/data/` flattening the
+generated JSON via `src/lib/dataset.ts`, each stamped with provenance and the
+extraction `schemaVersions` from `meta.json`). Toolchain mirrors the benswift-me
+repo: pnpm + Astro 7 + Svelte 5 islands, oxlint/oxfmt/stylelint. The site is
 light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
 
 - News about the tracker itself lives in `site/src/content/news/*.md`, with flat
   frontmatter (title, date, summary, draft). A `draft: true` post never builds
   and is never announced; the News nav item appears once one post is published.
 - Dev: `cd site && mise exec -- pnpm dev`
-- Build/lint/format/typecheck/test (and `lint:css`, `format:check`):
-  `mise exec -- pnpm run {build,lint,format,typecheck,test}`
-- Site unit tests use Vitest (`pnpm run test`); pure-TS helpers under `src/lib/`
-  (e.g. `markdown.ts`) carry `*.test.ts` files.
 - The exporter writes gitignored JSON into `site/src/generated/`; only the
   `.cache/*.json` extraction caches are committed. Run `export` before building
   the site locally.
@@ -86,10 +75,10 @@ light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
   links go through `withBase()` in `site/src/lib/paths.ts`.
 - **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape, which classifies the day's new revision pairs and profiles
-  the changed bodies through `claude -p` (Opus 5.5, subscription), commits the
-  refreshed `.cache/*.json` caches, and pushes. Unchanged statements are cache
-  hits, so most runs make a handful of calls or none. The cache records the
-  model per entry.
+  the changed bodies through `claude -p` (subscription), commits the refreshed
+  `.cache/*.json` caches, and pushes. Unchanged statements are cache hits, so
+  most runs make a handful of calls or none. The cache records the model per
+  entry.
 
 ## atproto
 
