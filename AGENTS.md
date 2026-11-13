@@ -12,11 +12,11 @@ its history into JSON for the Astro site in `site/`. Prefix commands with
 
 ## Python
 
-- Entry points are the `[project.scripts]` in `pyproject.toml`: `scrape`
-  (also `uv run --module aps_ai_tracker`), `process` (reprocess cached `raw/`
-  without fetching), `status`, `stale-manual` (manual agencies overdue for a
-  hand-check; the nightly run turns each line into a wiz task), `browser-probe
-  [ABBR...]` (reports only, writes nothing), `export`.
+- Entry points are the `[project.scripts]` in `pyproject.toml`: `scrape` (also
+  `uv run --module aps_ai_tracker`), `process` (reprocess cached `raw/` without
+  fetching), `status`, `stale-manual` (manual agencies overdue for a hand-check;
+  the nightly run turns each line into a wiz task), `browser-probe [ABBR...]`
+  (reports only, writes nothing), `export`.
 - Each module's docstring says what it does; read it before changing the module
   (`export`, `changes`, `profiles`, `capture_check`, `adoption`, `llm`,
   `probe`). Bump a module's `SCHEMA_VERSION` after changing its prompt or
@@ -32,18 +32,18 @@ its history into JSON for the Astro site in `site/`. Prefix commands with
   the repo, including the nightly `/scrape`, would silently bill it. With no
   backend the export degrades to the caches.
 - Bad captures are handled in `captures.toml` (its header explains
-  `[[quarantine]]` and `[[confirmed]]`). Commit messages are never consulted
-  (a scrape commit describes a whole batch). Never "fix" a false change by
-  editing a cache; quarantine the capture.
+  `[[quarantine]]` and `[[confirmed]]`). Commit messages are never consulted (a
+  scrape commit describes a whole batch). Never "fix" a false change by editing
+  a cache; quarantine the capture.
 - The profile questions come from the DTA Standard, policy v2.0 and the APS AI
   Plan; the Chief AI Officer is the Plan's, **not** the policy's
   (`FIELD_SOURCES` in `profiles.py`). Vocabulary labels live in
   `site/src/lib/profile-labels.ts`; keep them in step with `profiles.py`.
-- Tests: `uv run --group export python -m pytest` (the `uv run pytest` form
-  does not resolve). They live in `tests/`; the exporter tests need the
-  `export` group for pydantic.
-- Typecheck: `uv run --group export ty check` (ty is pinned exactly in the
-  `dev` group, which CI uses too; bump it deliberately after a clean local run).
+- Tests: `uv run --group export python -m pytest` (the `uv run pytest` form does
+  not resolve). They live in `tests/`; the exporter tests need the `export`
+  group for pydantic.
+- Typecheck: `uv run --group export ty check` (ty is pinned exactly in the `dev`
+  group, which CI uses too; bump it deliberately after a clean local run).
 - Also `uv run ruff check` and `uv run ruff format --check`.
 - stdlib `logging` is used deliberately; `print` is for CLI output only.
 
@@ -75,14 +75,15 @@ light-only (no dark mode); design tokens live in `src/styles/tokens.css`.
   `.cache/*.json` extraction caches are committed. Run `export` before building
   the site locally.
 - **Deploy**: live at <https://apsaitracker.app/> (apex custom domain; the
-  `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it). The domain is pinned by `site/public/CNAME` **and** the Pages config
-  `cname` (both needed: workflow deploys don't adopt the artifact CNAME on their
-  own). `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on
-  push to `main` (doc/ops-only pushes are skipped via `paths-ignore`). CI is
-  also the only place the Python tests and `ty` typecheck run automatically,
-  ahead of the export step. CI runs `export` **without** any model access (it
-  reuses the committed extraction caches), so no GitHub secret is needed. All
-  internal links go through `withBase()` in `site/src/lib/paths.ts`.
+  `anucybernetics.github.io/aps-ai-tracker/` Pages URL 301-redirects to it). The
+  domain is pinned by `site/public/CNAME` **and** the Pages config `cname` (both
+  needed: workflow deploys don't adopt the artifact CNAME on their own).
+  `.github/workflows/deploy.yml` rebuilds + deploys to GitHub Pages on push to
+  `main` (doc/ops-only pushes are skipped via `paths-ignore`). CI is also the
+  only place the Python tests and `ty` typecheck run automatically, ahead of the
+  export step. CI runs `export` **without** any model access (it reuses the
+  committed extraction caches), so no GitHub secret is needed. All internal
+  links go through `withBase()` in `site/src/lib/paths.ts`.
 - **Model calls happen on weddle**, not in CI: `cron-scrape.sh` runs `export`
   after the scrape, which classifies the day's new revision pairs and profiles
   the changed bodies through `claude -p` (Opus 5.5, subscription), commits the
