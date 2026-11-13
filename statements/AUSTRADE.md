@@ -8,9 +8,9 @@ title: Artificial intelligence transparency | Austrade
 
 close
 
-info
+warning
 
-For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/freight-and-shipping/trade-resilience-service) for the latest updates and support available.
+As of Friday 13 November 2026, there is a broad service disruption affecting Austrade messaging due to the current Microsoft outage. As a result, clients may not be able to send emails to or receive emails from departmental systems.
 
 ## Introduction
 
