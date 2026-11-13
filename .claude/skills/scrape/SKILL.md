@@ -15,9 +15,8 @@ Run the APS AI transparency statement scraper, validate the results, commit
 substantive changes, discard spurious ones, then search for newly published
 statements from agencies that don't have URLs yet.
 
-Never ask for confirmation or wait for user input at any step --- this skill
-runs non-interactively from a cron job. Proceed immediately at every decision
-point.
+This skill runs unattended from a cron job: never ask for confirmation or wait
+for input.
 
 ## Step 1: run the scraper
 
@@ -220,8 +219,7 @@ produced no new content.
 
 After the scrape (whether or not there were updates), look for statements we're
 missing or pointing at the wrong URL. The corpus is only as complete as our
-discovery, so use **every source below**, not just one. Run both sources, then
-reconcile. Proceed non-interactively --- act on the findings without asking.
+discovery, so run sources A and B every time (C is occasional), then reconcile.
 
 ### Source A --- the DTA register (authoritative cross-check)
 
@@ -232,10 +230,8 @@ https://www.digital.gov.au/policy/ai/list-of-transparency-statements
 
 Fetch it with `curl` and a browser User-Agent --- **not** WebFetch. WebFetch
 often returns a partial or blocked render, and a truncated fetch is a fetch
-failure, NOT proof a statement is missing (this is what made the register look
-"partial" on 2026-06-26 --- the curl form has every entry, including the ones
-WebFetch dropped). The curl form returns the full ~220 KB with every statement
-link server-rendered:
+failure, not proof a statement is missing. The curl form returns the full ~220
+KB with every statement link server-rendered:
 
 ```sh
 curl -s -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" \
@@ -269,9 +265,7 @@ against `agencies.toml` **both ways**:
 
 For every agency still `url = ""` after the register pass, search the open
 web --- it catches statements the register omits or links indirectly. Launch
-subagents in parallel (batches of 5--6) with the Agent tool, each with
-`model: "sonnet"` (Sonnet 5) --- targeted web search has a strict output shape,
-so it doesn't need a stronger model. Each subagent should:
+sonnet subagents in parallel, in batches of 5--6. Each should:
 
 - WebSearch with several query shapes:
   - `"[agency name]" AI transparency statement site:[domain].gov.au`
@@ -281,9 +275,6 @@ so it doesn't need a stronger model. Each subagent should:
   `https://[domain].gov.au/.../ai-transparency-statement`
 - WebFetch any plausible hit to confirm it's an actual transparency statement
   (not a general AI-policy page), then return the verified URL or "not found".
-
-While a batch runs, say so in one line ("6 agency searches running") before
-waiting: a turn that waits with no text trips the harness's no-output nudge.
 
 ### Source C --- the PGPA entity list (who exists at all)
 
@@ -330,8 +321,4 @@ each: added / already-tracked / not-found / untracked-in-toml.
 ## Error handling
 
 - If the scraper fails entirely (no output at all), report the error and stop
-- If git commands fail, report the error and stop
-- If there are content shrinkage warnings, mention the affected agencies in the
-  summary so they can be investigated
-- If there are low AI keyword density warnings, mention those too
 - Never force-push or use destructive git operations
