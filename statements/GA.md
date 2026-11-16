@@ -1,7 +1,7 @@
 ---
 abbr: GA
 agency: Geoscience Australia
-last_updated_text: 28 October 2026
+last_updated_text: 16 November 2026
 source_url: https://www.ga.gov.au/about/corporate-documents/ai-transparency-statement
 title: AI transparency statement | Geoscience Australia
 ---
@@ -58,3 +58,5 @@ The use of AI within Geoscience Australia is monitored through an AI register an
 ### Reviews and more information
 
 The transparency statement will be reviewed at least every twelve months, or as our approach to AI changes. The most recent update was on 15th May 2026.
+
+For any enquiries relating to Geoscience Australia use of AI or the information provided within this AI Transparency Statement, contact [ai@ga.gov.au](mailto:ai@ga.gov.au)
