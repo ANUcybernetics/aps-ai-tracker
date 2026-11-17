@@ -1002,6 +1002,11 @@
   "GBRMPA-20260403T231233Z": {
     "seeded": true
   },
+  "GBRMPA-20261117T162424Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3n2jhfps56722",
+    "cid": "bafyreihyxlpk5ne3echlnfaxoy3qutcuivy62g3gbayzj33m6xrnxvda7y",
+    "syndicatedAt": "2026-11-17T16:25:23.244Z"
+  },
   "HEALTHDIRECT-20260607T062539Z": {
     "seeded": true
   },
