@@ -9,7 +9,7 @@ title: Artificial Intelligence (AI) Transparency Statement | Reef Authority
 
 ## AI transparency statement
 
-In accordance with the Digital Transformation Agency's (DTA) \[Policy for the responsible use of AI in government\](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf), this page provides the Great Barrier Reef Marine Park Authority's (Reef Authority) statement on Artificial Intelligence (AI) transparency. The Reef Authority is a non-corporate, statutory authority within the portfolio of the Department of Climate Change, Energy, the Environment and Water (DCCEEW), and the Reef Authority's AI Transparency Statement has been adapted from that of DCCEEW to ensure alignment in the responsible use and governance of AI. .
+In accordance with the Digital Transformation Agency's (DTA) [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy), this page provides the Great Barrier Reef Marine Park Authority's (Reef Authority) statement on Artificial Intelligence (AI) transparency. The Reef Authority is a non-corporate, statutory authority within the portfolio of the Department of Climate Change, Energy, the Environment and Water (DCCEEW), and the Reef Authority's AI Transparency Statement has been adapted from that of DCCEEW to ensure alignment in the responsible use and governance of AI. .
 
 The Reef Authority sees potential benefits from the application of AI in the future. The Reef Authority's commitment to digital innovation aligns with the Australian Government's [Data and Digital Government Strategy](https://www.dta.gov.au/digital-government-strategy), see adopting emerging technologies.
 
@@ -45,7 +45,7 @@ The Reef Authority will:
 
 ### Accountable official
 
-The Reef Authority’s Chief Digital Officer is the designated AI Accountable Official for the Reef Authority under the \[Policy for the responsible use of AI in government\](https://www.digital.gov.au/sites/default/files/documents/2024-08/Policy for the responsible use of AI in government v1.1.pdf).
+The Reef Authority’s Chief Digital Officer is the designated AI Accountable Official for the Reef Authority under the [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy).
 
 ### Contact
 
@@ -53,6 +53,8 @@ For questions about this statement, please contact [tads.helpdesk@gbrmpa.gov.au]
 
 ### AI Transparency Statement
 
-Created Tue, 2025-02-25 11:21
+The Reef Authority's AI Transparency Statement was last updated in November 2025. In line with the [Policy for responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy) this AI Transparency Statement will be updated if the Reef Authority's approach to AI changes, and at least every twelve months.
 
-Updated 20 Nov 2025
+Created Tue, 2026-11-17 11:21
+
+Updated 17 Nov 2026
