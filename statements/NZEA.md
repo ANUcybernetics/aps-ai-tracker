@@ -61,7 +61,7 @@ For further information on the NZEA’s AI governance and transparency please co
 
 Learn about Australia’s net zero transition, why it’s happening and the Australian Government’s plans to get there.
 
-[ About net zero ](https://www.nzea.gov.au/about/net-zero)
+[ About net zero ](https://www.nzea.gov.au/about-us/net-zero)
 
 ### Energy Industry Jobs Plan
 
