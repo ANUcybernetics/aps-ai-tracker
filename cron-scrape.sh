@@ -106,7 +106,7 @@ if overdue=$(uv run stale-manual 2>> "$LOG_FILE"); then
         ;;
     esac
     echo "Hand-check ${name}'s AI transparency statement at ${url} (the site blocks the scraper), then set last_verified in agencies.toml." \
-      | wiz add anu task -title "${key} hand-check ${name}" -set status=open \
+      | wiz add anu task -title "${key} hand-check ${name}" -set status=open -set "tags=[bot,aps-ai-tracker]" \
       >> "$LOG_FILE" 2>&1 || failed "todo add (${abbr})"
   done <<< "$overdue"
 else
@@ -124,7 +124,7 @@ while IFS= read -r line; do
   key="aps-ai-tracker:capture:${abbr}"
   case "$open_todos" in *"${key} "*) continue ;; esac
   echo "${line%% Held back*}" \
-    | wiz add anu task -title "${key} capture is not the statement" -set status=open \
+    | wiz add anu task -title "${key} capture is not the statement" -set status=open -set "tags=[bot,aps-ai-tracker]" \
     >> "$LOG_FILE" 2>&1 || failed "todo add (capture ${abbr})"
 done < <(grep -oP 'WARNING - \K\S+ \(captured [^)]*\) is not the statement: .*' "$LOG_FILE" \
   | sort -u -k1,1)
