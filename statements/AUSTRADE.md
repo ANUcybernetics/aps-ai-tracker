@@ -1,16 +1,15 @@
 ---
 abbr: AUSTRADE
 agency: Australian Trade and Investment Commission
+final_url: https://www.austrade.gov.au/site-information/ai-transparency
 last_updated_text: 2 June 2026
 source_url: https://www.austrade.gov.au/en/site-information/ai-transparency
-title: Artificial intelligence transparency | Austrade
+title: Artificial intelligence transparency
 ---
 
-close
+# Austrade's AI transparency statement
 
-info
-
-For Australian businesses experiencing supply chain volatility and disruptions, visit the [Go Global Toolkit](https://export.business.gov.au/freight-and-shipping/trade-resilience-service) for the latest updates and support available.
+Austrade's statement about artificial intelligence transparency.
 
 ## Introduction
 
@@ -99,8 +98,10 @@ It will be updated when making a significant change to the agency's approach to 
 | 02/06/2026                                                                        | Updated to reflect Austrade’s current state on AI adoption |
 | Brings Austrade up to date with DTA’s Standard for AI transparency statements 2.0 |                                                            |
 
-For further enquiries please visit our [Contact us](https://www.austrade.gov.au/en/contact-us) page.
+For further enquiries please visit our [Contact us](https://www.austrade.gov.au/contact-us) page.
 
-## Footer content
+#### Subscribe to our newsletters
 
-arrow_upward
+Updates on trade, investment, education and tourism delivered to your inbox.
+
+[Sign up](https://www.austrade.gov.au/news-and-analysis/newsletters)
