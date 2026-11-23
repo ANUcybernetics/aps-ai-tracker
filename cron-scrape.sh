@@ -29,7 +29,18 @@ failed() {
   echo "FAILED: $1" >> "$LOG_FILE"
 }
 
+# Take commits made in other clones (a hand-check recorded on daysy, say)
+# before reading agencies.toml or pushing: a stale checkout re-files done
+# hand-checks and has its push rejected. A clash aborts the rebase, leaving
+# the checkout as it was, and fails the run.
+catch_up() {
+  git pull --rebase --autostash -q >> "$LOG_FILE" 2>&1 && return 0
+  git rebase --abort >> "$LOG_FILE" 2>&1 || true
+  return 1
+}
+
 echo "=== scrape started at $(date -Iseconds) ===" >> "$LOG_FILE"
+catch_up || failed pull
 
 # Through agent-run's claude-sub profile, which scrubs ANTHROPIC_* from the
 # environment so the run can only ever bill the subscription, and on Sonnet.
@@ -83,7 +94,7 @@ fi
 # (Overrides the global manual-push default for this repo; weddle needs push
 # credentials for origin.)
 echo "=== push at $(date -Iseconds) ===" >> "$LOG_FILE"
-git push >> "$LOG_FILE" 2>&1 || failed push
+if ! { catch_up && git push >> "$LOG_FILE" 2>&1; }; then failed push; fi
 
 # Manual agencies sit behind a bot challenge no HTTP client can pass, so a
 # person opening the page is the only thing that catches a change in them.
