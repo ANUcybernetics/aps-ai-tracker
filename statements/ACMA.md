@@ -41,7 +41,7 @@ A 3-year roadmap and annual action plans will guide delivery, helping us improve
 
 download
 
-pdf
+PDF
 
 [ Data strategy 2026–29 [pdf, 347.62 KB] ](https://www.acma.gov.au/sites/default/files/2026-11/Data%20strategy%202026-29_0.pdf)
 
