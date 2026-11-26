@@ -313,7 +313,7 @@ abbr = "APVMA"
 size = "small"
 scope = "voluntary"
 portfolio = "Agriculture, Fisheries and Forestry"
-url = ""
+url = "https://www.apvma.gov.au/apvma-ai-transparency-statement"
 
 [[agencies]]
 name = "Australian Prudential Regulation Authority"
