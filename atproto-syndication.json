@@ -321,6 +321,11 @@
   "APSC-20260325T110349Z": {
     "seeded": true
   },
+  "APVMA-20261126T162439Z": {
+    "uri": "at://did:plc:yhnshyrc2iev6z65u3uraon4/app.bsky.feed.post/3n3a3lzieez2i",
+    "cid": "bafyreia3oxkpabfsh3qmkuxctjsagnz4ur7qy5xmxi33qamdqa5q4rzliy",
+    "syndicatedAt": "2026-11-26T16:25:23.809Z"
+  },
   "ARC-20251111T061258Z": {
     "seeded": true
   },
