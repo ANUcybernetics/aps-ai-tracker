@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0 # the timeline IS the full git history
 
@@ -75,14 +75,14 @@ jobs:
       # single-source setup the sibling benswift-me repo uses — no version pinned
       # here or in package.json.
       - name: Setup mise (node + pnpm)
-        uses: jdx/mise-action@v5
+        uses: jdx/mise-action@v5.3.0
 
       - name: Locate pnpm store
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
 
       - name: Cache pnpm store
-        uses: actions/cache@v6
+        uses: actions/cache@v6.1.0
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -90,7 +90,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Cache Astro build artefacts
-        uses: actions/cache@v6
+        uses: actions/cache@v6.1.0
         with:
           path: site/node_modules/.astro
           key: ${{ runner.os }}-astro-${{ github.sha }}
@@ -98,7 +98,7 @@ jobs:
             ${{ runner.os }}-astro-
 
       - name: Set up Pages
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@v6.0.0
 
       - name: Install site deps
         run: pnpm install --frozen-lockfile
@@ -129,7 +129,7 @@ jobs:
         working-directory: site
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: site/dist
           include-hidden-files: true # keep .nojekyll
@@ -143,4 +143,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v5.0.1
