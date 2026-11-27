@@ -26,6 +26,7 @@
     "@atproto/common-web": "0.5.17",
     "@fontsource-variable/archivo": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@plausible-analytics/tracker": "^0.4.7",
     "astro": "^7.4.12",
     "diff-match-patch": "^1.0.5",
     "marked": "^18.2.1",

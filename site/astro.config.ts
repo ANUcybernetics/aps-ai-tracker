@@ -1,6 +1,7 @@
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
+import plausible from "./src/plausible";
 
 // Served from the apex custom domain apsaitracker.app (CNAME in public/), so the
 // base is root. Every internal href/asset/fetch still goes through withBase() in
@@ -26,5 +27,6 @@ export default defineConfig({
     svelte(),
     // Exclude the JSON data endpoint; it isn't a navigable page.
     sitemap({ filter: (page) => !page.includes("/data/") }),
+    plausible("apsaitracker.app"),
   ],
 });
